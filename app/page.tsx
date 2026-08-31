@@ -1,4 +1,5 @@
-import Link from "next/link";
+// All tool links are either external or rewrite destinations — none are Next.js
+// app routes — so we use plain <a> tags to avoid RSC prefetch 404s on rewrites.
 
 const TOOLS = [
   {
@@ -150,20 +151,15 @@ export default function HomePage() {
               </>
             );
 
-            return tool.external ? (
+            return (
               <a
                 key={tool.slug}
                 href={tool.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(tool.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className={cardClass}
               >
                 {cardInner}
               </a>
-            ) : (
-              <Link key={tool.slug} href={tool.href} className={cardClass}>
-                {cardInner}
-              </Link>
             );
           })}
         </div>
