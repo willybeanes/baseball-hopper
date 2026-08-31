@@ -99,7 +99,7 @@ export function compareUrl(player: PlayerInfo, season?: number): string {
  * No page-level deep-link yet — links to the tool root.
  */
 export function batteryUrl(): string {
-  return "https://battery-splits.vercel.app";
+  return `${SHELL}/battery`;
 }
 
 /**

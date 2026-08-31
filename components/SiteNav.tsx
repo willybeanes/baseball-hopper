@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const TOOLS = [
   { label: "Hitting+",           href: "https://hitting-plus.vercel.app",          external: true  },
   { label: "Percentile Compare", href: "/compare",                                  external: false },
-  { label: "Battery Splits",     href: "https://battery-splits.vercel.app",         external: true  },
+  { label: "Battery Splits",     href: "/battery",                                  external: false },
   { label: "Stuff Splits",       href: "https://stuff-splits.vercel.app",           external: true  },
   { label: "Scatter Plot",       href: "/scatter",                                  external: false },
   { label: "WAR Breakdown",      href: "/war",                                      external: false },

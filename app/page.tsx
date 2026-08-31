@@ -25,8 +25,8 @@ const TOOLS = [
     label: "Battery Splits",
     description:
       "Pitcher–catcher chemistry scores and split stats: how does each battery's ERA, FIP, and Stuff+ shift with the man behind the plate?",
-    href: "https://battery-splits.vercel.app",
-    external: true,
+    href: "/battery",
+    external: false,
     tag: "Pitchers",
   },
   {
