@@ -106,22 +106,11 @@ const TAG_COLORS: Record<string, string> = {
 export default function HomePage() {
   return (
     <main className="flex-1 w-full">
-      {/* Header */}
-      <header className="max-w-5xl mx-auto px-6 pt-12 pb-2">
-        <div className="flex items-baseline gap-3 mb-1">
-          <span className="text-2xl">⚾</span>
-          <h1 className="text-2xl font-bold tracking-tight">Baseball Hopper</h1>
-        </div>
-        <p className="text-sm text-[var(--dim)] ml-9">
-          A{" "}
-          <span className="font-medium text-[var(--text)]">Balls &amp; Sticks</span>{" "}
-          property · All the tools, one front door
+      {/* Page intro */}
+      <div className="max-w-5xl mx-auto px-6 pt-8 pb-6">
+        <p className="text-sm text-[var(--dim)]">
+          All the Balls &amp; Sticks baseball tools in one place, cross-referenced around a shared player identity.
         </p>
-      </header>
-
-      {/* Divider */}
-      <div className="max-w-5xl mx-auto px-6 mt-6 mb-8">
-        <div className="h-px bg-[var(--rule)]" />
       </div>
 
       {/* Tool grid */}
