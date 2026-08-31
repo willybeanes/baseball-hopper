@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
       // fg-war has serverless api/ routes — proxy both HTML and API
       { source: "/war", destination: "https://fg-war.vercel.app/" },
       { source: "/war/:path*", destination: "https://fg-war.vercel.app/:path*" },
+      // fg-war's HTML calls /api/fangraphs relative to its origin; proxy that too
+      { source: "/api/fangraphs", destination: "https://fg-war.vercel.app/api/fangraphs" },
     ];
   },
 };
