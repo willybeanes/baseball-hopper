@@ -10,7 +10,7 @@ const TOOLS = [
   { label: "Scatter Plot",       href: "/scatter",                                  external: false },
   { label: "WAR Breakdown",      href: "/war",                                      external: false },
   { label: "Play-by-Play",       href: "/pbp",                                      external: false },
-  { label: "Opposing Probables", href: "https://opposing-probables.vercel.app",     external: true  },
+  { label: "Opposing Probables", href: "/probables",                               external: false },
   { label: "xR Philosophy",      href: "https://willybeanes.github.io/xr-philosophy/", external: true },
   { label: "All-Star Ballot",    href: "/ballot",                                   external: false },
 ];

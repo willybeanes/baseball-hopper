@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Opposing Probables grid color tokens */
+@theme {
+  --color-surface: #ffffff;
+  --color-cell: #efefef;
+  --color-border: #dddddd;
+  --color-header-bg: #000000;
+  --color-header-text: #ffffff;
+  --color-text-primary: #000000;
+  --color-text-muted: #888888;
+  --color-off-text: #ff0000;
+  --color-tbd: #b45309;
+}
+
 :root {
   --bg: #f0ede8;
   --panel: #ffffff;

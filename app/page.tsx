@@ -70,8 +70,8 @@ const TOOLS = [
     label: "Opposing Probables",
     description:
       "A grid of today's and upcoming probable starters matchup-by-matchup. Plan your lineup around who's toeing the slab.",
-    href: "https://opposing-probables.vercel.app",
-    external: true,
+    href: "/probables",
+    external: false,
     tag: "Games",
   },
   {
