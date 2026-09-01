@@ -217,8 +217,8 @@ export default async function HomePage() {
     fs.readFile(path.join(dataDir, "wrc_plus.json"), "utf-8"),
   ]);
 
-  const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw.replace(/:\s*NaN/g, ": null"));
-  const wrcData: Record<string, Record<string, number>> = JSON.parse(wrcRaw.replace(/:\s*NaN/g, ": null"));
+  const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw);
+  const wrcData: Record<string, Record<string, number>> = JSON.parse(wrcRaw);
 
   // PA lookup from swingplus for wRC+ filtering
   const pa2026 = new Map<string, number>();
