@@ -219,11 +219,23 @@ function StatBar({ value, label }: { value: number; label: string }) {
   );
 }
 
+type PlayerInfo = { id: number; team: string; position: string };
+
 export default async function HomePage() {
   const dataDir = path.join(process.cwd(), "public", "data");
-  const swingRaw = await fs.readFile(path.join(dataDir, "swingplus_latest.json"), "utf-8");
+  const [swingRaw, infoRaw] = await Promise.all([
+    fs.readFile(path.join(dataDir, "swingplus_latest.json"), "utf-8"),
+    fs.readFile(path.join(dataDir, "player_info.json"), "utf-8"),
+  ]);
 
   const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw);
+  const playerInfo: Record<string, PlayerInfo> = JSON.parse(infoRaw);
+
+  function mlbHeadshot(name: string) {
+    const id = playerInfo[name]?.id;
+    if (!id) return null;
+    return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_120,q_auto:best/v1/people/${id}/headshot/67/current`;
+  }
 
   // Top Hitting+ (qualified, 2026, PA ≥ 150)
   const hittingLeaders = swingData.players
@@ -302,13 +314,22 @@ export default async function HomePage() {
                 </Link>
               </div>
               <div className="divide-y divide-[var(--panel-border)]">
-                {hittingLeaders.map((p, i) => (
-                  <div key={p.player_name} className="flex items-center gap-2 py-1.5">
-                    <span className="text-[10px] text-[var(--dimmer)] w-4 text-right">{i + 1}</span>
-                    <span className="flex-1 text-xs text-[var(--text)] truncate">{displayName(p.player_name)}</span>
-                    <span className="text-xs font-semibold text-[var(--text)]">{fmt(p["Hitting+"], 0)}</span>
-                  </div>
-                ))}
+                {hittingLeaders.map((p, i) => {
+                  const shot = mlbHeadshot(p.player_name);
+                  return (
+                    <div key={p.player_name} className="flex items-center gap-2 py-1.5">
+                      <span className="text-[10px] text-[var(--dimmer)] w-4 text-right shrink-0">{i + 1}</span>
+                      {shot ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={shot} alt="" className="w-7 h-7 rounded-full object-cover object-top shrink-0 bg-[var(--track)]" />
+                      ) : (
+                        <div className="w-7 h-7 rounded-full bg-[var(--track)] shrink-0" />
+                      )}
+                      <span className="flex-1 text-xs text-[var(--text)] truncate">{displayName(p.player_name)}</span>
+                      <span className="text-xs font-semibold text-[var(--text)]">{fmt(p["Hitting+"], 0)}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
