@@ -8,54 +8,63 @@ const ARTICLES = [
     subtitle: "Analyzing how Hitting+ components change with age",
     date: "Aug 27, 2026",
     slug: "older-but-not-wiser",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/01a568ee-2d76-408a-8b03-5f549aeae125/gettyimages-2290520599-2048x2048.jpg",
   },
   {
     title: "Hitting Plus Positive",
     subtitle: "I can do bad (hitting model) all by myself",
     date: "Aug 21, 2026",
     slug: "hitting-plus-positive",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/33afb1ce-82f4-439e-aff7-48e7de6deb55/2282744393_large_cropped.png",
   },
   {
     title: "Fast Times At Bat Speed High",
     subtitle: "Learn it. Know it. Live it.",
     date: "Jul 31, 2026",
     slug: "fast-times-at-bat-speed-high",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/26d16d62-d254-4475-8749-cd84222a4d2a/gettyimages-2283677121_copy.png",
   },
   {
     title: "The Perfect (Game) Score 2: The Re-Take",
     subtitle: "Every bit as necessary as a direct-to-video sequel",
     date: "Jul 22, 2026",
     slug: "the-perfect-game-score-2-the-re-take",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/af3dbc0a-cec6-41c0-8e17-5a49ec7ee40e/roberts-dugout_copy.jpg",
   },
   {
     title: "Semi-Charmed Kind of Schedule",
     subtitle: "The cost to making team schedules pretty",
     date: "Jul 21, 2026",
     slug: "semi-charmed-kind-of-schedule",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/af14a92c-5e05-45f3-97d0-ed889741ef2e/wmgzuifp09si7c2fltbi.jpeg",
   },
   {
     title: "Spoiled Milk in Your Fine Wine",
     subtitle: "The poison pill inside a hitter's plate discipline gains",
     date: "Nov 14, 2025",
     slug: "spoiled-milk-in-your-fine-wine",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/2efcba30-2c43-42d2-8551-2776399a9715/13b6e396-6a35-468f-b144-e8dd54237ff5_686x386.jpeg",
   },
   {
     title: "Rise of the Kitchen Sink Starters",
     subtitle: "Let that sink in",
     date: "Jul 15, 2024",
     slug: "rise-of-the-kitchen-sink-starters",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/7b958aa3-1fc6-4d28-96ba-5e30d4dfa7da/1ff737b7-a302-4fb0-828f-691594630b87_2560x1707.jpeg",
   },
   {
     title: "Isaack of Pulled-tatoes",
     subtitle: "Searching for the next Paredes",
     date: "Nov 14, 2023",
     slug: "isaack-of-pulled-tatoes",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/2c60ddbb-17e0-468e-978b-4c9f46e25ca2/04a0f144-335c-4153-8e98-40a1d72c5ffe_900x506.jpg",
   },
   {
     title: "Let's Play Two (hours)!",
     subtitle: "How good could a game be if it's shorter than Howl's Moving Castle?",
     date: "Apr 7, 2023",
     slug: "lets-play-a-nine-inning-game-in-two",
+    img: "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/091dc3d6-aa8d-4542-aab1-d750dea79c5f/e9a993a7-48bf-4328-a028-bf7de9608806_960x495.jpg",
   },
 ];
 
@@ -269,21 +278,25 @@ export default async function HomePage() {
                   href={`https://ballsandsticks.beehiiv.com/p/${a.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)] hover:shadow-[var(--elevated-shadow)] hover:border-[var(--rule)] transition-all duration-150"
+                  className="group block bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)] hover:shadow-[var(--elevated-shadow)] hover:border-[var(--rule)] transition-all duration-150"
                 >
-                  <p className="text-[10px] text-[var(--dimmer)] mb-1">{a.date}</p>
-                  <p className="text-sm font-semibold leading-snug tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-1">
-                    {a.title}
-                  </p>
-                  <p className="text-xs text-[var(--dim)] leading-relaxed mb-3">{a.subtitle}</p>
-                  <div className="flex items-center gap-1.5">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,width=64,format=auto,onerror=redirect/uploads/asset/file/cc23e68a-0374-477c-b8ed-f40b105f6a14/e37759fb-9ef5-44c6-a98d-6866272799c1_1020x1020.webp"
-                      alt="Will Harris"
-                      className="w-4 h-4 rounded-full object-cover"
-                    />
-                    <span className="text-[10px] text-[var(--dimmer)]">Will Harris</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={a.img} alt={a.title} className="w-full h-32 object-cover" />
+                  <div className="p-4">
+                    <p className="text-[10px] text-[var(--dimmer)] mb-1">{a.date}</p>
+                    <p className="text-sm font-semibold leading-snug tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-1">
+                      {a.title}
+                    </p>
+                    <p className="text-xs text-[var(--dim)] leading-relaxed mb-3">{a.subtitle}</p>
+                    <div className="flex items-center gap-1.5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,width=64,format=auto,onerror=redirect/uploads/asset/file/cc23e68a-0374-477c-b8ed-f40b105f6a14/e37759fb-9ef5-44c6-a98d-6866272799c1_1020x1020.webp"
+                        alt="Will Harris"
+                        className="w-4 h-4 rounded-full object-cover"
+                      />
+                      <span className="text-[10px] text-[var(--dimmer)]">Will Harris</span>
+                    </div>
                   </div>
                 </a>
               ))}
