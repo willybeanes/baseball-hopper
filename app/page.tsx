@@ -101,8 +101,8 @@ const TOOLS = [
     label: "Scatter Plot",
     description:
       "Build any FanGraphs × Savant scatter with a few clicks. X vs Y across any stat pair, colored by a third, searchable by name.",
-    href: "/scatter",
-    external: false,
+    href: "https://fg-scatter.vercel.app/",
+    external: true,
     tag: "Hitters · Pitchers",
   },
   {
@@ -251,7 +251,7 @@ export default async function HomePage() {
           <section className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight">
-                From the newsletter
+                From the blog
               </h2>
               <a
                 href="https://ballsandsticks.beehiiv.com"
@@ -275,7 +275,16 @@ export default async function HomePage() {
                   <p className="text-sm font-semibold leading-snug tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-1">
                     {a.title}
                   </p>
-                  <p className="text-xs text-[var(--dim)] leading-relaxed">{a.subtitle}</p>
+                  <p className="text-xs text-[var(--dim)] leading-relaxed mb-3">{a.subtitle}</p>
+                  <div className="flex items-center gap-1.5">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,width=64,format=auto,onerror=redirect/uploads/asset/file/cc23e68a-0374-477c-b8ed-f40b105f6a14/e37759fb-9ef5-44c6-a98d-6866272799c1_1020x1020.webp"
+                      alt="Will Harris"
+                      className="w-4 h-4 rounded-full object-cover"
+                    />
+                    <span className="text-[10px] text-[var(--dimmer)]">Will Harris</span>
+                  </div>
                 </a>
               ))}
             </div>
@@ -290,7 +299,7 @@ export default async function HomePage() {
                   Hitting+ Leaders <span className="text-[var(--dimmer)] font-normal">2026</span>
                 </h3>
                 <Link
-                  href="/hitting-plus"
+                  href="/hitting-plus?tab=leaderboard&season=2026"
                   className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
                 >
                   Full table →
