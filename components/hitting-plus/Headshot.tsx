@@ -62,7 +62,7 @@ export default function Headshot({
           height={size}
           unoptimized
           onError={() => setErrored(true)}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-top"
         />
       ) : (
         <span>{initials}</span>
