@@ -110,8 +110,8 @@ const TOOLS = [
     label: "Scatter Plot",
     description:
       "Build any FanGraphs × Savant scatter with a few clicks. X vs Y across any stat pair, colored by a third, searchable by name.",
-    href: "https://fg-scatter.vercel.app/",
-    external: true,
+    href: "/scatter",
+    external: false,
     tag: "Hitters · Pitchers",
   },
   {

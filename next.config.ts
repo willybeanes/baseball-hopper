@@ -10,8 +10,8 @@ const nextConfig: NextConfig = {
       { source: "/pbp/:path*", destination: "https://mlb-pbp.vercel.app/:path*" },
       { source: "/ballot", destination: "https://allstar-ballot-2026.vercel.app/" },
       { source: "/ballot/:path*", destination: "https://allstar-ballot-2026.vercel.app/:path*" },
-      { source: "/scatter", destination: "https://willybeanes.github.io/fg-scatter/" },
-      { source: "/scatter/:path*", destination: "https://willybeanes.github.io/fg-scatter/:path*" },
+      { source: "/scatter", destination: "https://fg-scatter.vercel.app/" },
+      { source: "/scatter/:path*", destination: "https://fg-scatter.vercel.app/:path*" },
       // fg-war has serverless api/ routes — proxy both HTML and API
       { source: "/war", destination: "https://fg-war.vercel.app/" },
       { source: "/war/:path*", destination: "https://fg-war.vercel.app/:path*" },

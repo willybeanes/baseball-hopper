@@ -27,7 +27,7 @@ const NAV_GROUPS = [
   {
     label: "More",
     tools: [
-      { label: "Scatter Plot", href: "https://fg-scatter.vercel.app/", external: true },
+      { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
       { label: "xR Philosophy", href: "https://willybeanes.github.io/xr-philosophy/", external: true },
       { label: "All-Star Ballot", href: "/ballot", external: false },
