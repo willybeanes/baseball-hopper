@@ -1,5 +1,63 @@
-// All tool links are either external or rewrite destinations — none are Next.js
-// app routes — so we use plain <a> tags to avoid RSC prefetch 404s on rewrites.
+import fs from "fs/promises";
+import path from "path";
+import Link from "next/link";
+
+const ARTICLES = [
+  {
+    title: "Older but not Wiser+",
+    subtitle: "Analyzing how Hitting+ components change with age",
+    date: "Aug 27, 2026",
+    slug: "older-but-not-wiser",
+  },
+  {
+    title: "Hitting Plus Positive",
+    subtitle: "I can do bad (hitting model) all by myself",
+    date: "Aug 21, 2026",
+    slug: "hitting-plus-positive",
+  },
+  {
+    title: "Fast Times At Bat Speed High",
+    subtitle: "Learn it. Know it. Live it.",
+    date: "Jul 31, 2026",
+    slug: "fast-times-at-bat-speed-high",
+  },
+  {
+    title: "The Perfect (Game) Score 2: The Re-Take",
+    subtitle: "Every bit as necessary as a direct-to-video sequel",
+    date: "Jul 22, 2026",
+    slug: "the-perfect-game-score-2-the-re-take",
+  },
+  {
+    title: "Semi-Charmed Kind of Schedule",
+    subtitle: "The cost to making team schedules pretty",
+    date: "Jul 21, 2026",
+    slug: "semi-charmed-kind-of-schedule",
+  },
+  {
+    title: "Spoiled Milk in Your Fine Wine",
+    subtitle: "The poison pill inside a hitter's plate discipline gains",
+    date: "Nov 14, 2025",
+    slug: "spoiled-milk-in-your-fine-wine",
+  },
+  {
+    title: "Rise of the Kitchen Sink Starters",
+    subtitle: "Let that sink in",
+    date: "Jul 15, 2024",
+    slug: "rise-of-the-kitchen-sink-starters",
+  },
+  {
+    title: "Isaack of Pulled-tatoes",
+    subtitle: "Searching for the next Paredes",
+    date: "Nov 14, 2023",
+    slug: "isaack-of-pulled-tatoes",
+  },
+  {
+    title: "Let's Play Two (hours)!",
+    subtitle: "How good could a game be if it's shorter than Howl's Moving Castle?",
+    date: "Apr 7, 2023",
+    slug: "lets-play-a-nine-inning-game-in-two",
+  },
+];
 
 const TOOLS = [
   {
@@ -103,18 +161,239 @@ const TAG_COLORS: Record<string, string> = {
   Archive: "bg-[#fce7f3] text-[#9d174d]",
 };
 
-export default function HomePage() {
+type SwingPlayer = {
+  player_name: string;
+  game_year: number;
+  pa: number;
+  "Hitting+": number;
+  "Decision+": number;
+  "Timing+": number;
+  "Contact+": number;
+  "Power+": number;
+  xwoba: number;
+  qualified: boolean;
+};
+
+function displayName(raw: string) {
+  const parts = raw.split(", ");
+  if (parts.length === 2) return `${parts[1]} ${parts[0]}`;
+  return raw;
+}
+
+function fmt(n: number | null | undefined, decimals = 1) {
+  if (n == null) return "—";
+  return n.toFixed(decimals);
+}
+
+function StatBar({ value, label }: { value: number; label: string }) {
+  const clamped = Math.min(Math.max(value, 50), 160);
+  const pct = ((clamped - 50) / 110) * 100;
+  const color =
+    value >= 115
+      ? "#2563eb"
+      : value >= 105
+      ? "#16a34a"
+      : value <= 90
+      ? "#dc2626"
+      : "#6b7280";
+  return (
+    <div className="flex items-center gap-2">
+      <span className="w-16 text-right text-[11px] text-[var(--dim)]">{label}</span>
+      <div className="flex-1 h-2 rounded-full bg-[var(--track)]">
+        <div
+          className="h-2 rounded-full"
+          style={{ width: `${pct}%`, backgroundColor: color }}
+        />
+      </div>
+      <span className="w-8 text-[11px] font-medium text-[var(--text)]">{fmt(value, 0)}</span>
+    </div>
+  );
+}
+
+export default async function HomePage() {
+  const dataDir = path.join(process.cwd(), "public", "data");
+  const [swingRaw, wrcRaw] = await Promise.all([
+    fs.readFile(path.join(dataDir, "swingplus_latest.json"), "utf-8"),
+    fs.readFile(path.join(dataDir, "wrc_plus.json"), "utf-8"),
+  ]);
+
+  const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw.replace(/:\s*NaN/g, ": null"));
+  const wrcData: Record<string, Record<string, number>> = JSON.parse(wrcRaw.replace(/:\s*NaN/g, ": null"));
+
+  // PA lookup from swingplus for wRC+ filtering
+  const pa2026 = new Map<string, number>();
+  for (const p of swingData.players) {
+    if (p.game_year === 2026) pa2026.set(p.player_name, p.pa);
+  }
+
+  // Top Hitting+ (qualified, 2026, PA ≥ 150)
+  const hittingLeaders = swingData.players
+    .filter((p) => p.game_year === 2026 && p.qualified && p.pa >= 150)
+    .sort((a, b) => (b["Hitting+"] ?? 0) - (a["Hitting+"] ?? 0))
+    .slice(0, 10);
+
+  // Top wRC+ (2026, PA ≥ 150)
+  const wrcLeaders = Object.entries(wrcData)
+    .filter(([name, vals]) => vals["2026"] != null && (pa2026.get(name) ?? 0) >= 150)
+    .map(([name, vals]) => ({ name, wrc: vals["2026"] }))
+    .sort((a, b) => b.wrc - a.wrc)
+    .slice(0, 10);
+
+  // Sample comparison: top 2 Hitting+ players
+  const [playerA, playerB] = hittingLeaders;
+
   return (
     <main className="flex-1 w-full">
-      {/* Page intro */}
-      <div className="max-w-5xl mx-auto px-6 pt-8 pb-6">
-        <p className="text-sm text-[var(--dim)]">
-          All the Balls &amp; Sticks baseball tools in one place, cross-referenced around a shared player identity.
-        </p>
+      {/* Feature strip: Articles + Sidebar */}
+      <div className="max-w-6xl mx-auto px-6 pt-8 pb-10">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          {/* Articles */}
+          <section className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight">
+                From the newsletter
+              </h2>
+              <a
+                href="https://ballsandsticks.beehiiv.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
+              >
+                All posts ↗
+              </a>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {ARTICLES.map((a) => (
+                <a
+                  key={a.slug}
+                  href={`https://ballsandsticks.beehiiv.com/p/${a.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)] hover:shadow-[var(--elevated-shadow)] hover:border-[var(--rule)] transition-all duration-150"
+                >
+                  <p className="text-[10px] text-[var(--dimmer)] mb-1">{a.date}</p>
+                  <p className="text-sm font-semibold leading-snug tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-1">
+                    {a.title}
+                  </p>
+                  <p className="text-xs text-[var(--dim)] leading-relaxed">{a.subtitle}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* Sidebar */}
+          <aside className="w-full lg:w-72 shrink-0 flex flex-col gap-5">
+            {/* Hitting+ leaderboard */}
+            <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">
+                  Hitting+ Leaders <span className="text-[var(--dimmer)] font-normal">2026</span>
+                </h3>
+                <Link
+                  href="/hitting-plus"
+                  className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
+                >
+                  Full table →
+                </Link>
+              </div>
+              <div className="divide-y divide-[var(--panel-border)]">
+                {hittingLeaders.map((p, i) => (
+                  <div key={p.player_name} className="flex items-center gap-2 py-1.5">
+                    <span className="text-[10px] text-[var(--dimmer)] w-4 text-right">{i + 1}</span>
+                    <span className="flex-1 text-xs text-[var(--text)] truncate">{displayName(p.player_name)}</span>
+                    <span className="text-xs font-semibold text-[var(--text)]">{fmt(p["Hitting+"], 0)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* wRC+ leaderboard */}
+            <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">
+                  wRC+ Leaders <span className="text-[var(--dimmer)] font-normal">2026</span>
+                </h3>
+              </div>
+              <div className="divide-y divide-[var(--panel-border)]">
+                {wrcLeaders.map((p, i) => (
+                  <div key={p.name} className="flex items-center gap-2 py-1.5">
+                    <span className="text-[10px] text-[var(--dimmer)] w-4 text-right">{i + 1}</span>
+                    <span className="flex-1 text-xs text-[var(--text)] truncate">{displayName(p.name)}</span>
+                    <span className="text-xs font-semibold text-[var(--text)]">{fmt(p.wrc, 0)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Sample comparison */}
+            {playerA && playerB && (
+              <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Top 2 by Hitting+</h3>
+                  <a
+                    href={`/compare?tab=hitter&a=${encodeURIComponent(displayName(playerA.player_name))}&b=${encodeURIComponent(displayName(playerB.player_name))}`}
+                    className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
+                  >
+                    Full compare →
+                  </a>
+                </div>
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  {[playerA, playerB].map((p) => (
+                    <div key={p.player_name} className="text-center">
+                      <p className="text-[11px] font-semibold text-[var(--text)] leading-tight truncate">
+                        {displayName(p.player_name)}
+                      </p>
+                      <p className="text-lg font-bold text-[var(--accent)]">{fmt(p["Hitting+"], 0)}</p>
+                      <p className="text-[10px] text-[var(--dimmer)]">Hitting+</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-1.5">
+                  {(["Decision+", "Timing+", "Contact+", "Power+"] as const).map((key) => (
+                    <div key={key} className="flex items-center gap-1">
+                      <span className="text-[10px] text-[var(--dim)] w-14 text-right shrink-0">{key}</span>
+                      <div className="flex-1 flex gap-1 items-center">
+                        <div className="flex-1 h-1.5 rounded-full bg-[var(--track)] relative">
+                          <div
+                            className="absolute right-0 top-0 h-1.5 rounded-full bg-[#2563eb] opacity-70"
+                            style={{
+                              width: `${Math.min(((playerA[key] ?? 100) - 50) / 110, 1) * 50}%`,
+                            }}
+                          />
+                        </div>
+                        <span className="text-[10px] w-7 text-center font-medium text-[var(--text)]">
+                          {fmt(playerA[key], 0)}
+                        </span>
+                        <span className="text-[10px] text-[var(--dimmer)]">vs</span>
+                        <span className="text-[10px] w-7 text-center font-medium text-[var(--text)]">
+                          {fmt(playerB[key], 0)}
+                        </span>
+                        <div className="flex-1 h-1.5 rounded-full bg-[var(--track)] relative">
+                          <div
+                            className="absolute left-0 top-0 h-1.5 rounded-full bg-[#dc2626] opacity-70"
+                            style={{
+                              width: `${Math.min(((playerB[key] ?? 100) - 50) / 110, 1) * 50}%`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </aside>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="border-t border-[var(--rule)]" />
       </div>
 
       {/* Tool grid */}
-      <section className="max-w-5xl mx-auto px-6 pb-16">
+      <section className="max-w-6xl mx-auto px-6 py-8">
+        <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight mb-4">Tools</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {TOOLS.map((tool) => {
             const cardClass =
@@ -122,18 +401,16 @@ export default function HomePage() {
             const cardInner = (
               <>
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <h2 className="font-semibold text-base tracking-tight group-hover:text-[var(--accent)] transition-colors">
+                  <h3 className="font-semibold text-base tracking-tight group-hover:text-[var(--accent)] transition-colors">
                     {tool.label}
-                  </h2>
+                  </h3>
                   <span
                     className={`shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full ${TAG_COLORS[tool.tag] ?? "bg-[var(--bg)] text-[var(--dim)]"}`}
                   >
                     {tool.tag}
                   </span>
                 </div>
-                <p className="text-sm text-[var(--dim)] leading-relaxed">
-                  {tool.description}
-                </p>
+                <p className="text-sm text-[var(--dim)] leading-relaxed">{tool.description}</p>
                 {tool.external && (
                   <p className="mt-3 text-[11px] text-[var(--dimmer)]">Opens in full tab ↗</p>
                 )}
