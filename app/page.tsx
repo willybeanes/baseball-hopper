@@ -34,8 +34,8 @@ const TOOLS = [
     label: "Stuff Splits",
     description:
       "Pitch-quality grades (Stuff+, Location+, Pitching+) broken down by pitch type and batter handedness for every MLB arm.",
-    href: "https://stuff-splits.vercel.app",
-    external: true,
+    href: "/stuff/platoon",
+    external: false,
     tag: "Pitchers",
   },
   {

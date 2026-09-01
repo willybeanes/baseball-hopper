@@ -107,5 +107,5 @@ export function batteryUrl(): string {
  * No page-level deep-link yet — links to the tool root.
  */
 export function stuffUrl(): string {
-  return "https://stuff-splits.vercel.app";
+  return `${SHELL}/stuff/platoon`;
 }

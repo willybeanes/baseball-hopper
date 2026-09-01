@@ -6,7 +6,7 @@ const TOOLS = [
   { label: "Hitting+",           href: "https://hitting-plus.vercel.app",          external: true  },
   { label: "Percentile Compare", href: "/compare",                                  external: false },
   { label: "Battery Splits",     href: "/battery",                                  external: false },
-  { label: "Stuff Splits",       href: "https://stuff-splits.vercel.app",           external: true  },
+  { label: "Stuff Splits",       href: "/stuff/platoon",                           external: false },
   { label: "Scatter Plot",       href: "/scatter",                                  external: false },
   { label: "WAR Breakdown",      href: "/war",                                      external: false },
   { label: "Play-by-Play",       href: "/pbp",                                      external: false },
