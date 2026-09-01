@@ -321,7 +321,7 @@ export default async function HomePage() {
                       <span className="text-[10px] text-[var(--dimmer)] w-4 text-right shrink-0">{i + 1}</span>
                       {shot ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={shot} alt="" className="w-7 h-7 rounded-full object-cover object-top shrink-0 bg-[var(--track)]" />
+                        <img src={shot} alt="" className="w-7 h-7 rounded-full object-cover shrink-0 bg-[var(--track)]" style={{ objectPosition: "50% 15%" }} />
                       ) : (
                         <div className="w-7 h-7 rounded-full bg-[var(--track)] shrink-0" />
                       )}
