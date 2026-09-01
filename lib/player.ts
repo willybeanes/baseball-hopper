@@ -80,7 +80,7 @@ export function headshotUrl(mlbamId: number): string {
 export function hittingPlusUrl(player: PlayerInfo, season?: number): string {
   const params = new URLSearchParams({ player: player.storedName });
   if (season) params.set("season", String(season));
-  return `https://hitting-plus.vercel.app/?${params}`;
+  return `${SHELL}/hitting-plus?${params}`;
 }
 
 /**

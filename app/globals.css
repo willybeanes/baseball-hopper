@@ -25,6 +25,11 @@
   --dimmer: #a8a39b;
   --accent: #c0392c;
   --accent-dim: #f3ded9;
+  /* Hitting+ specific tokens */
+  --track: #f0ede8;
+  --cool: #7fa0cb;
+  --neutral-bar: #cfcdc9;
+  --amber: #c9922f;
 }
 
 * {

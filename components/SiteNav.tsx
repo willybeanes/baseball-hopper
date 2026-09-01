@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const TOOLS = [
-  { label: "Hitting+",           href: "https://hitting-plus.vercel.app",          external: true  },
+  { label: "Hitting+",           href: "/hitting-plus",                            external: false },
   { label: "Percentile Compare", href: "/compare",                                  external: false },
   { label: "Battery Splits",     href: "/battery",                                  external: false },
   { label: "Stuff Splits",       href: "/stuff/platoon",                           external: false },

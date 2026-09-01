@@ -7,8 +7,8 @@ const TOOLS = [
     label: "Hitting+",
     description:
       "Four graded inputs to a swing — Decision+, Timing+, Contact+, Power+ — refit into a single grade that disagrees with the stat line on purpose.",
-    href: "https://hitting-plus.vercel.app",
-    external: true,
+    href: "/hitting-plus",
+    external: false,
     tag: "Hitters",
   },
   {
