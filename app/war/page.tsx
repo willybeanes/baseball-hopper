@@ -1,11 +1,17 @@
+import IframeEmbed from "@/components/IframeEmbed";
+
 export const metadata = { title: "WAR Breakdown — Baseball Hopper" };
 
-export default function WarPage() {
+export default function WarPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string>;
+}) {
+  const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
   return (
-    <iframe
-      src="https://fg-war.vercel.app/"
-      className="flex-1 w-full border-0"
-      style={{ height: "calc(100vh - 3rem)" }}
+    <IframeEmbed
+      base="https://fg-war.vercel.app/"
+      initialSearch={qs ? `?${qs}` : ""}
       title="WAR Breakdown"
     />
   );

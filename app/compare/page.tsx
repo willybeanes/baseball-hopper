@@ -1,3 +1,5 @@
+import IframeEmbed from "@/components/IframeEmbed";
+
 export const metadata = { title: "Percentile Compare — Baseball Hopper" };
 
 export default function ComparePage({
@@ -5,15 +7,11 @@ export default function ComparePage({
 }: {
   searchParams?: Record<string, string>;
 }) {
-  const base = "https://player-compare-rho.vercel.app/";
-  const params = searchParams ? new URLSearchParams(searchParams).toString() : "";
-  const src = params ? `${base}?${params}` : base;
-
+  const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
   return (
-    <iframe
-      src={src}
-      className="flex-1 w-full border-0"
-      style={{ height: "calc(100vh - 3rem)" }}
+    <IframeEmbed
+      base="https://player-compare-rho.vercel.app/"
+      initialSearch={qs ? `?${qs}` : ""}
       title="Percentile Compare"
     />
   );
