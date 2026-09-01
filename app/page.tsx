@@ -221,31 +221,14 @@ function StatBar({ value, label }: { value: number; label: string }) {
 
 export default async function HomePage() {
   const dataDir = path.join(process.cwd(), "public", "data");
-  const [swingRaw, wrcRaw] = await Promise.all([
-    fs.readFile(path.join(dataDir, "swingplus_latest.json"), "utf-8"),
-    fs.readFile(path.join(dataDir, "wrc_plus.json"), "utf-8"),
-  ]);
+  const swingRaw = await fs.readFile(path.join(dataDir, "swingplus_latest.json"), "utf-8");
 
   const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw);
-  const wrcData: Record<string, Record<string, number>> = JSON.parse(wrcRaw);
-
-  // PA lookup from swingplus for wRC+ filtering
-  const pa2026 = new Map<string, number>();
-  for (const p of swingData.players) {
-    if (p.game_year === 2026) pa2026.set(p.player_name, p.pa);
-  }
 
   // Top Hitting+ (qualified, 2026, PA ≥ 150)
   const hittingLeaders = swingData.players
     .filter((p) => p.game_year === 2026 && p.qualified && p.pa >= 150)
     .sort((a, b) => (b["Hitting+"] ?? 0) - (a["Hitting+"] ?? 0))
-    .slice(0, 10);
-
-  // Top wRC+ (2026, PA ≥ 150)
-  const wrcLeaders = Object.entries(wrcData)
-    .filter(([name, vals]) => vals["2026"] != null && (pa2026.get(name) ?? 0) >= 150)
-    .map(([name, vals]) => ({ name, wrc: vals["2026"] }))
-    .sort((a, b) => b.wrc - a.wrc)
     .slice(0, 10);
 
   // Sample comparison: top 2 Hitting+ players
@@ -257,7 +240,7 @@ export default async function HomePage() {
       <div className="max-w-6xl mx-auto px-6 pt-8 pb-10">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Articles */}
-          <section className="flex-1 min-w-0">
+          <section className="w-full lg:w-[52%] shrink-0 min-w-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight">
                 From the blog
@@ -272,7 +255,7 @@ export default async function HomePage() {
               </a>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {ARTICLES.map((a) => (
+              {ARTICLES.slice(0, 8).map((a) => (
                 <a
                   key={a.slug}
                   href={`https://ballsandsticks.beehiiv.com/p/${a.slug}`}
@@ -304,7 +287,7 @@ export default async function HomePage() {
           </section>
 
           {/* Sidebar */}
-          <aside className="w-full lg:w-72 shrink-0 flex flex-col gap-5">
+          <aside className="flex-1 min-w-0 flex flex-col gap-5">
             {/* Hitting+ leaderboard */}
             <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
               <div className="flex items-center justify-between mb-3">
@@ -329,22 +312,31 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* wRC+ leaderboard */}
-            <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">
-                  wRC+ Leaders <span className="text-[var(--dimmer)] font-normal">2026</span>
-                </h3>
+            {/* Scatter embeds */}
+            <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
+              <div className="flex items-center justify-between px-4 pt-3 pb-2">
+                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Pitching · SIERA vs ERA</h3>
+                <a href="/scatter?mode=pitching&season=2026&split=0&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
-              <div className="divide-y divide-[var(--panel-border)]">
-                {wrcLeaders.map((p, i) => (
-                  <div key={p.name} className="flex items-center gap-2 py-1.5">
-                    <span className="text-[10px] text-[var(--dimmer)] w-4 text-right">{i + 1}</span>
-                    <span className="flex-1 text-xs text-[var(--text)] truncate">{displayName(p.name)}</span>
-                    <span className="text-xs font-semibold text-[var(--text)]">{fmt(p.wrc, 0)}</span>
-                  </div>
-                ))}
+              <iframe
+                src="https://fg-scatter.vercel.app/?mode=pitching&season=2026&split=0&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4"
+                className="w-full border-0"
+                style={{ height: "300px" }}
+                title="Pitching scatter"
+              />
+            </div>
+
+            <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
+              <div className="flex items-center justify-between px-4 pt-3 pb-2">
+                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Hitting · xwOBA vs wOBA</h3>
+                <a href="/scatter?mode=hitting&season=2026&split=0&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
+              <iframe
+                src="https://fg-scatter.vercel.app/?mode=hitting&season=2026&split=0&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4"
+                className="w-full border-0"
+                style={{ height: "300px" }}
+                title="Hitting scatter"
+              />
             </div>
 
             {/* Sample comparison */}
