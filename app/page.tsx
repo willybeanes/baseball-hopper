@@ -371,7 +371,7 @@ export default async function HomePage() {
             {/* Scatter embeds */}
             <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
               <div className="flex items-center justify-between px-4 pt-3 pb-2">
-                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Pitching · SIERA vs ERA</h3>
+                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Pitching · SIERA vs ERA · Last 90 Days</h3>
                 <a href="/scatter?mode=pitching&season=2026&split=39&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
               <iframe
@@ -384,7 +384,7 @@ export default async function HomePage() {
 
             <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
               <div className="flex items-center justify-between px-4 pt-3 pb-2">
-                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Hitting · xwOBA vs wOBA</h3>
+                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Hitting · xwOBA vs wOBA · Last 90 Days</h3>
                 <a href="/scatter?mode=hitting&season=2026&split=39&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
               <iframe
