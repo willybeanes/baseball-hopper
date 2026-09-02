@@ -273,7 +273,7 @@ export default async function HomePage() {
   const hittingLeaders = swingData.players
     .filter((p) => p.game_year === 2026 && p.qualified && p.pa >= 150)
     .sort((a, b) => (b["Hitting+"] ?? 0) - (a["Hitting+"] ?? 0))
-    .slice(0, 10);
+    .slice(0, 7);
 
   // Sample comparison: top 2 Hitting+ players
   const [playerA, playerB] = hittingLeaders;
