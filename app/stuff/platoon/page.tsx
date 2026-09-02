@@ -106,6 +106,12 @@ function PlatoonContent() {
           </div>
         </div>
 
+        {/* Disclaimer */}
+        <div className="flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-xs text-amber-800">
+          <span className="mt-px shrink-0">⚠️</span>
+          <span>These grades are <strong>not</strong> the official FanGraphs Stuff+/Loc+/Pitching+. They&apos;re an independently-calibrated model trained to approximate the same scale — results will differ.</span>
+        </div>
+
         {/* Filters */}
         <div className="bg-white border border-[#ddd8d0] rounded-2xl shadow-sm overflow-hidden">
           <div className="px-5 py-4 border-b border-[#ece8e1] flex flex-wrap items-center gap-4">
