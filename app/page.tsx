@@ -2,6 +2,20 @@ import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
 
+const TEAM_NAMES: Record<string, string> = {
+  ARI: "Arizona Diamondbacks", ATH: "Athletics", ATL: "Atlanta Braves",
+  BAL: "Baltimore Orioles", BOS: "Boston Red Sox", CHC: "Chicago Cubs",
+  CWS: "Chicago White Sox", CIN: "Cincinnati Reds", CLE: "Cleveland Guardians",
+  COL: "Colorado Rockies", DET: "Detroit Tigers", HOU: "Houston Astros",
+  KC: "Kansas City Royals", LAA: "Los Angeles Angels", LAD: "Los Angeles Dodgers",
+  MIA: "Miami Marlins", MIL: "Milwaukee Brewers", MIN: "Minnesota Twins",
+  NYM: "New York Mets", NYY: "New York Yankees", OAK: "Oakland Athletics",
+  PHI: "Philadelphia Phillies", PIT: "Pittsburgh Pirates", SD: "San Diego Padres",
+  SF: "San Francisco Giants", SEA: "Seattle Mariners", STL: "St. Louis Cardinals",
+  TB: "Tampa Bay Rays", TEX: "Texas Rangers", TOR: "Toronto Blue Jays",
+  WSH: "Washington Nationals",
+};
+
 const ARTICLES = [
   {
     title: "Older but not Wiser+",
@@ -343,10 +357,10 @@ export default async function HomePage() {
                       ) : (
                         <div className="w-7 h-7 rounded-full bg-[var(--track)] shrink-0" />
                       )}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs text-[var(--text)] truncate leading-tight">{displayName(p.player_name)}</p>
-                        <p className="text-[10px] text-[var(--dimmer)] leading-tight">{playerInfo[p.player_name]?.team ?? ""}</p>
-                      </div>
+                      <span className="text-xs text-[var(--text)] shrink-0">{displayName(p.player_name)}</span>
+                      <span className="flex-1 text-xs text-[var(--dimmer)] truncate px-2">
+                        {TEAM_NAMES[playerInfo[p.player_name]?.team ?? ""] ?? playerInfo[p.player_name]?.team ?? ""}
+                      </span>
                       <span className="text-xs font-semibold text-[var(--text)]">{fmt(p["Hitting+"], 0)}</span>
                     </div>
                   );
