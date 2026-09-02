@@ -160,6 +160,15 @@ const TOOLS = [
     tag: "Reference",
   },
   {
+    slug: "dingy",
+    label: "The Dingy",
+    description:
+      "Pick 10 MLB teams over or under their season win total. Track live standings as projections update throughout the year.",
+    href: "/dingy",
+    external: false,
+    tag: "Archive",
+  },
+  {
     slug: "ballot",
     label: "All-Star Ballot",
     description:

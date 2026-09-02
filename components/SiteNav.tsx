@@ -32,6 +32,7 @@ const NAV_GROUPS = [
       { label: "WAR Breakdown", href: "/war", external: false },
       { label: "xR Philosophy", href: "/xr", external: false },
       { label: "All-Star Ballot", href: "/ballot", external: false },
+      { label: "The Dingy", href: "/dingy", external: false },
     ],
   },
 ];
