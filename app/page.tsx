@@ -375,7 +375,7 @@ export default async function HomePage() {
                 <a href="/scatter?mode=pitching&season=2026&split=0&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
               <iframe
-                src="https://fg-scatter.vercel.app/?mode=pitching&season=2026&split=0&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4&embed=1"
+                src="https://fg-scatter.vercel.app/?mode=pitching&season=2026&split=0&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.0&embed=1"
                 className="w-full border-0"
                 style={{ height: "340px" }}
                 title="Pitching scatter"
@@ -388,7 +388,7 @@ export default async function HomePage() {
                 <a href="/scatter?mode=hitting&season=2026&split=0&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
               <iframe
-                src="https://fg-scatter.vercel.app/?mode=hitting&season=2026&split=0&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4&embed=1"
+                src="https://fg-scatter.vercel.app/?mode=hitting&season=2026&split=0&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.0&embed=1"
                 className="w-full border-0"
                 style={{ height: "340px" }}
                 title="Hitting scatter"
