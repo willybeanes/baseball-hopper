@@ -343,7 +343,10 @@ export default async function HomePage() {
                       ) : (
                         <div className="w-7 h-7 rounded-full bg-[var(--track)] shrink-0" />
                       )}
-                      <span className="flex-1 text-xs text-[var(--text)] truncate">{displayName(p.player_name)}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs text-[var(--text)] truncate leading-tight">{displayName(p.player_name)}</p>
+                        <p className="text-[10px] text-[var(--dimmer)] leading-tight">{playerInfo[p.player_name]?.team ?? ""}</p>
+                      </div>
                       <span className="text-xs font-semibold text-[var(--text)]">{fmt(p["Hitting+"], 0)}</span>
                     </div>
                   );
