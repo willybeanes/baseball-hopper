@@ -275,8 +275,7 @@ export default async function HomePage() {
     .sort((a, b) => (b["Hitting+"] ?? 0) - (a["Hitting+"] ?? 0))
     .slice(0, 7);
 
-  // Sample comparison: top 2 Hitting+ players
-  const [playerA, playerB] = hittingLeaders;
+
 
   return (
     <main className="flex-1 w-full">
@@ -395,63 +394,6 @@ export default async function HomePage() {
               />
             </div>
 
-            {/* Sample comparison */}
-            {playerA && playerB && (
-              <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Top 2 by Hitting+</h3>
-                  <a
-                    href={`/compare?tab=hitter&a=${encodeURIComponent(displayName(playerA.player_name))}&b=${encodeURIComponent(displayName(playerB.player_name))}`}
-                    className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
-                  >
-                    Full compare →
-                  </a>
-                </div>
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  {[playerA, playerB].map((p) => (
-                    <div key={p.player_name} className="text-center">
-                      <p className="text-[11px] font-semibold text-[var(--text)] leading-tight truncate">
-                        {displayName(p.player_name)}
-                      </p>
-                      <p className="text-lg font-bold text-[var(--accent)]">{fmt(p["Hitting+"], 0)}</p>
-                      <p className="text-[10px] text-[var(--dimmer)]">Hitting+</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-1.5">
-                  {(["Decision+", "Timing+", "Contact+", "Power+"] as const).map((key) => (
-                    <div key={key} className="flex items-center gap-1">
-                      <span className="text-[10px] text-[var(--dim)] w-14 text-right shrink-0">{key}</span>
-                      <div className="flex-1 flex gap-1 items-center">
-                        <div className="flex-1 h-1.5 rounded-full bg-[var(--track)] relative">
-                          <div
-                            className="absolute right-0 top-0 h-1.5 rounded-full bg-[#2563eb] opacity-70"
-                            style={{
-                              width: `${Math.min(((playerA[key] ?? 100) - 50) / 110, 1) * 50}%`,
-                            }}
-                          />
-                        </div>
-                        <span className="text-[10px] w-7 text-center font-medium text-[var(--text)]">
-                          {fmt(playerA[key], 0)}
-                        </span>
-                        <span className="text-[10px] text-[var(--dimmer)]">vs</span>
-                        <span className="text-[10px] w-7 text-center font-medium text-[var(--text)]">
-                          {fmt(playerB[key], 0)}
-                        </span>
-                        <div className="flex-1 h-1.5 rounded-full bg-[var(--track)] relative">
-                          <div
-                            className="absolute left-0 top-0 h-1.5 rounded-full bg-[#dc2626] opacity-70"
-                            style={{
-                              width: `${Math.min(((playerB[key] ?? 100) - 50) / 110, 1) * 50}%`,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </aside>
         </div>
       </div>
