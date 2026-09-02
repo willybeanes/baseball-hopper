@@ -106,6 +106,15 @@ const TOOLS = [
     tag: "Pitchers",
   },
   {
+    slug: "rolling",
+    label: "Rolling Chart",
+    description:
+      "Track any FanGraphs metric as a rolling average across the season. Add multiple players to compare trajectories over any window.",
+    href: "/rolling",
+    external: false,
+    tag: "Hitters · Pitchers",
+  },
+  {
     slug: "scatter",
     label: "Scatter Plot",
     description:

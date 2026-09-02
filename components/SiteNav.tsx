@@ -27,6 +27,7 @@ const NAV_GROUPS = [
   {
     label: "More",
     tools: [
+      { label: "Rolling Chart", href: "/rolling", external: false },
       { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
       { label: "xR Philosophy", href: "/xr", external: false },
