@@ -29,7 +29,7 @@ const NAV_GROUPS = [
     tools: [
       { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
-      { label: "xR Philosophy", href: "https://willybeanes.github.io/xr-philosophy/", external: true },
+      { label: "xR Philosophy", href: "/xr", external: false },
       { label: "All-Star Ballot", href: "/ballot", external: false },
     ],
   },

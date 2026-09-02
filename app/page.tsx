@@ -146,8 +146,8 @@ const TOOLS = [
     label: "xR Philosophy",
     description:
       "The math behind expected runs — how RE24, run expectancy matrices, and play-by-play event values are constructed from scratch.",
-    href: "https://willybeanes.github.io/xr-philosophy/",
-    external: true,
+    href: "/xr",
+    external: false,
     tag: "Reference",
   },
   {
