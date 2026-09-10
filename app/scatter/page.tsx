@@ -10,7 +10,7 @@ export default function ScatterPage({
   const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
   return (
     <IframeEmbed
-      base="https://fg-scatter.vercel.app/"
+      base="/scatter-app/index.html"
       initialSearch={qs ? `?${qs}` : ""}
       title="Scatter Plot"
     />

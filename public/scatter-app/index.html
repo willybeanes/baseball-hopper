@@ -1,0 +1,3362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FanGraphs Scatter Plot</title>
+<meta name="description" content="Create custom FanGraphs scatter plots for any two stats across MLB players.">
+<meta property="og:title" content="FanGraphs Scatter Plot">
+<meta property="og:description" content="Create custom FanGraphs scatter plots for any two stats across MLB players.">
+<meta property="og:url" content="https://willybeanes.github.io/fg-scatter">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FanGraphs Scatter Plot">
+<meta name="twitter:description" content="Create custom FanGraphs scatter plots for any two stats across MLB players.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0ede8;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      margin-bottom: 20px;
+    }
+    .tab {
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 10px 24px;
+      background: none;
+      border: none;
+      border-bottom: 2.5px solid transparent;
+      color: #999;
+      cursor: pointer;
+      letter-spacing: -0.3px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tab:hover { color: #666; }
+    .tab.active {
+      color: #1a1a1a;
+      font-weight: 600;
+      border-bottom-color: #1a1a1a;
+    }
+    .controls-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-end;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .control-group label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+    }
+    .control-group select,
+    .control-group input[type="number"] {
+      font-family: inherit;
+      font-size: 13px;
+      padding: 7px 12px;
+      border: 1px solid #d8d5d0;
+      border-radius: 8px;
+      background: #fff;
+      color: #1a1a1a;
+      outline: none;
+      min-width: 130px;
+    }
+    .control-group input[type="number"] { width: 90px; min-width: 90px; }
+    .control-group select:focus,
+    .control-group input:focus {
+      border-color: #999;
+    }
+    #btn-generate {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 22px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    #btn-generate:hover { background: #333; }
+    #btn-generate:disabled { background: #999; cursor: not-allowed; }
+    .chart-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      padding: 24px;
+      position: relative;
+      min-height: 500px;
+    }
+    .chart-status {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #888;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .chart-status.error { color: #c44820; }
+    .chart-area {
+      position: relative;
+      width: 100%;
+    }
+    /* Axis labels */
+    .axis-label {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 500;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .corner-label {
+      position: absolute;
+      font-size: 12px;
+      font-style: italic;
+      color: #aaa;
+      line-height: 1.3;
+      max-width: 160px;
+      pointer-events: none;
+      white-space: pre-wrap;
+    }
+    .corner-label.tl { top: 6px;    left: 6px;  text-align: left; }
+    .corner-label.tr { top: 6px;    right: 6px; text-align: right; }
+    .corner-label.bl { bottom: 6px; left: 6px;  text-align: left; }
+    .corner-label.br { bottom: 6px; right: 6px; text-align: right; }
+    .corner-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 4px 12px;
+    }
+    .corner-inputs textarea {
+      font-family: inherit;
+      font-size: 11px;
+      font-style: italic;
+      color: #555;
+      border: 1px solid #d8d5d0;
+      border-radius: 6px;
+      padding: 4px 8px;
+      width: 100%;
+      box-sizing: border-box;
+      background: #faf9f7;
+      resize: none;
+      line-height: 1.4;
+    }
+    .corner-inputs textarea:focus { outline: none; border-color: #aaa; }
+    .corner-inputs textarea::placeholder { color: #bbb; }
+    .corner-inputs .ci-label {
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #bbb;
+      margin-bottom: 1px;
+    }
+    .corner-inputs .ci-tl { grid-column: 1; grid-row: 1; }
+    .corner-inputs .ci-tr { grid-column: 2; grid-row: 1; }
+    .corner-inputs .ci-bl { grid-column: 1; grid-row: 2; }
+    .corner-inputs .ci-br { grid-column: 2; grid-row: 2; }
+    .axis-label-x {
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .axis-label-y {
+      top: 50%;
+      left: -8px;
+      transform: rotate(-90deg) translateX(-50%);
+      transform-origin: left center;
+    }
+    /* Plot area */
+    .plot-area {
+      position: relative;
+      border-left: 1.5px solid #d8d5d0;
+      border-bottom: 1.5px solid #d8d5d0;
+      margin-left: 50px;
+      margin-bottom: 40px;
+      margin-top: 10px;
+      margin-right: 20px;
+      overflow: visible;
+    }
+    .grid-line {
+      position: absolute;
+      background: #f0ede8;
+    }
+    .grid-line-h {
+      left: 0; right: 0;
+      height: 0.5px;
+    }
+    .grid-line-v {
+      top: 0; bottom: 0;
+      width: 0.5px;
+    }
+    .tick-label {
+      position: absolute;
+      font-size: 10px;
+      color: #999;
+      white-space: nowrap;
+    }
+    .tick-label-x {
+      top: 100%;
+      margin-top: 6px;
+      transform: translateX(-50%);
+    }
+    .tick-label-y {
+      right: 100%;
+      margin-right: 8px;
+      transform: translateY(50%);
+    }
+    .avg-line {
+      position: absolute;
+      z-index: 1;
+    }
+    .avg-line-x {
+      top: 0;
+      bottom: 0;
+      width: 1.5px;
+      background: rgba(37,112,193,0.4);
+      border-left: 1.5px dashed rgba(37,112,193,0.4);
+      background: none;
+    }
+    .avg-line-y {
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      border-top: 1.5px dashed rgba(196,72,32,0.4);
+      background: none;
+    }
+    .avg-label {
+      position: absolute;
+      font-size: 9px;
+      font-weight: 500;
+      padding: 1px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .avg-label-x {
+      top: -14px;
+      transform: translateX(-50%);
+      color: rgba(37,112,193,0.8);
+    }
+    .avg-label-y {
+      right: 4px;
+      transform: translateY(-110%);
+      color: rgba(196,72,32,0.8);
+    }
+    /* Zoom selection box */
+    .zoom-select {
+      position: absolute;
+      border: 2px dashed rgba(37,112,193,0.65);
+      background: rgba(37,112,193,0.07);
+      pointer-events: none;
+      z-index: 50;
+    }
+    .plot-area { cursor: crosshair; }
+    /* Player search highlight */
+    .plot-area.search-active .player-dot:not(.search-match) {
+      opacity: 0.1;
+      filter: grayscale(1);
+      transition: opacity 0.15s, filter 0.15s;
+    }
+    .plot-area.search-active .dot-ring:not(.search-match) {
+      opacity: 0.1;
+      transition: opacity 0.15s;
+    }
+    .plot-area.search-active .player-dot.search-match {
+      z-index: 20;
+    }
+    #player-search-wrap {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      margin: 0 14px;
+    }
+    #player-search-wrap span {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      white-space: nowrap;
+    }
+    #inp-player-search {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 4px 10px;
+      border: 1px solid #d8d5d0;
+      border-radius: 6px;
+      background: #fff;
+      color: #333;
+      width: 180px;
+      outline: none;
+    }
+    #inp-player-search:focus { border-color: #aaa; }
+
+    /* Player dots */
+    .player-dot {
+      position: absolute;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, z-index 0s;
+      z-index: 3;
+    }
+    .dot-ring {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .player-dot:hover {
+      transform: scale(2.5);
+      z-index: 100;
+    }
+    .player-dot img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 18%;
+      display: block;
+    }
+    .team-dot {
+      border-radius: 0;
+      overflow: visible;
+      background: none;
+    }
+    .team-dot img {
+      border-radius: 0;
+      object-fit: contain;
+      object-position: center;
+    }
+    /* Tooltip */
+    .tooltip {
+      position: fixed;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      padding: 10px 14px;
+      font-size: 12px;
+      pointer-events: none;
+      z-index: 1000;
+      display: none;
+      min-width: 160px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .tooltip-name {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .tooltip-meta {
+      color: #888;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+    .tooltip-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .tooltip-stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .tooltip-stat-label { color: #888; }
+    .tooltip-stat-value { font-weight: 600; }
+    @media (max-width: 800px) {
+      body { padding: 12px; }
+      .controls-row { gap: 10px; }
+      .control-group select, .control-group input[type="number"] { min-width: 100px; font-size: 12px; }
+    }
+    .split-warning {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff8ed;
+      color: #7a4f00;
+      border: 1px solid #f5c97a;
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      z-index: 9999;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .split-warning.visible { opacity: 1; }
+    body.embed-mode { background: transparent; padding: 0; }
+    body.embed-mode .tab-bar,
+    body.embed-mode .controls-card,
+    body.embed-mode #below-chart-row,
+    body.embed-mode #clear-labels-wrap,
+    body.embed-mode footer { display: none !important; }
+    body.embed-mode .chart-card {
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      padding: 12px 16px 8px;
+      height: 100vh;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    body.embed-mode .chart-area { flex: 1; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tab-bar">
+      <button class="tab active" data-mode="pitching">Pitcher Scatter Plot</button>
+      <button class="tab" data-mode="hitting">Hitter Scatter Plot</button>
+      <button class="tab" data-mode="combined">Combined Scatter Plot</button>
+    </div>
+    <div class="controls-card">
+      <div class="controls-row">
+        <div class="control-group">
+          <label>Season</label>
+          <input type="number" id="sel-season" min="2000" max="2100">
+        </div>
+        <div class="control-group">
+          <label>Split</label>
+          <select id="sel-split">
+            <option value="0">Full Season</option>
+            <option value="32">Last 7 Days</option>
+            <option value="33">Last 14 Days</option>
+            <option value="35">Last 21 Days</option>
+            <option value="34">Last 30 Days</option>
+            <option value="38">Last 60 Days</option>
+            <option value="39">Last 90 Days</option>
+            <option value="37">First Half</option>
+            <option value="36">Second Half</option>
+            <option value="31">March/April</option>
+            <option value="2">May</option>
+            <option value="3">June</option>
+            <option value="4">July</option>
+            <option value="5">August</option>
+            <option value="6">Sept/Oct</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Pitcher Type</label>
+          <select id="sel-stats">
+            <option value="pit">All Pitchers</option>
+            <option value="sta">Starters only</option>
+            <option value="rel">Relievers only</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>League</label>
+          <select id="sel-lg">
+            <option value="all">All</option>
+            <option value="al">AL only</option>
+            <option value="nl">NL only</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Handedness</label>
+          <select id="sel-hand">
+            <option value="">All</option>
+            <option value="L">LHP</option>
+            <option value="R">RHP</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Min IP</label>
+          <select id="sel-qual">
+            <option value="y">Qualified</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="60">60</option>
+            <option value="80">80</option>
+            <option value="100">100</option>
+            <option value="120">120</option>
+            <option value="140">140</option>
+            <option value="160">160</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Team</label>
+          <select id="sel-team">
+            <option value="0">All Teams</option>
+            <option value="15">ARI</option>
+            <option value="16">ATL</option>
+            <option value="10">ATH</option>
+            <option value="2">BAL</option>
+            <option value="3">BOS</option>
+            <option value="17">CHC</option>
+            <option value="4">CHW</option>
+            <option value="18">CIN</option>
+            <option value="5">CLE</option>
+            <option value="19">COL</option>
+            <option value="6">DET</option>
+            <option value="21">HOU</option>
+            <option value="7">KCR</option>
+            <option value="1">LAA</option>
+            <option value="22">LAD</option>
+            <option value="20">MIA</option>
+            <option value="23">MIL</option>
+            <option value="8">MIN</option>
+            <option value="25">NYM</option>
+            <option value="9">NYY</option>
+            <option value="26">PHI</option>
+            <option value="27">PIT</option>
+            <option value="11">SEA</option>
+            <option value="29">SDP</option>
+            <option value="30">SFG</option>
+            <option value="28">STL</option>
+            <option value="12">TBR</option>
+            <option value="13">TEX</option>
+            <option value="14">TOR</option>
+            <option value="24">WSN</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Group By</label>
+          <select id="sel-group">
+            <option value="player">Players</option>
+            <option value="team">Teams</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>X Axis</label>
+          <select id="sel-x"></select>
+        </div>
+        <div class="control-group">
+          <label>Y Axis</label>
+          <select id="sel-y"></select>
+        </div>
+        <div class="control-group">
+          <label>Color Ring</label>
+          <select id="sel-color"></select>
+        </div>
+        <div class="control-group">
+          <label>&nbsp;</label>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button id="btn-generate">Generate</button>
+            <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;font-weight:500;color:#555;white-space:nowrap;">
+              <input type="checkbox" id="chk-r2" style="cursor:pointer;accent-color:#1a1a1a;width:14px;height:14px;"> R² line
+            </label>
+            <label id="lbl-rookie" style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;font-weight:500;color:#555;white-space:nowrap;">
+              <input type="checkbox" id="chk-rookie" style="cursor:pointer;accent-color:#1a1a1a;width:14px;height:14px;"> Rookies
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <button id="btn-reset" style="display:none;position:absolute;top:12px;right:16px;z-index:10;font-family:inherit;font-size:11px;font-weight:500;padding:5px 14px;background:#f0ede8;color:#666;border:1px solid #d8d5d0;border-radius:6px;cursor:pointer;">Reset</button>
+      <div class="chart-status" id="chart-status">Select options and click Generate</div>
+      <div class="chart-area" id="chart-area">
+        <div class="axis-label axis-label-x" id="axis-label-x"></div>
+        <div class="axis-label axis-label-y" id="axis-label-y"></div>
+        <div class="plot-area" id="plot-area"></div>
+      </div>
+    </div>
+    <div id="below-chart-row" style="margin-top:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div id="size-toggle" style="display:none;gap:2px;display:none;">
+            <span style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:#999;margin-right:6px;line-height:26px;">Size</span>
+            <button class="size-btn" data-scale="1.0" style="font-family:inherit;font-size:11px;font-weight:500;padding:4px 10px;background:#fff;color:#555;border:1px solid #d8d5d0;border-radius:6px 0 0 6px;cursor:pointer;border-right:none;">S</button>
+            <button class="size-btn active" data-scale="1.4" style="font-family:inherit;font-size:11px;font-weight:500;padding:4px 10px;background:#1a1a1a;color:#fff;border:1px solid #d8d5d0;border-radius:0;cursor:pointer;border-right:none;">M</button>
+            <button class="size-btn" data-scale="1.9" style="font-family:inherit;font-size:11px;font-weight:500;padding:4px 10px;background:#fff;color:#555;border:1px solid #d8d5d0;border-radius:0 6px 6px 0;cursor:pointer;">L</button>
+          </div>
+          <div id="player-search-wrap">
+            <span>Search</span>
+            <input id="inp-player-search" type="text" placeholder="Player name…" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+        <div id="export-btns" style="display:none;display:flex;gap:6px;">
+          <button id="btn-download" style="font-family:inherit;font-size:11px;font-weight:500;padding:5px 14px;background:#fff;color:#555;border:1px solid #d8d5d0;border-radius:6px;cursor:pointer;">↓ Download CSV</button>
+          <button id="btn-png" style="font-family:inherit;font-size:11px;font-weight:500;padding:5px 14px;background:#fff;color:#555;border:1px solid #d8d5d0;border-radius:6px;cursor:pointer;">↓ Export PNG</button>
+        </div>
+      </div>
+      <div class="corner-inputs" id="corner-inputs" style="margin-top:10px;">
+        <div class="ci-tl">
+          <div class="ci-label">↖ Top Left</div>
+          <textarea id="corner-tl" rows="2" placeholder="e.g. low X, high Y"></textarea>
+        </div>
+        <div class="ci-tr">
+          <div class="ci-label">Top Right ↗</div>
+          <textarea id="corner-tr" rows="2" placeholder="e.g. high X, high Y"></textarea>
+        </div>
+        <div class="ci-bl">
+          <div class="ci-label">↙ Bottom Left</div>
+          <textarea id="corner-bl" rows="2" placeholder="e.g. low X, low Y"></textarea>
+        </div>
+        <div class="ci-br">
+          <div class="ci-label">Bottom Right ↘</div>
+          <textarea id="corner-br" rows="2" placeholder="e.g. high X, low Y"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="clear-labels-wrap" style="text-align:center;margin-top:8px;">
+    <button id="btn-clear-labels" style="font-family:inherit;font-size:11px;font-weight:500;padding:4px 14px;background:none;color:#bbb;border:1px solid #e0ddd8;border-radius:6px;cursor:pointer;">Clear Labels</button>
+  </div>
+  <div class="split-warning" id="split-warning"></div>
+  <div class="tooltip" id="tooltip">
+    <div class="tooltip-name" id="tt-name"></div>
+    <div class="tooltip-meta" id="tt-meta"></div>
+    <div class="tooltip-stats" id="tt-stats"></div>
+  </div>
+
+<script>
+const PROXY = 'https://fg-proxy.vercel.app/api/fangraphs';
+const SAVANT_PROXY = 'https://fg-proxy.vercel.app/api/savant';
+const BP_PROXY = 'https://fg-proxy.vercel.app/api/bp';
+const BP_HITTING_PROXY = 'https://fg-proxy.vercel.app/api/bphitting';
+
+const SUPABASE_URL      = 'https://moflaqmbamyjlpototzt.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vZmxhcW1iYW15amxwb3RvdHp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MTQxNTcsImV4cCI6MjA4ODM5MDE1N30.udZohxyb0UOxTcSKv_IuBZ7S3DEJxvsMeqgLX6asNrk';
+
+// Stats where Baseball Savant data is fresher than FanGraphs' cached copy.
+// leaderEp:  which leaderboard endpoint to use for full-season queries
+// leaderCol: column name in leaderboard CSV
+// searchCol: column name in statcast_search CSV (null = not available via search, use leaderboard)
+// div:       divisor — Savant returns Barrel%/HardHit% as 0–100; FanGraphs stores as 0–1 decimal
+const SAVANT_FIELD_DETAIL = {
+  'EV':       { leaderEp: 'statcast',            leaderCol: 'avg_hit_speed',          searchCol: 'launch_speed',            div: 1   },
+  'maxEV':    { leaderEp: 'statcast',            leaderCol: 'max_hit_speed',           searchCol: null,                      div: 1   },
+  'LA':       { leaderEp: 'statcast',            leaderCol: 'avg_hit_angle',           searchCol: 'launch_angle',            div: 1   },
+  'Barrels':  { leaderEp: 'statcast',            leaderCol: 'barrels',                 searchCol: 'barrels_total',           div: 1   },
+  'Barrel%':  { leaderEp: 'statcast',            leaderCol: 'brl_percent',             searchCol: 'barrels_per_bbe_percent', div: 100 },
+  'HardHit':  { leaderEp: 'statcast',            leaderCol: 'ev95plus',                searchCol: null,                      div: 1   },
+  'HardHit%': { leaderEp: 'statcast',            leaderCol: 'ev95percent',             searchCol: 'hardhit_percent',         div: 100 },
+  'Events':   { leaderEp: 'statcast',            leaderCol: 'attempts',                searchCol: 'bip',                     div: 1   },
+  'xwOBA':    { leaderEp: 'expected_statistics', leaderCol: 'est_woba',                searchCol: 'xwoba',                   div: 1   },
+  'xSLG':     { leaderEp: 'expected_statistics', leaderCol: 'est_slg',                 searchCol: 'xslg',                    div: 1   },
+  'xERA':     { leaderEp: 'expected_statistics', leaderCol: 'xera',                    searchCol: null,                      div: 1   },
+  'xwOBACON': { leaderEp: 'custom',             leaderCol: 'xwobacon',                searchCol: null,                      div: 1, selections: ['xwobacon'] },
+  'EV50':        { leaderEp: 'custom',          leaderCol: 'avg_best_speed',           searchCol: null,                      div: 1, selections: ['avg_best_speed'] },
+  'SprintSpeed': { leaderEp: 'custom',          leaderCol: 'sprint_speed',             searchCol: null,                      div: 1, selections: ['sprint_speed'] },
+  // Bat tracking — leaderboard only (no date-range split support)
+  'BatSpeed':     { leaderEp: 'bat_tracking', leaderCol: 'avg_bat_speed',              searchCol: 'bat_speed',          div: 1 },
+  'FastSwing%':   { leaderEp: 'bat_tracking', leaderCol: 'hard_swing_rate',            searchCol: null,                 div: 1 },
+  'Blasts/C':     { leaderEp: 'bat_tracking', leaderCol: 'blast_per_bat_contact',      searchCol: null,                 div: 1 },
+  'Blasts/Sw':    { leaderEp: 'bat_tracking', leaderCol: 'blast_per_swing',            searchCol: null,                 div: 1 },
+  'SqUp/C':       { leaderEp: 'bat_tracking', leaderCol: 'squared_up_per_bat_contact', searchCol: null,                 div: 1 },
+  'SqUp/Sw':      { leaderEp: 'bat_tracking', leaderCol: 'squared_up_per_swing',       searchCol: null,                 div: 1 },
+  'SwingLen':     { leaderEp: 'bat_tracking', leaderCol: 'swing_length',               searchCol: 'swing_length',       div: 1 },
+  'Swords':       { leaderEp: 'bat_tracking', leaderCol: 'swords',                     searchCol: null,                 div: 1 },
+  // Search-only bat tracking stats (not in leaderboard, available via statcast_search)
+  'AttackAngle':  { leaderEp: 'bat_tracking', leaderCol: null,                         searchCol: 'attack_angle',       div: 1 },
+  'AttackDir':    { leaderEp: 'bat_tracking', leaderCol: null,                         searchCol: 'attack_direction',   div: 1 },
+  'SwingTilt':    { leaderEp: 'bat_tracking', leaderCol: null,                         searchCol: 'swing_path_tilt',    div: 1 },
+  // Batted-ball direction × type leaderboard (no split support)
+  'PullAir%':  { leaderEp: 'batted_ball', leaderCol: 'pull_air_rate',    searchCol: null, div: 1 },
+  'PullGB%':   { leaderEp: 'batted_ball', leaderCol: 'pull_gb_rate',     searchCol: null, div: 1 },
+  'OppoAir%':  { leaderEp: 'batted_ball', leaderCol: 'oppo_air_rate',    searchCol: null, div: 1 },
+  'OppoGB%':   { leaderEp: 'batted_ball', leaderCol: 'oppo_gb_rate',     searchCol: null, div: 1 },
+  // Pitcher-only fallback: wOBA and SLG absent from FG's pitching API — pulled from Savant
+  // expected_statistics. pitcherFallback:true prevents overriding the FG value for hitters.
+  'wOBA': { leaderEp: 'expected_statistics', leaderCol: 'woba', searchCol: null, div: 1, pitcherFallback: true },
+  'SLG':  { leaderEp: 'expected_statistics', leaderCol: 'slg',  searchCol: null, div: 1, pitcherFallback: true },
+  // Swing timing + miss distance (full-season leaderboard only, no date-range support)
+  'MissDist':  { leaderEp: 'bat_tracking_timing', leaderCol: 'miss_distance',    searchCol: null, div: 1 },
+  'OnTime%':   { leaderEp: 'bat_tracking_timing', leaderCol: 'on_time_percent',  searchCol: null, div: 1 },
+  'Early%':    { leaderEp: 'bat_tracking_timing', leaderCol: 'early_percent',    searchCol: null, div: 1 },
+  'Late%':     { leaderEp: 'bat_tracking_timing', leaderCol: 'late_percent',     searchCol: null, div: 1 },
+  'Perfect%':  { leaderEp: 'bat_tracking_timing', leaderCol: 'perfect_percent',  searchCol: null, div: 1 },
+  'Flawed%':   { leaderEp: 'bat_tracking_timing', leaderCol: 'flawed_percent',   searchCol: null, div: 1 },
+  'Centered%': { leaderEp: 'bat_tracking_timing', leaderCol: 'centered_percent', searchCol: null, div: 1 },
+  'Flailed%':  { leaderEp: 'bat_tracking_timing', leaderCol: 'flailed_percent',  searchCol: null, div: 1 },
+  'TiedUp%':   { leaderEp: 'bat_tracking_timing', leaderCol: 'tied_up_percent',  searchCol: null, div: 1 },
+  'LinedUp%':  { leaderEp: 'bat_tracking_timing', leaderCol: 'lined_up_percent', searchCol: null, div: 1 },
+  'Over%':     { leaderEp: 'bat_tracking_timing', leaderCol: 'over_percent',     searchCol: null, div: 1 },
+  'Under%':    { leaderEp: 'bat_tracking_timing', leaderCol: 'under_percent',    searchCol: null, div: 1 },
+};
+const SAVANT_KEYS = new Set(Object.keys(SAVANT_FIELD_DETAIL));
+
+// FanGraphs team abbr → Baseball Savant leaderboard team_id (3-letter abbr)
+const FG_TO_SAVANT_TEAM = {
+  'LAA':'LAA','BAL':'BAL','BOS':'BOS','CLE':'CLE','DET':'DET',
+  'KCR':'KC', 'MIN':'MIN','NYY':'NYY','ATH':'ATH','OAK':'OAK',
+  'SEA':'SEA','TBR':'TB', 'TEX':'TEX','TOR':'TOR','ARI':'ARI',
+  'ATL':'ATL','CHC':'CHC','CHW':'CWS','CIN':'CIN','COL':'COL','MIA':'MIA',
+  'HOU':'HOU','LAD':'LAD','MIL':'MIL','WSN':'WSH','NYM':'NYM',
+  'PHI':'PHI','PIT':'PIT','STL':'STL','SDP':'SD', 'SFG':'SF',
+};
+
+// FanGraphs team abbr → MLBAM team ID (used in statcast_search group_by=team)
+const FG_TO_SAVANT_TEAM_ID = {
+  'LAA':'108','ARI':'109','BAL':'110','BOS':'111','CHC':'112',
+  'CIN':'113','CLE':'114','COL':'115','DET':'116','HOU':'117',
+  'KCR':'118','LAD':'119','WSN':'120','NYM':'121','ATH':'133',
+  'PIT':'134','SDP':'135','SEA':'136','SFG':'137','STL':'138',
+  'TBR':'139','TEX':'140','TOR':'141','MIN':'142','PHI':'143',
+  'ATL':'144','CHW':'145','MIA':'146','NYY':'147','MIL':'158',
+};
+
+// Minimal CSV parser (handles quoted fields)
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+  const splitLine = s => {
+    const out = []; let cur = '', inQ = false;
+    for (const c of s) {
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { out.push(cur.trim()); cur = ''; }
+      else cur += c;
+    }
+    out.push(cur.trim());
+    return out;
+  };
+  const headers = splitLine(lines[0]);
+  return lines.slice(1).filter(l => l.trim()).map(line => {
+    const vals = splitLine(line);
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = vals[i] ?? ''; });
+    return obj;
+  });
+}
+
+// Convert FanGraphs month split code → Baseball Savant date range (or null for full season)
+function getSavantDateRange(month, season) {
+  const yr = String(season);
+  const fmt = d => d.toISOString().slice(0, 10);
+  const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return fmt(d); };
+  const tomorrow = () => { const d = new Date(); d.setDate(d.getDate() + 1); return fmt(d); };
+  switch (String(month)) {
+    case '0':  return null; // Full season — use leaderboard, no dates needed
+    case '31': return { dateGt: `${yr}-03-01`, dateLt: `${yr}-05-01` }; // March/April
+    case '2':  return { dateGt: `${yr}-05-01`, dateLt: `${yr}-06-01` }; // May
+    case '3':  return { dateGt: `${yr}-06-01`, dateLt: `${yr}-07-01` }; // June
+    case '4':  return { dateGt: `${yr}-07-01`, dateLt: `${yr}-08-01` }; // July
+    case '5':  return { dateGt: `${yr}-08-01`, dateLt: `${yr}-09-01` }; // August
+    case '6':  return { dateGt: `${yr}-09-01`, dateLt: `${yr}-11-01` }; // Sept/Oct
+    case '37': return { dateGt: `${yr}-03-01`, dateLt: `${yr}-07-15` }; // First Half
+    case '36': return { dateGt: `${yr}-07-15`, dateLt: `${yr}-11-01` }; // Second Half
+    case '32': return { dateGt: daysAgo(7),  dateLt: tomorrow() };      // Last 7 days
+    case '33': return { dateGt: daysAgo(14), dateLt: tomorrow() };      // Last 14 days
+    case '35': return { dateGt: daysAgo(21), dateLt: tomorrow() };      // Last 21 days
+    case '34': return { dateGt: daysAgo(30), dateLt: tomorrow() };      // Last 30 days
+    case '38': return { dateGt: daysAgo(60), dateLt: tomorrow() };      // Last 60 days
+    case '39': return { dateGt: daysAgo(90), dateLt: tomorrow() };      // Last 90 days
+    default:   return null;
+  }
+}
+
+// Returns FanGraphs API params for the period BEFORE the given split, or null if no prior period.
+function getPrevPeriodFGParams(splitValue, season) {
+  const yr = String(season || new Date().getFullYear());
+  const fmt = d => d.toISOString().slice(0, 10);
+  const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return fmt(d); };
+  switch (String(splitValue)) {
+    case '2':  return { month: '1000', startdate: `${yr}-03-01`, enddate: `${yr}-05-01` }; // May → Mar/Apr
+    case '3':  return { month: '5' };                                                        // June → May
+    case '4':  return { month: '6' };                                                        // July → June
+    case '5':  return { month: '7' };                                                        // Aug → July
+    case '6':  return { month: '8' };                                                        // Sept → Aug
+    case '36': return { month: '1000', startdate: `${yr}-03-01`, enddate: `${yr}-07-12` }; // 2nd Half → 1st Half
+    case '32': return { month: '1000', startdate: daysAgo(14),  enddate: daysAgo(7) };     // L7 → prior 7
+    case '33': return { month: '1000', startdate: daysAgo(28),  enddate: daysAgo(14) };    // L14 → prior 14
+    case '35': return { month: '1000', startdate: daysAgo(42),  enddate: daysAgo(21) };    // L21 → prior 21
+    case '34': return { month: '1000', startdate: daysAgo(60),  enddate: daysAgo(30) };    // L30 → prior 30
+    case '38': return { month: '1000', startdate: daysAgo(120), enddate: daysAgo(60) };    // L60 → prior 60
+    case '39': return { month: '1000', startdate: daysAgo(180), enddate: daysAgo(90) };    // L90 → prior 90
+    default:   return null; // Full season, Mar/Apr, 1st Half — no prior period available
+  }
+}
+
+// Returns a Savant dateRange for the period BEFORE the given split, or null if not applicable.
+function getPrevPeriodSavantDateRange(splitValue, season) {
+  const yr = String(season);
+  const fmt = d => d.toISOString().slice(0, 10);
+  const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return fmt(d); };
+  switch (String(splitValue)) {
+    case '2':  return { dateGt: `${yr}-03-01`, dateLt: `${yr}-05-01` }; // May → Mar/Apr
+    case '3':  return { dateGt: `${yr}-05-01`, dateLt: `${yr}-06-01` }; // June → May
+    case '4':  return { dateGt: `${yr}-06-01`, dateLt: `${yr}-07-01` }; // July → June
+    case '5':  return { dateGt: `${yr}-07-01`, dateLt: `${yr}-08-01` }; // Aug → July
+    case '6':  return { dateGt: `${yr}-08-01`, dateLt: `${yr}-09-01` }; // Sept → Aug
+    case '36': return { dateGt: `${yr}-03-01`, dateLt: `${yr}-07-15` }; // 2nd Half → 1st Half
+    case '32': return { dateGt: daysAgo(14), dateLt: daysAgo(7) };
+    case '33': return { dateGt: daysAgo(28), dateLt: daysAgo(14) };
+    case '35': return { dateGt: daysAgo(42), dateLt: daysAgo(21) };
+    case '34': return { dateGt: daysAgo(60), dateLt: daysAgo(30) };
+    case '38': return { dateGt: daysAgo(120), dateLt: daysAgo(60) };
+    case '39': return { dateGt: daysAgo(180), dateLt: daysAgo(90) };
+    default:   return null;
+  }
+}
+
+// Returns a short human-readable label for the CURRENT split period.
+function getCurrentPeriodLabel(splitValue) {
+  switch (String(splitValue)) {
+    case '2':  return 'May';
+    case '3':  return 'June';
+    case '4':  return 'July';
+    case '5':  return 'Aug';
+    case '6':  return 'Sept/Oct';
+    case '36': return '2nd Half';
+    case '32': return 'Last 7d';
+    case '33': return 'Last 14d';
+    case '35': return 'Last 21d';
+    case '34': return 'Last 30d';
+    case '38': return 'Last 60d';
+    case '39': return 'Last 90d';
+    default:   return null;
+  }
+}
+
+// Returns a short human-readable label for the period BEFORE the given split.
+function getPrevPeriodLabel(splitValue) {
+  switch (String(splitValue)) {
+    case '2':  return 'Mar/Apr';
+    case '3':  return 'May';
+    case '4':  return 'June';
+    case '5':  return 'July';
+    case '6':  return 'Aug';
+    case '36': return '1st Half';
+    case '32': return 'Prior 7d';
+    case '33': return 'Prior 14d';
+    case '35': return 'Prior 21d';
+    case '34': return 'Prior 30d';
+    case '38': return 'Prior 60d';
+    case '39': return 'Prior 90d';
+    default:   return null;
+  }
+}
+
+// Convert a FanGraphs split code to the correct FanGraphs API params.
+// Several month codes are broken or return wrong data mid-season in FG's API.
+// For those, use month=1000 + explicit startdate/enddate instead.
+function getFGSplitParams(splitValue, season) {
+  const yr = String(season || new Date().getFullYear());
+  const fmt = d => d.toISOString().slice(0, 10);
+  const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return fmt(d); };
+  const today = fmt(new Date());
+  switch (String(splitValue)) {
+    // Calendar months — FanGraphs API uses actual calendar month numbers (5=May, 6=June, etc.)
+    case '2':  return { month: '5' };                                                        // May
+    case '3':  return { month: '6' };                                                        // June
+    case '4':  return { month: '7' };                                                        // July
+    case '5':  return { month: '8' };                                                        // August
+    case '6':  return { month: '9' };                                                        // Sept/Oct
+    // Custom date ranges
+    case '31': return { month: '1000', startdate: `${yr}-03-01`, enddate: `${yr}-05-01` }; // Mar/Apr
+    case '32': return { month: '1000', startdate: daysAgo(7),   enddate: today };           // Last 7 days
+    case '33': return { month: '1000', startdate: daysAgo(14),  enddate: today };           // Last 14 days
+    case '35': return { month: '1000', startdate: daysAgo(21),  enddate: today };           // Last 21 days
+    case '34': return { month: '1000', startdate: daysAgo(30),  enddate: today };           // Last 30 days
+    case '38': return { month: '1000', startdate: daysAgo(60),  enddate: today };           // Last 60 days
+    case '39': return { month: '1000', startdate: daysAgo(90),  enddate: today };           // Last 90 days
+    case '37': return { month: '1000', startdate: `${yr}-03-01`, enddate: `${yr}-07-12` }; // First Half
+    case '36': return { month: '1000', startdate: `${yr}-07-12`, enddate: `${yr}-11-01` }; // Second Half
+    default:   return { month: '0' }; // Fall back to full season rather than passing a bad value
+  }
+}
+
+// Disable split options that haven't started yet for the currently selected season.
+// FanGraphs silently returns full-season or empty data for future periods, so we
+// prevent selecting them in the first place.
+function updateSplitAvailability() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1; // 1 = Jan … 12 = Dec
+  const selectedSeason = parseInt(selSeason.value);
+
+  // For past seasons everything is available; future seasons keep Full Season only.
+  const isPast   = selectedSeason < currentYear;
+  const isFuture = selectedSeason > currentYear;
+
+  // Calendar month when each split period *starts* (used only for current-year checks)
+  const STARTS_MONTH = {
+    '2':  5,  // May
+    '3':  6,  // June
+    '4':  7,  // July
+    '5':  8,  // August
+    '6':  9,  // Sept/Oct
+    '37': 3,  // First Half (starts March)
+    '36': 7,  // Second Half (~July 12)
+  };
+
+  for (const opt of selSplit.options) {
+    if (opt.value === '0') { opt.disabled = false; opt.title = ''; continue; } // Full Season always on
+    if (isPast)   { opt.disabled = false; opt.title = ''; continue; }
+    if (isFuture) { opt.disabled = opt.value !== '0'; opt.title = opt.disabled ? 'No data yet' : ''; continue; }
+
+    // Current season: disable months that start after today
+    const startsMonth = STARTS_MONTH[opt.value];
+    const tooEarly = startsMonth && currentMonth < startsMonth;
+    opt.disabled = !!tooEarly;
+    opt.title = tooEarly ? "This period hasn't started yet" : '';
+  }
+
+  // If the currently selected option got disabled, fall back to Full Season
+  if (selSplit.options[selSplit.selectedIndex]?.disabled) {
+    selSplit.value = '0';
+  }
+}
+
+// Fetch a Baseball Savant leaderboard CSV (full season)
+async function fetchSavantLeaderboard(type, endpoint, season) {
+  const params = new URLSearchParams({ path: `/leaderboard/${endpoint}`, type, year: season, min: '0', csv: 'true' });
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) throw new Error(`Savant leaderboard HTTP ${resp.status}`);
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) throw new Error('Savant leaderboard returned HTML');
+  return parseCSV(text);
+}
+
+// Fetch a Baseball Savant custom leaderboard CSV (specific column selections)
+async function fetchSavantCustom(type, season, selections) {
+  const params = new URLSearchParams({ path: '/leaderboard/custom', type, year: season, filter: '', min: 'q', selections: selections.join(','), csv: 'true' });
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) throw new Error(`Savant custom leaderboard HTTP ${resp.status}`);
+  const text = await resp.text();
+  if (text.trim().startsWith('<') || text.trim().startsWith('{')) throw new Error('Savant custom leaderboard returned unexpected content');
+  return parseCSV(text);
+}
+
+// Fetch Baseball Savant statcast_search CSV (supports date ranges)
+async function fetchSavantSearch(playerType, groupBy, season, dateRange) {
+  const params = new URLSearchParams({
+    path: '/statcast_search/csv',
+    hfGT:        'R|',   // regular season only
+    hfSea:       `${season}|`,
+    player_type: playerType,
+    group_by:    groupBy,
+    min_pitches: '0',
+    min_results: '0',
+    min_pas:     '0',
+  });
+  // dateRange is optional — when null, hfSea alone provides full-season filtering
+  if (dateRange) {
+    params.set('game_date_gt', dateRange.dateGt);
+    params.set('game_date_lt', dateRange.dateLt);
+  }
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) throw new Error(`Savant search HTTP ${resp.status}`);
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) throw new Error('Savant search returned HTML');
+  return parseCSV(text);
+}
+
+// Fetch Baseball Savant bat-tracking leaderboard CSV
+// type: 'batter' (hitter averages) or 'pitcher' (bat-tracking metrics against a pitcher)
+async function fetchSavantBatTracking(season, type = 'batter', dateRange = null) {
+  const params = new URLSearchParams({
+    path: '/leaderboard/bat-tracking',
+    gameType: 'Regular', minSwings: 'q', minGroupSwings: '1',
+    seasonStart: season, seasonEnd: season, type,
+    team: '', csv: 'true'
+  });
+  if (dateRange) {
+    params.set('dateStart', dateRange.dateGt);
+    params.set('dateEnd',   dateRange.dateLt);
+  }
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) throw new Error(`Savant bat tracking HTTP ${resp.status}`);
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) throw new Error('Savant bat tracking returned HTML');
+  return parseCSV(text);
+}
+
+// Fetch Baseball Savant batted-ball direction leaderboard CSV
+// type: 'batter' or 'pitcher'
+async function fetchSavantBattedBall(season, type = 'batter', dateRange = null) {
+  const params = new URLSearchParams({
+    path: '/leaderboard/batted-ball',
+    gameType: 'Regular', minSwings: 'q', minGroupSwings: '1',
+    seasonStart: season, seasonEnd: season, type, csv: 'true'
+  });
+  if (dateRange) {
+    params.set('dateStart', dateRange.dateGt);
+    params.set('dateEnd',   dateRange.dateLt);
+  }
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) throw new Error(`Savant batted-ball HTTP ${resp.status}`);
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) throw new Error('Savant batted-ball returned HTML');
+  return parseCSV(text);
+}
+
+// Fetch Baseball Savant swing timing + miss distance leaderboard CSV (full-season only)
+// type: 'batter' or 'pitcher'
+async function fetchSavantSwingTiming(season, type = 'batter') {
+  const params = new URLSearchParams({
+    path: '/leaderboard/bat-tracking/swing-timing-miss-distance',
+    type, csv: 'true'
+  });
+  params.append('season[]', season);
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) throw new Error(`Savant swing timing HTTP ${resp.status}`);
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) throw new Error('Savant swing timing returned HTML');
+  return parseCSV(text);
+}
+
+// Merge savant data into FG rows.
+// data: { search, statcast, expected, batTracking, battedBall, swingTiming, custom } — each is a parsed CSV array or null
+// isTeam: true = team-level matching
+// prefix: '' for player/team mode; 'hit_' or 'pit_' for combined mode
+// skipFgKeys: skip certain keys (e.g. skip xERA for hitting side)
+// useSearch: true = use statcast_search data (date range); false = use leaderboard data
+function applySavantRows(rows, data, isTeam, prefix = '', skipFgKeys = new Set(), useSearch = false) {
+  if (!data.search && !data.statcast && !data.expected && !data.batTracking && !data.custom && !data.battedBall && !data.swingTiming) return rows;
+
+  // Build lookup maps
+  // Leaderboard: keyed by team_id (abbr) for teams, player_id for players
+  const lbKey = isTeam ? 'team_id' : 'player_id';
+  const scMap  = Object.fromEntries((data.statcast  || []).filter(r => r[lbKey]).map(r => [r[lbKey],  r]));
+  const expMap = Object.fromEntries((data.expected  || []).filter(r => r[lbKey]).map(r => [r[lbKey],  r]));
+  // Search: keyed by player_id (MLBAM player or team ID)
+  const srchMap = Object.fromEntries((data.search || []).filter(r => r.player_id).map(r => [r.player_id, r]));
+  // Bat tracking: keyed by 'id' (MLBAM player ID, player-only — no team aggregation)
+  const btMap = Object.fromEntries((data.batTracking || []).filter(r => r.id).map(r => [r.id, r]));
+  // Batted-ball direction leaderboard: also keyed by 'id'
+  const bbMap = Object.fromEntries((data.battedBall || []).filter(r => r.id).map(r => [r.id, r]));
+  // Swing timing + miss distance leaderboard: also keyed by 'id'
+  const timingMap = Object.fromEntries((data.swingTiming || []).filter(r => r.id).map(r => [r.id, r]));
+  // Custom leaderboard: always keyed by player_id (MLBAM)
+  const customMap = Object.fromEntries((data.custom || []).filter(r => r.player_id).map(r => [r.player_id, r]));
+
+  return rows.map(p => {
+    // Determine match keys for each source type
+    const playerMlbamId = String(p.xMLBAMID || '');
+    const leaderTeamId  = FG_TO_SAVANT_TEAM[p.TeamNameAbb]    || p.TeamNameAbb;
+    const searchTeamId  = FG_TO_SAVANT_TEAM_ID[p.TeamNameAbb] || '';
+    const lbMatchId     = isTeam ? leaderTeamId : playerMlbamId;
+    const srchMatchId   = isTeam ? searchTeamId : playerMlbamId;
+
+    const srchRow   = srchMap[srchMatchId]     || {};
+    const scRow     = scMap[lbMatchId]         || {};
+    const expRow    = expMap[lbMatchId]        || {};
+    const btRow     = btMap[playerMlbamId]     || {};
+    const bbRow     = bbMap[playerMlbamId]     || {};
+    const timingRow = timingMap[playerMlbamId] || {};
+    const customRow = customMap[playerMlbamId] || {};
+    const merged  = { ...p };
+
+    for (const [fgKey, detail] of Object.entries(SAVANT_FIELD_DETAIL)) {
+      if (skipFgKeys.has(fgKey)) continue;
+      let raw;
+      if (detail.leaderEp === 'bat_tracking') {
+        if (useSearch && detail.searchCol) {
+          // Date-range mode: prefer statcast_search for the filtered period
+          raw = srchRow[detail.searchCol];
+        } else if (detail.leaderCol) {
+          // Full-season leaderboard; fall back to search for stats the leaderboard doesn't track
+          raw = btRow[detail.leaderCol];
+          if ((raw == null || raw === '') && detail.searchCol) raw = srchRow[detail.searchCol];
+        } else if (detail.searchCol) {
+          // Search-only stat (no leaderboard column at all)
+          raw = srchRow[detail.searchCol];
+        }
+      } else if (detail.leaderEp === 'batted_ball') {
+        // Batted-ball direction leaderboard — always full-season, player-level
+        raw = bbRow[detail.leaderCol];
+      } else if (detail.leaderEp === 'bat_tracking_timing') {
+        // Swing timing + miss distance leaderboard — full-season, player-level
+        raw = timingRow[detail.leaderCol];
+      } else if (detail.leaderEp === 'custom') {
+        // Custom leaderboard stat (e.g. xwOBACON) — always full-season, player-level
+        raw = customRow[detail.leaderCol];
+      } else if (useSearch && detail.searchCol) {
+        // Date-range query: pull from statcast_search
+        raw = srchRow[detail.searchCol];
+      } else {
+        // Full-season or leaderboard-only stat (xERA, maxEV, HardHit count)
+        raw = (detail.leaderEp === 'statcast' ? scRow : expRow)[detail.leaderCol];
+      }
+      if (raw != null && raw !== '' && isFinite(+raw)) {
+        const outKey = prefix + fgKey;
+        // pitcherFallback stats (wOBA, SLG): only fill if FG didn't already populate the value
+        if (!detail.pitcherFallback || merged[outKey] == null) {
+          merged[outKey] = +raw / detail.div;
+        }
+      }
+    }
+    return merged;
+  });
+}
+
+const STAT_GROUPS_PITCHING = [
+  { group: 'Summary', stats: [
+    { key: 'Age', label: 'Age' }, { key: 'ERA', label: 'ERA' }, { key: 'FIP', label: 'FIP' },
+    { key: 'xFIP', label: 'xFIP' }, { key: 'SIERA', label: 'SIERA' }, { key: 'xERA', label: 'xERA' },
+    { key: 'ERA-', label: 'ERA-' }, { key: 'FIP-', label: 'FIP-' }, { key: 'xFIP-', label: 'xFIP-' },
+    { key: 'WAR', label: 'WAR' }, { key: 'RAR', label: 'RAR' },
+  ]},
+  { group: 'Counting', stats: [
+    { key: 'W', label: 'W' }, { key: 'L', label: 'L' }, { key: 'G', label: 'G' },
+    { key: 'GS', label: 'GS' }, { key: 'CG', label: 'CG' }, { key: 'ShO', label: 'ShO' },
+    { key: 'SV', label: 'SV' }, { key: 'HLD', label: 'HLD' }, { key: 'SV+HLD', label: 'SV+HLD' }, { key: 'SV+HLD+W', label: 'SV+HLD+W' }, { key: 'BS', label: 'BS' },
+    { key: 'IP', label: 'IP' }, { key: 'TBF', label: 'TBF' }, { key: 'H', label: 'H' },
+    { key: 'R', label: 'R' }, { key: 'RA/G', label: 'RA/G' }, { key: 'ER', label: 'ER' }, { key: 'HR', label: 'HR' },
+    { key: 'BB', label: 'BB' }, { key: 'IBB', label: 'IBB' }, { key: 'HBP', label: 'HBP' },
+    { key: 'WP', label: 'WP' }, { key: 'BK', label: 'BK' }, { key: 'SO', label: 'SO' },
+    { key: 'GB', label: 'GB' }, { key: 'FB', label: 'FB' }, { key: 'LD', label: 'LD' },
+    { key: 'IFFB', label: 'IFFB' }, { key: 'Pitches', label: 'Pitches' },
+    { key: 'Balls', label: 'Balls' }, { key: 'Strikes', label: 'Strikes' },
+    { key: 'RS', label: 'RS' }, { key: 'IFH', label: 'IFH' }, { key: 'BU', label: 'BU' },
+    { key: 'BUH', label: 'BUH' }, { key: 'SD', label: 'SD' }, { key: 'MD', label: 'MD' },
+  ]},
+  { group: 'Rate', stats: [
+    { key: 'K/9', label: 'K/9' }, { key: 'BB/9', label: 'BB/9' }, { key: 'K/BB', label: 'K/BB' },
+    { key: 'H/9', label: 'H/9' }, { key: 'HR/9', label: 'HR/9' }, { key: 'K%', label: 'K%' },
+    { key: 'BB%', label: 'BB%' }, { key: 'K-BB%', label: 'K-BB%' }, { key: 'AVG', label: 'AVG' },
+    { key: 'WHIP', label: 'WHIP' }, { key: 'BABIP', label: 'BABIP' }, { key: 'LOB%', label: 'LOB%' },
+    { key: 'HR/FB', label: 'HR/FB' }, { key: 'TTO%', label: 'TTO%' },
+    { key: 'wOBA', label: 'wOBA' },
+  ]},
+  { group: 'Batted Ball', stats: [
+    { key: 'GB/FB', label: 'GB/FB' }, { key: 'GB%', label: 'GB%' }, { key: 'FB%', label: 'FB%' },
+    { key: 'LD%', label: 'LD%' }, { key: 'IFFB%', label: 'IFFB%' },
+    { key: 'IFH%', label: 'IFH%' }, { key: 'BUH%', label: 'BUH%' },
+  ]},
+  { group: 'Quality of Contact (Against)', stats: [
+    { key: 'SLG', label: 'SLG' }, { key: 'wOBACON', label: 'wOBACON' }, { key: 'xwOBA', label: 'xwOBA' }, { key: 'xwOBACON', label: 'xwOBACON' }, { key: 'xSLG', label: 'xSLG' },
+    { key: 'Barrel%', label: 'Barrel/BBE%' }, { key: 'BarrelPA%', label: 'Barrel/PA%' }, { key: 'Barrels', label: 'Barrels' },
+    { key: 'HardHit%', label: 'HardHit%' },
+    { key: 'EV', label: 'EV' }, { key: 'maxEV', label: 'maxEV' },
+  ]},
+  { group: 'Win Probability', stats: [
+    { key: 'WPA', label: 'WPA' }, { key: '-WPA', label: '-WPA' }, { key: '+WPA', label: '+WPA' },
+  ]},
+  { group: 'Plate Discipline', stats: [
+    { key: 'O-Swing%', label: 'O-Swing%' }, { key: 'Z-Swing%', label: 'Z-Swing%' },
+    { key: 'Swing%', label: 'Swing%' }, { key: 'O-Contact%', label: 'O-Contact%' },
+    { key: 'Z-Contact%', label: 'Z-Contact%' }, { key: 'Contact%', label: 'Contact%' },
+    { key: 'Zone%', label: 'Zone%' }, { key: 'F-Strike%', label: 'F-Strike%' },
+    { key: 'SwStr%', label: 'SwStr%' }, { key: 'CStr%', label: 'CStr%' },
+    { key: 'C+SwStr%', label: 'CSW%' },
+  ]},
+  { group: 'Bat Tracking (Against)', stats: [
+    { key: 'BatSpeed',   label: 'Bat Speed'   },
+    { key: 'FastSwing%', label: 'Fast Swing%' },
+    { key: 'Blasts/C',  label: 'Blasts/C'    },
+    { key: 'Blasts/Sw', label: 'Blasts/Sw'   },
+    { key: 'SqUp/C',    label: 'Sq-Up/C'     },
+    { key: 'SqUp/Sw',   label: 'Sq-Up/Sw'    },
+    { key: 'SwingLen',  label: 'Swing Len'   },
+    { key: 'Swords',    label: 'Swords'      },
+    { key: 'MissDist',  label: 'Miss Dist'   },
+    { key: 'OnTime%',   label: 'On Time%'    },
+    { key: 'Early%',    label: 'Early%'      },
+    { key: 'Late%',     label: 'Late%'       },
+    { key: 'Perfect%',  label: 'Perfect%'    },
+    { key: 'Flawed%',   label: 'Flawed%'     },
+    { key: 'Centered%', label: 'Centered%'   },
+    { key: 'Flailed%',  label: 'Flailed%'    },
+    { key: 'TiedUp%',   label: 'Tied Up%'    },
+    { key: 'LinedUp%',  label: 'Lined Up%'   },
+    { key: 'Over%',     label: 'Over%'       },
+    { key: 'Under%',    label: 'Under%'      },
+  ]},
+  { group: 'Workload', stats: [
+    { key: 'Starting', label: 'Starting' }, { key: 'Start-IP', label: 'Start-IP' },
+    { key: 'Relieving', label: 'Relieving' }, { key: 'Relief-IP', label: 'Relief-IP' },
+  ]},
+  { group: 'Pitch Usage', stats: [
+    { key: 'pfxFA%', label: 'FA%' }, { key: 'pfxFT%', label: 'FT%' },
+    { key: 'pfxFC%', label: 'FC%' }, { key: 'pfxFS%', label: 'FS%' },
+    { key: 'pfxFO%', label: 'FO%' }, { key: 'pfxSI%', label: 'SI%' },
+    { key: 'pfxSL%', label: 'SL%' }, { key: 'pfxCU%', label: 'CU%' },
+    { key: 'pfxKC%', label: 'KC%' }, { key: 'pfxEP%', label: 'EP%' },
+    { key: 'pfxCH%', label: 'CH%' }, { key: 'pfxSC%', label: 'SC%' },
+    { key: 'pfxKN%', label: 'KN%' }, { key: 'pfxUN%', label: 'UN%' },
+  ]},
+  { group: 'Pitch Velocity', stats: [
+    { key: 'pfxvFA', label: 'vFA' }, { key: 'pfxvFT', label: 'vFT' },
+    { key: 'pfxvFC', label: 'vFC' }, { key: 'pfxvFS', label: 'vFS' },
+    { key: 'pfxvFO', label: 'vFO' }, { key: 'pfxvSI', label: 'vSI' },
+    { key: 'pfxvSL', label: 'vSL' }, { key: 'pfxvCU', label: 'vCU' },
+    { key: 'pfxvKC', label: 'vKC' }, { key: 'pfxvEP', label: 'vEP' },
+    { key: 'pfxvCH', label: 'vCH' }, { key: 'pfxvSC', label: 'vSC' },
+    { key: 'pfxvKN', label: 'vKN' },
+  ]},
+  { group: 'Stuff+ / PitchingBot', stats: [
+    { key: 'sp_stuff', label: 'Stuff+' }, { key: 'sp_location', label: 'Location+' },
+    { key: 'sp_pitching', label: 'Pitching+' },
+  ]},
+  { group: 'Arsenal Pro (BP)', stats: [
+    { key: 'StuffPro',       label: 'StuffPro'        },
+    { key: 'PitchPro',       label: 'PitchPro'        },
+    { key: 'SurpriseFactor', label: 'Surprise Factor' },
+    { key: 'MovementSpread', label: 'Movement Spread' },
+    { key: 'VelocitySpread', label: 'Velocity Spread' },
+    { key: 'PitchTypeProb',  label: 'Pitch Type Prob' },
+    { key: 'ExpSwStr',       label: 'xSwStr%'         },
+    { key: 'ExpDamage',      label: 'xDamage'         },
+  ]},
+  { group: 'Count Leverage', stats: [
+    { key: 'CoLev',        label: 'CoLev'         },
+    { key: 'CoLev_scaled', label: 'CoLev (scaled)' },
+    { key: 'CoLev_dRE',    label: 'CoLev dRE'     },
+  ]},
+];
+
+const STAT_GROUPS_HITTING = [
+  { group: 'Summary', stats: [
+    { key: 'Age', label: 'Age' }, { key: 'AVG', label: 'AVG' }, { key: 'OBP', label: 'OBP' },
+    { key: 'SLG', label: 'SLG' }, { key: 'OPS', label: 'OPS' }, { key: 'ISO', label: 'ISO' },
+    { key: 'wOBA', label: 'wOBA' }, { key: 'wOBACON', label: 'wOBACON' }, { key: 'xwOBA', label: 'xwOBA' }, { key: 'xwOBACON', label: 'xwOBACON' }, { key: 'xSLG', label: 'xSLG' }, { key: 'wRC+', label: 'wRC+' },
+    { key: 'WAR', label: 'WAR' }, { key: 'RAR', label: 'RAR' },
+    { key: 'Batting', label: 'Batting' }, { key: 'Offense', label: 'Offense' },
+  ]},
+  { group: 'Hitting+ (swingplus)', stats: [
+    { key: 'Hitting+',  label: 'Hitting+'  }, { key: 'Decision+', label: 'Decision+' },
+    { key: 'Timing+',   label: 'Timing+'   }, { key: 'Contact+',  label: 'Contact+'  },
+    { key: 'Power+',    label: 'Power+'    },
+  ]},
+  { group: 'Counting', stats: [
+    { key: 'G', label: 'G' }, { key: 'AB', label: 'AB' }, { key: 'PA', label: 'PA' },
+    { key: 'H', label: 'H' }, { key: '1B', label: '1B' }, { key: '2B', label: '2B' },
+    { key: '3B', label: '3B' }, { key: 'HR', label: 'HR' }, { key: 'XBH', label: 'XBH' }, { key: 'R', label: 'R' }, { key: 'R/G', label: 'R/G' },
+    { key: 'RBI', label: 'RBI' }, { key: 'BB', label: 'BB' }, { key: 'IBB', label: 'IBB' },
+    { key: 'SO', label: 'SO' }, { key: 'HBP', label: 'HBP' }, { key: 'TOB', label: 'TOB' },
+    { key: 'SF', label: 'SF' }, { key: 'SH', label: 'SH' }, { key: 'GDP', label: 'GDP' },
+  ]},
+  { group: 'Rate', stats: [
+    { key: 'BB%', label: 'BB%' }, { key: 'K%', label: 'K%' }, { key: 'BB/K', label: 'BB/K' },
+    { key: 'AVG', label: 'AVG' }, { key: 'BABIP', label: 'BABIP' },
+    { key: 'OBP', label: 'OBP' }, { key: 'SLG', label: 'SLG' }, { key: 'ISO', label: 'ISO' },
+    { key: 'TTO%', label: 'TTO%' },
+  ]},
+  { group: 'Batted Ball', stats: [
+    { key: 'GB/FB', label: 'GB/FB' }, { key: 'GB%', label: 'GB%' }, { key: 'FB%', label: 'FB%' },
+    { key: 'LD%', label: 'LD%' }, { key: 'IFFB%', label: 'IFFB%' }, { key: 'HR/FB', label: 'HR/FB' },
+    { key: 'Pull%', label: 'Pull%' }, { key: 'Cent%', label: 'Cent%' }, { key: 'Oppo%', label: 'Oppo%' },
+    { key: 'Soft%', label: 'Soft%' }, { key: 'Med%', label: 'Med%' }, { key: 'Hard%', label: 'Hard%' },
+  ]},
+  { group: 'Win Probability', stats: [
+    { key: 'WPA', label: 'WPA' }, { key: '-WPA', label: '-WPA' }, { key: '+WPA', label: '+WPA' },
+    { key: 'RE24', label: 'RE24' }, { key: 'Clutch', label: 'Clutch' },
+  ]},
+  { group: 'Plate Discipline', stats: [
+    { key: 'O-Swing%', label: 'O-Swing%' }, { key: 'Z-Swing%', label: 'Z-Swing%' },
+    { key: 'Swing%', label: 'Swing%' }, { key: 'O-Contact%', label: 'O-Contact%' },
+    { key: 'Z-Contact%', label: 'Z-Contact%' }, { key: 'Contact%', label: 'Contact%' },
+    { key: 'Zone%', label: 'Zone%' }, { key: 'F-Strike%', label: 'F-Strike%' },
+    { key: 'SwStr%', label: 'SwStr%' }, { key: 'CStr%', label: 'CStr%' },
+    { key: 'sSEAGER', label: 'sSEAGER' }, { key: 'BP_SEAGER', label: 'SEAGER' },
+  ]},
+  { group: 'Baserunning', stats: [
+    { key: 'SB', label: 'SB' }, { key: 'CS', label: 'CS' }, { key: 'SB+CS', label: 'SB+CS' },
+    { key: 'BaseRunning', label: 'BsR' }, { key: 'Spd', label: 'Spd' },
+    { key: 'SprintSpeed', label: 'Sprint Speed' },
+  ]},
+  { group: 'Batted Ball Quality', stats: [
+    { key: 'EV', label: 'EV' }, { key: 'EV50', label: 'EV50' }, { key: 'EV90', label: 'EV90' }, { key: 'LA', label: 'LA' },
+    { key: 'Barrel%', label: 'Barrel/BBE%' }, { key: 'BarrelPA%', label: 'Barrel/PA%' }, { key: 'Barrels', label: 'Barrels' },
+    { key: 'aBarrel%', label: 'aBarrel/BBE%' }, { key: 'aBarrelPA%', label: 'aBarrel/PA%' }, { key: 'aBarrels', label: 'aBarrels' },
+    { key: 'HardHit%', label: 'HardHit%' },
+    { key: 'maxEV', label: 'maxEV' },
+    { key: 'SLGCON', label: 'SLGCON' },
+    { key: 'PullAir%', label: 'Pull Air%' }, { key: 'PullGB%', label: 'Pull GB%' },
+    { key: 'OppoAir%', label: 'Oppo Air%' }, { key: 'OppoGB%', label: 'Oppo GB%' },
+  ]},
+  { group: 'Bat Tracking', stats: [
+    { key: 'BatSpeed',    label: 'Bat Speed'    },
+    { key: 'FastSwing%',  label: 'Fast Swing%'  },
+    { key: 'Blasts/C',   label: 'Blasts/C'     },
+    { key: 'Blasts/Sw',  label: 'Blasts/Sw'    },
+    { key: 'SqUp/C',     label: 'Sq-Up/C'      },
+    { key: 'SqUp/Sw',    label: 'Sq-Up/Sw'     },
+    { key: 'SwingLen',   label: 'Swing Len'    },
+    { key: 'Swords',     label: 'Swords'       },
+    { key: 'AttackAngle', label: 'Attack Angle' },
+    { key: 'AttackDir',   label: 'Attack Dir'   },
+    { key: 'SwingTilt',   label: 'Swing Tilt'   },
+    { key: 'MissDist',   label: 'Miss Dist'    },
+    { key: 'OnTime%',    label: 'On Time%'     },
+    { key: 'Early%',     label: 'Early%'       },
+    { key: 'Late%',      label: 'Late%'        },
+    { key: 'Perfect%',   label: 'Perfect%'     },
+    { key: 'Flawed%',    label: 'Flawed%'      },
+    { key: 'Centered%',  label: 'Centered%'    },
+    { key: 'Flailed%',   label: 'Flailed%'     },
+    { key: 'TiedUp%',    label: 'Tied Up%'     },
+    { key: 'LinedUp%',   label: 'Lined Up%'    },
+    { key: 'Over%',      label: 'Over%'        },
+    { key: 'Under%',     label: 'Under%'       },
+  ]},
+  { group: 'Plus Stats', stats: [
+    { key: 'AVG+', label: 'AVG+' }, { key: 'BB%+', label: 'BB%+' }, { key: 'K%+', label: 'K%+' },
+    { key: 'OBP+', label: 'OBP+' }, { key: 'SLG+', label: 'SLG+' },
+    { key: 'ISO+', label: 'ISO+' }, { key: 'BABIP+', label: 'BABIP+' },
+  ]},
+];
+
+const STAT_GROUPS_COMBINED = [
+  { group: 'Hitting', stats: [
+    { key: 'hit_WAR', label: 'WAR (Hit)' }, { key: 'hit_wRC+', label: 'wRC+' },
+    { key: 'hit_OPS', label: 'OPS' }, { key: 'hit_wOBA', label: 'wOBA' }, { key: 'hit_xwOBA', label: 'xwOBA' },
+    { key: 'hit_AVG', label: 'AVG' }, { key: 'hit_OBP', label: 'OBP' }, { key: 'hit_SLG', label: 'SLG' },
+    { key: 'hit_xSLG', label: 'xSLG' }, { key: 'hit_ISO', label: 'ISO' },
+    { key: 'hit_HR', label: 'HR' }, { key: 'hit_R', label: 'Runs' }, { key: 'hit_R/G', label: 'R/G' }, { key: 'hit_RBI', label: 'RBI' },
+    { key: 'hit_SB', label: 'SB' }, { key: 'hit_BB%', label: 'BB% (Hit)' }, { key: 'hit_K%', label: 'K% (Hit)' },
+    { key: 'hit_BABIP', label: 'BABIP (Hit)' }, { key: 'hit_BaseRunning', label: 'BsR' },
+  ]},
+  { group: 'Pitching', stats: [
+    { key: 'pit_WAR', label: 'WAR (Pit)' }, { key: 'pit_ERA', label: 'ERA' },
+    { key: 'pit_FIP', label: 'FIP' }, { key: 'pit_xFIP', label: 'xFIP' },
+    { key: 'pit_SIERA', label: 'SIERA' }, { key: 'pit_xERA', label: 'xERA' },
+    { key: 'pit_WHIP', label: 'WHIP' }, { key: 'pit_K%', label: 'K% (Pit)' },
+    { key: 'pit_BB%', label: 'BB% (Pit)' }, { key: 'pit_K-BB%', label: 'K-BB%' },
+    { key: 'pit_SwStr%', label: 'SwStr%' }, { key: 'pit_ERA-', label: 'ERA-' },
+    { key: 'pit_FIP-', label: 'FIP-' }, { key: 'pit_BABIP', label: 'BABIP (Pit)' },
+    { key: 'pit_HR/9', label: 'HR/9' }, { key: 'pit_K/9', label: 'K/9' },
+    { key: 'pit_W', label: 'W' }, { key: 'pit_RA/G', label: 'RA/G' }, { key: 'pit_sp_stuff', label: 'Stuff+' },
+    { key: 'pit_sp_location', label: 'Location+' }, { key: 'pit_sp_pitching', label: 'Pitching+' },
+  ]},
+  { group: 'Combined', stats: [
+    { key: 'total_WAR', label: 'Total WAR' },
+  ]},
+];
+
+// Active stat groups (swapped when mode changes)
+let STAT_GROUPS = STAT_GROUPS_PITCHING;
+let STAT_OPTIONS = STAT_GROUPS.flatMap(g => g.stats);
+
+// FanGraphs abbr → ESPN abbr mapping
+const TEAM_LOGO_ABBR = {
+  'LAA':'laa','BAL':'bal','BOS':'bos','CLE':'cle','DET':'det',
+  'KCR':'kc','MIN':'min','NYY':'nyy','ATH':'oak','OAK':'oak','SEA':'sea',
+  'TBR':'tb','TEX':'tex','TOR':'tor','ARI':'ari','CHC':'chc',
+  'ATL':'atl','CHW':'chw','CIN':'cin','COL':'col','MIA':'mia','HOU':'hou',
+  'LAD':'lad','MIL':'mil','WSN':'wsh','NYM':'nym','PHI':'phi',
+  'PIT':'pit','STL':'stl','SDP':'sd','SFG':'sf',
+};
+
+function teamLogoUrl(fgAbbr) {
+  const espn = TEAM_LOGO_ABBR[fgAbbr] || fgAbbr.toLowerCase();
+  return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/${espn}.png&w=60`;
+}
+
+// Stat aggregation: rate stats are IP-weighted averages, counting stats are sums
+const COUNTING_STATS = new Set([
+  'W','L','G','GS','CG','ShO','SV','HLD','SV+HLD','SV+HLD+W','BS','IP','TBF','H','R','ER','HR',
+  'BB','IBB','HBP','WP','BK','SO','GB','FB','LD','IFFB','Pitches','Balls',
+  'Strikes','RS','IFH','BU','BUH','SD','MD','WPA','-WPA','+WPA',
+  'Starting','Start-IP','Relieving','Relief-IP','RAR','WAR',
+  // Batting counting stats
+  'AB','PA','1B','2B','3B','RBI','SF','SH','GDP','SB','CS','SB+CS','XBH','TOB','Swords',
+]);
+
+function aggregateByTeam(players) {
+  const isHit = currentMode === 'hitting';
+  const weightKey = isHit ? 'PA' : 'IP';
+  const teams = {};
+  for (const p of players) {
+    const abbr = p.TeamNameAbb || p.TeamName || '';
+    if (!abbr) continue;
+    if (!teams[abbr]) teams[abbr] = { players: [], totalWeight: 0 };
+    teams[abbr].players.push(p);
+    teams[abbr].totalWeight += (p[weightKey] || 0);
+  }
+  // Remove multi-team entries like "2 Tms", "3 Tms"
+  for (const key of Object.keys(teams)) {
+    if (/\d+\s*Tms?/.test(key)) delete teams[key];
+  }
+  return Object.entries(teams).map(([abbr, t]) => {
+    const agg = { _isTeam: true, TeamNameAbb: abbr, TeamName: abbr, PlayerName: abbr };
+    const keys = Object.keys(t.players[0]).filter(k => typeof t.players[0][k] === 'number');
+    for (const k of keys) {
+      if (COUNTING_STATS.has(k)) {
+        agg[k] = t.players.reduce((s, p) => s + (p[k] || 0), 0);
+      } else {
+        // Weight by PA (hitting) or IP (pitching) for rate stats
+        if (t.totalWeight > 0) {
+          agg[k] = t.players.reduce((s, p) => s + (p[k] || 0) * (p[weightKey] || 0), 0) / t.totalWeight;
+        } else {
+          agg[k] = t.players.reduce((s, p) => s + (p[k] || 0), 0) / t.players.length;
+        }
+      }
+    }
+    agg[weightKey] = t.totalWeight;
+    if (isHit) {
+      agg._hitterCount = t.players.length;
+    } else {
+      agg.IP = t.totalWeight;
+      agg._pitcherCount = t.players.length;
+    }
+    return agg;
+  });
+}
+
+// State
+let currentData = null;
+
+// Toast warning for split-incompatible stats
+const splitWarningEl = document.getElementById('split-warning');
+let splitWarningTimer = null;
+function showSplitWarning(statNames) {
+  const plural = statNames.length > 1;
+  splitWarningEl.textContent = `⚠ ${statNames.join(' & ')} ${plural ? 'show' : 'shows'} full-season data only — splits aren't supported for ${plural ? 'these metrics' : 'this metric'}.`;
+  splitWarningEl.classList.add('visible');
+  clearTimeout(splitWarningTimer);
+  splitWarningTimer = setTimeout(() => splitWarningEl.classList.remove('visible'), 4500);
+}
+let currentXKey = null;
+let currentYKey = null;
+let currentGroupBy = 'player';
+let currentPrevYearSeason = null;
+let currentPrevPeriodLabel = null; // human-readable label for the prev period (e.g. "Mar/Apr")
+let hiddenKeys = new Set(); // tracks dismissed players/teams
+let currentMode = 'pitching'; // 'pitching' or 'hitting'
+let zoomState = null;    // { xMin, xMax, yMin, yMax } in display coords, or null
+let currentScale = null; // { xMin, xMax, yMin, yMax, plotW, plotH } — saved each render
+let tappedDotKey = null; // mobile: key of dot awaiting second tap to dismiss
+let justDragged = false; // prevents dot click firing after a zoom drag
+let currentDotScale = 1.4; // headshot size multiplier: 1.0 = S, 1.4 = M, 1.9 = L
+let currentColorKey = 'none'; // color ring stat key, or 'none'
+
+// Elements
+const selSeason = document.getElementById('sel-season');
+const selStats = document.getElementById('sel-stats');
+const selLg = document.getElementById('sel-lg');
+const selHand = document.getElementById('sel-hand');
+const selQual = document.getElementById('sel-qual');
+const selTeam = document.getElementById('sel-team');
+const selGroup = document.getElementById('sel-group');
+const selX = document.getElementById('sel-x');
+const selY = document.getElementById('sel-y');
+const selColor = document.getElementById('sel-color');
+const chkR2    = document.getElementById('chk-r2');
+const chkRookie = document.getElementById('chk-rookie');
+const lblRookie = document.getElementById('lbl-rookie');
+const btnGenerate = document.getElementById('btn-generate');
+const chartStatus = document.getElementById('chart-status');
+const chartArea = document.getElementById('chart-area');
+const plotArea = document.getElementById('plot-area');
+const tooltip = document.getElementById('tooltip');
+const ttName = document.getElementById('tt-name');
+const ttMeta = document.getElementById('tt-meta');
+const ttStats = document.getElementById('tt-stats');
+const axisLabelX = document.getElementById('axis-label-x');
+const axisLabelY = document.getElementById('axis-label-y');
+const selSplit = document.getElementById('sel-split');
+const btnReset = document.getElementById('btn-reset');
+const btnDownload = document.getElementById('btn-download');
+const btnPng      = document.getElementById('btn-png');
+const exportBtns      = document.getElementById('export-btns');
+const sizeToggle      = document.getElementById('size-toggle');
+const playerSearchWrap = document.getElementById('player-search-wrap');
+const inpPlayerSearch  = document.getElementById('inp-player-search');
+const cornerTL = document.getElementById('corner-tl');
+const cornerTR = document.getElementById('corner-tr');
+const cornerBL = document.getElementById('corner-bl');
+const cornerBR = document.getElementById('corner-br');
+[cornerTL, cornerTR, cornerBL, cornerBR].forEach(el =>
+  el.addEventListener('input', () => { if (currentData) rerenderLayout(); })
+);
+document.getElementById('btn-clear-labels').addEventListener('click', () => {
+  [cornerTL, cornerTR, cornerBL, cornerBR].forEach(el => { el.value = ''; });
+  if (currentData) rerenderLayout();
+});
+
+// Size toggle buttons
+function syncUrlExtras() {
+  const urlP = new URLSearchParams(window.location.search);
+  urlP.set('size', currentDotScale);
+  if (chkR2.checked) urlP.set('r2', '1'); else urlP.delete('r2');
+  if (chkRookie.checked) urlP.set('rookie', '1'); else urlP.delete('rookie');
+  history.replaceState(null, '', '?' + urlP.toString());
+  try { window.parent.postMessage({ type: 'bh:urlSync', search: '?' + urlP.toString() }, '*'); } catch(_) {}
+}
+
+document.querySelectorAll('.size-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentDotScale = parseFloat(btn.dataset.scale);
+    document.querySelectorAll('.size-btn').forEach(b => {
+      const active = b === btn;
+      b.style.background = active ? '#1a1a1a' : '#fff';
+      b.style.color = active ? '#fff' : '#555';
+      b.classList.toggle('active', active);
+    });
+    rerenderLayout();
+    syncUrlExtras();
+  });
+});
+
+chkR2.addEventListener('change', () => { if (currentData) rerenderLayout(); syncUrlExtras(); });
+
+inpPlayerSearch.addEventListener('input', () => {
+  const q = inpPlayerSearch.value.trim().toLowerCase();
+  if (!q) {
+    plotArea.classList.remove('search-active');
+    plotArea.querySelectorAll('.player-dot, .dot-ring').forEach(el => el.classList.remove('search-match'));
+    return;
+  }
+  plotArea.classList.add('search-active');
+  plotArea.querySelectorAll('.player-dot, .dot-ring').forEach(el => {
+    el.classList.toggle('search-match', (el.dataset.name || '').includes(q));
+  });
+});
+inpPlayerSearch.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { inpPlayerSearch.value = ''; inpPlayerSearch.dispatchEvent(new Event('input')); }
+});
+chkRookie.addEventListener('change', () => { syncUrlExtras(); generate(); });
+
+const PITCHING_TYPE_OPTIONS = [
+  { value: 'pit', label: 'All Pitchers' },
+  { value: 'sta', label: 'Starters only' },
+  { value: 'rel', label: 'Relievers only' },
+];
+const HITTING_POS_OPTIONS = [
+  { value: 'all', label: 'All Hitters' },
+  { value: 'c', label: 'C' },
+  { value: '1b', label: '1B' },
+  { value: '2b', label: '2B' },
+  { value: 'ss', label: 'SS' },
+  { value: '3b', label: '3B' },
+  { value: 'of', label: 'OF' },
+  { value: 'dh', label: 'DH' },
+];
+
+function populateAxisDropdowns() {
+  for (const sel of [selX, selY]) {
+    sel.innerHTML = '';
+    STAT_GROUPS.forEach(g => {
+      const og = document.createElement('optgroup');
+      og.label = g.group;
+      g.stats.forEach(s => og.appendChild(new Option(s.label, s.key)));
+      sel.appendChild(og);
+    });
+  }
+  // "Prev Year" and "Prev Period" are only meaningful on the Y axis
+  const prevOg = document.createElement('optgroup');
+  prevOg.label = 'Compare';
+  prevOg.appendChild(new Option('Prev Year (Same Stat)', '__prev_year__'));
+  prevOg.appendChild(new Option('Prev Period (Same Stat)', '__prev_period__'));
+  selY.appendChild(prevOg);
+
+  // Color ring: same stat list, no Prev Year, plus a "None" option
+  const prevColorKey = selColor.value;
+  selColor.innerHTML = '';
+  selColor.appendChild(new Option('None', 'none'));
+  STAT_GROUPS.forEach(g => {
+    const og = document.createElement('optgroup');
+    og.label = g.group;
+    g.stats.forEach(s => og.appendChild(new Option(s.label, s.key)));
+    selColor.appendChild(og);
+  });
+  // Restore previous selection if still valid
+  if (prevColorKey && [...selColor.options].some(o => o.value === prevColorKey)) {
+    selColor.value = prevColorKey;
+  }
+}
+
+function switchMode(mode) {
+  currentMode = mode;
+  // Update tabs
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.mode === mode);
+  });
+  const isCombined = mode === 'combined';
+  // Swap stat groups
+  STAT_GROUPS = mode === 'hitting' ? STAT_GROUPS_HITTING : mode === 'combined' ? STAT_GROUPS_COMBINED : STAT_GROUPS_PITCHING;
+  STAT_OPTIONS = STAT_GROUPS.flatMap(g => g.stats);
+  // Repopulate axis dropdowns
+  populateAxisDropdowns();
+  if (mode === 'combined') { selX.value = 'hit_wRC+'; selY.value = 'pit_ERA'; }
+  else if (mode === 'hitting') { selX.value = 'xwOBA'; selY.value = 'wOBA'; }
+  else { selX.value = 'SIERA'; selY.value = 'ERA'; }
+  // Hide/show controls based on mode
+  const hiddenInCombined = [selStats, selHand, selQual, selTeam, selGroup].map(el => el.closest('.control-group'));
+  hiddenInCombined.forEach(cg => cg.style.display = isCombined ? 'none' : '');
+  if (!isCombined) {
+    // Swap type/position dropdown
+    const label = selStats.closest('.control-group').querySelector('label');
+    selStats.innerHTML = '';
+    if (mode === 'hitting') {
+      label.textContent = 'Position';
+      HITTING_POS_OPTIONS.forEach(o => selStats.appendChild(new Option(o.label, o.value)));
+    } else {
+      label.textContent = 'Pitcher Type';
+      PITCHING_TYPE_OPTIONS.forEach(o => selStats.appendChild(new Option(o.label, o.value)));
+    }
+    // Swap handedness labels
+    selHand.options[1].text = mode === 'hitting' ? 'LHB' : 'LHP';
+    selHand.options[2].text = mode === 'hitting' ? 'RHB' : 'RHP';
+    // Swap Min IP / Min PA label and options
+    const qualLabel = selQual.closest('.control-group').querySelector('label');
+    selQual.innerHTML = '';
+    if (mode === 'hitting') {
+      qualLabel.textContent = 'Min PA';
+      selQual.appendChild(new Option('Qualified', 'y'));
+      selQual.appendChild(new Option('0', '0'));
+      selQual.appendChild(new Option('1', '1'));
+      for (let i = 10; i <= 600; i += 10) selQual.appendChild(new Option(String(i), String(i)));
+    } else {
+      qualLabel.textContent = 'Min IP';
+      ['y','0','1','2','5','10','20','30','40','50','60','80','100','120','140','160'].forEach(v =>
+        selQual.appendChild(new Option(v === 'y' ? 'Qualified' : v, v))
+      );
+    }
+    // Re-enable qual if it was disabled
+    selQual.disabled = false;
+    selQual.style.opacity = '1';
+  }
+  // Clear chart
+  currentData = null;
+  plotArea.innerHTML = '';
+  chartStatus.textContent = 'Select options and click Generate';
+  chartStatus.style.display = 'flex';
+  hiddenKeys.clear();
+  btnReset.style.display = 'none';
+  exportBtns.style.display = 'none';
+  sizeToggle.style.display = 'none';
+  playerSearchWrap.style.display = 'none';
+}
+
+// Init
+(function init() {
+  selSeason.value = new Date().getFullYear();
+  selSeason.addEventListener('change', updateSplitAvailability);
+  populateAxisDropdowns();
+  selX.value = 'SIERA';
+  selY.value = 'ERA';
+  btnGenerate.addEventListener('click', generate);
+  // Tab click handlers
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => switchMode(tab.dataset.mode));
+  });
+  selGroup.addEventListener('change', () => {
+    const isTeam = selGroup.value === 'team';
+    selQual.disabled = isTeam;
+    selQual.style.opacity = isTeam ? '0.4' : '1';
+  });
+  btnReset.addEventListener('click', () => {
+    hiddenKeys.clear();
+    zoomState = null;
+    tappedDotKey = null;
+    hideTooltip();
+    btnReset.style.display = 'none';
+    rerenderLayout();
+  });
+  btnDownload.addEventListener('click', downloadCSV);
+  btnPng.addEventListener('click', exportPNG);
+
+  // Resize observer
+  let resizeTimer;
+  const ro = new ResizeObserver(() => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(rerenderLayout, 60);
+  });
+  ro.observe(chartArea);
+
+  // Embed mode: hide controls, show only chart
+  const urlP = new URLSearchParams(window.location.search);
+  if (urlP.get('embed') === '1') document.body.classList.add('embed-mode');
+
+  // Load state from URL params and auto-generate
+  if (urlP.get('mode') === 'hitting') switchMode('hitting');
+  if (urlP.get('mode') === 'combined') switchMode('combined');
+  if (urlP.has('season')) selSeason.value = urlP.get('season');
+  if (urlP.has('split')) selSplit.value = urlP.get('split');
+  if (urlP.has('stats')) selStats.value = urlP.get('stats');
+  if (urlP.has('lg')) selLg.value = urlP.get('lg');
+  if (urlP.has('hand')) selHand.value = urlP.get('hand');
+  if (urlP.has('qual')) selQual.value = urlP.get('qual');
+  if (urlP.has('team')) selTeam.value = urlP.get('team');
+  if (urlP.has('group')) {
+    selGroup.value = urlP.get('group');
+    if (urlP.get('group') === 'team') { selQual.disabled = true; selQual.style.opacity = '0.4'; }
+  }
+  if (urlP.has('x')) selX.value = urlP.get('x');
+  if (urlP.has('y')) selY.value = urlP.get('y');
+  if (urlP.has('color')) selColor.value = urlP.get('color');
+  if (urlP.has('size')) {
+    const s = parseFloat(urlP.get('size'));
+    if ([1.0, 1.4, 1.9].includes(s)) {
+      currentDotScale = s;
+      document.querySelectorAll('.size-btn').forEach(b => {
+        const active = parseFloat(b.dataset.scale) === s;
+        b.classList.toggle('active', active);
+        b.style.background = active ? '#1a1a1a' : '#fff';
+        b.style.color = active ? '#fff' : '#555';
+      });
+    }
+  }
+  if (urlP.get('r2') === '1') chkR2.checked = true;
+  if (urlP.get('rookie') === '1') chkRookie.checked = true;
+  updateSplitAvailability();
+  if (urlP.has('season') || urlP.has('x') || urlP.has('y')) generate();
+
+  // Zoom drag — mousedown on plot background starts a selection box
+  let dragStart = null, dragCurrent = null, dragBox = null, isDragging = false;
+
+  plotArea.addEventListener('mousedown', (e) => {
+    if (e.button !== 0 || e.target.closest('.player-dot')) return;
+    dragStart = { x: e.offsetX, y: e.offsetY };
+    dragCurrent = { x: e.offsetX, y: e.offsetY };
+    isDragging = false;
+    dragBox = document.createElement('div');
+    dragBox.className = 'zoom-select';
+    dragBox.style.cssText = 'left:0;top:0;width:0;height:0;';
+    plotArea.appendChild(dragBox);
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!dragStart || !dragBox) return;
+    const rect = plotArea.getBoundingClientRect();
+    const ox = Math.max(0, Math.min(plotArea.clientWidth, e.clientX - rect.left));
+    const oy = Math.max(0, Math.min(plotArea.clientHeight, e.clientY - rect.top));
+    dragCurrent = { x: ox, y: oy };
+    if (Math.abs(ox - dragStart.x) > 4 || Math.abs(oy - dragStart.y) > 4) isDragging = true;
+    dragBox.style.left   = Math.min(dragStart.x, ox) + 'px';
+    dragBox.style.top    = Math.min(dragStart.y, oy) + 'px';
+    dragBox.style.width  = Math.abs(ox - dragStart.x) + 'px';
+    dragBox.style.height = Math.abs(oy - dragStart.y) + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!dragStart) return;
+    const end = dragCurrent || dragStart;
+    if (dragBox) { dragBox.remove(); dragBox = null; }
+    if (isDragging && currentScale) {
+      const { xMin, xMax, yMin, yMax, plotW, plotH } = currentScale;
+      const x1 = Math.min(dragStart.x, end.x), x2 = Math.max(dragStart.x, end.x);
+      const y1 = Math.min(dragStart.y, end.y), y2 = Math.max(dragStart.y, end.y);
+      if (x2 - x1 > 12 && y2 - y1 > 12) {
+        zoomState = {
+          xMin: xMin + (x1 / plotW) * (xMax - xMin),
+          xMax: xMin + (x2 / plotW) * (xMax - xMin),
+          yMin: yMax - (y2 / plotH) * (yMax - yMin),
+          yMax: yMax - (y1 / plotH) * (yMax - yMin),
+        };
+        justDragged = true;
+        setTimeout(() => { justDragged = false; }, 100);
+        btnReset.style.display = 'block';
+        rerenderLayout();
+      }
+    }
+    dragStart = null; dragCurrent = null; isDragging = false;
+  });
+})();
+
+function headshotUrl(mlbamId) {
+  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_60,q_auto:best/v1/people/${mlbamId}/headshot/67/current`;
+}
+
+// Compute sSEAGER (Simple SEAGER) for an array of hitter rows.
+// Formula: D/(A+D) − C/(C+D)  where A=zone swings, C=zone takes, D=ozone takes.
+// Requires Zone%, Z-Swing%, O-Swing%, and Pitches (all present in FG bat leaderboard).
+function addSSEAGER(players) {
+  for (const p of players) {
+    const pitches = p['Pitches'];
+    if (!pitches) { p['sSEAGER'] = null; continue; }
+    const zonePct = p['Zone%']    || 0;  // stored as 0–1 decimal
+    const zSwing  = p['Z-Swing%'] || 0;
+    const oSwing  = p['O-Swing%'] || 0;
+    const zPit = zonePct * pitches;
+    const oPit = (1 - zonePct) * pitches;
+    const A = zSwing * zPit;           // zone swings (good swing)
+    const C = (1 - zSwing) * zPit;    // zone takes  (missed opportunity)
+    const D = (1 - oSwing) * oPit;    // out-of-zone takes (good take)
+    p['sSEAGER'] = (A + D > 0 && C + D > 0) ? D / (A + D) - C / (C + D) : null;
+  }
+}
+
+// ── Adjusted Barrel (aBarrel) data ──────────────────────────────────────────
+// Public Google Sheets companion dataset maintained by @collinmyshot.
+// Columns: Player, PA, BBE, Barrels, aBarrels, Brl/BBE%, aBrl/BBE%, ..., aBrl/PA%
+const ABARREL_SHEET_URL = 'https://docs.google.com/spreadsheets/d/16WxkFwZYKcurMM0CJJr4l5mo1S6rs-yKnnr1ZfmoGjU/export?format=csv';
+const ABARREL_KEYS = new Set(['aBarrels', 'aBarrel%', 'aBarrelPA%']);
+let _aBarrelCache = null; // single cached fetch (full-season snapshot, no year param)
+
+function _normName(name) {
+  // Normalize to lowercase ASCII for fuzzy name matching
+  return (name || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z ]/g, '').trim();
+}
+
+async function fetchABarrelData() {
+  if (_aBarrelCache) return _aBarrelCache;
+  const resp = await fetch(ABARREL_SHEET_URL);
+  const text = await resp.text();
+  const lines = text.replace(/^﻿/, '').trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim());
+  const map = new Map();
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(',');
+    const row = {};
+    headers.forEach((h, j) => { row[h] = (cols[j] || '').trim(); });
+    const name = _normName(row['Player']);
+    if (!name) continue;
+    map.set(name, {
+      aBarrels:    parseFloat(row['aBarrels'])    || null,
+      aBarrelBBE:  parseFloat(row['aBrl/BBE%'])  != null ? parseFloat(row['aBrl/BBE%'])  / 100 : null,
+      aBarrelPA:   parseFloat(row['aBrl/PA%'])   != null ? parseFloat(row['aBrl/PA%'])   / 100 : null,
+    });
+  }
+  _aBarrelCache = map;
+  return map;
+}
+
+// ── Baseball Prospectus Arsenal Pro data ──────────────────────────────────────
+// Source: BP leaderboards API, arsenalpro_lb tab
+// Matched to scatter data via mlbid = xMLBAMID
+const BP_ARSENAL_KEYS = new Set(['StuffPro','PitchPro','SurpriseFactor','MovementSpread','VelocitySpread','PitchTypeProb','ExpSwStr','ExpDamage']);
+const _bpCache = new Map();
+
+async function fetchBPArsenal(season) {
+  if (_bpCache.has(season)) return _bpCache.get(season);
+  const resp = await fetch(`${BP_PROXY}?season=${season}`);
+  if (!resp.ok) throw new Error(`BP Arsenal HTTP ${resp.status}`);
+  const json = await resp.json();
+  if (json.error) throw new Error(`BP Arsenal: ${json.error}`);
+  const map = new Map();
+  for (const row of (json.results || [])) {
+    const mlbid = String(row.mlbid || '');
+    if (!mlbid) continue;
+    map.set(mlbid, {
+      StuffPro:       row.stuffpro_agg        ?? null,
+      PitchPro:       row.pitchpro_agg        ?? null,
+      SurpriseFactor: row.surprise_factor     ?? null,
+      MovementSpread: row.movement_spread     ?? null,
+      VelocitySpread: row.velocity_spread     ?? null,
+      PitchTypeProb:  row.pitch_type_probability ?? null,
+      ExpSwStr:       row.exp_swstr_rate      ?? null,
+      ExpDamage:      row.exp_damage          ?? null,
+    });
+  }
+  _bpCache.set(season, map);
+  return map;
+}
+
+// ── Baseball Prospectus Hitting data (SLGCON, EV90, SEAGER) ──────────────────
+// Source: BP leaderboards/api/v1/hitting, matched via mlbid = xMLBAMID
+const BP_HITTING_KEYS = new Set(['SLGCON','EV90','BP_SEAGER']);
+const _bpHittingCache = new Map();
+
+// ── Hitting+ (swingplus) grades ─────────────────────────────────────────────
+// Published by the Hitting+ engine, mirrored into Supabase (table `hitting_plus`)
+// with an MLBAM id so it matches FanGraphs rows by xMLBAMID. Full-season only.
+const HITTING_PLUS_KEYS = new Set(['Hitting+','Decision+','Timing+','Contact+','Power+']);
+
+async function fetchBPHitting(season) {
+  if (_bpHittingCache.has(season)) return _bpHittingCache.get(season);
+  const resp = await fetch(`${BP_HITTING_PROXY}?season=${season}`);
+  if (!resp.ok) throw new Error(`BP Hitting HTTP ${resp.status}`);
+  const json = await resp.json();
+  if (json.error) throw new Error(`BP Hitting: ${json.error}`);
+  const map = new Map();
+  for (const row of (json.results || [])) {
+    const mlbid = String(row.mlbid || '');
+    if (!mlbid) continue;
+    map.set(mlbid, {
+      SLGCON:    row.slgcon                 ?? null,
+      EV90:      row.exit_velocity_90_agg   ?? null,
+      BP_SEAGER: row.seager_agg             ?? null,
+    });
+  }
+  _bpHittingCache.set(season, map);
+  return map;
+}
+
+// Cache rookie player ID sets by "season:stats" key.
+// Fetches with ind=2 (full-season, no split) and caches the Set<playerid>.
+const _rookieIdCache = new Map();
+async function fetchRookieIds(season, stats) {
+  const key = `${season}:${stats}`;
+  if (_rookieIdCache.has(key)) return _rookieIdCache.get(key);
+  const params = new URLSearchParams({
+    pos: 'all', stats, lg: 'all', qual: '0', type: '4',
+    season, season1: season, month: '0', ind: '2',
+    pageitems: '10000', pagenum: '1', sortstat: 'WAR', sortdir: 'default',
+  });
+  const resp = await fetch(`${PROXY}?${params}`);
+  const json = await resp.json();
+  const ids = new Set((json.data || []).map(p => String(p.playerid)));
+  _rookieIdCache.set(key, ids);
+  return ids;
+}
+
+async function generate() {
+  const season = selSeason.value;
+  const isCombined = currentMode === 'combined';
+  const isTeam = isCombined || selGroup.value === 'team';
+  const isHitting = currentMode === 'hitting';
+  currentPrevYearSeason = null;   // reset each run
+  currentPrevPeriodLabel = null;  // reset each run
+
+  // Rookie filter: FanGraphs ind=2 is ignored when split params are active,
+  // so we always fetch all players (ind=0) and filter client-side against a
+  // separately fetched rookie ID set (cached per season+stats).
+  // Not applicable to team/combined mode — disable the checkbox there.
+  const rookieAvailable = !isTeam;
+  lblRookie.style.opacity = rookieAvailable ? '' : '0.4';
+  chkRookie.disabled = !rookieAvailable;
+  const indParam = '0';
+
+  // Update URL with current state
+  const urlState = new URLSearchParams({ mode: currentMode, season, split: selSplit.value });
+  if (!isCombined) {
+    urlState.set('stats', selStats.value);
+    urlState.set('lg', selLg.value);
+    urlState.set('hand', selHand.value);
+    urlState.set('qual', selQual.value);
+    urlState.set('team', selTeam.value);
+    urlState.set('group', selGroup.value);
+  }
+  urlState.set('x', selX.value);
+  urlState.set('y', selY.value);
+  if (selColor.value !== 'none') urlState.set('color', selColor.value);
+  urlState.set('size', currentDotScale);
+  if (chkR2.checked) urlState.set('r2', '1');
+  if (chkRookie.checked) urlState.set('rookie', '1');
+  history.replaceState(null, '', '?' + urlState.toString());
+  try { window.parent.postMessage({ type: 'bh:urlSync', search: '?' + urlState.toString() }, '*'); } catch(_) {}
+
+  btnGenerate.disabled = true;
+  exportBtns.style.display = 'none';
+  sizeToggle.style.display = 'none';
+  playerSearchWrap.style.display = 'none';
+  inpPlayerSearch.value = '';
+  plotArea.classList.remove('search-active');
+  chartStatus.textContent = 'Loading...';
+  chartStatus.classList.remove('error');
+  chartStatus.style.display = 'flex';
+  plotArea.innerHTML = '';
+  hiddenKeys.clear();
+  zoomState = null;
+  tappedDotKey = null;
+  currentScale = null;
+  btnReset.style.display = 'none';
+
+  try {
+    if (isCombined) {
+      // Fetch team-level batting and pitching data in parallel using team=0,ts
+      const baseParams = { pos: 'all', lg: selLg.value, qual: '0', type: '4', season, season1: season, ...getFGSplitParams(selSplit.value, season), ind: indParam, hand: '', team: '0,ts', pageitems: '100', pagenum: '1', sortstat: 'WAR', sortdir: 'default' };
+      const [batResp, pitResp] = await Promise.all([
+        fetch(`${PROXY}?${new URLSearchParams({ ...baseParams, stats: 'bat' })}`),
+        fetch(`${PROXY}?${new URLSearchParams({ ...baseParams, stats: 'pit' })}`)
+      ]);
+      if (!batResp.ok || !pitResp.ok) throw new Error('HTTP error fetching data');
+      const [batJson, pitJson] = await Promise.all([batResp.json(), pitResp.json()]);
+      if (batJson.error) throw new Error(batJson.error);
+      if (pitJson.error) throw new Error(pitJson.error);
+
+      const hitTeams = (batJson.data || []).map(t => ({ ...t, TeamNameAbb: t.TeamName || t.TeamNameAbb }));
+      const pitTeams = (pitJson.data || []).map(t => ({ ...t, TeamNameAbb: t.TeamName || t.TeamNameAbb }));
+
+      // Merge by team abbreviation
+      const pitMap = {};
+      for (const t of pitTeams) pitMap[t.TeamNameAbb] = t;
+      currentData = hitTeams.map(ht => {
+        const pt = pitMap[ht.TeamNameAbb] || {};
+        const merged = { _isTeam: true, TeamNameAbb: ht.TeamNameAbb, TeamName: ht.TeamNameAbb, PlayerName: ht.TeamNameAbb };
+        for (const k of Object.keys(ht)) {
+          if (['TeamNameAbb','TeamName','PlayerName','Name','Team'].includes(k)) continue;
+          merged['hit_' + k] = ht[k];
+        }
+        for (const k of Object.keys(pt)) {
+          if (['TeamNameAbb','TeamName','PlayerName','Name','Team'].includes(k)) continue;
+          merged['pit_' + k] = pt[k];
+        }
+        merged.total_WAR = (ht.WAR || 0) + (pt.WAR || 0);
+        return merged;
+      }).filter(t => t.TeamNameAbb);
+
+      currentGroupBy = 'team';
+    } else if (isTeam) {
+      // Use team=0,ts for FanGraphs' own team aggregation (accurate for traded players)
+      const teamParam = selTeam.value === '0' ? '0,ts' : selTeam.value;
+      const params = new URLSearchParams({
+        pos: isHitting ? selStats.value : 'all',
+        stats: isHitting ? 'bat' : selStats.value,
+        lg: selLg.value,
+        qual: '0',
+        type: '4',
+        season, season1: season,
+        ...getFGSplitParams(selSplit.value, season), ind: indParam,
+        hand: selHand.value,
+        team: teamParam,
+        pageitems: '10000', pagenum: '1',
+        sortstat: 'WAR', sortdir: 'default'
+      });
+      const resp = await fetch(`${PROXY}?${params}`);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const json = await resp.json();
+      if (json.error) throw new Error(json.error);
+      const teams = json.data;
+      if (!teams || !teams.length) throw new Error('No data returned');
+
+      currentGroupBy = 'team';
+      currentData = teams.map(t => ({
+        ...t, _isTeam: true,
+        TeamNameAbb: t.TeamName || t.TeamNameAbb,
+        PlayerName: t.TeamName || t.TeamNameAbb,
+      }));
+    } else {
+      const effectiveQual = selQual.value;
+
+      // When using month=1000 (custom date range), FanGraphs' team filter is
+      // unreliable — it silently drops players.  Always fetch team=0 for these
+      // splits and apply the team filter client-side instead.
+      const fgSplitParams = getFGSplitParams(selSplit.value, season);
+      const usesCustomRange = fgSplitParams.month === '1000';
+      const wantTeam = selTeam.value !== '0';
+      const apiTeam = (usesCustomRange && wantTeam) ? '0' : selTeam.value;
+
+      const params = new URLSearchParams({
+        pos: isHitting ? selStats.value : 'all',
+        stats: isHitting ? 'bat' : selStats.value,
+        lg: selLg.value,
+        qual: effectiveQual,
+        type: '4',
+        season, season1: season,
+        ...fgSplitParams, ind: indParam,
+        hand: selHand.value,
+        team: apiTeam,
+        pageitems: '10000', pagenum: '1',
+        sortstat: 'WAR', sortdir: 'default'
+      });
+      const resp = await fetch(`${PROXY}?${params}`);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const json = await resp.json();
+      if (json.error) throw new Error(json.error);
+      let players = json.data;
+      if (!players || !players.length) throw new Error('No data returned');
+
+      // Client-side team filter (only needed when we bypassed the API filter above)
+      if (usesCustomRange && wantTeam) {
+        const teamAbbr = selTeam.options[selTeam.selectedIndex].textContent.trim();
+        players = players.filter(p => p.TeamNameAbb === teamAbbr || p.Team === teamAbbr);
+        if (!players.length) throw new Error('No data returned');
+      }
+
+      currentGroupBy = 'player';
+      currentData = players;
+    }
+
+    // Rookie filter — fetch a full-season ind=2 ID set and filter client-side
+    // so it works correctly even when splits are active (FG ignores ind=2 with splits).
+    if (rookieAvailable && chkRookie.checked) {
+      try {
+        const statsParam = isHitting ? 'bat' : (selStats.value || 'pit');
+        const rookieIds = await fetchRookieIds(season, statsParam);
+        currentData = currentData.filter(p => rookieIds.has(String(p.playerid)));
+        if (!currentData.length) throw new Error('No rookie data found for these filters');
+      } catch (rookieErr) {
+        if (rookieErr.message.includes('rookie')) throw rookieErr;
+        // Non-fatal: network error fetching rookie list — show all players
+        console.warn('Rookie ID fetch failed:', rookieErr.message);
+      }
+    }
+
+    // Compute composite stats
+    for (const p of currentData) {
+      p['SV+HLD'] = (p.SV || 0) + (p.HLD || 0);
+      p['SV+HLD+W'] = (p.SV || 0) + (p.HLD || 0) + (p.W || 0);
+      p['SB+CS'] = (p.SB || 0) + (p.CS || 0);
+      p['XBH']   = (p['2B'] || 0) + (p['3B'] || 0) + (p.HR || 0);
+      p['TOB'] = (p.H || 0) + (p.BB || 0) + (p.HBP || 0);
+      // In team mode, G = sum of individual player games (not team games played).
+      // Use GS (= team games for pitchers) or PA/38.15 (estimate for hitters) instead.
+      const _G = p._isTeam ? (isHitting ? p.PA / 38.15 : (p.GS || p.IP / 9)) : p.G;
+      p['R/G']  = (_G || 0) > 0 ? p.R / _G : null;
+      p['RA/G'] = (_G || 0) > 0 ? p.R / _G : null;
+      // Combined mode: prefixed versions for hit_R/G and pit_RA/G
+      if (p['hit_G'] != null) {
+        const _hitG = p._isTeam ? p['hit_PA'] / 38.15 : p['hit_G'];
+        p['hit_R/G'] = (_hitG || 0) > 0 ? p['hit_R'] / _hitG : null;
+      }
+      if (p['pit_G'] != null) {
+        const _pitG = p._isTeam ? (p['pit_GS'] || p['pit_IP'] / 9) : p['pit_G'];
+        p['pit_RA/G'] = (_pitG || 0) > 0 ? p['pit_R'] / _pitG : null;
+      }
+      // wOBACON = wOBA restricted to contact (no BB/HBP in numerator or denominator)
+      // Weights from FanGraphs Guts (2024): 1B=0.882, 2B=1.254, 3B=1.590, HR=2.050
+      // Denominator: AB - SO + SF  (balls put in play incl. HR and sac flies)
+      const _wOBACON_d = (p.AB || 0) - (p.SO || 0) + (p.SF || 0);
+      p['wOBACON'] = _wOBACON_d > 0
+        ? (0.882*(p['1B']||0) + 1.254*(p['2B']||0) + 1.590*(p['3B']||0) + 2.050*(p.HR||0)) / _wOBACON_d
+        : null;
+    }
+    if (isHitting) addSSEAGER(currentData);
+
+    // Fetch previous season data when Y = "Prev Year (Same Stat)"
+    if (selY.value === '__prev_year__' && !isCombined) {
+      const prevSeason = String(parseInt(season) - 1);
+      // Team mode: no qualifier filter (use all teams); player mode: 50 IP / 200 PA
+      const prevQual = isTeam ? '0' : (isHitting ? '200' : '50');
+      const prevParams = new URLSearchParams({
+        pos: 'all',
+        stats: isHitting ? 'bat' : selStats.value,
+        lg: 'all',
+        qual: prevQual,
+        type: '4',
+        season: prevSeason, season1: prevSeason,
+        month: '0', ind: indParam,
+        hand: '', team: isTeam ? '0,ts' : '0',
+        pageitems: '10000', pagenum: '1',
+        sortstat: 'WAR', sortdir: 'default'
+      });
+      try {
+        const prevResp = await fetch(`${PROXY}?${prevParams}`);
+        if (prevResp.ok) {
+          const prevJson = await prevResp.json();
+          if (!prevJson.error && prevJson.data?.length) {
+            let prevPlayers = prevJson.data;
+
+            // Compute composites on prev year data so they work as X axes
+            for (const p of prevPlayers) {
+              p['SV+HLD'] = (p.SV || 0) + (p.HLD || 0);
+              p['SV+HLD+W'] = (p.SV || 0) + (p.HLD || 0) + (p.W || 0);
+              p['SB+CS'] = (p.SB || 0) + (p.CS || 0);
+              p['XBH']   = (p['2B'] || 0) + (p['3B'] || 0) + (p.HR || 0);
+              p['TOB'] = (p.H || 0) + (p.BB || 0) + (p.HBP || 0);
+              const _G = p._isTeam ? (isHitting ? p.PA / 38.15 : (p.GS || p.IP / 9)) : p.G;
+              p['R/G']  = (_G || 0) > 0 ? p.R / _G : null;
+              p['RA/G'] = (_G || 0) > 0 ? p.R / _G : null;
+              if (p['hit_G'] != null) {
+                const _hitG = p._isTeam ? p['hit_PA'] / 38.15 : p['hit_G'];
+                p['hit_R/G'] = (_hitG || 0) > 0 ? p['hit_R'] / _hitG : null;
+              }
+              if (p['pit_G'] != null) {
+                const _pitG = p._isTeam ? (p['pit_GS'] || p['pit_IP'] / 9) : p['pit_G'];
+                p['pit_RA/G'] = (_pitG || 0) > 0 ? p['pit_R'] / _pitG : null;
+              }
+              const _wOBACON_d = (p.AB || 0) - (p.SO || 0) + (p.SF || 0);
+              p['wOBACON'] = _wOBACON_d > 0
+                ? (0.882*(p['1B']||0) + 1.254*(p['2B']||0) + 1.590*(p['3B']||0) + 2.050*(p.HR||0)) / _wOBACON_d
+                : null;
+            }
+            if (isHitting) addSSEAGER(prevPlayers);
+
+            // If X is a Savant stat, enrich prev year players with Savant data.
+            const xBkPrev = selX.value.replace(/^(hit_|pit_)/, '');
+            const savantDetail = SAVANT_FIELD_DETAIL[xBkPrev];
+            // pitcherFallback stats (wOBA, SLG): FG already provides them for hitters
+            if (savantDetail && !(savantDetail.pitcherFallback && isHitting)) {
+              try {
+                const lbType = (isHitting ? 'batter' : 'pitcher') + (isTeam ? '-team' : '');
+                const skipKeys = isHitting ? new Set(['xERA']) : new Set(['xwOBA', 'xSLG']);
+                if (savantDetail.leaderEp === 'batted_ball') {
+                  const bbPrevRows = await fetchSavantBattedBall(prevSeason, isHitting ? 'batter' : 'pitcher');
+                  prevPlayers = applySavantRows(prevPlayers, { battedBall: bbPrevRows }, isTeam, '', skipKeys, false);
+                } else if (savantDetail.leaderEp === 'bat_tracking_timing') {
+                  const timingPrevRows = await fetchSavantSwingTiming(prevSeason, isHitting ? 'batter' : 'pitcher');
+                  prevPlayers = applySavantRows(prevPlayers, { swingTiming: timingPrevRows }, isTeam, '', skipKeys, false);
+                } else if (savantDetail.leaderEp === 'bat_tracking') {
+                  const btPlayerType = isHitting ? 'batter' : 'pitcher';
+                  if (savantDetail.leaderCol) {
+                    // Use leaderboard with seasonStart/seasonEnd for correct prior-year values
+                    const btRows = await fetchSavantBatTracking(prevSeason, btPlayerType);
+                    prevPlayers = applySavantRows(prevPlayers, { search: null, statcast: null, expected: null, batTracking: btRows }, isTeam, '', skipKeys, false);
+                  } else if (savantDetail.searchCol) {
+                    // Search-only stats (AttackAngle, AttackDir, SwingTilt) — no leaderboard column
+                    const srchGroup = isTeam ? 'team' : 'name';
+                    const srchRows = await fetchSavantSearch(btPlayerType, srchGroup, prevSeason, null);
+                    prevPlayers = applySavantRows(prevPlayers, { search: srchRows, statcast: null, expected: null }, isTeam, '', skipKeys, true);
+                  }
+                } else if (savantDetail.leaderEp === 'custom') {
+                  const playerType = isHitting ? 'batter' : 'pitcher';
+                  const customRows = await fetchSavantCustom(playerType, prevSeason, savantDetail.selections);
+                  prevPlayers = applySavantRows(prevPlayers, { search: null, statcast: null, expected: null, custom: customRows }, isTeam, '', skipKeys, false);
+                } else {
+                  const [scRows, expRows] = await Promise.all([
+                    savantDetail.leaderEp === 'statcast'
+                      ? fetchSavantLeaderboard(lbType, 'statcast', prevSeason)
+                      : Promise.resolve(null),
+                    savantDetail.leaderEp === 'expected_statistics'
+                      ? fetchSavantLeaderboard(lbType, 'expected_statistics', prevSeason)
+                      : Promise.resolve(null),
+                  ]);
+                  prevPlayers = applySavantRows(prevPlayers, { search: null, statcast: scRows, expected: expRows }, isTeam, '', skipKeys, false);
+                }
+              } catch (savantPrevErr) {
+                console.warn('Prev year Savant fetch failed:', savantPrevErr.message);
+              }
+            }
+
+            // Pitcher wOBACON (prev year): if wOBACON is the X axis, ensure wOBA is fetched
+            if (!isHitting && !isTeam && xBkPrev === 'wOBACON') {
+              try {
+                if (!SAVANT_FIELD_DETAIL[xBkPrev]) { // wOBACON not in SAVANT_FIELD_DETAIL — fetch manually
+                  const expRows = await fetchSavantLeaderboard('pitcher', 'expected_statistics', prevSeason);
+                  prevPlayers = applySavantRows(prevPlayers, { expected: expRows }, isTeam, '', skipKeys, false);
+                }
+                for (const p of prevPlayers) {
+                  if (p.wOBA != null && (p.TBF || 0) > 0 && p.wOBACON == null) {
+                    const uBB = (p.BB || 0) - (p.IBB || 0);
+                    const num = p.wOBA * p.TBF - 0.696 * uBB - 0.726 * (p.HBP || 0);
+                    const den = p.TBF - (p.BB || 0) - (p.IBB || 0) - (p.HBP || 0) - (p.SO || 0);
+                    p['wOBACON'] = den > 0 ? num / den : null;
+                  }
+                }
+              } catch (pitWobPrevErr) {
+                console.warn('Prev year pitcher wOBACON derivation failed:', pitWobPrevErr.message);
+              }
+            }
+
+            // If X is a BP Hitting stat, enrich prev year players with BP hitting data.
+            if (isHitting && !isTeam && BP_HITTING_KEYS.has(xBkPrev)) {
+              try {
+                const bpHitMap = await fetchBPHitting(prevSeason);
+                for (const p of prevPlayers) {
+                  const mlbid = String(p.xMLBAMID || '');
+                  const bh = bpHitMap.get(mlbid);
+                  p['SLGCON']    = bh?.SLGCON    ?? null;
+                  p['EV90']      = bh?.EV90      ?? null;
+                  p['BP_SEAGER'] = bh?.BP_SEAGER ?? null;
+                }
+              } catch (bpHitPrevErr) {
+                console.warn('Prev year BP Hitting fetch failed:', bpHitPrevErr.message);
+              }
+            }
+
+            // If X is a BP Arsenal stat, enrich prev year players with BP data.
+            if (!isHitting && !isTeam && BP_ARSENAL_KEYS.has(xBkPrev)) {
+              try {
+                const bpMap = await fetchBPArsenal(prevSeason);
+                for (const p of prevPlayers) {
+                  const mlbid = String(p.xMLBAMID || '');
+                  const bp = bpMap.get(mlbid);
+                  p['StuffPro']       = bp?.StuffPro       ?? null;
+                  p['PitchPro']       = bp?.PitchPro        ?? null;
+                  p['SurpriseFactor'] = bp?.SurpriseFactor  ?? null;
+                  p['MovementSpread'] = bp?.MovementSpread  ?? null;
+                  p['VelocitySpread'] = bp?.VelocitySpread  ?? null;
+                  p['PitchTypeProb']  = bp?.PitchTypeProb   ?? null;
+                  p['ExpSwStr']       = bp?.ExpSwStr         ?? null;
+                  p['ExpDamage']      = bp?.ExpDamage        ?? null;
+                }
+              } catch (bpPrevErr) {
+                console.warn('Prev year BP Arsenal fetch failed:', bpPrevErr.message);
+              }
+            }
+
+            // Post-Savant derived stats (same as main flow)
+            for (const p of prevPlayers) {
+              p['BarrelPA%'] = (p.PA || 0) > 0 ? (p.Barrels || 0) / (p.PA || 0) : null;
+            }
+
+            const xKeyRaw = selX.value;
+            const prevMap = {};
+            for (const p of prevPlayers) {
+              // Team mode: key by TeamName (FG's team abbr); player mode: key by playerid
+              const key = isTeam ? (p.TeamName || p.TeamNameAbb) : p.playerid;
+              if (key != null) prevMap[key] = p[xKeyRaw] ?? null;
+            }
+            for (const p of currentData) {
+              const key = isTeam ? (p.TeamName || p.TeamNameAbb) : p.playerid;
+              p['__prev_year__'] = prevMap[key] ?? null;
+            }
+            currentPrevYearSeason = parseInt(prevSeason);
+          }
+        }
+      } catch (prevErr) {
+        console.warn('Prev year fetch failed:', prevErr.message);
+      }
+    }
+
+    // Fetch prev-period data when Y = "Prev Period (Same Stat)"
+    if (selY.value === '__prev_period__' && !isCombined) {
+      const prevPeriodFGParams = getPrevPeriodFGParams(selSplit.value, season);
+      const prevPeriodLabel    = getPrevPeriodLabel(selSplit.value);
+      if (prevPeriodFGParams && prevPeriodLabel) {
+        currentPrevPeriodLabel = prevPeriodLabel;
+        // Use qual=0 for the prev period — the period is shorter so standard IP/PA
+        // thresholds (50 IP, 200 PA) would exclude almost everyone. Players without
+        // enough prev-period data simply won't appear on the chart (their y value will be null).
+        const prevQual = '0';
+        const prevParams = new URLSearchParams({
+          pos: isHitting ? selStats.value : 'all',
+          stats: isHitting ? 'bat' : selStats.value,
+          lg: 'all',
+          qual: prevQual,
+          type: '4',
+          season, season1: season,
+          ...prevPeriodFGParams, ind: indParam,
+          hand: '', team: isTeam ? '0,ts' : '0',
+          pageitems: '10000', pagenum: '1',
+          sortstat: 'WAR', sortdir: 'default'
+        });
+        try {
+          const prevResp = await fetch(`${PROXY}?${prevParams}`);
+          if (prevResp.ok) {
+            const prevJson = await prevResp.json();
+            if (!prevJson.error && prevJson.data?.length) {
+              let prevPlayers = prevJson.data;
+
+              // Compute composites on prev period data
+              for (const p of prevPlayers) {
+                p['SV+HLD'] = (p.SV || 0) + (p.HLD || 0);
+                p['SV+HLD+W'] = (p.SV || 0) + (p.HLD || 0) + (p.W || 0);
+                p['SB+CS'] = (p.SB || 0) + (p.CS || 0);
+                p['XBH']   = (p['2B'] || 0) + (p['3B'] || 0) + (p.HR || 0);
+                p['TOB'] = (p.H || 0) + (p.BB || 0) + (p.HBP || 0);
+                const _wOBACON_d = (p.AB || 0) - (p.SO || 0) + (p.SF || 0);
+                p['wOBACON'] = _wOBACON_d > 0
+                  ? (0.882*(p['1B']||0) + 1.254*(p['2B']||0) + 1.590*(p['3B']||0) + 2.050*(p.HR||0)) / _wOBACON_d
+                  : null;
+              }
+              if (isHitting) addSSEAGER(prevPlayers);
+
+              // Savant enrichment for the prior period (only sources that support date ranges)
+              const xBkPrev = selX.value.replace(/^(hit_|pit_)/, '');
+              const savantDetail = SAVANT_FIELD_DETAIL[xBkPrev];
+              const prevSavantDateRange = getPrevPeriodSavantDateRange(selSplit.value, season);
+              // pitcherFallback stats (wOBA, SLG): FG provides them for hitters; no date-range for pitchers
+              if (savantDetail && prevSavantDateRange && !(savantDetail.pitcherFallback && isHitting)) {
+                try {
+                  const skipKeys = isHitting ? new Set(['xERA']) : new Set(['xwOBA', 'xSLG']);
+                  if (savantDetail.leaderEp === 'batted_ball') {
+                    const bbPrevRows = await fetchSavantBattedBall(season, isHitting ? 'batter' : 'pitcher', prevSavantDateRange);
+                    prevPlayers = applySavantRows(prevPlayers, { battedBall: bbPrevRows }, isTeam, '', skipKeys, false);
+                  } else if (savantDetail.leaderEp === 'bat_tracking_timing') {
+                    // Timing endpoint has no date-range filtering; skip for prev period
+                  } else if (savantDetail.leaderEp === 'bat_tracking') {
+                    const btPlayerType = isHitting ? 'batter' : 'pitcher';
+                    if (savantDetail.leaderCol) {
+                      const btRows = await fetchSavantBatTracking(season, btPlayerType, prevSavantDateRange);
+                      prevPlayers = applySavantRows(prevPlayers, { search: null, statcast: null, expected: null, batTracking: btRows }, isTeam, '', skipKeys, false);
+                    } else if (savantDetail.searchCol) {
+                      const srchGroup = isTeam ? 'team' : 'name';
+                      const srchRows = await fetchSavantSearch(btPlayerType, srchGroup, season, prevSavantDateRange);
+                      prevPlayers = applySavantRows(prevPlayers, { search: srchRows, statcast: null, expected: null }, isTeam, '', skipKeys, true);
+                    }
+                  } else if (savantDetail.searchCol) {
+                    // Stats with a searchCol can be queried via statcast_search for the period
+                    const srchGroup = isTeam ? 'team' : 'name';
+                    const playerType = isHitting ? 'batter' : 'pitcher';
+                    const srchRows = await fetchSavantSearch(playerType, srchGroup, season, prevSavantDateRange);
+                    prevPlayers = applySavantRows(prevPlayers, { search: srchRows, statcast: null, expected: null }, isTeam, '', skipKeys, true);
+                  }
+                  // Note: statcast/expected_statistics leaderboard-only stats don't support date ranges
+                  // and BP data (Arsenal/Hitting) has no date filter — skip for prev period
+                } catch (savantPrevErr) {
+                  console.warn('Prev period Savant fetch failed:', savantPrevErr.message);
+                }
+              }
+
+              // Post-Savant derived stats (same as main flow)
+              for (const p of prevPlayers) {
+                p['BarrelPA%'] = (p.PA || 0) > 0 ? (p.Barrels || 0) / (p.PA || 0) : null;
+              }
+
+              const xKeyRaw = selX.value;
+              const prevMap = {};
+              for (const p of prevPlayers) {
+                const key = isTeam ? (p.TeamName || p.TeamNameAbb) : p.playerid;
+                if (key != null) prevMap[key] = p[xKeyRaw] ?? null;
+              }
+              for (const p of currentData) {
+                const key = isTeam ? (p.TeamName || p.TeamNameAbb) : p.playerid;
+                p['__prev_period__'] = prevMap[key] ?? null;
+              }
+            }
+          }
+        } catch (prevPeriodErr) {
+          console.warn('Prev period fetch failed:', prevPeriodErr.message);
+        }
+      }
+    }
+
+    // Enrich with fresh Baseball Savant data for statcast/xstat metrics
+    const xBk = baseKey(selX.value), yBk = baseKey(selY.value);
+    const colorBk = selColor.value !== 'none' ? baseKey(selColor.value) : null;
+    // All three axes (x, y, color) may need Savant enrichment
+    const axisKeys = [xBk, yBk, ...(colorBk ? [colorBk] : [])];
+    try {
+      // Combined mode always uses leaderboard (no split controls shown)
+      const dateRange = isCombined ? null : getSavantDateRange(selSplit.value, season);
+      const useSearch = dateRange !== null;
+
+      // Warn if a split is active but any axis stat can't support splits (no searchCol)
+      if (useSearch) {
+        const optionLabel = key => {
+          for (const sel of [selX, selY, selColor]) {
+            const opt = [...sel.options].find(o => o.value === key);
+            if (opt) return opt.text;
+          }
+          return key;
+        };
+        const incompatibleKeys = [...new Set(
+          axisKeys
+            .map(k => baseKey(k))
+            .filter(k => ABARREL_KEYS.has(k) || (SAVANT_FIELD_DETAIL[k] && !SAVANT_FIELD_DETAIL[k].pitcherFallback && (SAVANT_FIELD_DETAIL[k].searchCol === null || SAVANT_FIELD_DETAIL[k].leaderEp === 'custom') && SAVANT_FIELD_DETAIL[k].leaderEp !== 'batted_ball' && SAVANT_FIELD_DETAIL[k].leaderEp !== 'bat_tracking' && SAVANT_FIELD_DETAIL[k].leaderEp !== 'bat_tracking_timing'))
+        )];
+        if (incompatibleKeys.length) showSplitWarning(incompatibleKeys.map(optionLabel));
+      }
+
+      // Pitcher wOBACON is derived from wOBA (Savant) + FG counting stats — not in SAVANT_FIELD_DETAIL
+      const needsPitcherWobacon = !isHitting && !isTeam && axisKeys.some(k => baseKey(k) === 'wOBACON');
+      // Helper: does any axis need a particular leaderboard endpoint?
+      // pitcherFallback stats (wOBA, SLG) are skipped for hitters — FG already provides them.
+      const needsLbEp = ep => {
+        if (ep === 'expected_statistics' && needsPitcherWobacon) return true;
+        return axisKeys.some(k => {
+          const d = SAVANT_FIELD_DETAIL[k];
+          return d?.leaderEp === ep && (!d.pitcherFallback || !isHitting);
+        });
+      };
+      // Does any axis have a savant key at all?
+      const needsAnySavant = needsPitcherWobacon || axisKeys.some(k => {
+        const d = SAVANT_FIELD_DETAIL[k];
+        return d && (!d.pitcherFallback || !isHitting);
+      });
+      // Bat tracking stats that have a searchCol — need statcast_search even in full-season mode
+      const needsBtSearch = isHitting && axisKeys.some(k => {
+        const d = SAVANT_FIELD_DETAIL[k];
+        return d?.leaderEp === 'bat_tracking' && !!d.searchCol;
+      });
+      // Does any axis need statcast_search (has a searchCol)?
+      const needsSearch = needsBtSearch || (useSearch && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.searchCol));
+      // Do we still need leaderboard even in search mode?
+      const needsLbEvenWithSearch = useSearch && axisKeys.some(k => {
+        const d = SAVANT_FIELD_DETAIL[k];
+        return d && !d.searchCol && !d.pitcherFallback && d.leaderEp !== 'bat_tracking' && d.leaderEp !== 'batted_ball' && d.leaderEp !== 'bat_tracking_timing';
+      });
+      // Bat tracking leaderboard: hitters OR pitchers (against), always full-season player-level
+      const needsBatTracking = !isTeam && axisKeys.some(k => {
+        const d = SAVANT_FIELD_DETAIL[k];
+        return d?.leaderEp === 'bat_tracking' && !!d.leaderCol;
+      });
+      // Batted-ball direction leaderboard: always full-season, player-level
+      const needsBattedBall = !isTeam && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'batted_ball');
+      // Swing timing + miss distance leaderboard: full-season only, player-level
+      const needsSwingTiming = !isTeam && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'bat_tracking_timing');
+      // Custom leaderboard stats (e.g. xwOBACON) — always full-season, player-level only
+      const customSelections = axisKeys.flatMap(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'custom' ? SAVANT_FIELD_DETAIL[k].selections : []);
+      const needsCustom = !isTeam && customSelections.length > 0;
+
+      if (isCombined) {
+        // Combined: hit_ and pit_ sides use leaderboard
+        const xIsHit = selX.value.startsWith('hit_'), yIsHit = selY.value.startsWith('hit_');
+        const xIsPit = selX.value.startsWith('pit_'), yIsPit = selY.value.startsWith('pit_');
+        const hitNeedsSC  = (xIsHit && SAVANT_FIELD_DETAIL[xBk]?.leaderEp === 'statcast')            || (yIsHit && SAVANT_FIELD_DETAIL[yBk]?.leaderEp === 'statcast');
+        const hitNeedsExp = (xIsHit && SAVANT_FIELD_DETAIL[xBk]?.leaderEp === 'expected_statistics') || (yIsHit && SAVANT_FIELD_DETAIL[yBk]?.leaderEp === 'expected_statistics');
+        const pitNeedsSC  = (xIsPit && SAVANT_FIELD_DETAIL[xBk]?.leaderEp === 'statcast')            || (yIsPit && SAVANT_FIELD_DETAIL[yBk]?.leaderEp === 'statcast');
+        const pitNeedsExp = (xIsPit && SAVANT_FIELD_DETAIL[xBk]?.leaderEp === 'expected_statistics') || (yIsPit && SAVANT_FIELD_DETAIL[yBk]?.leaderEp === 'expected_statistics');
+        const [hitSC, hitExp, pitSC, pitExp] = await Promise.all([
+          hitNeedsSC  ? fetchSavantLeaderboard('batter-team',  'statcast',            season) : null,
+          hitNeedsExp ? fetchSavantLeaderboard('batter-team',  'expected_statistics', season) : null,
+          pitNeedsSC  ? fetchSavantLeaderboard('pitcher-team', 'statcast',            season) : null,
+          pitNeedsExp ? fetchSavantLeaderboard('pitcher-team', 'expected_statistics', season) : null,
+        ].map(p => p instanceof Promise ? p : Promise.resolve(p)));
+        if (hitSC || hitExp) currentData = applySavantRows(currentData, { search: null, statcast: hitSC, expected: hitExp }, true, 'hit_', new Set(['xERA']));
+        if (pitSC || pitExp) currentData = applySavantRows(currentData, { search: null, statcast: pitSC, expected: pitExp }, true, 'pit_', new Set());
+
+      } else if (needsAnySavant) {
+        const playerType = isHitting ? 'batter' : 'pitcher';
+        const lbType     = playerType + (isTeam ? '-team' : '');
+        const srchGroup  = isTeam ? 'team' : 'name';
+        const skipKeys   = isHitting ? new Set(['xERA']) : new Set();
+
+        const [srchRows, scRows, expRows, btRows, bbRows, customRows, timingRows] = await Promise.all([
+          // statcast_search: one call covers all searchCol stats for any date range
+          needsSearch ? fetchSavantSearch(playerType, srchGroup, season, dateRange) : Promise.resolve(null),
+          // Leaderboard statcast: full season, or fallback for stats with no searchCol
+          (!useSearch && needsLbEp('statcast')) || needsLbEvenWithSearch
+            ? fetchSavantLeaderboard(lbType, 'statcast', season) : Promise.resolve(null),
+          // Leaderboard expected_statistics: full season, or fallback for xERA (no searchCol)
+          (!useSearch && needsLbEp('expected_statistics')) || (needsLbEvenWithSearch && needsLbEp('expected_statistics'))
+            ? fetchSavantLeaderboard(lbType, 'expected_statistics', season) : Promise.resolve(null),
+          // Bat tracking leaderboard: hitters or pitchers (against), always full-season
+          needsBatTracking ? fetchSavantBatTracking(season, playerType, dateRange) : Promise.resolve(null),
+          // Batted-ball direction leaderboard: always full-season, player-level
+          needsBattedBall ? fetchSavantBattedBall(season, playerType, dateRange) : Promise.resolve(null),
+          // Custom leaderboard: player-level only (e.g. xwOBACON)
+          needsCustom ? fetchSavantCustom(playerType, season, [...new Set(customSelections)]) : Promise.resolve(null),
+          // Swing timing + miss distance: full-season only, player-level
+          needsSwingTiming ? fetchSavantSwingTiming(season, playerType) : Promise.resolve(null),
+        ]);
+        currentData = applySavantRows(currentData, { search: srchRows, statcast: scRows, expected: expRows, batTracking: btRows, battedBall: bbRows, custom: customRows, swingTiming: timingRows }, isTeam, '', skipKeys, useSearch);
+      }
+    } catch (savantErr) {
+      console.warn('Baseball Savant enrichment failed — using FanGraphs data:', savantErr.message);
+    }
+
+    // Post-Savant derived stats (need both Savant and FG fields to be present)
+    for (const p of currentData) {
+      // Barrel/PA% — stored as 0-1 fraction (like other PCT_KEYS) so displayVal ×100 works correctly
+      p['BarrelPA%'] = (p.PA || 0) > 0 ? (p.Barrels || 0) / (p.PA || 0) : null;
+      // Pitcher wOBACON: derived from Savant wOBA + FG counting stats
+      // Formula: (wOBA×TBF - 0.696×uBB - 0.726×HBP) / (TBF - BB - IBB - HBP - SO)
+      if (!isHitting && p.wOBA != null && (p.TBF || 0) > 0 && p.wOBACON == null) {
+        const uBB = (p.BB || 0) - (p.IBB || 0);
+        const num = p.wOBA * p.TBF - 0.696 * uBB - 0.726 * (p.HBP || 0);
+        const den = p.TBF - (p.BB || 0) - (p.IBB || 0) - (p.HBP || 0) - (p.SO || 0);
+        p['wOBACON'] = den > 0 ? num / den : null;
+      }
+    }
+
+    // Adjusted Barrel enrichment — fetched from @collinmyshot's public Google Sheet,
+    // matched to currentData by normalized player name.
+    if (isHitting && !isTeam && axisKeys.some(k => ABARREL_KEYS.has(baseKey(k)))) {
+      try {
+        const aBarrelMap = await fetchABarrelData();
+        for (const p of currentData) {
+          const key = _normName(p.PlayerName || p.Name || '');
+          const ab = aBarrelMap.get(key);
+          p['aBarrels']    = ab?.aBarrels   ?? null;
+          p['aBarrel%']    = ab?.aBarrelBBE ?? null;
+          p['aBarrelPA%']  = ab?.aBarrelPA  ?? null;
+        }
+      } catch (aBarrelErr) {
+        console.warn('aBarrel fetch failed:', aBarrelErr.message);
+      }
+    }
+
+    // BP Hitting enrichment — hitter mode only, matched by xMLBAMID
+    if (isHitting && !isTeam && axisKeys.some(k => BP_HITTING_KEYS.has(baseKey(k)))) {
+      try {
+        const bpHitMap = await fetchBPHitting(season);
+        for (const p of currentData) {
+          const mlbid = String(p.xMLBAMID || '');
+          const bh = bpHitMap.get(mlbid);
+          p['SLGCON']    = bh?.SLGCON    ?? null;
+          p['EV90']      = bh?.EV90      ?? null;
+          p['BP_SEAGER'] = bh?.BP_SEAGER ?? null;
+        }
+      } catch (bpHitErr) {
+        console.warn('BP Hitting fetch failed:', bpHitErr.message);
+      }
+    }
+
+    // Hitting+ (swingplus) enrichment — hitter mode, full-season only.
+    // The engine only publishes full-season grades, so leave them blank on date-range splits.
+    if (isHitting && selSplit.value === '0' && axisKeys.some(k => HITTING_PLUS_KEYS.has(baseKey(k)))) {
+      try {
+        if (!isTeam) {
+          // Player mode: match by MLBAM ID
+          const hpResp = await fetch(
+            `${SUPABASE_URL}/rest/v1/hitting_plus?season=eq.${season}&select=mlbamid,hitting_plus,decision,timing,contact,power`,
+            { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
+          );
+          if (hpResp.ok) {
+            const hpData = await hpResp.json();
+            const hpById = new Map();
+            for (const row of hpData) {
+              if (row.mlbamid != null) hpById.set(String(row.mlbamid), row);
+            }
+            for (const p of currentData) {
+              const row = hpById.get(String(p.xMLBAMID || ''));
+              p['Hitting+']  = row?.hitting_plus ?? null;
+              p['Decision+'] = row?.decision     ?? null;
+              p['Timing+']   = row?.timing       ?? null;
+              p['Contact+']  = row?.contact      ?? null;
+              p['Power+']    = row?.power         ?? null;
+            }
+          }
+        } else {
+          // Team mode: fetch pre-aggregated team averages from hitting_plus_teams.
+          // The table stores Savant-style abbreviations; FG_TO_SAVANT_TEAM converts
+          // FanGraphs abbrevs to Savant so we can match.
+          const hpResp = await fetch(
+            `${SUPABASE_URL}/rest/v1/hitting_plus_teams?season=eq.${season}&select=team,hitting_plus,decision,timing,contact,power`,
+            { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
+          );
+          if (hpResp.ok) {
+            const hpData = await hpResp.json();
+            // index by Savant team abbrev
+            const hpByTeam = new Map();
+            for (const row of hpData) {
+              if (row.team) hpByTeam.set(row.team, row);
+            }
+            for (const p of currentData) {
+              const savantAbbr = FG_TO_SAVANT_TEAM[p.TeamNameAbb] ?? p.TeamNameAbb;
+              const row = hpByTeam.get(savantAbbr);
+              p['Hitting+']  = row?.hitting_plus ?? null;
+              p['Decision+'] = row?.decision     ?? null;
+              p['Timing+']   = row?.timing       ?? null;
+              p['Contact+']  = row?.contact      ?? null;
+              p['Power+']    = row?.power         ?? null;
+            }
+          }
+        }
+      } catch (hpErr) {
+        console.warn('Hitting+ fetch failed:', hpErr.message);
+      }
+    }
+
+    // CoLev enrichment — pitcher mode only, matched by MLBAM ID then normalized name
+    const COLEV_KEYS = new Set(['CoLev', 'CoLev_scaled', 'CoLev_dRE']);
+    if (!isHitting && !isTeam && axisKeys.some(k => COLEV_KEYS.has(baseKey(k)))) {
+      try {
+        const colevResp = await fetch(
+          `${SUPABASE_URL}/rest/v1/colev?season=eq.${season}&select=name,mlbamid,colev,colev_scaled,colev_dre`,
+          { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
+        );
+        if (colevResp.ok) {
+          const colevData = await colevResp.json();
+          const colevById = new Map();
+          const colevByName = new Map();
+          for (const row of colevData) {
+            if (row.mlbamid) colevById.set(String(row.mlbamid), row);
+            const nk = (row.name || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+            if (nk) colevByName.set(nk, row);
+          }
+          for (const p of currentData) {
+            const row = colevById.get(String(p.xMLBAMID || ''))
+                     || colevByName.get((p.PlayerName || p.Name || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim());
+            p['CoLev']        = row?.colev        ?? null;
+            p['CoLev_scaled'] = row?.colev_scaled ?? null;
+            p['CoLev_dRE']    = row?.colev_dre    ?? null;
+          }
+        }
+      } catch (colevErr) {
+        console.warn('CoLev fetch failed:', colevErr.message);
+      }
+    }
+
+    // BP Arsenal Pro enrichment — pitcher mode only, matched by xMLBAMID
+    if (!isHitting && !isTeam && axisKeys.some(k => BP_ARSENAL_KEYS.has(baseKey(k)))) {
+      try {
+        const bpMap = await fetchBPArsenal(season);
+        for (const p of currentData) {
+          const mlbid = String(p.xMLBAMID || '');
+          const bp = bpMap.get(mlbid);
+          p['StuffPro']       = bp?.StuffPro       ?? null;
+          p['PitchPro']       = bp?.PitchPro        ?? null;
+          p['SurpriseFactor'] = bp?.SurpriseFactor  ?? null;
+          p['MovementSpread'] = bp?.MovementSpread  ?? null;
+          p['VelocitySpread'] = bp?.VelocitySpread  ?? null;
+          p['PitchTypeProb']  = bp?.PitchTypeProb   ?? null;
+          p['ExpSwStr']       = bp?.ExpSwStr         ?? null;
+          p['ExpDamage']      = bp?.ExpDamage        ?? null;
+        }
+      } catch (bpErr) {
+        console.warn('BP Arsenal fetch failed:', bpErr.message);
+      }
+    }
+
+    currentXKey = selX.value;
+    currentYKey = selY.value;
+    currentColorKey = selColor.value;
+    chartStatus.style.display = 'none';
+    exportBtns.style.display = 'flex';
+    sizeToggle.style.display = 'flex';
+    playerSearchWrap.style.display = 'flex';
+    rerenderLayout();
+  } catch (e) {
+    chartStatus.textContent = `Error: ${e.message}`;
+    chartStatus.classList.add('error');
+    chartStatus.style.display = 'flex';
+    currentData = null;
+  } finally {
+    btnGenerate.disabled = false;
+  }
+}
+
+function rerenderLayout() {
+  if (!currentData) return;
+  plotArea.innerHTML = '';
+
+  const xKey = currentXKey;
+  const yKey = currentYKey;
+
+  const isTeamMode = currentGroupBy === 'team';
+
+  function dotKey(p) {
+    return isTeamMode ? p.TeamNameAbb : (p.playerid || p.xMLBAMID);
+  }
+
+  // Filter valid data (exclude hidden)
+  const valid = currentData.filter(p => {
+    const xv = p[xKey], yv = p[yKey];
+    if (xv == null || yv == null || !isFinite(xv) || !isFinite(yv)) return false;
+    if (hiddenKeys.has(dotKey(p))) return false;
+    if (isTeamMode) return true;
+    return p.xMLBAMID && p.xMLBAMID !== 0;
+  });
+
+  if (!valid.length) {
+    chartStatus.textContent = 'No valid data for selected axes';
+    chartStatus.style.display = 'flex';
+    return;
+  }
+
+  // Axis labels
+  const xLabel = STAT_OPTIONS.find(s => s.key === xKey)?.label || xKey;
+  const yLabel = yKey === '__prev_year__'
+    ? `${currentPrevYearSeason ?? parseInt(selSeason.value) - 1} ${xLabel}`
+    : yKey === '__prev_period__'
+    ? `${currentPrevPeriodLabel ?? 'Prev Period'} ${xLabel}`
+    : (STAT_OPTIONS.find(s => s.key === yKey)?.label || yKey);
+  const curPeriodLabel = getCurrentPeriodLabel(selSplit.value);
+  const xAxisLabel = (yKey === '__prev_period__' && curPeriodLabel)
+    ? `${curPeriodLabel} ${xLabel}`
+    : yKey === '__prev_year__'
+    ? `${selSeason.value} ${xLabel}`
+    : xLabel;
+  axisLabelX.textContent = xAxisLabel;
+  axisLabelY.textContent = yLabel;
+
+  // Compute full data ranges
+  let xMin = Infinity, xMax = -Infinity, yMin = Infinity, yMax = -Infinity;
+  for (const p of valid) {
+    const xv = displayVal(p[xKey], xKey), yv = displayVal(p[yKey], yKey);
+    if (xv < xMin) xMin = xv; if (xv > xMax) xMax = xv;
+    if (yv < yMin) yMin = yv; if (yv > yMax) yMax = yv;
+  }
+
+  // Override with zoom range or add padding
+  if (zoomState) {
+    xMin = zoomState.xMin; xMax = zoomState.xMax;
+    yMin = zoomState.yMin; yMax = zoomState.yMax;
+  } else {
+    const xPad = (xMax - xMin) * 0.05 || 0.5;
+    const yPad = (yMax - yMin) * 0.05 || 0.5;
+    xMin -= xPad; xMax += xPad;
+    yMin -= yPad; yMax += yPad;
+  }
+
+  // When zoomed, only render dots within the view
+  const visible = zoomState ? valid.filter(p => {
+    const xv = displayVal(p[xKey], xKey), yv = displayVal(p[yKey], yKey);
+    return xv >= xMin && xv <= xMax && yv >= yMin && yv <= yMax;
+  }) : valid;
+
+  // Averages from visible set
+  let xSum = 0, ySum = 0;
+  for (const p of visible) { xSum += displayVal(p[xKey], xKey); ySum += displayVal(p[yKey], yKey); }
+  const xAvg = xSum / (visible.length || 1);
+  const yAvg = ySum / (visible.length || 1);
+
+  // Color ring range — compute min/max/avg of the color stat across ALL valid players (not just visible)
+  const colorKey = currentColorKey !== 'none' ? currentColorKey : null;
+  let cMin = Infinity, cMax = -Infinity, cSum = 0, cCount = 0;
+  if (colorKey) {
+    for (const p of valid) {
+      const cv = displayVal(p[colorKey], colorKey);
+      if (cv == null || !isFinite(cv)) continue;
+      if (cv < cMin) cMin = cv;
+      if (cv > cMax) cMax = cv;
+      cSum += cv; cCount++;
+    }
+  }
+  const cAvg = cCount > 0 ? cSum / cCount : null;
+  const cRange = (cMax - cMin) || 1;
+
+  // Plot dimensions — only reserve right-side space for legend if a dot would land under it
+  const rawPlotW = plotArea.clientWidth;
+  const isEmbed = document.body.classList.contains('embed-mode');
+  const plotH = isEmbed
+    ? Math.max(150, chartArea.clientHeight - 55)
+    : Math.max(400, window.innerHeight - 300);
+  let needsLegendReserve = false;
+  if (colorKey && cCount > 0) {
+    const legX = rawPlotW - 145, legH = 140;
+    needsLegendReserve = visible.some(p => {
+      const xv = displayVal(p[xKey], xKey), yv = displayVal(p[yKey], yKey);
+      if (!isFinite(xv) || !isFinite(yv)) return false;
+      const px = ((xv - xMin) / (xMax - xMin)) * rawPlotW;
+      const py = (1 - (yv - yMin) / (yMax - yMin)) * plotH;
+      return px > legX && py < legH;
+    });
+  }
+  const plotW = rawPlotW - (needsLegendReserve ? 135 : 0);
+  plotArea.style.height = plotH + 'px';
+  currentScale = { xMin, xMax, yMin, yMax, plotW, plotH };
+
+  // Dot size — scaled by currentDotScale (S/M/L toggle); larger base for team logos
+  const baseDotSize = isTeamMode
+    ? Math.round(Math.min(44, Math.max(36, plotW / 28)))
+    : Math.round(Math.min(36, Math.max(32, plotW / 40)));
+  const dotSize = Math.round(baseDotSize * currentDotScale);
+
+  // Nice tick generation
+  function niceTicks(min, max, count) {
+    const range = max - min;
+    const rough = range / count;
+    const mag = Math.pow(10, Math.floor(Math.log10(rough)));
+    const nice = [1, 2, 2.5, 5, 10].find(n => n * mag >= rough) * mag;
+    const start = Math.ceil(min / nice) * nice;
+    const ticks = [];
+    for (let t = start; t <= max + nice * 0.001; t += nice) {
+      ticks.push(Math.round(t * 1e6) / 1e6);
+    }
+    return ticks;
+  }
+
+  const xTicks = niceTicks(xMin, xMax, 8);
+  const yTicks = niceTicks(yMin, yMax, 6);
+
+  // Grid lines + tick labels
+  for (const t of xTicks) {
+    const pct = (t - xMin) / (xMax - xMin);
+    const px = pct * plotW;
+    const gl = document.createElement('div');
+    gl.className = 'grid-line grid-line-v';
+    gl.style.left = px + 'px';
+    plotArea.appendChild(gl);
+    const tl = document.createElement('div');
+    tl.className = 'tick-label tick-label-x';
+    tl.style.left = px + 'px';
+    tl.textContent = formatStat(t, xKey);
+    plotArea.appendChild(tl);
+  }
+  for (const t of yTicks) {
+    const pct = 1 - (t - yMin) / (yMax - yMin);
+    const py = pct * plotH;
+    const gl = document.createElement('div');
+    gl.className = 'grid-line grid-line-h';
+    gl.style.top = py + 'px';
+    plotArea.appendChild(gl);
+    const tl = document.createElement('div');
+    tl.className = 'tick-label tick-label-y';
+    tl.style.top = py + 'px';
+    tl.textContent = formatStat(t, yKey);
+    plotArea.appendChild(tl);
+  }
+
+  // Average lines
+  const xAvgPx = ((xAvg - xMin) / (xMax - xMin)) * plotW;
+  const yAvgPx = (1 - (yAvg - yMin) / (yMax - yMin)) * plotH;
+
+  const avgLineX = document.createElement('div');
+  avgLineX.className = 'avg-line avg-line-x';
+  avgLineX.style.left = xAvgPx + 'px';
+  plotArea.appendChild(avgLineX);
+
+  const avgLabelX = document.createElement('div');
+  avgLabelX.className = 'avg-label avg-label-x';
+  avgLabelX.style.left = xAvgPx + 'px';
+  avgLabelX.textContent = `avg ${formatStat(xAvg, xKey)}`;
+  plotArea.appendChild(avgLabelX);
+
+  const avgLineY = document.createElement('div');
+  avgLineY.className = 'avg-line avg-line-y';
+  avgLineY.style.top = yAvgPx + 'px';
+  plotArea.appendChild(avgLineY);
+
+  const avgLabelY = document.createElement('div');
+  avgLabelY.className = 'avg-label avg-label-y';
+  avgLabelY.style.top = yAvgPx + 'px';
+  avgLabelY.textContent = `avg ${formatStat(yAvg, yKey)}`;
+  plotArea.appendChild(avgLabelY);
+
+  // Corner labels
+  [
+    { el: cornerTL, cls: 'tl' },
+    { el: cornerTR, cls: 'tr' },
+    { el: cornerBL, cls: 'bl' },
+    { el: cornerBR, cls: 'br' },
+  ].forEach(({ el, cls }) => {
+    const txt = el.value.trim();
+    if (!txt) return;
+    const div = document.createElement('div');
+    div.className = `corner-label ${cls}`;
+    div.textContent = txt;
+    plotArea.appendChild(div);
+  });
+
+  // Diagonal y=x reference line (for Prev Year / Prev Period comparisons)
+  if (yKey === '__prev_year__' || yKey === '__prev_period__') {
+    // Find where y=x clips to the visible [xMin,xMax] × [yMin,yMax] box
+    const diagStart = Math.max(xMin, yMin);
+    const diagEnd   = Math.min(xMax, yMax);
+    if (diagEnd > diagStart) {
+      const x1 = ((diagStart - xMin) / (xMax - xMin)) * plotW;
+      const y1 = (1 - (diagStart - yMin) / (yMax - yMin)) * plotH;
+      const x2 = ((diagEnd   - xMin) / (xMax - xMin)) * plotW;
+      const y2 = (1 - (diagEnd   - yMin) / (yMax - yMin)) * plotH;
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;';
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+      line.setAttribute('stroke', '#999');
+      line.setAttribute('stroke-width', '1.5');
+      line.setAttribute('stroke-dasharray', '5 4');
+      line.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(line);
+      plotArea.appendChild(svg);
+    }
+  }
+
+  // R² regression line
+  if (chkR2.checked && visible.length >= 2 && yKey !== '__prev_year__' && yKey !== '__prev_period__') {
+    const points = visible
+      .map(p => [displayVal(p[xKey], xKey), displayVal(p[yKey], yKey)])
+      .filter(([x, y]) => isFinite(x) && isFinite(y));
+    const reg = linearRegression(points);
+    if (reg) {
+      // Compute line endpoints clipped to visible range
+      const x1 = xMin, y1 = reg.m * xMin + reg.b;
+      const x2 = xMax, y2 = reg.m * xMax + reg.b;
+      const toPlot = (x, y) => [
+        ((x - xMin) / (xMax - xMin)) * plotW,
+        (1 - (y - yMin) / (yMax - yMin)) * plotH,
+      ];
+      const [px1, py1] = toPlot(x1, Math.max(yMin, Math.min(yMax, y1)));
+      const [px2, py2] = toPlot(x2, Math.max(yMin, Math.min(yMax, y2)));
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;';
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', px1); line.setAttribute('y1', py1);
+      line.setAttribute('x2', px2); line.setAttribute('y2', py2);
+      line.setAttribute('stroke', '#4a90d9');
+      line.setAttribute('stroke-width', '1.5');
+      line.setAttribute('stroke-dasharray', '6 3');
+      line.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(line);
+      // R² label — pinned just outside the right edge of the plot so headshots never cover it
+      const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      const lx = plotW + 6, ly = Math.max(14, Math.min(plotH - 4, py2));
+      label.setAttribute('x', lx); label.setAttribute('y', ly);
+      label.setAttribute('text-anchor', 'start');
+      label.setAttribute('font-size', '11');
+      label.setAttribute('font-family', 'inherit');
+      label.setAttribute('fill', '#4a90d9');
+      label.setAttribute('font-weight', '500');
+      label.textContent = `R² = ${reg.r2.toFixed(3)}`;
+      svg.appendChild(label);
+      plotArea.appendChild(svg);
+    }
+  }
+
+  // Color ring legend
+  if (colorKey && cCount > 0) {
+    const colorLabel = STAT_OPTIONS.find(s => s.key === colorKey)?.label || colorKey;
+    const legend = document.createElement('div');
+    legend.style.cssText = `
+      position:absolute; top:10px; right:10px; z-index:20;
+      background:rgba(255,255,255,0.93); border:1px solid rgba(0,0,0,0.08);
+      border-radius:10px; padding:10px 13px; font-size:11px; line-height:1.4;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08); pointer-events:none; min-width:100px;
+    `;
+    const barH = 72;
+    legend.innerHTML = `
+      <div style="font-weight:600;margin-bottom:8px;color:#333;">${colorLabel}</div>
+      <div style="display:flex;gap:8px;align-items:stretch;">
+        <div style="width:10px;height:${barH}px;border-radius:5px;flex-shrink:0;
+          background:linear-gradient(to top,${lowerIsBetter(colorKey) ? ringColor(1)+','+ringColor(0.5)+','+ringColor(0) : ringColor(0)+','+ringColor(0.5)+','+ringColor(1)});"></div>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;height:${barH}px;color:#555;">
+          <span>${formatStat(cMax, colorKey)}</span>
+          <span style="color:#999;">${formatStat(cAvg, colorKey)} avg</span>
+          <span>${formatStat(cMin, colorKey)}</span>
+        </div>
+      </div>
+    `;
+    plotArea.appendChild(legend);
+  }
+
+  // Dots (player headshots or team logos)
+  const half = dotSize / 2;
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  for (const p of visible) {
+    const xPct = (displayVal(p[xKey], xKey) - xMin) / (xMax - xMin);
+    const yPct = 1 - (displayVal(p[yKey], yKey) - yMin) / (yMax - yMin);
+    const left = xPct * plotW - half;
+    const top = yPct * plotH - half;
+
+    const dot = document.createElement('div');
+    dot.className = 'player-dot' + (isTeamMode ? ' team-dot' : '');
+    dot.style.width = dotSize + 'px';
+    dot.style.height = dotSize + 'px';
+    dot.style.left = left + 'px';
+    dot.style.top = top + 'px';
+    dot.dataset.name = (p.PlayerName || p.TeamNameAbb || '').toLowerCase();
+
+    // Color ring
+    if (colorKey) {
+      const cv = displayVal(p[colorKey], colorKey);
+      if (cv != null && isFinite(cv)) {
+        const tRaw = (cv - cMin) / cRange;
+        const t = lowerIsBetter(colorKey) ? 1 - tRaw : tRaw;
+        if (isTeamMode) {
+          // Team logos: translucent filled circle behind the logo (slightly smaller than logo)
+          const circle = document.createElement('div');
+          const inset = -Math.round(dotSize * 0.04);
+          circle.style.cssText = `position:absolute;inset:${inset}px;border-radius:50%;background:${ringColor(t)};opacity:0.4;z-index:-1;`;
+          dot.appendChild(circle);
+        } else {
+          // Player headshots: colored ring as a sibling div (box-shadow clips in html2canvas)
+          const ringW = Math.max(2, Math.round(dotSize * 0.09));
+          const ring = document.createElement('div');
+          ring.className = 'dot-ring';
+          ring.style.width  = (dotSize + ringW * 2) + 'px';
+          ring.style.height = (dotSize + ringW * 2) + 'px';
+          ring.style.left   = (left - ringW) + 'px';
+          ring.style.top    = (top  - ringW) + 'px';
+          ring.style.border = `${ringW}px solid ${ringColor(t)}`;
+          ring.dataset.name = dot.dataset.name;
+          plotArea.appendChild(ring);
+        }
+      }
+    }
+
+    const img = document.createElement('img');
+    if (isTeamMode) {
+      img.src = teamLogoUrl(p.TeamNameAbb);
+      img.alt = p.TeamNameAbb;
+    } else {
+      img.src = headshotUrl(p.xMLBAMID);
+      img.alt = p.PlayerName;
+    }
+    img.loading = 'lazy';
+    dot.appendChild(img);
+
+    // Tooltip events
+    dot.addEventListener('mouseenter', (e) => showTooltip(e, p, xKey, yKey, xLabel, yLabel));
+    dot.addEventListener('mousemove', moveTooltip);
+    dot.addEventListener('mouseleave', hideTooltip);
+
+    // Click to dismiss (touch: require two taps so first tap can show tooltip)
+    dot.addEventListener('click', (e) => {
+      if (justDragged) return;
+      const key = dotKey(p);
+      if (isTouch) {
+        if (tappedDotKey === key) {
+          tappedDotKey = null;
+          hideTooltip();
+          hiddenKeys.add(key);
+          btnReset.style.display = 'block';
+          rerenderLayout();
+        } else {
+          tappedDotKey = key;
+          showTooltip(e, p, xKey, yKey, xLabel, yLabel);
+        }
+      } else {
+        hiddenKeys.add(key);
+        btnReset.style.display = 'block';
+        rerenderLayout();
+      }
+    });
+
+    plotArea.appendChild(dot);
+  }
+}
+
+// Percentage keys come back as decimals (0.32 = 32%) — convert for display
+const PCT_KEYS = new Set([
+  'K%','BB%','K-BB%','LOB%','GB%','FB%','HR/FB','SwStr%','IFFB%','LD%',
+  'O-Swing%','Z-Swing%','Swing%','O-Contact%','Z-Contact%','Contact%','Zone%','F-Strike%',
+  'CStr%','C+SwStr%','IFH%','BUH%','TTO%',
+  'pfxFA%','pfxFT%','pfxFC%','pfxFS%','pfxFO%','pfxSI%','pfxSL%','pfxCU%',
+  'pfxKC%','pfxEP%','pfxCH%','pfxSC%','pfxKN%','pfxUN%',
+  // Batting-specific percentages
+  'Pull%','Cent%','Oppo%','Soft%','Med%','Hard%',
+  'Barrel%','BarrelPA%','aBarrel%','aBarrelPA%','HardHit%',
+  // Bat tracking rates (stored as fractions 0–1)
+  'FastSwing%','Blasts/C','Blasts/Sw','SqUp/C','SqUp/Sw',
+  // BP Arsenal Pro rates (stored as fractions 0–1)
+  'ExpSwStr',
+  // Batted-ball direction rates (stored as fractions 0–1)
+  'PullAir%','PullGB%','OppoAir%','OppoGB%',
+  // Swing timing + miss distance rates (stored as fractions 0–1)
+  'OnTime%','Early%','Late%','Perfect%','Flawed%','Centered%','Flailed%','TiedUp%','LinedUp%','Over%','Under%',
+]);
+
+// Strip hit_/pit_ prefix for format lookups.
+// __prev_year__ and __prev_period__ delegate to currentXKey so all formatting/pct logic works transparently.
+function baseKey(key) {
+  if (key === '__prev_year__' || key === '__prev_period__') return currentXKey ? baseKey(currentXKey) : key;
+  return key.replace(/^(hit_|pit_)/, '');
+}
+
+// Counting stats where a null API response means 0, not "no data"
+const COUNTING_KEYS = new Set(['W','L','G','GS','CG','ShO','SV','HLD','SV+HLD','SV+HLD+W','BS','TBF','H','R','ER','HR','BB','IBB','HBP','WP','BK','SO','GB','FB','LD','IFFB','Pitches','Balls','Strikes','RS','IFH','BU','BUH','SD','MD','AB','PA','1B','2B','3B','RBI','SF','SH','GDP','SB','CS','SB+CS','TOB','Swords','Barrels','HardHit','aBarrels']);
+
+function displayVal(val, key) {
+  // FanGraphs sometimes returns null for counting stats (e.g. HLD) instead of 0.
+  // Treat that as 0 so players aren't incorrectly excluded from the chart.
+  if (val == null) return COUNTING_KEYS.has(baseKey(key)) ? 0 : val;
+  return PCT_KEYS.has(baseKey(key)) ? val * 100 : val;
+}
+
+// Linear regression: returns { m, b, r2 } for y = m*x + b
+function linearRegression(points) {
+  const n = points.length;
+  if (n < 2) return null;
+  let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+  for (const [x, y] of points) { sumX += x; sumY += y; sumXY += x*y; sumXX += x*x; }
+  const denom = n * sumXX - sumX * sumX;
+  if (denom === 0) return null;
+  const m = (n * sumXY - sumX * sumY) / denom;
+  const b = (sumY - m * sumX) / n;
+  const yMean = sumY / n;
+  let ssTot = 0, ssRes = 0;
+  for (const [x, y] of points) { ssTot += (y - yMean) ** 2; ssRes += (y - (m*x + b)) ** 2; }
+  const r2 = ssTot === 0 ? 0 : 1 - ssRes / ssTot;
+  return { m, b, r2 };
+}
+
+// Map a 0–1 fraction to a red→yellow→green color (for color ring legend)
+function ringColor(t) {
+  const h = Math.round(t * 120); // 0 = red, 60 = yellow, 120 = green
+  return `hsl(${h}, 80%, 42%)`;
+}
+
+// Stats where a lower value is better (color ring should invert: red=high, green=low)
+const LOWER_IS_BETTER_ALWAYS = new Set([
+  'ERA','FIP','xFIP','SIERA','xERA',
+  'WHIP','H/9','BB/9','HR/9',
+  'ERA-','FIP-','xFIP-',
+  'L','BS','-WPA',
+]);
+const LOWER_IS_BETTER_PITCHING = new Set(['BB%','BABIP','HBP','HR/FB','wOBA','SLG','wOBACON','xwOBA','xwOBACON','xSLG','Barrel%','BarrelPA%','Barrels','HardHit%','HardHit','EV','maxEV','CoLev_scaled',
+  'BatSpeed','FastSwing%','Blasts/C','Blasts/Sw','SqUp/C','SqUp/Sw','SwingLen',
+  'ExpDamage','PitchTypeProb','StuffPro','PitchPro',
+  // Swing timing: on-time/perfect/centered/lined-up contact is bad for pitchers
+  'OnTime%','Perfect%','Centered%','LinedUp%',
+  'RA/G']);
+const LOWER_IS_BETTER_HITTING  = new Set(['K%','GDP','CS','SwStr%',
+  // Swing timing: being early, late, flailing, tied-up, over, or under is bad for hitters
+  'Early%','Late%','Flailed%','TiedUp%','Over%','Under%','MissDist']);
+
+function lowerIsBetter(key) {
+  const bk = baseKey(key);
+  if (LOWER_IS_BETTER_ALWAYS.has(bk)) return true;
+  // In combined mode, use the key prefix (hit_/pit_) to determine context
+  // so that e.g. hit_wOBA (higher=better for hitters) and pit_wOBA (lower=better for pitchers)
+  // are handled correctly rather than both being treated as pitcher context.
+  const isPitcher = currentMode === 'pitching' || (currentMode === 'combined' && key.startsWith('pit_'));
+  const isHitter  = currentMode === 'hitting'  || (currentMode === 'combined' && key.startsWith('hit_'));
+  if (isPitcher && LOWER_IS_BETTER_PITCHING.has(bk)) return true;
+  if (isHitter  && LOWER_IS_BETTER_HITTING.has(bk))  return true;
+  return false;
+}
+
+// Stats displayed as .xxx (batting average format)
+const SLASH_KEYS = new Set(['AVG','OBP','SLG','OPS','ISO','wOBA','wOBACON','xwOBA','xSLG','xwOBACON','sSEAGER','BABIP','SLGCON']);
+
+// formatStat expects already-converted display values (pct already *100)
+function formatStat(v, key) {
+  const bk = baseKey(key);
+  if (SLASH_KEYS.has(bk)) return v.toFixed(3);
+  if (PCT_KEYS.has(bk)) return v.toFixed(1) + '%';
+  if (['CoLev','CoLev_dRE'].includes(bk)) return v.toFixed(4);
+  if (['CoLev_scaled'].includes(bk)) return v.toFixed(2);
+  if (['ERA','FIP','xFIP','SIERA','xERA','WHIP','HR/9','BB/9','K/9','H/9','K/BB','GB/FB','Spd','BB/K'].includes(bk)) return v.toFixed(2);
+  if (['WAR','IP','Start-IP','Relief-IP','WPA','-WPA','+WPA','Starting','Relieving','RAR','Batting','Offense','BaseRunning','RE24','Clutch','Dollars','EV','EV50','EV90','LA','maxEV','SprintSpeed','wRAA','wRC','BatSpeed','SwingLen','AttackAngle','AttackDir','SwingTilt',
+       'StuffPro','PitchPro','SurpriseFactor','MovementSpread','VelocitySpread','PitchTypeProb','ExpDamage','BP_SEAGER'].includes(bk)) return v.toFixed(1);
+  if (['ERA-','FIP-','xFIP-','sp_stuff','sp_location','sp_pitching','wRC+','AVG+','BB%+','K%+','OBP+','SLG+','ISO+','BABIP+',
+       'Hitting+','Decision+','Timing+','Contact+','Power+'].includes(bk)) return Math.round(v);
+  if (bk.startsWith('pfxv')) return v.toFixed(1);
+  if (['Age'].includes(bk)) return v.toFixed(0);
+  if (COUNTING_KEYS.has(bk)) return Math.round(v);
+  if (key === 'total_WAR') return v.toFixed(1);
+  return Number.isInteger(v) ? v : v.toFixed(2);
+}
+
+function showTooltip(e, player, xKey, yKey, xLabel, yLabel) {
+  ttName.textContent = player.PlayerName;
+  const isHit = currentMode === 'hitting';
+  if (player._isTeam) {
+    if (currentMode === 'combined') {
+      ttMeta.textContent = `${player._hitterCount || 0} hitters  |  ${player._pitcherCount || 0} pitchers`;
+    } else {
+      const vol = isHit ? `${Math.round(player.PA || 0)} PA` : `${formatStat(player.IP || 0, 'IP')} IP`;
+      ttMeta.textContent = vol;
+    }
+  } else {
+    const hand = isHit ? (player.Bats || '') : (player.Throws || '');
+    const vol = isHit ? `${Math.round(player.PA || 0)} PA` : `${formatStat(player.IP || 0, 'IP')} IP`;
+    ttMeta.textContent = `${player.TeamName || player.TeamNameAbb || ''}  |  ${hand}  |  ${vol}`;
+  }
+  const colorLabel = currentColorKey !== 'none' ? (STAT_OPTIONS.find(s => s.key === currentColorKey)?.label || currentColorKey) : null;
+  const colorVal = colorLabel != null ? displayVal(player[currentColorKey], currentColorKey) : null;
+  // When comparing periods, prefix the current-period stat label with the period name (e.g. "May wOBA")
+  const splitPeriodName = selSplit.options[selSplit.selectedIndex]?.text;
+  if (yKey === '__prev_period__' && splitPeriodName && splitPeriodName !== 'Full Season') {
+    xLabel = `${splitPeriodName} ${xLabel}`;
+  }
+  // Delta row for prev-year / prev-period comparisons
+  let deltaHtml = '';
+  if (yKey === '__prev_year__' || yKey === '__prev_period__') {
+    const xDv  = displayVal(player[xKey], xKey);
+    const pyDv = displayVal(player[yKey], yKey);
+    if (xDv != null && isFinite(xDv) && pyDv != null && isFinite(pyDv)) {
+      const delta = xDv - pyDv;
+      const improving = lowerIsBetter(xKey) ? delta < 0 : delta > 0;
+      const deltaColor = delta === 0 ? '#999' : (improving ? '#2e9e6b' : '#d04040');
+      const sign = delta > 0 ? '+' : delta < 0 ? '−' : '';
+      const deltaStr = sign + formatStat(Math.abs(delta), xKey);
+      deltaHtml = `<div class="tooltip-stat"><span class="tooltip-stat-label">Δ</span><span class="tooltip-stat-value" style="color:${deltaColor}">${deltaStr}</span></div>`;
+    }
+  }
+  ttStats.innerHTML = `
+    <div class="tooltip-stat"><span class="tooltip-stat-label">${xLabel}</span><span class="tooltip-stat-value">${formatStat(displayVal(player[xKey], xKey), xKey)}</span></div>
+    <div class="tooltip-stat"><span class="tooltip-stat-label">${yLabel}</span><span class="tooltip-stat-value">${formatStat(displayVal(player[yKey], yKey), yKey)}</span></div>
+    ${deltaHtml}
+    ${colorLabel != null && colorVal != null && isFinite(colorVal) ? `<div class="tooltip-stat"><span class="tooltip-stat-label">${colorLabel}</span><span class="tooltip-stat-value">${formatStat(colorVal, currentColorKey)}</span></div>` : ''}
+  `;
+  tooltip.style.display = 'block';
+  moveTooltip(e);
+}
+
+function moveTooltip(e) {
+  const pad = 14;
+  let x = e.clientX + pad;
+  let y = e.clientY + pad;
+  const tw = tooltip.offsetWidth;
+  const th = tooltip.offsetHeight;
+  if (x + tw > window.innerWidth - 8) x = e.clientX - tw - pad;
+  if (y + th > window.innerHeight - 8) y = e.clientY - th - pad;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  tooltip.style.display = 'none';
+}
+
+async function exportPNG() {
+  const chartCard = document.querySelector('.chart-card');
+  if (!chartCard) return;
+
+  const origLabel = btnPng.textContent;
+  btnPng.textContent = 'Rendering…';
+  btnPng.disabled = true;
+
+  try {
+    const canvas = await html2canvas(chartCard, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+      // html2canvas doesn't apply parent overflow:hidden+border-radius to child imgs.
+      // In the cloned DOM (never touches the live site), swap each headshot img for a
+      // background-image on the dot div itself — border-radius clips bg-images correctly.
+      onclone: (_doc, el) => {
+        el.querySelectorAll('.player-dot').forEach(dot => {
+          const img = dot.querySelector('img');
+          if (!img) return;
+          // Use a higher-res version of the image (w_60 → w_200) to avoid fuzz at 2× export scale
+          const hiResSrc = img.src.replace(/\/w_\d+/, '/w_200');
+          dot.style.backgroundImage    = `url("${hiResSrc}")`;
+          dot.style.backgroundSize     = 'cover';
+          dot.style.backgroundPosition = 'center';
+          img.style.display = 'none';
+        });
+      },
+    });
+    const xLabel  = (currentXKey || 'x').replace(/[^a-zA-Z0-9%+\-]/g, '_');
+    const yLabel  = (currentYKey || 'y').replace(/[^a-zA-Z0-9%+\-]/g, '_');
+    const season  = selSeason.value || '';
+    const link    = document.createElement('a');
+    link.download = `scatter_${xLabel}_vs_${yLabel}_${season}.png`;
+    link.href     = canvas.toDataURL('image/png');
+    link.click();
+  } catch (e) {
+    console.error('PNG export failed:', e);
+  } finally {
+    btnPng.textContent = origLabel;
+    btnPng.disabled    = false;
+  }
+}
+
+function downloadCSV() {
+  if (!currentData) return;
+  const isTeamMode = currentGroupBy === 'team';
+
+  // Same visibility filter as the chart
+  function dotKey(p) { return isTeamMode ? p.TeamNameAbb : (p.playerid || p.xMLBAMID); }
+  const rows = currentData.filter(p => {
+    if (hiddenKeys.has(dotKey(p))) return false;
+    if (!isTeamMode && (!p.xMLBAMID || p.xMLBAMID === 0)) return false;
+    return true;
+  });
+  if (!rows.length) return;
+
+  // Only the two axes shown on the chart
+  const xLabel = STAT_OPTIONS.find(s => s.key === currentXKey)?.label || currentXKey;
+  const yLabel = STAT_OPTIONS.find(s => s.key === currentYKey)?.label || currentYKey;
+  const colorLabel = currentColorKey !== 'none' ? (STAT_OPTIONS.find(s => s.key === currentColorKey)?.label || currentColorKey) : null;
+
+  // Header row
+  const isPrevYear   = currentYKey === '__prev_year__';
+  const isPrevPeriod = currentYKey === '__prev_period__';
+  const headers = isTeamMode ? ['Team'] : ['Name', 'Team'];
+  headers.push(xLabel, yLabel);
+  if (isPrevYear || isPrevPeriod) headers.push('Delta');
+  if (colorLabel) headers.push(colorLabel);
+
+  // Data rows — only include rows with valid x and y values
+  const csvRows = [headers.join(',')];
+  for (const p of rows) {
+    const xv = p[currentXKey], yv = p[currentYKey];
+    if (xv == null || !isFinite(xv) || yv == null || !isFinite(yv)) continue;
+    const cols = [];
+    if (!isTeamMode) cols.push(JSON.stringify(p.PlayerName || ''));
+    cols.push(JSON.stringify(p.TeamNameAbb || p.TeamName || ''));
+    cols.push(formatStat(displayVal(xv, currentXKey), currentXKey));
+    cols.push(formatStat(displayVal(yv, currentYKey), currentYKey));
+    if (isPrevYear || isPrevPeriod) {
+      const xDv = displayVal(xv, currentXKey);
+      const pyDv = displayVal(yv, currentYKey);
+      const delta = xDv - pyDv;
+      const sign = delta > 0 ? '+' : delta < 0 ? '-' : '';
+      cols.push(sign + formatStat(Math.abs(delta), currentXKey));
+    }
+    if (colorLabel) {
+      const cv = p[currentColorKey];
+      cols.push(cv != null && isFinite(cv) ? formatStat(displayVal(cv, currentColorKey), currentColorKey) : '');
+    }
+    csvRows.push(cols.join(','));
+  }
+
+  const split = selSplit.options[selSplit.selectedIndex].text.replace(/\s+/g, '-');
+  const blob = new Blob(['﻿' + csvRows.join('\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fg-${currentMode}-${selSeason.value}-${split}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+<footer style="text-align:center;padding:24px 0 8px;font-size:0.8rem;color:#888;">
+  Data: <a href="https://www.fangraphs.com" target="_blank" rel="noopener" style="color:#555;text-decoration:underline;">FanGraphs</a>
+</footer>
+<script data-goatcounter="https://fg-scatter.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
