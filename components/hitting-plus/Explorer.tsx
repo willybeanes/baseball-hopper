@@ -146,6 +146,24 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     [qualifiedSeasonPlayers]
   );
 
+  // Sync state from URL when the user navigates back/forward. The guard in the state→URL
+  // effect below means this won't loop: after this sets state, that effect will see
+  // next === searchParams.toString() and skip the navigation.
+  useEffect(() => {
+    const q = searchParams.get("tab");
+    setTab(TAB_KEYS.includes(q as Tab) ? (q as Tab) : "card");
+    const s = Number(searchParams.get("season"));
+    if (seasons.includes(s)) setSeason(s);
+    const m = Number(searchParams.get("minPA"));
+    setMinPA(Number.isFinite(m) && m > 0 ? m : DEFAULT_MIN_PA);
+    const p = searchParams.get("player");
+    if (p) setPickedName(p);
+    const c = searchParams.get("compare");
+    setCompareNames(c ? c.split("|").filter(Boolean) : []);
+    setTeamFilter(searchParams.get("team") ?? "");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
   // Reflect the current view in the URL so it can be bookmarked or shared. Guarded so it
   // only fires when the query actually differs, since useSearchParams re-suspends the
   // Suspense boundary above on every navigation and an unguarded replace loops forever.
