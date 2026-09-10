@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { COMPONENT_KEYS, DepthKey, SwingPlusData } from "@/lib/hitting-plus/types";
 import { buildPercentiles, fieldPercentileValue, leagueMean, pairedFieldPercentileValue } from "@/lib/hitting-plus/metrics";
@@ -147,8 +147,11 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   );
 
   // Reflect the current view in the URL so it can be bookmarked or shared. Guarded so it
-  // only replaces when the query actually differs, since useSearchParams re-suspends the
+  // only fires when the query actually differs, since useSearchParams re-suspends the
   // Suspense boundary above on every navigation and an unguarded replace loops forever.
+  // Tab changes push a new history entry so the back button works; filter-only changes
+  // (season, minPA, team) replace so they don't spam the history stack.
+  const prevTabRef = useRef(tab);
   useEffect(() => {
     const params = new URLSearchParams();
     if (tab !== "card") params.set("tab", tab);
@@ -161,7 +164,15 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     if (tab === "leaderboard" && teamFilter) params.set("team", teamFilter);
     const next = params.toString();
     if (next !== searchParams.toString()) {
-      router.replace(`${pathname}?${next}`, { scroll: false });
+      const tabChanged = prevTabRef.current !== tab;
+      prevTabRef.current = tab;
+      if (tabChanged) {
+        router.push(`${pathname}?${next}`, { scroll: false });
+      } else {
+        router.replace(`${pathname}?${next}`, { scroll: false });
+      }
+    } else {
+      prevTabRef.current = tab;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab, season, pickedName, minPA, compareNames, teamFilter]);
