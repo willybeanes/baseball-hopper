@@ -40,7 +40,7 @@ function makeYScale(log: GameLog) {
   return { Y_MIN, Y_MAX, yToSvg, gridLines };
 }
 
-function buildPath(xs: number[], ys: (number | null)[]): string {
+function buildPath(xs: number[], ys: (number | null)[], yToSvg: (v: number) => number): string {
   let d = "";
   let pen = false;
   for (let i = 0; i < xs.length; i++) {
@@ -202,7 +202,7 @@ export default function RollingChart({
           {METRICS.filter(({ key }) => active.has(key)).map(({ key, color }) => (
             <path
               key={key}
-              d={buildPath(xs, log[key])}
+              d={buildPath(xs, log[key], yToSvg)}
               fill="none"
               stroke={color}
               strokeWidth={key === "Hitting+" ? 2 : 1.5}
