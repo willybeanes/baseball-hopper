@@ -26,10 +26,18 @@ const METRICS: { key: MetricKey; color: string }[] = [
 const W = 500, H = 160;
 const ML = 36, MR = 12, MT = 10, MB = 28;
 const CW = W - ML - MR, CH = H - MT - MB;
-const Y_MIN = 60, Y_MAX = 160;
 
-function yToSvg(v: number) {
-  return MT + CH - ((v - Y_MIN) / (Y_MAX - Y_MIN)) * CH;
+function makeYScale(log: GameLog) {
+  const vals = METRICS.flatMap(({ key }) => log[key] as (number | null)[]).filter((v): v is number => v != null);
+  const dataMin = vals.length ? Math.min(...vals) : 60;
+  const dataMax = vals.length ? Math.max(...vals) : 160;
+  const Y_MIN = Math.min(60, Math.floor(dataMin / 10) * 10 - 10);
+  const Y_MAX = Math.max(160, Math.ceil(dataMax / 10) * 10 + 10);
+  const yToSvg = (v: number) => MT + CH - ((v - Y_MIN) / (Y_MAX - Y_MIN)) * CH;
+  const step = 20;
+  const gridLines: number[] = [];
+  for (let v = Math.ceil(Y_MIN / step) * step; v <= Y_MAX; v += step) gridLines.push(v);
+  return { Y_MIN, Y_MAX, yToSvg, gridLines };
 }
 
 function buildPath(xs: number[], ys: (number | null)[]): string {
@@ -93,6 +101,8 @@ export default function RollingChart({
     );
   }
 
+  const { yToSvg, gridLines } = makeYScale(log);
+
   const n = log.dates.length;
   const xs = log.dates.map((_, i) => ML + (i / (n - 1)) * CW);
 
@@ -108,9 +118,6 @@ export default function RollingChart({
       monthTicks.push({ x: xs[i], label });
     }
   }
-
-  // Y-axis gridlines at 80, 100, 120, 140
-  const gridLines = [80, 100, 120, 140];
 
   const hover = hoverIdx != null ? hoverIdx : null;
 
