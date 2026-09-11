@@ -27,11 +27,11 @@ const W = 500, H = 160;
 const ML = 36, MR = 12, MT = 10, MB = 28;
 const CW = W - ML - MR, CH = H - MT - MB;
 
-function makeYScale(log: GameLog, active: Set<MetricKey>) {
-  const vals = METRICS
+function makeYScale(log: GameLog | null, active: Set<MetricKey>) {
+  const vals = log ? METRICS
     .filter(({ key }) => active.has(key))
     .flatMap(({ key }) => log[key] as (number | null)[])
-    .filter((v): v is number => v != null);
+    .filter((v): v is number => v != null) : [];
   const dataMin = vals.length ? Math.min(...vals) : 60;
   const dataMax = vals.length ? Math.max(...vals) : 160;
   const Y_MIN = Math.min(60, Math.floor(dataMin / 10) * 10 - 10);
@@ -73,6 +73,8 @@ export default function RollingChart({
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
 
+  const { yToSvg, gridLines } = useMemo(() => makeYScale(log, active), [log, active]);
+
   function toggleMetric(k: MetricKey) {
     setActive((prev) => {
       const next = new Set(prev);
@@ -103,8 +105,6 @@ export default function RollingChart({
       </div>
     );
   }
-
-  const { yToSvg, gridLines } = useMemo(() => makeYScale(log, active), [log, active]);
 
   const n = log.dates.length;
   const xs = log.dates.map((_, i) => ML + (i / (n - 1)) * CW);
