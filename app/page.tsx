@@ -1,5 +1,4 @@
-import fs from "fs/promises";
-import path from "path";
+const HP_BASE = "https://hitting-plus.vercel.app/data";
 import Link from "next/link";
 
 const TEAM_NAMES: Record<string, string> = {
@@ -254,14 +253,14 @@ function StatBar({ value, label }: { value: number; label: string }) {
 type PlayerInfo = { id: number; team: string; position: string };
 
 export default async function HomePage() {
-  const dataDir = path.join(process.cwd(), "public", "data");
-  const [swingRaw, infoRaw] = await Promise.all([
-    fs.readFile(path.join(dataDir, "swingplus_latest.json"), "utf-8"),
-    fs.readFile(path.join(dataDir, "player_info.json"), "utf-8"),
+  const [swingRes, infoRes] = await Promise.all([
+    fetch(`${HP_BASE}/swingplus_latest.json`, { next: { revalidate: 1800 } }),
+    fetch(`${HP_BASE}/player_info.json`, { next: { revalidate: 1800 } }),
   ]);
 
-  const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw);
-  const playerInfo: Record<string, PlayerInfo> = JSON.parse(infoRaw);
+  const swingRaw = swingRes.ok ? await swingRes.text() : "{}";
+  const swingData: { players: SwingPlayer[] } = JSON.parse(swingRaw.replace(/\bNaN\b/g, "null"));
+  const playerInfo: Record<string, PlayerInfo> = infoRes.ok ? await infoRes.json() : {};
 
   function mlbHeadshot(name: string) {
     const id = playerInfo[name]?.id;
