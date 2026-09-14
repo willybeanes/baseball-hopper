@@ -10,7 +10,7 @@ export default function WarPage({
   const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
   return (
     <IframeEmbed
-      base="https://fg-war.vercel.app/"
+      base="/war-app/index.html"
       initialSearch={qs ? `?${qs}` : ""}
       title="WAR Breakdown"
     />

@@ -1,0 +1,2766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fWAR Component Breakdown</title>
+<meta name="description" content="Visualize fWAR broken down by its components for any MLB player.">
+<meta property="og:title" content="fWAR Component Breakdown">
+<meta property="og:description" content="Visualize fWAR broken down by its components for any MLB player.">
+<meta property="og:url" content="https://fg-war.vercel.app/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fWAR Component Breakdown">
+<meta name="twitter:description" content="Visualize fWAR broken down by its components for any MLB player.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0ede8;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Header */
+    header {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 28px 24px 0;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #1a1a1a;
+    }
+
+    header p {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 3px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Tab bar */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      margin-top: 20px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2.5px solid transparent;
+      color: #999;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 10px 24px;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .tab-btn:hover { color: #555; }
+
+    .tab-btn.active {
+      color: #1a1a1a;
+      font-weight: 600;
+      border-bottom-color: #1a1a1a;
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    /* Searchable dropdown */
+    .select-wrap {
+      position: relative;
+      width: 300px;
+    }
+
+    .select-wrap input {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 8px;
+      color: #1a1a1a;
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 7px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .select-wrap input:focus { border-color: #999; }
+
+    .dropdown-list {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0; right: 0;
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 10px;
+      max-height: 260px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .dropdown-list.open { display: block; }
+
+    .dropdown-item {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.1s;
+      color: #1a1a1a;
+    }
+
+    .dropdown-item:hover, .dropdown-item.highlighted {
+      background: #f0ede8;
+    }
+
+    /* Charts */
+    .chart-container {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Stats table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    th {
+      text-align: left;
+      color: #888;
+      font-weight: 500;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 10px;
+      border-bottom: 1px solid #ede9e4;
+    }
+
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      color: #1a1a1a;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr.total-row td {
+      font-weight: 700;
+      border-top: 1px solid #ede9e4;
+      padding-top: 11px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+
+    /* Compare layout */
+    .compare-selectors {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .compare-charts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .compare-charts { grid-template-columns: 1fr; }
+      .select-wrap { width: 100%; }
+
+      /* Tighten spacing */
+      .container, header { padding-left: 12px; padding-right: 12px; }
+      header { padding-top: 16px; }
+      .card { padding: 12px 14px; margin-bottom: 12px; }
+      .tab-btn { padding: 10px 14px; font-size: 0.9rem; }
+
+      /* Leaderboard filter row: stack filters above count pills */
+      .lb-filter-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important; /* prevent space-between gap in column mode */
+        gap: 8px;
+      }
+      .lb-filters-group { flex-wrap: wrap !important; gap: 8px !important; }
+
+      /* Component charts: single column */
+      .lb-comp-grid { grid-template-columns: 1fr !important; }
+
+      /* Chart heights */
+      .lb-main-chart { height: 420px !important; }
+      .lb-comp-chart  { height: 220px !important; }
+    }
+
+    /* Diff colors */
+    .diff-pos { color: #2a7a3b; font-weight: 600; }
+    .diff-neg { color: #c44820; font-weight: 600; }
+    .diff-zero { color: #999; }
+
+    /* Year select */
+    .year-select {
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 8px;
+      color: #1a1a1a;
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 6px 10px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .year-select:focus { border-color: #999; }
+    .year-select:disabled { opacity: 0.5; cursor: default; }
+
+    /* Multi-select team filter */
+    .multi-select-wrap { position: relative; }
+    .multi-select-btn {
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 8px;
+      color: #1a1a1a;
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 5px 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      min-height: 33px;
+      min-width: 110px;
+      text-align: left;
+      transition: border-color 0.15s;
+    }
+    .multi-select-btn:hover { border-color: #999; }
+    .ms-placeholder { color: #999; }
+    .ms-caret { color: #999; font-size: 0.7rem; margin-left: 2px; flex-shrink: 0; }
+    .ms-chip {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      padding: 1px 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      line-height: 1.5;
+    }
+    .ms-chip-x { opacity: 0.6; font-size: 0.7rem; cursor: pointer; }
+    .ms-chip-x:hover { opacity: 1; }
+    .multi-select-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      min-width: 140px;
+      padding: 4px 0;
+    }
+    .multi-select-dropdown.open { display: block; }
+    .ms-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      user-select: none;
+      color: #1a1a1a;
+    }
+    .ms-item:hover { background: #f0ede8; }
+    .ms-item input[type=checkbox] { cursor: pointer; accent-color: #1a1a1a; }
+    .ms-clear {
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      color: #999;
+      cursor: pointer;
+      border-bottom: 1px solid #ede9e4;
+    }
+    .ms-clear:hover { color: #c44820; }
+    .export-btn {
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 9px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-family: 'DM Sans', sans-serif;
+      color: #555;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .export-btn:hover { border-color: #aaa; color: #1a1a1a; }
+    .ms-league-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #555;
+      background: #ede9e4;
+      border-top: 1px solid #d8d5d0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ms-league-header:first-of-type { border-top: none; }
+    .ms-league-header:hover { background: #e4e0db; }
+    .ms-league-header input[type=checkbox] { cursor: pointer; accent-color: #1a1a1a; margin: 0; }
+    .ms-div-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 12px 3px 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #888;
+      background: #f8f5f2;
+      border-top: 1px solid #ede9e4;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ms-div-header:hover { background: #f0ede8; }
+    .ms-div-header input[type=checkbox] { cursor: pointer; accent-color: #1a1a1a; margin: 0; }
+
+    /* Count pills */
+    .count-pills { display: flex; gap: 4px; }
+    .count-pill {
+      background: none;
+      border: 1px solid #d8d5d0;
+      border-radius: 6px;
+      color: #666;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .count-pill:hover { border-color: #999; color: #333; }
+    .count-pill.active {
+      background: #1a1a1a;
+      border-color: #1a1a1a;
+      color: #fff;
+    }
+
+    /* Loading / error */
+    .state-overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      gap: 12px;
+      color: #999;
+      font-size: 0.875rem;
+    }
+
+    .spinner {
+      width: 28px; height: 28px;
+      border: 2.5px solid #d8d5d0;
+      border-top-color: #1a1a1a;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-box {
+      background: #fff5f2;
+      border: 1px solid #f5c6b8;
+      border-radius: 10px;
+      padding: 16px 20px;
+      color: #c44820;
+      font-size: 0.85rem;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .error-box strong { display: block; margin-bottom: 4px; color: #a83010; }
+
+    .footnote {
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-top: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    footer a { color: #999; text-decoration: underline; }
+    footer a:hover { color: #555; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>fWAR Component Breakdown</h1>
+  <p>fWAR broken out by its components — <a href="https://library.fangraphs.com/war/war-position-players/" target="_blank" rel="noopener" style="color:#666;text-decoration:underline">see here</a> for more</p>
+  <p style="font-size:0.68rem;color:#999;margin-top:2px">Position players only (two-way players include pitching fWAR)</p>
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="player">Player</button>
+    <button class="tab-btn" data-tab="leaderboard">Leaderboard</button>
+    <button class="tab-btn" data-tab="compare">Compare</button>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- TAB 1: PLAYER -->
+  <div id="tab-player" class="tab-panel active">
+    <div id="player-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading player data…</span>
+    </div>
+    <div id="player-error" class="state-overlay" style="display:none">
+      <div class="error-box">
+        <strong>Failed to load data</strong>
+        Check Vercel function logs. The FanGraphs proxy may have been rate-limited or the endpoint may have changed.
+      </div>
+    </div>
+    <div id="player-content" style="display:none">
+      <div class="card">
+        <div class="toolbar">
+          <div>
+            <div class="field-label">Player</div>
+            <div class="select-wrap" id="player-select-wrap">
+              <input type="text" id="player-search" placeholder="Search player…" autocomplete="off">
+              <div class="dropdown-list" id="player-dropdown"></div>
+            </div>
+          </div>
+          <div>
+            <div class="field-label">Season</div>
+            <select id="player-year-select" class="year-select"></select>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="chart-container" style="height:400px">
+          <canvas id="player-chart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <table id="player-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th style="text-align:right">Runs</th>
+              <th style="text-align:right">Wins</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="footnote" id="player-footnote"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: LEADERBOARD -->
+  <div id="tab-leaderboard" class="tab-panel" style="display:none">
+    <div id="lb-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading leaderboard…</span>
+    </div>
+    <div id="lb-error" class="state-overlay" style="display:none">
+      <div class="error-box">
+        <strong>Failed to load data</strong>
+        Check Vercel function logs.
+      </div>
+    </div>
+    <div id="lb-content" style="display:none">
+      <div class="card">
+        <div class="lb-filter-row" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px">
+          <div class="lb-filters-group" style="display:flex; align-items:flex-end; gap:10px">
+            <div>
+              <div class="field-label">Season</div>
+              <select id="lb-year-select" class="year-select"></select>
+            </div>
+            <div>
+              <div class="field-label">Split</div>
+              <select id="lb-split-filter" class="year-select">
+                <option value="0">Full Season</option>
+                <optgroup label="Rolling">
+                  <option value="36">Last 7 Days</option>
+                  <option value="33">Last 14 Days</option>
+                  <option value="35">Last 21 Days</option>
+                  <option value="34">Last 30 Days</option>
+                  <option value="60">Last 60 Days</option>
+                  <option value="90">Last 90 Days</option>
+                </optgroup>
+                <optgroup label="Half">
+                  <option value="7">1st Half</option>
+                  <option value="8">2nd Half</option>
+                </optgroup>
+                <optgroup label="Monthly">
+                  <option value="1">March/April</option>
+                  <option value="2">May</option>
+                  <option value="3">June</option>
+                  <option value="4">July</option>
+                  <option value="5">August</option>
+                  <option value="6">September/October</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <div class="field-label">Team</div>
+              <div class="multi-select-wrap" id="lb-team-wrap">
+                <button type="button" class="multi-select-btn" id="lb-team-btn">
+                  <span class="ms-placeholder">All Teams</span><span class="ms-caret">▾</span>
+                </button>
+                <div class="multi-select-dropdown" id="lb-team-dropdown"></div>
+              </div>
+            </div>
+            <div>
+              <div class="field-label">Position</div>
+              <select id="lb-pos-filter" class="year-select"></select>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; padding-bottom:6px">
+              <input type="checkbox" id="lb-rookie-filter" style="width:14px;height:14px;cursor:pointer;accent-color:#1a1a1a">
+              <label for="lb-rookie-filter" style="font-size:0.875rem;cursor:pointer;user-select:none">Rookies</label>
+            </div>
+          </div>
+          <div class="count-pills" id="lb-count-pills">
+            <button class="count-pill" data-n="10">10</button>
+            <button class="count-pill" data-n="15">15</button>
+            <button class="count-pill active" data-n="25">25</button>
+            <button class="count-pill" data-n="40">40</button>
+          </div>
+        </div>
+        <div id="lb-mobile-title" style="display:none; font-size:0.8rem; font-weight:600; color:#1a1a1a; margin-bottom:6px; line-height:1.3"></div>
+        <div class="chart-container lb-main-chart" style="height:620px">
+          <canvas id="lb-chart"></canvas>
+        </div>
+      </div>
+      <!-- Component leaderboards -->
+      <div class="lb-comp-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:0">
+        <div class="card">
+          <div class="chart-container lb-comp-chart" style="height:300px">
+            <canvas id="lb-bat-chart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-container lb-comp-chart" style="height:300px">
+            <canvas id="lb-fld-chart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-container lb-comp-chart" style="height:300px">
+            <canvas id="lb-bsr-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      <!-- Export -->
+      <div style="display:flex; justify-content:flex-end; margin-top:12px">
+        <button id="lb-export-btn" class="export-btn">⬇ Export CSV</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: COMPARE -->
+  <div id="tab-compare" class="tab-panel" style="display:none">
+    <div id="cmp-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading…</span>
+    </div>
+    <div id="cmp-error" class="state-overlay" style="display:none">
+      <div class="error-box">
+        <strong>Failed to load data</strong>
+        Check Vercel function logs.
+      </div>
+    </div>
+    <div id="cmp-content" style="display:none">
+      <div class="card">
+        <div class="compare-selectors">
+          <div style="display:flex; align-items:flex-end; gap:10px">
+            <div>
+              <div class="field-label">Player A</div>
+              <div class="select-wrap">
+                <input type="text" id="cmp-a-search" placeholder="Search player…" autocomplete="off">
+                <div class="dropdown-list" id="cmp-a-dropdown"></div>
+              </div>
+            </div>
+            <div>
+              <div class="field-label">Season</div>
+              <select id="cmp-a-year-select" class="year-select"></select>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-end; gap:10px">
+            <div>
+              <div class="field-label">Player B</div>
+              <div class="select-wrap">
+                <input type="text" id="cmp-b-search" placeholder="Search player…" autocomplete="off">
+                <div class="dropdown-list" id="cmp-b-dropdown"></div>
+              </div>
+            </div>
+            <div>
+              <div class="field-label">Season</div>
+              <select id="cmp-b-year-select" class="year-select"></select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compare-charts">
+        <div class="card">
+          <div class="chart-container" style="height:300px">
+            <canvas id="cmp-a-chart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-container" style="height:300px">
+            <canvas id="cmp-b-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <table id="cmp-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th id="cmp-th-a" style="text-align:right">Player A</th>
+              <th id="cmp-th-b" style="text-align:right">Player B</th>
+              <th style="text-align:right">Difference</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.container -->
+
+<footer>
+  Data: <a href="https://www.fangraphs.com" target="_blank" rel="noopener">FanGraphs</a>
+</footer>
+
+<script>
+// ─── Constants ────────────────────────────────────────────────────────────────
+const CURRENT_YEAR = 2026;
+const YEARS = Array.from({ length: CURRENT_YEAR - 2001 }, (_, i) => CURRENT_YEAR - i); // 2026..2002
+const dataCache   = new Map(); // year → { players, pitMap }
+const posIdCache    = new Map(); // `${year}:${posCode}` → Set<playerid>
+const rookieIdCache = new Map(); // year → Set<playerid>
+
+// Stack order: bottom-to-top on bars, left-to-right on waterfall
+const COMPONENTS = [
+  { key: 'Replacement', label: 'Replacement', color: '#795548', desc: 'value above a replacement-level player' },
+  { key: 'wLeague',     label: 'League',      color: '#607D8B', desc: 'adjustment for league difficulty' },
+  { key: 'Batting',     label: 'Batting',     color: '#2196F3', desc: 'runs created at the plate' },
+  { key: 'Fielding',    label: 'Fielding',    color: '#FF9800', desc: 'defensive runs saved' },
+  { key: 'BaseRunning', label: 'Base Running',color: '#4CAF50', desc: 'value on the bases' },
+  { key: 'Positional',  label: 'Positional',  color: '#9C27B0', desc: 'position difficulty adjustment' },
+];
+
+const TOTAL_COLOR = '#555';
+// Sign-based colors for Player / Compare waterfall charts
+const WF_POS_COLOR = '#2196F3'; // blue for positive components
+const WF_NEG_COLOR = '#E53935'; // red for negative components
+
+// Chart.js shared defaults for light theme
+const CHART_DEFAULTS = {
+  gridColor: 'rgba(0,0,0,0.06)',
+  tickColor: '#aaa',
+  titleColor: '#1a1a1a',
+  legendColor: '#555',
+};
+
+// ─── Display name lookups ─────────────────────────────────────────────────────
+const TEAM_FULL = {
+  // Current abbreviations
+  'LAA':'Angels','ARI':'Diamondbacks','BAL':'Orioles','BOS':'Red Sox',
+  'CHC':'Cubs','CWS':'White Sox','CHW':'White Sox','CIN':'Reds','CLE':'Guardians',
+  'COL':'Rockies','DET':'Tigers','HOU':'Astros','KCR':'Royals',
+  'LAD':'Dodgers','MIA':'Marlins','MIL':'Brewers','MIN':'Twins',
+  'NYM':'Mets','NYY':'Yankees','ATH':'Athletics','OAK':'Athletics',
+  'PHI':'Phillies','PIT':'Pirates','SDP':'Padres','SEA':'Mariners',
+  'SFG':'Giants','STL':'Cardinals','TBR':'Rays','TEX':'Rangers',
+  'TOR':'Blue Jays','WSN':'Nationals',
+  // Historical abbreviations (pre-rename)
+  'ANA':'Angels',     // Anaheim Angels 2002–2004 → LAA 2005+
+  'TBD':'Devil Rays', // Tampa Bay Devil Rays 2002–2007 → TBR 2008+
+  'FLA':'Marlins',    // Florida Marlins 2002–2011 → MIA 2012+
+  'MON':'Expos',      // Montreal Expos 2002–2004 → WSN 2005+
+};
+
+const POS_FULL = {
+  'P':'Pitchers','NP':'Non-Pitchers',
+  'C':'Catchers','1B':'First Basemen','2B':'Second Basemen','3B':'Third Basemen',
+  'SS':'Shortstops','LF':'Left Fielders','CF':'Center Fielders','RF':'Right Fielders',
+  'DH':'Designated Hitters','OF':'Outfielders','UT':'Utility Players',
+};
+
+// Maps our position abbreviations to FanGraphs pos= API codes.
+// Using pos=<code> returns only players whose PRIMARY position is that code,
+// which is more accurate than the `position` field (which reflects eligibility).
+const FG_POS_CODE = {
+  'C':'c','1B':'1b','2B':'2b','3B':'3b','SS':'ss',
+  'LF':'lf','CF':'cf','RF':'rf','OF':'of','DH':'dh',
+};
+
+// Returns the correct AL/NL → division → teams hierarchy for a given season year,
+// accounting for all realignments and franchise renames since 2002.
+function getLeaguesForYear(year) {
+  // AL East — stable since 2002 (TBD renamed TBR in 2008)
+  const alEast = ['BAL','BOS','NYY', year < 2008 ? 'TBD' : 'TBR', 'TOR'];
+  // AL Central — stable since 2002 (both CHW and CWS kept as aliases)
+  const alCentral = ['CHW','CWS','CLE','DET','KCR','MIN'];
+  // AL West — ANA→LAA in 2005, OAK→ATH in 2024, HOU joined in 2013
+  const alWest = [
+    year < 2005 ? 'ANA' : 'LAA',
+    year < 2024 ? 'OAK' : 'ATH',
+    'SEA','TEX',
+    ...(year >= 2013 ? ['HOU'] : []),
+  ];
+  // NL East — MON→WSN in 2005, FLA→MIA in 2012
+  const nlEast = [
+    'ATL',
+    year < 2012 ? 'FLA' : 'MIA',
+    'NYM','PHI',
+    year < 2005 ? 'MON' : 'WSN',
+  ];
+  // NL Central — HOU was here 2002–2012, moved to AL West in 2013
+  const nlCentral = ['CHC','CIN', ...(year < 2013 ? ['HOU'] : []), 'MIL','PIT','STL'];
+  // NL West — stable since 2002
+  const nlWest = ['ARI','COL','LAD','SDP','SFG'];
+
+  return [
+    {
+      label: 'American League',
+      divisions: [
+        { label: 'AL East',    teams: alEast },
+        { label: 'AL Central', teams: alCentral },
+        { label: 'AL West',    teams: alWest },
+      ],
+    },
+    {
+      label: 'National League',
+      divisions: [
+        { label: 'NL East',    teams: nlEast },
+        { label: 'NL Central', teams: nlCentral },
+        { label: 'NL West',    teams: nlWest },
+      ],
+    },
+  ];
+}
+
+// Current-year convenience constants (used where year context isn't available)
+const LEAGUES   = getLeaguesForYear(CURRENT_YEAR);
+const DIVISIONS = LEAGUES.flatMap(lg => lg.divisions);
+
+// ─── Image helpers ────────────────────────────────────────────────────────────
+const TEAM_LOGO_ABBR = {
+  'LAA':'laa','ARI':'ari','BAL':'bal','BOS':'bos','CHC':'chc','CWS':'chw','CHW':'chw',
+  'CIN':'cin','CLE':'cle','COL':'col','DET':'det','HOU':'hou','KCR':'kc',
+  'LAD':'lad','MIA':'mia','MIL':'mil','MIN':'min','NYM':'nym','NYY':'nyy',
+  'ATH':'oak','OAK':'oak','PHI':'phi','PIT':'pit','SDP':'sd','SEA':'sea',
+  'SFG':'sf','STL':'stl','TBR':'tb','TEX':'tex','TOR':'tor','WSN':'wsh',
+  // Historical abbreviations
+  'ANA':'laa','TBD':'tb','FLA':'mia','MON':'wsh',
+};
+
+// Dark red for light bars; coral for very dark bars (purple, brown) where dark red disappears.
+// Pitching pink (#E91E63) is bright enough for dark red despite its low luminance score.
+function negRedFor(hex) {
+  if (hex.toLowerCase() === '#e91e63') return '#b71c1c';
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  const lum = (0.299*r + 0.587*g + 0.114*b) / 255;
+  return lum > 0.4 ? '#b71c1c' : '#ff6b6b';
+}
+
+function headshotUrl(mlbamId) {
+  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_120,q_auto:best/v1/people/${mlbamId}/headshot/67/current`;
+}
+
+function teamLogoUrl(fgAbbr) {
+  const espn = TEAM_LOGO_ABBR[fgAbbr] || (fgAbbr || '').toLowerCase();
+  return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/${espn}.png&w=120`;
+}
+
+// Lazy image cache — returns cached Image or null (triggers load + callback when ready)
+const IMG_CACHE = new Map();
+function getCachedImage(src, onLoad) {
+  if (IMG_CACHE.has(src)) return IMG_CACHE.get(src);
+  IMG_CACHE.set(src, null); // loading sentinel
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload  = () => { IMG_CACHE.set(src, img); onLoad && onLoad(); };
+  img.onerror = () => { IMG_CACHE.set(src, null); }; // stay null on fail
+  img.src = src;
+  return null;
+}
+
+// Draw an image clipped to a circle using "cover" logic:
+// takes the largest centered square crop (full height, centered width),
+// equivalent to object-fit:cover + object-position:50% 0%.
+function drawCircleImage(ctx, img, cx, cy, r) {
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.clip();
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  const side = Math.min(iw, ih);       // square crop size = shortest dimension
+  const sx = (iw - side) / 2;          // center horizontally
+  const sy = (ih - side) * 0.2;         // shift crop down 20% so face sits more centered
+  ctx.drawImage(img, sx, sy, side, side, cx - r, cy - r, r * 2, r * 2);
+  ctx.restore();
+}
+
+// ─── State ────────────────────────────────────────────────────────────────────
+let allPlayers = [];
+let pitchingWAR = new Map(); // playerid → pitching WAR for two-way players
+// rw is now per-year via getRwForYear(year) — no global needed
+let playerChart = null;
+let lbChart = null;
+let cmpAChart = null;
+let cmpBChart = null;
+
+// Explicitly resize compare charts on window resize — Chart.js ResizeObserver
+// doesn't always fire when CSS grid column widths change.
+window.addEventListener('resize', () => {
+  if (cmpAChart) cmpAChart.resize();
+  if (cmpBChart) cmpBChart.resize();
+});
+
+// ─── Mock data (?mock=1 for local dev without Vercel proxy) ───────────────────
+const MOCK_PLAYERS = (() => {
+  const names = [
+    ['Aaron Judge','NYY',70,10,-3,6,2,20],
+    ['Shohei Ohtani','LAD',60,8,4,6,2,18],
+    ['Mookie Betts','LAD',40,12,18,-3,2,18],
+    ['Freddie Freeman','LAD',50,5,8,6,2,15],
+    ['Gunnar Henderson','BAL',35,8,15,6,2,14],
+    ['Bobby Witt Jr.','KCR',30,14,12,-3,2,13],
+    ['Fernando Tatis Jr.','SDP',38,10,8,-3,2,13],
+    ['Kyle Tucker','CHC',42,6,6,6,2,12],
+    ['Jose Ramirez','CLE',36,14,6,6,2,12],
+    ['Yordan Alvarez','HOU',52,2,-4,6,2,12],
+    ['Juan Soto','NYM',48,4,-6,6,2,12],
+    ['Paul Goldschmidt','STL',40,2,6,6,2,11],
+    ['Corey Seager','TEX',44,4,2,6,2,11],
+    ['Matt Olson','ATL',38,2,6,6,2,11],
+    ['Trea Turner','PHI',28,14,6,-3,2,11],
+    ['Rafael Devers','BOS',36,2,6,6,2,10],
+    ['Mike Trout','LAA',42,6,6,6,2,10],
+    ['Julio Rodriguez','SEA',28,12,6,-3,2,10],
+    ['Elly De La Cruz','CIN',22,16,8,-3,2,10],
+    ['Marcus Semien','TEX',20,12,8,6,2,10],
+    ['Pete Alonso','NYM',42,2,6,6,2,9],
+    ['Corbin Carroll','ARI',22,10,8,-3,2,9],
+    ['Steven Kwan','CLE',20,8,12,6,2,9],
+    ['Willy Adames','SFG',22,8,12,-3,2,9],
+    ['Cody Bellinger','CHC',26,8,8,-3,2,9],
+  ];
+  return names.map(([name, team, bat, bsr, fld, pos, lg, rep]) => ({
+    PlayerName: name,
+    team_name_abb: team,
+    playerid: Math.random(),
+    Batting: bat, BaseRunning: bsr, Fielding: fld,
+    Positional: pos, wLeague: lg, Replacement: rep,
+    WAR: parseFloat(((bat + bsr + fld + pos + lg + rep) / 9.7).toFixed(1)),
+    RAR: bat + bsr + fld + pos + lg + rep,
+  })).sort((a, b) => b.WAR - a.WAR);
+})();
+
+const MOCK_MODE = new URLSearchParams(location.search).has('mock');
+
+// Our own proxy at /api/fangraphs forwards query params to FanGraphs with minimal
+// headers and Cache-Control: no-store so Vercel never generates ETags that cause 304s.
+const FG_PROXY = 'https://fg-war.vercel.app/api/fangraphs';
+
+// R/W (runs per win) by season, sourced from https://www.fangraphs.com/tools/guts
+// Used to convert component runs into WAR wins for the waterfall chart.
+const RW_BY_YEAR = {
+  2026:9.771, 2025:9.774, 2024:9.683, 2023:10.028, 2022:9.524,
+  2021:9.973, 2020:10.282, 2019:10.296, 2018:9.714, 2017:10.048,
+  2016:9.778, 2015:9.421, 2014:9.117, 2013:9.264, 2012:9.544,
+  2011:9.454, 2010:9.643, 2009:9.994, 2008:10.032, 2007:10.250,
+  2006:10.365, 2005:9.971, 2004:10.272, 2003:10.158, 2002:9.991,
+};
+const RW_FALLBACK = 9.7; // fallback for years not in table
+
+function getRwForYear(year) {
+  return RW_BY_YEAR[year] ?? RW_FALLBACK;
+}
+
+async function fetchLeaders(params) {
+  const qs = new URLSearchParams(params);
+  // cache:'no-store' prevents the browser from sending If-None-Match/If-Modified-Since
+  // headers, which can cause Vercel's CDN to return a 304 (no body) that breaks res.json().
+  // Our JS-level dataCache already de-dupes requests within a session.
+  const res = await fetch(`${FG_PROXY}?${qs}`, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Proxy error ${res.status}`);
+  return res.json();
+}
+
+// Fetch the set of playerids FanGraphs considers primary-position players for a given pos code.
+// Cached per year+posCode so repeat filter selections are instant.
+async function fetchRookiePlayerIds(year) {
+  if (rookieIdCache.has(year)) return rookieIdCache.get(year);
+  const data = await fetchLeaders({
+    pos: 'all', stats: 'bat', lg: 'all', qual: 0, type: 8,
+    season: year, season1: year, month: 0, ind: 2,
+    pageitems: 2000000000, pagenum: 1,
+  });
+  const raw = Array.isArray(data) ? data : (data.data || []);
+  const ids = new Set(raw.map(p => p.playerid));
+  rookieIdCache.set(year, ids);
+  return ids;
+}
+
+async function fetchPosPlayerIds(year, posCode) {
+  const key = `${year}:${posCode}`;
+  if (posIdCache.has(key)) return posIdCache.get(key);
+  const data = await fetchLeaders({
+    pos: posCode, stats: 'bat', lg: 'all', qual: 0, type: 8,
+    season: year, season1: year, month: 0, ind: 0,
+    pageitems: 2000000000, pagenum: 1,
+  });
+  const raw = Array.isArray(data) ? data : (data.data || []);
+  const ids = new Set(raw.map(p => p.playerid));
+  posIdCache.set(key, ids);
+  return ids;
+}
+
+const pitcherLbCache = new Map(); // year → sorted pitcher array
+
+async function fetchRookiePitcherIds(year) {
+  const key = `pit:${year}`;
+  if (rookieIdCache.has(key)) return rookieIdCache.get(key);
+  const data = await fetchLeaders({
+    pos: 'all', stats: 'pit', lg: 'all', qual: 0, type: 8,
+    season: year, season1: year, month: 0, ind: 2,
+    pageitems: 2000000000, pagenum: 1,
+  });
+  const raw = Array.isArray(data) ? data : (data.data || []);
+  const ids = new Set(raw.map(p => p.playerid));
+  rookieIdCache.set(key, ids);
+  return ids;
+}
+
+async function fetchPitcherLeaders(year, splitParams = {}) {
+  const key = splitParams.startdate
+    ? `${year}:${splitParams.startdate}`
+    : (splitParams.month && splitParams.month !== '0' ? `${year}:month${splitParams.month}` : year);
+  if (pitcherLbCache.has(key)) return pitcherLbCache.get(key);
+  const data = await fetchLeaders({
+    pos: 'all', stats: 'pit', lg: 'all', qual: 0, type: 8,
+    season: year, season1: year, ind: 0,
+    pageitems: 2000000000, pagenum: 1,
+    sortdir: 'default', sortstat: 'WAR',
+    month: '0',
+    ...splitParams,
+  });
+  const raw = Array.isArray(data) ? data : (data.data || []);
+  const pitchers = raw.filter(p => p.WAR != null).sort((a, b) => b.WAR - a.WAR);
+  pitcherLbCache.set(key, pitchers);
+  return pitchers;
+}
+
+// ─── Data loading ─────────────────────────────────────────────────────────────
+async function loadData(year = CURRENT_YEAR) {
+  if (dataCache.has(year)) return dataCache.get(year);
+
+  if (MOCK_MODE) {
+    const pitMap = new Map();
+    const ohtani = MOCK_PLAYERS.find(p => p.PlayerName === 'Shohei Ohtani');
+    if (ohtani) pitMap.set(ohtani.playerid, 4.2);
+    const result = { players: MOCK_PLAYERS, pitMap };
+    dataCache.set(year, result);
+    return result;
+  }
+
+  const leaderParams = {
+    pos: 'all', lg: 'all', qual: 0, type: 8,
+    season: year, season1: year,
+    month: 0, ind: 0,
+    pageitems: 2000000000, pagenum: 1,
+    sortdir: 'default', sortstat: 'WAR',
+  };
+
+  const [leadersData, pitchersData] = await Promise.all([
+    fetchLeaders({ ...leaderParams, pos: 'np', stats: 'bat' }),
+    fetchLeaders({ ...leaderParams, pos: 'all', stats: 'pit' }),
+  ]);
+
+  const raw = Array.isArray(leadersData) ? leadersData : (leadersData.data || []);
+  const players = raw.filter(p => p.WAR != null).sort((a, b) => b.WAR - a.WAR);
+
+  const batterIds = new Set(players.map(p => p.playerid));
+  const pitchers = Array.isArray(pitchersData) ? pitchersData : (pitchersData.data || []);
+  const pitMap = new Map();
+  pitchers.forEach(p => {
+    if (p.WAR != null && batterIds.has(p.playerid)) pitMap.set(p.playerid, p.WAR);
+  });
+
+  const result = { players, pitMap };
+  dataCache.set(year, result);
+  return result;
+}
+
+// ─── Leaderboard split helpers ────────────────────────────────────────────────
+// Maps a split selector value → FanGraphs API params for that date window.
+// month=1000 with startdate/enddate is the FG custom range convention.
+function getLbSplitParams(splitValue) {
+  const fmt = d => d.toISOString().slice(0, 10);
+  const today = new Date();
+  const todayStr = fmt(today);
+  const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return fmt(d); };
+  // Cap enddate at today so future dates don't confuse FanGraphs
+  const cap = d => fmt(new Date(Math.min(new Date(d), today)));
+  // Build a month=1000 date-range param for a fixed calendar window.
+  // Using explicit startdate/enddate is more reliable than month=N.
+  const monthRange = (mm, dd1, mm2, dd2) => {
+    const y = today.getFullYear();
+    const start = `${y}-${String(mm).padStart(2,'0')}-${String(dd1).padStart(2,'0')}`;
+    const end   = cap(`${y}-${String(mm2).padStart(2,'0')}-${String(dd2).padStart(2,'0')}`);
+    return { month: '1000', startdate: start, enddate: end };
+  };
+  switch (String(splitValue)) {
+    case '36': return { month: '1000', startdate: daysAgo(7),  enddate: todayStr };
+    case '33': return { month: '1000', startdate: daysAgo(14), enddate: todayStr };
+    case '35': return { month: '1000', startdate: daysAgo(21), enddate: todayStr };
+    case '34': return { month: '1000', startdate: daysAgo(30), enddate: todayStr };
+    case '60': return { month: '1000', startdate: daysAgo(60), enddate: todayStr };
+    case '90': return { month: '1000', startdate: daysAgo(90), enddate: todayStr };
+    case '7':  return { month: '30' };  // 1st Half
+    case '8':  return { month: '31' };  // 2nd Half
+    case '1':  return monthRange(3, 20, 4, 30);   // March/April
+    case '2':  return monthRange(5,  1, 5, 31);   // May
+    case '3':  return monthRange(6,  1, 6, 30);   // June
+    case '4':  return monthRange(7,  1, 7, 31);   // July
+    case '5':  return monthRange(8,  1, 8, 31);   // August
+    case '6':  return monthRange(9,  1, 10, 6);   // September/October
+    default:   return { month: '0' };
+  }
+}
+
+// Separate cache for leaderboard split data (keyed by `${year}:${startdate|full}`).
+// Full-season requests fall through to the main dataCache.
+const lbDataCache = new Map();
+
+async function loadLbData(year, splitParams = {}) {
+  // Full season (month=0): reuse the shared dataCache (no duplicate fetch)
+  if (!splitParams.startdate && (!splitParams.month || splitParams.month === '0')) return loadData(year);
+
+  const key = splitParams.startdate ? `${year}:${splitParams.startdate}` : `${year}:month${splitParams.month}`;
+  if (lbDataCache.has(key)) return lbDataCache.get(key);
+
+  const base = {
+    lg: 'all', qual: 0, type: 8,
+    season: year, season1: year,
+    ind: 0, pageitems: 2000000000, pagenum: 1,
+    sortdir: 'default', sortstat: 'WAR',
+    ...splitParams,
+  };
+
+  const [leadersData, pitchersData] = await Promise.all([
+    fetchLeaders({ ...base, pos: 'np', stats: 'bat' }),
+    fetchLeaders({ ...base, pos: 'all', stats: 'pit' }),
+  ]);
+
+  const raw = Array.isArray(leadersData) ? leadersData : (leadersData.data || []);
+  const players = raw.filter(p => p.WAR != null).sort((a, b) => b.WAR - a.WAR);
+
+  const batterIds = new Set(players.map(p => p.playerid));
+  const pitchers  = Array.isArray(pitchersData) ? pitchersData : (pitchersData.data || []);
+  const pitMap = new Map();
+  pitchers.forEach(p => {
+    if (p.WAR != null && batterIds.has(p.playerid)) pitMap.set(p.playerid, p.WAR);
+  });
+
+  const result = { players, pitMap };
+  lbDataCache.set(key, result);
+  return result;
+}
+
+// ─── Component math ───────────────────────────────────────────────────────────
+function computeWins(player, year = CURRENT_YEAR) {
+  const rw = getRwForYear(year);
+  return COMPONENTS.map(c => ({
+    ...c,
+    runs: player[c.key] ?? 0,
+    wins: (player[c.key] ?? 0) / rw,
+  }));
+}
+
+// ─── Waterfall chart ──────────────────────────────────────────────────────────
+function buildWaterfallDatasets(components, totalWAR, signBased = false) {
+  const items = [...components, { key: '__total__', label: 'fWAR', color: TOTAL_COLOR, wins: totalWAR }];
+  // Floating bar format: each entry is [from, to], so the bar spans exactly
+  // that range regardless of sign — no separate spacer dataset needed.
+  const floatingData = [];
+  const colors = [];
+  let running = 0;
+
+  items.forEach(item => {
+    const isTotal = item.key === '__total__';
+    const val = item.wins;
+    if (isTotal) {
+      floatingData.push([0, totalWAR]);
+    } else {
+      floatingData.push([running, running + val]);
+      running += val;
+    }
+    if (signBased) {
+      colors.push(isTotal ? TOTAL_COLOR : (val >= 0 ? WF_POS_COLOR : WF_NEG_COLOR));
+    } else {
+      colors.push(item.color);
+    }
+  });
+
+  return { labels: items.map(c => c.label), floatingData, colors, items };
+}
+
+function createWaterfallChart(canvas, player, options = {}) {
+  const season = options.season ?? CURRENT_YEAR;
+  const pitMap = options.pitMap ?? pitchingWAR;
+  const wins = computeWins(player, season);
+  const pitWAR = pitMap.get(player.playerid);
+  if (pitWAR != null) {
+    wins.push({ key: '__pitching__', label: 'Pitching', color: '#E91E63', runs: null, wins: pitWAR });
+  }
+  const totalWAR = player.WAR + (pitWAR ?? 0);
+  const { labels, floatingData, colors, items } = buildWaterfallDatasets(wins, totalWAR, !!options.signColors);
+  const ctx = canvas.getContext('2d');
+
+  return new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Wins',
+          data: floatingData,
+          backgroundColor: colors,
+          borderColor: colors,
+          borderWidth: 0,
+          borderRadius: 3,
+          maxBarThickness: options.compact ? 52 : 72,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: options.compact ? 4 : 8 } },
+      plugins: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: options.compact
+            ? `${player.PlayerName} — ${season} fWAR: ${totalWAR.toFixed(1)}`
+            : `${player.PlayerName} — ${season} fWAR: ${totalWAR.toFixed(1)}`,
+          color: 'transparent', // hidden — drawn manually by wfTitle plugin below
+          font: { size: options.compact ? 14 : 18, weight: '700', family: 'DM Sans' },
+          padding: { top: 8, bottom: options.compact ? 52 : 60 },
+        },
+        tooltip: {
+          callbacks: {
+            label(ctx) {
+              const item = items[ctx.dataIndex];
+              if (item.key === '__total__') return `fWAR: ${totalWAR.toFixed(2)}`;
+              const v = item.wins;
+              return `${item.label}: ${v >= 0 ? '+' : ''}${v.toFixed(2)} W`;
+            },
+            title(i) { return i[0]?.label ?? ''; },
+          },
+        },
+      },
+      scales: {
+        x: {
+          grid: { color: CHART_DEFAULTS.gridColor },
+          ticks: { color: CHART_DEFAULTS.tickColor, font: { size: options.compact ? 9 : 11, family: 'DM Sans' } },
+        },
+        y: {
+          grid: {
+            color: (ctx) => ctx.tick?.value === 0 ? 'rgba(220,220,220,0.5)' : CHART_DEFAULTS.gridColor,
+            lineWidth: (ctx) => ctx.tick?.value === 0 ? 2 : 1,
+          },
+          ticks: {
+            color: (ctx) => ctx.tick?.value === 0 ? 'rgba(220,220,220,0.85)' : CHART_DEFAULTS.tickColor,
+            font: (ctx) => ctx.tick?.value === 0
+              ? { size: 11, family: 'DM Sans', weight: 'bold' }
+              : { size: 11, family: 'DM Sans' },
+          },
+          title: {
+            display: true,
+            text: 'Wins Above Replacement',
+            color: '#aaa',
+            font: { size: 11, family: 'DM Sans' },
+          },
+          suggestedMin: options.yMin,
+          suggestedMax: options.yMax,
+        },
+      },
+      animation: { duration: 250 },
+    },
+    plugins: [
+      {
+        // Draw the chart title manually so we can color the fWAR value separately
+        id: 'wfTitle',
+        afterDraw(chart) {
+          const { ctx, width } = chart;
+          const fontSize = options.compact ? 14 : 18;
+          const prefix = `${player.PlayerName} — ${season} fWAR: `;
+          const suffix = totalWAR.toFixed(1);
+
+          ctx.save();
+          ctx.font = `700 ${fontSize}px "DM Sans", sans-serif`;
+          ctx.textBaseline = 'top';
+
+          const prefixW = ctx.measureText(prefix).width;
+          const totalW  = prefixW + ctx.measureText(suffix).width;
+          const x = width / 2 - totalW / 2;
+          const y = 8; // matches title padding.top
+
+          ctx.fillStyle = CHART_DEFAULTS.titleColor;
+          ctx.fillText(prefix, x, y);
+
+          ctx.fillStyle = totalWAR < 0 ? '#c44820' : CHART_DEFAULTS.titleColor;
+          ctx.fillText(suffix, x + prefixW, y);
+
+          ctx.restore();
+        },
+      },
+      {
+        id: 'wfLabels',
+        afterDatasetsDraw(chart) {
+          const { ctx } = chart;
+          const meta = chart.getDatasetMeta(0);
+          ctx.save();
+          const fontSize = options.compact ? 9 : 10;
+          ctx.font = `500 ${fontSize}px "DM Sans", system-ui`;
+          ctx.textAlign = 'center';
+          meta.data.forEach((bar, i) => {
+            const item = items[i];
+            const realVal = item.key === '__total__' ? totalWAR : item.wins;
+            if (Math.abs(realVal) < 0.01) return;
+            const label = (realVal >= 0 ? '+' : '') + realVal.toFixed(1);
+            const barH = Math.abs(bar.base - bar.y);
+            const minInside = options.compact ? 12 : 14;
+            const isNeg = realVal < 0;
+            if (barH >= minInside) {
+              // draw inside bar
+              ctx.textBaseline = 'middle';
+              // sign-based charts: white, except the total bar goes red when negative
+              // component-colored charts: white for positive, luminance-adjusted red for negative
+              ctx.fillStyle = options.signColors
+                ? (item.key === '__total__' && isNeg ? '#ff6b6b' : '#fff')
+                : (isNeg ? negRedFor(item.color) : '#fff');
+              ctx.fillText(label, bar.x, bar.y + (bar.base - bar.y) / 2);
+            } else {
+              // draw outside bar on white background — dark red is fine
+              if (!isNeg) {
+                ctx.textBaseline = 'bottom';
+                ctx.fillStyle = '#555';
+                ctx.fillText(label, bar.x, bar.y - 2);
+              } else {
+                ctx.textBaseline = 'top';
+                ctx.fillStyle = '#b71c1c';
+                ctx.fillText(label, bar.x, bar.base + 2);
+              }
+            }
+          });
+          ctx.restore();
+        },
+      },
+      {
+        id: 'wfHeader',
+        afterDraw(chart) {
+          const { ctx, width, chartArea } = chart;
+          const mlbamId = player.xMLBAMID;
+          const teamAbbr = player.TeamName ?? player.team_name_abb;
+          const R = options.compact ? 20 : 26;
+          const margin = 14;
+          // Sit the circles in the bottom half of the title padding, just above the plot area
+          const cy = chartArea.top - R - 6;
+
+          // Trigger reload callback — forces chart to redraw once images arrive
+          const refresh = () => chart.draw();
+
+          const headshot = mlbamId ? getCachedImage(headshotUrl(mlbamId), refresh) : null;
+          const logo     = teamAbbr ? getCachedImage(teamLogoUrl(teamAbbr), refresh) : null;
+
+          ctx.save();
+
+          // Draw team logo circle
+          const logoX = width - margin - R;
+          ctx.beginPath();
+          ctx.arc(logoX, cy, R, 0, Math.PI * 2);
+          ctx.fillStyle = '#f0ede8';
+          ctx.fill();
+          if (logo) drawCircleImage(ctx, logo, logoX, cy, R);
+
+          // Draw headshot circle
+          const shotX = logoX - R * 2 - 8;
+          ctx.beginPath();
+          ctx.arc(shotX, cy, R, 0, Math.PI * 2);
+          ctx.fillStyle = '#e8e4df';
+          ctx.fill();
+          if (headshot) drawCircleImage(ctx, headshot, shotX, cy, R);
+
+          ctx.restore();
+        },
+      },
+    ],
+  });
+}
+
+// ─── Player stats table ───────────────────────────────────────────────────────
+function renderPlayerTable(player, pitMap = pitchingWAR, year = CURRENT_YEAR) {
+  const tbody = document.querySelector('#player-table tbody');
+  const wins = computeWins(player, year);
+  const totalRuns = wins.reduce((s, c) => s + c.runs, 0);
+
+  const pitWAR = pitMap.get(player.playerid);
+  const combinedWAR = pitWAR != null ? player.WAR + pitWAR : player.WAR;
+
+  tbody.innerHTML = wins.map(c => `
+    <tr>
+      <td><span class="dot" style="background:${c.color}"></span>${c.label}${c.desc ? `<span style="color:#aaa;font-size:0.72rem;font-weight:400;margin-left:6px">${c.desc}</span>` : ''}</td>
+      <td style="text-align:right">${c.runs.toFixed(1)}</td>
+      <td style="text-align:right">${c.wins >= 0 ? '+' : ''}${c.wins.toFixed(2)}</td>
+    </tr>
+  `).join('')
+  + (pitWAR != null ? `
+    <tr>
+      <td><span class="dot" style="background:#E91E63"></span>Pitching fWAR<span style="color:#aaa;font-size:0.72rem;font-weight:400;margin-left:6px">runs prevented on the mound</span></td>
+      <td style="text-align:right; color:#aaa">—</td>
+      <td style="text-align:right">+${pitWAR.toFixed(2)}</td>
+    </tr>
+  ` : '')
+  + `
+    <tr class="total-row">
+      <td><strong>${pitWAR != null ? 'Combined fWAR' : 'fWAR Total'}</strong></td>
+      <td style="text-align:right"><strong>${pitWAR != null ? '—' : totalRuns.toFixed(1)}</strong></td>
+      <td style="text-align:right"><strong>${combinedWAR.toFixed(2)}</strong></td>
+    </tr>
+  `;
+
+  document.getElementById('player-footnote').textContent =
+    `R/W constant: ${getRwForYear(year).toFixed(3)} (${year})`;
+}
+
+// ─── Leaderboard title helpers ────────────────────────────────────────────────
+// Resolve a Set of selected team abbreviations to a human-readable label,
+// collapsing a full division or league to its name (e.g. "AL East", "American League").
+function resolveTeamLabel(teams, year) {
+  if (!(teams instanceof Set) || teams.size === 0) return '';
+  if (teams.size === 1) {
+    const t = [...teams][0];
+    return TEAM_FULL[t] || t;
+  }
+  const canonical = t => TEAM_FULL[t] || t;
+  const selCanon = new Set([...teams].map(canonical));
+  const yrLeagues = getLeaguesForYear(year);
+  const yrDivisions = yrLeagues.flatMap(lg => lg.divisions);
+  const lgMatch = yrLeagues.find(lg => {
+    const lgCanon = new Set(lg.divisions.flatMap(d => d.teams).map(canonical));
+    return [...selCanon].every(c => lgCanon.has(c)) && selCanon.size === lgCanon.size;
+  });
+  const divMatch = !lgMatch && yrDivisions.find(div => {
+    const divCanon = new Set(div.teams.map(canonical));
+    return [...selCanon].every(c => divCanon.has(c)) && selCanon.size === divCanon.size;
+  });
+  if (lgMatch)       return lgMatch.label;
+  if (divMatch)      return divMatch.label;
+  return [...teams].join('/');
+}
+
+const LB_SPLIT_LABEL = {
+  '36': 'Last 7 Days', '33': 'Last 14 Days', '35': 'Last 21 Days', '34': 'Last 30 Days', '60': 'Last 60 Days', '90': 'Last 90 Days',
+  '7': '1st Half', '8': '2nd Half',
+  '1': 'March/April', '2': 'May', '3': 'June', '4': 'July', '5': 'August', '6': 'September/October',
+};
+
+// Build the leaderboard title suffix from active filters.
+function lbTitleSuffix(teams, pos, year, rookie = false, split = '0') {
+  const teamName  = resolveTeamLabel(teams, year);
+  const rookiePfx = rookie ? 'Rookie ' : '';
+  // 'P' → "Pitchers", 'NP' → "Position Players", specific pos → from POS_FULL, '' → "Players"
+  let posName = '';
+  if (pos === 'P')       posName = 'Pitchers';
+  else if (pos === 'NP') posName = 'Position Players';
+  else if (pos)          posName = POS_FULL[pos] || pos + 's';
+  const splitSufx = LB_SPLIT_LABEL[split] ? ` — ${LB_SPLIT_LABEL[split]}` : '';
+  if (teamName && posName) return ` ${teamName} ${rookiePfx}${posName}${splitSufx}`;
+  if (teamName)            return ` ${teamName} ${rookiePfx}${pos === '' ? 'Players' : 'Position Players'}${splitSufx}`;
+  if (posName)             return ` ${rookiePfx}${posName}${splitSufx}`;
+  return ` ${rookiePfx}Players${splitSufx}`;
+}
+
+// ─── Leaderboard chart (vertical stacked, highest WAR on left) ────────────────
+let lbCount = window.innerWidth <= 720 ? 10 : 25;
+// Sync active pill to match initial default
+document.querySelectorAll('#lb-count-pills .count-pill')
+  .forEach(b => b.classList.toggle('active', +b.dataset.n === lbCount));
+let lbExportData = { players: [], year: CURRENT_YEAR, filters: {} }; // updated each render for CSV export
+
+function renderLeaderboard(players, count = lbCount, year = CURRENT_YEAR, pitMap = pitchingWAR, filters = {}) {
+  // Show component leaderboards (may have been hidden by pitcher mode)
+  const compGrid = document.querySelector('.lb-comp-grid');
+  if (compGrid) compGrid.style.display = 'grid';
+
+  // Sort by combined WAR (batting + pitching) so two-way players rank correctly
+  const sorted = [...players].sort((a, b) => {
+    const ta = a.WAR + (pitMap.get(a.playerid) ?? 0);
+    const tb = b.WAR + (pitMap.get(b.playerid) ?? 0);
+    return tb - ta;
+  });
+  const topN = sorted.slice(0, count);
+
+  // Stash for CSV export
+  lbExportData = { players: topN, year, filters, pitMap };
+
+  // Mobile title (shown instead of Chart.js title to avoid headshot collision)
+  const mobileTitleEl = document.getElementById('lb-mobile-title');
+  if (mobileTitleEl) {
+    const isMobileTitle = window.innerWidth <= 720;
+    mobileTitleEl.style.display = isMobileTitle ? 'block' : 'none';
+    mobileTitleEl.textContent = `${year} fWAR Leaderboard — Top ${topN.length}${lbTitleSuffix(filters.teams, filters.pos, year, filters.rookie, filters.split)}`;
+  }
+
+  const datasets = [
+    ...COMPONENTS.map(c => ({
+      label: c.label,
+      data: topN.map(p => (p[c.key] ?? 0) / getRwForYear(year)),
+      backgroundColor: c.color,
+      borderColor: c.color,
+      borderWidth: 0,
+      borderRadius: 2,
+      stack: 'war',
+    })),
+    ...(topN.some(p => pitMap.has(p.playerid)) ? [{
+      label: 'Pitching',
+      data: topN.map(p => pitMap.get(p.playerid) ?? 0),
+      backgroundColor: '#E91E63',
+      borderColor: '#E91E63',
+      borderWidth: 0,
+      borderRadius: 2,
+      stack: 'war',
+    }] : []),
+  ];
+
+  const canvas = document.getElementById('lb-chart');
+  const ctx = canvas.getContext('2d');
+  if (lbChart) lbChart.destroy();
+
+  const isMobile = window.innerWidth <= 720;
+
+  lbChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: topN.map(p => p.PlayerName),
+      datasets,
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: isMobile ? 42 : 90 } },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            color: CHART_DEFAULTS.legendColor,
+            font: { size: 11, family: 'DM Sans' },
+            boxWidth: 12, boxHeight: 12,
+            padding: 16,
+          },
+        },
+        title: {
+          display: !isMobile,
+          text: `${year} fWAR Leaderboard — Top ${topN.length}${lbTitleSuffix(filters.teams, filters.pos, year, filters.rookie, filters.split)}`,
+          color: CHART_DEFAULTS.titleColor,
+          font: { size: 14, weight: '600', family: 'DM Sans' },
+          padding: { bottom: 16 },
+        },
+        tooltip: {
+          callbacks: {
+            label(ctx) {
+              const v = ctx.parsed.y;
+              return `${ctx.dataset.label}: ${v >= 0 ? '+' : ''}${v.toFixed(2)} W`;
+            },
+            footer(items) {
+              const p = topN[items[0].dataIndex];
+              const total = p.WAR + (pitMap.get(p.playerid) ?? 0);
+              return `fWAR: ${total.toFixed(2)}`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          stacked: true,
+          grid: { display: false },
+          ticks: {
+            color: CHART_DEFAULTS.tickColor,
+            font: { size: 9, family: 'DM Sans' },
+            maxRotation: 45,
+            minRotation: 30,
+          },
+        },
+        y: {
+          stacked: true,
+          grid: { color: CHART_DEFAULTS.gridColor },
+          ticks: { color: CHART_DEFAULTS.tickColor, font: { size: 11, family: 'DM Sans' } },
+          title: {
+            display: !isMobile,
+            text: 'Wins Above Replacement',
+            color: '#aaa',
+            font: { size: 11, family: 'DM Sans' },
+          },
+        },
+      },
+      animation: { duration: 300 },
+    },
+    plugins: [
+      {
+        // Draw value labels inside each stacked segment when tall enough
+        id: 'lbSegmentLabels',
+        afterDatasetsDraw(chart) {
+          const { ctx } = chart;
+          ctx.save();
+          ctx.font = '500 9px "DM Sans", system-ui';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          chart.data.datasets.forEach((ds, dsIdx) => {
+            const meta = chart.getDatasetMeta(dsIdx);
+            meta.data.forEach((bar, i) => {
+              const v = ds.data[i];
+              if (Math.abs(v) < 0.01) return;
+              const segH = Math.abs(bar.base - bar.y);
+              if (segH < 14) return;
+              const label = (v >= 0 ? '+' : '') + v.toFixed(1);
+              ctx.fillStyle = v < 0 ? negRedFor(chart.data.datasets[dsIdx].backgroundColor) : 'rgba(255,255,255,0.9)';
+              ctx.fillText(label, bar.x, (bar.y + bar.base) / 2);
+            });
+          });
+          ctx.restore();
+        },
+      },
+      {
+        id: 'lbHeadshots',
+        afterDraw(chart) {
+          const { ctx } = chart;
+          const R = isMobile ? 9 : count >= 40 ? 14 : count >= 25 ? 18 : 22;
+          const refresh = () => chart.draw();
+
+          // Compute the true top of each stacked bar: min y across ALL dataset segments
+          const barTops = topN.map((_, i) => {
+            let minY = Infinity;
+            for (let ds = 0; ds < chart.data.datasets.length; ds++) {
+              const meta = chart.getDatasetMeta(ds);
+              if (meta.data[i]) minY = Math.min(minY, meta.data[i].y, meta.data[i].base);
+            }
+            return minY;
+          });
+
+          ctx.save();
+          topN.forEach((p, i) => {
+            const firstBar = chart.getDatasetMeta(0).data[i];
+            const cx = firstBar.x;
+            const topOfBar = barTops[i];
+
+            // Headshot circle just above bar
+            const cy = topOfBar - R - 4;
+            ctx.beginPath();
+            ctx.arc(cx, cy, R, 0, Math.PI * 2);
+            ctx.fillStyle = '#e8e4df';
+            ctx.fill();
+
+            const mlbamId = p.xMLBAMID;
+            if (mlbamId) {
+              const img = getCachedImage(headshotUrl(mlbamId), refresh);
+              if (img) drawCircleImage(ctx, img, cx, cy, R);
+            }
+
+            // WAR label above the circle
+            ctx.font = '600 9px "DM Sans", system-ui';
+            ctx.fillStyle = '#333';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            const combinedWAR = p.WAR + (pitMap.get(p.playerid) ?? 0);
+            ctx.fillText(combinedWAR.toFixed(1), cx, cy - R - 2);
+          });
+          ctx.restore();
+        },
+      },
+    ],
+  });
+}
+
+// ─── Pitcher leaderboard ──────────────────────────────────────────────────────
+function renderPitcherLeaderboard(players, count = lbCount, year = CURRENT_YEAR, filters = {}) {
+  // Hide component leaderboards (batting/fielding/bsr don't apply to pitchers)
+  const compGrid = document.querySelector('.lb-comp-grid');
+  if (compGrid) compGrid.style.display = 'none';
+
+  const sorted = [...players].sort((a, b) => b.WAR - a.WAR);
+  const topN = sorted.slice(0, count);
+
+  lbExportData = { players: topN, year, filters, pitMap: new Map(), isPitcher: true };
+
+  const mobileTitleEl = document.getElementById('lb-mobile-title');
+  if (mobileTitleEl) {
+    const isMobileTitle = window.innerWidth <= 720;
+    mobileTitleEl.style.display = isMobileTitle ? 'block' : 'none';
+    mobileTitleEl.textContent = `${year} fWAR Leaderboard — Top ${topN.length}${lbTitleSuffix(filters.teams, filters.pos, year, filters.rookie, filters.split)}`;
+  }
+
+  const canvas = document.getElementById('lb-chart');
+  const ctx = canvas.getContext('2d');
+  if (lbChart) lbChart.destroy();
+
+  const isMobile = window.innerWidth <= 720;
+  const R = isMobile ? 9 : count >= 40 ? 14 : count >= 25 ? 18 : 22;
+
+  lbChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: topN.map(p => p.PlayerName),
+      datasets: [{
+        label: 'Pitching fWAR',
+        data: topN.map(p => p.WAR ?? 0),
+        backgroundColor: '#E91E63',
+        borderColor: '#E91E63',
+        borderWidth: 0,
+        borderRadius: 2,
+        stack: 'war',
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: isMobile ? 42 : 90 } },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            color: CHART_DEFAULTS.legendColor,
+            font: { size: 11, family: 'DM Sans' },
+            boxWidth: 12, boxHeight: 12,
+            padding: 16,
+          },
+        },
+        title: {
+          display: !isMobile,
+          text: `${year} fWAR Leaderboard — Top ${topN.length}${lbTitleSuffix(filters.teams, filters.pos, year, filters.rookie, filters.split)}`,
+          color: CHART_DEFAULTS.titleColor,
+          font: { size: 14, weight: '600', family: 'DM Sans' },
+          padding: { bottom: 16 },
+        },
+        tooltip: {
+          callbacks: {
+            label(ctx) {
+              const v = ctx.parsed.y;
+              return `Pitching fWAR: ${v >= 0 ? '+' : ''}${v.toFixed(2)} W`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          stacked: true,
+          grid: { display: false },
+          ticks: {
+            color: CHART_DEFAULTS.tickColor,
+            font: { size: 9, family: 'DM Sans' },
+            maxRotation: 45,
+            minRotation: 30,
+          },
+        },
+        y: {
+          stacked: true,
+          grid: { color: CHART_DEFAULTS.gridColor },
+          ticks: { color: CHART_DEFAULTS.tickColor, font: { size: 11, family: 'DM Sans' } },
+          title: {
+            display: !isMobile,
+            text: 'Wins Above Replacement',
+            color: '#aaa',
+            font: { size: 11, family: 'DM Sans' },
+          },
+        },
+      },
+      animation: { duration: 300 },
+    },
+    plugins: [
+      {
+        id: 'pitSegmentLabels',
+        afterDatasetsDraw(chart) {
+          const { ctx } = chart;
+          ctx.save();
+          ctx.font = '500 9px "DM Sans", system-ui';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          chart.data.datasets.forEach((ds, dsIdx) => {
+            const meta = chart.getDatasetMeta(dsIdx);
+            meta.data.forEach((bar, i) => {
+              const v = ds.data[i];
+              if (Math.abs(v) < 0.01) return;
+              const segH = Math.abs(bar.base - bar.y);
+              if (segH < 14) return;
+              ctx.fillStyle = 'rgba(255,255,255,0.9)';
+              ctx.fillText((v >= 0 ? '+' : '') + v.toFixed(1), bar.x, (bar.y + bar.base) / 2);
+            });
+          });
+          ctx.restore();
+        },
+      },
+      {
+        id: 'pitHeadshots',
+        afterDraw(chart) {
+          const { ctx } = chart;
+          const refresh = () => chart.draw();
+
+          const barTops = topN.map((_, i) => {
+            const meta = chart.getDatasetMeta(0);
+            return meta.data[i] ? Math.min(meta.data[i].y, meta.data[i].base) : Infinity;
+          });
+
+          ctx.save();
+          topN.forEach((p, i) => {
+            const bar = chart.getDatasetMeta(0).data[i];
+            const cx = bar.x;
+            const cy = barTops[i] - R - 4;
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, R, 0, Math.PI * 2);
+            ctx.fillStyle = '#e8e4df';
+            ctx.fill();
+
+            const mlbamId = p.xMLBAMID;
+            if (mlbamId) {
+              const img = getCachedImage(headshotUrl(mlbamId), refresh);
+              if (img) drawCircleImage(ctx, img, cx, cy, R);
+            }
+
+            ctx.font = '600 9px "DM Sans", system-ui';
+            ctx.fillStyle = '#333';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText((p.WAR ?? 0).toFixed(1), cx, cy - R - 2);
+          });
+          ctx.restore();
+        },
+      },
+    ],
+  });
+}
+
+// ─── Leaderboard filters ──────────────────────────────────────────────────────
+const POS_ORDER = ['C','1B','2B','SS','3B','LF','CF','RF','DH','OF','UT'];
+
+// Update the multi-select button to show chips for selected teams
+function updateTeamBtn() {
+  const btn = document.getElementById('lb-team-btn');
+  if (!btn) return;
+  if (lbSelectedTeams.size === 0) {
+    btn.innerHTML = '<span class="ms-placeholder">All Teams</span><span class="ms-caret">▾</span>';
+  } else {
+    const chips = [...lbSelectedTeams].map(t =>
+      `<span class="ms-chip">${t}<span class="ms-chip-x" data-team="${t}">×</span></span>`
+    ).join('');
+    btn.innerHTML = chips + '<span class="ms-caret">▾</span>';
+    btn.querySelectorAll('.ms-chip-x').forEach(x => {
+      x.addEventListener('click', e => {
+        e.stopPropagation();
+        lbSelectedTeams.delete(x.dataset.team);
+        const cb = document.querySelector(`#lb-team-dropdown input[value="${x.dataset.team}"]`);
+        if (cb) cb.checked = false;
+        updateTeamBtn();
+        _lbTeamOnChange();
+      });
+    });
+  }
+}
+
+// Build (or rebuild) the team checkbox dropdown with AL/NL → division → team hierarchy
+function populateLbTeams(teams, year = CURRENT_YEAR) {
+  const available = new Set(teams);
+  const dropdown = document.getElementById('lb-team-dropdown');
+  const leagues  = getLeaguesForYear(year);
+  const divisions = leagues.flatMap(lg => lg.divisions);
+  const mapped = new Set(divisions.flatMap(d => d.teams));
+
+  // Helper: get all available teams for a division
+  const divAvail = div => div.teams.filter(t => available.has(t));
+  // Helper: get all available teams for a league
+  const lgAvail  = lg  => lg.divisions.flatMap(divAvail);
+
+  // Build HTML for each league block
+  const leagueHtml = leagues.map(lg => {
+    const lgTeams = lgAvail(lg);
+    if (!lgTeams.length) return '';
+
+    const divsHtml = lg.divisions.map(div => {
+      const dt = divAvail(div);
+      if (!dt.length) return '';
+      return `
+        <div class="ms-div-header" data-div="${div.label}">
+          <input type="checkbox" data-group="div" data-div="${div.label}">
+          ${div.label}
+        </div>` +
+        dt.map(t => `
+          <label class="ms-item" style="padding-left:28px">
+            <input type="checkbox" value="${t}"${lbSelectedTeams.has(t) ? ' checked' : ''}>
+            ${t}
+          </label>`).join('');
+    }).join('');
+
+    return `
+      <div class="ms-league-header" data-league="${lg.label}">
+        <input type="checkbox" data-group="league" data-league="${lg.label}">
+        ${lg.label}
+      </div>` + divsHtml;
+  }).join('');
+
+  // Any teams not in the map fall into an "Other" bucket
+  const otherTeams = teams.filter(t => !mapped.has(t));
+  const otherHtml = otherTeams.length
+    ? `<div class="ms-div-header" style="pointer-events:none">Other</div>` +
+      otherTeams.map(t => `
+        <label class="ms-item">
+          <input type="checkbox" value="${t}"${lbSelectedTeams.has(t) ? ' checked' : ''}>
+          ${t}
+        </label>`).join('')
+    : '';
+
+  dropdown.innerHTML = '<div class="ms-clear" id="lb-team-clear">Clear all</div>' + leagueHtml + otherHtml;
+
+  // Sync a group checkbox (division or league) to checked/indeterminate state
+  function syncGroupCb(cb) {
+    const isLeague = cb.dataset.group === 'league';
+    let teamCbs;
+    if (isLeague) {
+      const lg = leagues.find(l => l.label === cb.dataset.league);
+      const lgT = lgAvail(lg);
+      teamCbs = lgT.map(t => dropdown.querySelector(`input[value="${t}"]`)).filter(Boolean);
+    } else {
+      const div = divisions.find(d => d.label === cb.dataset.div);
+      const dt = divAvail(div);
+      teamCbs = dt.map(t => dropdown.querySelector(`input[value="${t}"]`)).filter(Boolean);
+    }
+    const checkedCount = teamCbs.filter(c => c.checked).length;
+    cb.checked = checkedCount === teamCbs.length;
+    cb.indeterminate = checkedCount > 0 && checkedCount < teamCbs.length;
+  }
+
+  // Sync all group checkboxes based on current team selection
+  function syncAllGroups() {
+    dropdown.querySelectorAll('input[data-group]').forEach(syncGroupCb);
+  }
+
+  // Clear all
+  document.getElementById('lb-team-clear').addEventListener('click', () => {
+    lbSelectedTeams.clear();
+    dropdown.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+    dropdown.querySelectorAll('input[data-group]').forEach(cb => cb.indeterminate = false);
+    updateTeamBtn();
+    _lbTeamOnChange();
+  });
+
+  // Team checkboxes
+  dropdown.querySelectorAll('input[value]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) lbSelectedTeams.add(cb.value);
+      else lbSelectedTeams.delete(cb.value);
+      syncAllGroups();
+      updateTeamBtn();
+      _lbTeamOnChange();
+    });
+  });
+
+  // Division / League group checkboxes — clicking selects/deselects all teams in group
+  dropdown.querySelectorAll('input[data-group]').forEach(groupCb => {
+    groupCb.addEventListener('click', e => {
+      e.stopPropagation(); // don't bubble to the header div's click
+      const isLeague = groupCb.dataset.group === 'league';
+      let groupTeams;
+      if (isLeague) {
+        const lg = leagues.find(l => l.label === groupCb.dataset.league);
+        groupTeams = lgAvail(lg);
+      } else {
+        const div = divisions.find(d => d.label === groupCb.dataset.div);
+        groupTeams = divAvail(div);
+      }
+      if (groupCb.checked) {
+        groupTeams.forEach(t => {
+          lbSelectedTeams.add(t);
+          const cb = dropdown.querySelector(`input[value="${t}"]`);
+          if (cb) cb.checked = true;
+        });
+      } else {
+        groupTeams.forEach(t => {
+          lbSelectedTeams.delete(t);
+          const cb = dropdown.querySelector(`input[value="${t}"]`);
+          if (cb) cb.checked = false;
+        });
+      }
+      syncAllGroups();
+      updateTeamBtn();
+      _lbTeamOnChange();
+    });
+  });
+
+  // Clicking the header text also toggles the group (stops propagation so dropdown doesn't close)
+  dropdown.querySelectorAll('.ms-league-header, .ms-div-header').forEach(hdr => {
+    hdr.addEventListener('click', e => {
+      e.stopPropagation();
+      const cb = hdr.querySelector('input[data-group]');
+      if (!cb) return;
+      cb.checked = !cb.checked;
+      cb.dispatchEvent(new Event('click', { bubbles: false }));
+    });
+  });
+
+  syncAllGroups();
+}
+
+function populateLbFilters(players, year = CURRENT_YEAR) {
+  // Teams (multi-select)
+  const teams = [...new Set(
+    players.map(p => p.TeamName ?? p.team_name_abb ?? '')
+           .filter(t => t && !/^\dTM$/.test(t) && !/^[-\s]+$/.test(t))
+  )]; // order handled by getLeaguesForYear inside populateLbTeams
+  populateLbTeams(teams, year);
+
+  // Position single-select
+  const posSel = document.getElementById('lb-pos-filter');
+  const prevPos = pendingLbPos || posSel.value;
+  pendingLbPos = '';
+
+  // Unique primary positions — use only the FIRST position in slash-separated list
+  const posSet = new Set();
+  players.forEach(p => {
+    const primary = String(p.position ?? p.positionDB ?? '').split('/')[0].trim();
+    if (primary) posSet.add(primary);
+  });
+  const positions = [...posSet].sort((a, b) => {
+    const ai = POS_ORDER.indexOf(a), bi = POS_ORDER.indexOf(b);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  posSel.innerHTML =
+    `<option value="">All Positions</option>` +
+    `<option value="NP"${prevPos === 'NP' ? ' selected' : ''}>Non-Pitchers</option>` +
+    `<option value="P"${prevPos === 'P' ? ' selected' : ''}>Pitchers</option>` +
+    `<option value="" disabled style="color:#ccc">────────</option>` +
+    positions.map(p => `<option value="${p}"${p === prevPos ? ' selected' : ''}>${p}</option>`).join('');
+}
+
+function getFilteredLbPlayers(players, posIds = null, rookieIds = null) {
+  const pos = document.getElementById('lb-pos-filter').value;
+  return players.filter(p => {
+    if (lbSelectedTeams.size > 0) {
+      const teamAbb = p.TeamName ?? p.team_name_abb ?? '';
+      if (!lbSelectedTeams.has(teamAbb)) return false;
+    }
+    // 'NP' and 'P' are handled at the data-source level; skip position filtering here
+    if (pos && pos !== 'NP' && pos !== 'P') {
+      if (posIds) {
+        if (!posIds.has(p.playerid)) return false;
+      } else {
+        const primary = String(p.position ?? p.positionDB ?? '').split('/')[0].trim();
+        if (primary !== pos) return false;
+      }
+    }
+    if (rookieIds && !rookieIds.has(p.playerid)) return false;
+    return true;
+  });
+}
+
+// ─── Component leaderboards ───────────────────────────────────────────────────
+const COMP_LB_DEFS = [
+  { key: 'Batting',     label: 'Batting',      color: '#2196F3', id: 'lb-bat-chart' },
+  { key: 'Fielding',    label: 'Fielding',      color: '#FF9800', id: 'lb-fld-chart' },
+  { key: 'BaseRunning', label: 'Base Running',  color: '#4CAF50', id: 'lb-bsr-chart' },
+];
+const compLbCharts = {};
+
+function renderComponentLeaderboards(players, year, filters = {}) {
+  COMP_LB_DEFS.forEach(({ key, label, color, id }) => {
+    const top10 = [...players]
+      .sort((a, b) => (b[key] ?? 0) - (a[key] ?? 0))
+      .slice(0, 10);
+
+    const wins = top10.map(p => (p[key] ?? 0) / getRwForYear(year));
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext('2d');
+    if (compLbCharts[id]) compLbCharts[id].destroy();
+
+    compLbCharts[id] = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: top10.map(p => p.PlayerName),
+        datasets: [{
+          data: wins,
+          backgroundColor: color,
+          borderColor: color,
+          borderWidth: 0,
+          clip: false,
+          borderRadius: 3,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        clip: false,
+        layout: { padding: { top: 16, bottom: 20 } },
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: `${year} ${label} Leaders${lbTitleSuffix(filters.teams, filters.pos, year, filters.rookie, filters.split)}`,
+            color: CHART_DEFAULTS.titleColor,
+            font: { size: 13, weight: '600', family: 'DM Sans' },
+            padding: { bottom: 12 },
+          },
+          tooltip: {
+            callbacks: {
+              label(ctx) {
+                const v = ctx.parsed.y;
+                return `${label}: ${v >= 0 ? '+' : ''}${v.toFixed(2)} W`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: CHART_DEFAULTS.tickColor,
+              font: { size: 9, family: 'DM Sans' },
+              maxRotation: 45,
+              minRotation: 30,
+            },
+          },
+          y: {
+            grid: { color: CHART_DEFAULTS.gridColor },
+            ticks: { color: CHART_DEFAULTS.tickColor, font: { size: 10, family: 'DM Sans' } },
+            title: {
+              display: true,
+              text: 'Wins',
+              color: '#aaa',
+              font: { size: 10, family: 'DM Sans' },
+            },
+          },
+        },
+        animation: { duration: 300 },
+      },
+      plugins: [{
+        id: `compLabels_${id}`,
+        afterDraw(chart) {
+          const { ctx, canvas } = chart;
+          const meta = chart.getDatasetMeta(0);
+          ctx.save();
+          // Reset clip to full canvas so labels above/below the plot area are visible
+          ctx.beginPath();
+          ctx.rect(0, 0, canvas.width, canvas.height);
+          ctx.clip();
+          ctx.font = '500 9px "DM Sans", system-ui';
+          ctx.textAlign = 'center';
+          meta.data.forEach((bar, i) => {
+            const v = wins[i];
+            const lbl = (v >= 0 ? '+' : '') + v.toFixed(2);
+            if (v >= 0) {
+              // Always above the bar
+              ctx.textBaseline = 'bottom';
+              ctx.fillStyle = '#444';
+              ctx.fillText(lbl, bar.x, bar.y - 2);
+            } else {
+              // Always below the bar
+              ctx.textBaseline = 'top';
+              ctx.fillStyle = '#b71c1c';
+              ctx.fillText(lbl, bar.x, bar.y + 2);
+            }
+          });
+          ctx.restore();
+        },
+      }],
+    });
+  });
+}
+
+// ─── Compare ──────────────────────────────────────────────────────────────────
+function renderCompare(playerA, playerB, { pitMapA = pitchingWAR, pitMapB = pitchingWAR, yearA = CURRENT_YEAR, yearB = CURRENT_YEAR } = {}) {
+  const pitA = pitMapA.get(playerA.playerid);
+  const pitB = pitMapB.get(playerB.playerid);
+  const combinedA = playerA.WAR + (pitA ?? 0);
+  const combinedB = playerB.WAR + (pitB ?? 0);
+  const allWins = [
+    ...computeWins(playerA, yearA).map(c => c.wins),
+    ...computeWins(playerB, yearB).map(c => c.wins),
+  ];
+  const yMin = Math.min(...allWins, combinedA, combinedB, 0) * 1.15;
+  const yMax = Math.max(...allWins, combinedA, combinedB, 0) * 1.15;
+
+  if (cmpAChart) cmpAChart.destroy();
+  if (cmpBChart) cmpBChart.destroy();
+
+  cmpAChart = createWaterfallChart(document.getElementById('cmp-a-chart'), playerA, { compact: true, yMin, yMax, season: yearA, pitMap: pitMapA, signColors: true });
+  cmpBChart = createWaterfallChart(document.getElementById('cmp-b-chart'), playerB, { compact: true, yMin, yMax, season: yearB, pitMap: pitMapB, signColors: true });
+
+  const winsA = computeWins(playerA, yearA);
+  const winsB = computeWins(playerB, yearB);
+
+  document.getElementById('cmp-th-a').textContent = `${playerA.PlayerName} (${yearA})`;
+  document.getElementById('cmp-th-b').textContent = `${playerB.PlayerName} (${yearB})`;
+  const totalA = playerA.WAR + (pitA ?? 0);
+  const totalB = playerB.WAR + (pitB ?? 0);
+  const hasPitching = pitA != null || pitB != null;
+
+  const tbody = document.querySelector('#cmp-table tbody');
+  const rows = COMPONENTS.map((c, i) => {
+    const a = winsA[i].wins, b = winsB[i].wins;
+    const diff = a - b;
+    const cls = diff > 0.005 ? 'diff-pos' : diff < -0.005 ? 'diff-neg' : 'diff-zero';
+    return `<tr>
+      <td><span class="dot" style="background:${c.color}"></span>${c.label}${c.desc ? `<span style="color:#aaa;font-size:0.72rem;font-weight:400;margin-left:6px">${c.desc}</span>` : ''}</td>
+      <td style="text-align:right">${a >= 0 ? '+' : ''}${a.toFixed(2)}</td>
+      <td style="text-align:right">${b >= 0 ? '+' : ''}${b.toFixed(2)}</td>
+      <td style="text-align:right" class="${cls}">${diff >= 0 ? '+' : ''}${diff.toFixed(2)}</td>
+    </tr>`;
+  });
+
+  if (hasPitching) {
+    const pa = pitA ?? 0, pb = pitB ?? 0, pd = pa - pb;
+    const pc = pd > 0.005 ? 'diff-pos' : pd < -0.005 ? 'diff-neg' : 'diff-zero';
+    rows.push(`<tr>
+      <td><span class="dot" style="background:#E91E63"></span>Pitching fWAR<span style="color:#aaa;font-size:0.72rem;font-weight:400;margin-left:6px">runs prevented on the mound</span></td>
+      <td style="text-align:right">${pitA != null ? '+' + pa.toFixed(2) : '<span style="color:#aaa">—</span>'}</td>
+      <td style="text-align:right">${pitB != null ? '+' + pb.toFixed(2) : '<span style="color:#aaa">—</span>'}</td>
+      <td style="text-align:right" class="${pc}">${pd >= 0 ? '+' : ''}${pd.toFixed(2)}</td>
+    </tr>`);
+  }
+
+  const td = totalA - totalB;
+  const tc = td > 0.005 ? 'diff-pos' : td < -0.005 ? 'diff-neg' : 'diff-zero';
+  rows.push(`<tr class="total-row">
+    <td><strong>${hasPitching ? 'Combined fWAR' : 'fWAR Total'}</strong></td>
+    <td style="text-align:right"><strong>${totalA.toFixed(2)}</strong></td>
+    <td style="text-align:right"><strong>${totalB.toFixed(2)}</strong></td>
+    <td style="text-align:right" class="${tc}"><strong>${td >= 0 ? '+' : ''}${td.toFixed(2)}</strong></td>
+  </tr>`);
+
+  tbody.innerHTML = rows.join('');
+}
+
+// ─── Searchable dropdown ───────────────────────────────────────────────────────
+function buildDropdown(inputEl, dropdownEl, onSelect, getPlayers = () => allPlayers) {
+  let highlighted = -1;
+  let filtered = [];
+
+  // Strip diacritics so "acuna" matches "Acuña", "soto" matches "Soto", etc.
+  function deaccent(str) {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  function sortedByLastName(arr) {
+    return [...arr].sort((a, b) =>
+      a.PlayerName.split(' ').pop().localeCompare(b.PlayerName.split(' ').pop()));
+  }
+
+  function render(players) {
+    filtered = players;
+    highlighted = -1;
+    dropdownEl.innerHTML = players.length
+      ? players.map((p, i) =>
+          `<div class="dropdown-item" data-i="${i}">${p.PlayerName} (${p.TeamName ?? p.team_name_abb ?? '—'})</div>`
+        ).join('')
+      : '<div class="dropdown-item" style="color:#aaa;cursor:default">No results</div>';
+    dropdownEl.classList.add('open');
+  }
+
+  function close() { dropdownEl.classList.remove('open'); highlighted = -1; }
+
+  function pick(p) {
+    inputEl.value = `${p.PlayerName} (${p.TeamName ?? p.team_name_abb ?? '—'})`;
+    close();
+    onSelect(p);
+  }
+
+  inputEl.addEventListener('focus', () => render(sortedByLastName(getPlayers())));
+  inputEl.addEventListener('input', () => {
+    const q = deaccent(inputEl.value.trim());
+    const list = sortedByLastName(getPlayers());
+    render(q ? list.filter(p => deaccent(p.PlayerName).includes(q)) : list);
+  });
+
+  inputEl.addEventListener('keydown', e => {
+    const items = dropdownEl.querySelectorAll('.dropdown-item[data-i]');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      highlighted = Math.min(highlighted + 1, items.length - 1);
+      items.forEach((el, i) => el.classList.toggle('highlighted', i === highlighted));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      highlighted = Math.max(highlighted - 1, 0);
+      items.forEach((el, i) => el.classList.toggle('highlighted', i === highlighted));
+    } else if (e.key === 'Enter' && highlighted >= 0) {
+      e.preventDefault();
+      if (filtered[highlighted]) pick(filtered[highlighted]);
+    } else if (e.key === 'Escape') {
+      close(); inputEl.blur();
+    }
+  });
+
+  dropdownEl.addEventListener('mousedown', e => {
+    const item = e.target.closest('.dropdown-item[data-i]');
+    if (item) { e.preventDefault(); pick(filtered[+item.dataset.i]); }
+  });
+
+  document.addEventListener('click', e => {
+    if (!inputEl.contains(e.target) && !dropdownEl.contains(e.target)) close();
+  });
+
+  return { pick };
+}
+
+// ─── URL state ───────────────────────────────────────────────────────────────
+function pushState(updates) {
+  const url = new URL(location.href);
+  Object.entries(updates).forEach(([k, v]) => {
+    if (v != null && v !== '' && v !== false) url.searchParams.set(k, String(v));
+    else url.searchParams.delete(k);
+  });
+  history.replaceState(null, '', url);
+  try { window.parent.postMessage({ type: 'bh:urlSync', search: url.search }, '*'); } catch(_) {}
+}
+
+// Multi-select team filter state
+let lbSelectedTeams = new Set();
+let _lbTeamOnChange = () => {}; // wired in init after redrawLeaderboard is defined
+// Maps team abbreviation (e.g. "ARI") → FanGraphs playerTeamId (e.g. 15)
+
+
+// Pending lb pos filter value to apply on first populateLbFilters call (URL restore)
+let pendingLbPos = '';
+
+// ─── Tab switching ────────────────────────────────────────────────────────────
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.tab === id));
+  document.querySelectorAll('.tab-panel').forEach(p =>
+    p.style.display = p.id === `tab-${id}` ? 'block' : 'none');
+  pushState({ tab: id !== 'player' ? id : null });
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn =>
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+
+// ─── Year select helper ───────────────────────────────────────────────────────
+function populateYearSelect(el, selected = CURRENT_YEAR) {
+  el.innerHTML = YEARS.map(y =>
+    `<option value="${y}"${y === selected ? ' selected' : ''}>${y}</option>`
+  ).join('');
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+async function init() {
+  let initData;
+  try {
+    initData = await loadData(CURRENT_YEAR);
+  } catch (err) {
+    console.error(err);
+    ['player','lb','cmp'].forEach(t => {
+      document.getElementById(`${t}-loading`).style.display = 'none';
+      document.getElementById(`${t}-error`).style.display = 'flex';
+    });
+    return;
+  }
+
+  allPlayers = initData.players;
+  pitchingWAR = initData.pitMap;
+
+  // Populate all year selects
+  ['player-year-select','lb-year-select','cmp-a-year-select','cmp-b-year-select'].forEach(id =>
+    populateYearSelect(document.getElementById(id))
+  );
+
+  // ── Player tab ──────────────────────────────────────────────────────────────
+  document.getElementById('player-loading').style.display = 'none';
+  document.getElementById('player-content').style.display = 'block';
+
+  let playerTabPlayers = allPlayers;
+  let playerTabPitMap = pitchingWAR;
+  let currentPlayer = allPlayers[0];
+
+  function redrawPlayerChart() {
+    const year = +document.getElementById('player-year-select').value;
+    if (playerChart) playerChart.destroy();
+    playerChart = createWaterfallChart(
+      document.getElementById('player-chart'),
+      currentPlayer,
+      { season: year, pitMap: playerTabPitMap, signColors: true }
+    );
+    renderPlayerTable(currentPlayer, playerTabPitMap, year);
+  }
+
+  const { pick: pickPlayer } = buildDropdown(
+    document.getElementById('player-search'),
+    document.getElementById('player-dropdown'),
+    p => { currentPlayer = p; pushState({ p: p.playerid }); redrawPlayerChart(); },
+    () => playerTabPlayers
+  );
+  pickPlayer(currentPlayer);
+
+  document.getElementById('player-year-select').addEventListener('change', async function () {
+    pushState({ y: +this.value !== CURRENT_YEAR ? this.value : null });
+    this.disabled = true;
+    try {
+      const data = await loadData(+this.value);
+      playerTabPlayers = data.players;
+      playerTabPitMap = data.pitMap;
+      const kept = playerTabPlayers.find(p => p.playerid === currentPlayer?.playerid);
+      currentPlayer = kept || playerTabPlayers[0];
+      pickPlayer(currentPlayer);  // triggers redrawPlayerChart via onSelect
+    } finally { this.disabled = false; }
+  });
+
+  // ── Leaderboard tab ─────────────────────────────────────────────────────────
+  // Data is ready but we render lazily (when tab first becomes visible) so
+  // Chart.js always gets a canvas with real dimensions.
+  let lbTabPlayers = allPlayers;
+  let lbTabPitMap = pitchingWAR;
+  let lbRendered = false;
+
+  async function redrawLeaderboard() {
+    const year         = +document.getElementById('lb-year-select').value;
+    const pos          = document.getElementById('lb-pos-filter').value;
+    const split        = document.getElementById('lb-split-filter').value;
+    const rookieChecked = document.getElementById('lb-rookie-filter')?.checked;
+    const splitParams  = getLbSplitParams(split);
+    const lbFilters    = { teams: lbSelectedTeams, pos, rookie: !!rookieChecked, split };
+
+    // ── Pitcher-only leaderboard ────────────────────────────────────────────
+    if (pos === 'P') {
+      let pitchers = [];
+      try { pitchers = await fetchPitcherLeaders(year, splitParams); } catch { /* fall through */ }
+      if (rookieChecked) {
+        try {
+          const rookieIds = await fetchRookiePitcherIds(year);
+          pitchers = pitchers.filter(p => rookieIds.has(p.playerid));
+        } catch { /* fall through */ }
+      }
+      const teamFiltered = lbSelectedTeams.size > 0
+        ? pitchers.filter(p => lbSelectedTeams.has(p.TeamName ?? p.team_name_abb ?? ''))
+        : pitchers;
+      renderPitcherLeaderboard(teamFiltered, lbCount, year, lbFilters);
+      return;
+    }
+
+    // ── Rookie IDs for position players ────────────────────────────────────
+    let rookieIds = null;
+    if (rookieChecked) {
+      try { rookieIds = await fetchRookiePlayerIds(year); } catch { /* fall through */ }
+    }
+
+    // ── All Positions: merge batters + pitchers into one leaderboard ────────
+    if (pos === '') {
+      let mergedPlayers = lbTabPlayers;
+      let mergedPitMap = lbTabPitMap;
+      try {
+        const pitchers = await fetchPitcherLeaders(year, splitParams);
+        const batterIds = new Set(lbTabPlayers.map(p => p.playerid));
+        const extPitMap = new Map(lbTabPitMap);
+
+        // Expand rookieIds to include rookie pitchers when filter is active
+        if (rookieChecked) {
+          try {
+            const rookiePitIds = await fetchRookiePitcherIds(year);
+            rookieIds = new Set([...(rookieIds || []), ...rookiePitIds]);
+          } catch { /* fall through */ }
+        }
+
+        const purePitchers = [];
+        pitchers.forEach(p => {
+          if (!batterIds.has(p.playerid)) {
+            purePitchers.push({ ...p, WAR: 0 });
+            extPitMap.set(p.playerid, p.WAR ?? 0);
+          }
+        });
+
+        mergedPlayers = [...lbTabPlayers, ...purePitchers];
+        mergedPitMap = extPitMap;
+      } catch { /* fall through to batters-only */ }
+
+      const filtered = getFilteredLbPlayers(mergedPlayers, null, rookieIds);
+      const filteredPos = getFilteredLbPlayers(lbTabPlayers, null, rookieIds);
+      renderLeaderboard(filtered, lbCount, year, mergedPitMap, lbFilters);
+      renderComponentLeaderboards(filteredPos, year, lbFilters);
+      return;
+    }
+
+    // ── Non-Pitchers (NP) or specific position ──────────────────────────────
+    let posIds = null;
+    const posCode = FG_POS_CODE[pos];
+    if (pos !== 'NP' && posCode) {
+      try { posIds = await fetchPosPlayerIds(year, posCode); } catch { /* fall through to split filter */ }
+    }
+
+    const filtered = getFilteredLbPlayers(lbTabPlayers, posIds, rookieIds);
+    renderLeaderboard(filtered, lbCount, year, lbTabPitMap, lbFilters);
+    renderComponentLeaderboards(filtered, year, lbFilters);
+  }
+
+  // Wire multi-select team filter
+  _lbTeamOnChange = () => {
+    pushState({ lbt: lbSelectedTeams.size > 0 ? [...lbSelectedTeams].join(',') : null });
+    redrawLeaderboard();
+  };
+  document.getElementById('lb-team-btn').addEventListener('click', e => {
+    e.stopPropagation();
+    document.getElementById('lb-team-dropdown').classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!document.getElementById('lb-team-wrap')?.contains(e.target))
+      document.getElementById('lb-team-dropdown').classList.remove('open');
+  });
+
+  document.querySelectorAll('#lb-count-pills .count-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      lbCount = +btn.dataset.n;
+      document.querySelectorAll('#lb-count-pills .count-pill')
+        .forEach(b => b.classList.toggle('active', b === btn));
+      pushState({ lbn: lbCount !== 25 ? lbCount : null });
+      redrawLeaderboard();
+    });
+  });
+
+  // Shared helper: fetch leaderboard data for the current year+split, update lbTabPlayers/pitMap
+  async function reloadLbData(year) {
+    const split = document.getElementById('lb-split-filter').value;
+    const splitParams = getLbSplitParams(split);
+    const data = await loadLbData(year, splitParams);
+    lbTabPlayers = data.players;
+    lbTabPitMap = data.pitMap;
+  }
+
+  document.getElementById('lb-year-select').addEventListener('change', async function () {
+    const year = +this.value;
+    pushState({ lby: year !== CURRENT_YEAR ? year : null });
+    this.disabled = true;
+    // Rolling date splits don't make sense for past seasons — reset them to Full Season
+    const ROLLING_SPLITS = new Set(['36', '33', '35', '34']);
+    if (year !== CURRENT_YEAR && ROLLING_SPLITS.has(document.getElementById('lb-split-filter').value)) {
+      document.getElementById('lb-split-filter').value = '0';
+      pushState({ lbs: null });
+    }
+    try {
+      await reloadLbData(year);
+      populateLbFilters(lbTabPlayers, year);
+      redrawLeaderboard();
+    } finally { this.disabled = false; }
+  });
+
+  document.getElementById('lb-split-filter').addEventListener('change', async function () {
+    pushState({ lbs: this.value !== '0' ? this.value : null });
+    const year = +document.getElementById('lb-year-select').value;
+    this.disabled = true;
+    try {
+      await reloadLbData(year);
+      populateLbFilters(lbTabPlayers, year);
+      redrawLeaderboard();
+    } finally { this.disabled = false; }
+  });
+
+  document.getElementById('lb-pos-filter').addEventListener('change', () => {
+    pushState({ lbp: document.getElementById('lb-pos-filter').value || null });
+    redrawLeaderboard();
+  });
+
+  document.getElementById('lb-rookie-filter').addEventListener('change', () => {
+    pushState({ lbr: document.getElementById('lb-rookie-filter').checked ? '1' : null });
+    redrawLeaderboard();
+  });
+
+  document.getElementById('lb-export-btn').addEventListener('click', () => {
+    const { players, year, filters, pitMap, isPitcher } = lbExportData;
+    if (!players.length) return;
+    const rw = getRwForYear(year);
+    const title = `${year} fWAR Leaderboard${lbTitleSuffix(filters.teams, filters.pos, year, filters.rookie, filters.split)}`;
+
+    let headers, rows;
+    if (isPitcher) {
+      headers = ['Rank','Player','Team','Pitching fWAR'];
+      rows = players.map((p, i) => [
+        i + 1,
+        p.PlayerName,
+        p.TeamName ?? '',
+        (p.WAR ?? 0).toFixed(2),
+      ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(','));
+    } else {
+      headers = ['Rank','Player','Team','Position','fWAR','Batting','Fielding','Base Running','Positional','League','Replacement','Pitching fWAR'];
+      rows = players.map((p, i) => {
+        const pitWAR = pitMap?.get(p.playerid) ?? '';
+        return [
+          i + 1,
+          p.PlayerName,
+          p.TeamName ?? '',
+          String(p.position ?? p.positionDB ?? '').split('/')[0].trim(),
+          (p.WAR + (pitMap?.get(p.playerid) ?? 0)).toFixed(2),
+          ((p.Batting    ?? 0) / rw).toFixed(3),
+          ((p.Fielding   ?? 0) / rw).toFixed(3),
+          ((p.BaseRunning?? 0) / rw).toFixed(3),
+          ((p.Positional ?? 0) / rw).toFixed(3),
+          ((p.wLeague    ?? 0) / rw).toFixed(3),
+          ((p.Replacement?? 0) / rw).toFixed(3),
+          pitWAR !== '' ? Number(pitWAR).toFixed(2) : '',
+        ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
+      });
+    }
+    const csv = [`"${title}"`, headers.map(h => `"${h}"`).join(','), ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url  = URL.createObjectURL(blob);
+    const a    = Object.assign(document.createElement('a'), {
+      href: url,
+      download: `fwar-leaderboard-${year}.csv`,
+    });
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // ── Compare tab ─────────────────────────────────────────────────────────────
+  let cmpA = allPlayers[0], cmpB = allPlayers[1];
+  let cmpPlayersA = allPlayers, cmpPlayersB = allPlayers;
+  let cmpPitMapA = pitchingWAR, cmpPitMapB = pitchingWAR;
+  let cmpYearA = CURRENT_YEAR, cmpYearB = CURRENT_YEAR;
+  let cmpRendered = false;
+
+  function doRenderCompare() {
+    if (cmpA && cmpB) renderCompare(cmpA, cmpB, { pitMapA: cmpPitMapA, pitMapB: cmpPitMapB, yearA: cmpYearA, yearB: cmpYearB });
+  }
+
+  const { pick: pickA } = buildDropdown(
+    document.getElementById('cmp-a-search'),
+    document.getElementById('cmp-a-dropdown'),
+    p => { cmpA = p; pushState({ ca: p.playerid }); if (cmpRendered) doRenderCompare(); },
+    () => cmpPlayersA
+  );
+  const { pick: pickB } = buildDropdown(
+    document.getElementById('cmp-b-search'),
+    document.getElementById('cmp-b-dropdown'),
+    p => { cmpB = p; pushState({ cb: p.playerid }); if (cmpRendered) doRenderCompare(); },
+    () => cmpPlayersB
+  );
+
+  document.getElementById('cmp-a-year-select').addEventListener('change', async function () {
+    cmpYearA = +this.value;
+    pushState({ cay: cmpYearA !== CURRENT_YEAR ? cmpYearA : null });
+    this.disabled = true;
+    try {
+      const data = await loadData(cmpYearA);
+      cmpPlayersA = data.players;
+      cmpPitMapA = data.pitMap;
+      const kept = cmpPlayersA.find(p => p.playerid === cmpA?.playerid);
+      cmpA = kept || cmpPlayersA[0];
+      pickA(cmpA);
+    } finally { this.disabled = false; }
+  });
+
+  document.getElementById('cmp-b-year-select').addEventListener('change', async function () {
+    cmpYearB = +this.value;
+    pushState({ cby: cmpYearB !== CURRENT_YEAR ? cmpYearB : null });
+    this.disabled = true;
+    try {
+      const data = await loadData(cmpYearB);
+      cmpPlayersB = data.players;
+      cmpPitMapB = data.pitMap;
+      const kept = cmpPlayersB.find(p => p.playerid === cmpB?.playerid);
+      cmpB = kept || cmpPlayersB[1] || cmpPlayersB[0];
+      pickB(cmpB);
+    } finally { this.disabled = false; }
+  });
+
+  pickA(cmpA);
+  pickB(cmpB);
+
+  // ── Lazy tab rendering ───────────────────────────────────────────────────────
+  // Render leaderboard/compare only when the tab first becomes visible so
+  // Chart.js always gets a canvas with valid dimensions.
+  document.querySelectorAll('.tab-btn').forEach(btn =>
+    btn.addEventListener('click', () => {
+      if (btn.dataset.tab === 'leaderboard' && !lbRendered) {
+        lbRendered = true;
+        document.getElementById('lb-loading').style.display = 'none';
+        document.getElementById('lb-content').style.display = 'block';
+        populateLbFilters(lbTabPlayers, +document.getElementById('lb-year-select').value);
+        redrawLeaderboard();
+      } else if (btn.dataset.tab === 'compare' && !cmpRendered) {
+        cmpRendered = true;
+        document.getElementById('cmp-loading').style.display = 'none';
+        document.getElementById('cmp-content').style.display = 'block';
+        doRenderCompare();
+      }
+    })
+  );
+
+  // ── Restore state from URL ────────────────────────────────────────────────
+  const usp = new URLSearchParams(location.search);
+  const savedTab  = usp.get('tab');
+  const savedPId  = usp.get('p')   ? +usp.get('p')   : null;
+  const savedPY   = usp.get('y')   ? +usp.get('y')   : CURRENT_YEAR;
+  const savedLbY  = usp.get('lby') ? +usp.get('lby') : CURRENT_YEAR;
+  const savedLbT  = usp.get('lbt') || '';
+  const savedLbP  = usp.get('lbp') || '';
+  const savedLbN  = usp.get('lbn') ? +usp.get('lbn') : 25;
+  const savedLbR  = usp.get('lbr') === '1';
+  const savedLbS  = usp.get('lbs') || '0';
+  const savedCaId = usp.get('ca')  ? +usp.get('ca')  : null;
+  const savedCaY  = usp.get('cay') ? +usp.get('cay') : CURRENT_YEAR;
+  const savedCbId = usp.get('cb')  ? +usp.get('cb')  : null;
+  const savedCbY  = usp.get('cby') ? +usp.get('cby') : CURRENT_YEAR;
+
+  // Player tab: load year if different, then find player
+  if (savedPY !== CURRENT_YEAR) {
+    document.getElementById('player-year-select').value = savedPY;
+    const data = await loadData(savedPY).catch(() => null);
+    if (data) { playerTabPlayers = data.players; playerTabPitMap = data.pitMap; }
+  }
+  if (savedPId) {
+    const found = playerTabPlayers.find(p => p.playerid === savedPId);
+    if (found) pickPlayer(found);
+  }
+
+  // Leaderboard: count pill
+  if (savedLbN !== 25) {
+    lbCount = savedLbN;
+    document.querySelectorAll('#lb-count-pills .count-pill')
+      .forEach(b => b.classList.toggle('active', +b.dataset.n === lbCount));
+  }
+  // Leaderboard: split (set before year so reloadLbData reads the right value)
+  if (savedLbS !== '0' && savedLbY === CURRENT_YEAR) {
+    document.getElementById('lb-split-filter').value = savedLbS;
+  }
+  // Leaderboard: year + split data
+  if (savedLbY !== CURRENT_YEAR || savedLbS !== '0') {
+    if (savedLbY !== CURRENT_YEAR) document.getElementById('lb-year-select').value = savedLbY;
+    const data = await loadLbData(savedLbY, getLbSplitParams(savedLbS)).catch(() => null);
+    if (data) { lbTabPlayers = data.players; lbTabPitMap = data.pitMap; }
+  }
+  // Leaderboard: teams (multi-select) + pos filter
+  if (savedLbT) {
+    savedLbT.split(',').filter(Boolean).forEach(t => lbSelectedTeams.add(t));
+    updateTeamBtn();
+  }
+  if (savedLbP) pendingLbPos = savedLbP;
+  if (savedLbR) document.getElementById('lb-rookie-filter').checked = true;
+
+  // Compare A
+  if (savedCaY !== CURRENT_YEAR) {
+    document.getElementById('cmp-a-year-select').value = savedCaY;
+    cmpYearA = savedCaY;
+    const data = await loadData(savedCaY).catch(() => null);
+    if (data) { cmpPlayersA = data.players; cmpPitMapA = data.pitMap; }
+  }
+  if (savedCaId) {
+    const found = cmpPlayersA.find(p => p.playerid === savedCaId);
+    if (found) pickA(found);
+  }
+
+  // Compare B
+  if (savedCbY !== CURRENT_YEAR) {
+    document.getElementById('cmp-b-year-select').value = savedCbY;
+    cmpYearB = savedCbY;
+    const data = await loadData(savedCbY).catch(() => null);
+    if (data) { cmpPlayersB = data.players; cmpPitMapB = data.pitMap; }
+  }
+  if (savedCbId) {
+    const found = cmpPlayersB.find(p => p.playerid === savedCbId);
+    if (found) pickB(found);
+  }
+
+  // Switch to saved tab last — triggers lazy render for leaderboard/compare
+  if (savedTab && savedTab !== 'player') {
+    document.querySelector(`[data-tab="${savedTab}"]`).click();
+  }
+}
+
+init();
+</script>
+<script data-goatcounter="https://fg-war.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
