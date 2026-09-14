@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Percentile Compare</title>
+  <meta name="description" content="Compare two MLB hitters or pitchers side by side with customizable percentile bars.">
+  <meta property="og:title" content="Player Percentile Compare">
+  <meta property="og:description" content="Compare two MLB hitters or pitchers side by side with customizable percentile bars.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root { --player-a-color: #3f8f83; --player-b-color: #c9772e; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0ede8;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 900px; width: 100%; margin: 0 auto; padding: 24px; }
+
+    header { max-width: 900px; width: 100%; margin: 0 auto; padding: 28px 24px 0; }
+    header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: #1a1a1a; }
+    header p { font-size: 0.8rem; color: #888; margin-top: 3px; letter-spacing: -0.01em; }
+
+    .tab-bar { display: flex; gap: 0; margin-top: 20px; }
+    .tab-btn {
+      background: none; border: none; border-bottom: 2.5px solid transparent;
+      color: #999; font-family: inherit; font-size: 1rem; font-weight: 500;
+      padding: 10px 24px; cursor: pointer; letter-spacing: -0.01em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tab-btn:hover { color: #555; }
+    .tab-btn.active { color: #1a1a1a; font-weight: 600; border-bottom-color: #1a1a1a; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .field-label {
+      font-size: 11px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.5px; color: #666; margin-bottom: 5px;
+    }
+
+    .toolbar { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+
+    .select-wrap { position: relative; width: 260px; }
+    .select-wrap input {
+      width: 100%; background: #fff; border: 1px solid #d8d5d0; border-radius: 8px;
+      color: #1a1a1a; font-family: inherit; font-size: 0.875rem; padding: 7px 12px;
+      outline: none; cursor: pointer; transition: border-color 0.15s;
+    }
+    .select-wrap input:focus { border-color: #999; }
+
+    .dropdown-list {
+      display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+      background: #fff; border: 1px solid #d8d5d0; border-radius: 10px;
+      max-height: 280px; overflow-y: auto; z-index: 100; box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .dropdown-list.open { display: block; }
+    .dropdown-item { padding: 8px 12px; font-size: 0.85rem; cursor: pointer; transition: background 0.1s; color: #1a1a1a; }
+    .dropdown-item:hover, .dropdown-item.highlighted { background: #f0ede8; }
+
+    .year-select {
+      background: #fff; border: 1px solid #d8d5d0; border-radius: 8px; color: #1a1a1a;
+      font-family: inherit; font-size: 0.875rem; padding: 7px 10px; outline: none;
+      cursor: pointer; transition: border-color 0.15s;
+    }
+    .year-select:focus { border-color: #999; }
+
+    .btn {
+      background: #fff; border: 1px solid #d8d5d0; border-radius: 8px; color: #555;
+      font-family: inherit; font-size: 0.85rem; padding: 7px 12px; cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s; line-height: 1;
+    }
+    .btn:hover { border-color: #999; color: #1a1a1a; }
+    .btn.active { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+    .btn.active:hover { background: #333; }
+    .reset-link {
+      display: none; background: none; border: none; color: #999; font-family: inherit;
+      font-size: 0.8rem; text-decoration: underline; cursor: pointer; padding: 7px 2px;
+    }
+    .reset-link:hover { color: #c44820; }
+    .reset-link.visible { display: inline-block; }
+
+    .customize-footer {
+      display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 10px;
+      margin-top: 12px;
+    }
+
+    .highlight-toggle {
+      display: flex; align-items: center; gap: 7px; margin-left: auto;
+      font-size: 0.8rem; color: #888; cursor: pointer; user-select: none;
+    }
+    .highlight-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .toggle-switch {
+      position: relative; width: 30px; height: 17px; background: #e2ddd5;
+      border-radius: 20px; transition: background 0.15s; flex-shrink: 0;
+    }
+    .toggle-switch::before {
+      content: ''; position: absolute; top: 2px; left: 2px; width: 13px; height: 13px;
+      background: #fff; border-radius: 50%; transition: transform 0.15s; box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .highlight-toggle input:checked + .toggle-switch { background: #1a1a1a; }
+    .highlight-toggle input:checked + .toggle-switch::before { transform: translateX(13px); }
+    .highlight-toggle:hover { color: #1a1a1a; }
+
+    .value-hl.better {
+      background: #ffe066; border-radius: 3px; padding: 1px 4px; margin: -1px -4px;
+      box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    }
+
+    /* Horizontal / Vertical compare-layout switch */
+    .view-switch { display: flex; border: 1px solid #d8d5d0; border-radius: 8px; overflow: hidden; }
+    .view-switch .view-btn {
+      background: #fff; border: none; color: #777; font-family: inherit; font-size: 0.8rem;
+      padding: 7px 11px; cursor: pointer; line-height: 1; transition: background 0.15s, color 0.15s;
+    }
+    .view-switch .view-btn + .view-btn { border-left: 1px solid #d8d5d0; }
+    .view-switch .view-btn.active { background: #1a1a1a; color: #fff; }
+    .view-switch .view-btn:not(.active):hover { background: #f5f2ee; color: #1a1a1a; }
+
+    /* Vertical compare: stats grouped per metric, each player's bar in its own
+       row (both growing left-to-right) colored by player identity rather than
+       by percentile — position already carries meaning, so color doesn't need to. */
+    .v-legend { display: flex; gap: 18px; padding: 2px 0 12px; font-size: 0.78rem; color: #666; }
+    .v-legend-item { display: flex; align-items: center; gap: 6px; }
+    .v-legend-item .swatch { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .v-legend-item.a .swatch { background: var(--player-a-color); }
+    .v-legend-item.b .swatch { background: var(--player-b-color); }
+    /* .stat-row-v overrides the base .stat-row grid with a compact layout —
+       label on the left, both players' bars stacked in a column to its right
+       — while keeping .stat-row so the existing editable/drag-reorder styling
+       and JS (which target .stat-row) keep working unmodified. */
+    .stat-row.stat-row-v { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #d8d3ca; }
+    .stat-row.stat-row-v:last-child { border-bottom: none; }
+    .stat-row-v .stat-label-wrap { flex: 0 0 96px; justify-content: flex-start; padding: 0; }
+    .stat-row-v .stat-label { text-align: left; }
+    .v-bars { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+    .v-bar-row { display: flex; align-items: center; gap: 8px; }
+    .v-bar-row .bar-track { flex: 1; }
+    .v-bar-row .stat-value { flex-shrink: 0; min-width: 52px; text-align: right; font-size: 0.82rem; }
+
+    /* Player header cards */
+    .player-heads {
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+      padding-bottom: 14px; margin-bottom: 10px; border-bottom: 1px solid #ede9e4;
+    }
+    .player-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+    .player-photo-wrap {
+      width: 92px; height: 92px; border-radius: 50%; overflow: hidden; background: #ede9e4;
+      border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); position: relative; flex-shrink: 0;
+    }
+    .player-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .player-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
+    .player-meta { font-size: 0.78rem; color: #888; display: flex; align-items: center; gap: 5px; justify-content: center; }
+    .team-logo { width: 15px; height: 15px; object-fit: contain; }
+    .vs-divider { font-size: 0.75rem; font-weight: 700; color: #bbb; letter-spacing: 0.05em; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .split-badge {
+      font-size: 0.62rem; font-weight: 600; color: #a86b2f; background: #f7ecd9;
+      border: 1px solid #e8d3ae; border-radius: 20px; padding: 2px 9px;
+      white-space: nowrap; letter-spacing: 0; text-transform: none; display: none;
+    }
+    .split-badge.visible { display: inline-block; }
+
+    /* 3-way player heads (no natural bidirectional "vs" — bars grow uniformly instead) */
+    .player-heads-3 {
+      display: grid; grid-template-columns: repeat(3, 1fr); align-items: start; gap: 12px;
+      padding-bottom: 14px; border-bottom: 1px solid #ede9e4;
+    }
+    .split-badge-wrap { display: flex; justify-content: center; margin: 10px 0; }
+
+    /* 3-way stat rows: label column + one bar/value column per player */
+    .stat-row-3 {
+      display: grid; grid-template-columns: 96px repeat(3, 1fr);
+      align-items: center; gap: 10px; padding: 6px 0;
+    }
+    .stat-label-wrap-3 { display: flex; align-items: center; justify-content: flex-start; gap: 4px; }
+    .stat-label-wrap-3 .stat-label { text-align: left; }
+    .tri-col { display: flex; align-items: center; gap: 8px; }
+    .tri-col .bar-track { flex: 1; }
+    .tri-col .stat-value { flex-shrink: 0; min-width: 42px; text-align: right; font-size: 0.78rem; }
+    .bar-track.uni { justify-content: flex-start; }
+
+    /* Stat rows */
+    .stat-row {
+      display: grid; grid-template-columns: 56px 1fr 132px 1fr 56px;
+      align-items: center; gap: 10px; padding: 5px 0;
+    }
+    .stat-value { font-size: 0.82rem; font-weight: 700; font-variant-numeric: tabular-nums; color: #1a1a1a; }
+    .stat-value.a { text-align: right; }
+    .stat-value.b { text-align: left; }
+    .stat-value.dim { color: #bbb; font-weight: 500; }
+
+    .stat-label-wrap { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 0 2px; }
+    .stat-label { text-align: center; font-size: 0.72rem; font-weight: 600; color: #555; letter-spacing: -0.01em; }
+    .stat-label-note { color: #c9a97a; cursor: help; font-weight: 700; }
+    .stat-row.editable .stat-label {
+      cursor: pointer; border-bottom: 1px dashed #bbb; padding-bottom: 1px;
+    }
+    .stat-row.editable .stat-label:hover { color: #1a1a1a; border-color: #1a1a1a; }
+    .stat-remove {
+      background: #f0ede8; border: none; border-radius: 50%; color: #999;
+      width: 16px; height: 16px; font-size: 11px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .stat-remove:hover { background: #f3c6bf; color: #a83e2c; }
+
+    .stat-drag-handle {
+      cursor: grab; color: #ccc; font-size: 15px; padding: 4px 3px;
+      user-select: none; flex-shrink: 0; line-height: 1; touch-action: none;
+    }
+    .stat-drag-handle:hover { color: #888; }
+    .stat-drag-handle:active { cursor: grabbing; }
+    .stat-row.dragging { opacity: 0.35; }
+    .stat-row.drag-over-top { box-shadow: inset 0 2px 0 0 #1a1a1a; }
+    .stat-row.drag-over-bottom { box-shadow: inset 0 -2px 0 0 #1a1a1a; }
+
+    .add-stat-btn {
+      display: block; width: 100%; margin-top: 10px; padding: 8px;
+      background: none; border: 1.5px dashed #d8d5d0; border-radius: 8px;
+      color: #999; font-family: inherit; font-size: 0.8rem; cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .add-stat-btn:hover { border-color: #999; color: #1a1a1a; }
+
+    .bar-track {
+      position: relative; height: 14px; background: #f0ede8; border-radius: 3px;
+      overflow: hidden; display: flex;
+    }
+    .bar-track.a { justify-content: flex-end; }
+    .bar-track.b { justify-content: flex-start; }
+    .bar-fill {
+      height: 100%; border-radius: 3px; min-width: 2px;
+      transition: width 0.35s ease, background-color 0.35s ease;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12);
+    }
+    .bar-value-label {
+      position: absolute; top: 50%; transform: translate(-50%, -50%);
+      font-size: 0.6rem; font-weight: 700; color: #1a1a1a; white-space: nowrap;
+      pointer-events: none; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 2px #fff;
+      z-index: 1;
+    }
+    .bar-fill.unqualified {
+      opacity: 0.5;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.65) 0 3px, transparent 3px 7px);
+      cursor: help;
+    }
+
+    /* Metric picker (shared floating panel) */
+    .metric-picker {
+      display: none; position: fixed; background: #fff; border: 1px solid #d8d5d0;
+      border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.16); width: 270px;
+      max-height: 380px; flex-direction: column; z-index: 300;
+    }
+    .metric-picker input {
+      margin: 8px; padding: 7px 10px; border: 1px solid #d8d5d0; border-radius: 8px;
+      font-family: inherit; font-size: 0.85rem; outline: none;
+    }
+    .metric-picker input:focus { border-color: #999; }
+    .metric-picker-list { overflow-y: auto; padding-bottom: 6px; }
+    .metric-picker-group {
+      padding: 6px 12px 3px; font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: #999; background: #f8f5f2; position: sticky; top: 0;
+    }
+    .metric-picker-item { padding: 6px 12px; font-size: 0.85rem; cursor: pointer; color: #1a1a1a; }
+    .metric-picker-item:hover { background: #f0ede8; }
+    .metric-picker-item.selected { font-weight: 700; color: #999; }
+
+    /* Loading / error states */
+    .state-overlay {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; padding: 60px 20px; color: #999; font-size: 0.85rem;
+    }
+    .spinner {
+      width: 22px; height: 22px; border: 2.5px solid #ddd; border-top-color: #1a1a1a;
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-box {
+      background: #fdecea; border: 1px solid #f3c6bf; border-radius: 10px; padding: 14px 16px;
+      color: #a83e2c; font-size: 0.85rem; max-width: 420px; text-align: center;
+    }
+
+    footer { text-align: center; padding: 24px 0 8px; font-size: 0.75rem; color: #aaa; }
+    footer a { color: #999; text-decoration: underline; }
+    footer a:hover { color: #555; }
+
+    @media (max-width: 640px) {
+      .container, header { padding-left: 12px; padding-right: 12px; }
+      header { padding-top: 16px; }
+      header h1 { font-size: 1.25rem; }
+      .card { padding: 14px; margin-bottom: 12px; }
+      .select-wrap { width: 100%; }
+      .toolbar { gap: 10px; }
+      .player-heads { gap: 8px; padding-bottom: 10px; }
+      .player-photo-wrap { width: 60px; height: 60px; border-width: 2px; }
+      .player-name { font-size: 0.85rem; }
+      .player-meta { font-size: 0.66rem; gap: 3px; }
+      .team-logo { width: 12px; height: 12px; }
+      .vs-divider { font-size: 0.65rem; }
+      .stat-row { grid-template-columns: 40px 1fr 78px 1fr 40px; gap: 5px; }
+      .stat-value { font-size: 0.7rem; }
+      .stat-label { font-size: 0.58rem; }
+      .bar-value-label { font-size: 0.54rem; }
+      .player-heads-3 { gap: 6px; }
+      .stat-row-3 { grid-template-columns: 56px repeat(3, 1fr); gap: 4px; }
+      .tri-col { gap: 3px; }
+      .tri-col .stat-value { min-width: 30px; font-size: 0.62rem; }
+      .stat-row.stat-row-v { gap: 6px; }
+      .stat-row-v .stat-label-wrap { flex-basis: 62px; }
+      .stat-row-v .stat-label { font-size: 0.62rem; }
+      .v-bar-row .stat-value { min-width: 40px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Player Percentile Compare</h1>
+  <p>Side-by-side stat comparison with customizable percentile bars, powered by FanGraphs</p>
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="hitter">Hitter Compare</button>
+    <button class="tab-btn" data-tab="pitcher">Pitcher Compare</button>
+    <button class="tab-btn" data-tab="3hitter">3 Hitter Compare</button>
+    <button class="tab-btn" data-tab="3pitcher">3 Pitcher Compare</button>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- 3-PITCHER TAB -->
+  <div id="tab-3pitcher" class="tab-panel">
+    <div class="card">
+      <div class="toolbar">
+        <div>
+          <div class="field-label">Player A</div>
+          <div class="select-wrap" id="trip-a-select-wrap">
+            <input type="text" id="trip-a-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="trip-a-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Player B</div>
+          <div class="select-wrap" id="trip-b-select-wrap">
+            <input type="text" id="trip-b-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="trip-b-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Player C</div>
+          <div class="select-wrap" id="trip-c-select-wrap">
+            <input type="text" id="trip-c-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="trip-c-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Season</div>
+          <select id="trip-year-select" class="year-select"></select>
+        </div>
+        <div>
+          <div class="field-label">Split</div>
+          <select id="trip-split-select" class="year-select"></select>
+        </div>
+      </div>
+    </div>
+
+    <div id="trip-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading data…</span>
+    </div>
+    <div id="trip-error" class="state-overlay" style="display:none">
+      <div class="error-box"><strong>Couldn't load data.</strong><br>The FanGraphs proxy may be temporarily unavailable — try again in a moment.</div>
+    </div>
+
+    <div id="trip-content" style="display:none">
+      <div class="card">
+        <div class="player-heads-3">
+          <div class="player-head" id="trip-head-a"></div>
+          <div class="player-head" id="trip-head-b"></div>
+          <div class="player-head" id="trip-head-c"></div>
+        </div>
+        <div class="split-badge-wrap"><div class="split-badge"></div></div>
+        <div id="trip-stats-card"></div>
+      </div>
+      <div class="customize-footer">
+        <button class="btn" id="trip-customize-btn">Customize</button>
+        <button class="reset-link" id="trip-reset-btn">Reset to default</button>
+        <label class="highlight-toggle">
+          <input type="checkbox" id="trip-highlight-toggle" checked>
+          <span class="toggle-switch"></span>
+          <span>Highlight better</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- HITTER TAB -->
+  <div id="tab-hitter" class="tab-panel active">
+    <div class="card">
+      <div class="toolbar">
+        <div>
+          <div class="field-label">Player A</div>
+          <div class="select-wrap" id="hit-a-select-wrap">
+            <input type="text" id="hit-a-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="hit-a-dropdown"></div>
+          </div>
+        </div>
+        <button class="btn" id="hit-swap-btn" title="Swap players">⇄ Swap</button>
+        <div>
+          <div class="field-label">Player B</div>
+          <div class="select-wrap" id="hit-b-select-wrap">
+            <input type="text" id="hit-b-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="hit-b-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Season A</div>
+          <select id="hit-year-a-select" class="year-select"></select>
+        </div>
+        <div>
+          <div class="field-label">Season B</div>
+          <select id="hit-year-b-select" class="year-select"></select>
+        </div>
+        <div>
+          <div class="field-label">Split</div>
+          <select id="hit-split-select" class="year-select"></select>
+        </div>
+      </div>
+    </div>
+
+    <div id="hit-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading data…</span>
+    </div>
+    <div id="hit-error" class="state-overlay" style="display:none">
+      <div class="error-box"><strong>Couldn't load data.</strong><br>The FanGraphs proxy may be temporarily unavailable — try again in a moment.</div>
+    </div>
+
+    <div id="hit-content" style="display:none">
+      <div class="card">
+        <div class="player-heads">
+          <div class="player-head side-a" id="hit-head-a"></div>
+          <div class="vs-divider">VS<div class="split-badge"></div></div>
+          <div class="player-head side-b" id="hit-head-b"></div>
+        </div>
+        <div id="hit-stats-card"></div>
+      </div>
+      <div class="customize-footer">
+        <button class="btn" id="hit-customize-btn">Customize</button>
+        <button class="reset-link" id="hit-reset-btn">Reset to default</button>
+        <div class="view-switch" id="hit-view-switch">
+          <button class="view-btn active" data-view="horizontal">Horizontal</button>
+          <button class="view-btn" data-view="vertical">Vertical</button>
+        </div>
+        <label class="highlight-toggle">
+          <input type="checkbox" id="hit-highlight-toggle" checked>
+          <span class="toggle-switch"></span>
+          <span>Highlight better</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PITCHER TAB -->
+  <div id="tab-pitcher" class="tab-panel">
+    <div class="card">
+      <div class="toolbar">
+        <div>
+          <div class="field-label">Player A</div>
+          <div class="select-wrap" id="pit-a-select-wrap">
+            <input type="text" id="pit-a-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="pit-a-dropdown"></div>
+          </div>
+        </div>
+        <button class="btn" id="pit-swap-btn" title="Swap players">⇄ Swap</button>
+        <div>
+          <div class="field-label">Player B</div>
+          <div class="select-wrap" id="pit-b-select-wrap">
+            <input type="text" id="pit-b-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="pit-b-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Season A</div>
+          <select id="pit-year-a-select" class="year-select"></select>
+        </div>
+        <div>
+          <div class="field-label">Season B</div>
+          <select id="pit-year-b-select" class="year-select"></select>
+        </div>
+        <div>
+          <div class="field-label">Split</div>
+          <select id="pit-split-select" class="year-select"></select>
+        </div>
+      </div>
+    </div>
+
+    <div id="pit-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading data…</span>
+    </div>
+    <div id="pit-error" class="state-overlay" style="display:none">
+      <div class="error-box"><strong>Couldn't load data.</strong><br>The FanGraphs proxy may be temporarily unavailable — try again in a moment.</div>
+    </div>
+
+    <div id="pit-content" style="display:none">
+      <div class="card">
+        <div class="player-heads">
+          <div class="player-head side-a" id="pit-head-a"></div>
+          <div class="vs-divider">VS<div class="split-badge"></div></div>
+          <div class="player-head side-b" id="pit-head-b"></div>
+        </div>
+        <div id="pit-stats-card"></div>
+      </div>
+      <div class="customize-footer">
+        <button class="btn" id="pit-customize-btn">Customize</button>
+        <button class="reset-link" id="pit-reset-btn">Reset to default</button>
+        <div class="view-switch" id="pit-view-switch">
+          <button class="view-btn active" data-view="horizontal">Horizontal</button>
+          <button class="view-btn" data-view="vertical">Vertical</button>
+        </div>
+        <label class="highlight-toggle">
+          <input type="checkbox" id="pit-highlight-toggle" checked>
+          <span class="toggle-switch"></span>
+          <span>Highlight better</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3-HITTER TAB -->
+  <div id="tab-3hitter" class="tab-panel">
+    <div class="card">
+      <div class="toolbar">
+        <div>
+          <div class="field-label">Player A</div>
+          <div class="select-wrap" id="tri-a-select-wrap">
+            <input type="text" id="tri-a-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="tri-a-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Player B</div>
+          <div class="select-wrap" id="tri-b-select-wrap">
+            <input type="text" id="tri-b-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="tri-b-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Player C</div>
+          <div class="select-wrap" id="tri-c-select-wrap">
+            <input type="text" id="tri-c-search" placeholder="Search player…" autocomplete="off">
+            <div class="dropdown-list" id="tri-c-dropdown"></div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Season</div>
+          <select id="tri-year-select" class="year-select"></select>
+        </div>
+        <div>
+          <div class="field-label">Split</div>
+          <select id="tri-split-select" class="year-select"></select>
+        </div>
+      </div>
+    </div>
+
+    <div id="tri-loading" class="state-overlay">
+      <div class="spinner"></div>
+      <span>Loading data…</span>
+    </div>
+    <div id="tri-error" class="state-overlay" style="display:none">
+      <div class="error-box"><strong>Couldn't load data.</strong><br>The FanGraphs proxy may be temporarily unavailable — try again in a moment.</div>
+    </div>
+
+    <div id="tri-content" style="display:none">
+      <div class="card">
+        <div class="player-heads-3">
+          <div class="player-head" id="tri-head-a"></div>
+          <div class="player-head" id="tri-head-b"></div>
+          <div class="player-head" id="tri-head-c"></div>
+        </div>
+        <div class="split-badge-wrap"><div class="split-badge"></div></div>
+        <div id="tri-stats-card"></div>
+      </div>
+      <div class="customize-footer">
+        <button class="btn" id="tri-customize-btn">Customize</button>
+        <button class="reset-link" id="tri-reset-btn">Reset to default</button>
+        <label class="highlight-toggle">
+          <input type="checkbox" id="tri-highlight-toggle" checked>
+          <span class="toggle-switch"></span>
+          <span>Highlight better</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Data: <a href="https://www.fangraphs.com" target="_blank" rel="noopener">FanGraphs</a>. Percentiles computed against hitters with 100+ PA / pitchers with 20+ IP in the selected window.
+  Bat Speed, Sprint Speed, DRS, OAA, and other metrics (marked with •) not available on FanGraphs' main leaderboard always reflect the full season regardless of split.
+</footer>
+
+<script>
+// ─── Constants ───────────────────────────────────────────────────────────────
+const CURRENT_YEAR = 2026;
+const YEARS = Array.from({ length: CURRENT_YEAR - 2001 }, (_, i) => CURRENT_YEAR - i);
+const URL_PARAMS = new URLSearchParams(window.location.search);
+const tabControllers = {}; // tabName ('hitter'|'pitcher') -> { getShareState() }
+
+// ─── Splits ──────────────────────────────────────────────────────────────────
+// FanGraphs' leaderboard API supports date ranges natively via month=1000 plus
+// startdate/enddate (or specific calendar-month codes for May–Sept/Oct). This
+// mirrors fg-scatter's already-battle-tested getFGSplitParams mapping.
+function getSplitOptions(year) {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1; // 1–12
+  const isCurrent = year === currentYear;
+  const isPast = year < currentYear;
+  const yr = String(year);
+  const fmt = d => d.toISOString().slice(0, 10);
+  const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return fmt(d); };
+  const today = fmt(now);
+
+  // `days` is the approximate window length, used to scale the percentile
+  // sample-size floor (see getSampleFloor) — without it, a fixed 100 PA / 20 IP
+  // floor is literally unreachable in a 7- or 14-day window (nobody gets 100 PA
+  // in two weeks), so the entire reference population empties out and every
+  // bar comes back blank. Full Season omits `days` and uses the base floor.
+  const all = [
+    { key: 'season', label: 'Full Season', params: { month: '0' } },
+    { key: 'last7',  label: 'Last 7 Days',  params: { month: '1000', startdate: daysAgo(7),  enddate: today }, currentOnly: true, days: 7 },
+    { key: 'last14', label: 'Last 14 Days', params: { month: '1000', startdate: daysAgo(14), enddate: today }, currentOnly: true, days: 14 },
+    { key: 'last30', label: 'Last 30 Days', params: { month: '1000', startdate: daysAgo(30), enddate: today }, currentOnly: true, days: 30 },
+    { key: 'last60', label: 'Last 60 Days', params: { month: '1000', startdate: daysAgo(60), enddate: today }, currentOnly: true, days: 60 },
+    { key: 'last90', label: 'Last 90 Days', params: { month: '1000', startdate: daysAgo(90), enddate: today }, currentOnly: true, days: 90 },
+    { key: 'marapr', label: 'March/April', params: { month: '1000', startdate: `${yr}-03-01`, enddate: `${yr}-05-01` }, startMonth: 4, days: 61 },
+    { key: 'may',    label: 'May',         params: { month: '5' }, startMonth: 5, days: 31 },
+    { key: 'june',   label: 'June',        params: { month: '6' }, startMonth: 6, days: 30 },
+    { key: 'july',   label: 'July',        params: { month: '7' }, startMonth: 7, days: 31 },
+    { key: 'august', label: 'August',      params: { month: '8' }, startMonth: 8, days: 31 },
+    { key: 'sepoct', label: 'Sept/Oct',    params: { month: '9' }, startMonth: 9, days: 61 },
+    { key: 'h1',     label: 'First Half',  params: { month: '1000', startdate: `${yr}-03-01`, enddate: `${yr}-07-12` }, startMonth: 4, days: 133 },
+    { key: 'h2',     label: 'Second Half', params: { month: '1000', startdate: `${yr}-07-12`, enddate: `${yr}-11-01` }, startMonth: 7, days: 112 },
+  ];
+
+  return all.filter(o => {
+    if (o.key === 'season') return true;
+    if (o.currentOnly) return isCurrent; // "last N days" only makes sense mid-season
+    if (isPast) return true;             // past seasons: every window already happened
+    if (isCurrent) return currentMonth >= o.startMonth;
+    return false;
+  });
+}
+
+// When comparing two different seasons, only offer splits valid for BOTH
+// years (e.g. "Last 7 Days" only exists for the current season) — labels and
+// `days` are identical across years for a given key, only the fetch params
+// differ, so it's safe to use yearA's option objects for display.
+function getSplitOptionsIntersect(yearA, yearB) {
+  const optsA = getSplitOptions(yearA);
+  if (yearA === yearB) return optsA;
+  const keysB = new Set(getSplitOptions(yearB).map(o => o.key));
+  return optsA.filter(o => keysB.has(o.key));
+}
+
+// Stats sourced from supplemental leaderboards (Baseball Savant bat-tracking
+// / sprint speed, and FanGraphs' separate fielding leaderboard) rather than
+// the main FanGraphs leaderboard — none of these support date-range
+// filtering, so they always reflect the full season regardless of split.
+const FULL_SEASON_ONLY_KEYS = new Set([
+  'BatSpeed', 'FastSwing%', 'Blasts/C', 'Blasts/Sw', 'SqUp/C', 'SqUp/Sw', 'SwingLen', 'Swords', 'SprintSpeed', 'xwOBACON',
+  'DRS', 'OAA', 'PulledFB%',
+  'Hitting+', 'Decision+', 'Timing+', 'Contact+', 'Power+',
+]);
+
+// Rebuilds the URL query string from the *active* tab's player/season selections
+// only — switching tabs replaces the URL rather than accumulating both tabs'
+// state. Deliberately excludes customized metric lists — those are local-only.
+function updateURL() {
+  const activeBtn = document.querySelector('.tab-btn.active');
+  const activeTab = activeBtn ? activeBtn.dataset.tab : 'hitter';
+  const params = new URLSearchParams();
+  params.set('tab', activeTab);
+  const ctrl = tabControllers[activeTab];
+  if (ctrl) {
+    const s = ctrl.getShareState();
+    if (s.year) params.set('year', String(s.year));
+    if (s.yearA) params.set('yearA', String(s.yearA));
+    if (s.yearB) params.set('yearB', String(s.yearB));
+    if (s.split && s.split !== 'season') params.set('split', s.split);
+    (s.players || []).forEach((name, i) => {
+      if (name) params.set(String.fromCharCode(97 + i), name); // a, b, c, ...
+    });
+  }
+  const qs = params.toString();
+  history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname);
+  try { window.parent.postMessage({ type: 'bh:urlSync', search: qs ? `?${qs}` : '' }, '*'); } catch(_) {}
+}
+const FG_PROXY = 'https://fg-proxy.vercel.app/api/fangraphs';
+const SAVANT_PROXY = 'https://fg-proxy.vercel.app/api/savant';
+
+// Hitting+ (swingplus) engine grades, mirrored into Supabase (table `hitting_plus`)
+// with an MLBAM id so they match FanGraphs rows by xMLBAMID. Full-season only.
+const SUPABASE_URL      = 'https://moflaqmbamyjlpototzt.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vZmxhcW1iYW15amxwb3RvdHp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MTQxNTcsImV4cCI6MjA4ODM5MDE1N30.udZohxyb0UOxTcSKv_IuBZ7S3DEJxvsMeqgLX6asNrk';
+
+const MLB_TEAM_IDS = {
+  ATH:133, PIT:134, SDP:135, SEA:136, SFG:137, STL:138, TBR:139, TEX:140, TOR:141, MIN:142,
+  PHI:143, ATL:144, CHW:145, MIA:146, NYY:147, MIL:158, LAA:108, ARI:109, BAL:110, BOS:111,
+  CHC:112, CIN:113, CLE:114, COL:115, DET:116, HOU:117, KCR:118, LAD:119, WSN:120, NYM:121,
+};
+
+// ─── Stat catalog (mirrors fg-scatter's metric list, trimmed to fields actually
+// populated by the FanGraphs "type=4" leaderboard payload we fetch) ───────────
+const STAT_GROUPS_HITTING = [
+  { group: 'Summary', stats: [
+    { key: 'Age', label: 'Age' }, { key: 'AVG', label: 'AVG' }, { key: 'OBP', label: 'OBP' },
+    { key: 'SLG', label: 'SLG' }, { key: 'OPS', label: 'OPS' }, { key: 'ISO', label: 'ISO' },
+    { key: 'wOBA', label: 'wOBA' }, { key: 'xwOBA', label: 'xwOBA' }, { key: 'xSLG', label: 'xSLG' },
+    { key: 'xwOBACON', label: 'xwOBACON' },
+    { key: 'wRC+', label: 'wRC+' }, { key: 'WAR', label: 'WAR' }, { key: 'RAR', label: 'RAR' },
+    { key: 'Batting', label: 'Batting' }, { key: 'Offense', label: 'Offense' },
+  ]},
+  { group: 'Hitting+ (swingplus)', stats: [
+    { key: 'Hitting+', label: 'Hitting+' }, { key: 'Decision+', label: 'Decision+' },
+    { key: 'Timing+', label: 'Timing+' }, { key: 'Contact+', label: 'Contact+' },
+    { key: 'Power+', label: 'Power+' },
+  ]},
+  { group: 'Counting', stats: [
+    { key: 'G', label: 'G' }, { key: 'AB', label: 'AB' }, { key: 'PA', label: 'PA' },
+    { key: 'H', label: 'H' }, { key: '1B', label: '1B' }, { key: '2B', label: '2B' },
+    { key: '3B', label: '3B' }, { key: 'HR', label: 'HR' }, { key: 'XBH', label: 'XBH' }, { key: 'R', label: 'R' },
+    { key: 'RBI', label: 'RBI' }, { key: 'BB', label: 'BB' }, { key: 'IBB', label: 'IBB' },
+    { key: 'SO', label: 'SO' }, { key: 'HBP', label: 'HBP' },
+    { key: 'SF', label: 'SF' }, { key: 'SH', label: 'SH' }, { key: 'GDP', label: 'GDP' },
+  ]},
+  { group: 'Rate', stats: [
+    { key: 'BB%', label: 'BB%' }, { key: 'K%', label: 'K%' }, { key: 'BB/K', label: 'BB/K' },
+    { key: 'AVG', label: 'AVG' }, { key: 'BABIP', label: 'BABIP' },
+    { key: 'OBP', label: 'OBP' }, { key: 'SLG', label: 'SLG' }, { key: 'ISO', label: 'ISO' },
+    { key: 'TTO%', label: 'TTO%' },
+  ]},
+  { group: 'Batted Ball', stats: [
+    { key: 'GB/FB', label: 'GB/FB' }, { key: 'GB%', label: 'GB%' }, { key: 'FB%', label: 'FB%' },
+    { key: 'LD%', label: 'LD%' }, { key: 'IFFB%', label: 'IFFB%' }, { key: 'HR/FB', label: 'HR/FB' },
+    { key: 'Pull%', label: 'Pull%' }, { key: 'Cent%', label: 'Cent%' }, { key: 'Oppo%', label: 'Oppo%' },
+    { key: 'PulledFB%', label: 'Pulled FB%' },
+    { key: 'Soft%', label: 'Soft%' }, { key: 'Med%', label: 'Med%' }, { key: 'Hard%', label: 'Hard%' },
+  ]},
+  { group: 'Win Probability', stats: [
+    { key: 'WPA', label: 'WPA' }, { key: '-WPA', label: '-WPA' }, { key: '+WPA', label: '+WPA' },
+    { key: 'RE24', label: 'RE24' }, { key: 'Clutch', label: 'Clutch' },
+  ]},
+  { group: 'Plate Discipline', stats: [
+    { key: 'O-Swing%', label: 'O-Swing%' }, { key: 'Z-Swing%', label: 'Z-Swing%' },
+    { key: 'O-Z-Swing%', label: 'Z-OSwing%' },
+    { key: 'Swing%', label: 'Swing%' }, { key: 'O-Contact%', label: 'O-Contact%' },
+    { key: 'Z-Contact%', label: 'Z-Contact%' }, { key: 'Contact%', label: 'Contact%' },
+    { key: 'Zone%', label: 'Zone%' }, { key: 'F-Strike%', label: 'F-Strike%' },
+    { key: 'SwStr%', label: 'SwStr%' }, { key: 'CStr%', label: 'CStr%' },
+  ]},
+  { group: 'Baserunning', stats: [
+    { key: 'SB', label: 'SB' }, { key: 'CS', label: 'CS' }, { key: 'SB+CS', label: 'SB+CS' },
+    { key: 'BaseRunning', label: 'BsR' }, { key: 'Spd', label: 'Spd' },
+    { key: 'SprintSpeed', label: 'Sprint Speed' },
+  ]},
+  { group: 'Fielding', stats: [
+    { key: 'DRS', label: 'DRS' }, { key: 'OAA', label: 'OAA' },
+  ]},
+  { group: 'Batted Ball Quality', stats: [
+    { key: 'EV', label: 'EV' }, { key: 'EV90', label: 'EV90' }, { key: 'LA', label: 'LA' },
+    { key: 'Barrel%', label: 'Barrel/BBE%' }, { key: 'Barrels', label: 'Barrels' },
+    { key: 'HardHit%', label: 'HardHit%' }, { key: 'maxEV', label: 'maxEV' },
+    { key: 'AttackAngle', label: 'Attack Angle' },
+  ]},
+  { group: 'Bat Tracking', stats: [
+    { key: 'BatSpeed', label: 'Bat Speed' }, { key: 'FastSwing%', label: 'Fast Swing%' },
+    { key: 'Blasts/C', label: 'Blasts/C' }, { key: 'Blasts/Sw', label: 'Blasts/Sw' },
+    { key: 'SqUp/C', label: 'Sq-Up/C' }, { key: 'SqUp/Sw', label: 'Sq-Up/Sw' },
+    { key: 'SwingLen', label: 'Swing Len' }, { key: 'Swords', label: 'Swords' },
+  ]},
+  { group: 'Plus Stats', stats: [
+    { key: 'AVG+', label: 'AVG+' }, { key: 'BB%+', label: 'BB%+' }, { key: 'K%+', label: 'K%+' },
+    { key: 'OBP+', label: 'OBP+' }, { key: 'SLG+', label: 'SLG+' },
+    { key: 'ISO+', label: 'ISO+' }, { key: 'BABIP+', label: 'BABIP+' },
+  ]},
+];
+
+const STAT_GROUPS_PITCHING = [
+  { group: 'Summary', stats: [
+    { key: 'Age', label: 'Age' }, { key: 'ERA', label: 'ERA' }, { key: 'FIP', label: 'FIP' },
+    { key: 'xFIP', label: 'xFIP' }, { key: 'SIERA', label: 'SIERA' }, { key: 'xERA', label: 'xERA' },
+    { key: 'ERA-', label: 'ERA-' }, { key: 'FIP-', label: 'FIP-' }, { key: 'xFIP-', label: 'xFIP-' },
+    { key: 'WAR', label: 'WAR' }, { key: 'RAR', label: 'RAR' },
+  ]},
+  { group: 'Counting', stats: [
+    { key: 'W', label: 'W' }, { key: 'L', label: 'L' }, { key: 'G', label: 'G' },
+    { key: 'GS', label: 'GS' }, { key: 'CG', label: 'CG' }, { key: 'ShO', label: 'ShO' },
+    { key: 'SV', label: 'SV' }, { key: 'HLD', label: 'HLD' }, { key: 'BS', label: 'BS' },
+    { key: 'IP', label: 'IP' }, { key: 'TBF', label: 'TBF' }, { key: 'H', label: 'H' },
+    { key: 'R', label: 'R' }, { key: 'ER', label: 'ER' }, { key: 'HR', label: 'HR' },
+    { key: 'BB', label: 'BB' }, { key: 'IBB', label: 'IBB' }, { key: 'HBP', label: 'HBP' },
+    { key: 'WP', label: 'WP' }, { key: 'BK', label: 'BK' }, { key: 'SO', label: 'SO' },
+    { key: 'GB', label: 'GB' }, { key: 'FB', label: 'FB' }, { key: 'LD', label: 'LD' },
+    { key: 'IFFB', label: 'IFFB' }, { key: 'Pitches', label: 'Pitches' },
+    { key: 'Balls', label: 'Balls' }, { key: 'Strikes', label: 'Strikes' },
+    { key: 'RS', label: 'RS' }, { key: 'IFH', label: 'IFH' }, { key: 'BU', label: 'BU' },
+    { key: 'BUH', label: 'BUH' }, { key: 'SD', label: 'SD' }, { key: 'MD', label: 'MD' },
+  ]},
+  { group: 'Rate', stats: [
+    { key: 'K/9', label: 'K/9' }, { key: 'BB/9', label: 'BB/9' }, { key: 'K/BB', label: 'K/BB' },
+    { key: 'H/9', label: 'H/9' }, { key: 'HR/9', label: 'HR/9' }, { key: 'K%', label: 'K%' },
+    { key: 'BB%', label: 'BB%' }, { key: 'K-BB%', label: 'K-BB%' }, { key: 'AVG', label: 'AVG' },
+    { key: 'WHIP', label: 'WHIP' }, { key: 'BABIP', label: 'BABIP' }, { key: 'LOB%', label: 'LOB%' },
+    { key: 'HR/FB', label: 'HR/FB' }, { key: 'TTO%', label: 'TTO%' },
+  ]},
+  { group: 'Batted Ball', stats: [
+    { key: 'GB/FB', label: 'GB/FB' }, { key: 'GB%', label: 'GB%' }, { key: 'FB%', label: 'FB%' },
+    { key: 'LD%', label: 'LD%' }, { key: 'IFFB%', label: 'IFFB%' },
+    { key: 'IFH%', label: 'IFH%' }, { key: 'BUH%', label: 'BUH%' },
+    { key: 'PulledFB%', label: 'Pulled FB% (Against)' },
+  ]},
+  { group: 'Quality of Contact (Against)', stats: [
+    { key: 'Barrel%', label: 'Barrel/BBE%' }, { key: 'Barrels', label: 'Barrels' },
+    { key: 'HardHit%', label: 'HardHit%' }, { key: 'EV', label: 'EV' }, { key: 'maxEV', label: 'maxEV' },
+  ]},
+  { group: 'Bat Tracking (Against)', stats: [
+    { key: 'BatSpeed', label: 'Bat Speed' }, { key: 'FastSwing%', label: 'Fast Swing%' },
+    { key: 'Blasts/C', label: 'Blasts/C' }, { key: 'Blasts/Sw', label: 'Blasts/Sw' },
+    { key: 'SqUp/C', label: 'Sq-Up/C' }, { key: 'SqUp/Sw', label: 'Sq-Up/Sw' },
+    { key: 'SwingLen', label: 'Swing Len' }, { key: 'Swords', label: 'Swords' },
+  ]},
+  { group: 'Win Probability', stats: [
+    { key: 'WPA', label: 'WPA' }, { key: '-WPA', label: '-WPA' }, { key: '+WPA', label: '+WPA' },
+  ]},
+  { group: 'Plate Discipline', stats: [
+    { key: 'O-Swing%', label: 'O-Swing%' }, { key: 'Z-Swing%', label: 'Z-Swing%' },
+    { key: 'O-Z-Swing%', label: 'Z-OSwing%' },
+    { key: 'Swing%', label: 'Swing%' }, { key: 'O-Contact%', label: 'O-Contact%' },
+    { key: 'Z-Contact%', label: 'Z-Contact%' }, { key: 'Contact%', label: 'Contact%' },
+    { key: 'Zone%', label: 'Zone%' }, { key: 'F-Strike%', label: 'F-Strike%' },
+    { key: 'SwStr%', label: 'SwStr%' }, { key: 'CStr%', label: 'CStr%' },
+    { key: 'C+SwStr%', label: 'CSW%' },
+  ]},
+  { group: 'Workload', stats: [
+    { key: 'Starting', label: 'Starting' }, { key: 'Start-IP', label: 'Start-IP' },
+    { key: 'Relieving', label: 'Relieving' }, { key: 'Relief-IP', label: 'Relief-IP' },
+  ]},
+  { group: 'Pitch Usage', stats: [
+    { key: 'pfxFA%', label: 'FA%' }, { key: 'pfxFC%', label: 'FC%' }, { key: 'pfxFS%', label: 'FS%' },
+    { key: 'pfxFO%', label: 'FO%' }, { key: 'pfxSI%', label: 'SI%' }, { key: 'pfxSL%', label: 'SL%' },
+    { key: 'pfxCU%', label: 'CU%' }, { key: 'pfxKC%', label: 'KC%' }, { key: 'pfxEP%', label: 'EP%' },
+    { key: 'pfxCH%', label: 'CH%' }, { key: 'pfxKN%', label: 'KN%' }, { key: 'pfxUN%', label: 'UN%' },
+  ]},
+  { group: 'Pitch Velocity', stats: [
+    { key: 'pfxvFA', label: 'vFA' }, { key: 'pfxvFC', label: 'vFC' }, { key: 'pfxvFS', label: 'vFS' },
+    { key: 'pfxvFO', label: 'vFO' }, { key: 'pfxvSI', label: 'vSI' }, { key: 'pfxvSL', label: 'vSL' },
+    { key: 'pfxvCU', label: 'vCU' }, { key: 'pfxvKC', label: 'vKC' }, { key: 'pfxvEP', label: 'vEP' },
+    { key: 'pfxvCH', label: 'vCH' }, { key: 'pfxvKN', label: 'vKN' },
+  ]},
+  { group: 'Stuff+ / PitchingBot', stats: [
+    { key: 'sp_stuff', label: 'Stuff+' }, { key: 'sp_location', label: 'Location+' },
+    { key: 'sp_pitching', label: 'Pitching+' },
+  ]},
+];
+
+const DEFAULT_HITTER_KEYS = ['WAR','wRC+','AVG','OBP','SLG','OPS','HR','SB','xwOBA','xSLG','EV90','FB%','Barrel%','HardHit%','K%','BB%','SwStr%','O-Z-Swing%','Hitting+','Power+','Contact+','BatSpeed','SprintSpeed'];
+const DEFAULT_PITCHER_KEYS = ['WAR','ERA','FIP','SIERA','WHIP','K%','BB%','K-BB%','HardHit%','sp_stuff','sp_location','sp_pitching','pfxvFA','SwStr%','O-Swing%'];
+
+// ─── Formatting (ported from fg-scatter's formatStat/displayVal/lowerIsBetter) ─
+const PCT_KEYS = new Set([
+  'K%','BB%','K-BB%','LOB%','GB%','FB%','HR/FB','SwStr%','IFFB%','LD%',
+  'O-Swing%','Z-Swing%','O-Z-Swing%','Swing%','O-Contact%','Z-Contact%','Contact%','Zone%','F-Strike%',
+  'CStr%','C+SwStr%','IFH%','BUH%','TTO%',
+  'pfxFA%','pfxFC%','pfxFS%','pfxFO%','pfxSI%','pfxSL%','pfxCU%','pfxKC%','pfxEP%','pfxCH%','pfxKN%','pfxUN%',
+  'Pull%','Cent%','Oppo%','Soft%','Med%','Hard%','PulledFB%',
+  'Barrel%','HardHit%','FastSwing%','Blasts/C','Blasts/Sw','SqUp/C','SqUp/Sw',
+]);
+const SLASH_KEYS = new Set(['AVG','OBP','SLG','OPS','ISO','wOBA','xwOBA','xSLG','xwOBACON','BABIP']);
+const COUNTING_KEYS = new Set([
+  'W','L','G','GS','CG','ShO','SV','HLD','BS','TBF','H','R','ER','HR','BB','IBB','HBP','WP','BK','SO',
+  'GB','FB','LD','IFFB','Pitches','Balls','Strikes','RS','IFH','BU','BUH','SD','MD',
+  'AB','PA','1B','2B','3B','RBI','SF','SH','GDP','SB','CS','Swords','Barrels','XBH','SB+CS',
+  'DRS','OAA',
+]);
+const LOWER_IS_BETTER_ALWAYS = new Set(['ERA','FIP','xFIP','SIERA','xERA','WHIP','H/9','BB/9','HR/9','ERA-','FIP-','xFIP-','L','BS','-WPA']);
+const LOWER_IS_BETTER_PITCHING = new Set(['BB%','BABIP','HBP','HR/FB','wOBA','SLG','xwOBA','xSLG','Barrel%','Barrels','HardHit%','EV','maxEV']);
+const LOWER_IS_BETTER_HITTING = new Set(['K%','GDP','CS','SwStr%','O-Swing%']);
+
+function lowerIsBetter(key, mode) {
+  if (LOWER_IS_BETTER_ALWAYS.has(key)) return true;
+  if (mode === 'pit' && LOWER_IS_BETTER_PITCHING.has(key)) return true;
+  if (mode === 'bat' && LOWER_IS_BETTER_HITTING.has(key)) return true;
+  return false;
+}
+
+// ─── "Highlight better" toggle — one shared preference across all three tabs ──
+const HIGHLIGHT_KEY = 'player-compare:highlightBetter';
+const highlightListeners = new Set();
+let highlightEnabled = (() => {
+  const saved = localStorage.getItem(HIGHLIGHT_KEY);
+  return saved === null ? true : saved === '1';
+})();
+function setHighlightEnabled(v) {
+  highlightEnabled = v;
+  localStorage.setItem(HIGHLIGHT_KEY, v ? '1' : '0');
+  highlightListeners.forEach(fn => fn());
+}
+function onHighlightChange(fn) { highlightListeners.add(fn); }
+
+// ─── Horizontal / Vertical compare layout — shared across the two 2-player
+// tabs (hitter, pitcher); the 3-player tab only ever renders one way. ───────
+const VIEW_KEY = 'player-compare:compareView';
+const viewListeners = new Set();
+let compareView = (() => {
+  const saved = localStorage.getItem(VIEW_KEY);
+  return saved === 'vertical' ? 'vertical' : 'horizontal';
+})();
+function setCompareView(v) {
+  compareView = v;
+  localStorage.setItem(VIEW_KEY, v);
+  viewListeners.forEach(fn => fn());
+}
+function onViewChange(fn) { viewListeners.add(fn); }
+
+// Which side has the better raw value for this stat, direction-aware. Null on
+// a missing value or an exact tie (nothing to highlight).
+function betterSide(va, vb, lower) {
+  if (va == null || vb == null || va === vb) return null;
+  return lower ? (va < vb ? 'a' : 'b') : (va > vb ? 'a' : 'b');
+}
+// Index of the uniquely-best value in a list (3+ players), direction-aware.
+// Returns -1 when everything's null or the top spot is tied.
+function bestIndex(vals, lower) {
+  let bestI = -1, bestV = null, tied = false;
+  vals.forEach((v, i) => {
+    if (v == null) return;
+    if (bestV == null || (lower ? v < bestV : v > bestV)) { bestV = v; bestI = i; tied = false; }
+    else if (v === bestV) { tied = true; }
+  });
+  return tied ? -1 : bestI;
+}
+
+// Convert a raw FanGraphs value for ranking/display: null counting stats -> 0.
+function rawValue(v, key) {
+  if (v == null) return COUNTING_KEYS.has(key) ? 0 : null;
+  return v;
+}
+
+function formatStat(v, key) {
+  if (v == null || isNaN(v)) return null;
+  if (SLASH_KEYS.has(key)) {
+    const s = v.toFixed(3);
+    if (v < 0) return '-' + s.slice(3).replace('-', '');
+    return s.startsWith('0.') ? s.slice(1) : s; // strip leading 0 (.333) but keep it when >= 1 (1.091 — OPS can exceed 1.000 in short windows)
+  }
+  if (PCT_KEYS.has(key)) return (v * 100).toFixed(1) + '%';
+  if (['ERA','FIP','xFIP','SIERA','xERA','WHIP','HR/9','BB/9','K/9','H/9','K/BB','GB/FB','Spd','BB/K'].includes(key)) return v.toFixed(2);
+  if (['WAR','IP','Start-IP','Relief-IP','WPA','-WPA','+WPA','Starting','Relieving','RAR','Batting','Offense',
+       'BaseRunning','RE24','Clutch','EV','EV90','LA','maxEV','AttackAngle','BatSpeed','SwingLen','SprintSpeed'].includes(key)) return v.toFixed(1);
+  if (['ERA-','FIP-','xFIP-','sp_stuff','sp_location','sp_pitching','wRC+','AVG+','BB%+','K%+','OBP+','SLG+','ISO+','BABIP+',
+       'Hitting+','Decision+','Timing+','Contact+','Power+'].includes(key)) return String(Math.round(v));
+  if (key.startsWith('pfxv')) return v.toFixed(1);
+  if (key === 'Age') return String(Math.round(v));
+  if (COUNTING_KEYS.has(key)) return String(Math.round(v));
+  return Number.isInteger(v) ? String(v) : v.toFixed(2);
+}
+
+// Base floor (100 PA / 20 IP) is calibrated for a full ~187-day season.
+// Shorter splits scale it down proportionally so the reference population
+// isn't empty — a fixed 100 PA floor is unreachable within 14 days.
+const FULL_SEASON_DAYS = 187;
+function getSampleFloor(statType, days) {
+  const key = statType === 'bat' ? 'PA' : 'IP';
+  const baseMin = statType === 'bat' ? 100 : 20;
+  if (days == null) return { key, min: baseMin };
+  const floorMin = statType === 'bat' ? 8 : 2;
+  const min = Math.max(floorMin, Math.round(baseMin * days / FULL_SEASON_DAYS));
+  return { key, min };
+}
+function sampleFloorLabel(statType, days) {
+  const { min, key } = getSampleFloor(statType, days);
+  return `${min} ${key}`;
+}
+
+// Tracked-swing / pitch-velocity metrics stabilize within a handful of swings
+// or pitches, so the small-sample "unqualified" hatching doesn't apply to
+// them even for a player under the overall PA/IP floor.
+const ALWAYS_QUALIFIED_KEYS = new Set([
+  'SprintSpeed', 'BatSpeed',
+  'pfxvFA', 'pfxvFT', 'pfxvFC', 'pfxvFS', 'pfxvFO', 'pfxvSI', 'pfxvSL',
+  'pfxvCU', 'pfxvKC', 'pfxvEP', 'pfxvCH', 'pfxvSC', 'pfxvKN',
+]);
+
+// ─── Percentile computation ─────────────────────────────────────────────────
+// Builds a ranker over a (already sample-filtered) reference distribution that
+// can score ANY value against it — including a value from a player who didn't
+// personally clear the sample-size filter used to build the reference set.
+function buildPercentileRanker(values) {
+  const sorted = values.filter(v => v != null && !isNaN(v)).sort((a, b) => a - b);
+  const n = sorted.length;
+  return function rank(value) {
+    if (value == null || isNaN(value) || n === 0) return null;
+    if (n === 1) return 50;
+    // firstGE: index of first element >= value; firstGT: index of first element > value
+    let lo = 0, hi = n;
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (sorted[mid] < value) lo = mid + 1; else hi = mid; }
+    const firstGE = lo;
+    lo = 0; hi = n;
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (sorted[mid] <= value) lo = mid + 1; else hi = mid; }
+    const firstGT = lo;
+    const countLess = firstGE;
+    const countEqualOrClamped = Math.max(firstGT - firstGE, 1); // value itself always counts once, even if absent from the set
+    const avgIndex = countLess + (countEqualOrClamped - 1) / 2;
+    return (avgIndex / (n - 1)) * 100;
+  };
+}
+
+function percentileColor(pct) {
+  const t = Math.max(0, Math.min(1, pct / 100));
+  const stops = [
+    { p: 0, c: [70, 130, 210] },
+    { p: 0.5, c: [222, 213, 200] },
+    { p: 1, c: [192, 57, 43] },
+  ];
+  let lo = stops[0], hi = stops[stops.length - 1];
+  for (let i = 0; i < stops.length - 1; i++) {
+    if (t >= stops[i].p && t <= stops[i + 1].p) { lo = stops[i]; hi = stops[i + 1]; break; }
+  }
+  const span = hi.p - lo.p || 1;
+  const localT = (t - lo.p) / span;
+  const rgb = lo.c.map((v, i) => Math.round(v + (hi.c[i] - v) * localT));
+  return `rgb(${rgb.join(',')})`;
+}
+
+// ─── CSV parsing (handles quoted fields with embedded commas) ──────────────────
+function parseCSV(text) {
+  text = text.replace(/^﻿/, '');
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else field += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ',') { row.push(field); field = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && text[i + 1] === '\n') i++;
+      row.push(field); field = '';
+      if (row.length > 1 || row[0] !== '') rows.push(row);
+      row = [];
+    } else field += c;
+  }
+  if (field !== '' || row.length) { row.push(field); rows.push(row); }
+  if (!rows.length) return [];
+  const header = rows[0];
+  return rows.slice(1).map(r => {
+    const obj = {};
+    header.forEach((h, i) => { obj[h] = r[i]; });
+    return obj;
+  });
+}
+function csvNum(v) {
+  if (v == null || v === '' || v === 'NaN') return null;
+  const n = parseFloat(v);
+  return isNaN(n) ? null : n;
+}
+
+// Baseball Savant's bat-tracking leaderboard — supplemental to FanGraphs, keyed by MLBAM id.
+// Hitting+ (swingplus) grades from Supabase, keyed by MLBAM id. The engine only
+// publishes full-season grades, so — like bat tracking — this is cached by year
+// alone and reused across every split.
+const hittingPlusCache = new Map(); // year -> Map<mlbId, fields>
+async function loadHittingPlus(year) {
+  if (hittingPlusCache.has(year)) return hittingPlusCache.get(year);
+  const map = new Map();
+  try {
+    const resp = await fetch(
+      `${SUPABASE_URL}/rest/v1/hitting_plus?season=eq.${year}&select=mlbamid,hitting_plus,decision,timing,contact,power`,
+      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (resp.ok) {
+      for (const row of await resp.json()) {
+        const id = parseInt(row.mlbamid, 10);
+        if (!id) continue;
+        map.set(id, {
+          'Hitting+': row.hitting_plus, 'Decision+': row.decision, 'Timing+': row.timing,
+          'Contact+': row.contact, 'Power+': row.power,
+        });
+      }
+    }
+  } catch { /* leave empty — grades just won't render */ }
+  hittingPlusCache.set(year, map);
+  return map;
+}
+
+// Always full-season (Savant's leaderboards don't support date-range filtering),
+// so this is cached by year alone and reused across every split.
+const batTrackingCache = new Map(); // `${year}:${savantType}` -> Map<mlbId, fields>
+async function loadBatTracking(year, savantType) {
+  const cacheKey = `${year}:${savantType}`;
+  if (batTrackingCache.has(cacheKey)) return batTrackingCache.get(cacheKey);
+  const result = await loadBatTrackingUncached(year, savantType);
+  batTrackingCache.set(cacheKey, result);
+  return result;
+}
+async function loadBatTrackingUncached(year, savantType) {
+  const params = new URLSearchParams({
+    path: '/leaderboard/bat-tracking', gameType: 'Regular', minSwings: '1', minGroupSwings: '1',
+    seasonStart: String(year), seasonEnd: String(year), type: savantType, team: '', csv: 'true',
+  });
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) return new Map();
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) return new Map();
+  const rows = parseCSV(text);
+  const map = new Map();
+  for (const row of rows) {
+    const id = parseInt(row.id, 10);
+    if (!id) continue;
+    map.set(id, {
+      BatSpeed: csvNum(row.avg_bat_speed),
+      'FastSwing%': csvNum(row.hard_swing_rate),
+      'Blasts/C': csvNum(row.blast_per_bat_contact),
+      'Blasts/Sw': csvNum(row.blast_per_swing),
+      'SqUp/C': csvNum(row.squared_up_per_bat_contact),
+      'SqUp/Sw': csvNum(row.squared_up_per_swing),
+      SwingLen: csvNum(row.swing_length),
+      Swords: csvNum(row.swords),
+    });
+  }
+  return map;
+}
+
+// Baseball Savant's batted-ball-direction leaderboard — Pulled FB% (their
+// "pull_air_rate": share of batted balls that are both pulled AND in the air,
+// FB+LD), which neither FanGraphs nor the bat-tracking leaderboard exposes.
+// Supplemental to FanGraphs, keyed by MLBAM id. Always full-season; cached by
+// year alone and reused across every split.
+const battedBallCache = new Map(); // `${year}:${savantType}` -> Map<mlbId, fields>
+async function loadBattedBall(year, savantType) {
+  const cacheKey = `${year}:${savantType}`;
+  if (battedBallCache.has(cacheKey)) return battedBallCache.get(cacheKey);
+  const result = await loadBattedBallUncached(year, savantType);
+  battedBallCache.set(cacheKey, result);
+  return result;
+}
+async function loadBattedBallUncached(year, savantType) {
+  const params = new URLSearchParams({
+    path: '/leaderboard/batted-ball', type: savantType, year: String(year),
+    pitchType: 'all', filterType: 'bip', min: '1', csv: 'true',
+  });
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) return new Map();
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) return new Map();
+  const rows = parseCSV(text);
+  const map = new Map();
+  for (const row of rows) {
+    const id = parseInt(row.id, 10);
+    if (!id) continue;
+    map.set(id, { 'PulledFB%': csvNum(row.pull_air_rate) });
+  }
+  return map;
+}
+
+// Baseball Savant's custom leaderboard — Sprint Speed (Statcast-measured
+// ft/sec) and xwOBACON, neither of which FanGraphs exposes. Supplemental to
+// FanGraphs, keyed by MLBAM id. Hitters only. Always full-season; cached by
+// year alone and reused across every split.
+const sprintSpeedCache = new Map(); // year -> Map<mlbId, fields>
+async function loadSprintSpeed(year) {
+  if (sprintSpeedCache.has(year)) return sprintSpeedCache.get(year);
+  const result = await loadSprintSpeedUncached(year);
+  sprintSpeedCache.set(year, result);
+  return result;
+}
+async function loadSprintSpeedUncached(year) {
+  const params = new URLSearchParams({
+    path: '/leaderboard/custom', type: 'batter', year: String(year), filter: '', min: '1',
+    selections: 'pa,sprint_speed,xwobacon', chart: 'false', x: 'pa', y: 'pa', r: 'no', chartType: 'beeswarm', csv: 'true',
+  });
+  const resp = await fetch(`${SAVANT_PROXY}?${params}`);
+  if (!resp.ok) return new Map();
+  const text = await resp.text();
+  if (text.trim().startsWith('<')) return new Map();
+  const rows = parseCSV(text);
+  const map = new Map();
+  for (const row of rows) {
+    const id = parseInt(row.player_id, 10);
+    if (!id) continue;
+    map.set(id, { SprintSpeed: csvNum(row.sprint_speed), xwOBACON: csvNum(row.xwobacon) });
+  }
+  return map;
+}
+
+// FanGraphs' fielding leaderboard (DRS, OAA) — a separate leaderboard from the
+// main batting one we fetch, keyed by FanGraphs playerid (not MLBAM id, since
+// it's FanGraphs data). It returns one row PER POSITION a player played, so a
+// multi-position player needs those rows summed into a single season total.
+// Doesn't support date-range filtering, so it's always full-season; cached by
+// year alone and reused across every split.
+const fieldingCache = new Map(); // year -> Map<playerid, { DRS, OAA }>
+async function loadFielding(year) {
+  if (fieldingCache.has(year)) return fieldingCache.get(year);
+  const result = await loadFieldingUncached(year);
+  fieldingCache.set(year, result);
+  return result;
+}
+async function loadFieldingUncached(year) {
+  const params = new URLSearchParams({
+    pos: 'all', stats: 'fld', lg: 'all', qual: '0', type: '1',
+    season: String(year), season1: String(year), ind: '0', hand: '', team: '0',
+    pageitems: '10000', pagenum: '1', sortstat: 'Inn', sortdir: 'default', month: '0',
+  });
+  const resp = await fetch(`${FG_PROXY}?${params}`);
+  if (!resp.ok) return new Map();
+  const json = await resp.json();
+  const rows = json.data || [];
+  const map = new Map();
+  for (const row of rows) {
+    if (row.playerid == null) continue;
+    const acc = map.get(row.playerid) || { DRS: 0, OAA: 0 };
+    if (row.DRS != null) acc.DRS += row.DRS;
+    if (row.OAA != null) acc.OAA += row.OAA;
+    map.set(row.playerid, acc);
+  }
+  return map;
+}
+
+// ─── Data loading ────────────────────────────────────────────────────────────
+const leaderboardCache = new Map(); // `${year}:${statType}:${splitKey}` -> { players: Map<id, player>, percentiles: Map<key, Map<id, pct>> }
+
+async function loadLeaderboard(year, statType, statGroups, split) {
+  const cacheKey = `${year}:${statType}:${split.key}`;
+  if (leaderboardCache.has(cacheKey)) return leaderboardCache.get(cacheKey);
+
+  const params = new URLSearchParams({
+    pos: 'all', stats: statType, lg: 'all', qual: '0', type: '4',
+    season: String(year), season1: String(year), ind: '0', hand: '', team: '0',
+    pageitems: '10000', pagenum: '1', sortstat: 'WAR', sortdir: 'default',
+  });
+  for (const [k, v] of Object.entries(split.params)) params.set(k, v);
+  const savantType = statType === 'bat' ? 'batter' : 'pitcher';
+  const [resp, batTracking, battedBall, sprintSpeed, fielding, hittingPlus] = await Promise.all([
+    fetch(`${FG_PROXY}?${params}`),
+    loadBatTracking(year, savantType).catch(() => new Map()),
+    loadBattedBall(year, savantType).catch(() => new Map()),
+    statType === 'bat' ? loadSprintSpeed(year).catch(() => new Map()) : Promise.resolve(new Map()),
+    statType === 'bat' ? loadFielding(year).catch(() => new Map()) : Promise.resolve(new Map()),
+    statType === 'bat' ? loadHittingPlus(year).catch(() => new Map()) : Promise.resolve(new Map()),
+  ]);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  const json = await resp.json();
+  if (json.error) throw new Error(json.error);
+  const rows = json.data || [];
+
+  // Percentiles are ranked against a "meaningful sample" subset, not the full
+  // qual=0 pool — that pool is ~70% players with under 100 PA (September
+  // call-ups, injury replacements, position players who once pitched), and
+  // counting/rate stats look artificially elite against a sea of near-zero
+  // samples. Players below this floor still get a percentile (scored against
+  // the same reference distribution) but are flagged unqualified so their
+  // bars render hatched/translucent, matching Baseball Savant's convention.
+  const sampleFloor = getSampleFloor(statType, split.days);
+
+  const players = new Map();
+  for (const row of rows) {
+    if (row.playerid == null) continue;
+    const mlbId = row.xMLBAMID || null;
+    const bt = mlbId ? batTracking.get(mlbId) : null;
+    if (bt) Object.assign(row, bt);
+    const bb = mlbId ? battedBall.get(mlbId) : null;
+    if (bb) Object.assign(row, bb);
+    const ss = mlbId ? sprintSpeed.get(mlbId) : null;
+    if (ss) Object.assign(row, ss);
+    const fd = fielding.get(row.playerid);
+    if (fd) Object.assign(row, fd);
+    const hp = mlbId ? hittingPlus.get(mlbId) : null;
+    if (hp) Object.assign(row, hp);
+    // Not in FanGraphs' payload — trivially derived from fields that are.
+    const oSwing = rawValue(row['O-Swing%'], 'O-Swing%');
+    const zSwing = rawValue(row['Z-Swing%'], 'Z-Swing%');
+    row['O-Z-Swing%'] = (oSwing != null && zSwing != null) ? zSwing - oSwing : null;
+    if (statType === 'bat') {
+      // Not in FanGraphs' payload — trivially derived from fields that are.
+      row.XBH = (rawValue(row['2B'], '2B') ?? 0) + (rawValue(row['3B'], '3B') ?? 0) + (rawValue(row.HR, 'HR') ?? 0);
+      row['SB+CS'] = (rawValue(row.SB, 'SB') ?? 0) + (rawValue(row.CS, 'CS') ?? 0);
+    }
+    players.set(row.playerid, {
+      id: row.playerid,
+      mlbId,
+      name: row.PlayerName,
+      teamAbb: row.TeamNameAbb,
+      teamId: MLB_TEAM_IDS[row.TeamNameAbb] || null,
+      position: row.position || '',
+      qualified: (rawValue(row[sampleFloor.key], sampleFloor.key) ?? 0) >= sampleFloor.min,
+      raw: row,
+    });
+  }
+
+  const allKeys = new Set(statGroups.flatMap(g => g.stats.map(s => s.key)));
+  const percentiles = new Map(); // key -> rank(value) function
+  for (const key of allKeys) {
+    const values = [];
+    for (const p of players.values()) {
+      if ((rawValue(p.raw[sampleFloor.key], sampleFloor.key) ?? 0) < sampleFloor.min) continue;
+      const v = rawValue(p.raw[key], key);
+      if (v != null && !isNaN(v)) values.push(v);
+    }
+    percentiles.set(key, buildPercentileRanker(values));
+  }
+
+  const result = { players, percentiles };
+  leaderboardCache.set(cacheKey, result);
+  return result;
+}
+
+// ─── Searchable dropdown (player search) ────────────────────────────────────
+function deaccent(str) { return str.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+
+function buildDropdown(inputEl, dropdownEl, onSelect, getPlayers) {
+  let filtered = [];
+  let highlighted = -1;
+
+  function sortedByLastName(arr) {
+    return [...arr].sort((a, b) => a.name.split(' ').pop().localeCompare(b.name.split(' ').pop()));
+  }
+  function render(list) {
+    filtered = list;
+    highlighted = -1;
+    dropdownEl.innerHTML = list.length
+      ? list.map((p, i) => `<div class="dropdown-item" data-i="${i}">${p.name}${p.teamAbb ? ' (' + p.teamAbb + ')' : ''}</div>`).join('')
+      : '<div class="dropdown-item" style="color:#aaa;cursor:default">No results</div>';
+    dropdownEl.classList.add('open');
+  }
+  function close() { dropdownEl.classList.remove('open'); highlighted = -1; }
+  function pick(p) {
+    inputEl.value = `${p.name}${p.teamAbb ? ' (' + p.teamAbb + ')' : ''}`;
+    close();
+    onSelect(p);
+  }
+
+  inputEl.addEventListener('focus', () => render(sortedByLastName(getPlayers())));
+  inputEl.addEventListener('input', () => {
+    const q = deaccent(inputEl.value.trim());
+    const list = sortedByLastName(getPlayers());
+    render(q ? list.filter(p => deaccent(p.name).includes(q)) : list);
+  });
+  inputEl.addEventListener('keydown', e => {
+    const items = dropdownEl.querySelectorAll('.dropdown-item[data-i]');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      highlighted = Math.min(highlighted + 1, items.length - 1);
+      items.forEach((el, i) => el.classList.toggle('highlighted', i === highlighted));
+      items[highlighted]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      highlighted = Math.max(highlighted - 1, 0);
+      items.forEach((el, i) => el.classList.toggle('highlighted', i === highlighted));
+      items[highlighted]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter' && highlighted >= 0) {
+      e.preventDefault();
+      if (filtered[highlighted]) pick(filtered[highlighted]);
+    } else if (e.key === 'Escape') { close(); inputEl.blur(); }
+  });
+  dropdownEl.addEventListener('mousedown', e => {
+    const item = e.target.closest('.dropdown-item[data-i]');
+    if (item) { e.preventDefault(); pick(filtered[+item.dataset.i]); }
+  });
+  document.addEventListener('click', e => {
+    if (!inputEl.contains(e.target) && !dropdownEl.contains(e.target)) close();
+  });
+
+  return { setValueSilently: (p) => { inputEl.value = `${p.name}${p.teamAbb ? ' (' + p.teamAbb + ')' : ''}`; } };
+}
+
+// ─── Metric picker (shared floating panel for Customize mode) ──────────────
+let pickerEl = null;
+function ensurePicker() {
+  if (pickerEl) return pickerEl;
+  pickerEl = document.createElement('div');
+  pickerEl.className = 'metric-picker';
+  pickerEl.innerHTML = `<input type="text" placeholder="Search metric…" autocomplete="off"><div class="metric-picker-list"></div>`;
+  document.body.appendChild(pickerEl);
+  return pickerEl;
+}
+function closePicker() {
+  if (pickerEl) pickerEl.style.display = 'none';
+  document.removeEventListener('mousedown', onPickerOutsideClick, true);
+}
+function onPickerOutsideClick(e) {
+  if (pickerEl && pickerEl.style.display !== 'none' && !pickerEl.contains(e.target)) closePicker();
+}
+function openMetricPicker(anchorEl, statGroups, currentKeys, onPick) {
+  const panel = ensurePicker();
+  panel.style.display = 'flex';
+  const rect = anchorEl.getBoundingClientRect();
+  const top = Math.min(rect.bottom + 6, window.innerHeight - 300);
+  const left = Math.max(8, Math.min(rect.left - 100, window.innerWidth - 280));
+  panel.style.top = `${top}px`;
+  panel.style.left = `${left}px`;
+
+  const input = panel.querySelector('input');
+  const list = panel.querySelector('.metric-picker-list');
+  input.value = '';
+
+  function renderList(filterText) {
+    const q = filterText.trim().toLowerCase();
+    let html = '';
+    for (const g of statGroups) {
+      const items = g.stats.filter(s => !q || s.label.toLowerCase().includes(q) || s.key.toLowerCase().includes(q));
+      if (!items.length) continue;
+      html += `<div class="metric-picker-group">${g.group}</div>`;
+      for (const s of items) {
+        const isSelected = currentKeys.includes(s.key);
+        html += `<div class="metric-picker-item${isSelected ? ' selected' : ''}" data-key="${s.key}">${s.label}${isSelected ? ' ✓' : ''}</div>`;
+      }
+    }
+    list.innerHTML = html || '<div class="metric-picker-item" style="color:#aaa;cursor:default">No matches</div>';
+  }
+  renderList('');
+  input.oninput = () => renderList(input.value);
+  list.onclick = (e) => {
+    const item = e.target.closest('.metric-picker-item[data-key]');
+    if (!item) return;
+    onPick(item.dataset.key);
+    closePicker();
+  };
+  setTimeout(() => { input.focus(); document.addEventListener('mousedown', onPickerOutsideClick, true); }, 0);
+}
+
+// ─── Player head rendering ───────────────────────────────────────────────────
+function headshotUrl(mlbId) {
+  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/${mlbId}/headshot/67/current`;
+}
+function teamLogoUrl(teamId) { return `https://www.mlbstatic.com/team-logos/${teamId}.svg`; }
+
+function renderPlayerHead(el, p, statType, year) {
+  const volKey = statType === 'bat' ? 'PA' : 'IP';
+  const volVal = p.raw[volKey];
+  const volLabel = volVal != null ? `${formatStat(volVal, volKey)} ${volKey}` : '';
+  const parts = [p.position, p.teamAbb, year, volLabel].filter(Boolean);
+  el.innerHTML = `
+    <div class="player-photo-wrap">
+      ${p.mlbId ? `<img src="${headshotUrl(p.mlbId)}" alt="${p.name}" onerror="this.style.display='none'">` : ''}
+    </div>
+    <div class="player-name">${p.name}</div>
+    <div class="player-meta">
+      ${p.teamId ? `<img class="team-logo" src="${teamLogoUrl(p.teamId)}" onerror="this.style.display='none'">` : ''}
+      <span>${parts.join(' · ')}</span>
+    </div>`;
+}
+
+// ─── Tab controller factory ─────────────────────────────────────────────────
+function createCompareTab(cfg) {
+  const el = id => document.getElementById(id);
+  const aInput = el(cfg.ids.aInput), aDropdownEl = el(cfg.ids.aDropdown);
+  const bInput = el(cfg.ids.bInput), bDropdownEl = el(cfg.ids.bDropdown);
+  const yearASelect = el(cfg.ids.yearASelect), yearBSelect = el(cfg.ids.yearBSelect);
+  const customizeBtn = el(cfg.ids.customizeBtn);
+  const resetBtn = el(cfg.ids.resetBtn);
+  const highlightToggle = el(cfg.ids.highlightToggle);
+  const viewSwitchEl = el(cfg.ids.viewSwitch);
+  const headA = el(cfg.ids.headA), headB = el(cfg.ids.headB);
+  const splitBadge = headA.closest('.player-heads').querySelector('.split-badge');
+  const card = headA.closest('.card');
+  const statsCard = el(cfg.ids.statsCard);
+  const loadingEl = el(cfg.ids.loading), errorEl = el(cfg.ids.error), contentEl = el(cfg.ids.content);
+
+  function loadPersisted() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(cfg.storageKey));
+      if (saved && typeof saved === 'object') return saved;
+    } catch {}
+    return {};
+  }
+  const persisted = loadPersisted();
+  function savePersisted() {
+    localStorage.setItem(cfg.storageKey, JSON.stringify({
+      yearA: state.yearA,
+      yearB: state.yearB,
+      splitKey: state.splitKey,
+      playerAName: state.playerAName,
+      playerBName: state.playerBName,
+      statKeys: state.statKeys,
+    }));
+  }
+
+  // URL params (if present, from a shared link) take priority over locally
+  // persisted values, but only when the URL's `tab` points at this tab —
+  // otherwise the params belong to the other tab and are ignored here.
+  // The metric list is never read from or written to the URL. `year` is a
+  // legacy single-season param (pre-dates independent A/B seasons) honored
+  // as a fallback for both sides so old shared links still resolve sensibly.
+  const urlAppliesHere = URL_PARAMS.get('tab') === cfg.tabName;
+  const urlLegacyYear = urlAppliesHere ? URL_PARAMS.get('year') : null;
+  const urlYearA = urlAppliesHere ? parseInt(URL_PARAMS.get('yearA') || urlLegacyYear, 10) : NaN;
+  const urlYearB = urlAppliesHere ? parseInt(URL_PARAMS.get('yearB') || urlLegacyYear, 10) : NaN;
+  const urlSplit = urlAppliesHere ? URL_PARAMS.get('split') : null;
+  const urlA = urlAppliesHere ? URL_PARAMS.get('a') : null;
+  const urlB = urlAppliesHere ? URL_PARAMS.get('b') : null;
+
+  const state = {
+    yearA: (!isNaN(urlYearA) && YEARS.includes(urlYearA)) ? urlYearA
+        : (persisted.yearA && YEARS.includes(persisted.yearA)) ? persisted.yearA
+        : (persisted.year && YEARS.includes(persisted.year)) ? persisted.year : CURRENT_YEAR,
+    yearB: (!isNaN(urlYearB) && YEARS.includes(urlYearB)) ? urlYearB
+        : (persisted.yearB && YEARS.includes(persisted.yearB)) ? persisted.yearB
+        : (persisted.year && YEARS.includes(persisted.year)) ? persisted.year : CURRENT_YEAR,
+    splitKey: urlSplit || persisted.splitKey || 'season',
+    playerA: null, playerB: null,
+    playerAName: urlA || persisted.playerAName || null,
+    playerBName: urlB || persisted.playerBName || null,
+    statKeys: (Array.isArray(persisted.statKeys) && persisted.statKeys.length) ? persisted.statKeys : [...cfg.defaultKeys],
+    customizing: false,
+  };
+  // Validate the split against what's actually available for BOTH seasons
+  // (e.g. "Last 7 Days" only exists for the current season).
+  if (!getSplitOptionsIntersect(state.yearA, state.yearB).some(o => o.key === state.splitKey)) state.splitKey = 'season';
+
+  let current = null; // { lbA, lbB, pA, pB }
+  let draggedKey = null;
+  let dragPointerId = null;
+  let dragTarget = null; // { key, isAfter }
+
+  function getSplitFor(year) {
+    return getSplitOptions(year).find(o => o.key === state.splitKey) || getSplitOptions(year)[0];
+  }
+
+  function syncURL() { updateURL(); }
+  tabControllers[cfg.tabName] = {
+    getShareState: () => ({ yearA: state.yearA, yearB: state.yearB, split: state.splitKey, players: [state.playerAName, state.playerBName] }),
+  };
+
+  // Pointer-events based drag reordering (works for mouse, touch, and pen —
+  // native HTML5 drag-and-drop never fires on touch devices at all).
+  document.addEventListener('pointermove', (e) => {
+    if (draggedKey == null || e.pointerId !== dragPointerId) return;
+    const rows = [...statsCard.querySelectorAll('.stat-row')];
+    rows.forEach(r => r.classList.remove('drag-over-top', 'drag-over-bottom'));
+    const overRow = rows.find(r => {
+      const rect = r.getBoundingClientRect();
+      return e.clientY >= rect.top && e.clientY <= rect.bottom;
+    });
+    if (overRow && overRow.dataset.key !== draggedKey) {
+      const rect = overRow.getBoundingClientRect();
+      const isAfter = (e.clientY - rect.top) > rect.height / 2;
+      overRow.classList.toggle('drag-over-top', !isAfter);
+      overRow.classList.toggle('drag-over-bottom', isAfter);
+      dragTarget = { key: overRow.dataset.key, isAfter };
+    } else {
+      dragTarget = null;
+    }
+  });
+  function endDrag(e) {
+    if (draggedKey == null || (e && e.pointerId !== dragPointerId)) return;
+    const key = draggedKey, target = dragTarget;
+    statsCard.querySelectorAll('.stat-row').forEach(r =>
+      r.classList.remove('dragging', 'drag-over-top', 'drag-over-bottom'));
+    document.body.style.userSelect = '';
+    draggedKey = null;
+    dragPointerId = null;
+    dragTarget = null;
+    if (target && target.key !== key) {
+      const keys = state.statKeys;
+      const fromIdx = keys.indexOf(key);
+      if (fromIdx === -1) return;
+      keys.splice(fromIdx, 1);
+      let toIdx = keys.indexOf(target.key);
+      if (target.isAfter) toIdx += 1;
+      keys.splice(toIdx, 0, key);
+      savePersisted();
+      renderStatsOnly();
+    }
+  }
+  document.addEventListener('pointerup', endDrag);
+  document.addEventListener('pointercancel', endDrag);
+
+  function statMeta(key) {
+    for (const g of cfg.statGroups) {
+      const s = g.stats.find(s => s.key === key);
+      if (s) return s;
+    }
+    return { key, label: key };
+  }
+
+  function setLoading(isLoading, isError) {
+    loadingEl.style.display = isLoading ? 'flex' : 'none';
+    errorEl.style.display = isError ? 'flex' : 'none';
+    contentEl.style.display = (!isLoading && !isError) ? 'block' : 'none';
+  }
+
+  function getPlayersForA() {
+    const lb = leaderboardCache.get(`${state.yearA}:${cfg.statType}:${state.splitKey}`);
+    return lb ? [...lb.players.values()] : [];
+  }
+  function getPlayersForB() {
+    const lb = leaderboardCache.get(`${state.yearB}:${cfg.statType}:${state.splitKey}`);
+    return lb ? [...lb.players.values()] : [];
+  }
+
+  async function render() {
+    setLoading(true, false);
+    try {
+      const splitA = getSplitFor(state.yearA);
+      const splitB = getSplitFor(state.yearB);
+      const sameYear = state.yearA === state.yearB;
+      const lbAPromise = loadLeaderboard(state.yearA, cfg.statType, cfg.statGroups, splitA);
+      const lbBPromise = sameYear ? lbAPromise : loadLeaderboard(state.yearB, cfg.statType, cfg.statGroups, splitB);
+      const [lbA, lbB] = await Promise.all([lbAPromise, lbBPromise]);
+      let pA = state.playerA ? lbA.players.get(state.playerA) : null;
+      let pB = state.playerB ? lbB.players.get(state.playerB) : null;
+      if (!pA || !pB) {
+        const listA = [...lbA.players.values()];
+        const listB = [...lbB.players.values()];
+        const findByName = (list, name) => name ? list.find(p => p.name === name) : null;
+        pA = pA || findByName(listA, state.playerAName) || findByName(listA, cfg.defaultA) || listA[0];
+        pB = pB || findByName(listB, state.playerBName) || findByName(listB, cfg.defaultB) || listB[1] || listB[0];
+        state.playerA = pA.id;
+        state.playerB = pB.id;
+        state.playerAName = pA.name;
+        state.playerBName = pB.name;
+        aDropdown.setValueSilently(pA);
+        bDropdown.setValueSilently(pB);
+        savePersisted();
+        syncURL();
+      }
+      current = { lbA, lbB, pA, pB };
+      renderPlayerHead(headA, pA, cfg.statType, sameYear ? null : state.yearA);
+      renderPlayerHead(headB, pB, cfg.statType, sameYear ? null : state.yearB);
+      splitBadge.textContent = splitA.label;
+      splitBadge.classList.toggle('visible', splitA.key !== 'season');
+      renderStatsOnly();
+      setLoading(false, false);
+    } catch (err) {
+      console.error(err);
+      setLoading(false, true);
+    }
+  }
+
+  function renderStatsOnly() {
+    if (!current) return;
+    const { lbA, lbB, pA, pB } = current;
+    const splitDaysA = getSplitFor(state.yearA).days;
+    const splitDaysB = getSplitFor(state.yearB).days;
+    let html = '';
+    for (const key of state.statKeys) {
+      const meta = statMeta(key);
+      const va = rawValue(pA.raw[meta.key], meta.key);
+      const vb = rawValue(pB.raw[meta.key], meta.key);
+      const rankerA = lbA.percentiles.get(meta.key);
+      const rankerB = lbB.percentiles.get(meta.key);
+      let pctA = rankerA ? rankerA(va) : null;
+      let pctB = rankerB ? rankerB(vb) : null;
+      if (lowerIsBetter(meta.key, cfg.statType)) {
+        if (pctA != null) pctA = 100 - pctA;
+        if (pctB != null) pctB = 100 - pctB;
+      }
+      const fa = formatStat(va, meta.key);
+      const fb = formatStat(vb, meta.key);
+      const colorA = pctA != null ? percentileColor(pctA) : '#e8e4de';
+      const colorB = pctB != null ? percentileColor(pctB) : '#e8e4de';
+      const widthA = pctA != null ? Math.max(pctA, 3) : 0;
+      const widthB = pctB != null ? Math.max(pctB, 3) : 0;
+      const exempt = ALWAYS_QUALIFIED_KEYS.has(meta.key);
+      const unqualA = pctA != null && !pA.qualified && !exempt;
+      const unqualB = pctB != null && !pB.qualified && !exempt;
+      const labelA = pctA == null ? '' : String(Math.round(pctA));
+      const labelB = pctB == null ? '' : String(Math.round(pctB));
+      const centerA = 100 - widthA / 2;
+      const centerB = widthB / 2;
+      const splitNote = (state.splitKey !== 'season' && FULL_SEASON_ONLY_KEYS.has(meta.key))
+        ? ` <span class="stat-label-note" title="Full season — this metric's source leaderboard doesn't support date-range filtering">•</span>` : '';
+      const winner = highlightEnabled ? betterSide(va, vb, lowerIsBetter(meta.key, cfg.statType)) : null;
+      const labelWrap = `
+            ${state.customizing ? `<span class="stat-drag-handle" title="Drag to reorder">⠿</span>` : ''}
+            <span class="stat-label" data-action="pick">${meta.label}${splitNote}</span>
+            ${state.customizing ? `<button class="stat-remove" data-action="remove" title="Remove">×</button>` : ''}`;
+
+      if (compareView === 'vertical') {
+        // Position (top row = A, bottom row = B) carries player identity, so
+        // bars use a fixed per-player color instead of the percentile scale.
+        html += `
+        <div class="stat-row stat-row-v${state.customizing ? ' editable' : ''}" data-key="${meta.key}">
+          <div class="stat-label-wrap">${labelWrap}</div>
+          <div class="v-bars">
+            <div class="v-bar-row a"><div class="bar-track uni"><div class="bar-fill${unqualA ? ' unqualified' : ''}" style="width:${widthA}%;background-color:var(--player-a-color)" title="${unqualA ? `Small sample (under ${sampleFloorLabel(cfg.statType, splitDaysA)})` : ''}"></div>${labelA ? `<span class="bar-value-label" style="left:${widthA / 2}%">${labelA}</span>` : ''}</div><div class="stat-value ${fa == null ? 'dim' : ''}"><span class="value-hl${winner === 'a' ? ' better' : ''}">${fa ?? '—'}</span></div></div>
+            <div class="v-bar-row b"><div class="bar-track uni"><div class="bar-fill${unqualB ? ' unqualified' : ''}" style="width:${widthB}%;background-color:var(--player-b-color)" title="${unqualB ? `Small sample (under ${sampleFloorLabel(cfg.statType, splitDaysB)})` : ''}"></div>${labelB ? `<span class="bar-value-label" style="left:${widthB / 2}%">${labelB}</span>` : ''}</div><div class="stat-value ${fb == null ? 'dim' : ''}"><span class="value-hl${winner === 'b' ? ' better' : ''}">${fb ?? '—'}</span></div></div>
+          </div>
+        </div>`;
+      } else {
+        html += `
+        <div class="stat-row${state.customizing ? ' editable' : ''}" data-key="${meta.key}">
+          <div class="stat-value a ${fa == null ? 'dim' : ''}"><span class="value-hl${winner === 'a' ? ' better' : ''}">${fa ?? '—'}</span></div>
+          <div class="bar-track a"><div class="bar-fill${unqualA ? ' unqualified' : ''}" style="width:${widthA}%;background-color:${colorA}" title="${unqualA ? `Small sample (under ${sampleFloorLabel(cfg.statType, splitDaysA)})` : ''}"></div>${labelA ? `<span class="bar-value-label" style="left:${centerA}%">${labelA}</span>` : ''}</div>
+          <div class="stat-label-wrap">${labelWrap}</div>
+          <div class="bar-track b"><div class="bar-fill${unqualB ? ' unqualified' : ''}" style="width:${widthB}%;background-color:${colorB}" title="${unqualB ? `Small sample (under ${sampleFloorLabel(cfg.statType, splitDaysB)})` : ''}"></div>${labelB ? `<span class="bar-value-label" style="left:${centerB}%">${labelB}</span>` : ''}</div>
+          <div class="stat-value b ${fb == null ? 'dim' : ''}"><span class="value-hl${winner === 'b' ? ' better' : ''}">${fb ?? '—'}</span></div>
+        </div>`;
+      }
+    }
+    if (state.customizing) {
+      html += `<button class="add-stat-btn" id="${cfg.ids.addBtn}">+ Add metric</button>`;
+    }
+    if (compareView === 'vertical') {
+      html = `
+        <div class="v-legend">
+          <span class="v-legend-item a"><i class="swatch"></i>${pA.name}</span>
+          <span class="v-legend-item b"><i class="swatch"></i>${pB.name}</span>
+        </div>` + html;
+    }
+    statsCard.innerHTML = html;
+    if (state.customizing) wireEditableRows();
+  }
+
+  function wireEditableRows() {
+    statsCard.querySelectorAll('.stat-row').forEach(row => {
+      const key = row.dataset.key;
+      row.querySelector('[data-action="remove"]')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (state.statKeys.length <= 1) return;
+        state.statKeys = state.statKeys.filter(k => k !== key);
+        savePersisted();
+        renderStatsOnly();
+      });
+      row.querySelector('[data-action="pick"]')?.addEventListener('click', (e) => {
+        openMetricPicker(e.currentTarget, cfg.statGroups, state.statKeys, (newKey) => {
+          const idx = state.statKeys.indexOf(key);
+          if (idx >= 0) state.statKeys[idx] = newKey;
+          savePersisted();
+          renderStatsOnly();
+        });
+      });
+
+      const handle = row.querySelector('.stat-drag-handle');
+      handle?.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        e.preventDefault();
+        try { handle.setPointerCapture(e.pointerId); } catch {}
+        draggedKey = key;
+        dragPointerId = e.pointerId;
+        dragTarget = null;
+        row.classList.add('dragging');
+        document.body.style.userSelect = 'none';
+      });
+    });
+    const addBtn = document.getElementById(cfg.ids.addBtn);
+    addBtn?.addEventListener('click', (e) => {
+      openMetricPicker(e.currentTarget, cfg.statGroups, state.statKeys, (newKey) => {
+        state.statKeys.push(newKey);
+        savePersisted();
+        renderStatsOnly();
+      });
+    });
+  }
+
+  customizeBtn.addEventListener('click', () => {
+    state.customizing = !state.customizing;
+    customizeBtn.textContent = state.customizing ? 'Done' : 'Customize';
+    customizeBtn.classList.toggle('active', state.customizing);
+    resetBtn.classList.toggle('visible', state.customizing);
+    renderStatsOnly();
+  });
+  resetBtn.addEventListener('click', () => {
+    state.statKeys = [...cfg.defaultKeys];
+    savePersisted();
+    renderStatsOnly();
+  });
+
+  highlightToggle.checked = highlightEnabled;
+  highlightToggle.addEventListener('change', () => setHighlightEnabled(highlightToggle.checked));
+  onHighlightChange(() => { highlightToggle.checked = highlightEnabled; renderStatsOnly(); });
+
+  function syncViewButtons() {
+    viewSwitchEl.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === compareView));
+    card.classList.toggle('view-vertical', compareView === 'vertical');
+  }
+  viewSwitchEl.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => setCompareView(btn.dataset.view));
+  });
+  syncViewButtons();
+  onViewChange(() => { syncViewButtons(); renderStatsOnly(); });
+
+  const aDropdown = buildDropdown(aInput, aDropdownEl, (p) => { state.playerA = p.id; state.playerAName = p.name; savePersisted(); syncURL(); render(); }, getPlayersForA);
+  const bDropdown = buildDropdown(bInput, bDropdownEl, (p) => { state.playerB = p.id; state.playerBName = p.name; savePersisted(); syncURL(); render(); }, getPlayersForB);
+
+  el(cfg.ids.swapBtn).addEventListener('click', () => {
+    [state.playerA, state.playerB] = [state.playerB, state.playerA];
+    [state.playerAName, state.playerBName] = [state.playerBName, state.playerAName];
+    [state.yearA, state.yearB] = [state.yearB, state.yearA];
+    savePersisted();
+    yearASelect.value = String(state.yearA);
+    yearBSelect.value = String(state.yearB);
+    populateSplitSelect();
+    syncURL();
+    const lbA = leaderboardCache.get(`${state.yearA}:${cfg.statType}:${state.splitKey}`);
+    const lbB = leaderboardCache.get(`${state.yearB}:${cfg.statType}:${state.splitKey}`);
+    if (lbA) aDropdown.setValueSilently(lbA.players.get(state.playerA));
+    if (lbB) bDropdown.setValueSilently(lbB.players.get(state.playerB));
+    render();
+  });
+
+  const splitSelect = el(cfg.ids.splitSelect);
+  function populateSplitSelect() {
+    const opts = getSplitOptionsIntersect(state.yearA, state.yearB);
+    if (!opts.some(o => o.key === state.splitKey)) state.splitKey = 'season';
+    splitSelect.innerHTML = opts.map(o => `<option value="${o.key}">${o.label}</option>`).join('');
+    splitSelect.value = state.splitKey;
+  }
+  populateSplitSelect();
+  splitSelect.addEventListener('change', () => {
+    state.splitKey = splitSelect.value;
+    savePersisted();
+    syncURL();
+    render();
+  });
+
+  const yearOptsHtml = YEARS.map(y => `<option value="${y}">${y}</option>`).join('');
+  yearASelect.innerHTML = yearOptsHtml;
+  yearBSelect.innerHTML = yearOptsHtml;
+  yearASelect.value = String(state.yearA);
+  yearBSelect.value = String(state.yearB);
+  yearASelect.addEventListener('change', () => {
+    state.yearA = parseInt(yearASelect.value, 10);
+    state.playerA = null;
+    populateSplitSelect();
+    savePersisted();
+    syncURL();
+    render();
+  });
+  yearBSelect.addEventListener('change', () => {
+    state.yearB = parseInt(yearBSelect.value, 10);
+    state.playerB = null;
+    populateSplitSelect();
+    savePersisted();
+    syncURL();
+    render();
+  });
+
+  render();
+}
+
+// ─── 3-player tab controller factory ────────────────────────────────────────
+// Same data layer, formatting, drag-reorder, and customize picker as the 2-way
+// tabs, but with N players in an array instead of separate A/B fields — the
+// bidirectional "grow toward center" bar doesn't generalize past 2, so each
+// player gets its own unidirectional bar (grows left-to-right from 0) instead.
+function createTripleCompareTab(cfg) {
+  const el = id => document.getElementById(id);
+  const n = cfg.ids.inputs.length;
+  const inputs = cfg.ids.inputs.map(el);
+  const dropdownEls = cfg.ids.dropdowns.map(el);
+  const headEls = cfg.ids.heads.map(el);
+  const yearSelect = el(cfg.ids.yearSelect);
+  const customizeBtn = el(cfg.ids.customizeBtn);
+  const resetBtn = el(cfg.ids.resetBtn);
+  const highlightToggle = el(cfg.ids.highlightToggle);
+  const splitBadge = headEls[0].closest('.card').querySelector('.split-badge');
+  const statsCard = el(cfg.ids.statsCard);
+  const loadingEl = el(cfg.ids.loading), errorEl = el(cfg.ids.error), contentEl = el(cfg.ids.content);
+
+  function loadPersisted() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(cfg.storageKey));
+      if (saved && typeof saved === 'object') return saved;
+    } catch {}
+    return {};
+  }
+  const persisted = loadPersisted();
+  function savePersisted() {
+    localStorage.setItem(cfg.storageKey, JSON.stringify({
+      year: state.year,
+      splitKey: state.splitKey,
+      playerNames: state.players.map(p => p.name),
+      statKeys: state.statKeys,
+    }));
+  }
+
+  const urlAppliesHere = URL_PARAMS.get('tab') === cfg.tabName;
+  const urlYear = urlAppliesHere ? parseInt(URL_PARAMS.get('year'), 10) : NaN;
+  const urlSplit = urlAppliesHere ? URL_PARAMS.get('split') : null;
+  const urlNames = urlAppliesHere ? cfg.playerLetters.map(l => URL_PARAMS.get(l)) : [];
+
+  const state = {
+    year: (!isNaN(urlYear) && YEARS.includes(urlYear)) ? urlYear
+        : (persisted.year && YEARS.includes(persisted.year)) ? persisted.year : CURRENT_YEAR,
+    splitKey: urlSplit || persisted.splitKey || 'season',
+    players: Array.from({ length: n }, (_, i) => ({
+      id: null,
+      name: urlNames[i] || (persisted.playerNames && persisted.playerNames[i]) || null,
+    })),
+    statKeys: (Array.isArray(persisted.statKeys) && persisted.statKeys.length) ? persisted.statKeys : [...cfg.defaultKeys],
+    customizing: false,
+  };
+  if (!getSplitOptions(state.year).some(o => o.key === state.splitKey)) state.splitKey = 'season';
+
+  let current = null; // { lb, players: [player, ...] }
+  let draggedKey = null;
+  let dragPointerId = null;
+  let dragTarget = null;
+
+  function getCurrentSplit() {
+    return getSplitOptions(state.year).find(o => o.key === state.splitKey) || getSplitOptions(state.year)[0];
+  }
+
+  function syncURL() { updateURL(); }
+  tabControllers[cfg.tabName] = {
+    getShareState: () => ({ year: state.year, split: state.splitKey, players: state.players.map(p => p.name) }),
+  };
+
+  document.addEventListener('pointermove', (e) => {
+    if (draggedKey == null || e.pointerId !== dragPointerId) return;
+    const rows = [...statsCard.querySelectorAll('.stat-row-3')];
+    rows.forEach(r => r.classList.remove('drag-over-top', 'drag-over-bottom'));
+    const overRow = rows.find(r => {
+      const rect = r.getBoundingClientRect();
+      return e.clientY >= rect.top && e.clientY <= rect.bottom;
+    });
+    if (overRow && overRow.dataset.key !== draggedKey) {
+      const rect = overRow.getBoundingClientRect();
+      const isAfter = (e.clientY - rect.top) > rect.height / 2;
+      overRow.classList.toggle('drag-over-top', !isAfter);
+      overRow.classList.toggle('drag-over-bottom', isAfter);
+      dragTarget = { key: overRow.dataset.key, isAfter };
+    } else {
+      dragTarget = null;
+    }
+  });
+  function endDrag(e) {
+    if (draggedKey == null || (e && e.pointerId !== dragPointerId)) return;
+    const key = draggedKey, target = dragTarget;
+    statsCard.querySelectorAll('.stat-row-3').forEach(r =>
+      r.classList.remove('dragging', 'drag-over-top', 'drag-over-bottom'));
+    document.body.style.userSelect = '';
+    draggedKey = null;
+    dragPointerId = null;
+    dragTarget = null;
+    if (target && target.key !== key) {
+      const keys = state.statKeys;
+      const fromIdx = keys.indexOf(key);
+      if (fromIdx === -1) return;
+      keys.splice(fromIdx, 1);
+      let toIdx = keys.indexOf(target.key);
+      if (target.isAfter) toIdx += 1;
+      keys.splice(toIdx, 0, key);
+      savePersisted();
+      renderStatsOnly();
+    }
+  }
+  document.addEventListener('pointerup', endDrag);
+  document.addEventListener('pointercancel', endDrag);
+
+  function statMeta(key) {
+    for (const g of cfg.statGroups) {
+      const s = g.stats.find(s => s.key === key);
+      if (s) return s;
+    }
+    return { key, label: key };
+  }
+
+  function setLoading(isLoading, isError) {
+    loadingEl.style.display = isLoading ? 'flex' : 'none';
+    errorEl.style.display = isError ? 'flex' : 'none';
+    contentEl.style.display = (!isLoading && !isError) ? 'block' : 'none';
+  }
+
+  function getPlayersForYear() {
+    const lb = leaderboardCache.get(`${state.year}:${cfg.statType}:${state.splitKey}`);
+    return lb ? [...lb.players.values()] : [];
+  }
+
+  async function render() {
+    setLoading(true, false);
+    try {
+      const lb = await loadLeaderboard(state.year, cfg.statType, cfg.statGroups, getCurrentSplit());
+      const list = [...lb.players.values()];
+      const findByName = (name) => name ? list.find(p => p.name === name) : null;
+      let changed = false;
+      const resolved = state.players.map((slot, i) => {
+        let p = slot.id ? lb.players.get(slot.id) : null;
+        if (!p) {
+          p = findByName(slot.name) || findByName(cfg.defaultNames[i]) || list[i] || list[0];
+          slot.id = p.id;
+          slot.name = p.name;
+          changed = true;
+        }
+        return p;
+      });
+      if (changed) {
+        savePersisted();
+        syncURL();
+        resolved.forEach((p, i) => dropdowns[i].setValueSilently(p));
+      }
+      current = { lb, players: resolved };
+      resolved.forEach((p, i) => renderPlayerHead(headEls[i], p, cfg.statType));
+      const split = getCurrentSplit();
+      splitBadge.textContent = split.label;
+      splitBadge.classList.toggle('visible', split.key !== 'season');
+      renderStatsOnly();
+      setLoading(false, false);
+    } catch (err) {
+      console.error(err);
+      setLoading(false, true);
+    }
+  }
+
+  function renderStatsOnly() {
+    if (!current) return;
+    const { lb, players } = current;
+    const splitDays = getCurrentSplit().days;
+    let html = '';
+    for (const key of state.statKeys) {
+      const meta = statMeta(key);
+      const ranker = lb.percentiles.get(meta.key);
+      const lower = lowerIsBetter(meta.key, cfg.statType);
+      const exempt = ALWAYS_QUALIFIED_KEYS.has(meta.key);
+      const splitNote = (state.splitKey !== 'season' && FULL_SEASON_ONLY_KEYS.has(meta.key))
+        ? ` <span class="stat-label-note" title="Full season — this metric's source leaderboard doesn't support date-range filtering">•</span>` : '';
+
+      const rawVals = players.map(p => rawValue(p.raw[meta.key], meta.key));
+      const winnerIdx = highlightEnabled ? bestIndex(rawVals, lower) : -1;
+      const cols = players.map((p, i) => {
+        const v = rawVals[i];
+        let pct = ranker ? ranker(v) : null;
+        if (lower && pct != null) pct = 100 - pct;
+        const f = formatStat(v, meta.key);
+        const color = pct != null ? percentileColor(pct) : '#e8e4de';
+        const width = pct != null ? Math.max(pct, 4) : 0;
+        const barLabel = pct == null ? '' : String(Math.round(pct));
+        const unqual = pct != null && !p.qualified && !exempt;
+        return `
+          <div class="tri-col">
+            <div class="bar-track uni"><div class="bar-fill${unqual ? ' unqualified' : ''}" style="width:${width}%;background-color:${color}" title="${unqual ? `Small sample (under ${sampleFloorLabel(cfg.statType, splitDays)})` : ''}"></div>${barLabel ? `<span class="bar-value-label" style="left:${width / 2}%">${barLabel}</span>` : ''}</div>
+            <div class="stat-value ${f == null ? 'dim' : ''}"><span class="value-hl${i === winnerIdx ? ' better' : ''}">${f ?? '—'}</span></div>
+          </div>`;
+      }).join('');
+
+      html += `
+        <div class="stat-row-3${state.customizing ? ' editable' : ''}" data-key="${meta.key}">
+          <div class="stat-label-wrap-3">
+            ${state.customizing ? `<span class="stat-drag-handle" title="Drag to reorder">⠿</span>` : ''}
+            <span class="stat-label" data-action="pick">${meta.label}${splitNote}</span>
+            ${state.customizing ? `<button class="stat-remove" data-action="remove" title="Remove">×</button>` : ''}
+          </div>
+          ${cols}
+        </div>`;
+    }
+    if (state.customizing) {
+      html += `<button class="add-stat-btn" id="${cfg.ids.addBtn}">+ Add metric</button>`;
+    }
+    statsCard.innerHTML = html;
+    if (state.customizing) wireEditableRows();
+  }
+
+  function wireEditableRows() {
+    statsCard.querySelectorAll('.stat-row-3').forEach(row => {
+      const key = row.dataset.key;
+      row.querySelector('[data-action="remove"]')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (state.statKeys.length <= 1) return;
+        state.statKeys = state.statKeys.filter(k => k !== key);
+        savePersisted();
+        renderStatsOnly();
+      });
+      row.querySelector('[data-action="pick"]')?.addEventListener('click', (e) => {
+        openMetricPicker(e.currentTarget, cfg.statGroups, state.statKeys, (newKey) => {
+          const idx = state.statKeys.indexOf(key);
+          if (idx >= 0) state.statKeys[idx] = newKey;
+          savePersisted();
+          renderStatsOnly();
+        });
+      });
+
+      const handle = row.querySelector('.stat-drag-handle');
+      handle?.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        e.preventDefault();
+        try { handle.setPointerCapture(e.pointerId); } catch {}
+        draggedKey = key;
+        dragPointerId = e.pointerId;
+        dragTarget = null;
+        row.classList.add('dragging');
+        document.body.style.userSelect = 'none';
+      });
+    });
+    const addBtn = document.getElementById(cfg.ids.addBtn);
+    addBtn?.addEventListener('click', (e) => {
+      openMetricPicker(e.currentTarget, cfg.statGroups, state.statKeys, (newKey) => {
+        state.statKeys.push(newKey);
+        savePersisted();
+        renderStatsOnly();
+      });
+    });
+  }
+
+  customizeBtn.addEventListener('click', () => {
+    state.customizing = !state.customizing;
+    customizeBtn.textContent = state.customizing ? 'Done' : 'Customize';
+    customizeBtn.classList.toggle('active', state.customizing);
+    resetBtn.classList.toggle('visible', state.customizing);
+    renderStatsOnly();
+  });
+  resetBtn.addEventListener('click', () => {
+    state.statKeys = [...cfg.defaultKeys];
+    savePersisted();
+    renderStatsOnly();
+  });
+
+  highlightToggle.checked = highlightEnabled;
+  highlightToggle.addEventListener('change', () => setHighlightEnabled(highlightToggle.checked));
+  onHighlightChange(() => { highlightToggle.checked = highlightEnabled; renderStatsOnly(); });
+
+  const dropdowns = inputs.map((inputEl, i) =>
+    buildDropdown(inputEl, dropdownEls[i], (p) => {
+      state.players[i] = { id: p.id, name: p.name };
+      savePersisted();
+      syncURL();
+      render();
+    }, getPlayersForYear)
+  );
+
+  const splitSelect = el(cfg.ids.splitSelect);
+  function populateSplitSelect() {
+    const opts = getSplitOptions(state.year);
+    if (!opts.some(o => o.key === state.splitKey)) state.splitKey = 'season';
+    splitSelect.innerHTML = opts.map(o => `<option value="${o.key}">${o.label}</option>`).join('');
+    splitSelect.value = state.splitKey;
+  }
+  populateSplitSelect();
+  splitSelect.addEventListener('change', () => {
+    state.splitKey = splitSelect.value;
+    savePersisted();
+    syncURL();
+    render();
+  });
+
+  yearSelect.innerHTML = YEARS.map(y => `<option value="${y}">${y}</option>`).join('');
+  yearSelect.value = String(state.year);
+  yearSelect.addEventListener('change', () => {
+    state.year = parseInt(yearSelect.value, 10);
+    state.players.forEach(p => { p.id = null; });
+    populateSplitSelect();
+    savePersisted();
+    syncURL();
+    render();
+  });
+
+  render();
+}
+
+createCompareTab({
+  statType: 'bat',
+  tabName: 'hitter',
+  statGroups: STAT_GROUPS_HITTING,
+  defaultKeys: DEFAULT_HITTER_KEYS,
+  storageKey: 'player-compare:hitterStats',
+  defaultA: 'Aaron Judge',
+  defaultB: 'Shohei Ohtani',
+  ids: {
+    aInput: 'hit-a-search', aDropdown: 'hit-a-dropdown',
+    bInput: 'hit-b-search', bDropdown: 'hit-b-dropdown',
+    swapBtn: 'hit-swap-btn', yearASelect: 'hit-year-a-select', yearBSelect: 'hit-year-b-select', splitSelect: 'hit-split-select',
+    customizeBtn: 'hit-customize-btn', resetBtn: 'hit-reset-btn', addBtn: 'hit-add-stat-btn', highlightToggle: 'hit-highlight-toggle', viewSwitch: 'hit-view-switch',
+    headA: 'hit-head-a', headB: 'hit-head-b', statsCard: 'hit-stats-card',
+    loading: 'hit-loading', error: 'hit-error', content: 'hit-content',
+  },
+});
+
+createCompareTab({
+  statType: 'pit',
+  tabName: 'pitcher',
+  statGroups: STAT_GROUPS_PITCHING,
+  defaultKeys: DEFAULT_PITCHER_KEYS,
+  storageKey: 'player-compare:pitcherStats',
+  defaultA: 'Paul Skenes',
+  defaultB: 'Tarik Skubal',
+  ids: {
+    aInput: 'pit-a-search', aDropdown: 'pit-a-dropdown',
+    bInput: 'pit-b-search', bDropdown: 'pit-b-dropdown',
+    swapBtn: 'pit-swap-btn', yearASelect: 'pit-year-a-select', yearBSelect: 'pit-year-b-select', splitSelect: 'pit-split-select',
+    customizeBtn: 'pit-customize-btn', resetBtn: 'pit-reset-btn', addBtn: 'pit-add-stat-btn', highlightToggle: 'pit-highlight-toggle', viewSwitch: 'pit-view-switch',
+    headA: 'pit-head-a', headB: 'pit-head-b', statsCard: 'pit-stats-card',
+    loading: 'pit-loading', error: 'pit-error', content: 'pit-content',
+  },
+});
+
+createTripleCompareTab({
+  statType: 'bat',
+  tabName: '3hitter',
+  statGroups: STAT_GROUPS_HITTING,
+  defaultKeys: DEFAULT_HITTER_KEYS,
+  storageKey: 'player-compare:tripleHitterStats',
+  defaultNames: ['Aaron Judge', 'Shohei Ohtani', 'Bobby Witt Jr.'],
+  playerLetters: ['a', 'b', 'c'],
+  ids: {
+    inputs: ['tri-a-search', 'tri-b-search', 'tri-c-search'],
+    dropdowns: ['tri-a-dropdown', 'tri-b-dropdown', 'tri-c-dropdown'],
+    heads: ['tri-head-a', 'tri-head-b', 'tri-head-c'],
+    yearSelect: 'tri-year-select', splitSelect: 'tri-split-select',
+    customizeBtn: 'tri-customize-btn', resetBtn: 'tri-reset-btn', addBtn: 'tri-add-stat-btn', highlightToggle: 'tri-highlight-toggle',
+    statsCard: 'tri-stats-card', loading: 'tri-loading', error: 'tri-error', content: 'tri-content',
+  },
+});
+
+createTripleCompareTab({
+  statType: 'pit',
+  tabName: '3pitcher',
+  statGroups: STAT_GROUPS_PITCHING,
+  defaultKeys: DEFAULT_PITCHER_KEYS,
+  storageKey: 'player-compare:triplePitcherStats',
+  defaultNames: ['Paul Skenes', 'Tarik Skubal', 'Zack Wheeler'],
+  playerLetters: ['a', 'b', 'c'],
+  ids: {
+    inputs: ['trip-a-search', 'trip-b-search', 'trip-c-search'],
+    dropdowns: ['trip-a-dropdown', 'trip-b-dropdown', 'trip-c-dropdown'],
+    heads: ['trip-head-a', 'trip-head-b', 'trip-head-c'],
+    yearSelect: 'trip-year-select', splitSelect: 'trip-split-select',
+    customizeBtn: 'trip-customize-btn', resetBtn: 'trip-reset-btn', addBtn: 'trip-add-stat-btn', highlightToggle: 'trip-highlight-toggle',
+    statsCard: 'trip-stats-card', loading: 'trip-loading', error: 'trip-error', content: 'trip-content',
+  },
+});
+
+// ─── Tab switching ────────────────────────────────────────────────────────────
+const ACTIVE_TAB_KEY = 'player-compare:activeTab';
+
+const VALID_TABS = ['hitter', 'pitcher', '3hitter', '3pitcher'];
+function activateTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === `tab-${tab}`));
+  localStorage.setItem(ACTIVE_TAB_KEY, tab);
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => { activateTab(btn.dataset.tab); updateURL(); });
+});
+
+const urlTab = URL_PARAMS.get('tab');
+if (VALID_TABS.includes(urlTab)) {
+  activateTab(urlTab);
+} else {
+  const savedTab = localStorage.getItem(ACTIVE_TAB_KEY);
+  if (VALID_TABS.includes(savedTab)) activateTab(savedTab);
+}
+</script>
+</body>
+</html>

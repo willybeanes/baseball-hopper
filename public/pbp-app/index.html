@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLB Play-by-Play</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+<meta name="description" content="Every play, every MLB game — with video links. Filter by play type, pitcher, hitter, and more.">
+<meta property="og:title" content="MLB Play-by-Play">
+<meta property="og:description" content="Every play, every MLB game — with video links. Filter by play type, pitcher, hitter, and more.">
+<meta property="og:url" content="https://mlb-pbp.vercel.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MLB Play-by-Play">
+<meta name="twitter:description" content="Every play, every MLB game — with video links. Filter by play type, pitcher, hitter, and more.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f5f5;
+    --text: #111111;
+    --text-secondary: #666666;
+    --border: #e0e0e0;
+    --red: #dc2f1f;
+    --red-bg: #fff0f0;
+    --accent: #333;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    line-height: 1.5;
+  }
+
+  header {
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--red);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  h1 span { color: var(--red); }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+
+  .stats {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .expand-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .expand-btn:hover { background: var(--surface); }
+
+  /* Filter chips */
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-right: 0.2rem;
+  }
+
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover { background: var(--surface); color: var(--text); }
+
+  .filter-btn.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+
+  .name-search {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    width: 14rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .name-search:focus { border-color: var(--text-secondary); }
+  .name-search::placeholder { color: var(--text-secondary); }
+
+  .filter-select {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .filter-select:focus { border-color: var(--text-secondary); }
+
+  .filter-btn.scoring.active {
+    background: #1a6b2f;
+    border-color: #1a6b2f;
+    color: #fff;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  thead th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 0.6rem 0.4rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  td { padding: 0.6rem 0.4rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+
+  tr[onclick]:hover { background: var(--surface); cursor: pointer; }
+
+  /* Date header rows */
+  tr.date-header td {
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: var(--surface);
+    padding: 0.45rem 0.6rem;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+    user-select: none;
+  }
+
+  tr.date-header:hover td { background: #ececec; cursor: pointer; }
+
+  .date-count {
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-left: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .date-arrow {
+    display: inline-block;
+    margin-right: 0.4rem;
+    transition: transform 0.15s;
+    font-size: 0.7rem;
+  }
+
+  /* Game rows */
+  td.team { font-weight: 500; }
+  td.team.away { text-align: right; }
+  td.vs { text-align: center; color: var(--text-secondary); font-size: 0.8rem; padding: 0 0.2rem; }
+  td.status { text-align: center; font-size: 0.8rem; color: var(--text-secondary); font-family: "SF Mono","Cascadia Code","Fira Code",monospace; }
+
+  .arrow {
+    display: inline-block;
+    font-size: 0.65rem;
+    margin-left: 0.35rem;
+    transition: transform 0.15s;
+    color: var(--text-secondary);
+  }
+
+  tr.game-row.expanded .arrow { transform: rotate(90deg); }
+
+  /* Play-by-play detail rows */
+  tr.plays-row td { padding: 0; background: var(--bg); }
+
+  .plays-container {
+    padding: 0.5rem 0.75rem 0.75rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .plays-loading {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    font-style: italic;
+  }
+
+  .inning-header {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin: 0.75rem 0 0.3rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .inning-header:first-child { margin-top: 0.25rem; }
+
+  .play-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .play-item.hidden, .inning-header.hidden { display: none; }
+
+  .play-event {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    min-width: 5rem;
+    flex-shrink: 0;
+  }
+
+  .play-event.hr { color: var(--red); }
+
+  .play-pitcher {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 7rem;
+  }
+
+  .play-desc { flex: 1; color: var(--text); }
+
+  .play-link {
+    font-size: 0.75rem;
+    color: var(--red);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 500;
+    border: 1px solid var(--red);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .play-link:hover { background: var(--red); color: #fff; }
+
+  .no-plays {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    font-style: italic;
+  }
+
+  #status-bar {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    min-height: 1.2em;
+  }
+
+  .error-msg { font-size: 0.85rem; color: var(--red); padding: 1rem 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MLB <span>Play-by-Play</span></h1>
+  <div class="subtitle">Every play, every game — with video links where available</div>
+  <div class="stats" id="header-stats">&nbsp;</div>
+</header>
+
+<div class="toolbar">
+  <button class="expand-btn" id="btn-dates" onclick="toggleAllDates()">Expand all dates</button>
+  <button class="expand-btn" id="btn-games" onclick="toggleAllGames()">Expand all games</button>
+</div>
+
+<div class="filters">
+  <span class="filter-label">Play type</span>
+  <select class="filter-select" id="play-type-select" onchange="setFilter(this.value)">
+    <optgroup label="—">
+      <option value="all">All plays</option>
+    </optgroup>
+    <optgroup label="Hits">
+      <option value="hr">Home Runs</option>
+      <option value="hits">All Hits</option>
+      <option value="single">Singles</option>
+      <option value="double">Doubles</option>
+      <option value="triple">Triples</option>
+    </optgroup>
+    <optgroup label="Outs">
+      <option value="strikeout">Strikeouts</option>
+      <option value="groundout">Groundouts</option>
+      <option value="flyout">Flyouts</option>
+      <option value="lineout">Lineouts</option>
+      <option value="popout">Pop Outs</option>
+      <option value="doubleplay">Double Plays</option>
+    </optgroup>
+    <optgroup label="Plate Appearances">
+      <option value="walk">Walks (BB / IBB / HBP)</option>
+      <option value="sacfly">Sac Flies</option>
+      <option value="sacbunt">Sac Bunts</option>
+      <option value="error">Errors</option>
+    </optgroup>
+  </select>
+  <button class="filter-btn scoring" id="btn-scoring" onclick="toggleScoring()">Scoring Plays</button>
+  <button class="filter-btn scoring" id="btn-abs" onclick="toggleAbs()">ABS Challenges</button>
+  <span id="filter-count" style="font-size:0.75rem;color:var(--text-secondary);margin-left:0.25rem"></span>
+</div>
+<div class="filters">
+  <span class="filter-label">Pitcher</span>
+  <input class="name-search" id="pitcher-search" type="text" placeholder="Pitcher name…" oninput="applyNameFilter()">
+  <span class="filter-label" style="margin-left:0.5rem">Hitter</span>
+  <input class="name-search" id="hitter-search" type="text" placeholder="Hitter name…" oninput="applyNameFilter()">
+</div>
+
+<div id="status-bar">Loading schedule…</div>
+
+<table id="main-table">
+  <thead>
+    <tr>
+      <th style="text-align:right">Away</th>
+      <th></th>
+      <th style="text-align:center">Status</th>
+      <th></th>
+      <th style="text-align:left">Home</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<script>
+const MLB = 'https://statsapi.mlb.com/api';
+const SEASON_START = '2026-03-26'; // Opening Day
+
+let loadedPlays = {};  // gamePk → plays array
+let activeFilter = 'all';
+let scoringOnly  = false;
+let absOnly      = false;
+
+const FILTER_EVENTS = {
+  all:         () => true,
+  hr:          e => e === 'Home Run',
+  hits:        e => ['Home Run','Triple','Double','Single'].includes(e),
+  single:      e => e === 'Single',
+  double:      e => e === 'Double',
+  triple:      e => e === 'Triple',
+  strikeout:   e => e === 'Strikeout',
+  groundout:   e => ['Groundout','Grounded Into DP','Ground Out'].includes(e),
+  flyout:      e => e === 'Flyout',
+  lineout:     e => e === 'Lineout',
+  popout:      e => e === 'Pop Out',
+  doubleplay:  e => e.includes('Double Play'),
+  walk:        e => ['Walk','Intent Walk','Hit By Pitch'].includes(e),
+  sacfly:      e => e.includes('Sac Fly'),
+  sacbunt:     e => e.includes('Sac Bunt'),
+  error:       e => e.includes('Error'),
+  abs:         () => true, // handled by absOnly toggle now
+};
+
+function etToday() {
+  const now = new Date();
+  const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  if (et.getHours() < 6) et.setDate(et.getDate() - 1);
+  return et;
+}
+
+function dateStr(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+function seasonDates() {
+  const dates = [];
+  const start = new Date(SEASON_START);
+  const end = etToday();
+  for (let d = new Date(end); d >= start; d.setDate(d.getDate() - 1)) {
+    dates.push(dateStr(new Date(d)));
+  }
+  return dates; // newest first
+}
+
+async function init() {
+  document.getElementById('status-bar').textContent = 'Loading schedules…';
+  const dates = seasonDates();
+
+  // Fetch all schedules in parallel
+  const results = await Promise.allSettled(
+    dates.map(date =>
+      fetch(`${MLB}/v1/schedule?sportId=1&date=${date}&hydrate=linescore`)
+        .then(r => r.json())
+        .then(data => ({ date, games: parseGames(data) }))
+    )
+  );
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  let totalGames = 0;
+
+  for (const result of results) {
+    if (result.status !== 'fulfilled') continue;
+    const { date, games } = result.value;
+    if (!games.length) continue;
+    totalGames += games.length;
+    renderDateSection(date, games, tbody);
+  }
+
+  document.getElementById('header-stats').textContent =
+    `${totalGames} games · ${SEASON_START} – today`;
+  document.getElementById('status-bar').textContent = '';
+}
+
+function parseGames(data) {
+  const dates = data.dates || [];
+  if (!dates.length) return [];
+  return dates[0].games.map(g => ({
+    gamePk: g.gamePk,
+    awayTeam: g.teams.away.team.name,
+    homeTeam: g.teams.home.team.name,
+    abstractState: g.status.abstractGameState,
+    awayScore: g.teams.away.score,
+    homeScore: g.teams.home.score,
+    inning: g.linescore
+      ? `${g.linescore.isTopInning ? 'T' : 'B'}${g.linescore.currentInning}`
+      : null,
+  }));
+}
+
+function renderDateSection(date, gms, tbody) {
+  const dateKey = date.replace(/-/g, '');
+
+  const dRow = document.createElement('tr');
+  dRow.className = 'date-header';
+  dRow.onclick = () => toggleDate(dateKey);
+  dRow.innerHTML = `<td colspan="5">
+    <span class="date-arrow" id="arrow-${dateKey}" style="transform:rotate(-90deg)">▼</span>
+    ${formatDate(date)}
+    <span class="date-count">(${gms.length} game${gms.length !== 1 ? 's' : ''})</span>
+  </td>`;
+  tbody.appendChild(dRow);
+
+  gms.forEach(g => {
+    const statusText = g.abstractState === 'Final'
+      ? `${g.awayScore} – ${g.homeScore}`
+      : g.abstractState === 'Live'
+        ? `${g.awayScore ?? 0} – ${g.homeScore ?? 0} ${g.inning ?? ''}`
+        : 'Preview';
+
+    const gRow = document.createElement('tr');
+    gRow.className = `game-row date-group date-${dateKey}`;
+    gRow.style.display = 'none';
+    gRow.dataset.gpk = g.gamePk;
+    gRow.onclick = (e) => { e.stopPropagation(); toggleGame(g.gamePk); };
+    gRow.innerHTML = `
+      <td class="team away">${g.awayTeam} <span class="arrow">▶</span></td>
+      <td class="vs">@</td>
+      <td class="status">${statusText}</td>
+      <td class="vs"></td>
+      <td class="team">${g.homeTeam}</td>`;
+    tbody.appendChild(gRow);
+
+    const pRow = document.createElement('tr');
+    pRow.className = `plays-row date-group date-${dateKey}`;
+    pRow.id = `plays-${g.gamePk}`;
+    pRow.style.display = 'none';
+    pRow.innerHTML = `<td colspan="5"><div class="plays-container" id="plays-inner-${g.gamePk}">
+      <div class="plays-loading">Loading…</div>
+    </div></td>`;
+    tbody.appendChild(pRow);
+  });
+}
+
+async function toggleGame(gpk) {
+  const gameRow = document.querySelector(`tr.game-row[data-gpk="${gpk}"]`);
+  const playsRow = document.getElementById(`plays-${gpk}`);
+  const isOpen = playsRow.style.display !== 'none';
+
+  if (isOpen) {
+    playsRow.style.display = 'none';
+    gameRow.classList.remove('expanded');
+  } else {
+    playsRow.style.display = '';
+    gameRow.classList.add('expanded');
+    if (!loadedPlays[gpk]) {
+      await fetchAndRenderPlays(gpk);
+    }
+  }
+}
+
+async function fetchAndRenderPlays(gpk) {
+  const inner = document.getElementById(`plays-inner-${gpk}`);
+  inner.innerHTML = '<div class="plays-loading">Fetching plays…</div>';
+
+  try {
+    const [feedRes, contentRes] = await Promise.all([
+      fetch(`${MLB}/v1.1/game/${gpk}/feed/live`),
+      fetch(`${MLB}/v1/game/${gpk}/content`),
+    ]);
+    const feed = await feedRes.json();
+    const content = await contentRes.json();
+
+    const allPlays = feed?.liveData?.plays?.allPlays ?? [];
+    const contentHighlights = extractContentHighlights(content);
+
+    if (!allPlays.length) {
+      inner.innerHTML = '<div class="no-plays">No play data available yet.</div>';
+      loadedPlays[gpk] = [];
+      return;
+    }
+
+    const completePlays = allPlays.filter(p => p.about?.isComplete);
+    const isFinal = feed?.gameData?.status?.abstractGameState === 'Final';
+    const gameDate = feed?.gameData?.datetime?.officialDate; // YYYY-MM-DD
+    const savantReady = isFinal && !!gameDate && gameDate < dateStr(etToday());
+    loadedPlays[gpk] = { plays: completePlays, highlights: contentHighlights, savantReady };
+
+    renderPlays(inner, completePlays, contentHighlights, savantReady);
+  } catch (e) {
+    inner.innerHTML = `<div class="no-plays">Error loading plays: ${e.message}</div>`;
+  }
+}
+
+function extractContentHighlights(content) {
+  // Real-time editorial clips from the content API, keyed by batter ID + timestamp
+  const out = [];
+  const items = content?.highlights?.highlights?.items ?? [];
+  for (const item of items) {
+    if (item.type !== 'video') continue;
+    const playerKw = (item.keywordsAll ?? []).find(k => k.type === 'player_id');
+    if (!playerKw) continue;
+    const url = bestMp4(item.playbacks ?? []);
+    if (!url) continue;
+    out.push({ batterId: parseInt(playerKw.value, 10), date: item.date, url });
+  }
+  return out;
+}
+
+function bestMp4(playbacks) {
+  for (const name of ['mp4Avc', 'HTTP_CLOUD_WIRED', 'highBit']) {
+    const p = playbacks.find(pb => pb.name === name && pb.url?.endsWith('.mp4'));
+    if (p) return p.url;
+  }
+  return playbacks.find(pb => pb.url?.endsWith('.mp4'))?.url ?? null;
+}
+
+function contentVideoForPlay(play, highlights) {
+  const batterId = play.matchup?.batter?.id;
+  if (!batterId) return null;
+  const endTime = play.about?.endTime ? new Date(play.about.endTime) : null;
+  if (!endTime) return null;
+  const candidates = highlights.filter(h => {
+    if (h.batterId !== batterId) return false;
+    const diff = new Date(h.date) - endTime;
+    return diff >= -30000 && diff <= 300000;
+  });
+  if (!candidates.length) return null;
+  candidates.sort((a, b) =>
+    Math.abs(new Date(a.date) - endTime) - Math.abs(new Date(b.date) - endTime));
+  return candidates[0].url;
+}
+
+function savantUrl(play) {
+  const events = play.playEvents ?? [];
+  const last = events[events.length - 1];
+  const id = last?.playId;
+  return id ? `https://baseballsavant.mlb.com/sporty-videos?playId=${id}` : null;
+}
+
+function renderPlays(container, plays, highlights, savantReady = false) {
+  let html = '';
+  let lastInning = null;
+
+  for (const play of plays) {
+    const inningNum = play.about?.inning;
+    const isTop = play.about?.isTopInning;
+    const inningLabel = inningNum
+      ? `${isTop ? 'Top' : 'Bottom'} ${ordinal(inningNum)}`
+      : 'Unknown';
+
+    if (inningLabel !== lastInning) {
+      html += `<div class="inning-header${activeFilter !== 'all' ? ' hidden' : ''}" data-inning="${inningLabel}">${inningLabel}</div>`;
+      lastInning = inningLabel;
+    }
+
+    const event = play.result?.event ?? '';
+    const desc = play.result?.description ?? '(no description)';
+    const isHR = event === 'Home Run';
+
+    // Prefer real-time content clip; fall back to next-day Savant link
+    const liveUrl = contentVideoForPlay(play, highlights);
+    const fallbackUrl = savantReady ? savantUrl(play) : null;
+    const videoUrl = liveUrl || fallbackUrl;
+    const isLive = !!liveUrl;
+
+    const pitcher  = play.matchup?.pitcher?.fullName ?? '—';
+    const batter   = play.matchup?.batter?.fullName ?? '—';
+    const isScoring = !!(play.about?.isScoringPlay);
+    // ABS challenge on the at-bat result: description explicitly says "challenged (pitch result)"
+    const isAbs     = !!(play.result?.description?.includes('challenged (pitch result)'));
+
+    const pq = document.getElementById('pitcher-search').value.trim().toLowerCase();
+    const hq = document.getElementById('hitter-search').value.trim().toLowerCase();
+    const eventMatch  = FILTER_EVENTS[activeFilter](event, !!videoUrl, isAbs);
+    const scoringMatch = !scoringOnly || isScoring;
+    const absMatch     = !absOnly    || isAbs;
+    const nameMatch   = (!pq || pitcher.toLowerCase().includes(pq))
+                     && (!hq  || batter.toLowerCase().includes(hq));
+    const finalHiddenClass = (eventMatch && scoringMatch && absMatch && nameMatch) ? '' : ' hidden';
+
+    html += `<div class="play-item${finalHiddenClass}" data-event="${event}" data-hasvideo="${!!videoUrl}" data-pitcher="${pitcher.toLowerCase()}" data-batter="${batter.toLowerCase()}" data-scoring="${isScoring}" data-abs="${isAbs}">
+      <span class="play-event${isHR ? ' hr' : ''}">${event || '—'}</span>
+      <span class="play-pitcher">${pitcher}</span>
+      <span class="play-desc">${desc}</span>
+      ${videoUrl
+        ? `<a class="play-link" href="${videoUrl}" target="_blank" rel="noopener"${isLive ? '' : ' title="Next-day Savant clip"'}>▶ ${isLive ? 'Watch' : 'Savant'}</a>`
+        : ''}
+    </div>`;
+  }
+
+  container.innerHTML = html || '<div class="no-plays">No completed plays yet.</div>';
+}
+
+function anyFilterActive() {
+  const pq = document.getElementById('pitcher-search').value.trim();
+  const hq = document.getElementById('hitter-search').value.trim();
+  return activeFilter !== 'all' || scoringOnly || absOnly || !!(pq || hq);
+}
+
+function playMatchesFilters(el) {
+  const isAbs     = el.dataset.abs === 'true';
+  const isScoring = el.dataset.scoring === 'true';
+  const eventMatch   = FILTER_EVENTS[activeFilter](el.dataset.event, el.dataset.hasvideo === 'true', isAbs);
+  const scoringMatch = !scoringOnly || isScoring;
+  const absMatch     = !absOnly || isAbs;
+  const pq = document.getElementById('pitcher-search').value.trim().toLowerCase();
+  const hq = document.getElementById('hitter-search').value.trim().toLowerCase();
+  const pitcherMatch = !pq || el.dataset.pitcher?.includes(pq);
+  const batterMatch  = !hq || el.dataset.batter?.includes(hq);
+  return eventMatch && scoringMatch && absMatch && pitcherMatch && batterMatch;
+}
+
+function refilter() {
+  let visible = 0;
+  document.querySelectorAll('.play-item').forEach(el => {
+    const matches = playMatchesFilters(el);
+    el.classList.toggle('hidden', !matches);
+    if (matches) visible++;
+  });
+  document.querySelectorAll('.inning-header').forEach(h => {
+    h.classList.toggle('hidden', anyFilterActive());
+  });
+
+  const countEl = document.getElementById('filter-count');
+  const total = document.querySelectorAll('.play-item').length;
+  if (total > 0) {
+    countEl.textContent = `${visible.toLocaleString()} play${visible !== 1 ? 's' : ''}`;
+  } else {
+    countEl.textContent = '';
+  }
+}
+
+function setFilter(filter) {
+  activeFilter = filter;
+  refilter();
+}
+
+function toggleScoring() {
+  scoringOnly = !scoringOnly;
+  document.getElementById('btn-scoring').classList.toggle('active', scoringOnly);
+  refilter();
+}
+
+function toggleAbs() {
+  absOnly = !absOnly;
+  document.getElementById('btn-abs').classList.toggle('active', absOnly);
+  refilter();
+}
+
+function applyNameFilter() {
+  refilter();
+}
+
+function toggleDate(dateKey) {
+  const arrow = document.getElementById(`arrow-${dateKey}`);
+  const isOpen = arrow.style.transform !== 'rotate(-90deg)';
+  if (isOpen) {
+    arrow.style.transform = 'rotate(-90deg)';
+    document.querySelectorAll(`.date-group.date-${dateKey}`).forEach(r => r.style.display = 'none');
+  } else {
+    arrow.style.transform = '';
+    document.querySelectorAll(`.date-group.date-${dateKey}:not(.plays-row)`).forEach(r => r.style.display = '');
+  }
+}
+
+function allDateKeys() {
+  return [...new Set(
+    [...document.querySelectorAll('.date-group')].map(r => {
+      const cls = [...r.classList].find(c => c.startsWith('date-') && c !== 'date-group');
+      return cls?.replace('date-', '') ?? null;
+    }).filter(Boolean)
+  )];
+}
+
+let datesExpanded = false;
+let gamesExpanded = false;
+
+function toggleAllDates() {
+  const btn = document.getElementById('btn-dates');
+  const keys = allDateKeys();
+  if (!datesExpanded) {
+    keys.forEach(dk => {
+      const arrow = document.getElementById(`arrow-${dk}`);
+      if (arrow) arrow.style.transform = '';
+      document.querySelectorAll(`.date-group.date-${dk}:not(.plays-row)`).forEach(r => r.style.display = '');
+    });
+    btn.textContent = 'Collapse all dates';
+    datesExpanded = true;
+  } else {
+    keys.forEach(dk => {
+      const arrow = document.getElementById(`arrow-${dk}`);
+      if (arrow) arrow.style.transform = 'rotate(-90deg)';
+      document.querySelectorAll(`.date-group.date-${dk}`).forEach(r => r.style.display = 'none');
+    });
+    btn.textContent = 'Expand all dates';
+    datesExpanded = false;
+    gamesExpanded = false;
+    document.getElementById('btn-games').textContent = 'Expand all games';
+  }
+}
+
+async function toggleAllGames() {
+  const btn = document.getElementById('btn-games');
+
+  // Only act on game rows that are currently visible (their date is expanded)
+  const visibleGameRows = [...document.querySelectorAll('tr.game-row')]
+    .filter(r => r.style.display !== 'none');
+
+  if (!gamesExpanded) {
+    btn.textContent = 'Loading…';
+    btn.disabled = true;
+
+    await Promise.all(visibleGameRows.map(async row => {
+      const gpk = row.dataset.gpk;
+      const playsRow = document.getElementById(`plays-${gpk}`);
+      if (playsRow.style.display === 'none') {
+        playsRow.style.display = '';
+        row.classList.add('expanded');
+        if (!loadedPlays[gpk]) await fetchAndRenderPlays(gpk);
+      }
+    }));
+
+    btn.textContent = 'Collapse all games';
+    btn.disabled = false;
+    gamesExpanded = true;
+  } else {
+    visibleGameRows.forEach(row => {
+      row.classList.remove('expanded');
+      const playsRow = document.getElementById(`plays-${row.dataset.gpk}`);
+      if (playsRow) playsRow.style.display = 'none';
+    });
+    btn.textContent = 'Expand all games';
+    gamesExpanded = false;
+  }
+}
+
+function formatDate(iso) {
+  const [y, m, d] = iso.split('-');
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+}
+
+function ordinal(n) {
+  const s = ['th','st','nd','rd'], v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+init();
+</script>
+</body>
+</html>

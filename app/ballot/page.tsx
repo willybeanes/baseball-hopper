@@ -10,7 +10,7 @@ export default function BallotPage({
   const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
   return (
     <IframeEmbed
-      base="https://allstar-ballot-2026.vercel.app/"
+      base="/ballot-app/index.html"
       initialSearch={qs ? `?${qs}` : ""}
       title="2026 All-Star Ballot"
     />

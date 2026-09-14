@@ -10,7 +10,7 @@ export default function ComparePage({
   const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
   return (
     <IframeEmbed
-      base="https://player-compare-rho.vercel.app/"
+      base="/compare-app/index.html"
       initialSearch={qs ? `?${qs}` : ""}
       title="Percentile Compare"
     />

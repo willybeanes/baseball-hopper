@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 MLB All-Star Results</title>
+  <meta name="description" content="2026 MLB All-Star ballot vote totals and live fWAR for every position in the American and National League. Updated daily.">
+  <meta property="og:title" content="2026 MLB All-Star Results">
+  <meta property="og:description" content="Vote totals and live FanGraphs WAR for every All-Star ballot candidate, broken down by position and league.">
+  <meta property="og:url" content="https://allstar-ballot-2026.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="2026 MLB All-Star Results">
+  <meta name="twitter:description" content="Vote totals and live FanGraphs WAR for every All-Star ballot candidate, broken down by position and league.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0ede8;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 36px 20px 60px;
+    }
+
+    header {
+      max-width: 1160px;
+      margin: 0 auto 28px;
+    }
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #1a1a1a;
+    }
+    header p {
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: #888;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-swatch { width: 24px; height: 5px; border-radius: 2px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .league-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #888;
+      margin-bottom: 12px;
+      padding-left: 2px;
+    }
+
+    .pos-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+
+    .pos-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 10px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid #f0ede8;
+    }
+
+    .player-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid #f5f3f0;
+    }
+    .player-row:last-child { border-bottom: none; }
+
+    /* Headshot */
+    .headshot-wrap {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #f0ede8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .headshot-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .headshot-initials {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: -0.02em;
+    }
+
+    .rank {
+      font-size: 0.72rem;
+      color: #ccc;
+      width: 14px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .name-col {
+      flex: 1;
+      min-width: 0;
+    }
+    .player-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #333;
+      letter-spacing: -0.01em;
+    }
+    .starter .player-name { font-weight: 700; color: #1a1a1a; }
+    .player-club {
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .bars-col {
+      width: 130px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .bar-row { display: flex; align-items: center; gap: 6px; }
+    .bar-track {
+      flex: 1;
+      height: 6px;
+      background: #f0ede8;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .bar-fill { height: 6px; border-radius: 3px; }
+    .bar-val {
+      font-size: 0.82rem;
+      color: #aaa;
+      width: 38px;
+      text-align: right;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .war-val {
+      font-size: 0.85rem;
+      font-weight: 600;
+      width: 38px;
+      text-align: right;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .star-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      color: #fff;
+      background: #1a1a1a;
+    }
+    .reserve-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 3px 5px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      color: #fff;
+      background: #2563eb;
+      letter-spacing: 0.03em;
+    }
+    .pitcher-extras-sep {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary, #888);
+      padding: 8px 12px 4px;
+      border-top: 1px solid var(--border, #333);
+      margin-top: 4px;
+    }
+    .asg-legend-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #fff;
+      background: #2563eb;
+      letter-spacing: 0.03em;
+      vertical-align: middle;
+    }
+    .star-spacer { width: 26px; flex-shrink: 0; }
+
+
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #bbb;
+      margin-top: 2rem;
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>2026 MLB All-Star Results</h1>
+  <p>★ = All-Star Starter &nbsp;·&nbsp; <span class="asg-legend-badge">ASG</span> = All-Star Reserve &nbsp;·&nbsp; fWAR updated <span id="fwar-date">loading…</span></p>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#16a34a;"></span><span class="legend-swatch" style="background:#dc2626;"></span> fWAR (green = high · red = low)</div>
+  </div>
+</header>
+
+<div class="grid">
+  <div>
+    <div class="league-label">American League</div>
+    <div id="al-col"></div>
+  </div>
+  <div>
+    <div class="league-label">National League</div>
+    <div id="nl-col"></div>
+  </div>
+</div>
+
+<footer>Data: <a href="https://www.fangraphs.com" target="_blank" rel="noopener" style="color:#bbb;text-decoration:underline;">FanGraphs</a></footer>
+
+<script>
+const FG_PROXY = 'https://fg-proxy.vercel.app';
+const POS_ORDER = ['C','1B','2B','3B','SS','DH','OF','SP','RP'];
+const POS_LABELS = {
+  C:'Catcher', '1B':'First Base', '2B':'Second Base',
+  '3B':'Third Base', SS:'Shortstop', DH:'DH / Utility', OF:'Outfield',
+  SP:'Starting Pitchers', RP:'Relief Pitchers',
+};
+
+// Official 2026 All-Star rosters
+const ALL_STAR_STARTERS = new Set([
+  // AL
+  'Shea Langeliers','Vladimir Guerrero Jr.','Ernie Clement','Junior Caminero',
+  'Bobby Witt Jr.','Yordan Alvarez','Aaron Judge','Mike Trout','Byron Buxton',
+  // NL
+  'Drake Baldwin','Freddie Freeman','Ozzie Albies','Max Muncy','CJ Abrams',
+  'Shohei Ohtani','Brandon Marsh','Juan Soto','Andy Pages',
+]);
+
+const ALL_STAR_RESERVES = new Set([
+  // AL position
+  'Dillon Dingler','Adley Rutschman','Nick Kurtz','Ben Rice','Willson Contreras',
+  'Travis Bazzana','Miguel Vargas','Kevin McGonigle','Randy Arozarena','Riley Greene',
+  'Cody Bellinger','Yandy Díaz','Ceddanne Rafaela',
+  // NL position
+  'William Contreras','Hunter Goodman','Matt Olson','Bryce Harper','Luis Arraez',
+  'Sal Stewart','Otto Lopez','Pete Crow-Armstrong','Corbin Carroll','James Wood',
+  'Jordan Walker','Kyle Schwarber','Iván Herrera',
+  // AL pitchers
+  'Dylan Cease','Joe Ryan','Ranger Suarez','Parker Messick','Drew Rasmussen',
+  'Cam Schlittler','Michael Wacha','Aroldis Chapman','Cade Smith','Jacob Latz',
+  'Bryan Baker','Louis Varland','Justin Verlander','Nick Martinez',
+  // NL pitchers
+  'Chase Burns','Jacob Misiorowski','Chris Sale','Cristopher Sánchez','Paul Skenes',
+  'Max Meyer','Yoshinobu Yamamoto','Logan Webb','Eduardo Rodriguez','Braxton Ashcraft',
+  'Jesús Luzardo','Jhoan Duran','Raisel Iglesias','Mason Miller','Riley O\'Brien',
+]);
+
+// Full All-Star roster with league/pos/club so missing ballot players can be appended
+const ALL_STAR_INFO = [
+  // AL
+  ['Shea Langeliers','AL','C','Athletics'],
+  ['Dillon Dingler','AL','C','Tigers'],
+  ['Adley Rutschman','AL','C','Orioles'],
+  ['Vladimir Guerrero Jr.','AL','1B','Blue Jays'],
+  ['Nick Kurtz','AL','1B','Athletics'],
+  ['Ben Rice','AL','1B','Yankees'],
+  ['Willson Contreras','AL','1B','Red Sox'],
+  ['Ernie Clement','AL','2B','Blue Jays'],
+  ['Travis Bazzana','AL','2B','Guardians'],
+  ['Junior Caminero','AL','3B','Rays'],
+  ['Miguel Vargas','AL','3B','White Sox'],
+  ['Bobby Witt Jr.','AL','SS','Royals'],
+  ['Kevin McGonigle','AL','SS','Tigers'],
+  ['Yordan Alvarez','AL','DH','Astros'],
+  ['Yandy Díaz','AL','DH','Rays'],
+  ['Aaron Judge','AL','OF','Yankees'],
+  ['Mike Trout','AL','OF','Angels'],
+  ['Byron Buxton','AL','OF','Twins'],
+  ['Randy Arozarena','AL','OF','Mariners'],
+  ['Riley Greene','AL','OF','Tigers'],
+  ['Cody Bellinger','AL','OF','Yankees'],
+  ['Ceddanne Rafaela','AL','OF','Red Sox'],
+  // NL
+  ['Drake Baldwin','NL','C','Braves'],
+  ['William Contreras','NL','C','Brewers'],
+  ['Hunter Goodman','NL','C','Rockies'],
+  ['Freddie Freeman','NL','1B','Dodgers'],
+  ['Matt Olson','NL','1B','Braves'],
+  ['Bryce Harper','NL','1B','Phillies'],
+  ['Ozzie Albies','NL','2B','Braves'],
+  ['Luis Arraez','NL','2B','Giants'],
+  ['Max Muncy','NL','3B','Dodgers'],
+  ['Sal Stewart','NL','3B','Reds'],
+  ['CJ Abrams','NL','SS','Nationals'],
+  ['Otto Lopez','NL','SS','Marlins'],
+  ['Shohei Ohtani','NL','DH','Dodgers'],
+  ['Kyle Schwarber','NL','DH','Phillies'],
+  ['Andy Pages','NL','OF','Dodgers'],
+  ['Brandon Marsh','NL','OF','Phillies'],
+  ['Juan Soto','NL','OF','Mets'],
+  ['Pete Crow-Armstrong','NL','OF','Cubs'],
+  ['Corbin Carroll','NL','OF','D-backs'],
+  ['James Wood','NL','OF','Nationals'],
+  ['Jordan Walker','NL','OF','Cardinals'],
+  // AL pitchers
+  ['Dylan Cease','AL','SP','Blue Jays'],
+  ['Joe Ryan','AL','SP','Twins'],
+  ['Ranger Suarez','AL','SP','Red Sox'],
+  ['Parker Messick','AL','SP','Guardians'],
+  ['Drew Rasmussen','AL','SP','Rays'],
+  ['Cam Schlittler','AL','SP','Yankees'],
+  ['Michael Wacha','AL','SP','Royals'],
+  ['Aroldis Chapman','AL','RP','Red Sox'],
+  ['Cade Smith','AL','RP','Guardians'],
+  ['Jacob Latz','AL','RP','Rangers'],
+  ['Bryan Baker','AL','RP','Rays'],
+  ['Louis Varland','AL','RP','Blue Jays'],
+  ['Justin Verlander','AL','SP','Astros'],
+  ['Nick Martinez','AL','SP','Rays'],
+  // NL pitchers
+  ['Chase Burns','NL','SP','Reds'],
+  ['Jacob Misiorowski','NL','SP','Brewers'],
+  ['Chris Sale','NL','SP','Braves'],
+  ['Cristopher Sánchez','NL','SP','Phillies'],
+  ['Paul Skenes','NL','SP','Pirates'],
+  ['Max Meyer','NL','SP','Marlins'],
+  ['Yoshinobu Yamamoto','NL','SP','Dodgers'],
+  ['Logan Webb','NL','SP','Giants'],
+  ['Eduardo Rodriguez','NL','SP','D-backs'],
+  ['Braxton Ashcraft','NL','SP','Pirates'],
+  ['Jesús Luzardo','NL','SP','Phillies'],
+  ['Jhoan Duran','NL','RP','Phillies'],
+  ['Raisel Iglesias','NL','RP','Braves'],
+  ['Mason Miller','NL','RP','Padres'],
+  ["Riley O'Brien",'NL','RP','Cardinals'],
+  ['Nick Martinez','NL','RP','Padres'],
+];
+
+// Live fWAR lookup populated after fetch (name|team → {war, mlbId})
+let fgLookup = new Map();
+// Pitching WAR lookups populated after fetch
+let spLookup = new Map();
+let rpLookup = new Map();
+// All FG pitcher rows: [league, pos, name, club, 0, war]
+let allSPRows = [];
+let allRPRows = [];
+
+// [league, pos, name, club, votes, fWAR (fallback)]
+const DATA = [
+  ["AL","C","Shea Langeliers","Athletics",1414697,2.4],
+  ["AL","C","Alejandro Kirk","Blue Jays",837289,0.3],
+  ["AL","C","Dillon Dingler","Tigers",484290,3.0],
+  ["AL","C","Adley Rutschman","Orioles",434433,2.1],
+  ["AL","C","Ryan Jeffers","Twins",386486,1.7],
+  ["AL","C","Cal Raleigh","Mariners",351678,0.3],
+  ["AL","C","Salvador Perez","Royals",251187,1.2],
+  ["AL","C","Logan O'Hoppe","Angels",247835,-0.2],
+  ["AL","C","Yainer Diaz","Astros",231530,0.8],
+  ["AL","C","Austin Wells","Yankees",221426,0.1],
+  ["AL","1B","Vladimir Guerrero Jr.","Blue Jays",1458461,0.9],
+  ["AL","1B","Ben Rice","Yankees",882772,2.6],
+  ["AL","1B","Munetaka Murakami","White Sox",741065,2.0],
+  ["AL","1B","Nick Kurtz","Athletics",595412,3.0],
+  ["AL","1B","Pete Alonso","Orioles",380136,1.7],
+  ["AL","1B","Willson Contreras","Red Sox",369895,2.7],
+  ["AL","1B","Josh Naylor","Mariners",204577,0.2],
+  ["AL","1B","Jonathan Aranda","Rays",193544,1.3],
+  ["AL","1B","Christian Walker","Astros",169908,1.4],
+  ["AL","1B","Spencer Torkelson","Tigers",158361,0.1],
+  ["AL","2B","Ernie Clement","Blue Jays",2054130,1.5],
+  ["AL","2B","Ezequiel Duran","Rangers",531182,1.6],
+  ["AL","2B","Jose Altuve","Astros",456242,0.5],
+  ["AL","2B","Jazz Chisholm Jr.","Yankees",419777,1.6],
+  ["AL","2B","Travis Bazzana","Guardians",388507,0.9],
+  ["AL","2B","Gleyber Torres","Tigers",355707,1.0],
+  ["AL","2B","Chase Meidroth","White Sox",253229,1.6],
+  ["AL","2B","Cole Young","Mariners",248359,1.0],
+  ["AL","2B","Jeremiah Jackson","Orioles",169258,0.3],
+  ["AL","2B","Vaughn Grissom","Angels",159246,0.3],
+  ["AL","3B","Junior Caminero","Rays",1310879,1.5],
+  ["AL","3B","Kazuma Okamoto","Blue Jays",1282884,1.4],
+  ["AL","3B","Miguel Vargas","White Sox",633675,2.5],
+  ["AL","3B","Josh Jung","Rangers",471452,2.0],
+  ["AL","3B","José Ramírez","Guardians",415813,2.3],
+  ["AL","3B","Brendan Donovan","Mariners",213154,0.6],
+  ["AL","3B","Maikel Garcia","Royals",177447,1.5],
+  ["AL","3B","Ryan McMahon","Yankees",172645,0.4],
+  ["AL","3B","Zach McKinstry","Tigers",171507,-0.4],
+  ["AL","3B","Isaac Paredes","Astros",167208,0.8],
+  ["AL","SS","Bobby Witt Jr.","Royals",1701407,4.0],
+  ["AL","SS","Andrés Giménez","Blue Jays",894926,0.8],
+  ["AL","SS","Kevin McGonigle","Tigers",460075,2.7],
+  ["AL","SS","Jeremy Peña","Astros",347049,1.0],
+  ["AL","SS","Colson Montgomery","White Sox",352828,2.5],
+  ["AL","SS","Gunnar Henderson","Orioles",270985,1.9],
+  ["AL","SS","José Caballero","Yankees",250398,1.0],
+  ["AL","SS","Zach Neto","Angels",238000,1.0],
+  ["AL","SS","Corey Seager","Rangers",228580,0.5],
+  ["AL","SS","J.P. Crawford","Mariners",207525,1.0],
+  ["AL","DH","Yordan Alvarez","Astros",1974459,3.6],
+  ["AL","DH","George Springer","Blue Jays",806225,-0.1],
+  ["AL","DH","Yandy Díaz","Rays",459371,2.1],
+  ["AL","DH","Giancarlo Stanton","Yankees",290711,0.1],
+  ["AL","DH","Samuel Basallo","Orioles",211232,0.9],
+  ["AL","DH","Joc Pederson","Rangers",207216,0.4],
+  ["AL","DH","Dominic Canzone","Mariners",194006,1.2],
+  ["AL","DH","Colt Keith","Tigers",157533,-0.1],
+  ["AL","DH","Chase DeLauter","Guardians",143747,0.8],
+  ["AL","DH","Jorge Soler","Angels",138573,-0.3],
+  ["AL","OF","Aaron Judge","Yankees",1788499,2.1],
+  ["AL","OF","Mike Trout","Angels",1735051,2.0],
+  ["AL","OF","Byron Buxton","Twins",1106264,2.8],
+  ["AL","OF","Cody Bellinger","Yankees",1067622,2.3],
+  ["AL","OF","Julio Rodríguez","Mariners",819514,1.4],
+  ["AL","OF","Randy Arozarena","Mariners",793017,2.3],
+  ["AL","OF","Daulton Varsho","Blue Jays",782016,1.0],
+  ["AL","OF","Jesús Sánchez","Blue Jays",764037,0.4],
+  ["AL","OF","Riley Greene","Tigers",751512,1.9],
+  ["AL","OF","Myles Straw","Blue Jays",670909,0.1],
+  ["AL","OF","Carlos Cortes","Athletics",348317,0.7],
+  ["AL","OF","Wilyer Abreu","Red Sox",312817,1.5],
+  ["AL","OF","Wade Meckler","Angels",306875,0.7],
+  ["AL","OF","Jo Adell","Angels",301714,0.3],
+  ["AL","OF","Luke Raley","Mariners",287313,0.8],
+  ["AL","OF","Sam Antonacci","White Sox",241132,0.8],
+  ["AL","OF","Taylor Ward","Orioles",238665,1.3],
+  ["AL","OF","Steven Kwan","Guardians",226628,0.4],
+  ["AL","OF","Tristan Peters","White Sox",219889,0.5],
+  ["AL","OF","Javier Báez","Tigers",213343,0.0],
+  ["NL","C","Drake Baldwin","Braves",1755768,2.1],
+  ["NL","C","Will Smith","Dodgers",1290090,1.1],
+  ["NL","C","J.T. Realmuto","Phillies",829868,0.7],
+  ["NL","C","William Contreras","Brewers",667752,1.8],
+  ["NL","C","Hunter Goodman","Rockies",224944,1.5],
+  ["NL","C","Liam Hicks","Marlins",206445,1.6],
+  ["NL","C","Carson Kelly","Cubs",202386,0.5],
+  ["NL","C","Gabriel Moreno","D-backs",187668,1.5],
+  ["NL","C","Pedro Pagés","Cardinals",152064,0.7],
+  ["NL","C","Keibert Ruiz","Nationals",133801,0.8],
+  ["NL","1B","Freddie Freeman","Dodgers",1779538,1.9],
+  ["NL","1B","Matt Olson","Braves",1421095,2.5],
+  ["NL","1B","Bryce Harper","Phillies",1143481,1.1],
+  ["NL","1B","Jake Bauers","Brewers",446051,1.4],
+  ["NL","1B","Alec Burleson","Cardinals",365251,1.9],
+  ["NL","1B","Rafael Devers","Giants",211613,0.1],
+  ["NL","1B","Spencer Horwitz","Pirates",201843,1.4],
+  ["NL","1B","Michael Busch","Cubs",170480,1.9],
+  ["NL","1B","Ildemaro Vargas","D-backs",147214,0.5],
+  ["NL","1B","Luis García Jr.","Nationals",104700,0.5],
+  ["NL","2B","Ozzie Albies","Braves",972537,1.8],
+  ["NL","2B","Bryson Stott","Phillies",801006,0.9],
+  ["NL","2B","Brice Turang","Brewers",739111,2.5],
+  ["NL","2B","Hyeseong Kim","Dodgers",659500,0.4],
+  ["NL","2B","Luis Arraez","Giants",614164,2.5],
+  ["NL","2B","Ketel Marte","D-backs",553091,1.3],
+  ["NL","2B","Brandon Lowe","Pirates",472879,2.3],
+  ["NL","2B","JJ Wetherholt","Cardinals",321915,2.7],
+  ["NL","2B","Xavier Edwards","Marlins",277314,2.3],
+  ["NL","2B","Nico Hoerner","Cubs",219251,1.2],
+  ["NL","3B","Max Muncy","Dodgers",1933390,0.2],
+  ["NL","3B","Alec Bohm","Phillies",804309,-0.3],
+  ["NL","3B","Austin Riley","Braves",572816,0.0],
+  ["NL","3B","Nolan Arenado","D-backs",556009,1.1],
+  ["NL","3B","Nick Gonzales","Pirates",439412,1.1],
+  ["NL","3B","Manny Machado","Padres",384622,0.1],
+  ["NL","3B","Alex Bregman","Cubs",253731,1.2],
+  ["NL","3B","Bo Bichette","Mets",244781,0.5],
+  ["NL","3B","Matt Chapman","Giants",240177,1.7],
+  ["NL","3B","Curtis Mead","Nationals",201867,0.8],
+  ["NL","SS","CJ Abrams","Nationals",1192774,2.4],
+  ["NL","SS","Mookie Betts","Dodgers",1161221,0.5],
+  ["NL","SS","Elly De La Cruz","Reds",879876,2.6],
+  ["NL","SS","Trea Turner","Phillies",736372,0.1],
+  ["NL","SS","Otto Lopez","Marlins",445451,3.0],
+  ["NL","SS","Ha-Seong Kim","Braves",253376,-1.0],
+  ["NL","SS","Masyn Winn","Cardinals",224053,0.8],
+  ["NL","SS","Dansby Swanson","Cubs",221758,1.1],
+  ["NL","SS","Joey Ortiz","Brewers",206313,0.4],
+  ["NL","SS","Konnor Griffin","Pirates",168875,1.1],
+  ["NL","DH","Shohei Ohtani","Dodgers",2310735,2.9],
+  ["NL","DH","Kyle Schwarber","Phillies",1540202,2.0],
+  ["NL","DH","Dominic Smith","Braves",599893,0.2],
+  ["NL","DH","Christian Yelich","Brewers",378996,0.5],
+  ["NL","DH","Iván Herrera","Cardinals",232891,1.7],
+  ["NL","DH","Casey Schmitt","Giants",133740,1.3],
+  ["NL","DH","Moisés Ballesteros","Cubs",119701,0.0],
+  ["NL","DH","Eugenio Suárez","Reds",109334,-0.5],
+  ["NL","DH","Miguel Andujar","Padres",102921,-0.1],
+  ["NL","DH","Troy Johnston","Rockies",85302,0.7],
+  ["NL","OF","Andy Pages","Dodgers",1518451,2.4],
+  ["NL","OF","Brandon Marsh","Phillies",1256874,1.4],
+  ["NL","OF","Ronald Acuña Jr.","Braves",1216288,0.9],
+  ["NL","OF","Michael Harris II","Braves",1059921,2.2],
+  ["NL","OF","Teoscar Hernández","Dodgers",1043541,1.1],
+  ["NL","OF","Juan Soto","Mets",947033,2.0],
+  ["NL","OF","James Wood","Nationals",915287,3.4],
+  ["NL","OF","Jordan Walker","Cardinals",860670,2.5],
+  ["NL","OF","Kyle Tucker","Dodgers",766071,0.6],
+  ["NL","OF","Corbin Carroll","D-backs",713392,3.2],
+  ["NL","OF","Mauricio Dubón","Braves",667778,1.5],
+  ["NL","OF","Jackson Chourio","Brewers",652271,1.9],
+  ["NL","OF","Justin Crawford","Phillies",647932,-0.2],
+  ["NL","OF","Pete Crow-Armstrong","Cubs",590136,3.5],
+  ["NL","OF","Adolis García","Phillies",551327,0.1],
+  ["NL","OF","Seiya Suzuki","Cubs",476209,1.3],
+  ["NL","OF","Fernando Tatis Jr.","Padres",415848,1.5],
+  ["NL","OF","Oneil Cruz","Pirates",414330,1.7],
+  ["NL","OF","Jung Hoo Lee","Giants",317862,1.2],
+  ["NL","OF","JJ Bleday","Reds",286458,1.5],
+];
+
+// WAR range (recomputed after live fetch)
+let ALL_WAR = DATA.map(d => d[5]);
+let MAX_WAR = Math.max(...ALL_WAR);
+let MIN_WAR = Math.min(...ALL_WAR);
+let WAR_RANGE = MAX_WAR - MIN_WAR;
+
+// mlbId lookup: normalized name → mlbam id (populated from fg-proxy response)
+const mlbIdMap = new Map();
+
+function normName(s) {
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+}
+
+// Team abbreviation → league
+const TEAM_LEAGUE = {
+  LAA:'AL', HOU:'AL', ATH:'AL', OAK:'AL', TOR:'AL', CLE:'AL',
+  SEA:'AL', BAL:'AL', TEX:'AL', TBR:'AL', BOS:'AL', KCR:'AL',
+  DET:'AL', MIN:'AL', CWS:'AL', NYY:'AL',
+  ATL:'NL', MIL:'NL', STL:'NL', CHC:'NL', ARI:'NL', LAD:'NL',
+  SFG:'NL', MIA:'NL', NYM:'NL', WSN:'NL', SDP:'NL', PHI:'NL',
+  PIT:'NL', CIN:'NL', COL:'NL',
+};
+
+
+
+
+
+// Map DATA team names → FanGraphs team abbreviations
+const TEAM_FG = {
+  'Angels':'LAA','Astros':'HOU','Athletics':'ATH','Blue Jays':'TOR',
+  'Braves':'ATL','Brewers':'MIL','Cardinals':'STL','Cubs':'CHC',
+  'D-backs':'ARI','Dodgers':'LAD','Giants':'SFG','Guardians':'CLE',
+  'Mariners':'SEA','Marlins':'MIA','Mets':'NYM','Nationals':'WSN',
+  'Orioles':'BAL','Padres':'SDP','Phillies':'PHI','Pirates':'PIT',
+  'Rangers':'TEX','Rays':'TBR','Red Sox':'BOS','Reds':'CIN',
+  'Rockies':'COL','Royals':'KCR','Tigers':'DET','Twins':'MIN',
+  'White Sox':'CWS','Yankees':'NYY',
+};
+
+// Reverse map: FanGraphs abbreviation → DATA team name
+const FG_TO_CLUB = Object.fromEntries(Object.entries(TEAM_FG).map(([k,v]) => [v,k]));
+
+function lookupKey(name, team) {
+  return normName(name) + '|' + (TEAM_FG[team] || team).toLowerCase();
+}
+
+function warBarColor(w, minW, maxW) {
+  const range = maxW - minW || 1;
+  const t = Math.max(0, Math.min(1, (w - minW) / range));
+  const r = Math.round(220 + (22  - 220) * t);
+  const g = Math.round(38  + (163 - 38)  * t);
+  const b = Math.round(38  + (74  - 38)  * t);
+  return `rgb(${r},${g},${b})`;
+}
+
+function warTextColor(w, minW, maxW) {
+  const range = maxW - minW || 1;
+  const t = Math.max(0, Math.min(1, (w - minW) / range));
+  const r = Math.round(220 + (22  - 220) * t);
+  const g = Math.round(38  + (163 - 38)  * t);
+  const b = Math.round(38  + (74  - 38)  * t);
+  return `rgb(${r},${g},${b})`;
+}
+
+
+function initials(name) {
+  return name.split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase();
+}
+
+function headshotUrl(mlbId) {
+  return `${FG_PROXY}/api/headshot?id=${mlbId}`;
+}
+
+function buildLeague(lg, colEl) {
+  const lgData = DATA.filter(d => d[0] === lg);
+
+  POS_ORDER.forEach(pos => {
+    const isPitcher = pos === 'SP' || pos === 'RP';
+    let rows, extraRows = [];
+
+    if (isPitcher) {
+      const pitRows = (pos === 'SP' ? allSPRows : allRPRows).filter(r => r[0] === lg);
+      pitRows.sort((a, b) => b[5] - a[5]);
+      const topN = pos === 'SP' ? 10 : 10;
+      rows = pitRows.slice(0, topN);
+      const inTop = new Set(rows.map(r => r[2]));
+      // register mlbIds for top-N rows
+      for (const r of rows) {
+        if (r[6]) mlbIdMap.set(normName(r[2]) + '|' + r[3], r[6]);
+      }
+      // Append All-Stars not already in top-N
+      const sourceLookup = pos === 'SP' ? spLookup : rpLookup;
+      for (const [name, asLg, asPos, club] of ALL_STAR_INFO) {
+        if (asLg !== lg || asPos !== pos || inTop.has(name)) continue;
+        const live = sourceLookup.get(lookupKey(name, club)) ?? sourceLookup.get(normName(name));
+        extraRows.push([lg, pos, name, club, 0, live?.war ?? 0]);
+        if (live?.mlbId) mlbIdMap.set(normName(name) + '|' + club, live.mlbId);
+      }
+      extraRows.sort((a, b) => b[5] - a[5]);
+    } else {
+      rows = lgData.filter(d => d[1] === pos);
+      const inRows = new Set(rows.map(r => r[2]));
+      for (const [name, asLg, asPos, club] of ALL_STAR_INFO) {
+        if (asLg !== lg || asPos !== pos || inRows.has(name)) continue;
+        const live = fgLookup.get(lookupKey(name, club)) ?? fgLookup.get(normName(name));
+        rows.push([lg, pos, name, club, 0, live?.war ?? 0]);
+        if (live?.mlbId) mlbIdMap.set(normName(name) + '|' + club, live.mlbId);
+      }
+      rows.sort((a, b) => b[5] - a[5]);
+      rows.splice(pos === 'OF' ? 20 : 10);
+    }
+    if (!rows.length && !extraRows.length) return;
+    const allDisplayRows = [...rows, ...extraRows];
+
+    const posWars = allDisplayRows.map(r => r[5]);
+    const posMinWar = Math.min(...posWars);
+    const posMaxWar = Math.max(...posWars);
+
+    const card = document.createElement('div');
+    card.className = 'pos-card';
+
+    const lbl = document.createElement('div');
+    lbl.className = 'pos-label';
+    lbl.textContent = POS_LABELS[pos];
+    card.appendChild(lbl);
+
+    allDisplayRows.forEach((r, i) => {
+      // Insert separator before extra All-Stars in pitcher tables
+      if (isPitcher && extraRows.length && i === rows.length) {
+        const sep = document.createElement('div');
+        sep.className = 'pitcher-extras-sep';
+        sep.textContent = 'All-Stars not in top 10';
+        card.appendChild(sep);
+      }
+      const [, , name, club, , war] = r;
+      const isStarter = ALL_STAR_STARTERS.has(name);
+      const isReserve = !isStarter && ALL_STAR_RESERVES.has(name);
+      const posWarRange = posMaxWar - posMinWar || 1;
+      const warBarPct = Math.max(0, Math.round(((war - posMinWar) / posWarRange) * 100));
+      const mlbId = mlbIdMap.get(normName(name) + '|' + club);
+
+      const row = document.createElement('div');
+      row.className = 'player-row' + (isStarter ? ' starter' : '');
+
+      // Headshot
+      const hsWrap = document.createElement('div');
+      hsWrap.className = 'headshot-wrap';
+      if (mlbId) {
+        const img = document.createElement('img');
+        img.src = headshotUrl(mlbId);
+        img.alt = name;
+        img.loading = 'lazy';
+        img.onerror = () => {
+          img.remove();
+          const init = document.createElement('span');
+          init.className = 'headshot-initials';
+          init.textContent = initials(name);
+          hsWrap.appendChild(init);
+        };
+        hsWrap.appendChild(img);
+      } else {
+        const init = document.createElement('span');
+        init.className = 'headshot-initials';
+        init.textContent = initials(name);
+        hsWrap.appendChild(init);
+      }
+
+      row.innerHTML = `
+        <span class="rank">${i + 1}</span>
+        <div class="name-col">
+          <div class="player-name">${name}</div>
+          <div class="player-club">${club}</div>
+        </div>
+        <div class="bars-col">
+          <div class="bar-row">
+            <div class="bar-track"><div class="bar-fill" style="width:${warBarPct}%;background:${warBarColor(war, posMinWar, posMaxWar)};"></div></div>
+            <span class="war-val" style="color:${warTextColor(war, posMinWar, posMaxWar)};">${war.toFixed(1)}</span>
+          </div>
+        </div>
+        ${isStarter ? `<span class="star-badge">★</span>` : isReserve ? `<span class="reserve-badge">ASG</span>` : `<span class="star-spacer"></span>`}
+      `;
+
+      // Prepend headshot before rank
+      row.insertBefore(hsWrap, row.firstChild);
+      card.appendChild(row);
+    });
+
+    colEl.appendChild(card);
+  });
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+
+async function fetchAllPitchers() {
+  const params = new URLSearchParams({
+    pos: 'all', stats: 'pit', lg: 'all', qual: '0',
+    season: '2026', season1: '2026', ind: '0', team: '0',
+    sortstat: 'WAR', sortdir: 'default', pageitems: '500', pagenum: '1',
+  });
+  const res = await fetch(`${FG_PROXY}/api/fangraphs?${params}`);
+  if (!res.ok) throw new Error(`fg-proxy ${res.status}`);
+  const json = await res.json();
+  const spLk = new Map(), rpLk = new Map();
+  const spR = [], rpR = [];
+  for (const p of (json.data ?? [])) {
+    if (!p.PlayerName) continue;
+    const war = parseFloat(p.WAR ?? 0);
+    const mlbId = p.xMLBAMID ?? p.MLBAMID ?? null;
+    const entry = { war, mlbId };
+    const fgTeam = (p.Team ?? '').replace(/<[^>]+>/g, '').trim();
+    const lg = TEAM_LEAGUE[fgTeam];
+    const club = FG_TO_CLUB[fgTeam] || fgTeam;
+    // Classify SP vs RP by games started (GS). If GS >= half of G, they're a starter.
+    const gs = parseFloat(p.GS ?? p.GS_ ?? 0);
+    const g = parseFloat(p.G ?? 1);
+    const isSP = gs >= 3 && (gs / g) >= 0.4;
+    const lk = isSP ? spLk : rpLk;
+    lk.set(lookupKey(p.PlayerName, fgTeam), entry);
+    if (!lk.has(normName(p.PlayerName))) lk.set(normName(p.PlayerName), entry);
+    if (!lg) continue;
+    (isSP ? spR : rpR).push([lg, isSP ? 'SP' : 'RP', p.PlayerName, club, 0, war, mlbId]);
+  }
+  spLookup = spLk; rpLookup = rpLk;
+  allSPRows = spR; allRPRows = rpR;
+}
+
+async function fetchLiveWAR() {
+  const params = new URLSearchParams({
+    pos: 'all', stats: 'bat', lg: 'all', qual: '0',
+    season: '2026', season1: '2026', ind: '0', team: '0',
+    sortstat: 'WAR', sortdir: 'default', pageitems: '1500', pagenum: '1',
+  });
+  const res = await fetch(`${FG_PROXY}/api/fangraphs?${params}`);
+  if (!res.ok) throw new Error(`fg-proxy ${res.status}`);
+  const json = await res.json();
+  const lookup = new Map();
+  for (const p of (json.data ?? [])) {
+    if (!p.PlayerName) continue;
+    const entry = { war: parseFloat(p.WAR ?? 0), mlbId: p.xMLBAMID ?? p.MLBAMID ?? null };
+    // Store by both name|team (preferred) and name-only fallback
+    const fgTeam = (p.Team ?? '').replace(/<[^>]+>/g, '').trim();
+    const teamKey = lookupKey(p.PlayerName, fgTeam);
+    const nameKey = normName(p.PlayerName);
+    lookup.set(teamKey, entry);
+    if (!lookup.has(nameKey)) lookup.set(nameKey, entry); // first occurrence wins for name-only
+  }
+  fgLookup = lookup;
+  return { lookup, fetchedAt: new Date(res.headers.get('Date') || Date.now()) };
+}
+
+async function init() {
+  try {
+    const [{ lookup, fetchedAt }] = await Promise.all([fetchLiveWAR(), fetchAllPitchers()]);
+
+    for (const row of DATA) {
+      // Prefer name|team match to avoid same-name collisions (e.g. two Max Muncys)
+      const live = lookup.get(lookupKey(row[2], row[3])) ?? lookup.get(normName(row[2]));
+      if (live) {
+        row[5] = live.war;
+        if (live.mlbId) mlbIdMap.set(normName(row[2]) + '|' + row[3], live.mlbId);
+      }
+    }
+
+    // Recompute range with live values
+    ALL_WAR = DATA.map(d => d[5]);
+    MAX_WAR = Math.max(...ALL_WAR);
+    MIN_WAR = Math.min(...ALL_WAR);
+    WAR_RANGE = MAX_WAR - MIN_WAR;
+
+    document.getElementById('fwar-date').textContent = fmtDate(fetchedAt);
+  } catch (e) {
+    console.warn('fWAR fetch failed, using fallback values:', e.message);
+    document.getElementById('fwar-date').textContent = 'June 15, 2026 (cached)';
+  }
+
+  buildLeague('AL', document.getElementById('al-col'));
+  buildLeague('NL', document.getElementById('nl-col'));
+}
+
+init();
+</script>
+</body>
+</html>
