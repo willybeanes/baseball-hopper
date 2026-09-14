@@ -845,7 +845,7 @@ function negRedFor(hex) {
 }
 
 function headshotUrl(mlbamId) {
-  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_120,q_auto:best/v1/people/${mlbamId}/headshot/67/current`;
+  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_240,q_auto:best/v1/people/${mlbamId}/headshot/67/current`;
 }
 
 function teamLogoUrl(fgAbbr) {
@@ -1219,6 +1219,7 @@ function createWaterfallChart(canvas, player, options = {}) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      devicePixelRatio: window.devicePixelRatio || 2,
       layout: { padding: { top: options.compact ? 4 : 8 } },
       plugins: {
         legend: { display: false },
@@ -1533,6 +1534,7 @@ function renderLeaderboard(players, count = lbCount, year = CURRENT_YEAR, pitMap
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      devicePixelRatio: window.devicePixelRatio || 2,
       layout: { padding: { top: isMobile ? 42 : 90 } },
       plugins: {
         legend: {
@@ -1709,6 +1711,7 @@ function renderPitcherLeaderboard(players, count = lbCount, year = CURRENT_YEAR,
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      devicePixelRatio: window.devicePixelRatio || 2,
       layout: { padding: { top: isMobile ? 42 : 90 } },
       plugins: {
         legend: {
@@ -2086,6 +2089,7 @@ function renderComponentLeaderboards(players, year, filters = {}) {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+      devicePixelRatio: window.devicePixelRatio || 2,
         clip: false,
         layout: { padding: { top: 16, bottom: 20 } },
         plugins: {
