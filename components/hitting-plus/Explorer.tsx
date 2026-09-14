@@ -52,6 +52,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     return q ? q.split("|").filter(Boolean) : [];
   });
   const [teamFilter, setTeamFilter] = useState<string>(() => searchParams.get("team") ?? "");
+  const [rookieOnly, setRookieOnly] = useState<boolean>(() => searchParams.get("rookie") === "1");
 
   const seasonPlayers = useMemo(
     () => data.players.filter((p) => p.game_year === season),
@@ -69,6 +70,19 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     () => seasonPlayers.filter((p) => p.pa >= minPA),
     [seasonPlayers, minPA]
   );
+
+  const rookieNames = useMemo(() => {
+    const firstSeason = new Map<string, number>();
+    for (const p of data.players) {
+      const cur = firstSeason.get(p.player_name);
+      if (cur === undefined || p.game_year < cur) firstSeason.set(p.player_name, p.game_year);
+    }
+    const result = new Set<string>();
+    for (const [name, first] of firstSeason) {
+      if (first === season) result.add(name);
+    }
+    return result;
+  }, [data.players, season]);
 
   const [pickedName, setPickedName] = useState<string | null>(() => {
     const q = searchParams.get("player");
@@ -161,6 +175,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     const c = searchParams.get("compare");
     setCompareNames(c ? c.split("|").filter(Boolean) : []);
     setTeamFilter(searchParams.get("team") ?? "");
+    setRookieOnly(searchParams.get("rookie") === "1");
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
@@ -180,6 +195,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
       params.set("compare", compareNames.join("|"));
     }
     if (tab === "leaderboard" && teamFilter) params.set("team", teamFilter);
+    if (tab === "leaderboard" && rookieOnly) params.set("rookie", "1");
     const next = params.toString();
     if (next !== searchParams.toString()) {
       const tabChanged = prevTabRef.current !== tab;
@@ -193,7 +209,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
       prevTabRef.current = tab;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab, season, pickedName, minPA, compareNames, teamFilter]);
+  }, [tab, season, pickedName, minPA, compareNames, teamFilter, rookieOnly]);
 
   const selectPlayer = useCallback((name: string) => {
     setPickedName(name);
@@ -323,6 +339,9 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
           season={season}
           teamFilter={teamFilter}
           onChangeTeamFilter={setTeamFilter}
+          rookieOnly={rookieOnly}
+          onChangeRookieOnly={setRookieOnly}
+          rookieNames={rookieNames}
         />
       )}
 

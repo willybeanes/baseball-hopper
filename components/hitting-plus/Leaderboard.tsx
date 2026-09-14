@@ -62,6 +62,9 @@ export default function Leaderboard({
   season,
   teamFilter,
   onChangeTeamFilter,
+  rookieOnly,
+  onChangeRookieOnly,
+  rookieNames,
 }: {
   players: Player[];
   pct: Record<StatKey, PctFn>;
@@ -70,6 +73,9 @@ export default function Leaderboard({
   season: number;
   teamFilter: string;
   onChangeTeamFilter: (team: string) => void;
+  rookieOnly: boolean;
+  onChangeRookieOnly: (v: boolean) => void;
+  rookieNames: Set<string>;
 }) {
   const seasonKey = String(season);
   const [sort, setSort] = useState<{ k: string; dir: 1 | -1 }>({ k: "Hitting+", dir: -1 });
@@ -98,6 +104,7 @@ export default function Leaderboard({
 
   const rows: Row[] = useMemo(() => {
     return players
+      .filter((r) => !rookieOnly || rookieNames.has(r.player_name))
       .filter((r) => {
         if (!teamFilter) return true;
         const rInfo = info[r.player_name];
@@ -171,6 +178,15 @@ export default function Leaderboard({
             </option>
           ))}
         </select>
+        <label className="flex cursor-pointer select-none items-center gap-1.5 text-xs font-medium text-[var(--dim)]">
+          <input
+            type="checkbox"
+            checked={rookieOnly}
+            onChange={(e) => onChangeRookieOnly(e.target.checked)}
+            className="h-3.5 w-3.5 cursor-pointer accent-[var(--accent)]"
+          />
+          Rookies
+        </label>
         {loadingInfo && (
           <span className="text-[11px] text-[var(--dimmer)]">
             loading teams and positions ({resolvedCount}/{names.length})...
