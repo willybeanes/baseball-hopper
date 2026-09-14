@@ -2,12 +2,13 @@ import IframeEmbed from "@/components/IframeEmbed";
 
 export const metadata = { title: "Percentile Compare — Baseball Hopper" };
 
-export default function ComparePage({
+export default async function ComparePage({
   searchParams,
 }: {
-  searchParams?: Record<string, string>;
+  searchParams?: Promise<Record<string, string>>;
 }) {
-  const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
+  const params = await searchParams ?? {};
+  const qs = new URLSearchParams(params).toString();
   return (
     <IframeEmbed
       base="/compare-app/index.html"

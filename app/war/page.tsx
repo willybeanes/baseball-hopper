@@ -2,12 +2,13 @@ import IframeEmbed from "@/components/IframeEmbed";
 
 export const metadata = { title: "WAR Breakdown — Baseball Hopper" };
 
-export default function WarPage({
+export default async function WarPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string>;
+  searchParams?: Promise<Record<string, string>>;
 }) {
-  const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
+  const params = await searchParams ?? {};
+  const qs = new URLSearchParams(params).toString();
   return (
     <IframeEmbed
       base="/war-app/index.html"

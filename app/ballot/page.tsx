@@ -2,12 +2,13 @@ import IframeEmbed from "@/components/IframeEmbed";
 
 export const metadata = { title: "All-Star Ballot — Baseball Hopper" };
 
-export default function BallotPage({
+export default async function BallotPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string>;
+  searchParams?: Promise<Record<string, string>>;
 }) {
-  const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
+  const params = await searchParams ?? {};
+  const qs = new URLSearchParams(params).toString();
   return (
     <IframeEmbed
       base="/ballot-app/index.html"

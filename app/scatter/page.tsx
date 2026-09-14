@@ -2,12 +2,13 @@ import IframeEmbed from "@/components/IframeEmbed";
 
 export const metadata = { title: "Scatter Plot — Baseball Hopper" };
 
-export default function ScatterPage({
+export default async function ScatterPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string>;
+  searchParams?: Promise<Record<string, string>>;
 }) {
-  const qs = searchParams ? new URLSearchParams(searchParams).toString() : "";
+  const params = await searchParams ?? {};
+  const qs = new URLSearchParams(params).toString();
   return (
     <IframeEmbed
       base="/scatter-app/index.html"
