@@ -29,13 +29,13 @@ const NAV_GROUPS = [
   {
     label: "More",
     tools: [
-      { label: "Manager Hook Efficiency", href: "/manager-hook", external: false },
       { label: "Rolling Chart", href: "/rolling", external: false },
       { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
       { label: "xR Philosophy", href: "/xr", external: false },
       { label: "All-Star Ballot", href: "/ballot", external: false },
       { label: "The Dingy", href: "/dingy", external: false },
+      { label: "Hook Efficiency", href: "/manager-hook", external: false },
     ],
   },
 ];
