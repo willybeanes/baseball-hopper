@@ -34,7 +34,7 @@ let preloadPromise: Promise<void> | null = null;
 
 function preloadStaticInfo(): Promise<void> {
   if (!preloadPromise) {
-    preloadPromise = fetch("/data/player_info.json")
+    preloadPromise = fetch("https://hitting-plus.vercel.app/data/player_info.json")
       .then((res) => (res.ok ? res.json() : {}))
       .then((data: Record<string, MlbInfo>) => {
         for (const [name, info] of Object.entries(data)) {

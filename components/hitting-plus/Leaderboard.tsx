@@ -98,7 +98,13 @@ export default function Leaderboard({
 
   const rows: Row[] = useMemo(() => {
     return players
-      .filter((r) => !teamFilter || (info[r.player_name]?.teamsBySeason?.[seasonKey]?.includes(teamFilter) ?? false))
+      .filter((r) => {
+        if (!teamFilter) return true;
+        const rInfo = info[r.player_name];
+        const seasonTeams = rInfo?.teamsBySeason?.[seasonKey];
+        if (seasonTeams) return seasonTeams.includes(teamFilter);
+        return rInfo?.team === teamFilter; // fallback for players absent from the snapshot
+      })
       .filter((r) => !posFilter || info[r.player_name]?.position === posFilter)
       .map((r) => {
         const hp = pct["Hitting+"](r["Hitting+"]);
