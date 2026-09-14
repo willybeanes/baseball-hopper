@@ -5,7 +5,8 @@
       "name": "baseball-hopper",
       "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "dev"],
-      "port": 3003
+      "port": 3003,
+    "autoPort": true
     }
   ]
 }

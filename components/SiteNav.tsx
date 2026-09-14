@@ -15,6 +15,7 @@ const NAV_GROUPS = [
     tools: [
       { label: "Battery Splits", href: "/battery", external: false },
       { label: "Stuff Splits", href: "/stuff/platoon", external: false },
+      { label: "Hook Efficiency", href: "/hook", external: false },
       { label: "Percentile Compare", href: "/compare?tab=pitcher", external: false },
     ],
   },
@@ -28,6 +29,7 @@ const NAV_GROUPS = [
   {
     label: "More",
     tools: [
+      { label: "Manager Hook Efficiency", href: "/manager-hook", external: false },
       { label: "Rolling Chart", href: "/rolling", external: false },
       { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
