@@ -46,12 +46,16 @@ function effBarColor(val: number): string {
 }
 
 function headshotUrl(mlbamId: number): string {
-  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_120,q_auto:best/v1/people/${mlbamId}/headshot/67/current`
+  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:83:current.png/ar_1:1,c_pad,b_auto:border/r_max/w_120,q_auto:best/v1/people/${mlbamId}/headshot/83/coach/current`
 }
+
+type StartSortCol = 'game_date' | 'pitcher_name' | 'hook_efficiency' | 'pts_left' | 'actual_gsv2' | 'perfect_gsv2'
 
 function StartDetailRows({ managerName, season }: { managerName: string; season: number }) {
   const [starts, setStarts] = useState<StartRow[] | null>(null)
   const [loading, setLoading] = useState(true)
+  const [sortCol, setSortCol] = useState<StartSortCol>('game_date')
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc')
 
   useEffect(() => {
     setLoading(true)
@@ -61,34 +65,69 @@ function StartDetailRows({ managerName, season }: { managerName: string; season:
       .catch(() => { setStarts([]); setLoading(false) })
   }, [managerName, season])
 
+  function handleSort(col: StartSortCol) {
+    if (sortCol === col) {
+      setSortDir(d => d === 'desc' ? 'asc' : 'desc')
+    } else {
+      setSortCol(col)
+      setSortDir(col === 'pts_left' ? 'asc' : 'desc')
+    }
+  }
+
   if (loading) {
     return (
       <tr className="bg-[#faf8f5]">
-        <td colSpan={8} className="px-6 py-3 text-xs text-[#aaa]">Loading…</td>
+        <td colSpan={9} className="px-6 py-3 text-xs text-[#aaa]">Loading…</td>
       </tr>
     )
   }
   if (!starts || starts.length === 0) {
     return (
       <tr className="bg-[#faf8f5]">
-        <td colSpan={8} className="px-6 py-3 text-xs text-[#aaa]">No starts found.</td>
+        <td colSpan={9} className="px-6 py-3 text-xs text-[#aaa]">No starts found.</td>
       </tr>
     )
   }
 
+  const sorted = [...starts].sort((a, b) => {
+    if (sortCol === 'game_date' || sortCol === 'pitcher_name') {
+      const cmp = a[sortCol].localeCompare(b[sortCol])
+      return sortDir === 'asc' ? cmp : -cmp
+    }
+    const av = sortCol === 'hook_efficiency'
+      ? (a.perfect_gsv2 > 0 ? a.actual_gsv2 / a.perfect_gsv2 : 1)
+      : (a[sortCol] as number)
+    const bv = sortCol === 'hook_efficiency'
+      ? (b.perfect_gsv2 > 0 ? b.actual_gsv2 / b.perfect_gsv2 : 1)
+      : (b[sortCol] as number)
+    return sortDir === 'desc' ? bv - av : av - bv
+  })
+
+  const Arrow = ({ col }: { col: StartSortCol }) => (
+    <span className="ml-0.5 opacity-40">{sortCol === col ? (sortDir === 'desc' ? '↓' : '↑') : '↕'}</span>
+  )
+
+  const SubTh = ({ col, label, right = true }: { col: StartSortCol; label: string; right?: boolean }) => (
+    <td
+      className={`px-3 py-1.5 text-[10px] font-semibold text-[#888] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap ${right ? 'text-right' : ''}`}
+      onClick={() => handleSort(col)}
+    >
+      {label}<Arrow col={col} />
+    </td>
+  )
+
   return (
     <>
-      {/* sub-header */}
       <tr className="bg-[#f4f1ec]">
         <td colSpan={3} />
-        <td className="px-3 py-1.5 text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Date</td>
-        <td className="px-3 py-1.5 text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Pitcher</td>
-        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Hook Eff</td>
-        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Pts Left</td>
-        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Actual</td>
-        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Perfect</td>
+        <SubTh col="game_date" label="Date" right={false} />
+        <SubTh col="pitcher_name" label="Pitcher" right={false} />
+        <SubTh col="hook_efficiency" label="Hook Eff" />
+        <SubTh col="pts_left" label="Pts Left" />
+        <SubTh col="actual_gsv2" label="Actual" />
+        <SubTh col="perfect_gsv2" label="Perfect" />
       </tr>
-      {starts.map((s, i) => {
+      {sorted.map((s, i) => {
         const eff = s.perfect_gsv2 > 0 ? s.actual_gsv2 / s.perfect_gsv2 : 1
         return (
           <tr key={i} className="bg-[#faf8f5] border-b border-[#ede8e1] last:border-b-0 hover:bg-[#f2efe9]">
