@@ -48,27 +48,34 @@ def pa_delta(event_type, is_out, rbi):
     hits = 1 if event_type in ('single', 'double', 'triple', 'home_run') else 0
     return outs, k, bb, hits, rbi, hr  # rbi as runs proxy
 
-# ── step 1: build team → (manager_name, manager_mlbam_id) lookup ───────────────
-print("Fetching team rosters for managers…")
+# ── step 1: build team metadata and per-date manager cache ─────────────────────
+print("Fetching team list…")
 teams_data = mlb("/teams", sportId=1, season=SEASON)
-team_manager: dict[int, tuple[str, int]] = {}   # teamId → (name, mlbam_id)
-team_abbr: dict[int, str] = {}
+team_abbr: dict[int, str] = {t["id"]: t.get("abbreviation", "???") for t in teams_data["teams"]}
 
-for team in teams_data["teams"]:
-    tid = team["id"]
-    team_abbr[tid] = team.get("abbreviation", "???")
+# Cache: (team_id, date_str) → (manager_name, mlbam_id)
+_mgr_cache: dict[tuple[int, str], tuple[str, int] | None] = {}
+
+def get_manager(team_id: int, date: str) -> tuple[str, int] | None:
+    """Look up manager for a team on a specific date. Cached to avoid repeated API calls."""
+    key = (team_id, date)
+    if key in _mgr_cache:
+        return _mgr_cache[key]
     time.sleep(SLEEP)
     try:
-        roster = mlb(f"/teams/{tid}/roster", rosterType="coach", season=SEASON)
+        roster = mlb(f"/teams/{team_id}/roster", rosterType="coach", season=SEASON, date=date)
         for entry in roster.get("roster", []):
-            if entry.get("jobId", "").upper() in ("MNGR",) or entry.get("job", "").upper() == "MANAGER":
+            if entry.get("jobId", "").upper() == "MNGR" or entry.get("job", "").upper() == "MANAGER":
                 person = entry["person"]
-                team_manager[tid] = (person["fullName"], person["id"])
-                break
+                result = (person["fullName"], person["id"])
+                _mgr_cache[key] = result
+                return result
     except Exception as e:
-        print(f"  Warning: couldn't fetch manager for team {tid}: {e}")
+        print(f"  Warning: manager lookup failed team={team_id} date={date}: {e}")
+    _mgr_cache[key] = None
+    return None
 
-print(f"  {len(team_manager)} managers found")
+print(f"  {len(team_abbr)} teams loaded (managers fetched per-game date)")
 
 # ── step 2: fetch schedule ──────────────────────────────────────────────────────
 print("Fetching 2026 schedule…")
@@ -155,7 +162,7 @@ for i, (gk, game_date) in enumerate(game_entries):
 
     for (pitcher_id, half), s in sp_running.items():
         team_id = side_team[half]
-        mgr_info = team_manager.get(team_id)
+        mgr_info = get_manager(team_id, game_date)
         if not mgr_info:
             continue
         manager_name, mgr_mlbam = mgr_info
