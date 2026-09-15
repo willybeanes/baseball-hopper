@@ -72,9 +72,15 @@ export default function SiteNav() {
           <span className="font-bold text-[15px] tracking-tight group-hover:text-[var(--accent)] transition-colors">
             Baseball Hopper
           </span>
-          <span className="hidden sm:inline text-[11px] text-[var(--dimmer)] ml-0.5 font-normal">
+          <a
+            href="https://ballsandsticks.beehiiv.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="hidden sm:inline text-[11px] text-[var(--dimmer)] ml-0.5 font-normal hover:text-[var(--accent)] transition-colors"
+          >
             · Balls &amp; Sticks
-          </span>
+          </a>
         </a>
 
         {/* Desktop nav groups */}
