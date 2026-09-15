@@ -46,7 +46,7 @@ function effBarColor(val: number): string {
 }
 
 function headshotUrl(mlbamId: number): string {
-  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:83:current.png/ar_1:1,c_pad,b_auto:border/r_max/w_120,q_auto:best/v1/people/${mlbamId}/headshot/83/coach/current`
+  return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:83:current.png/w_144,q_auto:best/v1/people/${mlbamId}/headshot/83/coach/current`
 }
 
 type StartSortCol = 'game_date' | 'pitcher_name' | 'hook_efficiency' | 'pts_left' | 'actual_gsv2' | 'perfect_gsv2'
