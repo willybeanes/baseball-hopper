@@ -55,7 +55,7 @@ function StartDetailRows({ managerName, season }: { managerName: string; season:
   const [starts, setStarts] = useState<StartRow[] | null>(null)
   const [loading, setLoading] = useState(true)
   const [sortCol, setSortCol] = useState<StartSortCol>('game_date')
-  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc')
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc')
 
   useEffect(() => {
     setLoading(true)
