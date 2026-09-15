@@ -107,18 +107,28 @@ export default function RollingChart({
   }
 
   const n = log.dates.length;
-  const xs = log.dates.map((_, i) => ML + (i / (n - 1)) * CW);
+  // Use calendar-time x positions so gaps (e.g. IL stints) show as whitespace
+  // and month labels stay proportionally spaced.
+  const timestamps = log.dates.map((d) => new Date(d).getTime());
+  const minT = timestamps[0];
+  const maxT = timestamps[n - 1];
+  const span = maxT - minT || 1;
+  const xs = timestamps.map((t) => ML + ((t - minT) / span) * CW);
 
-  // Month tick positions
+  // Month tick positions — skip any label that would overlap the previous one.
   const monthTicks: { x: number; label: string }[] = [];
   let lastMonth = "";
+  let lastTickX = -Infinity;
+  const MIN_TICK_GAP = 28; // SVG units — wide enough for a 3-char month abbreviation
   for (let i = 0; i < n; i++) {
     const m = log.dates[i].slice(0, 7); // "2026-04"
     if (m !== lastMonth) {
       lastMonth = m;
-      const [, mo] = m.split("-");
       const label = new Date(`${m}-15`).toLocaleString("en-US", { month: "short" });
-      monthTicks.push({ x: xs[i], label });
+      if (xs[i] - lastTickX >= MIN_TICK_GAP) {
+        monthTicks.push({ x: xs[i], label });
+        lastTickX = xs[i];
+      }
     }
   }
 
