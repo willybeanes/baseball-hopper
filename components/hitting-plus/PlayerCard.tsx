@@ -53,10 +53,11 @@ export default function PlayerCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const [gamelog, setGamelog] = useState<Record<string, unknown> | null | "loading">("loading");
 
-  // Fetch gamelog for this player+season
+  // Fetch gamelog for this player+season — use the absolute hitting-plus URL so
+  // we always get live data rather than a stale static copy bundled in this app.
   useEffect(() => {
     setGamelog("loading");
-    fetch(`/data/gamelogs_${d.game_year}.json`)
+    fetch(`https://hitting-plus.vercel.app/data/gamelogs_${d.game_year}.json`)
       .then((r) => r.json())
       .then((data) => setGamelog(data?.players?.[d.player_name] ?? null))
       .catch(() => setGamelog(null));
