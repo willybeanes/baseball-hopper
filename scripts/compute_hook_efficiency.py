@@ -65,7 +65,7 @@ def get_manager(team_id: int, date: str) -> tuple[str, int] | None:
     try:
         roster = mlb(f"/teams/{team_id}/roster", rosterType="coach", season=SEASON, date=date)
         for entry in roster.get("roster", []):
-            if entry.get("jobId", "").upper() == "MNGR" or entry.get("job", "").upper() == "MANAGER":
+            if entry.get("jobId", "").upper() in ("MNGR", "NTRM") or "manager" in entry.get("job", "").lower():
                 person = entry["person"]
                 result = (person["fullName"], person["id"])
                 _mgr_cache[key] = result
