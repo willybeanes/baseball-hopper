@@ -347,7 +347,11 @@ export default async function HomePage() {
                 {hittingLeaders.map((p, i) => {
                   const shot = mlbHeadshot(p.player_name);
                   return (
-                    <div key={p.player_name} className="flex items-center gap-2 py-1.5">
+                    <Link
+                      key={p.player_name}
+                      href={`/hitting-plus?tab=card&player=${encodeURIComponent(p.player_name)}&season=2026`}
+                      className="flex items-center gap-2 py-1.5 hover:bg-[var(--track)] -mx-1 px-1 rounded-lg transition-colors group/row"
+                    >
                       <span className="text-[10px] text-[var(--dimmer)] w-4 text-right shrink-0">{i + 1}</span>
                       {shot ? (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -355,12 +359,12 @@ export default async function HomePage() {
                       ) : (
                         <div className="w-7 h-7 rounded-full bg-[var(--track)] shrink-0" />
                       )}
-                      <span className="text-xs text-[var(--text)] shrink-0">{displayName(p.player_name)}</span>
+                      <span className="text-xs text-[var(--text)] shrink-0 group-hover/row:text-[var(--accent)] transition-colors">{displayName(p.player_name)}</span>
                       <span className="flex-1 text-xs text-[var(--dimmer)] truncate px-2">
                         {TEAM_NAMES[playerInfo[p.player_name]?.team ?? ""] ?? playerInfo[p.player_name]?.team ?? ""}
                       </span>
                       <span className="text-xs font-semibold text-[var(--text)]">{fmt(p["Hitting+"], 0)}</span>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
