@@ -76,14 +76,14 @@ sched = mlb(
     "/schedule",
     sportId=1, season=SEASON, gameType="R",
     startDate=f"{SEASON}-03-01", endDate=f"{SEASON}-10-05",
-    fields="dates,games,gamePk,status,abstractGameState,officialDate",
 )
 
 game_entries = []  # list of (game_pk, official_date)
 for date in sched.get("dates", []):
     for g in date.get("games", []):
         if g.get("status", {}).get("abstractGameState") == "Final":
-            game_entries.append((g["gamePk"], date.get("date", "")))
+            game_date = g.get("officialDate") or date.get("date", "")
+            game_entries.append((g["gamePk"], game_date))
 
 print(f"  {len(game_entries)} final games to process")
 
@@ -149,8 +149,8 @@ for i, (gk, game_date) in enumerate(game_entries):
         continue
 
     side_team = {
-        "top":    box["teams"]["away"]["team"]["id"],
-        "bottom": box["teams"]["home"]["team"]["id"],
+        "top":    box["teams"]["home"]["team"]["id"],   # home SP pitches top half
+        "bottom": box["teams"]["away"]["team"]["id"],   # away SP pitches bottom half
     }
 
     for (pitcher_id, half), s in sp_running.items():
