@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
   const db = createServiceClient()
   const { data, error } = await db
     .from('blame_split_games')
-    .select('game_date, team_score, opponent_name, opponent_score, is_home, innings_played')
+    .select('game_pk, game_date, team_score, opponent_name, opponent_score, is_home, innings_played')
     .eq('season', season)
     .eq('team_id', teamId)
     .eq('category', category)

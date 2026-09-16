@@ -19,6 +19,7 @@ interface TeamRow {
 }
 
 interface GameRow {
+  game_pk: number
   game_date: string
   team_score: number
   opponent_name: string
@@ -98,9 +99,14 @@ function GameDetailRows({ teamId, season, category }: { teamId: number; season: 
             <span className="text-[#aaa] mr-1">{g.is_home ? 'vs' : '@'}</span>
             {nickName(g.opponent_name)}
           </span>
-          <span className={`text-xs font-mono w-16 text-right font-semibold ${isWin ? 'text-[#1a7a3a]' : 'text-[#c0392b]'}`}>
+          <a
+            href={`https://www.mlb.com/gameday/${g.game_pk}/final/box-score`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`text-xs font-mono w-16 text-right font-semibold hover:underline ${isWin ? 'text-[#1a7a3a]' : 'text-[#c0392b]'}`}
+          >
             {isWin ? 'W' : 'L'} {g.team_score}–{g.opponent_score}
-          </span>
+          </a>
           <span className="text-[10px] font-mono text-[#aaa] w-8 text-center">
             {g.innings_played > 9 ? `F/${g.innings_played}` : ''}
           </span>
