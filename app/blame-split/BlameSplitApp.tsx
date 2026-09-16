@@ -206,7 +206,7 @@ export default function BlameSplitApp() {
           >
             The One-Run Whodunit
           </a>
-          {' '}· Balls &amp; Sticks / Razzball
+          {' '}· Razzball
         </p>
       </div>
 
