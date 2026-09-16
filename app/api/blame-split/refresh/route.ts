@@ -67,9 +67,23 @@ function classifyGame(game: Game): Array<{ teamId: number; team: TeamRef; catego
   ]
 }
 
+async function fetchTeamAbbrs(): Promise<Map<number, string>> {
+  const res = await fetch(`${MLB_API}/teams?sportId=1`, { cache: 'no-store' })
+  if (!res.ok) return new Map()
+  const data = await res.json()
+  const map = new Map<number, string>()
+  for (const t of data.teams ?? []) {
+    map.set(t.id, t.abbreviation ?? '')
+  }
+  return map
+}
+
 async function processSeason(season: number): Promise<TeamStats[]> {
-  const url = `${MLB_API}/schedule?sportId=1&season=${season}&gameType=R&hydrate=linescore&language=en`
-  const res = await fetch(url, { cache: 'no-store' })
+  const [abbrMap, scheduleRes] = await Promise.all([
+    fetchTeamAbbrs(),
+    fetch(`${MLB_API}/schedule?sportId=1&season=${season}&gameType=R&hydrate=linescore&language=en`, { cache: 'no-store' }),
+  ])
+  const res = scheduleRes
   if (!res.ok) throw new Error(`MLB API ${res.status} for season ${season}`)
 
   const data = await res.json()
@@ -87,7 +101,7 @@ async function processSeason(season: number): Promise<TeamStats[]> {
             season,
             team_id: teamId,
             team_name: team.name,
-            team_abbr: team.abbreviation,
+            team_abbr: abbrMap.get(teamId) ?? team.name.split(' ').pop() ?? '',
             bullpen_win: 0, lineup_comeback_win: 0, coin_flip_win: 0,
             bullpen_loss: 0, lineup_loss: 0, coin_flip_loss: 0,
           })
