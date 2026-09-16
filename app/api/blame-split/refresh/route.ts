@@ -107,9 +107,10 @@ export async function GET(req: NextRequest) {
   }
 
   const { searchParams } = new URL(req.url)
-  // ?all=true does a full backfill of all seasons; default refreshes current season only
+  // ?season=2024 targets one season; ?all=true does 2024+2025+2026; default is 2026
+  const seasonParam = searchParams.get('season')
   const all = searchParams.get('all') === 'true'
-  const seasons = all ? [2024, 2025, 2026] : [2026]
+  const seasons = all ? [2024, 2025, 2026] : seasonParam ? [parseInt(seasonParam)] : [2026]
 
   const db = createServiceClient()
   const results: Record<number, number> = {}
