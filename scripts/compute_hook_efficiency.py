@@ -13,11 +13,12 @@ Usage:
 import requests
 import time
 import sys
+import os
 from supabase import create_client
 
 # ── config ─────────────────────────────────────────────────────────────────────
 SUPABASE_URL = "https://moflaqmbamyjlpototzt.supabase.co"
-SUPABASE_KEY = sys.argv[1] if len(sys.argv) > 1 else input("Supabase service key: ")
+SUPABASE_KEY = sys.argv[1] if len(sys.argv) > 1 else os.environ.get('SUPABASE_SERVICE_KEY') or input("Supabase service key: ")
 SEASON = 2026
 SLEEP = 0.15
 

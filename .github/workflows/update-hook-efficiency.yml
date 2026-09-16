@@ -1,0 +1,26 @@
+name: Update Hook Efficiency
+
+on:
+  schedule:
+    # 9am UTC = 4am ET / 5am PT — all previous night's games are final
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests supabase
+
+      - name: Run compute script
+        env:
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: python scripts/compute_hook_efficiency.py
