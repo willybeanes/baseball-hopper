@@ -115,16 +115,20 @@ export async function GET(req: NextRequest) {
   const db = createServiceClient()
   const results: Record<number, number> = {}
 
-  for (const season of seasons) {
-    const rows = await processSeason(season)
+  try {
+    for (const season of seasons) {
+      const rows = await processSeason(season)
 
-    const upsertRows = rows.map(r => ({ ...r, updated_at: new Date().toISOString() }))
-    const { error } = await db
-      .from('blame_split_teams')
-      .upsert(upsertRows, { onConflict: 'season,team_id' })
+      const upsertRows = rows.map(r => ({ ...r, updated_at: new Date().toISOString() }))
+      const { error } = await db
+        .from('blame_split_teams')
+        .upsert(upsertRows, { onConflict: 'season,team_id' })
 
-    if (error) throw new Error(`Supabase upsert failed for ${season}: ${error.message}`)
-    results[season] = rows.length
+      if (error) return NextResponse.json({ error: `Supabase upsert failed for ${season}: ${error.message}` }, { status: 500 })
+      results[season] = rows.length
+    }
+  } catch (err) {
+    return NextResponse.json({ error: String(err) }, { status: 500 })
   }
 
   return NextResponse.json({ ok: true, seasons: results, refreshed_at: new Date().toISOString() })
