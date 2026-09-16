@@ -198,13 +198,22 @@ export async function GET(req: NextRequest) {
         .upsert(teamStats.map(r => ({ ...r, updated_at: new Date().toISOString() })), { onConflict: 'season,team_id' })
       if (teamsErr) return NextResponse.json({ error: `Teams upsert ${season}: ${teamsErr.message}` }, { status: 500 })
 
-      // Delete existing game records for this season then re-insert (cleaner than upsert for full refresh)
+      // Deduplicate by (game_pk, team_id) — rescheduled games can appear twice in the schedule feed
+      const seen = new Set<string>()
+      const dedupedGames = gameRecords.filter(r => {
+        const key = `${r.game_pk}:${r.team_id}`
+        if (seen.has(key)) return false
+        seen.add(key)
+        return true
+      })
+
+      // Delete existing records for this season then re-insert
       const { error: delErr } = await db.from('blame_split_games').delete().eq('season', season)
       if (delErr) return NextResponse.json({ error: `Games delete ${season}: ${delErr.message}` }, { status: 500 })
 
       // Insert in batches of 500
-      for (let i = 0; i < gameRecords.length; i += 500) {
-        const { error: insertErr } = await db.from('blame_split_games').insert(gameRecords.slice(i, i + 500))
+      for (let i = 0; i < dedupedGames.length; i += 500) {
+        const { error: insertErr } = await db.from('blame_split_games').insert(dedupedGames.slice(i, i + 500))
         if (insertErr) return NextResponse.json({ error: `Games insert ${season}: ${insertErr.message}` }, { status: 500 })
       }
 
