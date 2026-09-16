@@ -87,16 +87,21 @@ function classifyGame(game: Game): ClassifiedEntry[] | null {
   }
 
   const losingIsAway = !awayWon
-  let cumAway = 0, cumHome = 0, losingTeamEverLed = false
+  let cumAway = 0, cumHome = 0
+  // Bullpen blame: losing team was tied or ahead at the end of any inning 6+
+  // Lineup blame: losing team was always trailing in the late game
+  let losingTeamCompetitiveLate = false
   for (const inning of innings) {
     cumAway += inning.away?.runs ?? 0
     cumHome += inning.home?.runs ?? 0
-    if (losingIsAway && cumAway > cumHome) { losingTeamEverLed = true; break }
-    else if (!losingIsAway && cumHome > cumAway) { losingTeamEverLed = true; break }
+    if (inning.num >= 6) {
+      if (losingIsAway && cumAway >= cumHome) { losingTeamCompetitiveLate = true; break }
+      else if (!losingIsAway && cumHome >= cumAway) { losingTeamCompetitiveLate = true; break }
+    }
   }
 
-  const lossCategory: Category = losingTeamEverLed ? 'bullpen_loss' : 'lineup_loss'
-  const winCategory: Category = losingTeamEverLed ? 'lineup_comeback_win' : 'bullpen_win'
+  const lossCategory: Category = losingTeamCompetitiveLate ? 'bullpen_loss' : 'lineup_loss'
+  const winCategory: Category = losingTeamCompetitiveLate ? 'lineup_comeback_win' : 'bullpen_win'
   const losingTeam = losingIsAway ? awayTeam : homeTeam
   const winningTeam = losingIsAway ? homeTeam : awayTeam
   const loserScore = losingIsAway ? awayScore : homeScore
