@@ -196,6 +196,18 @@ export default function BlameSplitApp() {
           The {season} one-run whodunit — who won and lost each team's close games, and why.{' '}
           <span className="text-[var(--dimmer)]">Click any segment to see the games.</span>
         </p>
+        <p className="text-xs text-[var(--dimmer)] mt-1">
+          Methodology from{' '}
+          <a
+            href="https://razzball.com/stat-chat-blame-split-and-the-one-run-whodunit/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--accent)] hover:underline"
+          >
+            The One-Run Whodunit
+          </a>
+          {' '}· Balls &amp; Sticks / Razzball
+        </p>
       </div>
 
       <div className="flex flex-wrap gap-3 mb-6 items-center">
