@@ -24,6 +24,7 @@ const NAV_GROUPS = [
     tools: [
       { label: "Play-by-Play", href: "/pbp", external: false },
       { label: "Opposing Probables", href: "/probables", external: false },
+      { label: "Blame Split", href: "/blame-split", external: false },
     ],
   },
   {
