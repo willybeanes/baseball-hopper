@@ -7,20 +7,46 @@ interface TeamRow {
   team_id: number
   team_name: string
   team_abbr: string
+  bullpen_win: number
+  lineup_comeback_win: number
+  coin_flip_win: number
+  bullpen_loss: number
+  lineup_loss: number
+  coin_flip_loss: number
+  one_run_wins: number
   one_run_losses: number
-  bullpen_blame: number
-  lineup_blame: number
-  bullpen_pct: number
-  lineup_pct: number
+  net: number
 }
 
-type SortCol = 'one_run_losses' | 'bullpen_pct' | 'lineup_pct' | 'team_name'
+const HATCH_RED = `repeating-linear-gradient(-45deg, #c0392b, #c0392b 2px, rgba(192,57,43,0.15) 2px, rgba(192,57,43,0.15) 7px)`
+const HATCH_GREEN = `repeating-linear-gradient(-45deg, #1a7a3a, #1a7a3a 2px, rgba(26,122,58,0.15) 2px, rgba(26,122,58,0.15) 7px)`
 
-function blameBarColors(bullpenPct: number) {
-  return {
-    bullpen: bullpenPct >= 60 ? '#c0392b' : bullpenPct >= 45 ? '#c07a2b' : '#7a9a2a',
-    lineup: bullpenPct >= 60 ? '#7a9a2a' : bullpenPct >= 45 ? '#555' : '#1a7a3a',
-  }
+function nickName(teamName: string): string {
+  if (teamName.includes('Red Sox')) return 'Red Sox'
+  if (teamName.includes('White Sox')) return 'White Sox'
+  if (teamName.includes('Blue Jays')) return 'Blue Jays'
+  return teamName.split(' ').pop() ?? teamName
+}
+
+function Seg({
+  count, width, style, label, title,
+}: {
+  count: number; width: number; style: React.CSSProperties; label?: string; title?: string
+}) {
+  if (count === 0) return null
+  return (
+    <div
+      className="relative h-full flex items-center justify-center overflow-hidden shrink-0"
+      style={{ width, ...style }}
+      title={title}
+    >
+      {width >= 20 && (
+        <span className="text-white text-[10px] font-bold leading-none select-none drop-shadow-sm">
+          {count}
+        </span>
+      )}
+    </div>
+  )
 }
 
 export default function BlameSplitApp() {
@@ -28,8 +54,6 @@ export default function BlameSplitApp() {
   const sp = useSearchParams()
 
   const [season, setSeason] = useState(parseInt(sp.get('season') ?? '2026'))
-  const [sortCol, setSortCol] = useState<SortCol>((sp.get('sort') as SortCol) ?? 'one_run_losses')
-  const [sortDir, setSortDir] = useState<'asc' | 'desc'>((sp.get('dir') as 'asc' | 'desc') ?? 'desc')
   const [rows, setRows] = useState<TeamRow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -52,204 +76,153 @@ export default function BlameSplitApp() {
   useEffect(() => {
     const params = new URLSearchParams()
     if (season !== 2026) params.set('season', String(season))
-    if (sortCol !== 'one_run_losses') params.set('sort', sortCol)
-    if (sortDir !== 'desc') params.set('dir', sortDir)
     const q = params.toString()
     router.replace(q ? `/blame-split?${q}` : '/blame-split', { scroll: false })
-  }, [season, sortCol, sortDir, router])
+  }, [season, router])
 
-  function handleSort(col: SortCol) {
-    if (sortCol === col) {
-      setSortDir(d => d === 'desc' ? 'asc' : 'desc')
-    } else {
-      setSortCol(col)
-      setSortDir(col === 'team_name' ? 'asc' : 'desc')
-    }
-  }
+  const maxGames = rows.length
+    ? Math.ceil(Math.max(...rows.map(r => Math.max(r.one_run_wins, r.one_run_losses))) / 5) * 5
+    : 30
 
-  const sorted = [...rows].sort((a, b) => {
-    const av = a[sortCol]
-    const bv = b[sortCol]
-    if (typeof av === 'string' && typeof bv === 'string') {
-      return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av)
-    }
-    return sortDir === 'desc' ? (bv as number) - (av as number) : (av as number) - (bv as number)
-  })
+  const SIDE = 260
+  const toW = (n: number) => Math.round((n / maxGames) * SIDE)
 
-  const SortArrow = ({ col }: { col: SortCol }) => (
-    <span className="ml-0.5 opacity-40">
-      {sortCol === col ? (sortDir === 'desc' ? '↓' : '↑') : '↕'}
-    </span>
-  )
-
-  const Th = ({ col, label, title, align = 'right' }: { col: SortCol; label: string; title?: string; align?: string }) => (
-    <th
-      className={`px-3 py-2.5 text-[10px] font-semibold text-[#888] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap text-${align}`}
-      onClick={() => handleSort(col)}
-      title={title}
-    >
-      {label}<SortArrow col={col} />
-    </th>
-  )
-
-  const totalOneRunLosses = rows.reduce((s, r) => s + r.one_run_losses, 0)
-  const totalBullpen = rows.reduce((s, r) => s + r.bullpen_blame, 0)
-  const totalLineup = rows.reduce((s, r) => s + r.lineup_blame, 0)
-  const leagueBullpenPct = totalOneRunLosses > 0 ? Math.round((totalBullpen / totalOneRunLosses) * 1000) / 10 : 0
-  const leagueLineupPct = totalOneRunLosses > 0 ? Math.round((totalLineup / totalOneRunLosses) * 1000) / 10 : 0
+  // Axis tick values
+  const ticks = Array.from({ length: Math.floor(maxGames / 5) + 1 }, (_, i) => i * 5)
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="mb-6">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight mb-1">Blame Split</h1>
-            <p className="text-sm text-[var(--dim)] max-w-xl">
-              In one-run losses, was the bullpen or the lineup more to blame?
-              Bullpen blame = team had a lead and lost it. Lineup blame = team never led.
-            </p>
-          </div>
-        </div>
-
-        {!loading && !error && rows.length > 0 && (
-          <div className="mt-4 px-4 py-3 bg-[var(--panel)] border border-[var(--rule)] rounded-xl text-xs space-y-2">
-            <p className="text-[var(--dim)]">
-              <span className="font-semibold text-[var(--text)]">League {season}</span>
-              {' — '}
-              {totalOneRunLosses} one-run losses across all teams
-              {' · '}
-              <span className="text-[#c07a2b] font-medium">{leagueBullpenPct}% bullpen blame</span>
-              {' · '}
-              <span className="text-[#1a7a3a] font-medium">{leagueLineupPct}% lineup blame</span>
-            </p>
-            <p className="text-[10px] text-[var(--dimmer)]">
-              Method: parse inning-by-inning linescore via MLB Stats API. If the losing team led at the end of any inning, the bullpen gets the blame; otherwise it falls on the lineup.
-            </p>
-          </div>
-        )}
+    <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="mb-5">
+        <h1 className="text-2xl font-bold tracking-tight mb-1">Blame Split</h1>
+        <p className="text-sm text-[var(--dim)] max-w-2xl">
+          The {season} one-run whodunit — who won and lost each team's close games, and why.
+        </p>
       </div>
 
-      <div className="flex flex-wrap gap-3 mb-5 items-center">
+      <div className="flex flex-wrap gap-3 mb-6 items-center">
         <div className="flex gap-1 bg-[var(--panel)] border border-[var(--rule)] rounded-lg p-0.5">
           {[2024, 2025, 2026].map(y => (
             <button
               key={y}
               onClick={() => setSeason(y)}
               className={`px-3 py-1 text-sm rounded-md transition-colors ${
-                season === y
-                  ? 'bg-[var(--text)] text-white font-medium'
-                  : 'text-[var(--dim)] hover:text-[var(--text)]'
+                season === y ? 'bg-[var(--text)] text-white font-medium' : 'text-[var(--dim)] hover:text-[var(--text)]'
               }`}
             >
               {y}
             </button>
           ))}
         </div>
-
-        {loading
-          ? <span className="text-xs text-[var(--dimmer)]">Loading…</span>
-          : !error && <span className="text-xs text-[var(--dimmer)]">{sorted.length} teams</span>
-        }
+        {loading && <span className="text-xs text-[var(--dimmer)]">Loading…</span>}
+        {!loading && !error && <span className="text-xs text-[var(--dimmer)]">{rows.length} teams</span>}
       </div>
 
       {error ? (
-        <div className="bg-[var(--panel)] border border-[var(--rule)] rounded-xl px-6 py-8 text-center text-sm text-[#c0392b]">
-          {error}
-        </div>
+        <div className="bg-[var(--panel)] border border-[var(--rule)] rounded-xl px-6 py-8 text-center text-sm text-[#c0392b]">{error}</div>
+      ) : loading ? (
+        <div className="bg-[var(--panel)] border border-[var(--rule)] rounded-xl px-6 py-8 text-center text-sm text-[var(--dimmer)]">Loading…</div>
       ) : (
         <div className="bg-[var(--panel)] border border-[var(--rule)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[var(--rule)]">
-                  <th className="w-8 px-3 py-2.5 text-[10px] font-semibold text-[#888] text-right">#</th>
-                  <Th col="team_name" label="Team" align="left" />
-                  <Th col="one_run_losses" label="1RL" title="One-Run Losses" />
-                  <Th col="bullpen_pct" label="Bullpen%" title="Share of 1-run losses where team led and lost it (bullpen blame)" />
-                  <Th col="lineup_pct" label="Lineup%" title="Share of 1-run losses where team never led (lineup blame)" />
-                  <th className="px-3 py-2.5 text-[10px] font-semibold text-[#888] uppercase tracking-wider text-left min-w-[160px]">
-                    Split
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {loading && (
-                  <tr>
-                    <td colSpan={6} className="px-6 py-8 text-center text-sm text-[#aaa]">Loading…</td>
-                  </tr>
-                )}
-                {!loading && sorted.length === 0 && (
-                  <tr>
-                    <td colSpan={6} className="px-6 py-8 text-center text-sm text-[#aaa]">
-                      No data available for {season}.
-                    </td>
-                  </tr>
-                )}
-                {sorted.map((row, i) => {
-                  const colors = blameBarColors(row.bullpen_pct)
-                  const bullpenWidth = `${row.bullpen_pct}%`
-                  const lineupWidth = `${row.lineup_pct}%`
+          {/* Chart title row */}
+          <div className="flex items-center border-b border-[var(--rule)] px-4 py-2.5">
+            <div className="w-28 shrink-0" />
+            <div className="flex items-center" style={{ width: SIDE * 2 + 2 }}>
+              <span className="flex-1 text-center text-[11px] font-semibold text-[var(--dim)] uppercase tracking-wider">← Losses</span>
+              <div className="w-px h-4 bg-[var(--rule)]" />
+              <span className="flex-1 text-center text-[11px] font-semibold text-[var(--dim)] uppercase tracking-wider">Wins →</span>
+            </div>
+            <div className="w-14 shrink-0" />
+          </div>
 
-                  return (
-                    <tr
-                      key={row.team_id}
-                      className="border-b border-[var(--rule)] last:border-b-0 hover:bg-[#f8f5f0] transition-colors"
-                    >
-                      <td className="px-3 py-2.5 text-right text-[11px] text-[#bbb] tabular-nums">{i + 1}</td>
-                      <td className="px-3 py-2.5 font-medium whitespace-nowrap">
-                        <span className="font-mono text-xs text-[#888] mr-2 w-8 inline-block">{row.team_abbr}</span>
-                        <span className="text-[var(--text)]">{row.team_name}</span>
-                      </td>
-                      <td className="px-3 py-2.5 text-right font-mono text-sm font-semibold text-[var(--text)]">
-                        {row.one_run_losses}
-                      </td>
-                      <td className="px-3 py-2.5 text-right">
-                        <span
-                          className="text-sm font-semibold tabular-nums"
-                          style={{ color: row.bullpen_pct >= 55 ? '#c0392b' : row.bullpen_pct >= 45 ? '#c07a2b' : '#7a9a2a' }}
-                        >
-                          {row.bullpen_pct.toFixed(1)}%
-                        </span>
-                        <span className="text-[10px] text-[#bbb] ml-1 tabular-nums">({row.bullpen_blame})</span>
-                      </td>
-                      <td className="px-3 py-2.5 text-right">
-                        <span
-                          className="text-sm font-semibold tabular-nums"
-                          style={{ color: row.lineup_pct >= 60 ? '#1a7a3a' : row.lineup_pct >= 45 ? '#555' : '#c07a2b' }}
-                        >
-                          {row.lineup_pct.toFixed(1)}%
-                        </span>
-                        <span className="text-[10px] text-[#bbb] ml-1 tabular-nums">({row.lineup_blame})</span>
-                      </td>
-                      <td className="px-3 py-2.5">
-                        <div className="flex h-3 w-40 rounded-full overflow-hidden bg-[#e8e4df]">
-                          <div
-                            className="h-full transition-all duration-300"
-                            style={{ width: lineupWidth, background: colors.lineup }}
-                            title={`Lineup: ${row.lineup_pct.toFixed(1)}%`}
-                          />
-                          <div
-                            className="h-full transition-all duration-300"
-                            style={{ width: bullpenWidth, background: colors.bullpen }}
-                            title={`Bullpen: ${row.bullpen_pct.toFixed(1)}%`}
-                          />
-                        </div>
-                        <div className="flex gap-3 mt-0.5">
-                          <span className="text-[9px] text-[#aaa]">lineup ←</span>
-                          <span className="text-[9px] text-[#aaa] ml-auto">→ bullpen</span>
-                        </div>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+          {/* Axis labels */}
+          <div className="flex items-center px-4 pb-1 pt-0.5">
+            <div className="w-28 shrink-0" />
+            <div className="flex items-end" style={{ width: SIDE * 2 + 2 }}>
+              {/* Loss axis (right to left) */}
+              <div className="flex justify-between" style={{ width: SIDE, direction: 'rtl' }}>
+                {ticks.filter(t => t > 0).map(t => (
+                  <span key={t} className="text-[9px] text-[var(--dimmer)] tabular-nums">{t}</span>
+                ))}
+              </div>
+              <div className="w-px" />
+              {/* Win axis (left to right) */}
+              <div className="flex justify-between" style={{ width: SIDE }}>
+                {ticks.filter(t => t > 0).map(t => (
+                  <span key={t} className="text-[9px] text-[var(--dimmer)] tabular-nums">{t}</span>
+                ))}
+              </div>
+            </div>
+            <div className="w-14 shrink-0" />
+          </div>
+
+          {/* Team rows */}
+          <div className="divide-y divide-[var(--rule)]">
+            {rows.map(row => {
+              // Loss segments: from center outward → bullpen_loss, lineup_loss, coin_flip_loss
+              const bpLossW = toW(row.bullpen_loss)
+              const luLossW = toW(row.lineup_loss)
+              const cfLossW = toW(row.coin_flip_loss)
+              // Win segments: from center outward → bullpen_win, lineup_comeback_win, coin_flip_win
+              const bpWinW = toW(row.bullpen_win)
+              const lcWinW = toW(row.lineup_comeback_win)
+              const cfWinW = toW(row.coin_flip_win)
+
+              return (
+                <div key={row.team_id} className="flex items-center px-4 py-[3px] hover:bg-[#f8f5f0] transition-colors">
+                  {/* Team label */}
+                  <div className="w-28 shrink-0 flex items-center justify-end gap-1 pr-2">
+                    <span className="text-[11px] text-[var(--text)] truncate font-medium">{nickName(row.team_name)}</span>
+                    <span className="text-[10px] text-[#bbb] shrink-0">–</span>
+                  </div>
+
+                  {/* Loss bars (flex-row-reverse so they grow left from center) */}
+                  <div className="flex flex-row-reverse items-stretch" style={{ width: SIDE, height: 22 }}>
+                    <Seg count={row.coin_flip_loss} width={cfLossW} style={{ background: '#b0aaa3' }} title={`Extra innings loss (coin flip): ${row.coin_flip_loss}`} />
+                    <Seg count={row.lineup_loss} width={luLossW} style={{ background: HATCH_RED }} title={`Lineup loss (never led): ${row.lineup_loss}`} />
+                    <Seg count={row.bullpen_loss} width={bpLossW} style={{ background: '#c0392b' }} title={`Bullpen loss (blew lead): ${row.bullpen_loss}`} />
+                  </div>
+
+                  {/* Center divider */}
+                  <div className="w-px self-stretch bg-[var(--text)] opacity-40 shrink-0" />
+
+                  {/* Win bars */}
+                  <div className="flex items-stretch" style={{ width: SIDE, height: 22 }}>
+                    <Seg count={row.bullpen_win} width={bpWinW} style={{ background: '#1a7a3a' }} title={`Bullpen win (held lead): ${row.bullpen_win}`} />
+                    <Seg count={row.lineup_comeback_win} width={lcWinW} style={{ background: HATCH_GREEN }} title={`Lineup comeback win: ${row.lineup_comeback_win}`} />
+                    <Seg count={row.coin_flip_win} width={cfWinW} style={{ background: '#b0aaa3' }} title={`Extra innings win (coin flip): ${row.coin_flip_win}`} />
+                  </div>
+
+                  {/* W-L record */}
+                  <div className="w-14 shrink-0 pl-2 text-right">
+                    <span className="text-[11px] font-mono text-[var(--dim)] tabular-nums">
+                      {row.one_run_wins}-{row.one_run_losses}
+                    </span>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Legend */}
+          <div className="flex flex-wrap gap-x-5 gap-y-2 px-4 py-3 border-t border-[var(--rule)]">
+            {[
+              { style: { background: '#1a7a3a' }, label: 'Bullpen win (held lead)' },
+              { style: { background: HATCH_GREEN }, label: 'Lineup comeback win' },
+              { style: { background: '#c0392b' }, label: 'Bullpen loss (blew lead)' },
+              { style: { background: HATCH_RED }, label: 'Lineup loss (never led)' },
+              { style: { background: '#b0aaa3' }, label: 'Extra innings (coin flip)' },
+            ].map(({ style, label }) => (
+              <div key={label} className="flex items-center gap-1.5">
+                <div className="w-4 h-3 rounded-[2px] shrink-0" style={style} />
+                <span className="text-[10px] text-[var(--dim)]">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
-      <p className="mt-4 text-[11px] text-[var(--dimmer)] text-center">
-        Data via MLB Stats API · Regular season only · Bullpen blame = team had lead, lost it · Lineup blame = team never led
+      <p className="mt-3 text-[11px] text-[var(--dimmer)] text-center">
+        Data via MLB Stats API · Regular season only · Sorted by 1-run W–L record
       </p>
     </div>
   )
