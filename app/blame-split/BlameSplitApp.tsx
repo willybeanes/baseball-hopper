@@ -100,7 +100,7 @@ function GameDetailRows({ teamId, season, category }: { teamId: number; season: 
             {nickName(g.opponent_name)}
           </span>
           <a
-            href={`https://www.mlb.com/gameday/${g.game_pk}/final/box-score`}
+            href={`https://www.mlb.com/gameday/${g.game_pk}`}
             target="_blank"
             rel="noopener noreferrer"
             className={`text-xs font-mono w-16 text-right font-semibold hover:underline ${isWin ? 'text-[#1a7a3a]' : 'text-[#c0392b]'}`}
