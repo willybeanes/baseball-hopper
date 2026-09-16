@@ -29,9 +29,9 @@ function nickName(teamName: string): string {
 }
 
 function Seg({
-  count, width, style, label, title,
+  count, width, style, title, darkText,
 }: {
-  count: number; width: number; style: React.CSSProperties; label?: string; title?: string
+  count: number; width: number; style: React.CSSProperties; title?: string; darkText?: boolean
 }) {
   if (count === 0) return null
   return (
@@ -41,7 +41,7 @@ function Seg({
       title={title}
     >
       {width >= 20 && (
-        <span className="text-white text-[10px] font-bold leading-none select-none drop-shadow-sm">
+        <span className={`text-[10px] font-bold leading-none select-none ${darkText ? 'text-[#222]' : 'text-white drop-shadow-sm'}`}>
           {count}
         </span>
       )}
@@ -177,8 +177,8 @@ export default function BlameSplitApp() {
 
                   {/* Loss bars (flex-row-reverse so they grow left from center) */}
                   <div className="flex flex-row-reverse items-stretch" style={{ width: SIDE, height: 22 }}>
-                    <Seg count={row.coin_flip_loss} width={cfLossW} style={{ background: '#b0aaa3' }} title={`Extra innings loss (coin flip): ${row.coin_flip_loss}`} />
-                    <Seg count={row.lineup_loss} width={luLossW} style={{ background: HATCH_RED }} title={`Lineup loss (never led): ${row.lineup_loss}`} />
+                    <Seg count={row.coin_flip_loss} width={cfLossW} style={{ background: '#b0aaa3' }} title={`Extra innings loss (coin flip): ${row.coin_flip_loss}`} darkText />
+                    <Seg count={row.lineup_loss} width={luLossW} style={{ background: HATCH_RED }} title={`Lineup loss (never led): ${row.lineup_loss}`} darkText />
                     <Seg count={row.bullpen_loss} width={bpLossW} style={{ background: '#c0392b' }} title={`Bullpen loss (blew lead): ${row.bullpen_loss}`} />
                   </div>
 
@@ -188,8 +188,8 @@ export default function BlameSplitApp() {
                   {/* Win bars */}
                   <div className="flex items-stretch" style={{ width: SIDE, height: 22 }}>
                     <Seg count={row.bullpen_win} width={bpWinW} style={{ background: '#1a7a3a' }} title={`Bullpen win (held lead): ${row.bullpen_win}`} />
-                    <Seg count={row.lineup_comeback_win} width={lcWinW} style={{ background: HATCH_GREEN }} title={`Lineup comeback win: ${row.lineup_comeback_win}`} />
-                    <Seg count={row.coin_flip_win} width={cfWinW} style={{ background: '#b0aaa3' }} title={`Extra innings win (coin flip): ${row.coin_flip_win}`} />
+                    <Seg count={row.lineup_comeback_win} width={lcWinW} style={{ background: HATCH_GREEN }} title={`Lineup comeback win: ${row.lineup_comeback_win}`} darkText />
+                    <Seg count={row.coin_flip_win} width={cfWinW} style={{ background: '#b0aaa3' }} title={`Extra innings win (coin flip): ${row.coin_flip_win}`} darkText />
                   </div>
 
                   {/* W-L record */}
