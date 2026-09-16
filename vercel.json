@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/blame-split/refresh",
+      "schedule": "0 7 * * *"
+    }
+  ]
+}
