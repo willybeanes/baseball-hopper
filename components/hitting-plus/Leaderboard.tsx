@@ -142,6 +142,37 @@ export default function Leaderboard({
     setSort((s) => (s.k === k ? { k, dir: (s.dir * -1) as 1 | -1 } : { k, dir: k === "player_name" ? 1 : -1 }));
   }
 
+  function downloadCSV() {
+    const CSV_COLS: { key: keyof Row | "gap"; label: string }[] = [
+      { key: "player_name", label: "Name" },
+      { key: "pa", label: "PA" },
+      { key: "Hitting+", label: "Hitting+" },
+      { key: "Decision+", label: "Decision+" },
+      { key: "Timing+", label: "Timing+" },
+      { key: "Contact+", label: "Contact+" },
+      { key: "Power+", label: "Power+" },
+      { key: "xwoba", label: "xwOBA" },
+      { key: "wrc_plus", label: "wRC+" },
+      { key: "gap", label: "Gap" },
+    ];
+    const header = CSV_COLS.map((c) => c.label).join(",");
+    const rowLines = sorted.map((r) =>
+      CSV_COLS.map(({ key }) => {
+        const v = key === "gap" ? r.gap : (r[key as keyof Row] as number | string | null);
+        if (v == null) return "";
+        if (typeof v === "string") return `"${v.replace(/"/g, '""')}"`;
+        return key === "xwoba" ? v.toFixed(3) : String(Math.round(v as number));
+      }).join(",")
+    );
+    const blob = new Blob(["﻿" + [header, ...rowLines].join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `hitting-plus-${season}-${minPA}pa.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   const loadingInfo = resolvedCount < names.length;
 
   return (
@@ -150,7 +181,16 @@ export default function Leaderboard({
         <h2 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
           Hitters with {minPA}+ PA
         </h2>
-        <span className="text-xs text-[var(--dimmer)]">{sorted.length} shown</span>
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-[var(--dimmer)]">{sorted.length} shown</span>
+          <button
+            type="button"
+            onClick={downloadCSV}
+            className="flex items-center gap-1 rounded-lg border border-[var(--rule)] px-2.5 py-1 text-[11px] font-medium text-[var(--dim)] transition-colors hover:border-[var(--dimmer)] hover:text-[var(--text)]"
+          >
+            ↓ Export CSV
+          </button>
+        </div>
       </div>
 
       <div className="mb-3.5 flex flex-wrap items-center gap-2.5">
