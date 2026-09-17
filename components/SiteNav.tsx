@@ -15,7 +15,6 @@ const NAV_GROUPS = [
     tools: [
       { label: "Battery Splits", href: "/battery", external: false },
       { label: "Stuff Splits", href: "/stuff/platoon", external: false },
-      { label: "Hook Efficiency", href: "/hook", external: false },
       { label: "Percentile Compare", href: "/compare?tab=pitcher", external: false },
     ],
   },
@@ -25,6 +24,7 @@ const NAV_GROUPS = [
       { label: "Play-by-Play", href: "/pbp", external: false },
       { label: "Opposing Probables", href: "/probables", external: false },
       { label: "Blame Split", href: "/blame-split", external: false },
+      { label: "xR Philosophy", href: "/xr", external: false },
     ],
   },
   {
@@ -33,7 +33,6 @@ const NAV_GROUPS = [
       { label: "Rolling Chart", href: "/rolling", external: false },
       { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
-      { label: "xR Philosophy", href: "/xr", external: false },
       { label: "All-Star Ballot", href: "/ballot", external: false },
       { label: "The Dingy", href: "/dingy", external: false },
       { label: "Hook Efficiency", href: "/manager-hook", external: false },
