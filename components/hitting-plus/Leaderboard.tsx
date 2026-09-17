@@ -118,7 +118,7 @@ export default function Leaderboard({
         const xp = pct["xwoba"](r.xwoba);
         return { ...r, gap: hp != null && xp != null ? hp - xp : null };
       });
-  }, [players, pct, teamFilter, posFilter, info, seasonKey]);
+  }, [players, pct, teamFilter, posFilter, info, seasonKey, rookieOnly, rookieNames]);
 
   const sorted = useMemo(() => {
     const copy = [...rows];
