@@ -39,6 +39,165 @@ const CATEGORY_LABEL: Record<Category, string> = {
   coin_flip_loss: 'Lost in extras',
 }
 
+const WIN_LABEL: Record<Category, string> = {
+  bullpen_win: 'Bullpen held',
+  lineup_comeback_win: 'Lineup comeback',
+  coin_flip_win: 'Extra innings',
+  bullpen_loss: '',
+  lineup_loss: '',
+  coin_flip_loss: '',
+}
+
+const LOSS_LABEL: Record<Category, string> = {
+  bullpen_win: '',
+  lineup_comeback_win: '',
+  coin_flip_win: '',
+  bullpen_loss: 'Bullpen blew it',
+  lineup_loss: 'Never led late',
+  coin_flip_loss: 'Extra innings',
+}
+
+interface RecentGame {
+  game_pk: number
+  game_date: string
+  away_team: string
+  away_score: number
+  away_category: Category
+  home_team: string
+  home_score: number
+  home_category: Category
+  innings_played: number
+}
+
+function TypeBadge({ category }: { category: Category }) {
+  const isWin = category.endsWith('_win')
+  const isExtras = category.startsWith('coin_flip')
+  const isHatch = category === 'lineup_comeback_win' || category === 'lineup_loss'
+
+  const label = isWin ? WIN_LABEL[category] : LOSS_LABEL[category]
+
+  const bgClass = isExtras
+    ? 'bg-[#b0aaa3]/20 text-[#777]'
+    : isWin
+      ? isHatch
+        ? 'bg-[#1a7a3a]/10 text-[#1a7a3a]'
+        : 'bg-[#1a7a3a]/15 text-[#1a7a3a]'
+      : isHatch
+        ? 'bg-[#c0392b]/10 text-[#c0392b]'
+        : 'bg-[#c0392b]/15 text-[#c0392b]'
+
+  return (
+    <span className={`inline-block text-[10px] font-medium px-1.5 py-0.5 rounded ${bgClass}`}>
+      {label}
+    </span>
+  )
+}
+
+function RecentGamesTable({ season }: { season: number }) {
+  const [games, setGames] = useState<RecentGame[] | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [showAll, setShowAll] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    setShowAll(false)
+    fetch(`/api/blame-split/recent-games?season=${season}`)
+      .then(r => r.json())
+      .then(d => { setGames(d.games ?? []); setLoading(false) })
+      .catch(() => { setGames([]); setLoading(false) })
+  }, [season])
+
+  const INITIAL_SHOW = 25
+  const visible = games ? (showAll ? games : games.slice(0, INITIAL_SHOW)) : []
+
+  return (
+    <div className="bg-[var(--panel)] border border-[var(--rule)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--rule)]">
+        <h2 className="text-sm font-semibold text-[var(--text)]">Recent 1-Run Games</h2>
+        {!loading && games && (
+          <span className="text-xs text-[var(--dimmer)]">{games.length} games</span>
+        )}
+      </div>
+
+      {loading ? (
+        <div className="px-4 py-6 text-center text-sm text-[var(--dimmer)]">Loading…</div>
+      ) : !games || games.length === 0 ? (
+        <div className="px-4 py-6 text-center text-sm text-[var(--dimmer)]">No games found.</div>
+      ) : (
+        <>
+          {/* Header */}
+          <div className="grid grid-cols-[80px_1fr_1fr_1fr_1fr] gap-2 px-4 py-1.5 border-b border-[var(--rule)] bg-[var(--panel)]">
+            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Date</span>
+            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Away</span>
+            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Home</span>
+            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Win type</span>
+            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Loss type</span>
+          </div>
+
+          <div className="divide-y divide-[var(--rule)]">
+            {visible.map(g => {
+              const awayWon = g.away_score > g.home_score
+              const winCat = awayWon ? g.away_category : g.home_category
+              const lossCat = awayWon ? g.home_category : g.away_category
+              const extras = g.innings_played > 9
+
+              return (
+                <div key={`${g.game_pk}`} className="grid grid-cols-[80px_1fr_1fr_1fr_1fr] gap-2 px-4 py-2 hover:bg-[#f8f5f0] transition-colors items-center">
+                  <span className="text-[11px] font-mono text-[var(--dim)] whitespace-nowrap">{fmtDate(g.game_date)}</span>
+
+                  <a
+                    href={`https://www.mlb.com/gameday/${g.game_pk}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    <span className={`text-xs ${awayWon ? 'font-semibold text-[var(--text)]' : 'text-[var(--dim)]'}`}>
+                      {nickName(g.away_team)}
+                    </span>
+                    <span className={`ml-1.5 text-xs font-mono ${awayWon ? 'text-[#1a7a3a] font-bold' : 'text-[#c0392b]'}`}>
+                      {g.away_score}
+                    </span>
+                    {extras && awayWon && <span className="ml-1 text-[9px] text-[var(--dimmer)]">F/{g.innings_played}</span>}
+                  </a>
+
+                  <a
+                    href={`https://www.mlb.com/gameday/${g.game_pk}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    <span className={`text-xs ${!awayWon ? 'font-semibold text-[var(--text)]' : 'text-[var(--dim)]'}`}>
+                      {nickName(g.home_team)}
+                    </span>
+                    <span className={`ml-1.5 text-xs font-mono ${!awayWon ? 'text-[#1a7a3a] font-bold' : 'text-[#c0392b]'}`}>
+                      {g.home_score}
+                    </span>
+                    {extras && !awayWon && <span className="ml-1 text-[9px] text-[var(--dimmer)]">F/{g.innings_played}</span>}
+                  </a>
+
+                  <div><TypeBadge category={winCat} /></div>
+                  <div><TypeBadge category={lossCat} /></div>
+                </div>
+              )
+            })}
+          </div>
+
+          {!showAll && games.length > INITIAL_SHOW && (
+            <div className="border-t border-[var(--rule)] px-4 py-3 text-center">
+              <button
+                onClick={() => setShowAll(true)}
+                className="text-xs text-[var(--accent)] hover:underline"
+              >
+                Show all {games.length} games
+              </button>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  )
+}
+
 const HATCH_RED = `repeating-linear-gradient(-45deg, #c0392b, #c0392b 2px, rgba(192,57,43,0.15) 2px, rgba(192,57,43,0.15) 7px)`
 const HATCH_GREEN = `repeating-linear-gradient(-45deg, #1a7a3a, #1a7a3a 2px, rgba(26,122,58,0.15) 2px, rgba(26,122,58,0.15) 7px)`
 
@@ -365,6 +524,12 @@ export default function BlameSplitApp() {
       <p className="mt-3 text-[11px] text-[var(--dimmer)] text-center">
         Data via MLB Stats API · Regular season only · Sorted by 1-run W–L record
       </p>
+
+      {!loading && !error && (
+        <div className="mt-6">
+          <RecentGamesTable season={season} />
+        </div>
+      )}
     </div>
   )
 }
