@@ -2744,7 +2744,7 @@ async function generate() {
     const qualHint = document.getElementById('qual-hint');
     if (qualHint) {
       if (selQual.value === 'y' && currentData && currentData.length && currentGroupBy !== 'team') {
-        const isHit = selMode.value === 'hitting';
+        const isHit = currentMode === 'hitting';
         const volKey = isHit ? 'PA' : 'IP';
         const minVol = Math.min(...currentData.map(p => p[volKey] ?? Infinity).filter(v => isFinite(v)));
         qualHint.textContent = isFinite(minVol) ? `(min ${isHit ? Math.round(minVol) : minVol.toFixed(1)} ${volKey})` : '';
