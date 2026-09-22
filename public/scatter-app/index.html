@@ -592,6 +592,9 @@
             <label id="lbl-rookie" style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;font-weight:500;color:#555;white-space:nowrap;">
               <input type="checkbox" id="chk-rookie" style="cursor:pointer;accent-color:#1a1a1a;width:14px;height:14px;"> Rookies
             </label>
+            <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;font-weight:500;color:#555;white-space:nowrap;">
+              <input type="checkbox" id="chk-playoff-pool" style="cursor:pointer;accent-color:#1a1a1a;width:14px;height:14px;"> 2026 Playoff Pool
+            </label>
           </div>
         </div>
       </div>
@@ -1471,6 +1474,8 @@ const selY = document.getElementById('sel-y');
 const selColor = document.getElementById('sel-color');
 const chkR2    = document.getElementById('chk-r2');
 const chkRookie = document.getElementById('chk-rookie');
+const chkPlayoffPool = document.getElementById('chk-playoff-pool');
+const PLAYOFF_POOL_TEAMS = new Set(['TBR','CLE','TEX','NYY','BOS','CHW','HOU','MIL','LAD','ATL','CHC','SDP','PHI','ARI']);
 const lblRookie = document.getElementById('lbl-rookie');
 const btnGenerate = document.getElementById('btn-generate');
 const chartStatus = document.getElementById('chart-status');
@@ -2094,6 +2099,12 @@ async function generate() {
         // Non-fatal: network error fetching rookie list — show all players
         console.warn('Rookie ID fetch failed:', rookieErr.message);
       }
+    }
+
+    // Playoff pool filter
+    if (chkPlayoffPool.checked) {
+      currentData = currentData.filter(p => PLAYOFF_POOL_TEAMS.has(p.TeamNameAbb || p.TeamName));
+      if (!currentData.length) throw new Error('No data for playoff pool teams');
     }
 
     // Compute composite stats
