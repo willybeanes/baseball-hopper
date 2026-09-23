@@ -31,8 +31,7 @@ const NAV_GROUPS = [
   {
     label: "More",
     tools: [
-      { label: "Rolling Chart", href: "/rolling", external: false },
-      { label: "Scatter Plot", href: "/scatter", external: false },
+{ label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
       { label: "All-Star Ballot", href: "/ballot", external: false },
       { label: "The Dingy", href: "/dingy", external: false },
