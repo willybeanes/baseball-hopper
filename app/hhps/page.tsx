@@ -19,13 +19,20 @@ const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 async function getLeaderboard(season: Season): Promise<HHPSLeaderboardRow[]> {
   try {
     const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    const { data, error } = await sb
-      .from("hhps_leaderboard")
-      .select("*")
-      .eq("season", season)
-      .order("bip_hard_in3", { ascending: false });
-    if (error) return [];
-    return (data ?? []) as HHPSLeaderboardRow[];
+    const PAGE = 1000;
+    const rows: HHPSLeaderboardRow[] = [];
+    for (let page = 0; ; page++) {
+      const { data, error } = await sb
+        .from("hhps_leaderboard")
+        .select("*")
+        .eq("season", season)
+        .order("bip_hard_in3", { ascending: false })
+        .range(page * PAGE, (page + 1) * PAGE - 1);
+      if (error || !data?.length) break;
+      rows.push(...(data as HHPSLeaderboardRow[]));
+      if (data.length < PAGE) break;
+    }
+    return rows;
   } catch {
     return [];
   }

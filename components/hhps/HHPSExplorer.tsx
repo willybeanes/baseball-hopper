@@ -478,11 +478,20 @@ export default function HHPSExplorer({
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  // Matches "Last, First" stored names against "first last" or "last" queries
+  function nameMatch(storedName: string, query: string): boolean {
+    const q = query.toLowerCase();
+    const n = storedName.toLowerCase();
+    if (n.includes(q)) return true;
+    const parts = n.split(", ");
+    return parts.length === 2 && `${parts[1]} ${parts[0]}`.includes(q);
+  }
+
   // ── Leaderboard ────────────────────────────────────────────────────────────
   const lbRows = leaderboard
     .filter((r) => r.split === hand)
     .filter((r) => !lbQualOnly || r.qualified)
-    .filter((r) => !search || r.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((r) => !search || nameMatch(r.name, search))
     .sort((a, b) => {
       const av = ((a as unknown as Record<string, unknown>)[lbSort.col] as number | null) ?? -Infinity;
       const bv = ((b as unknown as Record<string, unknown>)[lbSort.col] as number | null) ?? -Infinity;
@@ -505,7 +514,7 @@ export default function HHPSExplorer({
   // ── Player search for the picker ──────────────────────────────────────────
   const allRows = leaderboard.filter((r) => r.split === "A");
   const searchFiltered = search
-    ? allRows.filter((r) => r.name.toLowerCase().includes(search.toLowerCase()))
+    ? allRows.filter((r) => nameMatch(r.name, search))
     : allRows.filter((r) => r.qualified);
 
   // ── Toggle button helper ──────────────────────────────────────────────────
