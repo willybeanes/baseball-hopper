@@ -817,9 +817,16 @@ export default function HHPSExplorer({
           the zone.
         </p>
         <p>
+          <strong className="text-[var(--text)]">Thresholds:</strong> A cube lights up orange (hard-hit)
+          when &ge;50% of per-contact balls in that pocket exit at 95+ mph. Per-swing hard-hit uses a
+          relative cutoff — top 25% of league spatial cells by rate. Barrel (purple) uses both a relative
+          cutoff — top 9% of league cells — and the standard Statcast EV/LA formula (roughly EV &ge;98 mph
+          at the ideal launch angle). The grey dots mark cells holding 90% of all league batted-ball
+          density — the full contact space a hitter can reach.
+        </p>
+        <p>
           <strong className="text-[var(--text)]">Splits</strong> use the same cutoffs in every split.
-          The grey dots are the league&rsquo;s overall contact space (cells holding 90% of league BIP
-          density). Each hitter&rsquo;s map is blended with the league average for his batting side using
+          Each hitter&rsquo;s map is blended with the league average for his batting side using
           5 effective balls of shrinkage — early in a season every map sits close to league average.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
