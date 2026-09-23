@@ -311,11 +311,12 @@ export default function HHPSExplorer({
         j: figure.body.j,
         k: figure.body.k,
         color: COLOR_FIG,
-        opacity: 0.16,
-        flatshading: true,
+        opacity: 0.28,
+        flatshading: false,
         hoverinfo: "skip",
         showlegend: false,
-        lighting: { ambient: 0.9, diffuse: 0.3 },
+        lighting: { ambient: 0.55, diffuse: 0.85, specular: 0.35, roughness: 0.6, fresnel: 0.2 },
+        lightposition: { x: 200, y: -400, z: 1200 },
       });
 
       // 4. Bat mesh
@@ -332,10 +333,12 @@ export default function HHPSExplorer({
           j: bat.j,
           k: bat.k,
           color: COLOR_BAT,
-          opacity: 0.45,
-          flatshading: true,
+          opacity: 0.55,
+          flatshading: false,
           hoverinfo: "skip",
           showlegend: false,
+          lighting: { ambient: 0.5, diffuse: 0.9, specular: 0.4, roughness: 0.5, fresnel: 0.15 },
+          lightposition: { x: 200, y: -400, z: 1200 },
         });
       }
     }
