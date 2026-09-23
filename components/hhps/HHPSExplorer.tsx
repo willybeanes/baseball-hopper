@@ -64,8 +64,8 @@ function outcomeScale(outcome: Outcome): [number, string][] {
 
 function defaultCamera(sg: 1 | -1) {
   return {
-    eye: { x: 1.25 * sg, y: -1.45, z: 0.45 },
-    center: { x: 0, y: 0, z: -0.05 },
+    eye: { x: 1.26 * sg, y: -1.47, z: 0.37 },
+    center: { x: 0.01 * sg, y: -0.02, z: -0.13 },
     up: { x: 0, y: 0, z: 1 },
   };
 }
@@ -102,6 +102,7 @@ export default function HHPSExplorer({
   const [lbQualOnly, setLbQualOnly] = useState(true);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
+  const [playerBadge, setPlayerBadge] = useState<{ mlbam: number; teamId: number | null } | null>(null);
 
   // ── Data refs ──────────────────────────────────────────────────────────────
   const plotRef = useRef<HTMLDivElement>(null);
@@ -127,6 +128,19 @@ export default function HHPSExplorer({
       );
     }
   }, [selectedId, outcome, mode, hand, router]);
+
+  // ── Player badge (headshot + team logo) ───────────────────────────────────
+  useEffect(() => {
+    if (typeof selectedId !== "number") { setPlayerBadge(null); return; }
+    setPlayerBadge({ mlbam: selectedId, teamId: null });
+    fetch(`https://statsapi.mlb.com/api/v1/people/${selectedId}?hydrate=currentTeam`)
+      .then((r) => r.json())
+      .then((d) => {
+        const teamId: number | null = d?.people?.[0]?.currentTeam?.id ?? null;
+        setPlayerBadge({ mlbam: selectedId, teamId });
+      })
+      .catch(() => {});
+  }, [selectedId]);
 
   // ── Load static assets + Plotly on mount ──────────────────────────────────
   useEffect(() => {
@@ -655,11 +669,29 @@ export default function HHPSExplorer({
       )}
 
       {/* Plot */}
-      <div
-        ref={plotRef}
-        className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden"
-        style={{ height: 560 }}
-      />
+      <div className="relative">
+        <div
+          ref={plotRef}
+          className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden"
+          style={{ height: 560 }}
+        />
+        {playerBadge && (
+          <div className="absolute top-3 right-3 flex items-center gap-2 pointer-events-none">
+            <img
+              src={`https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/${playerBadge.mlbam}/headshot/67/current`}
+              alt=""
+              className="w-14 h-14 rounded-full object-cover border-2 border-[var(--panel-border)] bg-[var(--panel)]"
+            />
+            {playerBadge.teamId && (
+              <img
+                src={`https://www.mlbstatic.com/team-logos/${playerBadge.teamId}.svg`}
+                alt=""
+                className="w-14 h-14 rounded-full object-contain bg-white p-1 border-2 border-[var(--panel-border)]"
+              />
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Camera controls */}
       <div className="flex flex-wrap gap-1.5 items-center text-xs text-[var(--dim)]">
