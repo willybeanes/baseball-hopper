@@ -428,6 +428,7 @@ export default function HHPSExplorer({
   const smallSample = currentRow !== undefined && currentRow.bip < 50;
 
   // ── Camera move ────────────────────────────────────────────────────────────
+  // dr = right, du = up, df = forward — all in camera-local space, step 0.08
   function move(dr: number, du: number, df: number) {
     const Plotly = plotlyRef.current;
     const el = plotRef.current;
@@ -436,9 +437,19 @@ export default function HHPSExplorer({
     const sc = (el as any)._fullLayout?.scene?.camera;
     if (!sc) return;
     const cam = JSON.parse(JSON.stringify({ eye: sc.eye, center: sc.center, up: sc.up }));
-    cam.eye.x += dr; cam.center.x += dr;
-    cam.eye.z += du; cam.center.z += du;
-    cam.eye.y += df; cam.center.y += df;
+    const e = cam.eye, ce = cam.center;
+    // Forward vector (eye → center, normalised)
+    let f = [ce.x - e.x, ce.y - e.y, ce.z - e.z];
+    const fL = Math.hypot(...f); f = f.map(v => v / fL);
+    // Right vector (f × world-up)
+    const wu = [0, 0, 1];
+    let r = [f[1]*wu[2]-f[2]*wu[1], f[2]*wu[0]-f[0]*wu[2], f[0]*wu[1]-f[1]*wu[0]];
+    const rL = Math.hypot(...r) || 1; r = r.map(v => v / rL);
+    // True up (r × f)
+    const u = [r[1]*f[2]-r[2]*f[1], r[2]*f[0]-r[0]*f[2], r[0]*f[1]-r[1]*f[0]];
+    const st = 0.08;
+    const d = [0, 1, 2].map(i => st * (dr*r[i] + du*u[i] + df*f[i]));
+    (['x', 'y', 'z'] as const).forEach((a, i) => { e[a] += d[i]; ce[a] += d[i]; });
     cameraRef.current = cam;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (Plotly as any).relayout(el, { "scene.camera": cam });
@@ -456,13 +467,12 @@ export default function HHPSExplorer({
     function onKey(e: KeyboardEvent) {
       if ((e.target as HTMLElement)?.tagName === "INPUT") return;
       const k = e.key.toLowerCase();
-      const step = 2;
-      if (k === "a" || k === "arrowleft") move(-step, 0, 0);
-      else if (k === "d" || k === "arrowright") move(step, 0, 0);
-      else if (k === "w" || k === "arrowup") move(0, 0, step);
-      else if (k === "s" || k === "arrowdown") move(0, 0, -step);
-      else if (k === "q") move(0, step, 0);
-      else if (k === "e") move(0, -step, 0);
+      if (k === "a" || k === "arrowleft") move(-1, 0, 0);
+      else if (k === "d" || k === "arrowright") move(1, 0, 0);
+      else if (k === "w" || k === "arrowup") move(0, 0, 1);
+      else if (k === "s" || k === "arrowdown") move(0, 0, -1);
+      else if (k === "q") move(0, 1, 0);
+      else if (k === "e") move(0, -1, 0);
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -646,12 +656,12 @@ export default function HHPSExplorer({
       <div className="flex flex-wrap gap-1.5 items-center text-xs text-[var(--dim)]">
         <span className="mr-1">Move camera:</span>
         {[
-          { label: "← A", dr: -2, du: 0, df: 0 },
-          { label: "→ D", dr: 2, du: 0, df: 0 },
-          { label: "↑ W", dr: 0, du: 0, df: 2 },
-          { label: "↓ S", dr: 0, du: 0, df: -2 },
-          { label: "Up Q", dr: 0, du: 2, df: 0 },
-          { label: "Down E", dr: 0, du: -2, df: 0 },
+          { label: "← A", dr: -1, du: 0, df: 0 },
+          { label: "→ D", dr: 1, du: 0, df: 0 },
+          { label: "↑ W", dr: 0, du: 0, df: 1 },
+          { label: "↓ S", dr: 0, du: 0, df: -1 },
+          { label: "Up Q", dr: 0, du: 1, df: 0 },
+          { label: "Down E", dr: 0, du: -1, df: 0 },
         ].map(({ label, dr, du, df }) => (
           <button
             key={label}
