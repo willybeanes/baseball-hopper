@@ -678,8 +678,7 @@ export default function HHPSExplorer({
       <div className="relative">
         <div
           ref={plotRef}
-          className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden"
-          style={{ height: 560 }}
+          className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden h-[360px] sm:h-[560px]"
         />
         {playerBadge && (() => {
           const storedName = allRows.find((r) => r.mlbam === playerBadge.mlbam)?.name ?? "";
