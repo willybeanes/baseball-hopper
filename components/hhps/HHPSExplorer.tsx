@@ -492,6 +492,12 @@ export default function HHPSExplorer({
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  // "Last, First" → "First Last"
+  function displayName(stored: string): string {
+    const parts = stored.split(", ");
+    return parts.length === 2 ? `${parts[1]} ${parts[0]}` : stored;
+  }
+
   // Matches "Last, First" stored names against "first last" or "last" queries
   function nameMatch(storedName: string, query: string): boolean {
     const q = query.toLowerCase();
@@ -606,7 +612,7 @@ export default function HHPSExplorer({
                   onClick={() => { setSelectedId(r.mlbam); setSearch(""); }}
                   className="w-full text-left px-3.5 py-2 text-sm hover:bg-[var(--bg)] text-[var(--text)] flex justify-between"
                 >
-                  <span>{r.name}</span>
+                  <span>{displayName(r.name)}</span>
                   <span className="text-[var(--dimmer)] text-xs">{r.stand}</span>
                 </button>
               ))}
@@ -675,22 +681,30 @@ export default function HHPSExplorer({
           className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden"
           style={{ height: 560 }}
         />
-        {playerBadge && (
-          <div className="absolute top-3 right-3 flex items-center gap-2 pointer-events-none">
-            <img
-              src={`https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/${playerBadge.mlbam}/headshot/67/current`}
-              alt=""
-              className="w-14 h-14 rounded-full object-cover border-2 border-[var(--panel-border)] bg-[var(--panel)]"
-            />
-            {playerBadge.teamId && (
+        {playerBadge && (() => {
+          const storedName = allRows.find((r) => r.mlbam === playerBadge.mlbam)?.name ?? "";
+          return (
+            <div className="absolute top-3 right-3 flex items-center gap-2 pointer-events-none">
+              {storedName && (
+                <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
+                  {displayName(storedName)}
+                </span>
+              )}
               <img
-                src={`https://www.mlbstatic.com/team-logos/${playerBadge.teamId}.svg`}
+                src={`https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/${playerBadge.mlbam}/headshot/67/current`}
                 alt=""
-                className="w-14 h-14 rounded-full object-contain bg-white p-1 border-2 border-[var(--panel-border)]"
+                className="w-14 h-14 rounded-full object-cover border-2 border-[var(--panel-border)] bg-[var(--panel)]"
               />
-            )}
-          </div>
-        )}
+              {playerBadge.teamId && (
+                <img
+                  src={`https://www.mlbstatic.com/team-logos/${playerBadge.teamId}.svg`}
+                  alt=""
+                  className="w-14 h-14 rounded-full object-contain bg-white p-1 border-2 border-[var(--panel-border)]"
+                />
+              )}
+            </div>
+          );
+        })()}
       </div>
 
       {/* Camera controls */}
