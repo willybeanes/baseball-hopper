@@ -114,6 +114,7 @@ export default function HHPSExplorer({
   const cameraRef = useRef<ReturnType<typeof defaultCamera> | null>(null);
   const lastStandRef = useRef<"R" | "L" | null>(null);
   const currentPayloadRef = useRef<{ payload: SplitPayload; stand: "R" | "L" } | null>(null);
+  const resetCounterRef = useRef(0);
 
   // ── URL sync ───────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -414,8 +415,9 @@ export default function HHPSExplorer({
         aspectratio: { x: 0.88, y: 1, z: 0.86 },
         camera: cam,
         bgcolor: "rgba(0,0,0,0)",
+        dragmode: "turntable",
       },
-      uirevision: stand, // Plotly preserves camera across trace-only updates same stand
+      uirevision: `${stand}-${resetCounterRef.current}`,
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -474,6 +476,7 @@ export default function HHPSExplorer({
   function resetCamera() {
     if (!currentPayloadRef.current) return;
     cameraRef.current = null;
+    resetCounterRef.current += 1;
     const { payload, stand } = currentPayloadRef.current;
     draw(payload, stand);
   }
