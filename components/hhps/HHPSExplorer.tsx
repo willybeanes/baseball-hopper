@@ -55,12 +55,9 @@ function outcomeColor(outcome: Outcome) {
 }
 
 function outcomeScale(outcome: Outcome): [number, string][] {
-  const c = outcomeColor(outcome);
-  return [
-    [0, "rgba(0,0,0,0)"],
-    [0.3, c + "66"],
-    [1, c],
-  ];
+  return outcome === "hard"
+    ? [[0, "#F7C4A5"], [1, "#DF4601"]]
+    : [[0, "#E7B8D4"], [1, "#8E1A5E"]];
 }
 
 // ── Camera ────────────────────────────────────────────────────────────────────
@@ -257,7 +254,7 @@ export default function HHPSExplorer({
       x: support.map(([sx]) => sx * sg),
       y: support.map(([, sy]) => sy),
       z: support.map(([, , sz]) => sz),
-      marker: { size: 2, color: COLOR_SUPPORT, opacity: 0.2 },
+      marker: { size: 2, color: COLOR_SUPPORT, opacity: 0.25 },
       hoverinfo: "skip",
       showlegend: false,
     });
@@ -271,12 +268,10 @@ export default function HHPSExplorer({
         y: cubes.y,
         z: cubes.z,
         marker: {
-          size: 4,
+          size: 5,
           color: cubes.c,
           colorscale: outcomeScale(outcome),
-          cmin: outcome === "hard" ? 0.5 : 0.13,
-          cmax: outcome === "hard" ? 0.7 : 0.35,
-          opacity: 0.75,
+          opacity: 0.85,
           symbol: "square",
         },
         customdata: cubes.x,
