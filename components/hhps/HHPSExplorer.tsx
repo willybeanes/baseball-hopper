@@ -686,8 +686,11 @@ export default function HHPSExplorer({
           return (
             <div className="absolute top-3 right-3 flex items-center gap-2 pointer-events-none">
               {storedName && (
-                <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
+                <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm text-right leading-snug">
                   {displayName(storedName)}
+                  <span className="block text-xs font-normal text-[var(--dim)]">
+                    {season}{hand !== "A" ? ` · vs ${hand === "R" ? "RHP" : "LHP"}` : ""}
+                  </span>
                 </span>
               )}
               <img
