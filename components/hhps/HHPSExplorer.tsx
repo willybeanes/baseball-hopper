@@ -196,8 +196,10 @@ export default function HHPSExplorer({
           return;
         }
       }
-      currentPayloadRef.current = { payload: player.splits[hand], stand: player.stand };
-      draw(player.splits[hand], player.stand);
+      const splitStand: "R" | "L" =
+        player.splits[hand].stand ?? (player.stand !== "S" ? player.stand : "L");
+      currentPayloadRef.current = { payload: player.splits[hand], stand: splitStand };
+      draw(player.splits[hand], splitStand);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [season, supabaseUrl, hand, outcome, mode, showFig, showZone],

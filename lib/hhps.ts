@@ -14,7 +14,7 @@ export interface HHPSLeaderboardRow {
   mlbam: number;
   season: number;
   name: string;
-  stand: "R" | "L";
+  stand: "R" | "L" | "S";
   split: "A" | "R" | "L";
   pa_total: number;
   bip: number;
@@ -40,6 +40,7 @@ export interface CubeData {
 }
 
 export interface SplitPayload {
+  stand?: "R" | "L";
   bip_hard: number[][];
   sw_hard: number[][];
   bip_brl: number[][];
@@ -51,7 +52,7 @@ export interface SplitPayload {
 export interface PlayerJson {
   mlbam: number;
   name: string;
-  stand: "R" | "L";
+  stand: "R" | "L" | "S";
   zone: { plate_off_body: number; sz_bot: number; sz_top: number };
   splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload };
 }
