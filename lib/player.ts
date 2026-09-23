@@ -109,3 +109,18 @@ export function batteryUrl(): string {
 export function stuffUrl(): string {
   return `${SHELL}/stuff/platoon`;
 }
+
+/**
+ * 3D Swing Explorer deep-link for a player.
+ * Accepts optional outcome/mode/hand overrides.
+ */
+export function hhpsUrl(
+  mlbamId: number,
+  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" },
+): string {
+  const params = new URLSearchParams({ player: String(mlbamId) });
+  if (opts?.outcome) params.set("outcome", opts.outcome);
+  if (opts?.mode) params.set("mode", opts.mode);
+  if (opts?.hand) params.set("hand", opts.hand);
+  return `${SHELL}/hhps?${params}`;
+}

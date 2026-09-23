@@ -7,6 +7,7 @@ const NAV_GROUPS = [
     label: "Hitters",
     tools: [
       { label: "Hitting+", href: "/hitting-plus", external: false },
+      { label: "3D Swing Explorer", href: "/hhps", external: false },
       { label: "Percentile Compare", href: "/compare", external: false },
     ],
   },
