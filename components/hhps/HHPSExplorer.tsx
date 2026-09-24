@@ -238,9 +238,6 @@ export default function HHPSExplorer({
         r.split === hand &&
         (typeof selectedId === "number" ? r.mlbam === selectedId : false),
     );
-    const vol = mode === "bip"
-      ? (outcome === "hard" ? row?.bip_hard_in3 : row?.bip_brl_in3)
-      : (outcome === "hard" ? row?.sw_hard_in3 : row?.sw_brl_in3);
     const rank = mode === "bip"
       ? (outcome === "hard" ? row?.bip_hard_rank : row?.bip_brl_rank)
       : (outcome === "hard" ? row?.sw_hard_rank : row?.sw_brl_rank);
@@ -248,7 +245,6 @@ export default function HHPSExplorer({
     const bip = row?.bip;
     const statusParts: string[] = [
       stand === "L" ? "LHH" : "RHH",
-      vol !== undefined && vol !== null ? `${vol.toLocaleString()} in³` : "",
       rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
       pct !== undefined && pct !== null
         ? (outcome === "hard" ? "HH%" : "Brl%") + ` ${(pct * 100).toFixed(1)}%` +
@@ -526,10 +522,10 @@ export default function HHPSExplorer({
 
   const LB_COLS: { key: string; label: string; title: string }[] = [
     { key: "name", label: "Player", title: "Player name" },
-    { key: "bip_hard_in3", label: "HH BIP", title: "Hard-hit per contact space (in³)" },
-    { key: "sw_hard_in3", label: "HH SW", title: "Hard-hit per swing space (in³)" },
-    { key: "bip_brl_in3", label: "Brl BIP", title: "Barrel per contact space (in³)" },
-    { key: "sw_brl_in3", label: "Brl SW", title: "Barrel per swing space (in³)" },
+    { key: "bip_hard_in3", label: "HH BIP", title: "Hard-hit per contact space (lit 3-inch cubes)" },
+    { key: "sw_hard_in3", label: "HH SW", title: "Hard-hit per swing space (lit 3-inch cubes)" },
+    { key: "bip_brl_in3", label: "Brl BIP", title: "Barrel per contact space (lit 3-inch cubes)" },
+    { key: "sw_brl_in3", label: "Brl SW", title: "Barrel per swing space (lit 3-inch cubes)" },
     { key: "bip", label: "BIP", title: "Balls in play" },
   ];
 
@@ -834,8 +830,9 @@ export default function HHPSExplorer({
         </p>
         <p>
           <strong className="text-[var(--text)]">Splits</strong> use the same cutoffs in every split.
-          Each hitter&rsquo;s map is blended with the league average for his batting side using
-          5 effective balls of shrinkage — early in a season every map sits close to league average.
+          Each hitter&rsquo;s map uses only his own batted balls — no blending with league average.
+          A cube only shows where he has at least 4% of his peak contact density, so smoothing
+          can&rsquo;t light up pockets he rarely reaches. Leaderboard numbers count lit 3-inch cubes.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
           Known limitations: the ABS zone depth (19&Prime; out front) is a placeholder. The figure is
