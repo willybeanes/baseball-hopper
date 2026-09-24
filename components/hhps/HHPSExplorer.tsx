@@ -251,7 +251,8 @@ export default function HHPSExplorer({
       vol !== undefined && vol !== null ? `${vol.toLocaleString()} in³` : "",
       rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
       pct !== undefined && pct !== null
-        ? (outcome === "hard" ? "HH%" : "Brl%") + ` ${(pct * 100).toFixed(1)}%`
+        ? (outcome === "hard" ? "HH%" : "Brl%") + ` ${(pct * 100).toFixed(1)}%` +
+          (bip ? ` (${Math.round(pct * bip)} ${outcome === "hard" ? "hard-hit" : "barrels"})` : "")
         : "",
       bip !== undefined ? `${bip} BIP` : "",
       `${cubes.x.length} cubes`,
