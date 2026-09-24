@@ -510,22 +510,23 @@ export default function HHPSExplorer({
   }
 
   // ── Leaderboard ────────────────────────────────────────────────────────────
+  // Cube columns follow the Per contact / Per swing toggle so the table matches the graph.
+  const sortCol = lbSort.col.replace(/^(bip|sw)_/, `${mode}_`);
   const lbRows = leaderboard
     .filter((r) => r.split === hand)
     .filter((r) => !lbQualOnly || r.qualified)
     .filter((r) => !search || nameMatch(r.name, search))
     .sort((a, b) => {
-      const av = ((a as unknown as Record<string, unknown>)[lbSort.col] as number | null) ?? -Infinity;
-      const bv = ((b as unknown as Record<string, unknown>)[lbSort.col] as number | null) ?? -Infinity;
+      const av = ((a as unknown as Record<string, unknown>)[sortCol] as number | null) ?? -Infinity;
+      const bv = ((b as unknown as Record<string, unknown>)[sortCol] as number | null) ?? -Infinity;
       return lbSort.asc ? av - bv : bv - av;
     });
 
+  const modeLabel = mode === "bip" ? "per contact" : "per swing";
   const LB_COLS: { key: string; label: string; title: string }[] = [
     { key: "name", label: "Player", title: "Player name" },
-    { key: "bip_hard_in3", label: "HH BIP", title: "Hard-hit per contact space (lit 3-inch cubes)" },
-    { key: "sw_hard_in3", label: "HH SW", title: "Hard-hit per swing space (lit 3-inch cubes)" },
-    { key: "bip_brl_in3", label: "Brl BIP", title: "Barrel per contact space (lit 3-inch cubes)" },
-    { key: "sw_brl_in3", label: "Brl SW", title: "Barrel per swing space (lit 3-inch cubes)" },
+    { key: `${mode}_hard_in3`, label: "Hard-hit cubes", title: `Hard-hit ${modeLabel} space (lit 3-inch cubes)` },
+    { key: `${mode}_brl_in3`, label: "Barrel cubes", title: `Barrel ${modeLabel} space (lit 3-inch cubes)` },
     { key: "bip", label: "BIP", title: "Balls in play" },
   ];
 
@@ -743,7 +744,7 @@ export default function HHPSExplorer({
         <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[var(--rule)]">
           <h2 className="font-semibold text-sm">
             Leaderboard —{" "}
-            {hand === "A" ? "all pitchers" : hand === "R" ? "vs RHP" : "vs LHP"}
+            {hand === "A" ? "all pitchers" : hand === "R" ? "vs RHP" : "vs LHP"}, {modeLabel}
           </h2>
           <label className="flex items-center gap-1.5 text-xs text-[var(--dim)] cursor-pointer">
             <input
@@ -765,11 +766,11 @@ export default function HHPSExplorer({
                     title={col.title}
                     onClick={() => sortBy(col.key)}
                     className={`px-3 py-2 text-left cursor-pointer hover:text-[var(--text)] select-none whitespace-nowrap ${
-                      lbSort.col === col.key ? "text-[var(--text)]" : ""
+                      sortCol === col.key ? "text-[var(--text)]" : ""
                     }`}
                   >
                     {col.label}
-                    {lbSort.col === col.key && (
+                    {sortCol === col.key && (
                       <span className="ml-1">{lbSort.asc ? "↑" : "↓"}</span>
                     )}
                   </th>
@@ -786,16 +787,14 @@ export default function HHPSExplorer({
                   }`}
                 >
                   <td className="px-3 py-1.5 font-medium">{r.name}</td>
-                  <td className="px-3 py-1.5 tabular-nums">{r.bip_hard_in3.toLocaleString()}</td>
-                  <td className="px-3 py-1.5 tabular-nums">{r.sw_hard_in3.toLocaleString()}</td>
-                  <td className="px-3 py-1.5 tabular-nums">{r.bip_brl_in3.toLocaleString()}</td>
-                  <td className="px-3 py-1.5 tabular-nums">{r.sw_brl_in3.toLocaleString()}</td>
+                  <td className="px-3 py-1.5 tabular-nums">{(mode === "bip" ? r.bip_hard_in3 : r.sw_hard_in3).toLocaleString()}</td>
+                  <td className="px-3 py-1.5 tabular-nums">{(mode === "bip" ? r.bip_brl_in3 : r.sw_brl_in3).toLocaleString()}</td>
                   <td className="px-3 py-1.5 tabular-nums text-[var(--dim)]">{r.bip}</td>
                 </tr>
               ))}
               {lbRows.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-3 py-6 text-center text-[var(--dim)] text-sm">
+                  <td colSpan={4}className="px-3 py-6 text-center text-[var(--dim)] text-sm">
                     No results
                   </td>
                 </tr>
