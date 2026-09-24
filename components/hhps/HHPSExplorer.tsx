@@ -683,10 +683,11 @@ export default function HHPSExplorer({
           ref={plotRef}
           className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden h-[360px] sm:h-[560px]"
         />
+        <div className="absolute top-3 right-3 flex flex-col items-end gap-2 pointer-events-none">
         {playerBadge && (() => {
           const storedName = allRows.find((r) => r.mlbam === playerBadge.mlbam)?.name ?? "";
           return (
-            <div className="absolute top-3 right-3 flex items-center gap-2 pointer-events-none">
+            <div className="flex items-center gap-2">
               {storedName && (
                 <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm text-right leading-snug">
                   {displayName(storedName)}
@@ -710,6 +711,15 @@ export default function HHPSExplorer({
             </div>
           );
         })()}
+          {/* Chart-type label, in the cube color, so screenshots say what they show */}
+          <span
+            className="inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] leading-4 font-semibold text-white"
+            style={{ background: outcomeColor(outcome) }}
+          >
+            {outcome === "hard" ? "Hard-hit" : "Barrels"}
+            <span className="font-normal opacity-85">· {mode === "bip" ? "per contact" : "per swing"}</span>
+          </span>
+        </div>
       </div>
 
       {/* Camera controls */}
