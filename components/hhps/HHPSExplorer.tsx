@@ -134,14 +134,23 @@ export default function HHPSExplorer({
   useEffect(() => {
     if (typeof selectedId !== "number") { setPlayerBadge(null); return; }
     setPlayerBadge({ mlbam: selectedId, teamId: null });
-    fetch(`https://statsapi.mlb.com/api/v1/people/${selectedId}?hydrate=currentTeam`)
+    let cancelled = false;
+    // Logo follows the selected season: current season uses his team today,
+    // past seasons use the team he had the most PA for that year (traded players).
+    const hydrate = `currentTeam,stats(group=[hitting],type=[season],season=${season},sportId=1)`;
+    fetch(`https://statsapi.mlb.com/api/v1/people/${selectedId}?hydrate=${encodeURIComponent(hydrate)}`)
       .then((r) => r.json())
       .then((d) => {
-        const teamId: number | null = d?.people?.[0]?.currentTeam?.id ?? null;
-        setPlayerBadge({ mlbam: selectedId, teamId });
+        const p = d?.people?.[0];
+        const splits: any[] = (p?.stats?.[0]?.splits ?? []).filter((s: any) => s.team?.id);
+        const top = splits.sort((a, b) => (b.stat?.plateAppearances ?? 0) - (a.stat?.plateAppearances ?? 0))[0];
+        const teamId: number | null =
+          (season === SEASONS[0] ? p?.currentTeam?.id : top?.team?.id) ?? top?.team?.id ?? p?.currentTeam?.id ?? null;
+        if (!cancelled) setPlayerBadge({ mlbam: selectedId, teamId });
       })
       .catch(() => {});
-  }, [selectedId]);
+    return () => { cancelled = true; };
+  }, [selectedId, season]);
 
   // ── Load static assets + Plotly on mount ──────────────────────────────────
   useEffect(() => {
