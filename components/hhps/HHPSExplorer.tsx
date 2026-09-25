@@ -184,6 +184,60 @@ export default function HHPSExplorer({
     return () => ro.disconnect();
   }, []);
 
+  // Pinch-to-zoom on phones: Plotly's 3D scene ignores two-finger pinch, so handle it here.
+  // Moves the camera eye toward / away from the scene center (camera angle stays the same).
+  // Listeners run in the capture phase so one-finger touches still reach Plotly (rotate).
+  useEffect(() => {
+    const el = plotRef.current;
+    if (!el) return;
+    let start: { d: number; eye: { x: number; y: number; z: number }; center: { x: number; y: number; z: number }; up: unknown } | null = null;
+    let pending: object | null = null;
+    let busy = false;
+    const dist = (t: TouchList) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+    const onStart = (ev: TouchEvent) => {
+      if (ev.touches.length !== 2) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const sc = (el as any)._fullLayout?.scene?.camera;
+      if (!sc) return;
+      start = { d: dist(ev.touches), ...JSON.parse(JSON.stringify({ eye: sc.eye, center: sc.center, up: sc.up })) };
+      ev.preventDefault(); ev.stopPropagation();
+    };
+    const onMove = (ev: TouchEvent) => {
+      if (!start || ev.touches.length !== 2) return;
+      ev.preventDefault(); ev.stopPropagation();
+      const s = start;
+      const k = Math.min(4, Math.max(0.25, s.d / Math.max(1, dist(ev.touches))));  // spread fingers = zoom in
+      const c = s.center;
+      const eye = { x: c.x + (s.eye.x - c.x) * k, y: c.y + (s.eye.y - c.y) * k, z: c.z + (s.eye.z - c.z) * k };
+      pending = { eye, center: c, up: s.up };
+      flush();
+    };
+    // Apply the latest pinch camera; skip intermediate ones while Plotly is still redrawing
+    const flush = () => {
+      if (busy || !pending) return;
+      const cam = pending; pending = null; busy = true;
+      cameraRef.current = cam as ReturnType<typeof defaultCamera>;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      Promise.resolve((plotlyRef.current as any)?.relayout(el, { "scene.camera": cam }))
+        .catch(() => {})
+        .finally(() => { busy = false; flush(); });
+    };
+    const onEnd = (ev: TouchEvent) => {
+      if (start && ev.touches.length < 2) { start = null; ev.stopPropagation(); }
+    };
+    const opts = { capture: true, passive: false } as const;
+    el.addEventListener("touchstart", onStart, opts);
+    el.addEventListener("touchmove", onMove, opts);
+    el.addEventListener("touchend", onEnd, opts);
+    el.addEventListener("touchcancel", onEnd, opts);
+    return () => {
+      el.removeEventListener("touchstart", onStart, opts);
+      el.removeEventListener("touchmove", onMove, opts);
+      el.removeEventListener("touchend", onEnd, opts);
+      el.removeEventListener("touchcancel", onEnd, opts);
+    };
+  }, []);
+
   // ── Re-draw on toggle changes ──────────────────────────────────────────────
   useEffect(() => {
     if (!plotlyRef.current || !currentPayloadRef.current) return;
