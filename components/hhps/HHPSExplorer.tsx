@@ -174,12 +174,22 @@ export default function HHPSExplorer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [season, supabaseUrl]);
 
+  // Track plot width so cube markers (sized in pixels) scale with the chart on phones
+  const [plotW, setPlotW] = useState(0);
+  useEffect(() => {
+    const el = plotRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setPlotW(Math.round(e.contentRect.width / 40) * 40));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   // ── Re-draw on toggle changes ──────────────────────────────────────────────
   useEffect(() => {
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone]);
+  }, [outcome, mode, hand, showFig, showZone, plotW]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -230,6 +240,8 @@ export default function HHPSExplorer({
     if (!Plotly || !meta || !figure || !el) return;
 
     const sg: 1 | -1 = stand === "L" ? -1 : 1;
+    // Markers are fixed pixel sizes: full size on desktop (~900px+ wide), shrink on narrow screens
+    const sizeScale = Math.min(1, Math.max(0.4, (el.clientWidth || 900) / 900));
 
     // Reset camera when stand changes
     if (lastStandRef.current !== null && lastStandRef.current !== stand) {
@@ -277,7 +289,7 @@ export default function HHPSExplorer({
       x: support.map(([sx]) => sx * sg),
       y: support.map(([, sy]) => sy),
       z: support.map(([, , sz]) => sz),
-      marker: { size: 2, color: COLOR_SUPPORT, opacity: 0.25 },
+      marker: { size: Math.max(1, 2 * sizeScale), color: COLOR_SUPPORT, opacity: 0.25 },
       hoverinfo: "skip",
       showlegend: false,
     });
@@ -291,7 +303,7 @@ export default function HHPSExplorer({
         y: cubes.y,
         z: cubes.z,
         marker: {
-          size: 5,
+          size: 5 * sizeScale,
           color: cubes.c,
           colorscale: outcomeScale(outcome),
           opacity: 0.85,
