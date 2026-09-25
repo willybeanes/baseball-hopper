@@ -925,8 +925,10 @@ export default function HHPSExplorer({
         <p>
           <strong className="text-[var(--text)]">Each map is the hitter&rsquo;s own data</strong>{" "}
           (no blending with league average), smoothed so nearby balls in play count toward a pocket. A
-          cube only shows where he has at least 4% of his peak contact density, so smoothing can&rsquo;t
-          light up pockets he rarely reaches. Leaderboard numbers count lit 3-inch cubes.
+          cube only shows where he has at least 2 balls in play nearby (2 swings in per-swing mode) and at
+          least 4% of his peak contact density, so one lucky ball can&rsquo;t light up a whole region and
+          smoothing can&rsquo;t reach pockets he rarely gets to. Small samples show few cubes by design.
+          Leaderboard numbers count lit 3-inch cubes.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
           Known limitations: the ABS zone depth (19&Prime; out front) is a placeholder. The figure is
