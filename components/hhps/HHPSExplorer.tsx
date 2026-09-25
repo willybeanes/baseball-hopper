@@ -827,30 +827,40 @@ export default function HHPSExplorer({
       <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-4 space-y-3 text-sm text-[var(--dim)] leading-relaxed">
         <h2 className="font-semibold text-[var(--text)] text-base">About this tool</h2>
         <p>
-          <strong className="text-[var(--text)]">Hard-Hit Possibility Space (HHPS)</strong> measures
-          where in the space around a hitter&rsquo;s body contact becomes a hard-hit ball (&ge;95 mph
-          exit velocity). Each orange cube is a 3-inch pocket where a batted ball has a high enough
-          probability to count. Barrel Space (purple) uses the standard Statcast EV/LA barrel formula.
+          <strong className="text-[var(--text)]">Hard-Hit Possibility Space (HHPS)</strong>{" "}
+          maps where in the space around a hitter&rsquo;s body his contact turns into a hard-hit ball
+          (95+ mph exit velocity). Each orange cube is a 3-inch pocket. <strong className="text-[var(--text)]">Barrel Space</strong>{" "}
+          (purple) does the same for barrels, using Baseball Savant&rsquo;s own barrel flag, so barrel
+          counts match Savant.
         </p>
         <p>
-          <strong className="text-[var(--text)]">Per contact</strong> asks: of balls put in play from
-          this location, what share are hard? <strong className="text-[var(--text)]">Per swing</strong>{" "}
-          counts whiffs and fouls as swings that didn&rsquo;t produce the outcome — it penalizes holes in
-          the zone.
+          <strong className="text-[var(--text)]">Per contact</strong>{" "}
+          asks: of the balls he put in play from this pocket, what share were hard-hit (or barrels)?{" "}
+          <strong className="text-[var(--text)]">Per swing</strong>{" "}
+          also counts whiffs and fouls as swings that didn&rsquo;t produce the outcome, so it penalizes
+          swing-and-miss.
         </p>
         <p>
-          <strong className="text-[var(--text)]">Thresholds:</strong> A cube lights up orange (hard-hit)
-          when &ge;50% of per-contact balls in that pocket exit at 95+ mph. Per-swing hard-hit uses a
-          relative cutoff — top 25% of league spatial cells by rate. Barrel (purple) uses both a relative
-          cutoff — top 9% of league cells — and the standard Statcast EV/LA formula (roughly EV &ge;98 mph
-          at the ideal launch angle). The grey dots mark cells holding 90% of all league batted-ball
-          density — the full contact space a hitter can reach.
+          <strong className="text-[var(--text)]">Cutoffs:</strong>{" "}
+          a cube lights up when the hitter&rsquo;s rate in that pocket reaches a fixed bar, the same for
+          every hitter, split and season:
+        </p>
+        <ul className="list-disc pl-5 space-y-0.5 -mt-1">
+          <li>Hard-hit, per contact: at least <strong className="text-[var(--text)]">50%</strong> of balls in play are 95+ mph</li>
+          <li>Hard-hit, per swing: at least <strong className="text-[var(--text)]">22%</strong> of swings produce a 95+ mph ball</li>
+          <li>Barrel, per contact: at least <strong className="text-[var(--text)]">15%</strong> of balls in play are barrels</li>
+          <li>Barrel, per swing: at least <strong className="text-[var(--text)]">7.5%</strong> of swings produce a barrel</li>
+        </ul>
+        <p>
+          Because the bars are fixed, a hitter&rsquo;s cube count can be compared across seasons. The
+          grey dots mark the pockets holding 90% of all league batted balls, the contact space a hitter
+          can realistically reach; cubes only light up inside it.
         </p>
         <p>
-          <strong className="text-[var(--text)]">Splits</strong> use the same cutoffs in every split.
-          Each hitter&rsquo;s map uses only his own batted balls — no blending with league average.
-          A cube only shows where he has at least 4% of his peak contact density, so smoothing
-          can&rsquo;t light up pockets he rarely reaches. Leaderboard numbers count lit 3-inch cubes.
+          <strong className="text-[var(--text)]">Each map is the hitter&rsquo;s own data</strong>{" "}
+          (no blending with league average), smoothed so nearby balls in play count toward a pocket. A
+          cube only shows where he has at least 4% of his peak contact density, so smoothing can&rsquo;t
+          light up pockets he rarely reaches. Leaderboard numbers count lit 3-inch cubes.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
           Known limitations: the ABS zone depth (19&Prime; out front) is a placeholder. The figure is
