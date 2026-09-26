@@ -23,6 +23,7 @@ import {
   figureJsonUrl,
   hhpsUrl,
 } from "@/lib/hhps";
+import { normalize } from "@/lib/hitting-plus/metrics";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -577,8 +578,8 @@ export default function HHPSExplorer({
 
   // Matches "Last, First" stored names against "first last" or "last" queries
   function nameMatch(storedName: string, query: string): boolean {
-    const q = query.toLowerCase();
-    const n = storedName.toLowerCase();
+    const q = normalize(query.trim());  // accent-insensitive: "rodriguez" finds "Rodríguez"
+    const n = normalize(storedName);
     if (n.includes(q)) return true;
     const parts = n.split(", ");
     return parts.length === 2 && `${parts[1]} ${parts[0]}`.includes(q);
