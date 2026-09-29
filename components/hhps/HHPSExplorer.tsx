@@ -118,6 +118,9 @@ export default function HHPSExplorer({
   const plotlyRef = useRef<typeof import("plotly.js-dist-min") | null>(null);
   const playerCache = useRef<Map<string, PlayerJson>>(new Map());
   const leagueRef = useRef<LeagueJson | null>(null);
+  // draw() runs from async callbacks; read the latest leaderboard so a season switch never shows a stale row.
+  const leaderboardRef = useRef(leaderboard);
+  leaderboardRef.current = leaderboard;
   const metaRef = useRef<MetaJson | null>(null);
   const figureRef = useRef<FigureJson | null>(null);
   const cameraRef = useRef<ReturnType<typeof defaultCamera> | null>(null);
@@ -133,11 +136,15 @@ export default function HHPSExplorer({
           outcome: outcome === "hard" ? "hard" : "barrel",
           mode: mode === "bip" ? "contact" : "swing",
           hand: hand === "A" ? "all" : hand,
+          season: season === SEASONS[0] ? undefined : season,
         }),
         { scroll: false },
       );
+    } else if (season !== initialSeason) {
+      // League average has no player param; keep the season so the leaderboard matches the maps.
+      router.replace(`/hhps?season=${season}`, { scroll: false });
     }
-  }, [selectedId, outcome, mode, hand, router]);
+  }, [selectedId, outcome, mode, hand, season, router]);
 
   // ── Player badge (headshot + team logo) ───────────────────────────────────
   useEffect(() => {
@@ -256,7 +263,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, plotW]);
+  }, [outcome, mode, hand, showFig, showZone, plotW, leaderboard]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -325,7 +332,7 @@ export default function HHPSExplorer({
     const batTarget = getBatTarget(payload, outcome);
 
     // Status line
-    const row = leaderboard.find(
+    const row = leaderboardRef.current.find(
       (r) =>
         r.split === hand &&
         (typeof selectedId === "number" ? r.mlbam === selectedId : false),

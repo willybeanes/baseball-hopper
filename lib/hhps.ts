@@ -109,9 +109,10 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" },
+  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
+  if (opts?.season) params.set("season", String(opts.season));
   if (opts?.outcome) params.set("outcome", opts.outcome);
   if (opts?.mode) params.set("mode", opts.mode);
   if (opts?.hand) params.set("hand", opts.hand);
