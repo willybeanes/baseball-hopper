@@ -59,7 +59,7 @@ export default async function HHPSPage({
       initialPlayer={params.player ? Number(params.player) : undefined}
       initialOutcome={(params.outcome as "hard" | "barrel") ?? "hard"}
       initialMode={(params.mode as "contact" | "swing") ?? "contact"}
-      initialHand={(params.hand as "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF") ?? "all"}
+      initialHand={(params.hand as "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO") ?? "all"}
     />
   );
 }

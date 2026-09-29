@@ -29,21 +29,23 @@ import { normalize } from "@/lib/hitting-plus/metrics";
 
 type Outcome = "hard" | "brl";
 type Mode = "bip" | "sw";
-// A split is a pitcher-hand choice, a pitch-group choice, or (fastballs only) both: "RF" / "LF".
-type Hand = "A" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF";
+// A split is a pitcher-hand choice, a pitch-group choice, or both: hand letter + pitch letter ("RF", "LB", ...).
+type Hand = "A" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO";
 type HandSel = "A" | "R" | "L";
 type PitchSel = "F" | "B" | "O" | null;
-const PITCH_SPLITS: Hand[] = ["F", "B", "O", "RF", "LF"];
+const PITCH_SPLITS: Hand[] = ["F", "B", "O", "RF", "LF", "RB", "LB", "RO", "LO"];
 const SPLIT_LABEL: Record<Hand, string> = {
   A: "all pitchers", R: "vs RHP", L: "vs LHP",
   F: "fastballs", B: "breaking balls", O: "offspeed",
   RF: "fastballs vs RHP", LF: "fastballs vs LHP",
+  RB: "breaking balls vs RHP", LB: "breaking balls vs LHP",
+  RO: "offspeed vs RHP", LO: "offspeed vs LHP",
 };
 const splitKey = (h: HandSel, p: PitchSel): Hand => (p ? (h === "A" ? p : ((h + p) as Hand)) : h);
 function parseSplit(v: string | undefined): [HandSel, PitchSel] {
   if (v === "R" || v === "L") return [v, null];
   if (v === "F" || v === "B" || v === "O") return ["A", v];
-  if (v === "RF" || v === "LF") return [v[0] as HandSel, "F"];
+  if (v && v.length === 2 && (v[0] === "R" || v[0] === "L") && "FBO".includes(v[1])) return [v[0] as HandSel, v[1] as PitchSel];
   return ["A", null];
 }
 type PlayerId = number | "league-R" | "league-L";
@@ -55,7 +57,7 @@ interface Props {
   initialPlayer?: number;
   initialOutcome?: "hard" | "barrel";
   initialMode?: "contact" | "swing";
-  initialHand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF";
+  initialHand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO";
 }
 
 // ── Colors ────────────────────────────────────────────────────────────────────
@@ -196,9 +198,9 @@ export default function HHPSExplorer({
       // Older season files predate the pitch-type maps; hide the buttons and fall back to All.
       const hasPG = Boolean(league.R.splits.F);
       setHasPitchGroups(hasPG);
-      setHasCombos(Boolean(league.R.splits.RF));
+      setHasCombos(Boolean(league.R.splits.RB));
       if (!hasPG && PITCH_SPLITS.includes(hand)) { setHandSel("A"); setPitchSel(null); return; }
-      // Combos (fastball vs one hand) arrived after the F/B/O maps; drop back to the hand alone if absent.
+      // Combos (pitch group vs one hand) arrived after the F/B/O maps; drop back to the hand alone if absent.
       if (hand.length === 2 && !league.R.splits[hand]) { setPitchSel(null); return; }
       await loadAndDraw(selectedId);
     }
@@ -653,15 +655,14 @@ export default function HHPSExplorer({
     : allRows.filter((r) => r.qualified);
 
   // ── Toggle button helper ──────────────────────────────────────────────────
-  // Only fastballs combine with a pitcher hand (breaking / offspeed per hand are too thin to map).
+  // Hand and pitch type combine freely, but seasons published before the combos only have the two singles.
   function pickHand(h: HandSel) {
     setHandSel(h);
-    if (h !== "A" && (pitchSel === "B" || pitchSel === "O")) setPitchSel(null);
-    if (h !== "A" && pitchSel === "F" && !hasCombos) setPitchSel(null);
+    if (h !== "A" && !hasCombos) setPitchSel(null);
   }
-  function pickPitch(p: "B" | "O") {
+  function pickPitch(p: "F" | "B" | "O") {
     setPitchSel(pitchSel === p ? null : p);
-    if (handSel !== "A") setHandSel("A");
+    if (!hasCombos) setHandSel("A");
   }
 
   function Btn({
@@ -769,7 +770,7 @@ export default function HHPSExplorer({
         {/* Pitch type (vs all pitcher hands). Only when this season's files carry the pitch-group maps. */}
         {hasPitchGroups && (
           <div className="flex gap-1">
-            <Btn on={pitchSel === "F"} onClick={() => { setPitchSel(pitchSel === "F" ? null : "F"); if (!hasCombos) setHandSel("A"); }}>Fastball</Btn>
+            <Btn on={pitchSel === "F"} onClick={() => pickPitch("F")}>Fastball</Btn>
             <Btn on={pitchSel === "B"} onClick={() => pickPitch("B")}>Breaking</Btn>
             <Btn on={pitchSel === "O"} onClick={() => pickPitch("O")}>Offspeed</Btn>
           </div>
@@ -993,8 +994,9 @@ export default function HHPSExplorer({
           cutter), Breaking (slider, sweeper, curve, knuckle-curve, slurve) or Offspeed (changeup,
           splitter, forkball). The same fixed bars apply, so breaking and offspeed maps light far fewer
           cubes (those pitches are simply hit less hard), and offspeed barrel maps are often empty.
-          Fastballs can also be combined with a pitcher hand (fastballs vs RHP, fastballs vs LHP);
-          breaking and offspeed can&rsquo;t, because a single hand leaves too few balls in play.
+          A pitch type can also be combined with a pitcher hand (for example breaking balls vs LHP).
+          Those samples are small, especially offspeed vs one hand (a regular has a few dozen balls in
+          play), so expect sparse maps there.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
           Known limitations: the ABS zone depth (19&Prime; out front) is a placeholder. The figure is
