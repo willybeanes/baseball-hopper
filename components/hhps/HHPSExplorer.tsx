@@ -29,7 +29,12 @@ import { normalize } from "@/lib/hitting-plus/metrics";
 
 type Outcome = "hard" | "brl";
 type Mode = "bip" | "sw";
-type Hand = "A" | "R" | "L";
+type Hand = "A" | "R" | "L" | "F" | "B" | "O";
+const PITCH_SPLITS: Hand[] = ["F", "B", "O"];
+const SPLIT_LABEL: Record<Hand, string> = {
+  A: "all pitchers", R: "vs RHP", L: "vs LHP",
+  F: "fastballs", B: "breaking balls", O: "offspeed",
+};
 type PlayerId = number | "league-R" | "league-L";
 
 interface Props {
@@ -39,7 +44,7 @@ interface Props {
   initialPlayer?: number;
   initialOutcome?: "hard" | "barrel";
   initialMode?: "contact" | "swing";
-  initialHand?: "all" | "R" | "L";
+  initialHand?: "all" | "R" | "L" | "F" | "B" | "O";
 }
 
 // ── Colors ────────────────────────────────────────────────────────────────────
@@ -91,7 +96,9 @@ export default function HHPSExplorer({
   const [outcome, setOutcome] = useState<Outcome>(initialOutcome === "barrel" ? "brl" : "hard");
   const [mode, setMode] = useState<Mode>(initialMode === "swing" ? "sw" : "bip");
   const [hand, setHand] = useState<Hand>(
-    initialHand === "R" ? "R" : initialHand === "L" ? "L" : "A",
+    initialHand === "R" || initialHand === "L" || initialHand === "F" || initialHand === "B" || initialHand === "O"
+      ? initialHand
+      : "A",
   );
   const [showFig, setShowFig] = useState(true);
   const [showZone, setShowZone] = useState(true);
@@ -103,6 +110,7 @@ export default function HHPSExplorer({
   const [lbQualOnly, setLbQualOnly] = useState(true);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
+  const [hasPitchGroups, setHasPitchGroups] = useState(false);
   const [playerBadge, setPlayerBadge] = useState<{ mlbam: number; teamId: number | null } | null>(null);
 
   // ── Data refs ──────────────────────────────────────────────────────────────
@@ -168,6 +176,10 @@ export default function HHPSExplorer({
       metaRef.current = meta;
       leagueRef.current = league;
       figureRef.current = figure;
+      // Older season files predate the pitch-type maps; hide the buttons and fall back to All.
+      const hasPG = Boolean(league.R.splits.F);
+      setHasPitchGroups(hasPG);
+      if (!hasPG && PITCH_SPLITS.includes(hand)) { setHand("A"); return; }
       await loadAndDraw(selectedId);
     }
     init().catch(console.error);
@@ -253,8 +265,10 @@ export default function HHPSExplorer({
 
       if (id === "league-R" || id === "league-L") {
         const lg = leagueRef.current[id === "league-R" ? "R" : "L"];
-        currentPayloadRef.current = { payload: lg.splits[hand], stand: lg.stand };
-        draw(lg.splits[hand], lg.stand);
+        const lgPayload = lg.splits[hand];
+        if (!lgPayload) return;
+        currentPayloadRef.current = { payload: lgPayload, stand: lg.stand };
+        draw(lgPayload, lg.stand);
         return;
       }
 
@@ -271,10 +285,12 @@ export default function HHPSExplorer({
           return;
         }
       }
+      const payload = player.splits[hand];
+      if (!payload) return;
       const splitStand: "R" | "L" =
-        player.splits[hand].stand ?? (player.stand !== "S" ? player.stand : "L");
-      currentPayloadRef.current = { payload: player.splits[hand], stand: splitStand };
-      draw(player.splits[hand], splitStand);
+        payload.stand ?? (player.stand !== "S" ? player.stand : "L");
+      currentPayloadRef.current = { payload, stand: splitStand };
+      draw(payload, splitStand);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [season, supabaseUrl, hand, outcome, mode, showFig, showZone],
@@ -719,6 +735,15 @@ export default function HHPSExplorer({
           <Btn on={hand === "L"} onClick={() => setHand("L")}>vs LHP</Btn>
         </div>
 
+        {/* Pitch type (vs all pitcher hands). Only when this season's files carry the pitch-group maps. */}
+        {hasPitchGroups && (
+          <div className="flex gap-1">
+            <Btn on={hand === "F"} onClick={() => setHand("F")}>Fastball</Btn>
+            <Btn on={hand === "B"} onClick={() => setHand("B")}>Breaking</Btn>
+            <Btn on={hand === "O"} onClick={() => setHand("O")}>Offspeed</Btn>
+          </div>
+        )}
+
         <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
 
         {/* Outcome */}
@@ -768,7 +793,7 @@ export default function HHPSExplorer({
                 <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm text-right leading-snug">
                   {displayName(storedName)}
                   <span className="block text-xs font-normal text-[var(--dim)]">
-                    {season}{hand !== "A" ? ` · vs ${hand === "R" ? "RHP" : "LHP"}` : ""}
+                    {season}{hand !== "A" ? ` · ${SPLIT_LABEL[hand]}` : ""}
                   </span>
                 </span>
               )}
@@ -830,7 +855,7 @@ export default function HHPSExplorer({
         <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[var(--rule)]">
           <h2 className="font-semibold text-sm">
             Leaderboard —{" "}
-            {hand === "A" ? "all pitchers" : hand === "R" ? "vs RHP" : "vs LHP"}, {modeLabel}
+            {SPLIT_LABEL[hand]}, {modeLabel}
           </h2>
           <label className="flex items-center gap-1.5 text-xs text-[var(--dim)] cursor-pointer">
             <input
@@ -930,6 +955,13 @@ export default function HHPSExplorer({
           least 4% of his peak contact density, so one lucky ball can&rsquo;t light up a whole region and
           smoothing can&rsquo;t reach pockets he rarely gets to. Small samples show few cubes by design.
           Leaderboard numbers count lit 3-inch cubes.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Pitch type</strong>{" "}
+          filters to one family of pitch, against pitchers of both hands: Fastball (four-seam, sinker,
+          cutter), Breaking (slider, sweeper, curve, knuckle-curve, slurve) or Offspeed (changeup,
+          splitter, forkball). The same fixed bars apply, so breaking and offspeed maps light far fewer
+          cubes (those pitches are simply hit less hard), and offspeed barrel maps are often empty.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
           Known limitations: the ABS zone depth (19&Prime; out front) is a placeholder. The figure is

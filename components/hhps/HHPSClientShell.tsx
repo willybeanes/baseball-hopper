@@ -19,7 +19,7 @@ interface Props {
   initialPlayer?: number;
   initialOutcome?: "hard" | "barrel";
   initialMode?: "contact" | "swing";
-  initialHand?: "all" | "R" | "L";
+  initialHand?: "all" | "R" | "L" | "F" | "B" | "O";
 }
 
 export default function HHPSClientShell(props: Props) {

@@ -54,7 +54,7 @@ export interface PlayerJson {
   name: string;
   stand: "R" | "L" | "S";
   zone: { plate_off_body: number; sz_bot: number; sz_top: number };
-  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload };
+  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload; F?: SplitPayload; B?: SplitPayload; O?: SplitPayload };
 }
 
 export interface LeagueJson {
@@ -65,7 +65,7 @@ export interface LeagueJson {
 interface LeagueEntry {
   stand: "R" | "L";
   zone: { plate_off_body: number; sz_bot: number; sz_top: number };
-  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload };
+  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload; F?: SplitPayload; B?: SplitPayload; O?: SplitPayload };
 }
 
 export interface MetaJson {
@@ -109,7 +109,7 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" },
+  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.outcome) params.set("outcome", opts.outcome);

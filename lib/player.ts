@@ -116,7 +116,7 @@ export function stuffUrl(): string {
  */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" },
+  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.outcome) params.set("outcome", opts.outcome);
