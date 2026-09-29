@@ -54,7 +54,7 @@ export interface PlayerJson {
   name: string;
   stand: "R" | "L" | "S";
   zone: { plate_off_body: number; sz_bot: number; sz_top: number };
-  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload; F?: SplitPayload; B?: SplitPayload; O?: SplitPayload };
+  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload; F?: SplitPayload; B?: SplitPayload; O?: SplitPayload; RF?: SplitPayload; LF?: SplitPayload };
 }
 
 export interface LeagueJson {
@@ -65,7 +65,7 @@ export interface LeagueJson {
 interface LeagueEntry {
   stand: "R" | "L";
   zone: { plate_off_body: number; sz_bot: number; sz_top: number };
-  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload; F?: SplitPayload; B?: SplitPayload; O?: SplitPayload };
+  splits: { A: SplitPayload; R: SplitPayload; L: SplitPayload; F?: SplitPayload; B?: SplitPayload; O?: SplitPayload; RF?: SplitPayload; LF?: SplitPayload };
 }
 
 export interface MetaJson {
@@ -109,7 +109,7 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O"; season?: number },
+  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
