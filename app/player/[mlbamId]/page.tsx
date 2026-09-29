@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { createClient } from "@supabase/supabase-js";
+import type { HHPSLeaderboardRow } from "@/lib/hhps";
 import {
   fetchPlayerInfo,
   headshotUrl,
@@ -7,6 +9,7 @@ import {
   batteryUrl,
   stuffUrl,
   playerUrl,
+  hhpsUrl,
 } from "@/lib/player";
 
 interface Props {
@@ -24,6 +27,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const CURRENT_YEAR = new Date().getFullYear();
+
+/** All-pitchers HHPS row for a hitter; latest season that has one. Null for pitchers / no data. */
+async function fetchHhpsRow(mlbam: number): Promise<HHPSLeaderboardRow | null> {
+  try {
+    const sb = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    );
+    const { data, error } = await sb
+      .from("hhps_leaderboard")
+      .select("*")
+      .eq("mlbam", mlbam)
+      .eq("split", "A")
+      .order("season", { ascending: false })
+      .limit(1);
+    if (error || !data?.length) return null;
+    return data[0] as HHPSLeaderboardRow;
+  } catch {
+    return null;
+  }
+}
+
+const ordinal = (n: number) => {
+  const v = n % 100;
+  const suf = v >= 11 && v <= 13 ? "th" : ({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] ?? "th";
+  return `${n}${suf}`;
+};
 
 const TOOL_LINKS = (player: Awaited<ReturnType<typeof fetchPlayerInfo>>) => {
   if (!player) return [];
@@ -92,6 +122,15 @@ export default async function PlayerPage({ params }: Props) {
   }
 
   const tools = TOOL_LINKS(player);
+  const hhps = await fetchHhpsRow(id);
+  const hhpsStats = hhps
+    ? [
+        { label: "Hard-hit · per contact", n: hhps.bip_hard_in3, rank: hhps.bip_hard_rank, color: "#DF4601", href: hhpsUrl(id, { outcome: "hard", mode: "contact" }) },
+        { label: "Barrel · per contact", n: hhps.bip_brl_in3, rank: hhps.bip_brl_rank, color: "#8E1A5E", href: hhpsUrl(id, { outcome: "barrel", mode: "contact" }) },
+        { label: "Hard-hit · per swing", n: hhps.sw_hard_in3, rank: hhps.sw_hard_rank, color: "#DF4601", href: hhpsUrl(id, { outcome: "hard", mode: "swing" }) },
+        { label: "Barrel · per swing", n: hhps.sw_brl_in3, rank: hhps.sw_brl_rank, color: "#8E1A5E", href: hhpsUrl(id, { outcome: "barrel", mode: "swing" }) },
+      ]
+    : [];
 
   return (
     <main className="max-w-3xl mx-auto px-6 py-10">
@@ -153,6 +192,46 @@ export default async function PlayerPage({ params }: Props) {
           </a>
         ))}
       </div>
+
+      {/* 3D Swing Explorer card */}
+      {hhps && (
+        <div className="mt-6 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)] p-4">
+          <div className="flex items-start justify-between gap-2 mb-3">
+            <div>
+              <span className="font-semibold text-sm">3D Swing Explorer</span>
+              <p className="text-xs text-[var(--dim)] mt-0.5">
+                Lit 3-inch cubes of hard contact and barrels around the hitter&apos;s body · {hhps.season} · {hhps.bip} BIP
+              </p>
+            </div>
+            <span className="shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#1e40af]">
+              Hitters
+            </span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {hhpsStats.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                className="block rounded-lg border border-[var(--rule)] p-3 hover:border-[var(--dim)] transition-colors"
+              >
+                <div className="text-[10px] font-bold uppercase tracking-wider" style={{ color: s.color }}>
+                  {s.label}
+                </div>
+                <div className="mt-1 text-2xl font-bold tabular-nums">{s.n}</div>
+                <div className="text-[11px] text-[var(--dimmer)]">
+                  {hhps.qualified && s.rank ? `${ordinal(Math.round(s.rank))} in MLB` : hhps.qualified ? "—" : "not yet qualified"}
+                </div>
+              </a>
+            ))}
+          </div>
+          <a
+            href={hhpsUrl(id)}
+            className="mt-3 inline-block text-xs font-medium text-[var(--accent)] hover:underline"
+          >
+            Open in the 3D viewer →
+          </a>
+        </div>
+      )}
 
       {/* Identity footer */}
       <div className="mt-10 rounded-xl border border-[var(--rule)] bg-[var(--panel)] px-5 py-4">
