@@ -87,9 +87,11 @@ sched = mlb(
 )
 
 game_entries = []  # list of (game_pk, official_date)
+seen_pks: set[int] = set()  # rescheduled/suspended games can be listed under multiple dates
 for date in sched.get("dates", []):
     for g in date.get("games", []):
-        if g.get("status", {}).get("abstractGameState") == "Final":
+        if g.get("status", {}).get("abstractGameState") == "Final" and g["gamePk"] not in seen_pks:
+            seen_pks.add(g["gamePk"])
             game_date = g.get("officialDate") or date.get("date", "")
             game_entries.append((g["gamePk"], game_date))
 
