@@ -1421,7 +1421,7 @@ export default function HHPSExplorer({
           comes from Baseball Savant&rsquo;s batting-stance tracking, which records where the hitter&rsquo;s
           feet are at three moments: in his stance, at pitch release, and at bat-ball contact. The panel below
           the chart shows feet apart and foot angle at each moment (negative angle is an open stance,
-          positive is closed), his stride, and a month-by-month view so you can spot stance changes. Stance
+          positive is closed) and his stride. Stance
           depth is how far behind the front of the plate he stands, and it also sets how far out front the
           blue strike-zone plane is drawn for each hitter. Depth at contact is derived from how far his feet
           move toward the pitcher. In the 3D view the figure&rsquo;s legs and feet are drawn at his real

@@ -4,10 +4,6 @@ import { useState } from "react";
 import type { StanceMedians, StanceRow } from "@/lib/hhps";
 import { pickStance } from "@/lib/hhps";
 
-const MONTHS: Record<string, string> = {
-  M03: "Mar", M04: "Apr", M05: "May", M06: "Jun", M07: "Jul", M08: "Aug", M09: "Sep", M10: "Oct",
-};
-
 const f1 = (v: number | null | undefined, unit = "″") => (v == null ? "—" : `${v.toFixed(1)}${unit}`);
 const ang = (v: number | null | undefined) => (v == null ? "—" : `${v > 0 ? "+" : ""}${v.toFixed(1)}°`);
 
@@ -37,10 +33,6 @@ export default function StancePanel({
   const row = pickStance(rows, side, split);
   if (!row) return null;
   const handLabel = row.pitch_hand === "A" ? "all pitchers" : row.pitch_hand === "R" ? "vs RHP" : "vs LHP";
-  const months = rows
-    .filter((r) => r.period.startsWith("M") && r.pitch_hand === "A" && r.side === row.side)
-    .sort((a, b) => a.period.localeCompare(b.period));
-
   const seq = [
     { label: "At stance", sep: row.foot_sep0, angle: row.foot_angle0, lsep: league?.foot_sep0, lang: league?.foot_angle0 },
     { label: "At release", sep: row.foot_sep1, angle: row.foot_angle1, lsep: league?.foot_sep1, lang: league?.foot_angle1 },
@@ -111,34 +103,6 @@ export default function StancePanel({
         <Tile label="Depth at contact" value={f1(row.contact_depth)} league={f1(league?.contact_depth)} title="Derived: stance depth minus how far his feet move toward the pitcher by contact" />
         <Tile label="Off the plate" value={f1(row.stance_off_plate)} league={f1(league?.stance_off_plate)} title="Distance from the plate at stance" />
       </div>
-
-      {months.length > 1 && (
-        <div className="overflow-x-auto">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--dim)] mb-1">Month by month</p>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-xs text-[var(--dimmer)] bg-[var(--bg)]">
-                <th className="px-3 py-1.5 text-left">Month</th>
-                <th className="px-3 py-1.5 text-left">Stance depth</th>
-                <th className="px-3 py-1.5 text-left">Feet apart (stance)</th>
-                <th className="px-3 py-1.5 text-left">Feet apart (contact)</th>
-                <th className="px-3 py-1.5 text-left">Stride</th>
-              </tr>
-            </thead>
-            <tbody>
-              {months.map((m) => (
-                <tr key={m.period} className="border-t border-[var(--rule)]">
-                  <td className="px-3 py-1 font-medium">{MONTHS[m.period] ?? m.period}</td>
-                  <td className="px-3 py-1 tabular-nums">{f1(m.stance_depth)}</td>
-                  <td className="px-3 py-1 tabular-nums">{f1(m.foot_sep0)}</td>
-                  <td className="px-3 py-1 tabular-nums">{f1(m.foot_sep2)}</td>
-                  <td className="px-3 py-1 tabular-nums">{f1(m.stride)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
     </section>
   );
 }
