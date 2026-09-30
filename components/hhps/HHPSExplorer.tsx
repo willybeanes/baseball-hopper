@@ -28,6 +28,10 @@ import type { PointsJson, StanceMedians, StanceRow } from "@/lib/hhps";
 import { pointsJsonUrl } from "@/lib/hhps";
 import StancePanel from "./StancePanel";
 import PlayPanel from "./PlayPanel";
+import { buildPitchPath } from "@/lib/hhpsPath";
+import type { PitchPath } from "@/lib/hhpsPath";
+import { evKey } from "@/lib/hhpsVideo";
+import type { Trajectory } from "@/lib/hhpsVideo";
 import {
   CIRCLE_TYPES, COLOR_BRL, COLOR_HARD, COLOR_SOFT, COLOR_WHIFF, RESULTS, TYPE_BUTTON_ORDER,
   eventLabel, parseRes, parseTypes, serializeRes, serializeTypes, typeInfo, typesFromOutcome,
@@ -105,10 +109,11 @@ function outcomeScale(outcome: Outcome): [number, string][] {
 // Scene units: the axis box is about 0.88 wide over 90 in, so 0.08 is roughly 8 in. The eye and the look-at point move
 // together (same viewing angle) toward home plate; sg mirrors it for lefties.
 const CAM_TOWARD_PLATE = 0.08;
-function defaultCamera(sg: 1 | -1) {
+function defaultCamera(sg: 1 | -1, yShift = 0) {
+  // yShift re-centers on the hitter when the depth axis is stretched to fit a pitch path.
   return {
-    eye: { x: (1.26 + CAM_TOWARD_PLATE) * sg, y: -1.47, z: 0.37 },
-    center: { x: (0.01 + CAM_TOWARD_PLATE) * sg, y: -0.02, z: -0.13 },
+    eye: { x: (1.26 + CAM_TOWARD_PLATE) * sg, y: -1.47 + yShift, z: 0.37 },
+    center: { x: (0.01 + CAM_TOWARD_PLATE) * sg, y: -0.02 + yShift, z: -0.13 },
     up: { x: 0, y: 0, z: 1 },
   };
 }
@@ -193,7 +198,10 @@ export default function HHPSExplorer({
   pointsRef.current = points;
   // Click a cube or circle: the plays behind it (with video), shown in a card under the chart.
   const [plays, setPlays] = useState<{ title: string; subtitle?: string; items: PlayItem[] } | null>(null);
-  useEffect(() => { setPlays(null); }, [selectedId, season]);
+  useEffect(() => { setPlays(null); setPathSel(null); }, [selectedId, season]);
+  // A pitch path drawn in the scene (from a play card's "Show pitch path").
+  const [pathSel, setPathSel] = useState<{ key: string; ev: EventPoint; traj: Trajectory } | null>(null);
+  const lastPathKey = useRef<string | null>(null);
   const [metaInfo, setMetaInfo] = useState<Pick<MetaJson, "thresholds" | "slider" | "league_rates"> | null>(null);
   const [playerBadge, setPlayerBadge] = useState<{ mlbam: number; teamId: number | null } | null>(null);
 
@@ -396,7 +404,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance, alsoWhiff, viewMode, points, circTypes, circRes]);
+  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance, alsoWhiff, viewMode, points, circTypes, circRes, pathSel]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -459,7 +467,6 @@ export default function HHPSExplorer({
       cameraRef.current = null;
     }
     lastStandRef.current = stand;
-    const cam = cameraRef.current ?? defaultCamera(sg);
 
     const fixedThr = meta.thresholds[`${mode}_${outcome}`];
     const range = meta.slider?.[`${mode}_${outcome}`];
@@ -727,6 +734,50 @@ export default function HHPSExplorer({
       traces.push(...stanceLabelTraces(feet, stRow, sg, { apart: true, angle: true, depth: true }));
     }
 
+    // 7. Pitch path (from a play card): the real flight, stretching the depth axis only while it is showing
+    let path: PitchPath | null = null;
+    if (pathSel && zoneInfo) {
+      path = buildPitchPath(pathSel.traj, pathSel.ev, {
+        plateOffBody: zoneInfo.plate_off_body, stanceDepth, sgE: stand === "L" ? 1 : -1,
+      });
+    }
+    if (path) {
+      const PATH_COLOR = "#111827";
+      traces.push({
+        type: "scatter3d", mode: "lines",
+        x: flipX(path.solid.x, sg), y: path.solid.y, z: path.solid.z,
+        line: { color: PATH_COLOR, width: 6 }, hoverinfo: "skip", showlegend: false,
+      });
+      if (path.dashed) {
+        traces.push({
+          type: "scatter3d", mode: "lines",
+          x: flipX(path.dashed.x, sg), y: path.dashed.y, z: path.dashed.z,
+          line: { color: PATH_COLOR, width: 4, dash: "dash" }, opacity: 0.6, hoverinfo: "skip", showlegend: false,
+        });
+      }
+      traces.push({
+        type: "scatter3d", mode: "markers",
+        x: flipX(path.marks.map((m) => m.x), sg), y: path.marks.map((m) => m.y), z: path.marks.map((m) => m.z),
+        marker: { size: 3.5, color: PATH_COLOR, opacity: 0.9 },
+        text: path.marks.map((m) => m.label), hovertemplate: "%{text}<extra></extra>", showlegend: false,
+      });
+      traces.push({
+        type: "scatter3d", mode: "markers",
+        x: [path.contact.x * sg], y: [path.contact.y], z: [path.contact.z],
+        marker: { size: 7, color: "#ffffff", line: { color: PATH_COLOR, width: 3 }, opacity: 1 },
+        hovertemplate: "point of contact / miss<extra></extra>", showlegend: false,
+      });
+    }
+    const yHi = path ? Math.max(60, Math.ceil(path.yStart + 6)) : 60;
+    const yShift = (43 - (yHi + 26) / 2) / 86;     // keeps the default view on the hitter when the axis is longer
+    const pathKey = path ? pathSel?.key ?? null : null;
+    if (lastPathKey.current !== pathKey) {
+      lastPathKey.current = pathKey;
+      cameraRef.current = null;
+      resetCounterRef.current += 1;
+    }
+    const cam = cameraRef.current ?? defaultCamera(sg, yShift);
+
     const xRange: [number, number] = sg > 0 ? [-30, 60] : [-60, 30];
     const layout = {
       margin: { l: 0, r: 0, t: 0, b: 0 },
@@ -743,7 +794,7 @@ export default function HHPSExplorer({
         },
         yaxis: {
           title: { text: "out front (in)" },
-          range: [-26, 60],
+          range: [-26, yHi],
           backgroundcolor: "rgba(0,0,0,0)",
           gridcolor: "rgba(128,128,128,0.15)",
           zerolinecolor: "rgba(128,128,128,0.3)",
@@ -756,7 +807,7 @@ export default function HHPSExplorer({
           zerolinecolor: "rgba(128,128,128,0.3)",
         },
         aspectmode: "manual",
-        aspectratio: { x: 0.88, y: 1, z: 0.86 },
+        aspectratio: { x: 0.88, y: (yHi + 26) / 86, z: 0.86 },
         camera: cam,
         bgcolor: "rgba(0,0,0,0)",
         dragmode: "turntable",
@@ -821,6 +872,7 @@ export default function HHPSExplorer({
     if (meta.kind === "circle") {
       const ev = pt.customdata as EventPoint | undefined;
       if (!ev) return;
+      setPathSel(null);
       setPlays({ title: "Selected play", subtitle: "Click another circle or cube to switch.", items: [{ ev }] });
       return;
     }
@@ -838,6 +890,7 @@ export default function HHPSExplorer({
         .filter((x) => x.dist <= 12)
         .sort((a, b) => a.dist - b.dist)
         .slice(0, 3);
+      setPathSel(null);
       setPlays({
         title: `Nearest ${ocLabel(oc)} to this cube`,
         subtitle: `Cube at ${cx.toFixed(0)}″ off body, ${cy.toFixed(0)}″ out front, ${cz.toFixed(0)}″ high. Up to 3 plays within 12″.`,
@@ -1363,7 +1416,16 @@ export default function HHPSExplorer({
         Click a cube or circle to see the plays behind it and watch the video.
       </p>
 
-      {plays && <PlayPanel title={plays.title} subtitle={plays.subtitle} items={plays.items} onClose={() => setPlays(null)} />}
+      {plays && (
+        <PlayPanel
+          title={plays.title}
+          subtitle={plays.subtitle}
+          items={plays.items}
+          onClose={() => { setPlays(null); setPathSel(null); }}
+          onShowPath={(ev, traj) => setPathSel((p) => (p?.key === evKey(ev) ? null : { key: evKey(ev), ev, traj }))}
+          activePathKey={pathSel?.key ?? null}
+        />
+      )}
 
       {/* Camera controls */}
       <div className="flex flex-wrap gap-1.5 items-center text-xs text-[var(--dim)]">
@@ -1521,6 +1583,17 @@ export default function HHPSExplorer({
           contact stance (the upper body stays generic), home plate and his batter&rsquo;s box are on the ground
           so you can see where he stands, and the Stance labels button prints feet apart, foot angle and depth
           at contact right on the ground.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Pitch path:</strong>{" "}
+          on any play card, <em>Show pitch path</em> draws the real flight of that pitch, from the MLB game
+          feed&rsquo;s tracking (release point, velocity and acceleration). The last nine feet of its approach
+          come in from the pitcher&rsquo;s side, with a dot every 10 milliseconds (wider spacing means a faster
+          pitch) and a dashed line showing where it was headed past the contact or miss point. The path is
+          placed in the hitter&rsquo;s frame so it passes through that play&rsquo;s contact point, which makes it
+          accurate to within a few inches. Circles are plotted at the height the pitch crossed the plate, so the
+          path can pass a couple of inches above or below one. The depth axis stretches only while a path is showing.
+          The card also lists the pitch&rsquo;s spin rate and its horizontal and induced vertical break.
         </p>
         <p>
           <strong className="text-[var(--text)]">Watch the plays:</strong>{" "}

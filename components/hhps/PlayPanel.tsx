@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { EventPoint } from "@/lib/hhps";
-import { resolvePlay, savantVideoUrl } from "@/lib/hhpsVideo";
-import type { PlayInfo } from "@/lib/hhpsVideo";
+import { evKey, resolvePlay, savantVideoUrl } from "@/lib/hhpsVideo";
+import type { PlayInfo, Trajectory } from "@/lib/hhpsVideo";
 import { eventColor, eventLabel } from "@/lib/hhpsEvents";
 
 export interface PlayItem {
@@ -14,7 +14,9 @@ export interface PlayItem {
 const kindLabel = (ev: EventPoint) => { const l = eventLabel(ev); return l.charAt(0).toUpperCase() + l.slice(1); };
 const kindColor = (ev: EventPoint) => eventColor(ev);
 
-function PlayRow({ item }: { item: PlayItem }) {
+function PlayRow({
+  item, onShowPath, activePathKey,
+}: { item: PlayItem; onShowPath?: (ev: EventPoint, traj: Trajectory) => void; activePathKey?: string | null }) {
   const { ev } = item;
   const hasIds = ev[7] != null && ev[8] != null && ev[9] != null;
   const [info, setInfo] = useState<PlayInfo | null | "loading">(hasIds ? "loading" : null);
@@ -53,9 +55,18 @@ function PlayRow({ item }: { item: PlayItem }) {
           <p className="text-xs text-[var(--dim)]">
             {[info.pitchSpeed != null ? `${info.pitchSpeed.toFixed(1)} mph` : "", info.pitchType ?? "", info.pitchResult].filter(Boolean).join(" · ")}
           </p>
+          {info.traj && (
+            <p className="text-xs text-[var(--dim)]">
+              {[
+                info.traj.spinRate != null ? `${Math.round(info.traj.spinRate).toLocaleString()} rpm` : "",
+                info.traj.breakH != null ? `${info.traj.breakH > 0 ? "+" : ""}${info.traj.breakH.toFixed(1)}\u2033 horizontal break` : "",
+                info.traj.breakVInduced != null ? `${info.traj.breakVInduced > 0 ? "+" : ""}${info.traj.breakVInduced.toFixed(1)}\u2033 induced vertical` : "",
+              ].filter(Boolean).join(" · ")}
+            </p>
+          )}
           {info.result && <p className="text-xs text-[var(--dimmer)]">{info.result}</p>}
-          {url ? (
-            <div className="pt-1">
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            {url ? (
               <a
                 href={url}
                 target="_blank"
@@ -64,9 +75,25 @@ function PlayRow({ item }: { item: PlayItem }) {
               >
                 Watch video on Baseball Savant ↗
               </a>
-            </div>
-          ) : (
-            <p className="text-xs text-[var(--dim)]">No video is listed for this pitch.</p>
+            ) : (
+              <span className="text-xs text-[var(--dim)]">No video is listed for this pitch.</span>
+            )}
+            {info.traj && onShowPath && (
+              <button
+                onClick={() => info.traj && onShowPath(ev, info.traj)}
+                className={`px-2.5 py-1 rounded-md text-xs font-medium border border-[var(--accent)] ${
+                  activePathKey === evKey(ev) ? "bg-[var(--accent)] text-white" : "bg-[var(--panel)] text-[var(--accent)]"
+                }`}
+              >
+                {activePathKey === evKey(ev) ? "Hide pitch path" : "Show pitch path"}
+              </button>
+            )}
+          </div>
+          {info.traj && activePathKey === evKey(ev) && (
+            <p className="text-[11px] text-[var(--dimmer)]">
+              The real flight from the MLB game feed, placed to pass through this play&rsquo;s contact point (within a few inches).
+              Dots are 10 ms apart, so wider spacing means a faster pitch; the dashed line shows where it was headed past contact.
+            </p>
           )}
         </div>
       )}
@@ -75,8 +102,11 @@ function PlayRow({ item }: { item: PlayItem }) {
 }
 
 export default function PlayPanel({
-  title, subtitle, items, onClose,
-}: { title: string; subtitle?: string; items: PlayItem[]; onClose: () => void }) {
+  title, subtitle, items, onClose, onShowPath, activePathKey,
+}: {
+  title: string; subtitle?: string; items: PlayItem[]; onClose: () => void;
+  onShowPath?: (ev: EventPoint, traj: Trajectory) => void; activePathKey?: string | null;
+}) {
   const ref = useRef<HTMLElement | null>(null);
   useEffect(() => {
     ref.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
@@ -102,7 +132,7 @@ export default function PlayPanel({
       ) : (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it, i) => (
-            <PlayRow key={`${it.ev[7] ?? "x"}-${it.ev[8] ?? i}-${it.ev[9] ?? i}-${it.ev[0]}-${it.ev[1]}`} item={it} />
+            <PlayRow key={`${it.ev[7] ?? "x"}-${it.ev[8] ?? i}-${it.ev[9] ?? i}-${it.ev[0]}-${it.ev[1]}`} item={it} onShowPath={onShowPath} activePathKey={activePathKey} />
           ))}
         </div>
       )}
