@@ -116,11 +116,12 @@ export function stuffUrl(): string {
  */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO" },
+  opts?: { thr?: number; outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO" },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.outcome) params.set("outcome", opts.outcome);
   if (opts?.mode) params.set("mode", opts.mode);
   if (opts?.hand) params.set("hand", opts.hand);
+  if (opts?.thr !== undefined) params.set("thr", String(opts.thr));
   return `${SHELL}/hhps?${params}`;
 }

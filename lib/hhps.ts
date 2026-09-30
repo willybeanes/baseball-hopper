@@ -47,6 +47,11 @@ export interface SplitPayload {
   sw_brl: number[][];
   bat_target_hard: [number, number, number] | null;
   bat_target_brl: [number, number, number] | null;
+  // Extra cubes between the slider's low end and the fixed bar (threshold slider loosening).
+  bip_hard_lo?: number[][];
+  sw_hard_lo?: number[][];
+  bip_brl_lo?: number[][];
+  sw_brl_lo?: number[][];
 }
 
 export interface PlayerJson {
@@ -73,6 +78,8 @@ export interface MetaJson {
   max_game_date: string;
   support_cloud: [number, number, number][];
   thresholds: Record<string, number>;
+  slider?: Record<string, [number, number]>;        // per "<mode>_<outcome>": [min, max] for the threshold slider
+  league_rates?: Record<string, number>;            // league-average rate per "<mode>_<outcome>"
   qual_pa: number;
 }
 
@@ -109,10 +116,11 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
+  opts?: { thr?: number; outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
+  if (opts?.thr !== undefined) params.set("thr", String(opts.thr));
   if (opts?.outcome) params.set("outcome", opts.outcome);
   if (opts?.mode) params.set("mode", opts.mode);
   if (opts?.hand) params.set("hand", opts.hand);
@@ -141,9 +149,16 @@ export function getCubeList(
   payload: SplitPayload,
   mode: "bip" | "sw",
   outcome: "hard" | "brl",
+  /** Custom threshold (rate). Omit for the fixed bar exactly as published. */
+  thr?: number | null,
+  /** The fixed bar, so we know whether a custom value loosens or tightens. */
+  fixedThr?: number,
 ): CubeData {
   const key = `${mode}_${outcome}` as keyof SplitPayload;
-  return cubesFromList(payload[key] as number[][]);
+  const base = payload[key] as number[][];
+  if (thr == null || fixedThr === undefined) return cubesFromList(base);
+  const loose = thr < fixedThr ? ((payload[`${key}_lo` as keyof SplitPayload] as number[][] | undefined) ?? []) : [];
+  return cubesFromList([...base, ...loose].filter((c) => c[3] >= thr));
 }
 
 /** Get the bat centroid for the current outcome. */

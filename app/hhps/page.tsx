@@ -56,6 +56,7 @@ export default async function HHPSPage({
       leaderboard={leaderboard}
       season={season}
       supabaseUrl={SUPABASE_URL}
+      initialThr={Number.isFinite(Number(params.thr)) && params.thr ? Number(params.thr) : undefined}
       initialPlayer={params.player ? Number(params.player) : undefined}
       initialOutcome={(params.outcome as "hard" | "barrel") ?? "hard"}
       initialMode={(params.mode as "contact" | "swing") ?? "contact"}

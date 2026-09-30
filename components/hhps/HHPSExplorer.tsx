@@ -57,6 +57,7 @@ interface Props {
   initialPlayer?: number;
   initialOutcome?: "hard" | "barrel";
   initialMode?: "contact" | "swing";
+  initialThr?: number;
   initialHand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO";
 }
 
@@ -99,6 +100,7 @@ export default function HHPSExplorer({
   initialOutcome = "hard",
   initialMode = "contact",
   initialHand = "all",
+  initialThr,
 }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -123,6 +125,13 @@ export default function HHPSExplorer({
   const [status, setStatus] = useState("");
   const [hasPitchGroups, setHasPitchGroups] = useState(false);
   const [hasCombos, setHasCombos] = useState(false);
+  // Custom threshold per "<mode>_<outcome>" (rate, e.g. 0.42). Absent = the fixed bar.
+  const [thrMap, setThrMap] = useState<Record<string, number>>(() =>
+    initialThr !== undefined
+      ? { [`${initialMode === "swing" ? "sw" : "bip"}_${initialOutcome === "barrel" ? "brl" : "hard"}`]: initialThr }
+      : {},
+  );
+  const [metaInfo, setMetaInfo] = useState<Pick<MetaJson, "thresholds" | "slider" | "league_rates"> | null>(null);
   const [playerBadge, setPlayerBadge] = useState<{ mlbam: number; teamId: number | null } | null>(null);
 
   // ── Data refs ──────────────────────────────────────────────────────────────
@@ -149,6 +158,7 @@ export default function HHPSExplorer({
           mode: mode === "bip" ? "contact" : "swing",
           hand: hand === "A" ? "all" : hand,
           season: season === SEASONS[0] ? undefined : season,
+          thr: thrMap[`${mode}_${outcome === "hard" ? "hard" : "brl"}`],
         }),
         { scroll: false },
       );
@@ -156,7 +166,7 @@ export default function HHPSExplorer({
       // League average has no player param; keep the season so the leaderboard matches the maps.
       router.replace(`/hhps?season=${season}`, { scroll: false });
     }
-  }, [selectedId, outcome, mode, hand, season, router]);
+  }, [selectedId, outcome, mode, hand, season, thrMap, router]);
 
   // ── Player badge (headshot + team logo) ───────────────────────────────────
   useEffect(() => {
@@ -198,6 +208,7 @@ export default function HHPSExplorer({
       // Older season files predate the pitch-type maps; hide the buttons and fall back to All.
       const hasPG = Boolean(league.R.splits.F);
       setHasPitchGroups(hasPG);
+      setMetaInfo({ thresholds: meta.thresholds, slider: meta.slider, league_rates: meta.league_rates });
       setHasCombos(Boolean(league.R.splits.RB));
       if (!hasPG && PITCH_SPLITS.includes(hand)) { setHandSel("A"); setPitchSel(null); return; }
       // Combos (pitch group vs one hand) arrived after the F/B/O maps; drop back to the hand alone if absent.
@@ -278,7 +289,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, plotW, leaderboard]);
+  }, [outcome, mode, hand, showFig, showZone, plotW, leaderboard, thrMap]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -343,7 +354,14 @@ export default function HHPSExplorer({
     lastStandRef.current = stand;
     const cam = cameraRef.current ?? defaultCamera(sg);
 
-    const cubes = getCubeList(payload, mode, outcome);
+    const fixedThr = meta.thresholds[`${mode}_${outcome}`];
+    const range = meta.slider?.[`${mode}_${outcome}`];
+    const rawThr = thrMap[`${mode}_${outcome}`];
+    // Custom threshold only when this season's files carry the loose cubes (meta.slider); clamp to the range.
+    const customThr =
+      rawThr !== undefined && range ? Math.min(range[1], Math.max(range[0], rawThr)) : null;
+    const isCustom = customThr !== null && Math.abs(customThr - fixedThr) > 1e-9;
+    const cubes = getCubeList(payload, mode, outcome, isCustom ? customThr : null, fixedThr);
     const batTarget = getBatTarget(payload, outcome);
 
     // Status line
@@ -359,13 +377,14 @@ export default function HHPSExplorer({
     const bip = row?.bip;
     const statusParts: string[] = [
       stand === "L" ? "LHH" : "RHH",
-      rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
+      !isCustom && rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
       pct !== undefined && pct !== null
         ? (outcome === "hard" ? "HH%" : "Brl%") + ` ${(pct * 100).toFixed(1)}%` +
           (bip ? ` (${Math.round(pct * bip)} ${outcome === "hard" ? "hard-hit" : "barrels"})` : "")
         : "",
       bip !== undefined ? `${bip} BIP` : "",
       `${cubes.x.length} cubes`,
+      isCustom ? "custom threshold, no rank" : "",
     ].filter(Boolean);
     setStatus(statusParts.join("  ·  "));
 
@@ -637,6 +656,20 @@ export default function HHPSExplorer({
     });
 
   const modeLabel = mode === "bip" ? "per contact" : "per swing";
+
+  // Threshold slider (per current outcome + mode). Absent for seasons published before the loose cubes.
+  const sliderKey = `${mode}_${outcome}`;
+  const sliderRange = metaInfo?.slider?.[sliderKey];
+  const sliderFixed = metaInfo?.thresholds?.[sliderKey];
+  const sliderLeague = metaInfo?.league_rates?.[sliderKey];
+  const sliderStep = sliderKey === "bip_hard" ? 0.01 : 0.005;
+  const sliderValue =
+    sliderRange && sliderFixed !== undefined
+      ? Math.min(sliderRange[1], Math.max(sliderRange[0], thrMap[sliderKey] ?? sliderFixed))
+      : 0;
+  const sliderIsCustom =
+    sliderFixed !== undefined && thrMap[sliderKey] !== undefined && sliderRange !== undefined &&
+    Math.abs(sliderValue - sliderFixed) > 1e-9;
   const LB_COLS: { key: string; label: string; title: string }[] = [
     { key: "name", label: "Player", title: "Player name" },
     { key: `${mode}_hard_in3`, label: "Hard-hit cubes", title: `Hard-hit ${modeLabel} space (lit 3-inch cubes)` },
@@ -767,13 +800,16 @@ export default function HHPSExplorer({
           <Btn on={handSel === "L"} onClick={() => pickHand("L")}>vs LHP</Btn>
         </div>
 
-        {/* Pitch type (vs all pitcher hands). Only when this season's files carry the pitch-group maps. */}
+        {/* Pitch type. Only when this season's files carry the pitch-group maps. */}
         {hasPitchGroups && (
+          <>
+          <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
           <div className="flex gap-1">
             <Btn on={pitchSel === "F"} onClick={() => pickPitch("F")}>Fastball</Btn>
             <Btn on={pitchSel === "B"} onClick={() => pickPitch("B")}>Breaking</Btn>
             <Btn on={pitchSel === "O"} onClick={() => pickPitch("O")}>Offspeed</Btn>
           </div>
+          </>
         )}
 
         <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
@@ -797,6 +833,65 @@ export default function HHPSExplorer({
         <Btn on={showFig} onClick={() => setShowFig((v) => !v)}>Figure</Btn>
         <Btn on={showZone} onClick={() => setShowZone((v) => !v)}>Zone</Btn>
       </div>
+
+      {/* Threshold slider */}
+      {sliderRange && sliderFixed !== undefined && (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-xs text-[var(--dim)]">
+          <span className="font-medium text-[var(--text)]">Threshold</span>
+          <div className="relative w-56 sm:w-72">
+            <input
+              type="range"
+              min={sliderRange[0]}
+              max={sliderRange[1]}
+              step={sliderStep}
+              value={sliderValue}
+              onChange={(e) => setThrMap((m) => ({ ...m, [sliderKey]: Number(e.target.value) }))}
+              className="w-full"
+              style={{ accentColor: outcomeColor(outcome) }}
+              aria-label="Cube threshold"
+            />
+            {/* Ticks: the standard bar (▲) and the league-average rate (│), so "normal" is visible on the track */}
+            {[
+              { v: sliderFixed, label: "standard" },
+              ...(sliderLeague !== undefined ? [{ v: sliderLeague, label: "league avg" }] : []),
+            ].map((t) => {
+              const pos = ((t.v - sliderRange[0]) / (sliderRange[1] - sliderRange[0])) * 100;
+              if (pos < 0 || pos > 100) return null;
+              return (
+                <span
+                  key={t.label}
+                  title={`${t.label}: ${(t.v * 100).toFixed(1)}%`}
+                  className="absolute -bottom-3 -translate-x-1/2 text-[9px] leading-none text-[var(--dimmer)] pointer-events-none"
+                  style={{ left: `calc(${pos}% + ${(0.5 - pos / 100) * 16}px)` }}
+                >
+                  {t.label === "standard" ? "▲" : "│"}
+                </span>
+              );
+            })}
+          </div>
+          <span className="tabular-nums text-[var(--text)] w-24">
+            ≥ {(sliderValue * 100).toFixed(1)}% {mode === "bip" ? "of BIP" : "of swings"}
+          </span>
+          <button
+            onClick={() =>
+              setThrMap((m) => {
+                const n = { ...m };
+                delete n[sliderKey];
+                return n;
+              })
+            }
+            disabled={!sliderIsCustom}
+            className="px-2 py-0.5 rounded border border-[var(--panel-border)] bg-[var(--panel)] hover:bg-[var(--bg)] text-[var(--text)] disabled:opacity-40 disabled:cursor-default transition-colors"
+          >
+            Reset
+          </button>
+          <span className="text-[10px] text-[var(--dimmer)]">
+            ▲ standard {(sliderFixed * 100).toFixed(1)}%
+            {sliderLeague !== undefined && <> · │ league avg {(sliderLeague * 100).toFixed(1)}%</>}
+            {" · leaderboard stays on the standard bar"}
+          </span>
+        </div>
+      )}
 
       {/* Status line */}
       {status && (
@@ -851,6 +946,7 @@ export default function HHPSExplorer({
           >
             {outcome === "hard" ? "Hard-hit" : "Barrels"}
             <span className="font-normal opacity-85">· {mode === "bip" ? "per contact" : "per swing"}</span>
+            {sliderIsCustom && <span className="font-normal opacity-85">· custom threshold</span>}
           </span>
         </div>
       </div>
@@ -979,6 +1075,15 @@ export default function HHPSExplorer({
           Because the bars are fixed, a hitter&rsquo;s cube count can be compared across seasons. The
           grey dots mark the pockets holding 90% of all league batted balls, the contact space a hitter
           can realistically reach; cubes only light up inside it.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Threshold slider:</strong>{" "}
+          drag it to change how high a pocket&rsquo;s rate must be to light up. Lower it to see where a
+          hitter does <em>some</em> damage; raise it to isolate his true sweet spot. The ▲ marks the
+          standard bar and the │ marks the league-average rate. The slider is capped to a sensible
+          range, and the 4% coverage floor and 2-ball minimum never change. The leaderboard and ranks
+          always use the standard bar, so a custom view shows its live cube count with no rank. Share a
+          custom view with the <code>thr</code> link parameter.
         </p>
         <p>
           <strong className="text-[var(--text)]">Each map is the hitter&rsquo;s own data</strong>{" "}
