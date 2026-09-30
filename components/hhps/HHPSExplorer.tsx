@@ -565,7 +565,7 @@ export default function HHPSExplorer({
         z: wCubes.z,
         // A diamond glyph fills much less of its box than a square, so it needs a bigger size to read as the same weight.
         // The color range is pinned (not auto-scaled) so low-rate diamonds stay visible and colors do not shift with the slider.
-        marker: { size: 5 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), cmin: 0.2, cmax: 0.85, opacity: 0.95, symbol: "diamond" },
+        marker: { size: 4.5 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), cmin: 0.2, cmax: 0.85, opacity: 0.95, symbol: "diamond" },
         customdata: wCubes.x,
         meta: { kind: "cube", oc: "whiff" },
         hovertemplate: `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>whiff prob %{marker.color:.1%}<br>click for the nearest plays<extra></extra>`,
@@ -583,7 +583,7 @@ export default function HHPSExplorer({
         z: cubes.z,
         marker: {
           // Slightly larger when whiff diamonds share the view, so the two layers keep a similar visual weight
-          size: (overlayWhiff ? 6 : 5) * sizeScale,
+          size: (overlayWhiff ? 5.5 : 5) * sizeScale,
           color: cubes.c,
           colorscale: outcomeScale(outcome),
           opacity: 0.85,
