@@ -1536,6 +1536,7 @@ export default function HHPSExplorer({
           62% league-wide), its bars are high: a pocket lights when at least <strong className="text-[var(--text)]">80%</strong> of
           balls in play there are soft (per contact), or at least <strong className="text-[var(--text)]">35%</strong> of
           swings end in a soft ball in play (per swing). It has its own slider and leaderboard columns like Hard-hit.
+          Rank 1 on the leaderboard is the most soft-hit cubes, meaning the softest map, not the best.
         </p>
         <p>
           <strong className="text-[var(--text)]">Circles layers:</strong>{" "}
