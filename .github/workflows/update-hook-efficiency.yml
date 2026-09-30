@@ -3,7 +3,7 @@ name: Update Hook Efficiency
 on:
   schedule:
     # 9am UTC = 4am ET / 5am PT — all previous night's games are final
-    - cron: '0 9 * * *'
+    - cron: '0 9 * 3-10 *'
   workflow_dispatch:  # allow manual trigger
 
 jobs:
