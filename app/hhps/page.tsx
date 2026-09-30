@@ -58,7 +58,7 @@ export default async function HHPSPage({
       supabaseUrl={SUPABASE_URL}
       initialThr={Number.isFinite(Number(params.thr)) && params.thr ? Number(params.thr) : undefined}
       initialPlayer={params.player ? Number(params.player) : undefined}
-      initialOutcome={(params.outcome as "hard" | "barrel") ?? "hard"}
+      initialOutcome={(params.outcome as "hard" | "barrel" | "whiff") ?? "hard"}
       initialMode={(params.mode as "contact" | "swing") ?? "contact"}
       initialHand={(params.hand as "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO") ?? "all"}
     />

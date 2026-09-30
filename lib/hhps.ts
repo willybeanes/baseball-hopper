@@ -29,6 +29,10 @@ export interface HHPSLeaderboardRow {
   bip_brl_rank: number | null;
   sw_brl_rank: number | null;
   qualified: boolean;
+  sw_whiff_in3?: number | null;   // whiff cubes (null for rows published before the whiff map)
+  sw_whiff_rank?: number | null;  // 1 = most whiff cubes
+  whiff_rate?: number | null;     // whiffs / swings for this split
+  swings?: number | null;
 }
 
 /** Cubes as parallel arrays, ready for Plotly scatter3d. */
@@ -48,6 +52,10 @@ export interface SplitPayload {
   bat_target_hard: [number, number, number] | null;
   bat_target_brl: [number, number, number] | null;
   // Extra cubes between the slider's low end and the fixed bar (threshold slider loosening).
+  // Whiff map (per swing only): cubes where at least half of swings miss, plus the loose extras for the slider.
+  sw_whiff?: number[][];
+  sw_whiff_lo?: number[][];
+  bat_target_whiff?: [number, number, number] | null;
   bip_hard_lo?: number[][];
   sw_hard_lo?: number[][];
   bip_brl_lo?: number[][];
@@ -77,6 +85,7 @@ export interface MetaJson {
   built: string;
   max_game_date: string;
   support_cloud: [number, number, number][];
+  support_cloud_sw?: [number, number, number][];   // swing space (wider than contact space), for the whiff map
   thresholds: Record<string, number>;
   slider?: Record<string, [number, number]>;        // per "<mode>_<outcome>": [min, max] for the threshold slider
   league_rates?: Record<string, number>;            // league-average rate per "<mode>_<outcome>"
@@ -116,7 +125,7 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; outcome?: "hard" | "barrel"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
+  opts?: { thr?: number; outcome?: "hard" | "barrel" | "whiff"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
@@ -148,7 +157,7 @@ export function cubesFromList(list: number[][]): CubeData {
 export function getCubeList(
   payload: SplitPayload,
   mode: "bip" | "sw",
-  outcome: "hard" | "brl",
+  outcome: "hard" | "brl" | "whiff",
   /** Custom threshold (rate). Omit for the fixed bar exactly as published. */
   thr?: number | null,
   /** The fixed bar, so we know whether a custom value loosens or tightens. */
@@ -164,8 +173,9 @@ export function getCubeList(
 /** Get the bat centroid for the current outcome. */
 export function getBatTarget(
   payload: SplitPayload,
-  outcome: "hard" | "brl",
+  outcome: "hard" | "brl" | "whiff",
 ): [number, number, number] | null {
+  if (outcome === "whiff") return payload.bat_target_whiff ?? null;
   return outcome === "hard" ? payload.bat_target_hard : payload.bat_target_brl;
 }
 

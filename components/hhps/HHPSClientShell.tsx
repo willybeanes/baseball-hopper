@@ -18,7 +18,7 @@ interface Props {
   supabaseUrl: string;
   initialPlayer?: number;
   initialThr?: number;
-  initialOutcome?: "hard" | "barrel";
+  initialOutcome?: "hard" | "barrel" | "whiff";
   initialMode?: "contact" | "swing";
   initialHand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO";
 }
