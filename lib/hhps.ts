@@ -289,23 +289,24 @@ export interface StanceRow {
   stride: number | null;
   contact_depth: number | null;
   x_shift: number | null;
+  raw?: Record<string, number> | null;  // Savant's averaged toe/heel coordinates in feet (avg_<foot><part>_<x|y><0|1|2>)
 }
 
 const STANCE_COLS =
   "mlbam,season,side,period,pitch_hand,stance_depth,stance_off_plate,contact_ball_depth," +
   "foot_sep0,foot_sep1,foot_sep2,foot_angle0,foot_angle1,foot_angle2,stride,contact_depth,x_shift";
 
-async function stanceQuery(supabaseUrl: string, anonKey: string, filter: string): Promise<StanceRow[]> {
-  const res = await fetch(`${supabaseUrl}/rest/v1/hhps_stance?${filter}&select=${STANCE_COLS}`, {
+async function stanceQuery(supabaseUrl: string, anonKey: string, filter: string, cols = STANCE_COLS): Promise<StanceRow[]> {
+  const res = await fetch(`${supabaseUrl}/rest/v1/hhps_stance?${filter}&select=${cols}`, {
     headers: { apikey: anonKey },
   });
   if (!res.ok) return [];
   return (await res.json()) as StanceRow[];
 }
 
-/** Every stance row (season, months, vs-hand) for one hitter and season. */
+/** Every stance row (season, months, vs-hand) for one hitter and season, including the raw foot coordinates. */
 export function fetchStance(supabaseUrl: string, anonKey: string, mlbam: number, season: number) {
-  return stanceQuery(supabaseUrl, anonKey, `mlbam=eq.${mlbam}&season=eq.${season}`);
+  return stanceQuery(supabaseUrl, anonKey, `mlbam=eq.${mlbam}&season=eq.${season}`, `${STANCE_COLS},raw`);
 }
 
 /** All hitters' whole-season, all-pitcher rows, for league medians. */

@@ -81,7 +81,7 @@ export default function StancePanel({
             <tr className="text-xs text-[var(--dimmer)] bg-[var(--bg)]">
               <th className="px-3 py-2 text-left"></th>
               <th className="px-3 py-2 text-left">Feet apart</th>
-              <th className="px-3 py-2 text-left" title="Line between his big toes vs the pitcher direction. 0° is square, negative is closed, positive is open.">Foot angle</th>
+              <th className="px-3 py-2 text-left" title="Line between his big toes vs the pitcher direction. 0° is square, negative is open (front foot farther from the plate), positive is closed (front foot closer to the plate).">Foot angle</th>
             </tr>
           </thead>
           <tbody>
