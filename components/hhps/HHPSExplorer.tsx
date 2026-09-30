@@ -26,7 +26,7 @@ import {
 import { fetchLeagueStance, fetchStance, pickStance, stanceMedians } from "@/lib/hhps";
 import type { StanceMedians, StanceRow } from "@/lib/hhps";
 import StancePanel from "./StancePanel";
-import { buildFigure, plateAndBoxTraces, stanceFeet, stanceLabelTraces } from "@/lib/hhpsStance";
+import { buildFigure, figureHands, plateAndBoxTraces, stanceFeet, stanceLabelTraces } from "@/lib/hhpsStance";
 import { normalize } from "@/lib/hitting-plus/metrics";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -514,7 +514,8 @@ export default function HHPSExplorer({
 
       // 4. Bat mesh
       if (batTarget) {
-        const hands: [number, number, number] = [figure.hands[0] * sg, figure.hands[1], figure.hands[2]];
+        const fh = figureHands(feet);   // hands move with the upper body when it is centered over his stance
+        const hands: [number, number, number] = [fh[0] * sg, fh[1], fh[2]];
         const target: [number, number, number] = [batTarget[0] * sg, batTarget[1], batTarget[2]];
         const bat = buildBatMesh(hands, target);
         traces.push({

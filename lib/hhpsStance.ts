@@ -133,25 +133,47 @@ function kneeFor(foot: V3, hip: V3, oFoot: V3, oHip: V3, oKnee: V3): V3 {
   return addv(lerp(foot, hip, t), sub(oKnee, lerp(oFoot, oHip, t)));
 }
 
-/** Hitter mesh (RHH frame). With `feet` the legs and feet follow the hitter's contact stance; without, the generic pose. */
+/**
+ * How far the whole upper body moves so it sits above the center of his stance: the midpoint of his two ankles
+ * versus the generic pose's ankle midpoint (x and y only). Zero with no stance data.
+ */
+function upperBodyOffset(feet?: StanceFeet | null): V3 {
+  if (!feet) return [0, 0, 0];
+  return [
+    (feet.back.ankle[0] + feet.front.ankle[0]) / 2 - (BASE.bfoot[0] + BASE.ffoot[0]) / 2,
+    (feet.back.ankle[1] + feet.front.ankle[1]) / 2 - (BASE.bfoot[1] + BASE.ffoot[1]) / 2,
+    0,
+  ];
+}
+
+/** Where his hands are (the bat starts here); moves with the upper body. */
+export function figureHands(feet?: StanceFeet | null): V3 {
+  return addv(BASE.hands, upperBodyOffset(feet));
+}
+
+/** Hitter mesh (RHH frame). With `feet` the legs and feet follow his contact stance and the upper body is centered over them; without, the generic pose. */
 export function buildFigure(feet?: StanceFeet | null): PlotlyMesh {
   const P = BASE;
+  const off = upperBodyOffset(feet);
+  const up = (v: V3): V3 => addv(v, off);
+  const bhip = up(P.bhip), fhip = up(P.fhip);
   const bAnk: V3 = feet ? feet.back.ankle : P.bfoot;
   const fAnk: V3 = feet ? feet.front.ankle : P.ffoot;
-  const bKnee = feet ? kneeFor(bAnk, P.bhip, P.bfoot, P.bhip, P.bknee) : P.bknee;
-  const fKnee = feet ? kneeFor(fAnk, P.fhip, P.ffoot, P.fhip, P.fknee) : P.fknee;
+  const bKnee = feet ? kneeFor(bAnk, bhip, P.bfoot, P.bhip, P.bknee) : P.bknee;
+  const fKnee = feet ? kneeFor(fAnk, fhip, P.ffoot, P.fhip, P.fknee) : P.fknee;
   const bToe: V3 = feet ? feet.back.toe : [P.bfoot[0] + 2, P.bfoot[1] + 6, 2];
   const fToe: V3 = feet ? feet.front.toe : [P.ffoot[0] + 6, P.ffoot[1] + 3, 2];
   const bHeel: V3 = feet ? feet.back.heel : P.bfoot;
   const fHeel: V3 = feet ? feet.front.heel : P.ffoot;
+  const bsh = up(P.bsh), fsh = up(P.fsh), belb = up(P.belb), felb = up(P.felb), hands = up(P.hands), head = up(P.head);
   return merge([
-    capsule(bAnk, bKnee, 3, 3.8), capsule(bKnee, P.bhip, 3.8, 5.5),
-    capsule(fAnk, fKnee, 3, 3.8), capsule(fKnee, P.fhip, 3.8, 5.5),
-    capsule([0, 0, 37], [2.5, 3.5, 55], 8, 9.5),
-    capsule(P.bsh, P.belb, 2.6, 2.3), capsule(P.belb, P.hands, 2.3, 1.9),
-    capsule(P.fsh, P.felb, 2.6, 2.3), capsule(P.felb, P.hands, 2.3, 1.9),
-    capsule(P.bsh, P.fsh, 3, 3), capsule([2.5, 3.5, 58], P.head, 2.4, 2.4),
-    ellipsoid(P.head, 4.3, 4.3, 5),
+    capsule(bAnk, bKnee, 3, 3.8), capsule(bKnee, bhip, 3.8, 5.5),
+    capsule(fAnk, fKnee, 3, 3.8), capsule(fKnee, fhip, 3.8, 5.5),
+    capsule(up([0, 0, 37]), up([2.5, 3.5, 55]), 8, 9.5),
+    capsule(bsh, belb, 2.6, 2.3), capsule(belb, hands, 2.3, 1.9),
+    capsule(fsh, felb, 2.6, 2.3), capsule(felb, hands, 2.3, 1.9),
+    capsule(bsh, fsh, 3, 3), capsule(up([2.5, 3.5, 58]), head, 2.4, 2.4),
+    ellipsoid(head, 4.3, 4.3, 5),
     capsule(bHeel, bToe, 2, 2), capsule(fHeel, fToe, 2, 2),
   ]);
 }
