@@ -90,7 +90,7 @@ function outcomeScale(outcome: Outcome): [number, string][] {
   return outcome === "hard"
     ? [[0, "#F7C4A5"], [1, "#DF4601"]]
     : outcome === "whiff"
-    ? [[0, "#B9E3D2"], [1, "#1F7A5A"]]
+    ? [[0, "#7CC7A4"], [1, "#1F7A5A"]]
     : [[0, "#E7B8D4"], [1, "#8E1A5E"]];
 }
 
@@ -563,7 +563,9 @@ export default function HHPSExplorer({
         x: flipX(wCubes.x, sg),
         y: wCubes.y,
         z: wCubes.z,
-        marker: { size: 4 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), opacity: 0.9, symbol: "diamond" },
+        // A diamond glyph fills much less of its box than a square, so it needs a bigger size to read as the same weight.
+        // The color range is pinned (not auto-scaled) so low-rate diamonds stay visible and colors do not shift with the slider.
+        marker: { size: 5 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), cmin: 0.2, cmax: 0.85, opacity: 0.95, symbol: "diamond" },
         customdata: wCubes.x,
         meta: { kind: "cube", oc: "whiff" },
         hovertemplate: `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>whiff prob %{marker.color:.1%}<br>click for the nearest plays<extra></extra>`,
