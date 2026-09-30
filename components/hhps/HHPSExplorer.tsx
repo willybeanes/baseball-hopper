@@ -178,7 +178,7 @@ export default function HHPSExplorer({
     if (initialWthr !== undefined) m["sw_whiff"] = initialWthr;
     return m;
   });
-  // Hard-hit or Barrel can be shown together with Whiff (whiff cubes drawn as green diamonds on top).
+  // Hard-hit or Barrel can be shown together with Whiff (whiff cubes drawn as green squares, same size as the cubes).
   const [alsoWhiff, setAlsoWhiff] = useState(initialWhiff && initialOutcome !== "whiff");
   // Cubes (smoothed rate maps) or circles (each individual event at its raw location).
   const [viewMode, setViewMode] = useState<"cubes" | "circles">(initialView);
@@ -584,7 +584,7 @@ export default function HHPSExplorer({
       }
     }
 
-    // 2b. Whiff cubes on top (green diamonds) when combined with Hard-hit or Barrel
+    // 2b. Whiff cubes (green squares, same shape and size as the other cubes) when combined with Hard-hit, Barrel or Soft-hit
     if (!circleSets && wCubes && wCubes.x.length > 0) {
       traces.push({
         type: "scatter3d",
@@ -592,9 +592,9 @@ export default function HHPSExplorer({
         x: flipX(wCubes.x, sg),
         y: wCubes.y,
         z: wCubes.z,
-        // A diamond glyph fills much less of its box than a square, so it needs a bigger size to read as the same weight.
-        // The color range is pinned (not auto-scaled) so low-rate diamonds stay visible and colors do not shift with the slider.
-        marker: { size: 6 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), cmin: 0.2, cmax: 0.85, opacity: 0.85, symbol: "diamond" },
+        // Same square glyph and size as the main cubes. (Diamonds looked fine alone but their corners tile into a dense lattice
+        // on the 3-inch grid.) The color range is pinned (not auto-scaled) so low-rate cubes stay visible and do not shift with the slider.
+        marker: { size: 5.5 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), cmin: 0.2, cmax: 0.85, opacity: 0.85, symbol: "square" },
         customdata: wCubes.x,
         meta: { kind: "cube", oc: "whiff" },
         hovertemplate: `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>whiff prob %{marker.color:.1%}<br>click for the nearest plays<extra></extra>`,
@@ -611,7 +611,7 @@ export default function HHPSExplorer({
         y: cubes.y,
         z: cubes.z,
         marker: {
-          // Slightly larger when whiff diamonds share the view, so the two layers keep a similar visual weight
+          // Same size as the whiff squares when they share the view, so the two layers keep the same visual weight
           size: (overlayWhiff ? 5.5 : 5) * sizeScale,
           color: cubes.c,
           colorscale: outcomeScale(outcome),
@@ -1551,7 +1551,7 @@ export default function HHPSExplorer({
         </p>
         <p>
           <strong className="text-[var(--text)]">Combining outcomes and circles:</strong>{" "}
-          Whiff can be switched on together with Hard-hit or Barrel: the whiff cubes appear as green diamonds on
+          Whiff can be switched on together with Hard-hit or Barrel: the whiff cubes appear as green squares, the same size as the other cubes, on
           top of the orange or purple cubes, each with its own threshold slider (whiff is always per swing).
           The <em>Circles</em> button swaps the smoothed cubes for the raw events themselves: every hard-hit
           ball, barrel and whiff at the exact spot it happened (hover for exit velocity), following the hand and
