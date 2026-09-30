@@ -4,18 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import type { EventPoint } from "@/lib/hhps";
 import { resolvePlay, savantVideoUrl } from "@/lib/hhpsVideo";
 import type { PlayInfo } from "@/lib/hhpsVideo";
+import { eventColor, eventLabel } from "@/lib/hhpsEvents";
 
 export interface PlayItem {
   ev: EventPoint;
   dist?: number; // inches from the clicked cube's center
 }
 
-const kindLabel = (ev: EventPoint) =>
-  ev[3] === 1
-    ? `Whiff${ev[10] != null ? ` · missed by ${ev[10].toFixed(1)}″` : ""}`
-    : `${ev[3] === 3 ? "Barrel" : "Hard-hit"}${ev[4] != null ? ` · ${ev[4].toFixed(1)} mph` : ""}`;
-
-const kindColor = (ev: EventPoint) => (ev[3] === 1 ? "#1F7A5A" : ev[3] === 3 ? "#8E1A5E" : "#DF4601");
+const kindLabel = (ev: EventPoint) => { const l = eventLabel(ev); return l.charAt(0).toUpperCase() + l.slice(1); };
+const kindColor = (ev: EventPoint) => eventColor(ev);
 
 function PlayRow({ item }: { item: PlayItem }) {
   const { ev } = item;

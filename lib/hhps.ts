@@ -29,6 +29,10 @@ export interface HHPSLeaderboardRow {
   bip_brl_rank: number | null;
   sw_brl_rank: number | null;
   qualified: boolean;
+  bip_soft_in3?: number | null;   // soft-hit cubes (rows published before soft-hit are null)
+  sw_soft_in3?: number | null;
+  bip_soft_rank?: number | null;
+  sw_soft_rank?: number | null;
   sw_whiff_in3?: number | null;   // whiff cubes (null for rows published before the whiff map)
   sw_whiff_rank?: number | null;  // 1 = most whiff cubes
   whiff_rate?: number | null;     // whiffs / swings for this split
@@ -55,6 +59,12 @@ export interface SplitPayload {
   // Whiff map (per swing only): cubes where at least half of swings miss, plus the loose extras for the slider.
   sw_whiff?: number[][];
   sw_whiff_lo?: number[][];
+  // Soft-hit map: any ball in play under 95 mph; fixed bars 80% of BIP / 35% of swings.
+  bip_soft?: number[][];
+  sw_soft?: number[][];
+  bip_soft_lo?: number[][];
+  sw_soft_lo?: number[][];
+  bat_target_soft?: [number, number, number] | null;
   bat_target_whiff?: [number, number, number] | null;
   bip_hard_lo?: number[][];
   sw_hard_lo?: number[][];
@@ -96,6 +106,7 @@ export interface MetaJson {
 export type EventPoint = [
   number, number, number, number, number | null, string, string,
   (number | null)?, (number | null)?, (number | null)?, (number | null)?,   // game_pk, at_bat_number, pitch_number, miss distance (in)
+  string?,                                                                   // how the PA ended: S D T H O K or ""
 ];
 export interface PointsJson { mlbam: number; season: number; pts: EventPoint[] }
 
@@ -135,7 +146,7 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; outcome?: "hard" | "barrel" | "whiff"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
+  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
@@ -143,6 +154,8 @@ export function hhpsUrl(
   if (opts?.whiff) params.set("whiff", "1");
   if (opts?.wthr !== undefined) params.set("wthr", String(opts.wthr));
   if (opts?.view) params.set("view", opts.view);
+  if (opts?.types) params.set("types", opts.types);
+  if (opts?.res) params.set("res", opts.res);
   if (opts?.outcome) params.set("outcome", opts.outcome);
   if (opts?.mode) params.set("mode", opts.mode);
   if (opts?.hand) params.set("hand", opts.hand);
@@ -170,14 +183,14 @@ export function cubesFromList(list: number[][]): CubeData {
 export function getCubeList(
   payload: SplitPayload,
   mode: "bip" | "sw",
-  outcome: "hard" | "brl" | "whiff",
+  outcome: "hard" | "brl" | "whiff" | "soft",
   /** Custom threshold (rate). Omit for the fixed bar exactly as published. */
   thr?: number | null,
   /** The fixed bar, so we know whether a custom value loosens or tightens. */
   fixedThr?: number,
 ): CubeData {
   const key = `${mode}_${outcome}` as keyof SplitPayload;
-  const base = payload[key] as number[][];
+  const base = (payload[key] as number[][] | undefined) ?? [];   // absent when a season's files predate this outcome
   if (thr == null || fixedThr === undefined) return cubesFromList(base);
   const loose = thr < fixedThr ? ((payload[`${key}_lo` as keyof SplitPayload] as number[][] | undefined) ?? []) : [];
   return cubesFromList([...base, ...loose].filter((c) => c[3] >= thr));
@@ -186,9 +199,10 @@ export function getCubeList(
 /** Get the bat centroid for the current outcome. */
 export function getBatTarget(
   payload: SplitPayload,
-  outcome: "hard" | "brl" | "whiff",
+  outcome: "hard" | "brl" | "whiff" | "soft",
 ): [number, number, number] | null {
   if (outcome === "whiff") return payload.bat_target_whiff ?? null;
+  if (outcome === "soft") return payload.bat_target_soft ?? null;
   return outcome === "hard" ? payload.bat_target_hard : payload.bat_target_brl;
 }
 

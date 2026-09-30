@@ -107,13 +107,17 @@ export async function getArticles(limit = 8): Promise<Article[]> {
     const json: { data?: BeehiivPost[] } = await res.json();
     const posts = (json.data ?? []).filter((p) => p.slug && p.title);
     if (posts.length === 0) throw new Error("beehiiv returned no posts");
-    return posts.map((p) => ({
+    const live: Article[] = posts.map((p) => ({
       title: p.title!,
       subtitle: p.subtitle ?? "",
       date: p.publish_date ? fmtDate(p.publish_date) : "",
       slug: p.slug!,
       img: p.thumbnail_url ?? "",
     }));
+    // The API can return fewer posts than requested; top up from the archive.
+    const seen = new Set(live.map((a) => a.slug));
+    const extra = FALLBACK_ARTICLES.filter((a) => !seen.has(a.slug));
+    return [...live, ...extra].slice(0, limit);
   } catch (err) {
     console.error("getArticles fallback:", err);
     return FALLBACK_ARTICLES.slice(0, limit);

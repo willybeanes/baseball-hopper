@@ -21,7 +21,9 @@ interface Props {
   initialWhiff?: boolean;
   initialWthr?: number;
   initialView?: "cubes" | "circles";
-  initialOutcome?: "hard" | "barrel" | "whiff";
+  initialOutcome?: "hard" | "barrel" | "whiff" | "soft";
+  initialTypes?: string;
+  initialRes?: string;
   initialMode?: "contact" | "swing";
   initialHand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO";
 }
