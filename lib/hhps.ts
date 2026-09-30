@@ -92,6 +92,10 @@ export interface MetaJson {
   qual_pa: number;
 }
 
+/** Individual events for the circles view: [x, y, z, code, exitVelo|null, pitcherHand, pitchGroup]; code 1 whiff, 2 hard-hit, 3 barrel. */
+export type EventPoint = [number, number, number, number, number | null, string, string];
+export interface PointsJson { mlbam: number; season: number; pts: EventPoint[] }
+
 export interface FigureJson {
   body: PlotlyMesh;
   hands: [number, number, number];
@@ -118,6 +122,9 @@ export function leagueJsonUrl(supabaseUrl: string, season: number) {
 export function metaJsonUrl(supabaseUrl: string, season: number) {
   return `${STORAGE_BASE(supabaseUrl)}/${season}/meta.json`;
 }
+export function pointsJsonUrl(supabaseUrl: string, season: number, mlbam: number) {
+  return `${STORAGE_BASE(supabaseUrl)}/${season}/points/${mlbam}.json`;
+}
 export function figureJsonUrl(supabaseUrl: string, season: number) {
   return `${STORAGE_BASE(supabaseUrl)}/${season}/figure.json`;
 }
@@ -125,11 +132,14 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; outcome?: "hard" | "barrel" | "whiff"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
+  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; outcome?: "hard" | "barrel" | "whiff"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
   if (opts?.thr !== undefined) params.set("thr", String(opts.thr));
+  if (opts?.whiff) params.set("whiff", "1");
+  if (opts?.wthr !== undefined) params.set("wthr", String(opts.wthr));
+  if (opts?.view) params.set("view", opts.view);
   if (opts?.outcome) params.set("outcome", opts.outcome);
   if (opts?.mode) params.set("mode", opts.mode);
   if (opts?.hand) params.set("hand", opts.hand);

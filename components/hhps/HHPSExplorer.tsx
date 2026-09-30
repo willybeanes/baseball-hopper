@@ -24,7 +24,8 @@ import {
   hhpsUrl,
 } from "@/lib/hhps";
 import { fetchLeagueStance, fetchStance, pickStance, stanceMedians } from "@/lib/hhps";
-import type { StanceMedians, StanceRow } from "@/lib/hhps";
+import type { PointsJson, StanceMedians, StanceRow } from "@/lib/hhps";
+import { pointsJsonUrl } from "@/lib/hhps";
 import StancePanel from "./StancePanel";
 import { buildFigure, figureHands, plateAndBoxTraces, stanceFeet, stanceLabelTraces } from "@/lib/hhpsStance";
 import { normalize } from "@/lib/hitting-plus/metrics";
@@ -62,6 +63,9 @@ interface Props {
   initialOutcome?: "hard" | "barrel" | "whiff";
   initialMode?: "contact" | "swing";
   initialThr?: number;
+  initialWhiff?: boolean;
+  initialWthr?: number;
+  initialView?: "cubes" | "circles";
   initialHand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO";
 }
 
@@ -108,6 +112,9 @@ export default function HHPSExplorer({
   initialMode = "contact",
   initialHand = "all",
   initialThr,
+  initialWhiff = false,
+  initialWthr,
+  initialView = "cubes",
 }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -148,11 +155,21 @@ export default function HHPSExplorer({
   stanceRef.current = { rows: stanceRows, league: leagueStance };
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
   // Custom threshold per "<mode>_<outcome>" (rate, e.g. 0.42). Absent = the fixed bar.
-  const [thrMap, setThrMap] = useState<Record<string, number>>(() =>
-    initialThr !== undefined
-      ? { [`${initialOutcome === "whiff" || initialMode === "swing" ? "sw" : "bip"}_${initialOutcome === "barrel" ? "brl" : initialOutcome === "whiff" ? "whiff" : "hard"}`]: initialThr }
-      : {},
-  );
+  const [thrMap, setThrMap] = useState<Record<string, number>>(() => {
+    const m: Record<string, number> = {};
+    if (initialThr !== undefined) {
+      m[`${initialOutcome === "whiff" || initialMode === "swing" ? "sw" : "bip"}_${initialOutcome === "barrel" ? "brl" : initialOutcome === "whiff" ? "whiff" : "hard"}`] = initialThr;
+    }
+    if (initialWthr !== undefined) m["sw_whiff"] = initialWthr;
+    return m;
+  });
+  // Hard-hit or Barrel can be shown together with Whiff (whiff cubes drawn as green diamonds on top).
+  const [alsoWhiff, setAlsoWhiff] = useState(initialWhiff && initialOutcome !== "whiff");
+  // Cubes (smoothed rate maps) or circles (each individual event at its raw location).
+  const [viewMode, setViewMode] = useState<"cubes" | "circles">(initialView);
+  const [points, setPoints] = useState<{ key: string; data: PointsJson | null } | null>(null);
+  const pointsRef = useRef(points);
+  pointsRef.current = points;
   const [metaInfo, setMetaInfo] = useState<Pick<MetaJson, "thresholds" | "slider" | "league_rates"> | null>(null);
   const [playerBadge, setPlayerBadge] = useState<{ mlbam: number; teamId: number | null } | null>(null);
 
@@ -181,6 +198,9 @@ export default function HHPSExplorer({
           hand: hand === "A" ? "all" : hand,
           season: season === SEASONS[0] ? undefined : season,
           thr: thrMap[`${mode}_${outcome}`],
+          whiff: alsoWhiff && outcome !== "whiff" ? true : undefined,
+          wthr: alsoWhiff && outcome !== "whiff" ? thrMap["sw_whiff"] : undefined,
+          view: viewMode === "circles" ? "circles" : undefined,
         }),
         { scroll: false },
       );
@@ -188,7 +208,20 @@ export default function HHPSExplorer({
       // League average has no player param; keep the season so the leaderboard matches the maps.
       router.replace(`/hhps?season=${season}`, { scroll: false });
     }
-  }, [selectedId, outcome, mode, hand, season, thrMap, router]);
+  }, [selectedId, outcome, mode, hand, season, thrMap, alsoWhiff, viewMode, router]);
+
+  // ── Circles view: load this hitter's individual events when asked for ───────────────────────
+  useEffect(() => {
+    if (viewMode !== "circles" || typeof selectedId !== "number") return;
+    const key = `${season}:${selectedId}`;
+    if (pointsRef.current?.key === key) return;
+    let cancelled = false;
+    fetch(pointsJsonUrl(supabaseUrl, season, selectedId))
+      .then((r) => (r.ok ? (r.json() as Promise<PointsJson>) : null))
+      .catch(() => null)
+      .then((data) => { if (!cancelled) setPoints({ key, data }); });
+    return () => { cancelled = true; };
+  }, [viewMode, selectedId, season, supabaseUrl]);
 
   // ── Stance data: league medians per season, and the selected hitter's rows ─────────────────
   useEffect(() => {
@@ -334,7 +367,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance]);
+  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance, alsoWhiff, viewMode, points]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -409,6 +442,38 @@ export default function HHPSExplorer({
     const cubes = getCubeList(payload, mode, outcome, isCustom ? customThr : null, fixedThr);
     const batTarget = getBatTarget(payload, outcome);
 
+    // Whiff overlay (Hard-hit or Barrel together with Whiff): whiff cubes use their own threshold, always per swing.
+    const overlayWhiff = alsoWhiff && outcome !== "whiff" && Boolean(payload.sw_whiff);
+    let wCubes: ReturnType<typeof getCubeList> | null = null;
+    if (overlayWhiff) {
+      const wFixed = meta.thresholds["sw_whiff"];
+      const wRange = meta.slider?.["sw_whiff"];
+      const wRaw = thrMap["sw_whiff"];
+      const wCustom = wRaw !== undefined && wRange ? Math.min(wRange[1], Math.max(wRange[0], wRaw)) : null;
+      const wIsCustom = wCustom !== null && Math.abs(wCustom - wFixed) > 1e-9;
+      wCubes = getCubeList(payload, "sw", "whiff", wIsCustom ? wCustom : null, wFixed);
+    }
+
+    // Circles view: individual events for this hitter, filtered to the current hand / pitch-type split.
+    const pts = pointsRef.current;
+    const circleData =
+      viewMode === "circles" && typeof selectedId === "number" && pts && pts.key === `${season}:${selectedId}` ? pts.data : null;
+    const hFilter = hand.match(/[RL]/)?.[0];
+    const pFilter = hand.match(/[FBO]/)?.[0];
+    type Kind = { oc: Outcome; test: (code: number) => boolean };
+    const kinds: Kind[] = [
+      outcome === "hard" ? { oc: "hard", test: (c) => c >= 2 }
+        : outcome === "brl" ? { oc: "brl", test: (c) => c === 3 }
+        : { oc: "whiff", test: (c) => c === 1 },
+      ...(overlayWhiff ? [{ oc: "whiff" as Outcome, test: (c: number) => c === 1 }] : []),
+    ];
+    const circleSets = circleData
+      ? kinds.map((k) => ({
+          oc: k.oc,
+          sel: circleData.pts.filter((p) => k.test(p[3]) && (!hFilter || p[5] === hFilter) && (!pFilter || p[6] === pFilter)),
+        }))
+      : null;
+
     // Status line
     const row = leaderboardRef.current.find(
       (r) =>
@@ -427,7 +492,7 @@ export default function HHPSExplorer({
     const sampleN = isWhiff ? swings : bip;
     const statusParts: string[] = [
       stand === "L" ? "LHH" : "RHH",
-      !isCustom && rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
+      !isCustom && !circleSets && rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
       pct !== undefined && pct !== null
         ? (isWhiff ? "Whiff%" : outcome === "hard" ? "HH%" : "Brl%") + ` ${(pct * 100).toFixed(1)}%` +
           (isWhiff
@@ -435,8 +500,11 @@ export default function HHPSExplorer({
             : bip ? ` (${Math.round(pct * bip)} ${outcome === "hard" ? "hard-hit" : "barrels"})` : "")
         : "",
       isWhiff ? (swings !== undefined ? `${swings} swings` : "") : bip !== undefined ? `${bip} BIP` : "",
-      `${cubes.x.length} cubes`,
-      isCustom ? "custom threshold, no rank" : "",
+      circleSets
+        ? circleSets.map((c) => `${c.sel.length} ${c.oc === "hard" ? "hard-hit" : c.oc === "brl" ? "barrels" : "whiffs"}`).join(" + ") + " (circles)"
+        : `${cubes.x.length} cubes`,
+      wCubes && !circleSets ? `${wCubes.x.length} whiff cubes${row?.whiff_rate != null ? ` (Whiff% ${(row.whiff_rate * 100).toFixed(1)}%)` : ""}` : "",
+      isCustom && !circleSets ? "custom threshold, no rank" : "",
     ].filter(Boolean);
     setStatus(statusParts.join("  ·  "));
 
@@ -446,7 +514,7 @@ export default function HHPSExplorer({
     const traces: object[] = [];
 
     // 1. Support cloud
-    const support = isWhiff && meta.support_cloud_sw ? meta.support_cloud_sw : meta.support_cloud;
+    const support = (isWhiff || overlayWhiff) && meta.support_cloud_sw ? meta.support_cloud_sw : meta.support_cloud;
     traces.push({
       type: "scatter3d",
       mode: "markers",
@@ -458,8 +526,42 @@ export default function HHPSExplorer({
       showlegend: false,
     });
 
+    // 2a. Circles: each event at its raw location (not smoothed)
+    if (circleSets) {
+      for (const c of circleSets) {
+        if (!c.sel.length) continue;
+        traces.push({
+          type: "scatter3d",
+          mode: "markers",
+          x: c.sel.map((p) => p[0] * sg),
+          y: c.sel.map((p) => p[1]),
+          z: c.sel.map((p) => p[2]),
+          marker: { size: 5 * sizeScale, color: outcomeColor(c.oc), opacity: 0.85, symbol: "circle", line: { color: "#ffffff", width: 0.5 } },
+          customdata: c.sel.map((p) => p[0]),
+          text: c.sel.map((p) => (p[3] === 1 ? "whiff" : `${p[3] === 3 ? "barrel" : "hard-hit"}${p[4] != null ? ` ${p[4].toFixed(1)} mph` : ""}`)),
+          hovertemplate: `off body %{customdata:.1f}"<br>out front %{y:.1f}"<br>height %{z:.1f}"<br>%{text}<extra></extra>`,
+          showlegend: false,
+        });
+      }
+    }
+
+    // 2b. Whiff cubes on top (green diamonds) when combined with Hard-hit or Barrel
+    if (!circleSets && wCubes && wCubes.x.length > 0) {
+      traces.push({
+        type: "scatter3d",
+        mode: "markers",
+        x: flipX(wCubes.x, sg),
+        y: wCubes.y,
+        z: wCubes.z,
+        marker: { size: 4 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), opacity: 0.9, symbol: "diamond" },
+        customdata: wCubes.x,
+        hovertemplate: `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>whiff prob %{marker.color:.1%}<extra></extra>`,
+        showlegend: false,
+      });
+    }
+
     // 2. Colored cubes
-    if (cubes.x.length > 0) {
+    if (!circleSets && cubes.x.length > 0) {
       traces.push({
         type: "scatter3d",
         mode: "markers",
@@ -714,10 +816,11 @@ export default function HHPSExplorer({
 
   // ── Leaderboard ────────────────────────────────────────────────────────────
   // Cube columns follow the Per contact / Per swing toggle so the table matches the graph.
-  const sortCol =
-    outcome === "whiff" && /_(hard|brl)_in3$/.test(lbSort.col)
+  const sortCol = /^(bip|sw)_(hard|brl)_in3$/.test(lbSort.col)
+    ? outcome === "whiff"
       ? "sw_whiff_in3"
-      : lbSort.col.replace(/^(bip|sw)_/, `${mode}_`);
+      : lbSort.col.replace(/^(bip|sw)_/, `${mode}_`)
+    : lbSort.col;
   const lbRows = leaderboard
     .filter((r) => r.split === hand)
     .filter((r) => !lbQualOnly || r.qualified)
@@ -730,21 +833,31 @@ export default function HHPSExplorer({
 
   const modeLabel = mode === "bip" ? "per contact" : "per swing";
 
-  // Threshold slider (per current outcome + mode). Absent for seasons published before the loose cubes.
-  const sliderKey = `${mode}_${outcome}`;
-  const sliderRange = metaInfo?.slider?.[sliderKey];
-  const sliderFixed = metaInfo?.thresholds?.[sliderKey];
-  const sliderLeague = metaInfo?.league_rates?.[sliderKey];
-  const sliderStep = sliderKey === "bip_hard" ? 0.01 : 0.005;
-  const sliderValue =
-    sliderRange && sliderFixed !== undefined
-      ? Math.min(sliderRange[1], Math.max(sliderRange[0], thrMap[sliderKey] ?? sliderFixed))
-      : 0;
-  const sliderIsCustom =
-    sliderFixed !== undefined && thrMap[sliderKey] !== undefined && sliderRange !== undefined &&
-    Math.abs(sliderValue - sliderFixed) > 1e-9;
+  // Threshold sliders: one per cube layer on screen (the main outcome, plus whiff when combined). Absent for seasons
+  // published before the loose cubes.
+  function sliderInfo(key: string) {
+    const range = metaInfo?.slider?.[key];
+    const fixed = metaInfo?.thresholds?.[key];
+    const league = metaInfo?.league_rates?.[key];
+    const value =
+      range && fixed !== undefined ? Math.min(range[1], Math.max(range[0], thrMap[key] ?? fixed)) : 0;
+    const isCustom =
+      fixed !== undefined && thrMap[key] !== undefined && range !== undefined && Math.abs(value - fixed) > 1e-9;
+    return { range, fixed, league, value, isCustom, step: key === "bip_hard" ? 0.01 : 0.005 };
+  }
+  const primarySliderKey = `${mode}_${outcome}`;
+  const whiffOverlaySlider = alsoWhiff && outcome !== "whiff" && hasWhiff;
+  const primaryCubeKey = `${mode}_${outcome === "hard" ? "hard" : "brl"}_in3`;
   const LB_COLS: { key: string; label: string; title: string }[] =
-    outcome === "whiff"
+    outcome !== "whiff" && alsoWhiff && hasWhiff
+      ? [
+          { key: "name", label: "Player", title: "Player name" },
+          { key: primaryCubeKey, label: outcome === "hard" ? "Hard-hit cubes" : "Barrel cubes", title: `${outcome === "hard" ? "Hard-hit" : "Barrel"} ${modeLabel} space (lit 3-inch cubes)` },
+          { key: "sw_whiff_in3", label: "Whiff cubes", title: "Whiff space (lit 3-inch cubes): pockets where at least half of his swings miss" },
+          { key: "bip", label: "BIP", title: "Balls in play" },
+          { key: "swings", label: "Swings", title: "Swings" },
+        ]
+      : outcome === "whiff"
       ? [
           { key: "name", label: "Player", title: "Player name" },
           { key: "sw_whiff_in3", label: "Whiff cubes", title: "Whiff space (lit 3-inch cubes): pockets where at least half of his swings miss" },
@@ -779,6 +892,86 @@ export default function HHPSExplorer({
     if (!hasCombos) setHandSel("A");
   }
 
+  function renderSlider(key: string, oc: Outcome) {
+    const info = sliderInfo(key);
+    const range = info.range;
+    const fixed = info.fixed;
+    if (!range || fixed === undefined) return null;
+    return (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-xs text-[var(--dim)]">
+          <span className="font-medium w-28 shrink-0" style={{ color: outcomeColor(oc) }}>{oc === "whiff" ? "Whiff threshold" : "Threshold"}</span>
+          <div className="relative w-56 sm:w-72">
+            <input
+              type="range"
+              min={range[0]}
+              max={range[1]}
+              step={info.step}
+              value={info.value}
+              onChange={(e) => setThrMap((m) => ({ ...m, [key]: Number(e.target.value) }))}
+              className="w-full"
+              style={{ accentColor: outcomeColor(oc) }}
+              aria-label={`${oc === "whiff" ? "Whiff" : oc === "brl" ? "Barrel" : "Hard-hit"} cube threshold`}
+            />
+            {/* Ticks: the standard bar (▲) and the league-average rate (│), so "normal" is visible on the track */}
+            {[
+              { v: fixed, label: "standard" },
+              ...(info.league !== undefined ? [{ v: info.league, label: "league avg" }] : []),
+            ].map((t) => {
+              const pos = ((t.v - range[0]) / (range[1] - range[0])) * 100;
+              if (pos < 0 || pos > 100) return null;
+              return (
+                <span
+                  key={t.label}
+                  title={`${t.label}: ${(t.v * 100).toFixed(1)}%`}
+                  className="absolute -bottom-3 -translate-x-1/2 text-[9px] leading-none text-[var(--dimmer)] pointer-events-none"
+                  style={{ left: `calc(${pos}% + ${(0.5 - pos / 100) * 16}px)` }}
+                >
+                  {t.label === "standard" ? "▲" : "│"}
+                </span>
+              );
+            })}
+          </div>
+          <span className="tabular-nums text-[var(--text)] w-32 whitespace-nowrap">
+            ≥ {(info.value * 100).toFixed(1)}% {key.startsWith("bip_") ? "of BIP" : "of swings"}
+          </span>
+          <button
+            onClick={() =>
+              setThrMap((m) => {
+                const n = { ...m };
+                delete n[key];
+                return n;
+              })
+            }
+            disabled={!info.isCustom}
+            className="px-2 py-0.5 rounded border border-[var(--panel-border)] bg-[var(--panel)] hover:bg-[var(--bg)] text-[var(--text)] disabled:opacity-40 disabled:cursor-default transition-colors"
+          >
+            Reset
+          </button>
+          <span className="text-[10px] text-[var(--dimmer)]">
+            ▲ standard {(fixed * 100).toFixed(1)}%
+            {info.league !== undefined && <> · │ league avg {(info.league * 100).toFixed(1)}%</>}
+            {" · leaderboard stays on the standard bar"}
+          </span>
+        </div>
+    );
+  }
+
+  // Hard-hit and Barrel are alternatives; Whiff can be on with either, or alone. Something is always selected.
+  function pickOutcome(o: "hard" | "brl" | "whiff") {
+    if (o === "whiff") {
+      if (outcome === "whiff") return;             // whiff is the only thing on
+      setAlsoWhiff((v) => !v);
+      return;
+    }
+    if (outcome === o) {
+      if (alsoWhiff) { setOutcome("whiff"); setAlsoWhiff(false); }   // turn hard-hit / barrel off, leave whiff
+      return;
+    }
+    if (outcome === "whiff") setAlsoWhiff(true);   // whiff stays on next to the new one
+    setOutcome(o);
+  }
+  const circlesActive = viewMode === "circles" && typeof selectedId === "number";
+
   function Btn({
     on, onClick, children,
   }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
@@ -804,8 +997,10 @@ export default function HHPSExplorer({
         <div>
           <h1 className="text-xl font-bold">3D Swing Explorer</h1>
           <p className="text-sm text-[var(--dim)] mt-0.5">
-            3-inch pockets of space where {outcome === "whiff" ? "swings turn into" : "contact becomes"}{" "}
-            {outcome === "hard" ? "a hard-hit ball (95+ mph)" : outcome === "whiff" ? "a swing-and-miss" : "a barrel"}.
+            {viewMode === "circles" ? "Each dot is one " : "3-inch pockets of space where "}
+            {viewMode === "circles"
+              ? `${outcome === "hard" ? "hard-hit ball (95+ mph)" : outcome === "whiff" ? "whiff" : "barrel"}${alsoWhiff && outcome !== "whiff" ? " or whiff" : ""}, at its raw location.`
+              : `${outcome === "whiff" ? "swings turn into" : "contact becomes"} ${outcome === "hard" ? "a hard-hit ball (95+ mph)" : outcome === "whiff" ? "a swing-and-miss" : "a barrel"}${alsoWhiff && outcome !== "whiff" ? " (and where swings miss, in green)" : ""}.`}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -896,21 +1091,32 @@ export default function HHPSExplorer({
         <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
 
         {/* Outcome */}
-        <div className="flex gap-1">
-          <Btn on={outcome === "hard"} onClick={() => setOutcome("hard")}>Hard-hit</Btn>
-          <Btn on={outcome === "brl"} onClick={() => setOutcome("brl")}>Barrel</Btn>
-          {hasWhiff && <Btn on={outcome === "whiff"} onClick={() => setOutcome("whiff")}>Whiff</Btn>}
+        <div className="flex gap-1" title="Whiff can be shown together with Hard-hit or Barrel">
+          <Btn on={outcome === "hard"} onClick={() => pickOutcome("hard")}>Hard-hit</Btn>
+          <Btn on={outcome === "brl"} onClick={() => pickOutcome("brl")}>Barrel</Btn>
+          {hasWhiff && <Btn on={outcome === "whiff" || alsoWhiff} onClick={() => pickOutcome("whiff")}>Whiff</Btn>}
         </div>
 
         <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
 
         {/* Mode */}
         <div
-          className={`flex gap-1 ${outcome === "whiff" ? "opacity-40 pointer-events-none" : ""}`}
-          title={outcome === "whiff" ? "Whiff maps are always per swing" : undefined}
+          className={`flex gap-1 ${outcome === "whiff" || circlesActive ? "opacity-40 pointer-events-none" : ""}`}
+          title={circlesActive ? "Circles show every event, so contact vs swing does not apply" : outcome === "whiff" ? "Whiff maps are always per swing" : alsoWhiff ? "Applies to the hard-hit / barrel cubes; whiff is always per swing" : undefined}
         >
           <Btn on={mode === "bip"} onClick={() => setModeSel("bip")}>Per contact</Btn>
           <Btn on={mode === "sw"} onClick={() => setModeSel("sw")}>Per swing</Btn>
+        </div>
+
+        <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
+
+        {/* View: smoothed cubes or raw event circles */}
+        <div
+          className={`flex gap-1 ${typeof selectedId !== "number" ? "opacity-40 pointer-events-none" : ""}`}
+          title={typeof selectedId !== "number" ? "Circles need a hitter (league averages have no individual events)" : "Cubes are smoothed rate maps; circles are each individual event at its raw location"}
+        >
+          <Btn on={viewMode === "cubes"} onClick={() => setViewMode("cubes")}>Cubes</Btn>
+          <Btn on={viewMode === "circles"} onClick={() => setViewMode("circles")}>Circles</Btn>
         </div>
 
         <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
@@ -923,64 +1129,9 @@ export default function HHPSExplorer({
         )}
       </div>
 
-      {/* Threshold slider */}
-      {sliderRange && sliderFixed !== undefined && (
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-xs text-[var(--dim)]">
-          <span className="font-medium text-[var(--text)]">Threshold</span>
-          <div className="relative w-56 sm:w-72">
-            <input
-              type="range"
-              min={sliderRange[0]}
-              max={sliderRange[1]}
-              step={sliderStep}
-              value={sliderValue}
-              onChange={(e) => setThrMap((m) => ({ ...m, [sliderKey]: Number(e.target.value) }))}
-              className="w-full"
-              style={{ accentColor: outcomeColor(outcome) }}
-              aria-label="Cube threshold"
-            />
-            {/* Ticks: the standard bar (▲) and the league-average rate (│), so "normal" is visible on the track */}
-            {[
-              { v: sliderFixed, label: "standard" },
-              ...(sliderLeague !== undefined ? [{ v: sliderLeague, label: "league avg" }] : []),
-            ].map((t) => {
-              const pos = ((t.v - sliderRange[0]) / (sliderRange[1] - sliderRange[0])) * 100;
-              if (pos < 0 || pos > 100) return null;
-              return (
-                <span
-                  key={t.label}
-                  title={`${t.label}: ${(t.v * 100).toFixed(1)}%`}
-                  className="absolute -bottom-3 -translate-x-1/2 text-[9px] leading-none text-[var(--dimmer)] pointer-events-none"
-                  style={{ left: `calc(${pos}% + ${(0.5 - pos / 100) * 16}px)` }}
-                >
-                  {t.label === "standard" ? "▲" : "│"}
-                </span>
-              );
-            })}
-          </div>
-          <span className="tabular-nums text-[var(--text)] w-24">
-            ≥ {(sliderValue * 100).toFixed(1)}% {mode === "bip" ? "of BIP" : "of swings"}
-          </span>
-          <button
-            onClick={() =>
-              setThrMap((m) => {
-                const n = { ...m };
-                delete n[sliderKey];
-                return n;
-              })
-            }
-            disabled={!sliderIsCustom}
-            className="px-2 py-0.5 rounded border border-[var(--panel-border)] bg-[var(--panel)] hover:bg-[var(--bg)] text-[var(--text)] disabled:opacity-40 disabled:cursor-default transition-colors"
-          >
-            Reset
-          </button>
-          <span className="text-[10px] text-[var(--dimmer)]">
-            ▲ standard {(sliderFixed * 100).toFixed(1)}%
-            {sliderLeague !== undefined && <> · │ league avg {(sliderLeague * 100).toFixed(1)}%</>}
-            {" · leaderboard stays on the standard bar"}
-          </span>
-        </div>
-      )}
+      {/* Threshold sliders (cube view only) */}
+      {!circlesActive && renderSlider(primarySliderKey, outcome)}
+      {!circlesActive && whiffOverlaySlider && renderSlider("sw_whiff", "whiff")}
 
       {/* Status line */}
       {status && (
@@ -1034,8 +1185,17 @@ export default function HHPSExplorer({
             style={{ background: outcomeColor(outcome) }}
           >
             {outcome === "hard" ? "Hard-hit" : outcome === "whiff" ? "Whiffs" : "Barrels"}
-            <span className="font-normal opacity-85">· {mode === "bip" ? "per contact" : "per swing"}</span>
+            <span className="font-normal opacity-85">· {circlesActive ? "each event" : mode === "bip" ? "per contact" : "per swing"}</span>
           </span>
+          {alsoWhiff && outcome !== "whiff" && (
+            <span
+              className="inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] leading-4 font-semibold text-white"
+              style={{ background: outcomeColor("whiff") }}
+            >
+              Whiffs
+              <span className="font-normal opacity-85">· {circlesActive ? "each event" : "per swing"}</span>
+            </span>
+          )}
         </div>
       </div>
 
@@ -1125,19 +1285,16 @@ export default function HHPSExplorer({
                   }`}
                 >
                   <td className="px-3 py-1.5 font-medium">{r.name}</td>
-                  {outcome === "whiff" ? (
-                    <>
-                      <td className="px-3 py-1.5 tabular-nums">{(r.sw_whiff_in3 ?? 0).toLocaleString()}</td>
-                      <td className="px-3 py-1.5 tabular-nums">{r.whiff_rate != null ? `${(r.whiff_rate * 100).toFixed(1)}%` : "—"}</td>
-                      <td className="px-3 py-1.5 tabular-nums text-[var(--dim)]">{r.swings ?? "—"}</td>
-                    </>
-                  ) : (
-                    <>
-                      <td className="px-3 py-1.5 tabular-nums">{(mode === "bip" ? r.bip_hard_in3 : r.sw_hard_in3).toLocaleString()}</td>
-                      <td className="px-3 py-1.5 tabular-nums">{(mode === "bip" ? r.bip_brl_in3 : r.sw_brl_in3).toLocaleString()}</td>
-                      <td className="px-3 py-1.5 tabular-nums text-[var(--dim)]">{r.bip}</td>
-                    </>
-                  )}
+                  {LB_COLS.slice(1).map((col) => (
+                    <td
+                      key={col.key}
+                      className={`px-3 py-1.5 tabular-nums ${col.key === "bip" || col.key === "swings" ? "text-[var(--dim)]" : ""}`}
+                    >
+                      {col.key === "whiff_rate"
+                        ? r.whiff_rate != null ? `${(r.whiff_rate * 100).toFixed(1)}%` : "—"
+                        : (((r as unknown as Record<string, number | null>)[col.key]) ?? (col.key.endsWith("_in3") ? 0 : "—")).toLocaleString()}
+                    </td>
+                  ))}
                 </tr>
               ))}
               {lbRows.length === 0 && (
@@ -1198,6 +1355,15 @@ export default function HHPSExplorer({
           contact stance (the upper body stays generic), home plate and his batter&rsquo;s box are on the ground
           so you can see where he stands, and the Stance labels button prints feet apart, foot angle and depth
           at contact right on the ground.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Combining outcomes and circles:</strong>{" "}
+          Whiff can be switched on together with Hard-hit or Barrel: the whiff cubes appear as green diamonds on
+          top of the orange or purple cubes, each with its own threshold slider (whiff is always per swing).
+          The <em>Circles</em> button swaps the smoothed cubes for the raw events themselves: every hard-hit
+          ball, barrel and whiff at the exact spot it happened (hover for exit velocity), following the hand and
+          pitch-type buttons. Circles show counts, not rates, so the threshold slider and the leaderboard ranks
+          do not apply to them.
         </p>
         <p>
           <strong className="text-[var(--text)]">Whiff map</strong>{" "}
