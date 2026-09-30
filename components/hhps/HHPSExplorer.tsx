@@ -126,11 +126,10 @@ export default function HHPSExplorer({
   const hand: Hand = splitKey(handSel, pitchSel);
   const [showFig, setShowFig] = useState(true);
   const [showZone, setShowZone] = useState(true);
-  // Ground overlays (need the hitter's stance data): plate + batter's box, and data labels for feet apart / foot angle / depth.
+  // Ground overlays (need the hitter's stance data): plate + batter's box, and one toggle for the stance labels
+  // (feet apart, foot angle and depth at contact).
   const [showBox, setShowBox] = useState(true);
-  const [showApart, setShowApart] = useState(false);
-  const [showAngle, setShowAngle] = useState(false);
-  const [showDepth, setShowDepth] = useState(false);
+  const [showStanceLabels, setShowStanceLabels] = useState(false);
 
   const [lbSort, setLbSort] = useState<{ col: string; asc: boolean }>({
     col: "bip_hard_in3",
@@ -335,7 +334,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, showBox, showApart, showAngle, showDepth, plotW, leaderboard, thrMap, stanceRows, leagueStance]);
+  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -578,8 +577,8 @@ export default function HHPSExplorer({
     if (showBox && zoneInfo) {
       traces.push(...plateAndBoxTraces(zoneInfo.plate_off_body, stanceDepth, sg, true, { line: "#8a949e", fill: "#8a949e" }));
     }
-    if (feet && stRow && (showApart || showAngle || showDepth)) {
-      traces.push(...stanceLabelTraces(feet, stRow, sg, { apart: showApart, angle: showAngle, depth: showDepth }));
+    if (feet && stRow && showStanceLabels) {
+      traces.push(...stanceLabelTraces(feet, stRow, sg, { apart: true, angle: true, depth: true }));
     }
 
     const xRange: [number, number] = sg > 0 ? [-30, 60] : [-60, 30];
@@ -920,13 +919,7 @@ export default function HHPSExplorer({
         <Btn on={showZone} onClick={() => setShowZone((v) => !v)}>Zone</Btn>
         <Btn on={showBox} onClick={() => setShowBox((v) => !v)}>Batter&rsquo;s box</Btn>
         {stanceRows.length > 0 && (
-          <>
-            <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
-            <span className="text-xs text-[var(--dimmer)]" title="Labels on the ground at contact, from Savant stance data">Ground labels</span>
-            <Btn on={showApart} onClick={() => setShowApart((v) => !v)}>Feet apart</Btn>
-            <Btn on={showAngle} onClick={() => setShowAngle((v) => !v)}>Foot angle</Btn>
-            <Btn on={showDepth} onClick={() => setShowDepth((v) => !v)}>Depth</Btn>
-          </>
+          <Btn on={showStanceLabels} onClick={() => setShowStanceLabels((v) => !v)}>Stance labels</Btn>
         )}
       </div>
 
@@ -1203,7 +1196,7 @@ export default function HHPSExplorer({
           blue strike-zone plane is drawn for each hitter. Depth at contact is derived from how far his feet
           move toward the pitcher. In the 3D view the figure&rsquo;s legs and feet are drawn at his real
           contact stance (the upper body stays generic), home plate and his batter&rsquo;s box are on the ground
-          so you can see where he stands, and the Ground labels buttons print feet apart, foot angle and depth
+          so you can see where he stands, and the Stance labels button prints feet apart, foot angle and depth
           at contact right on the ground.
         </p>
         <p>
