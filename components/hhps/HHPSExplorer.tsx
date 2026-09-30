@@ -27,6 +27,9 @@ import { fetchLeagueStance, fetchStance, pickStance, stanceMedians } from "@/lib
 import type { PointsJson, StanceMedians, StanceRow } from "@/lib/hhps";
 import { pointsJsonUrl } from "@/lib/hhps";
 import StancePanel from "./StancePanel";
+import PlayPanel from "./PlayPanel";
+import type { PlayItem } from "./PlayPanel";
+import type { EventPoint } from "@/lib/hhps";
 import { buildFigure, figureHands, plateAndBoxTraces, stanceFeet, stanceLabelTraces } from "@/lib/hhpsStance";
 import { normalize } from "@/lib/hitting-plus/metrics";
 
@@ -173,6 +176,9 @@ export default function HHPSExplorer({
   const [points, setPoints] = useState<{ key: string; data: PointsJson | null } | null>(null);
   const pointsRef = useRef(points);
   pointsRef.current = points;
+  // Click a cube or circle: the plays behind it (with video), shown in a card under the chart.
+  const [plays, setPlays] = useState<{ title: string; subtitle?: string; items: PlayItem[] } | null>(null);
+  useEffect(() => { setPlays(null); }, [selectedId, season]);
   const [metaInfo, setMetaInfo] = useState<Pick<MetaJson, "thresholds" | "slider" | "league_rates"> | null>(null);
   const [playerBadge, setPlayerBadge] = useState<{ mlbam: number; teamId: number | null } | null>(null);
 
@@ -540,9 +546,10 @@ export default function HHPSExplorer({
           y: c.sel.map((p) => p[1]),
           z: c.sel.map((p) => p[2]),
           marker: { size: 5 * sizeScale, color: outcomeColor(c.oc), opacity: 0.85, symbol: "circle", line: { color: "#ffffff", width: 0.5 } },
-          customdata: c.sel.map((p) => p[0]),
-          text: c.sel.map((p) => (p[3] === 1 ? "whiff" : `${p[3] === 3 ? "barrel" : "hard-hit"}${p[4] != null ? ` ${p[4].toFixed(1)} mph` : ""}`)),
-          hovertemplate: `off body %{customdata:.1f}"<br>out front %{y:.1f}"<br>height %{z:.1f}"<br>%{text}<extra></extra>`,
+          customdata: c.sel,
+          meta: { kind: "circle" },
+          text: c.sel.map((p) => (p[3] === 1 ? `whiff${p[10] != null ? ` (missed by ${p[10].toFixed(1)}")` : ""}` : `${p[3] === 3 ? "barrel" : "hard-hit"}${p[4] != null ? ` ${p[4].toFixed(1)} mph` : ""}`)),
+          hovertemplate: `off body %{customdata[0]:.1f}"<br>out front %{y:.1f}"<br>height %{z:.1f}"<br>%{text}<br>click to see the play<extra></extra>`,
           showlegend: false,
         });
       }
@@ -558,7 +565,8 @@ export default function HHPSExplorer({
         z: wCubes.z,
         marker: { size: 4 * sizeScale, color: wCubes.c, colorscale: outcomeScale("whiff"), opacity: 0.9, symbol: "diamond" },
         customdata: wCubes.x,
-        hovertemplate: `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>whiff prob %{marker.color:.1%}<extra></extra>`,
+        meta: { kind: "cube", oc: "whiff" },
+        hovertemplate: `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>whiff prob %{marker.color:.1%}<br>click for the nearest plays<extra></extra>`,
         showlegend: false,
       });
     }
@@ -579,10 +587,11 @@ export default function HHPSExplorer({
           symbol: "square",
         },
         customdata: cubes.x,
+        meta: { kind: "cube", oc: outcome },
         hovertemplate:
           `off body %{customdata}"<br>out front %{y}"<br>height %{z}"<br>` +
           (outcome === "hard" ? "hard-hit" : outcome === "whiff" ? "whiff" : "barrel") +
-          " prob %{marker.color:.1%}<extra></extra>",
+          " prob %{marker.color:.1%}<br>click for the nearest plays<extra></extra>",
         showlegend: false,
       });
     }
@@ -731,6 +740,11 @@ export default function HHPSExplorer({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const pel = el as any;
       if (pel.on) {
+        pel.removeAllListeners?.("plotly_click");
+        pel.on("plotly_click", (e: { points?: ChartClickPoint[] }) => {
+          const pt = e?.points?.[0];
+          if (pt) void handleChartClick(pt);
+        });
         pel.removeAllListeners?.("plotly_relayout");
         pel.on("plotly_relayout", () => {
           try {
@@ -749,6 +763,56 @@ export default function HHPSExplorer({
   const smallSample =
     currentRow !== undefined &&
     (outcome === "whiff" ? (currentRow.swings ?? Infinity) < 150 : currentRow.bip < 50);
+
+  // ── Click a cube or circle: find the plays behind it ───────────────────────────────────────────
+  interface ChartClickPoint {
+    x: number; y: number; z: number;
+    customdata?: unknown;
+    data?: { meta?: { kind?: string; oc?: Outcome } };
+  }
+
+  async function ensurePoints(): Promise<PointsJson | null> {
+    if (typeof selectedId !== "number") return null;
+    const key = `${season}:${selectedId}`;
+    if (pointsRef.current?.key === key) return pointsRef.current.data;
+    const data = await fetch(pointsJsonUrl(supabaseUrl, season, selectedId))
+      .then((r) => (r.ok ? (r.json() as Promise<PointsJson>) : null))
+      .catch(() => null);
+    setPoints({ key, data });
+    return data;
+  }
+
+  async function handleChartClick(pt: ChartClickPoint) {
+    const meta = pt.data?.meta;
+    if (!meta) return;
+    const ocLabel = (o?: Outcome) => (o === "hard" ? "hard-hit balls" : o === "brl" ? "barrels" : "whiffs");
+    if (meta.kind === "circle") {
+      const ev = pt.customdata as EventPoint | undefined;
+      if (!ev) return;
+      setPlays({ title: "Selected play", subtitle: "Click another circle or cube to switch.", items: [{ ev }] });
+      return;
+    }
+    if (meta.kind === "cube" && typeof selectedId === "number") {
+      const sgNow = currentPayloadRef.current?.stand === "L" ? -1 : 1;
+      const cx = pt.x * sgNow, cy = pt.y, cz = pt.z;
+      const oc = meta.oc ?? outcome;
+      const data = await ensurePoints();
+      const hF = hand.match(/[RL]/)?.[0];
+      const pF = hand.match(/[FBO]/)?.[0];
+      const test = (c: number) => (oc === "hard" ? c >= 2 : oc === "brl" ? c === 3 : c === 1);
+      const near = (data?.pts ?? [])
+        .filter((p) => test(p[3]) && (!hF || p[5] === hF) && (!pF || p[6] === pF))
+        .map((p) => ({ ev: p, dist: Math.hypot(p[0] - cx, p[1] - cy, p[2] - cz) }))
+        .filter((x) => x.dist <= 12)
+        .sort((a, b) => a.dist - b.dist)
+        .slice(0, 3);
+      setPlays({
+        title: `Nearest ${ocLabel(oc)} to this cube`,
+        subtitle: `Cube at ${cx.toFixed(0)}″ off body, ${cy.toFixed(0)}″ out front, ${cz.toFixed(0)}″ high. Up to 3 plays within 12″.`,
+        items: near,
+      });
+    }
+  }
 
   // ── Camera move ────────────────────────────────────────────────────────────
   // dr = right, du = up, df = forward — all in camera-local space, step 0.08
@@ -1202,6 +1266,12 @@ export default function HHPSExplorer({
         </div>
       </div>
 
+      <p className="text-xs text-[var(--dimmer)] px-1 -mt-2">
+        Click a cube or circle to see the plays behind it and watch the video.
+      </p>
+
+      {plays && <PlayPanel title={plays.title} subtitle={plays.subtitle} items={plays.items} onClose={() => setPlays(null)} />}
+
       {/* Camera controls */}
       <div className="flex flex-wrap gap-1.5 items-center text-xs text-[var(--dim)]">
         <span className="mr-1">Move camera:</span>
@@ -1358,6 +1428,14 @@ export default function HHPSExplorer({
           contact stance (the upper body stays generic), home plate and his batter&rsquo;s box are on the ground
           so you can see where he stands, and the Stance labels button prints feet apart, foot angle and depth
           at contact right on the ground.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Watch the plays:</strong>{" "}
+          click a circle to open that exact play, or click a cube to see the nearest hard-hit balls, barrels or
+          whiffs (up to three within 12 inches of the cube&rsquo;s center, for the hand and pitch type you have
+          selected). Each card shows the matchup, inning, date and result from the MLB game feed, with a
+          link that opens the clip on Baseball Savant. Whiff cards also show how far the bat missed the
+          ball. Video links need the play&rsquo;s game id, which is filled in for every play in the data.
         </p>
         <p>
           <strong className="text-[var(--text)]">Combining outcomes and circles:</strong>{" "}

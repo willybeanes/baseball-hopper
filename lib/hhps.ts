@@ -92,8 +92,11 @@ export interface MetaJson {
   qual_pa: number;
 }
 
-/** Individual events for the circles view: [x, y, z, code, exitVelo|null, pitcherHand, pitchGroup]; code 1 whiff, 2 hard-hit, 3 barrel. */
-export type EventPoint = [number, number, number, number, number | null, string, string];
+/** Individual events for the circles view: [x, y, z, code, exitVelo|null, pitcherHand, pitchGroup, gamePk, atBat, pitchNo, missIn]; code 1 whiff, 2 hard-hit, 3 barrel. */
+export type EventPoint = [
+  number, number, number, number, number | null, string, string,
+  (number | null)?, (number | null)?, (number | null)?, (number | null)?,   // game_pk, at_bat_number, pitch_number, miss distance (in)
+];
 export interface PointsJson { mlbam: number; season: number; pts: EventPoint[] }
 
 export interface FigureJson {
