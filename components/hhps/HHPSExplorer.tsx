@@ -582,7 +582,8 @@ export default function HHPSExplorer({
         y: cubes.y,
         z: cubes.z,
         marker: {
-          size: 5 * sizeScale,
+          // Slightly larger when whiff diamonds share the view, so the two layers keep a similar visual weight
+          size: (overlayWhiff ? 6 : 5) * sizeScale,
           color: cubes.c,
           colorscale: outcomeScale(outcome),
           opacity: 0.85,
