@@ -93,10 +93,13 @@ function outcomeScale(outcome: Outcome): [number, string][] {
 
 // ── Camera ────────────────────────────────────────────────────────────────────
 
+// Scene units: the axis box is about 0.88 wide over 90 in, so 0.08 is roughly 8 in. The eye and the look-at point move
+// together (same viewing angle) toward home plate; sg mirrors it for lefties.
+const CAM_TOWARD_PLATE = 0.08;
 function defaultCamera(sg: 1 | -1) {
   return {
-    eye: { x: 1.26 * sg, y: -1.47, z: 0.37 },
-    center: { x: 0.01 * sg, y: -0.02, z: -0.13 },
+    eye: { x: (1.26 + CAM_TOWARD_PLATE) * sg, y: -1.47, z: 0.37 },
+    center: { x: (0.01 + CAM_TOWARD_PLATE) * sg, y: -0.02, z: -0.13 },
     up: { x: 0, y: 0, z: 1 },
   };
 }
