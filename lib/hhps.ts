@@ -271,3 +271,66 @@ export function buildBatMesh(
     capsule(mid2, end, 1.1, 1.3),
   ]);
 }
+
+
+// ── Stance at contact (Savant batting-stance data; table hhps_stance) ────────────────────────
+
+export interface StanceRow {
+  mlbam: number;
+  season: number;
+  side: "L" | "R";
+  period: string;               // "S" whole season, "M04".."M10" month
+  pitch_hand: "A" | "R" | "L";
+  stance_depth: number | null;  // in behind the front of the plate = the strike-zone plane's distance out front of him
+  stance_off_plate: number | null;
+  contact_ball_depth: number | null;
+  foot_sep0: number | null; foot_sep1: number | null; foot_sep2: number | null;       // stance / release / contact, inches
+  foot_angle0: number | null; foot_angle1: number | null; foot_angle2: number | null; // degrees, - closed / + open
+  stride: number | null;
+  contact_depth: number | null;
+  x_shift: number | null;
+}
+
+const STANCE_COLS =
+  "mlbam,season,side,period,pitch_hand,stance_depth,stance_off_plate,contact_ball_depth," +
+  "foot_sep0,foot_sep1,foot_sep2,foot_angle0,foot_angle1,foot_angle2,stride,contact_depth,x_shift";
+
+async function stanceQuery(supabaseUrl: string, anonKey: string, filter: string): Promise<StanceRow[]> {
+  const res = await fetch(`${supabaseUrl}/rest/v1/hhps_stance?${filter}&select=${STANCE_COLS}`, {
+    headers: { apikey: anonKey },
+  });
+  if (!res.ok) return [];
+  return (await res.json()) as StanceRow[];
+}
+
+/** Every stance row (season, months, vs-hand) for one hitter and season. */
+export function fetchStance(supabaseUrl: string, anonKey: string, mlbam: number, season: number) {
+  return stanceQuery(supabaseUrl, anonKey, `mlbam=eq.${mlbam}&season=eq.${season}`);
+}
+
+/** All hitters' whole-season, all-pitcher rows, for league medians. */
+export function fetchLeagueStance(supabaseUrl: string, anonKey: string, season: number) {
+  return stanceQuery(supabaseUrl, anonKey, `season=eq.${season}&period=eq.S&pitch_hand=eq.A&limit=2000`);
+}
+
+export type StanceMedians = Partial<Record<keyof StanceRow, number>>;
+
+export function stanceMedians(rows: StanceRow[]): StanceMedians {
+  const out: StanceMedians = {};
+  const keys: (keyof StanceRow)[] = [
+    "stance_depth", "stance_off_plate", "contact_depth", "stride",
+    "foot_sep0", "foot_sep1", "foot_sep2", "foot_angle0", "foot_angle1", "foot_angle2",
+  ];
+  for (const k of keys) {
+    const v = rows.map((r) => r[k] as number | null).filter((x): x is number => typeof x === "number").sort((a, b) => a - b);
+    if (v.length) out[k] = v[Math.floor(v.length / 2)];
+  }
+  return out;
+}
+
+/** Best whole-season row for a bat side and split (vs-hand row if the split is by hand, else all pitchers). */
+export function pickStance(rows: StanceRow[], side: "L" | "R" | undefined, splitCode: string): StanceRow | undefined {
+  const hand = splitCode[0] === "R" || splitCode[0] === "L" ? splitCode[0] : "A";
+  const season = rows.filter((r) => r.period === "S" && (!side || r.side === side));
+  return season.find((r) => r.pitch_hand === hand) ?? season.find((r) => r.pitch_hand === "A") ?? rows.find((r) => r.period === "S");
+}

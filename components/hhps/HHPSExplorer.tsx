@@ -23,6 +23,9 @@ import {
   figureJsonUrl,
   hhpsUrl,
 } from "@/lib/hhps";
+import { fetchLeagueStance, fetchStance, pickStance, stanceMedians } from "@/lib/hhps";
+import type { StanceMedians, StanceRow } from "@/lib/hhps";
+import StancePanel from "./StancePanel";
 import { normalize } from "@/lib/hitting-plus/metrics";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -133,6 +136,12 @@ export default function HHPSExplorer({
   const [hasPitchGroups, setHasPitchGroups] = useState(false);
   const [hasCombos, setHasCombos] = useState(false);
   const [hasWhiff, setHasWhiff] = useState(false);
+  // Stance at contact (Savant). Drives the real ABS-zone depth and the Stance panel.
+  const [stanceRows, setStanceRows] = useState<StanceRow[]>([]);
+  const [leagueStance, setLeagueStance] = useState<StanceMedians | null>(null);
+  const stanceRef = useRef({ rows: stanceRows, league: leagueStance });
+  stanceRef.current = { rows: stanceRows, league: leagueStance };
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
   // Custom threshold per "<mode>_<outcome>" (rate, e.g. 0.42). Absent = the fixed bar.
   const [thrMap, setThrMap] = useState<Record<string, number>>(() =>
     initialThr !== undefined
@@ -175,6 +184,26 @@ export default function HHPSExplorer({
       router.replace(`/hhps?season=${season}`, { scroll: false });
     }
   }, [selectedId, outcome, mode, hand, season, thrMap, router]);
+
+  // ── Stance data: league medians per season, and the selected hitter's rows ─────────────────
+  useEffect(() => {
+    let cancelled = false;
+    setLeagueStance(null);
+    fetchLeagueStance(supabaseUrl, anonKey, season)
+      .then((rows) => { if (!cancelled && rows.length) setLeagueStance(stanceMedians(rows)); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [season, supabaseUrl, anonKey]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setStanceRows([]);
+    if (typeof selectedId !== "number") return;
+    fetchStance(supabaseUrl, anonKey, selectedId, season)
+      .then((rows) => { if (!cancelled) setStanceRows(rows); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [selectedId, season, supabaseUrl, anonKey]);
 
   // ── Player badge (headshot + team logo) ───────────────────────────────────
   useEffect(() => {
@@ -300,7 +329,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, plotW, leaderboard, thrMap]);
+  }, [outcome, mode, hand, showFig, showZone, plotW, leaderboard, thrMap, stanceRows, leagueStance]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -502,7 +531,11 @@ export default function HHPSExplorer({
         const hw = 8.5;
         const x0 = (zone.plate_off_body - hw) * sg;
         const x1 = (zone.plate_off_body + hw) * sg;
-        const yd = 19; // placeholder depth
+        // Strike-zone plane depth = how far behind the front of the plate he stands (Savant stance data).
+        // Falls back to the league median (league-average views) or the old 19" placeholder if unavailable.
+        const { rows: stRows, league: stLeague } = stanceRef.current;
+        const yd =
+          (typeof selectedId === "number" ? pickStance(stRows, stand, hand)?.stance_depth : stLeague?.stance_depth) ?? 19;
         traces.push({
           type: "mesh3d",
           x: [x0, x1, x1, x0],
@@ -1012,6 +1045,17 @@ export default function HHPSExplorer({
         </button>
       </div>
 
+      {/* Stance at contact */}
+      {typeof selectedId === "number" && (
+        <StancePanel
+          rows={stanceRows}
+          league={leagueStance}
+          season={season}
+          split={hand}
+          name={displayName(allRows.find((r) => r.mlbam === selectedId)?.name ?? "")}
+        />
+      )}
+
       {/* Leaderboard */}
       <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[var(--rule)]">
@@ -1122,6 +1166,16 @@ export default function HHPSExplorer({
           can realistically reach; cubes only light up inside it.
         </p>
         <p>
+          <strong className="text-[var(--text)]">Stance at contact</strong>{" "}
+          comes from Baseball Savant&rsquo;s batting-stance tracking, which records where the hitter&rsquo;s
+          feet are at three moments: in his stance, at pitch release, and at bat-ball contact. The panel below
+          the chart shows feet apart and foot angle at each moment (negative angle is a closed stance,
+          positive is open), his stride, and a month-by-month view so you can spot stance changes. Stance
+          depth is how far behind the front of the plate he stands, and it also sets how far out front the
+          blue strike-zone plane is drawn for each hitter. Depth at contact is derived from how far his feet
+          move toward the pitcher.
+        </p>
+        <p>
           <strong className="text-[var(--text)]">Whiff map</strong>{" "}
           (green) shows where the ball was, relative to his body, on swings he missed. It is always per
           swing: each pocket&rsquo;s rate is whiffs divided by swings there. It lives in swing space
@@ -1158,7 +1212,7 @@ export default function HHPSExplorer({
           play), so expect sparse maps there.
         </p>
         <p className="text-xs text-[var(--dimmer)]">
-          Known limitations: the ABS zone depth (19&Prime; out front) is a placeholder. The figure is
+          Known limitations: the ABS zone is drawn at each hitter&rsquo;s stance depth (from Savant&rsquo;s batting-stance data, league median about 29&Prime;); where that is missing it falls back to a 19&Prime; placeholder. The figure is
           generic, not the hitter&rsquo;s real body. vs LHP samples are small (&sim;80 BIP for a regular).
           In the All view a switch hitter&rsquo;s two sides are combined.
         </p>
