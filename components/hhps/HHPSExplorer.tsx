@@ -946,7 +946,6 @@ export default function HHPSExplorer({
           >
             {outcome === "hard" ? "Hard-hit" : "Barrels"}
             <span className="font-normal opacity-85">· {mode === "bip" ? "per contact" : "per swing"}</span>
-            {sliderIsCustom && <span className="font-normal opacity-85">· custom threshold</span>}
           </span>
         </div>
       </div>
