@@ -137,6 +137,16 @@ type BeehiivFullPost = BeehiivPost & {
   content?: { free?: { web?: string } };
 };
 
+const BLUESKY_PROFILE = "https://bsky.app/profile/sandwichpick.bsky.social";
+
+// Sized like beehiiv's share icons; Bluesky blue so the lone icon reads as Bluesky.
+const BLUESKY_ICON =
+  `<a href="${BLUESKY_PROFILE}" target="_blank" rel="noopener noreferrer" aria-label="Will Harris on Bluesky" title="Follow on Bluesky">` +
+  `<div style="max-width:28px;"><svg fill="none" height="100%" viewBox="0 0 52 52" width="100%" xmlns="http://www.w3.org/2000/svg">` +
+  `<circle cx="26" cy="26" fill-opacity="0.12" fill="#1185FE" r="26"></circle>` +
+  `<path transform="translate(15,16.3) scale(0.0367)" fill="#1185FE" d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"></path>` +
+  `</svg></div></a>`;
+
 /** Pull the <body> and head <style> blocks out of beehiiv's full-page web HTML. */
 function splitWebHtml(doc: string): { html: string; css: string } {
   const body = doc.match(/<body[^>]*>([\s\S]*)<\/body>/i)?.[1] ?? doc;
@@ -149,6 +159,11 @@ function splitWebHtml(doc: string): { html: string; css: string } {
   // beehiiv web content has no scripts today; strip defensively anyway.
   const html = body
     .replace(/<script[\s\S]*?<\/script>/gi, "")
+    // Swap beehiiv's share links (Facebook/X/Threads/LinkedIn) for a Bluesky profile link.
+    .replace(
+      /(<div class=["']bh__byline_social_wrapper["']>)(?:<a\b[\s\S]*?<\/a>)*/i,
+      `$1${BLUESKY_ICON}`,
+    )
     // Links to other Balls & Sticks posts open the in-site version, same tab.
     .replace(/<a\b[^>]*>/gi, (tag) => {
       const m = tag.match(/href=(["'])https?:\/\/ballsandsticks\.beehiiv\.com\/p\/([a-z0-9-]+)[^"']*\1/i);
