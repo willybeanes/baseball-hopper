@@ -4,10 +4,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Old shared links on the vercel.app domain → custom domain.
+      // /api is left alone so the cron and any external callers keep working.
       {
-        source: "/xr",
+        source: "/:path((?!api/).*)",
         has: [{ type: "host", value: "baseball-hopper.vercel.app" }],
-        destination: "https://baseballhopper.com/xr",
+        destination: "https://baseballhopper.com/:path",
         permanent: true,
       },
     ];
