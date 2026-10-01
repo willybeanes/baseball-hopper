@@ -765,7 +765,8 @@ export default function HHPSExplorer({
         type: "scatter3d", mode: "markers",
         x: [path.contact.x * sg], y: [path.contact.y], z: [path.contact.z],
         marker: { size: 7, color: "#ffffff", line: { color: PATH_COLOR, width: 3 }, opacity: 1 },
-        hovertemplate: "point of contact / miss<extra></extra>", showlegend: false,
+        hovertemplate: `point of contact / miss<br>(path moved ${Math.abs(path.zShift).toFixed(1)}" ${path.zShift >= 0 ? "up" : "down"} to meet the circle)<extra></extra>`,
+        showlegend: false,
       });
     }
     const yHi = path ? Math.max(60, Math.ceil(path.yStart + 6)) : 60;
@@ -1590,9 +1591,10 @@ export default function HHPSExplorer({
           feed&rsquo;s tracking (release point, velocity and acceleration). The last nine feet of its approach
           come in from the pitcher&rsquo;s side, with a dot every 10 milliseconds (wider spacing means a faster
           pitch) and a dashed line showing where it was headed past the contact or miss point. The path is
-          placed in the hitter&rsquo;s frame so it passes through that play&rsquo;s contact point, which makes it
-          accurate to within a few inches. Circles are plotted at the height the pitch crossed the plate, so the
-          path can pass a couple of inches above or below one. The depth axis stretches only while a path is showing.
+          placed in the hitter&rsquo;s frame so it passes through that play&rsquo;s circle, which makes it
+          accurate to within a few inches. Circles are plotted at the height the pitch crossed the plate, not at
+          the contact point, so the path is nudged up or down by a couple of inches to meet the circle (hover the
+          ring to see by how much). The depth axis stretches only while a path is showing.
           The card also lists the pitch&rsquo;s spin rate and its horizontal and induced vertical break.
         </p>
         <p>

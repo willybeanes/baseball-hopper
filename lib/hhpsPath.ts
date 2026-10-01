@@ -10,8 +10,9 @@
  *  - x: the engine defines ix = plate_off_body - sgE * plate_x * 12 (sgE = +1 LHH, -1 RHH), so
  *       x_body = plateOffBody - sgE * x_stat_in, then shifted by a constant so the path passes through the event's own
  *       measured contact x. That shift absorbs per-pitch differences in where he stood.
- *  - z: height in inches as is. (Circles are plotted at the height where the pitch crossed the plate, so the path can pass a
- *       couple of inches above or below a circle at contact; the path itself is the physical one.)
+ *  - z: height in inches, shifted by a constant so the path passes through the circle too. (Circles are plotted at the height
+ *       where the pitch crossed the plate rather than at the contact point, so the physical height at contact differs by a
+ *       couple of inches; `zShift` reports how much the path was nudged.)
  * The path ends at the contact / miss point (the event's measured out-front depth) and continues as a dashed line a short way on.
  */
 import type { EventPoint } from "@/lib/hhps";
@@ -25,6 +26,7 @@ export interface PitchPath {
   contact: { x: number; y: number; z: number };
   start: { x: number; y: number; z: number; mph: number };
   yStart: number;       // farthest-out point of the path, inches out front
+  zShift: number;       // inches the whole path was moved vertically so it meets the circle (circle height minus physical height)
   secondsShown: number;
 }
 
@@ -56,10 +58,11 @@ export function buildPitchPath(
 
   const xStatIn = (t: number) => pos(tr.x0, tr.vx0, tr.ax, t) * 12;
   const shift = ev[0] - (plateOffBody - sgE * xStatIn(tStar));
+  const zShift = ev[2] - pos(tr.z0, tr.vz0, tr.az, tStar) * 12;
   const at = (t: number) => ({
     x: plateOffBody - sgE * xStatIn(t) + shift,
     y: stanceDepth + pos(tr.y0, tr.vy0, tr.ay, t) * 12 - 17,
-    z: pos(tr.z0, tr.vz0, tr.az, t) * 12,
+    z: pos(tr.z0, tr.vz0, tr.az, t) * 12 + zShift,
   });
   const speed = (t: number) => Math.hypot(tr.vx0 + tr.ax * t, tr.vy0 + tr.ay * t, tr.vz0 + tr.az * t) * MPH;
 
@@ -88,6 +91,7 @@ export function buildPitchPath(
     solid, dashed, marks, contact: pc,
     start: { ...ps, mph: speed(tStart) },
     yStart: ps.y,
+    zShift,
     secondsShown: tStar - tStart,
   };
 }

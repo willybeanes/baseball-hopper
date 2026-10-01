@@ -91,7 +91,7 @@ function PlayRow({
           </div>
           {info.traj && activePathKey === evKey(ev) && (
             <p className="text-[11px] text-[var(--dimmer)]">
-              The real flight from the MLB game feed, placed to pass through this play&rsquo;s contact point (within a few inches).
+              The real flight from the MLB game feed, placed to pass through this play&rsquo;s circle (within a few inches).
               Dots are 10 ms apart, so wider spacing means a faster pitch; the dashed line shows where it was headed past contact.
             </p>
           )}
