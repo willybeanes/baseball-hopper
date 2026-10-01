@@ -236,11 +236,9 @@ export default async function HomePage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {articles.map((a) => (
-                <a
+                <Link
                   key={a.slug}
-                  href={`https://ballsandsticks.beehiiv.com/p/${a.slug}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/blog/${a.slug}`}
                   className="group block bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)] hover:shadow-[var(--elevated-shadow)] hover:border-[var(--rule)] transition-all duration-150"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -261,7 +259,7 @@ export default async function HomePage() {
                       <span className="text-[10px] text-[var(--dimmer)]">Will Harris</span>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </section>

@@ -123,3 +123,72 @@ export async function getArticles(limit = 8): Promise<Article[]> {
     return FALLBACK_ARTICLES.slice(0, limit);
   }
 }
+
+export type FullArticle = Article & {
+  /** beehiiv's rendered post body (already includes the title/byline header). */
+  html: string;
+  /** Class-scoped CSS beehiiv ships in the post's <head>. */
+  css: string;
+  webUrl: string;
+};
+
+type BeehiivFullPost = BeehiivPost & {
+  web_url?: string;
+  content?: { free?: { web?: string } };
+};
+
+/** Pull the <body> and head <style> blocks out of beehiiv's full-page web HTML. */
+function splitWebHtml(doc: string): { html: string; css: string } {
+  const body = doc.match(/<body[^>]*>([\s\S]*)<\/body>/i)?.[1] ?? doc;
+  const head = doc.split(/<body/i)[0];
+  const css = [...head.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
+    .map((m) => m[1])
+    .join("\n")
+    // :root color/font vars are remapped to site tokens on the wrapper instead.
+    .replace(/:root\s*\{[\s\S]*?\}/g, "");
+  // beehiiv web content has no scripts today; strip defensively anyway.
+  const html = body
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    // Links to other Balls & Sticks posts open the in-site version, same tab.
+    .replace(/<a\b[^>]*>/gi, (tag) => {
+      const m = tag.match(/href=(["'])https?:\/\/ballsandsticks\.beehiiv\.com\/p\/([a-z0-9-]+)[^"']*\1/i);
+      if (!m) return tag;
+      return tag
+        .replace(m[0], `href="/blog/${m[2]}"`)
+        .replace(/\s(target|rel)=(["'])[^"']*\2/gi, "");
+    });
+  return { html, css };
+}
+
+export async function getArticle(slug: string): Promise<FullArticle | null> {
+  const key = process.env.BEEHIIV_API_KEY;
+  const pub = process.env.BEEHIIV_PUBLICATION_ID;
+  if (!key || !pub) return null;
+
+  try {
+    const url =
+      `https://api.beehiiv.com/v2/publications/${pub}/posts` +
+      `?slugs[]=${encodeURIComponent(slug)}&status=confirmed&expand[]=free_web_content`;
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${key}` },
+      next: { revalidate: 1800 },
+    });
+    if (!res.ok) throw new Error(`beehiiv ${res.status}`);
+    const json: { data?: BeehiivFullPost[] } = await res.json();
+    const p = json.data?.find((x) => x.slug === slug);
+    const web = p?.content?.free?.web;
+    if (!p || !web) return null;
+    return {
+      title: p.title ?? "",
+      subtitle: p.subtitle ?? "",
+      date: p.publish_date ? fmtDate(p.publish_date) : "",
+      slug,
+      img: p.thumbnail_url ?? "",
+      webUrl: p.web_url ?? `https://ballsandsticks.beehiiv.com/p/${slug}`,
+      ...splitWebHtml(web),
+    };
+  } catch (err) {
+    console.error("getArticle failed:", err);
+    return null;
+  }
+}
