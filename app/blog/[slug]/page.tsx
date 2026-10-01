@@ -46,13 +46,14 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main className="flex-1 w-full px-4 py-8">
-      <style>{article.css}</style>
+      {/* Match the beehiiv post width (800px); its inline 672px cap is lifted. */}
+      <style>{`${article.css}\n.bh-post .rendered-post { max-width: none !important; }`}</style>
       <article
-        className="bh-post max-w-[720px] mx-auto bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl shadow-[var(--panel-shadow)] overflow-hidden"
+        className="bh-post max-w-[800px] mx-auto bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl shadow-[var(--panel-shadow)] overflow-hidden"
         style={WT_VARS}
         dangerouslySetInnerHTML={{ __html: article.html }}
       />
-      <p className="max-w-[720px] mx-auto mt-4 text-center text-xs text-[var(--dim)]">
+      <p className="max-w-[800px] mx-auto mt-4 text-center text-xs text-[var(--dim)]">
         Originally published on{" "}
         <a
           href={article.webUrl}
