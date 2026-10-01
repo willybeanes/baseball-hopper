@@ -213,7 +213,9 @@ export default async function HomePage() {
 
 
   return (
-    <main className="flex-1 w-full">
+    // Home page reads better slightly larger; scale it like 110% browser zoom
+    // on desktop (nav stays the same size as on other pages).
+    <main className="flex-1 w-full md:[zoom:1.1]">
       {/* Feature strip: Articles + Sidebar */}
       <div className="max-w-6xl mx-auto px-6 pt-8 pb-10">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
