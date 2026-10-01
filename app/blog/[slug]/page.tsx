@@ -53,18 +53,35 @@ export default async function BlogPostPage({ params }: Props) {
         style={WT_VARS}
         dangerouslySetInnerHTML={{ __html: article.html }}
       />
-      <p className="max-w-[800px] mx-auto mt-4 text-center text-xs text-[var(--dim)]">
-        Originally published on{" "}
-        <a
-          href={article.webUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-[var(--accent)]"
-        >
-          Balls &amp; Sticks
-        </a>{" "}
-        · subscribe there for new posts by email.
-      </p>
+      {/* The beehiiv page has a Subscribe button up top; the embedded post doesn't. */}
+      <section className="max-w-[800px] mx-auto mt-5 bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl shadow-[var(--panel-shadow)] px-6 sm:px-10 py-7 flex flex-col sm:flex-row sm:items-center gap-5">
+        <div className="flex-1 min-w-0">
+          <h2 className="text-base font-semibold tracking-tight text-[var(--text)]">
+            Get Balls &amp; Sticks in your inbox
+          </h2>
+          <p className="mt-1 text-sm text-[var(--dim)] leading-relaxed">
+            Subscribe for free to get new posts by email as soon as they publish.
+          </p>
+        </div>
+        <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
+          <a
+            href="https://ballsandsticks.beehiiv.com/subscribe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-lg bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+          >
+            Subscribe
+          </a>
+          <a
+            href={article.webUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] text-[var(--dim)] underline hover:text-[var(--accent)]"
+          >
+            Read on Balls &amp; Sticks ↗
+          </a>
+        </div>
+      </section>
     </main>
   );
 }
