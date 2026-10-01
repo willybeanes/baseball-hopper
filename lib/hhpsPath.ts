@@ -44,9 +44,19 @@ function timeAtY(tr: Trajectory, yFt: number): number | null {
   return ts.length ? ts[0] : null;
 }
 
+/** Decode a trajectory file entry ([x0, z0, vx, vy, vz, ax, ay, az] x 100, at y = 50 ft) into physics parameters. */
+export function decodeTraj(t: number[]): Trajectory {
+  return {
+    x0: t[0] / 100, y0: 50, z0: t[1] / 100,
+    vx0: t[2] / 100, vy0: t[3] / 100, vz0: t[4] / 100,
+    ax: t[5] / 100, ay: t[6] / 100, az: t[7] / 100,
+    plateTime: null, startSpeed: null, endSpeed: null, spinRate: null, spinDirection: null, breakH: null, breakVInduced: null,
+  };
+}
+
 export function buildPitchPath(
   tr: Trajectory, ev: EventPoint,
-  ctx: { plateOffBody: number; stanceDepth: number; sgE: 1 | -1; windowIn?: number },
+  ctx: { plateOffBody: number; stanceDepth: number; sgE: 1 | -1; windowIn?: number; light?: boolean },
 ): PitchPath | null {
   const { plateOffBody, stanceDepth, sgE } = ctx;
   const windowIn = ctx.windowIn ?? 108;              // how much of the approach to show: 9 ft
@@ -66,7 +76,7 @@ export function buildPitchPath(
   });
   const speed = (t: number) => Math.hypot(tr.vx0 + tr.ax * t, tr.vy0 + tr.ay * t, tr.vz0 + tr.az * t) * MPH;
 
-  const dt = 0.002;
+  const dt = ctx.light ? 0.008 : 0.002;
   const solid = { x: [] as number[], y: [] as number[], z: [] as number[] };
   for (let t = tStart; t < tStar; t += dt) { const p = at(t); solid.x.push(p.x); solid.y.push(p.y); solid.z.push(p.z); }
   const pc = at(tStar);
@@ -75,14 +85,14 @@ export function buildPitchPath(
   // Short dashed continuation past contact (toward the catcher), so a miss reads as a miss.
   const tEnd = Math.min(tStar + 0.06, timeAtY(tr, yBodyToStat(stanceDepth - 17 - 8)) ?? tStar + 0.03);
   let dashed: PitchPath["dashed"] = null;
-  if (tEnd > tStar + 0.004) {
+  if (!ctx.light && tEnd > tStar + 0.004) {
     dashed = { x: [pc.x], y: [pc.y], z: [pc.z] };
     for (let t = tStar + dt; t <= tEnd; t += dt) { const p = at(t); dashed.x.push(p.x); dashed.y.push(p.y); dashed.z.push(p.z); }
   }
 
   // A marker every 10 ms counting back from contact, so spacing shows the pitch's speed (and drop).
   const marks: PathMark[] = [];
-  for (let k = 0; tStar - k * 0.01 >= tStart; k++) {
+  for (let k = 0; !ctx.light && tStar - k * 0.01 >= tStart; k++) {
     const t = tStar - k * 0.01, p = at(t);
     marks.push({ ...p, label: `${k === 0 ? "at contact / miss" : `${(k * 10)} ms before`} · ${speed(t).toFixed(1)} mph` });
   }

@@ -62,6 +62,7 @@ export default async function HHPSPage({
       initialThr={Number.isFinite(Number(params.thr)) && params.thr ? Number(params.thr) : undefined}
       initialPlayer={params.player ? Number(params.player) : undefined}
       initialOutcome={(params.outcome as "hard" | "barrel" | "whiff" | "soft") ?? "hard"}
+      initialPaths={params.paths === "1"}
       initialTypes={params.types}
       initialRes={params.res}
       initialMode={(params.mode as "contact" | "swing") ?? "contact"}

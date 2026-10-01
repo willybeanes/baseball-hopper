@@ -116,7 +116,7 @@ export function stuffUrl(): string {
  */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO" },
+  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; paths?: boolean; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO" },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.outcome) params.set("outcome", opts.outcome);
@@ -126,6 +126,7 @@ export function hhpsUrl(
   if (opts?.whiff) params.set("whiff", "1");
   if (opts?.wthr !== undefined) params.set("wthr", String(opts.wthr));
   if (opts?.view) params.set("view", opts.view);
+  if (opts?.paths) params.set("paths", "1");
   if (opts?.types) params.set("types", opts.types);
   if (opts?.res) params.set("res", opts.res);
   return `${SHELL}/hhps?${params}`;

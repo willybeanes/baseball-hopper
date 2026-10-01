@@ -22,6 +22,7 @@ interface Props {
   initialWthr?: number;
   initialView?: "cubes" | "circles";
   initialOutcome?: "hard" | "barrel" | "whiff" | "soft";
+  initialPaths?: boolean;
   initialTypes?: string;
   initialRes?: string;
   initialMode?: "contact" | "swing";

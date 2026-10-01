@@ -108,7 +108,11 @@ export type EventPoint = [
   (number | null)?, (number | null)?, (number | null)?, (number | null)?,   // game_pk, at_bat_number, pitch_number, miss distance (in)
   string?,                                                                   // how the PA ended: S D T H O K or ""
 ];
-export interface PointsJson { mlbam: number; season: number; pts: EventPoint[] }
+export interface PointsJson { build?: number; mlbam: number; season: number; pts: EventPoint[] }
+
+/** Per-event pitch flight, aligned index for index with PointsJson.pts (same `build`). Integers x 100:
+ *  [x0, z0, vx, vy, vz, ax, ay, az] at y = 50 ft (Statcast frame), or null when unavailable. */
+export interface TrajFile { build: number; mlbam: number; season: number; n: number; t: (number[] | null)[] }
 
 export interface FigureJson {
   body: PlotlyMesh;
@@ -139,6 +143,9 @@ export function metaJsonUrl(supabaseUrl: string, season: number) {
 export function pointsJsonUrl(supabaseUrl: string, season: number, mlbam: number) {
   return `${STORAGE_BASE(supabaseUrl)}/${season}/points/${mlbam}.json`;
 }
+export function trajJsonUrl(supabaseUrl: string, season: number, mlbam: number) {
+  return `${STORAGE_BASE(supabaseUrl)}/${season}/traj/${mlbam}.json`;
+}
 export function figureJsonUrl(supabaseUrl: string, season: number) {
   return `${STORAGE_BASE(supabaseUrl)}/${season}/figure.json`;
 }
@@ -146,7 +153,7 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
+  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; paths?: boolean; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
@@ -154,6 +161,7 @@ export function hhpsUrl(
   if (opts?.whiff) params.set("whiff", "1");
   if (opts?.wthr !== undefined) params.set("wthr", String(opts.wthr));
   if (opts?.view) params.set("view", opts.view);
+  if (opts?.paths) params.set("paths", "1");
   if (opts?.types) params.set("types", opts.types);
   if (opts?.res) params.set("res", opts.res);
   if (opts?.outcome) params.set("outcome", opts.outcome);

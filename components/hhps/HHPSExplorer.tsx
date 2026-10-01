@@ -24,11 +24,11 @@ import {
   hhpsUrl,
 } from "@/lib/hhps";
 import { fetchLeagueStance, fetchStance, pickStance, stanceMedians } from "@/lib/hhps";
-import type { PointsJson, StanceMedians, StanceRow } from "@/lib/hhps";
-import { pointsJsonUrl } from "@/lib/hhps";
+import type { PointsJson, StanceMedians, StanceRow, TrajFile } from "@/lib/hhps";
+import { pointsJsonUrl, trajJsonUrl } from "@/lib/hhps";
 import StancePanel from "./StancePanel";
 import PlayPanel from "./PlayPanel";
-import { buildPitchPath } from "@/lib/hhpsPath";
+import { buildPitchPath, decodeTraj } from "@/lib/hhpsPath";
 import type { PitchPath } from "@/lib/hhpsPath";
 import { evKey } from "@/lib/hhpsVideo";
 import type { Trajectory } from "@/lib/hhpsVideo";
@@ -73,6 +73,7 @@ interface Props {
   supabaseUrl: string;
   initialPlayer?: number;
   initialOutcome?: "hard" | "barrel" | "whiff" | "soft";
+  initialPaths?: boolean;
   initialTypes?: string;
   initialRes?: string;
   initialMode?: "contact" | "swing";
@@ -130,6 +131,7 @@ export default function HHPSExplorer({
   initialHand = "all",
   initialThr,
   initialWhiff = false,
+  initialPaths = false,
   initialTypes,
   initialRes,
   initialWthr,
@@ -193,6 +195,11 @@ export default function HHPSExplorer({
   );
   const [circRes, setCircRes] = useState<Record<ResCode, boolean>>(() => parseRes(initialRes));
   const circTouched = useRef(Boolean(initialTypes || initialRes));
+  // Faint tails behind every circle: the last 8 ft of each pitch's flight (needs the hitter's trajectory file).
+  const [pitchPaths, setPitchPaths] = useState(initialPaths);
+  const [trajData, setTrajData] = useState<{ key: string; data: TrajFile | null } | null>(null);
+  const trajRef = useRef(trajData);
+  trajRef.current = trajData;
   const [points, setPoints] = useState<{ key: string; data: PointsJson | null } | null>(null);
   const pointsRef = useRef(points);
   pointsRef.current = points;
@@ -235,6 +242,7 @@ export default function HHPSExplorer({
           view: viewMode === "circles" ? "circles" : undefined,
           types: viewMode === "circles" ? serializeTypes(circTypes) : undefined,
           res: viewMode === "circles" ? serializeRes(circRes) || undefined : undefined,
+          paths: viewMode === "circles" && pitchPaths ? true : undefined,
         }),
         { scroll: false },
       );
@@ -242,7 +250,20 @@ export default function HHPSExplorer({
       // League average has no player param; keep the season so the leaderboard matches the maps.
       router.replace(`/hhps?season=${season}`, { scroll: false });
     }
-  }, [selectedId, outcome, mode, hand, season, thrMap, alsoWhiff, viewMode, circTypes, circRes, router]);
+  }, [selectedId, outcome, mode, hand, season, thrMap, alsoWhiff, viewMode, circTypes, circRes, pitchPaths, router]);
+
+  // ── Pitch-path tails: load this hitter's trajectory file when asked for ──────────────────────
+  useEffect(() => {
+    if (viewMode !== "circles" || !pitchPaths || typeof selectedId !== "number") return;
+    const key = `${season}:${selectedId}`;
+    if (trajRef.current?.key === key) return;
+    let cancelled = false;
+    fetch(trajJsonUrl(supabaseUrl, season, selectedId))
+      .then((r) => (r.ok ? (r.json() as Promise<TrajFile>) : null))
+      .catch(() => null)
+      .then((data) => { if (!cancelled) setTrajData({ key, data }); });
+    return () => { cancelled = true; };
+  }, [viewMode, pitchPaths, selectedId, season, supabaseUrl]);
 
   // ── Circles view: load this hitter's individual events when asked for ───────────────────────
   useEffect(() => {
@@ -404,7 +425,7 @@ export default function HHPSExplorer({
     if (!plotlyRef.current || !currentPayloadRef.current) return;
     draw(currentPayloadRef.current.payload, currentPayloadRef.current.stand);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance, alsoWhiff, viewMode, points, circTypes, circRes, pathSel]);
+  }, [outcome, mode, hand, showFig, showZone, showBox, showStanceLabels, plotW, leaderboard, thrMap, stanceRows, leagueStance, alsoWhiff, viewMode, points, circTypes, circRes, pathSel, pitchPaths, trajData]);
 
   // ── Load player data ───────────────────────────────────────────────────────
   const loadAndDraw = useCallback(
@@ -498,18 +519,19 @@ export default function HHPSExplorer({
     const pFilter = hand.match(/[FBO]/)?.[0];
     // Each event is drawn once: in its PA-result color if that result is switched on, otherwise in the color of the
     // first switched-on type that matches it (barrel before hard-hit). Groups are built in a fixed order so results draw on top.
-    type CircleGroup = { key: string; label: string; color: string; sel: EventPoint[] };
+    type CircleGroup = { key: string; label: string; color: string; sel: EventPoint[]; idx: number[] };
     const groupMap = new Map<string, CircleGroup>();
     if (circleData) {
-      for (const t of CIRCLE_TYPES) if (circTypes[t.key]) groupMap.set(`t:${t.key}`, { key: t.key, label: t.label, color: t.color, sel: [] });
-      for (const r of RESULTS) if (circRes[r.code]) groupMap.set(`r:${r.code}`, { key: r.code, label: r.label, color: r.color, sel: [] });
+      for (const t of CIRCLE_TYPES) if (circTypes[t.key]) groupMap.set(`t:${t.key}`, { key: t.key, label: t.label, color: t.color, sel: [], idx: [] });
+      for (const r of RESULTS) if (circRes[r.code]) groupMap.set(`r:${r.code}`, { key: r.code, label: r.label, color: r.color, sel: [], idx: [] });
       const onTypes = CIRCLE_TYPES.filter((t) => circTypes[t.key]);
-      for (const p of circleData.pts) {
+      for (let pi = 0; pi < circleData.pts.length; pi++) {
+        const p = circleData.pts[pi];
         if ((hFilter && p[5] !== hFilter) || (pFilter && p[6] !== pFilter)) continue;
         const res = p[11] ?? "";
-        if (res && circRes[res as ResCode]) { groupMap.get(`r:${res}`)?.sel.push(p); continue; }
+        if (res && circRes[res as ResCode]) { const g = groupMap.get(`r:${res}`); g?.sel.push(p); g?.idx.push(pi); continue; }
         const t = onTypes.find((x) => x.test(p[3]));
-        if (t) groupMap.get(`t:${t.key}`)?.sel.push(p);
+        if (t) { const g = groupMap.get(`t:${t.key}`); g?.sel.push(p); g?.idx.push(pi); }
       }
     }
     const circleSets = circleData ? [...groupMap.values()] : null;
@@ -769,9 +791,37 @@ export default function HHPSExplorer({
         showlegend: false,
       });
     }
-    const yHi = path ? Math.max(60, Math.ceil(path.yStart + 6)) : 60;
+    // 8. Tails: a faint line behind every circle showing the last 8 ft of that pitch's flight (one trace per layer)
+    let tailsYStart = 0;
+    const tj = trajRef.current;
+    const tailsOn = Boolean(
+      pitchPaths && circleSets && circleData && zoneInfo && tj?.data &&
+      tj.key === `${season}:${selectedId}` && tj.data.build === circleData.build && tj.data.n === circleData.pts.length,
+    );
+    if (tailsOn && circleSets && zoneInfo && tj?.data) {
+      const ctx = { plateOffBody: zoneInfo.plate_off_body, stanceDepth, sgE: (stand === "L" ? 1 : -1) as 1 | -1, windowIn: 96, light: true };
+      for (const g of circleSets) {
+        const tx: (number | null)[] = [], ty: (number | null)[] = [], tz: (number | null)[] = [];
+        g.idx.forEach((pi, k) => {
+          const arr = tj.data!.t[pi];
+          if (!arr) return;
+          const pp = buildPitchPath(decodeTraj(arr), g.sel[k], ctx);
+          if (!pp) return;
+          for (let q = 0; q < pp.solid.x.length; q++) { tx.push(pp.solid.x[q] * sg); ty.push(pp.solid.y[q]); tz.push(pp.solid.z[q]); }
+          tx.push(null); ty.push(null); tz.push(null);
+          tailsYStart = Math.max(tailsYStart, pp.yStart);
+        });
+        if (tx.length) {
+          traces.push({
+            type: "scatter3d", mode: "lines", x: tx, y: ty, z: tz,
+            line: { color: g.color, width: 2 }, opacity: 0.3, hoverinfo: "skip", showlegend: false,
+          });
+        }
+      }
+    }
+    const yHi = path || tailsYStart ? Math.max(60, Math.ceil(Math.max(path?.yStart ?? 0, tailsYStart) + 6)) : 60;
     const yShift = (43 - (yHi + 26) / 2) / 86;     // keeps the default view on the hitter when the axis is longer
-    const pathKey = path ? pathSel?.key ?? null : null;
+    const pathKey = path || tailsYStart ? `${path ? pathSel?.key : ""}${tailsYStart ? "|tails" : ""}` : null;
     if (lastPathKey.current !== pathKey) {
       lastPathKey.current = pathKey;
       cameraRef.current = null;
@@ -1282,6 +1332,13 @@ export default function HHPSExplorer({
                 <Btn key={r.code} on={circRes[r.code]} onClick={() => toggleRes(r.code)}>{r.label}</Btn>
               ))}
             </div>
+            <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
+            <div
+              className={trajData?.data === null && pitchPaths ? "opacity-40" : ""}
+              title={trajData?.data === null && pitchPaths ? "Pitch paths are not available for this hitter and season yet" : "Faint tails behind each circle: the last 8 ft of that pitch's real flight, so you can see which way the pitches came in"}
+            >
+              <Btn on={pitchPaths} onClick={() => setPitchPaths((v) => !v)}>Pitch paths</Btn>
+            </div>
           </>
         ) : (
           <div className="flex gap-1" title="Whiff can be shown together with Hard-hit, Barrel or Soft-hit">
@@ -1584,6 +1641,15 @@ export default function HHPSExplorer({
           contact stance (the upper body stays generic), home plate and his batter&rsquo;s box are on the ground
           so you can see where he stands, and the Stance labels button prints feet apart, foot angle and depth
           at contact right on the ground.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Pitch paths (tails):</strong>{" "}
+          in Circles, the <em>Pitch paths</em> button adds a faint tail behind every circle showing the last eight
+          feet of that pitch&rsquo;s real flight, in the circle&rsquo;s color. Together they show which way a
+          hitter&rsquo;s whiffs, fouls and barrels were arriving, for example sinkers running in on his hands
+          or sweepers sliding away. Each tail comes from Statcast&rsquo;s release point, velocity and acceleration for
+          that pitch and is anchored through its circle the same way as a single pitch path. Tails follow the
+          layers, results and pitch-type filters you have on. The depth axis stretches while they are showing.
         </p>
         <p>
           <strong className="text-[var(--text)]">Pitch path:</strong>{" "}
