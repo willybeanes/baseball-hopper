@@ -79,6 +79,7 @@ type BeehiivPost = {
   slug?: string;
   thumbnail_url?: string;
   publish_date?: number;
+  hidden_from_feed?: boolean;
 };
 
 function fmtDate(unixSeconds: number) {
@@ -98,14 +99,14 @@ export async function getArticles(limit = 8): Promise<Article[]> {
   try {
     const url =
       `https://api.beehiiv.com/v2/publications/${pub}/posts` +
-      `?status=confirmed&audience=free&order_by=publish_date&direction=desc&limit=${limit}`;
+      `?status=confirmed&order_by=publish_date&direction=desc&limit=${Math.min(limit, 100)}`;
     const res = await fetch(url, {
       headers: { Authorization: `Bearer ${key}` },
       next: { revalidate: 1800 },
     });
     if (!res.ok) throw new Error(`beehiiv ${res.status}`);
     const json: { data?: BeehiivPost[] } = await res.json();
-    const posts = (json.data ?? []).filter((p) => p.slug && p.title);
+    const posts = (json.data ?? []).filter((p) => p.slug && p.title && !p.hidden_from_feed);
     if (posts.length === 0) throw new Error("beehiiv returned no posts");
     const live: Article[] = posts.map((p) => ({
       title: p.title!,

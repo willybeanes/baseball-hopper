@@ -1,6 +1,7 @@
 const HP_BASE = "https://hitting-plus.vercel.app/data";
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
+import ArticleCard from "@/components/ArticleCard";
 
 const TEAM_NAMES: Record<string, string> = {
   ARI: "Arizona Diamondbacks", ATH: "Athletics", ATL: "Atlanta Braves",
@@ -225,41 +226,16 @@ export default async function HomePage() {
               <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight">
                 From the blog
               </h2>
-              <a
-                href="https://ballsandsticks.beehiiv.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/blog"
                 className="text-[11px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
               >
-                All posts ↗
-              </a>
+                All posts →
+              </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {articles.map((a) => (
-                <Link
-                  key={a.slug}
-                  href={`/blog/${a.slug}`}
-                  className="group block bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)] hover:shadow-[var(--elevated-shadow)] hover:border-[var(--rule)] transition-all duration-150"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={a.img} alt={a.title} className="w-full h-32 object-cover" />
-                  <div className="p-4">
-                    <p className="text-[10px] text-[var(--dimmer)] mb-1">{a.date}</p>
-                    <p className="text-sm font-semibold leading-snug tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-1">
-                      {a.title}
-                    </p>
-                    <p className="text-xs text-[var(--dim)] leading-relaxed mb-3">{a.subtitle}</p>
-                    <div className="flex items-center gap-1.5">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,width=64,format=auto,onerror=redirect/uploads/asset/file/cc23e68a-0374-477c-b8ed-f40b105f6a14/e37759fb-9ef5-44c6-a98d-6866272799c1_1020x1020.webp"
-                        alt="Will Harris"
-                        className="w-4 h-4 rounded-full object-cover"
-                      />
-                      <span className="text-[10px] text-[var(--dimmer)]">Will Harris</span>
-                    </div>
-                  </div>
-                </Link>
+                <ArticleCard key={a.slug} article={a} />
               ))}
             </div>
           </section>
