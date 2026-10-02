@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fetchProbablesData } from "@/lib/probables/fetch-probables";
+import type { GridData } from "@/lib/probables/types";
 import { Grid } from "./grid";
 
 export const revalidate = 10800; // 3 hours
@@ -11,7 +12,15 @@ export const metadata: Metadata = {
 };
 
 export default async function ProbablesPage() {
-  const data = await fetchProbablesData();
+  let data: GridData | null = null;
+  try {
+    data = await fetchProbablesData();
+  } catch (err) {
+    // At runtime, rethrow so ISR keeps serving the last good page. At build time there is
+    // no previous page, and a FanGraphs outage/block shouldn't fail the whole deploy.
+    if (process.env.NEXT_PHASE !== "phase-production-build") throw err;
+    console.error("Probables unavailable at build time:", err);
+  }
 
   return (
     <main className="flex-1 w-full">
@@ -31,18 +40,26 @@ export default async function ProbablesPage() {
           </p>
         </div>
 
-        <Grid data={data} />
+        {data ? (
+          <>
+            <Grid data={data} />
 
-        <footer className="mt-6 text-center text-xs text-[var(--dim)]">
-          Data from FanGraphs · Updated{" "}
-          {new Date(data.lastUpdated).toLocaleString("en-US", {
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
-            minute: "2-digit",
-            timeZoneName: "short",
-          })}
-        </footer>
+            <footer className="mt-6 text-center text-xs text-[var(--dim)]">
+              Data from FanGraphs · Updated{" "}
+              {new Date(data.lastUpdated).toLocaleString("en-US", {
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                timeZoneName: "short",
+              })}
+            </footer>
+          </>
+        ) : (
+          <p className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] p-6 text-sm text-[var(--dim)]">
+            FanGraphs probables data is temporarily unavailable. Check back in a few hours.
+          </p>
+        )}
       </div>
     </main>
   );
