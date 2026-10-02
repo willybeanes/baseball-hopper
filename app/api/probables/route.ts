@@ -1,17 +1,10 @@
 import { NextResponse } from "next/server";
-import { fetchProbablesData } from "@/lib/probables/fetch-probables";
 
-export const revalidate = 10800; // 3 hours
-
-export async function GET() {
-  try {
-    const data = await fetchProbablesData();
-    return NextResponse.json(data);
-  } catch (error) {
-    console.error("Failed to fetch probables:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch probables data" },
-      { status: 500 }
-    );
-  }
+// Disabled for the offseason: FanGraphs started returning 403 for the probables-grid
+// endpoint. Restore the fetchProbablesData() call from git history to bring it back.
+export function GET() {
+  return NextResponse.json(
+    { error: "Opposing Probables is disabled for the offseason" },
+    { status: 503 },
+  );
 }

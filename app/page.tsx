@@ -91,15 +91,6 @@ const TOOLS = [
     tag: "Games",
   },
   {
-    slug: "probables",
-    label: "Opposing Probables",
-    description:
-      "A grid of today's and upcoming probable starters matchup-by-matchup. Plan your lineup around who's toeing the slab.",
-    href: "/probables",
-    external: false,
-    tag: "Games",
-  },
-  {
     slug: "xr",
     label: "xR Philosophy",
     description:

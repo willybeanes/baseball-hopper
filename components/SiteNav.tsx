@@ -23,7 +23,6 @@ const NAV_GROUPS = [
     label: "Games",
     tools: [
       { label: "Play-by-Play", href: "/pbp", external: false },
-      { label: "Opposing Probables", href: "/probables", external: false },
       { label: "Blame Split", href: "/blame-split", external: false },
       { label: "xR Philosophy", href: "/xr", external: false },
     ],
