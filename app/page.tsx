@@ -362,7 +362,7 @@ export default async function HomePage() {
       <footer className="border-t border-[var(--rule)] py-6 text-center text-xs text-[var(--dimmer)]">
         Baseball Hopper · A{" "}
         <a
-          href="https://www.ballsandsticks.com"
+          href="https://ballsandsticks.beehiiv.com/"
           className="underline hover:text-[var(--dim)] transition-colors"
           target="_blank"
           rel="noopener noreferrer"
