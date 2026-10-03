@@ -1,0 +1,40 @@
+name: Team Builder data
+
+# Step 1 of the Team Builder build: prove a GitHub runner can download the 30 Cot's
+# sheets without a Google login, and that they pass every check. Nothing is committed
+# yet — the snapshot is attached to the run as a download. The daily schedule and the
+# commit step come later.
+
+on:
+  push:
+    branches: [team-builder]
+    paths:
+      - 'lib/team-builder/**'
+      - 'scripts/team-builder/**'
+      - 'tests/team-builder/**'
+      - '.github/workflows/team-builder-data.yml'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Test the sheet reader against saved sheets
+        run: bun test tests/team-builder
+
+      - name: Download and check the live sheets
+        run: bun scripts/team-builder/refresh-cots.ts --save-raw raw-sheets
+
+      - name: Attach the snapshot to this run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: team-builder-snapshot
+          path: |
+            raw-sheets/
+            public/data/team-builder/
+          if-no-files-found: warn

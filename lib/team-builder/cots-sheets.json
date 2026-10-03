@@ -1,0 +1,51 @@
+{
+  "_readme": "Cot's Baseball Contracts team sheets. Cot's starts a new file every season and links it only from its team pages, so each October someone collects the 30 new ids through a real browser and replaces them here. Nothing else in the code holds sheet ids.",
+  "sheetsCollected": "2026-10-03",
+  "firstYear": 2026,
+  "targetYear": 2027,
+  "knownMismatches": {
+    "_readme": "Teams whose rows don't add up to the sheet's own 2027 totals, in millions. Expected on 2026-10-03; any other mismatch fails the refresh.",
+    "STL": { "payroll": { "rows": 17.25, "sheet": 15.25 } },
+    "COL": {
+      "note": "$5.0M owed on Nolan Arenado is missing from the sheet totals",
+      "payroll": { "rows": 55.264, "sheet": 50.014 },
+      "tax": { "rows": 73.961, "sheet": 68.961 }
+    },
+    "ATH": {
+      "note": "Sheet's tax total leaves out the $1.667M pre-arb bonus pool",
+      "tax": { "rows": 86.143, "sheet": 84.476 }
+    }
+  },
+  "teams": {
+    "ARI": "12yLy_eMVwMxo6f-CshkVIjfyowQXLCZYSdxPzBE6c18",
+    "ATH": "15r1H1Z50fdnNYyx4Nc2WiyZWyN9ap9cihIHC_I-mf0w",
+    "ATL": "15864YmTPU5jxVJ7LsSrSHAMAGHTn4LDmHVHEBdrVOUo",
+    "BAL": "1PzJ_HmDQEY6-L_FTCbKSx-fEjUNL9pBqSwyHABhklKI",
+    "BOS": "1B50FWv3MG2YwAayBFDfFctrBB00nDHfgq98a7wq6gC8",
+    "CHC": "1epJfx2VlkhWd--kaoTLWkYHD2OEetroV73Us1pbefGM",
+    "CWS": "1Je_oWzOM63KRY5EJ35o8CE8JHM8fzQofUEHO_QjsowA",
+    "CIN": "1k9Ho9ivcW1ddfa8H_pATpxYyqCeX29u_-HgD1ZIBxQ4",
+    "CLE": "1qj-bo8d9J0fC0D_W8QefJ-wmwL2MTzgcyJKE6jZB3h8",
+    "COL": "1pE0grANRGY6Ep4XagrQUTblLyKG0-FuQXakkjoVi5iI",
+    "DET": "1UeNKPDzFOsB6CLk3NpNsWJTHvWTGiPFKYwWezZxDZXc",
+    "HOU": "10EyB18shhTLScpe9SCXDnqA_RGdUNHp3DleaI1E9iIY",
+    "KC": "1fNJU8YvkB4ADOLInA5mjd5sxX-4RY-yBuGx8_G3thZg",
+    "LAA": "1lqQVeT7mL_mumNEp_yhdPtHRmlHh-dRKeW60rU1yXlc",
+    "LAD": "1LdNr3S1TqTfUDe9WNEZNWQ4ZitVZcGkbM-dgMNthBPU",
+    "MIA": "1wstW7gCPEOQaiSiQwa_Mv5l20qw8UISL-mfVActrDLo",
+    "MIL": "1S3OAXjy7XOvdBFi8NMYIT5JzdHV5oVN2c5zew5oO6Uo",
+    "MIN": "1S9hf3PlJKj8svJQzhriXiAh97n2oOrcw9uqkJ75s5fQ",
+    "NYM": "1FEQhOAYMYMPYumRUbevE1oyyTuNP6OsLl3sHHJpOm6g",
+    "NYY": "167perp8pUVfLZYAMghX9gAVv-88vlLJ9jIy_sfeTG9c",
+    "PHI": "1AaYpOAmBrP7xiQZT1uyW7lUy0LCXFOUAuB9UY5s3Jg8",
+    "PIT": "1vh1V28v5uku1oOOoxZ-BfDQk0Gxe2nwzwoNt5mXAf2Q",
+    "SD": "1ld1ftYB715JAX9qYdQrqwq5hEQ8aW9mfue_6okXUYEI",
+    "SEA": "1mqnl7eRNFS7wdgzEkSfWTzxS0O6AaZBByhVqybbfgjQ",
+    "SF": "1QYkpMEJavfUpivQDkV2XehRf49B2vLxGht6kzwZ9kPI",
+    "STL": "14q02ue59NSZAqFWXHw9KqZGQyYNVdnrfMm2BYm0bzd0",
+    "TB": "1uWnhcRs28C9YeG1O-gXaigSycvG3r0ffhy9tn7AB9F4",
+    "TEX": "1BT0KtbOIZGzT4Fr4u9W9bT27yvmzpGCI2Toq0N7bapo",
+    "TOR": "1dc9JjJLmjKj70JUy-FgKwJZsifr6cHWNUzVSUM-g-7w",
+    "WSH": "1A7XlAdd094f4mgiYP1Hs3FFsKiuS5KWQRK0eiMP_V5M"
+  }
+}
