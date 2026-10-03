@@ -1,0 +1,7 @@
+{
+  "_readme": "Cot's names the automatic matcher can't resolve, keyed \"TEAM|name exactly as on the sheet (asterisk stripped)\" -> MLBAM id. Add to this when a refresh lists an unmatched player.",
+  "LAD|Hernández, Kiké": 571771,
+  "PIT|Chander, Bubba": 696149,
+  "TEX|Baumier, Carter": 691945,
+  "COL|Petit, RJ": 696275
+}

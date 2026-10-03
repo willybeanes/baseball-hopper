@@ -8,10 +8,14 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import config from '../../lib/team-builder/cots-sheets.json'
+import overrides from '../../lib/team-builder/id-overrides.json'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
+import { MLB_TEAM_IDS, matchPlayer, type RosterPerson } from '../../lib/team-builder/ids'
 
 const OUT_DIR = join(import.meta.dir, '../../public/data/team-builder')
 const TIER_STEPS = [20e6, 40e6, 60e6] // gaps above the base line used since 2022
+const MAX_UNMATCHED = 15 // more than this many unmatched names means something is broken, not just new
+const STATS_API = 'https://statsapi.mlb.com/api/v1'
 
 const arg = (name: string) => {
   const i = process.argv.indexOf(name)
@@ -35,6 +39,68 @@ async function download(team: string, id: string): Promise<string> {
     await new Promise((res) => setTimeout(res, 2000 * attempt))
   }
   throw new Error(`${team}: download failed — ${lastError}`)
+}
+
+async function statsApi<T>(path: string): Promise<T> {
+  const r = await fetch(STATS_API + path, { signal: AbortSignal.timeout(30_000) })
+  if (!r.ok) throw new Error(`MLB stats API ${path} returned HTTP ${r.status}`)
+  return r.json() as Promise<T>
+}
+
+// Each team's 40-man, everyone it used this season, and its whole organization.
+async function teamPool(team: string): Promise<{ pool: RosterPerson[]; fortyMan: Set<number> }> {
+  const types = ['40Man', 'fullSeason', 'fullRoster']
+  const rosters = await Promise.all(
+    types.map((t) => statsApi<{ roster?: { person: RosterPerson }[] }>(`/teams/${MLB_TEAM_IDS[team]}/roster?rosterType=${t}&season=${config.firstYear}`)),
+  )
+  const people = rosters.map((d) => (d.roster ?? []).map((r) => ({ id: r.person.id, fullName: r.person.fullName })))
+  return { pool: people.flat(), fortyMan: new Set(people[0].map((p) => p.id)) }
+}
+
+// Everyone who played in the majors this season or last.
+async function leaguePool(): Promise<RosterPerson[]> {
+  const seasons = [config.firstYear, config.firstYear - 1]
+  const lists = await Promise.all(seasons.map((y) => statsApi<{ people: RosterPerson[] }>(`/sports/1/players?season=${y}`)))
+  return lists.flatMap((d) => d.people.map((p) => ({ id: p.id, fullName: p.fullName })))
+}
+
+async function assignIds(sheets: TeamSheet[]): Promise<{ unmatched: string[]; fuzzy: string[]; stale: string[] }> {
+  const league = await leaguePool()
+  const known = overrides as Record<string, number>
+  const unmatched: string[] = []
+  const fuzzy: string[] = []
+  const fortyMen = new Map<string, Set<number>>()
+  for (const sheet of sheets) {
+    const { pool, fortyMan } = await teamPool(sheet.team)
+    fortyMen.set(sheet.team, fortyMan)
+    const everyone = [...pool, ...league]
+    for (const p of sheet.players) {
+      const m = matchPlayer(p.name, pool, league, known[`${sheet.team}|${p.sheetName}`])
+      if (!m) { unmatched.push(`${sheet.team}|${p.sheetName}`); continue }
+      p.mlbamId = m.id
+      if (m.how !== 'team' && m.how !== 'override') {
+        fuzzy.push(`${sheet.team} ${p.name} -> ${everyone.find((x) => x.id === m.id)?.fullName} (${m.id}, ${m.how})`)
+      }
+    }
+  }
+
+  // Cot's sometimes leaves a moved player on his old team's roster too. When one player is
+  // on two sheets, keep him where MLB's 40-man says he is and drop the stale row.
+  const stale: string[] = []
+  const teamsById = new Map<number, string[]>()
+  for (const s of sheets) for (const p of s.players) if (p.mlbamId) teamsById.set(p.mlbamId, [...(teamsById.get(p.mlbamId) ?? []), s.team])
+  for (const [id, teams] of teamsById) {
+    if (teams.length < 2) continue
+    const keep = teams.filter((t) => fortyMen.get(t)?.has(id))
+    if (keep.length !== 1) { stale.push(`${id} is on ${teams.join(' and ')} — left on both, MLB's 40-man doesn't settle it`); continue }
+    for (const t of teams.filter((t) => t !== keep[0])) {
+      const sheet = sheets.find((s) => s.team === t)!
+      const p = sheet.players.find((x) => x.mlbamId === id)!
+      sheet.players = sheet.players.filter((x) => x !== p)
+      stale.push(`${p.name} dropped from ${t} (MLB has him on ${keep[0]}'s 40-man)`)
+    }
+  }
+  return { unmatched, fuzzy, stale }
 }
 
 function mode(values: number[]): number | null {
@@ -82,6 +148,16 @@ async function main() {
     }
   }
 
+  let ids = { unmatched: [] as string[], fuzzy: [] as string[], stale: [] as string[] }
+  if (!errors.length) {
+    try {
+      ids = await assignIds(sheets)
+      if (ids.unmatched.length > MAX_UNMATCHED) errors.push(`${ids.unmatched.length} players couldn't be matched to an MLBAM id`)
+    } catch (e) {
+      errors.push((e as Error).message)
+    }
+  }
+
   if (errors.length) {
     console.error(`Refresh stopped, nothing written (${errors.length} problem${errors.length > 1 ? 's' : ''}):`)
     for (const e of errors) console.error(`  - ${e}`)
@@ -106,6 +182,16 @@ async function main() {
   const count = (status: string) => sheets.reduce((n, s) => n + s.players.filter((p) => p.status === status).length, 0)
   console.log(`Wrote ${sheets.length} teams to public/data/team-builder (base tax line ${base ? `$${base / 1e6}M` : 'not found'}).`)
   console.log(`Players: ${['signed', 'arb', 'prearb', 'option', 'fa', 'unknown'].map((s) => `${count(s)} ${s}`).join(', ')}`)
+  console.log(`MLBAM ids: ${count('signed') + count('arb') + count('prearb') + count('option') + count('fa') + count('unknown') - ids.unmatched.length} matched, ${ids.unmatched.length} unmatched.`)
+  if (ids.stale.length) console.log(`Same player on two sheets:\n  ${ids.stale.join('\n  ')}`)
+  if (ids.fuzzy.length) console.log(`Matched on a looser rule (worth a glance):\n  ${ids.fuzzy.join('\n  ')}`)
+  if (ids.unmatched.length) {
+    console.log(`Unmatched — add to lib/team-builder/id-overrides.json:\n  ${ids.unmatched.join('\n  ')}`)
+    if (process.env.GITHUB_STEP_SUMMARY) {
+      const lines = ['### Team Builder: players without an MLBAM id', '', ...ids.unmatched.map((u) => `- \`${u}\``)]
+      writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n', { flag: 'a' })
+    }
+  }
 }
 
 main()

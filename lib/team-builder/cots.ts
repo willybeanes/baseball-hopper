@@ -6,6 +6,7 @@ export type Status = 'signed' | 'arb' | 'prearb' | 'option' | 'fa' | 'unknown'
 export type OptionType = 'club' | 'mutual' | 'player' | 'vesting' | 'conditional' | 'unknown'
 
 export interface CotsPlayer {
+  mlbamId?: number // filled in by the refresh script (lib/team-builder/ids.ts)
   name: string // "Francisco Lindor"
   sheetName: string // "Lindor, Francisco" (asterisk stripped)
   pos: string // raw Cot's position, e.g. "rhp-s", "1b-3b"
