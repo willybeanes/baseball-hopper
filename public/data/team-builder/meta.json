@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T05:01:37.303Z",
+  "updatedAt": "2026-10-04T14:10:38.959Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -9,7 +9,7 @@
       287000000,
       307000000
     ],
-    "derived": true
+    "derived": false
   },
   "teams": [
     "ARI",
@@ -79,6 +79,13 @@
         "https://www.mlbtraderumors.com/2026/06/2026-27-club-options-nl-west.html"
       ],
       "playerOptions": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+    },
+    "freeAgents": {
+      "title": "2026-27 MLB Free Agents",
+      "site": "MLB Trade Rumors",
+      "url": "https://www.mlbtraderumors.com/2025/08/2026-27-mlb-free-agents.html",
+      "updated": "9-30-26",
+      "importedAt": "2026-10-04"
     }
   }
 }
