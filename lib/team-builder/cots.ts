@@ -10,7 +10,7 @@ export interface CotsPlayer {
   name: string // "Francisco Lindor"
   sheetName: string // "Lindor, Francisco" (asterisk stripped)
   pos: string // raw Cot's position, e.g. "rhp-s", "1b-3b"
-  age: number | null // age on 7/1 of the sheet's first year
+  age: number | null // age during the target season
   mls: number | null // service time as years.days, e.g. 2.164
   contract: string // "5 y/$155M (26-30)"
   status: Status
@@ -20,7 +20,8 @@ export interface CotsPlayer {
   walkYear?: boolean // signed for the target year, free agent after it
   salary: number | null // target-year actual salary in dollars; null when the sheet has none
   taxValue: number | null // target-year luxury-tax value in dollars; null when the sheet has none
-  salaryPrevYear: number | null // first-year actual salary in dollars
+  salaryPrevYear: number | null // last season's actual salary in dollars (gone once Cot's rolls the sheet over)
+  cotsEstimate?: number // Cot's own arbitration estimate, on sheets rolled over to the target year
 }
 
 export interface DeadMoney {
@@ -37,6 +38,8 @@ export interface TeamSheet {
   benefits: number | null // "Estimated Player Benefits", counts toward tax payroll
   bonusPool: number | null // "Pre-arbitration bonus pool", counts toward tax payroll
   threshold: number | null // base luxury-tax line for the target year, if the sheet has the row
+  tiers: number[] | null // base line plus tax tiers, when the sheet spells them out for the target year
+  sheetFirstYear: number // first salary column: last season, or the target year once Cot's rolls the sheet over
   sheetPayroll: number | null // sheet's own "Projected 40-man Year-End Payroll"
   sheetTaxPayroll: number | null // sheet's own "Projected 40-man CB(T) Tax Payroll"
   rowsPayroll: number // sum of every salary cell in the target year (players, buyouts, dead money)
@@ -90,14 +93,18 @@ function optionTypeFrom(text: string): OptionType {
   return 'unknown'
 }
 
-export function parseTeamSheet(team: string, csv: string, firstYear: number, targetYear: number): TeamSheet {
+// Cot's rolls each sheet over to the next season in place, at its own pace, so a sheet's first
+// salary column is either last season (lastSeason) or already the target year.
+export function parseTeamSheet(team: string, csv: string, lastSeason: number, targetYear: number): TeamSheet {
   const rows = parseCsv(csv).map((r) => r.map((c) => c ?? ''))
   const header = rows.findIndex((r) => r[0]?.trim() === 'Player')
   if (header < 0) throw new Error(`${team}: no "Player" header row — sheet layout changed`)
   const years = rows[header + 1] ?? []
-  if (years[COL.salary]?.trim() !== String(firstYear) || years[COL.tax]?.trim() !== String(firstYear)) {
-    throw new Error(`${team}: expected ${firstYear} at the top of the salary and tax columns — sheet layout changed`)
+  const firstYear = Number(years[COL.salary]?.trim())
+  if ((firstYear !== lastSeason && firstYear !== targetYear) || years[COL.tax]?.trim() !== String(firstYear)) {
+    throw new Error(`${team}: expected ${lastSeason} or ${targetYear} at the top of the salary and tax columns — sheet layout changed`)
   }
+  const rolled = firstYear === targetYear
 
   const offset = targetYear - firstYear
   const salCol = COL.salary + offset
@@ -152,17 +159,24 @@ export function parseTeamSheet(team: string, csv: string, firstYear: number, tar
       name: displayName(sheetName),
       sheetName,
       pos: cell(r, COL.pos),
-      age: Number.isFinite(ageRaw) ? ageRaw : null,
+      age: Number.isFinite(ageRaw) ? ageRaw + offset : null,
       mls: Number.isFinite(mlsRaw) ? mlsRaw : null,
       contract,
       status: 'unknown',
       salary: null,
       taxValue: null,
-      salaryPrevYear: parseMoney(cell(r, COL.salary), false),
+      salaryPrevYear: rolled ? null : parseMoney(cell(r, COL.salary), false),
     }
 
     const arb = salCell.match(/^A([1-4])$/)
-    if (/opt/i.test(salCell) || /opt/i.test(taxCell)) {
+    const arbInContract = rolled ? contract.match(/^A([1-4])$/) : null
+    if (arbInContract) {
+      // Rolled-over sheets put the arbitration year in the contract column and Cot's own
+      // salary estimate in the target-year cell.
+      p.status = 'arb'
+      p.arbYear = Number(arbInContract[1])
+      if (sal != null) p.cotsEstimate = sal
+    } else if (/opt/i.test(salCell) || /opt/i.test(taxCell)) {
       // Pending option. The salary block holds the buyout (if any), not the option salary.
       p.status = 'option'
       p.optionType = optionTypeFrom(`${salCell} ${taxCell} ${contract}`)
@@ -202,6 +216,11 @@ export function parseTeamSheet(team: string, csv: string, firstYear: number, tar
   }
   const bonusPool = footer(/^Pre-arbitration bonus pool/, taxCol)
   const benefits = footer(/^Estimated Player Benefits/, taxCol)
+  const threshold = footer(/^Competitive Balance Tax Threshold/, taxCol)
+  // "$247 / $267 / $287 / $307" in the contract column describes the first year's tiers.
+  const tierText = rows.slice(end).find((row) => /^Competitive Balance Tax Threshold/.test(label(row)))?.[COL.contract] ?? ''
+  const tierNums = [...tierText.matchAll(/\$(\d+(?:\.\d+)?)/g)].map((m) => Math.round(Number(m[1]) * 1e6))
+  const tiers = rolled && tierNums.length === 4 && tierNums[0] === threshold ? tierNums : null
 
   return {
     team,
@@ -209,7 +228,9 @@ export function parseTeamSheet(team: string, csv: string, firstYear: number, tar
     deadMoney: [...dead.values()],
     benefits,
     bonusPool,
-    threshold: footer(/^Competitive Balance Tax Threshold/, taxCol),
+    threshold,
+    tiers,
+    sheetFirstYear: firstYear,
     sheetPayroll: footer(/^Projected 40-man Year-End Payroll/, salCol),
     sheetTaxPayroll: footer(/^Projected 40-man CBT? Tax Payroll|^Projected 40-man CBT Payroll/, taxCol),
     rowsPayroll,

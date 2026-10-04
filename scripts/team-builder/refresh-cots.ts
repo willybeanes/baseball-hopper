@@ -12,6 +12,9 @@ import overrides from '../../lib/team-builder/id-overrides.json'
 import assumptions from '../../lib/team-builder/assumptions.json'
 import optionsFile from '../../lib/team-builder/options-2027.json'
 import arbFile from '../../lib/team-builder/mlbtr-arb-2027.json'
+import faFile from '../../lib/team-builder/mlbtr-fa-2027.json'
+import { buildPool } from '../../lib/team-builder/pool'
+import type { TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
 import { matchPlayer } from '../../lib/team-builder/ids'
@@ -115,13 +118,18 @@ async function main() {
       const sheet = parseTeamSheet(team, text, config.firstYear, config.targetYear)
       errors.push(...checkTeamSheet(sheet, known[team]))
 
-      // A sheet that suddenly lost a lot of rows is more likely broken than gutted.
       const prevFile = join(OUT_DIR, 'teams', `${team}.json`)
       if (existsSync(prevFile)) {
-        const prev = JSON.parse(readFileSync(prevFile, 'utf8')) as { players: unknown[] }
-        if (sheet.players.length < prev.players.length * 0.8) {
+        const prev = JSON.parse(readFileSync(prevFile, 'utf8')) as { players: { sheetName: string; salaryPrevYear: number | null }[]; sheetFirstYear?: number }
+        // A sheet that suddenly lost a lot of rows is more likely broken than gutted — except on
+        // the day Cot's rolls it over to the new season, when last season's free agents drop off.
+        const justRolled = sheet.sheetFirstYear !== (prev.sheetFirstYear ?? config.firstYear)
+        if (!justRolled && sheet.players.length < prev.players.length * 0.8) {
           errors.push(`${team}: ${sheet.players.length} players, down from ${prev.players.length} last refresh`)
         }
+        // A rolled-over sheet no longer shows last season's pay; keep it from the last snapshot.
+        const prevPay = new Map(prev.players.map((p) => [p.sheetName, p.salaryPrevYear]))
+        for (const p of sheet.players) if (p.salaryPrevYear == null) p.salaryPrevYear = prevPay.get(p.sheetName) ?? null
       }
       sheets.push(sheet)
     } catch (e) {
@@ -148,24 +156,29 @@ async function main() {
   for (const s of sheets) applyEstimates(s, optionsFile.options as OptionFact[], arbFile.players, assumptions)
 
   const base = mode(sheets.map((s) => s.threshold).filter((t): t is number => t != null))
+  const sheetTiers = sheets.find((s) => s.tiers && s.tiers[0] === base)?.tiers ?? null
   const meta = {
     sheetsCollected: config.sheetsCollected,
     targetYear: config.targetYear,
-    // Cot's carries only the 2027 base line, and only on some sheets. The tiers are derived
-    // and are placeholders until a new labor agreement sets real ones.
-    taxThreshold: base == null ? null : { base, tiers: TIER_STEPS.map((step) => base + step), derived: true },
+    // Placeholders either way until a new labor agreement sets real ones.
+    // Once Cot's rolls sheets over they spell out the tiers; until then they're derived.
+    taxThreshold: base == null ? null : sheetTiers ? { base, tiers: sheetTiers.slice(1), derived: false } : { base, tiers: TIER_STEPS.map((step) => base + step), derived: true },
     teams: sheets.map((s) => s.team).sort(),
     assumptions: { leagueMinimum: assumptions.leagueMinimum, roughArbitration: assumptions.roughArbitration },
     sources: {
       contracts: "Cot's Baseball Contracts",
       arbitration: arbFile.source,
       options: { compiled: optionsFile.compiled, ...optionsFile.sources },
+      freeAgents: faFile.source,
     },
   }
 
   // Only touch the files when the data itself changed, so a quiet day makes no commit
   // and no redeploy. updatedAt is therefore "when Cot's last changed", not "when we last looked".
   const files = new Map(sheets.map((s) => [join(OUT_DIR, 'teams', `${s.team}.json`), JSON.stringify(s, null, 1) + '\n']))
+  // One file with every player a user could add (free agents and other teams' players).
+  const pool = buildPool(sheets as unknown as TeamFile[], faFile.players)
+  files.set(join(OUT_DIR, 'pool.json'), JSON.stringify(pool) + '\n')
   const metaFile = join(OUT_DIR, 'meta.json')
   const prevMeta = existsSync(metaFile) ? JSON.parse(readFileSync(metaFile, 'utf8')) : null
   const changed = [...files].filter(([f, text]) => !existsSync(f) || readFileSync(f, 'utf8') !== text)
@@ -180,7 +193,7 @@ async function main() {
   const count = (status: string) => sheets.reduce((n, s) => n + s.players.filter((p) => p.status === status).length, 0)
   console.log(
     changed.length || metaChanged
-      ? `Updated ${changed.length} of ${sheets.length} teams in public/data/team-builder (base tax line ${base ? `$${base / 1e6}M` : 'not found'}).`
+      ? `Updated ${changed.length} files (${sheets.length} teams + pool of ${pool.length} players) in public/data/team-builder (base tax line ${base ? `$${base / 1e6}M` : 'not found'}).`
       : `No changes since the last refresh (${prevMeta.updatedAt}).`,
   )
   const by = (src: string) => sheets.reduce((n, s) => n + s.players.filter((p) => (p as { salarySource?: string }).salarySource === src).length, 0)

@@ -95,3 +95,31 @@ describe('option years written as a range', () => {
     expect(load('PIT').players.find((p) => p.name === 'Brandon Lowe')!.status).toBe('fa')
   })
 })
+
+describe('sheet rolled over to the target year (Nationals, 2026-10-04)', () => {
+  const s = parseTeamSheet('WSH', readFileSync(join(import.meta.dir, 'fixtures', 'rolled-WSH-2027.csv'), 'utf8'), 2026, 2027)
+  const find = (name: string) => s.players.find((p) => p.name === name)!
+
+  test('reads the 2027 column, in whole dollars', () => {
+    expect(s.sheetFirstYear).toBe(2027)
+    expect(find('Keibert Ruiz')).toMatchObject({ status: 'signed', salary: 5_375_000, taxValue: 6_250_000 })
+    expect(M(s.rowsPayroll)).toBe(M(s.sheetPayroll!))
+    expect(M(s.rowsTaxPayroll)).toBe(M(s.sheetTaxPayroll!))
+  })
+  test("arbitration year in the contract column, Cot's estimate kept aside", () => {
+    expect(find('CJ Abrams')).toMatchObject({ status: 'arb', arbYear: 2, cotsEstimate: 9_750_000, salary: null })
+  })
+  test('blank 2027 with under 3 years is pre-arb', () => expect(find('James Wood').status).toBe('prearb'))
+  test('ages are for the target season', () => expect(find('James Wood').age).toBe(24))
+  test('no 2026 pay on a rolled sheet', () => expect(find('Keibert Ruiz').salaryPrevYear).toBeNull())
+  test('tiers spelled out on the sheet', () => expect(s.tiers).toEqual([247e6, 267e6, 287e6, 307e6]))
+})
+
+describe('sheet still on last season', () => {
+  test('age moves forward a year, tiers left to derive', () => {
+    const s = load('NYM')
+    expect(s.sheetFirstYear).toBe(2026)
+    expect(s.players.find((p) => p.name === 'Juan Soto')!.age).toBe(28)
+    expect(s.tiers).toBeNull()
+  })
+})
