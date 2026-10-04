@@ -76,6 +76,7 @@
    "corrected": "Cot's shows FA, but the option is still pending (MLBTR)",
    "optionType": "mutual",
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
@@ -93,6 +94,7 @@
    "buyout": 1000000,
    "mlbamId": 543309,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
@@ -170,6 +172,7 @@
    "buyout": 1250000,
    "mlbamId": 596001,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {

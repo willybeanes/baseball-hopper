@@ -60,6 +60,7 @@
    "buyout": 100000,
    "mlbamId": 657746,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
@@ -77,6 +78,7 @@
    "buyout": 1250000,
    "mlbamId": 605137,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {

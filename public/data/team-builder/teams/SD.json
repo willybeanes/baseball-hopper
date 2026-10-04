@@ -60,6 +60,7 @@
    "optionType": "club",
    "mlbamId": 601713,
    "decidedBy": "club",
+   "defaultExercised": true,
    "buyout": 0,
    "salarySource": "option"
   },
@@ -266,6 +267,7 @@
    "optionType": "mutual",
    "mlbamId": 608337,
    "decidedBy": "both",
+   "defaultExercised": false,
    "buyout": 1500000,
    "salarySource": "option"
   },
@@ -314,6 +316,7 @@
    "buyout": 2500000,
    "mlbamId": 609280,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "unknown"
   },
   {
@@ -359,6 +362,7 @@
    "buyout": 1500000,
    "mlbamId": 656288,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "unknown"
   },
   {
@@ -377,6 +381,7 @@
    "corrected": "Cot's salary is the option buyout",
    "optionType": "club",
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {
@@ -566,6 +571,7 @@
    "optionType": "mutual",
    "mlbamId": 669720,
    "decidedBy": "both",
+   "defaultExercised": false,
    "buyout": 1000000,
    "salarySource": "option"
   },
@@ -625,6 +631,7 @@
    "optionType": "mutual",
    "mlbamId": 650859,
    "decidedBy": "both",
+   "defaultExercised": false,
    "buyout": 1500000,
    "salarySource": "option"
   },

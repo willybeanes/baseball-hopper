@@ -16,6 +16,7 @@
    "buyout": 10000000,
    "mlbamId": 543243,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
@@ -153,6 +154,7 @@
    "corrected": "Cot's shows FA, but the option is still pending (MLBTR)",
    "optionType": "club",
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {

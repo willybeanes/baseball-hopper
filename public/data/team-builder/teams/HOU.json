@@ -139,6 +139,7 @@
    "optionType": "club",
    "mlbamId": 670623,
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {

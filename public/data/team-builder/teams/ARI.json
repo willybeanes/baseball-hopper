@@ -124,6 +124,7 @@
    "buyout": 1000000,
    "mlbamId": 647336,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {

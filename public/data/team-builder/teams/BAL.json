@@ -108,6 +108,7 @@
    "buyout": 2000000,
    "mlbamId": 621107,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
@@ -124,6 +125,7 @@
    "optionType": "club",
    "mlbamId": 663624,
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {
@@ -615,6 +617,7 @@
    "buyout": 2000000,
    "mlbamId": 673357,
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {

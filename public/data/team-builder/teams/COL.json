@@ -30,6 +30,7 @@
    "optionType": "player",
    "mlbamId": 607536,
    "decidedBy": "player",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {
@@ -47,6 +48,7 @@
    "buyout": 250000,
    "mlbamId": 547179,
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {

@@ -339,6 +339,7 @@
    "buyout": 100000,
    "mlbamId": 592858,
    "decidedBy": "club",
+   "defaultExercised": true,
    "salarySource": "option"
   },
   {

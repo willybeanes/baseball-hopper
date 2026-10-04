@@ -15,6 +15,7 @@
    "optionType": "mutual",
    "mlbamId": 553993,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
@@ -110,6 +111,7 @@
    "buyout": 1000000,
    "mlbamId": 572955,
    "decidedBy": "both",
+   "defaultExercised": false,
    "salarySource": "option"
   },
   {
