@@ -13,7 +13,8 @@
    "taxValue": 13000000,
    "salaryPrevYear": 12000000,
    "walkYear": true,
-   "mlbamId": 650490
+   "mlbamId": 650490,
+   "salarySource": "cots"
   },
   {
    "name": "Nick Martinez",
@@ -23,12 +24,14 @@
    "mls": 7.002,
    "contract": "1 y/$13M (26)+27 m opt",
    "status": "option",
-   "salary": null,
-   "taxValue": null,
+   "salary": 20000000,
+   "taxValue": 20000000,
    "salaryPrevYear": 9000000,
    "optionType": "mutual",
    "buyout": 4000000,
-   "mlbamId": 607259
+   "mlbamId": 607259,
+   "decidedBy": "both",
+   "salarySource": "option"
   },
   {
    "name": "Steven Matz",
@@ -42,7 +45,8 @@
    "taxValue": 7500000,
    "salaryPrevYear": 7500000,
    "walkYear": true,
-   "mlbamId": 571927
+   "mlbamId": 571927,
+   "salarySource": "cots"
   },
   {
    "name": "Cedric Mullins",
@@ -52,12 +56,14 @@
    "mls": 6.078,
    "contract": "1 y/$7M (26)+27 m opt",
    "status": "option",
-   "salary": null,
-   "taxValue": null,
+   "salary": 10000000,
+   "taxValue": 10000000,
    "salaryPrevYear": 6500000,
    "optionType": "mutual",
    "buyout": 500000,
-   "mlbamId": 656775
+   "mlbamId": 656775,
+   "decidedBy": "both",
+   "salarySource": "option"
   },
   {
    "name": "Drew Rasmussen",
@@ -67,12 +73,14 @@
    "mls": 5.111,
    "contract": "2 y/$8.5M (25-26)+27 cl opt",
    "status": "option",
-   "salary": null,
-   "taxValue": null,
+   "salary": 20000000,
+   "taxValue": 20000000,
    "salaryPrevYear": 5750000,
    "optionType": "club",
    "buyout": 500000,
-   "mlbamId": 656876
+   "mlbamId": 656876,
+   "decidedBy": "club",
+   "salarySource": "option"
   },
   {
    "name": "Gavin Lux",
@@ -85,7 +93,8 @@
    "salary": null,
    "taxValue": null,
    "salaryPrevYear": 5525000,
-   "mlbamId": 666158
+   "mlbamId": 666158,
+   "salarySource": "none"
   },
   {
    "name": "Shane McClanahan",
@@ -95,11 +104,12 @@
    "mls": 4.158,
    "contract": "1 y/$3.6M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 6600000,
+   "taxValue": 6600000,
    "salaryPrevYear": 3600000,
    "arbYear": 4,
-   "mlbamId": 663556
+   "mlbamId": 663556,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Griffin Jax",
@@ -109,11 +119,12 @@
    "mls": 4.091,
    "contract": "1 y/$3.565M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 5700000,
+   "taxValue": 5700000,
    "salaryPrevYear": 3565000,
    "arbYear": 3,
-   "mlbamId": 643377
+   "mlbamId": 643377,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Ryan Pepiot",
@@ -123,11 +134,12 @@
    "mls": 3.005,
    "contract": "1 y/$3.025M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 3100000,
+   "taxValue": 3100000,
    "salaryPrevYear": 3025000,
    "arbYear": 2,
-   "mlbamId": 686752
+   "mlbamId": 686752,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Nick Fortes",
@@ -137,11 +149,12 @@
    "mls": 3.149,
    "contract": "1 y/$2.535M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 3400000,
+   "taxValue": 3400000,
    "salaryPrevYear": 2535000,
    "arbYear": 3,
-   "mlbamId": 663743
+   "mlbamId": 663743,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Taylor Walls",
@@ -151,11 +164,13 @@
    "mls": 4.092,
    "contract": "1 y/$2.45M (26)+27 cl opt",
    "status": "option",
-   "salary": null,
-   "taxValue": null,
+   "salary": 3100000,
+   "taxValue": 3100000,
    "salaryPrevYear": 2450000,
    "optionType": "club",
-   "mlbamId": 670764
+   "mlbamId": 670764,
+   "decidedBy": "club",
+   "salarySource": "option"
   },
   {
    "name": "Garrett Cleavinger",
@@ -165,11 +180,12 @@
    "mls": 4.06,
    "contract": "1 y/$2.4M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 3700000,
+   "taxValue": 3700000,
    "salaryPrevYear": 2400000,
    "arbYear": 3,
-   "mlbamId": 664076
+   "mlbamId": 664076,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Edwin Uceta",
@@ -179,11 +195,12 @@
    "mls": 2.15,
    "contract": "1 y/$1.525M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 1500000,
+   "taxValue": 1500000,
    "salaryPrevYear": 1525000,
    "arbYear": 2,
-   "mlbamId": 670955
+   "mlbamId": 670955,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Bryan Baker",
@@ -193,11 +210,12 @@
    "mls": 3.049,
    "contract": "1 y/$1.275M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 4100000,
+   "taxValue": 4100000,
    "salaryPrevYear": 1275000,
    "arbYear": 2,
-   "mlbamId": 641329
+   "mlbamId": 641329,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Cole Sulser",
@@ -210,7 +228,8 @@
    "salary": null,
    "taxValue": null,
    "salaryPrevYear": 1050000,
-   "mlbamId": 642121
+   "mlbamId": 642121,
+   "salarySource": "none"
   },
   {
    "name": "Ryan Vilade",
@@ -220,10 +239,11 @@
    "mls": 0.076,
    "contract": "1 y/$950,000 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 950000,
-   "mlbamId": 668723
+   "mlbamId": 668723,
+   "salarySource": "minimum"
   },
   {
    "name": "Richie Palacios",
@@ -233,11 +253,12 @@
    "mls": 2.156,
    "contract": "1 y/$945,000 (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 2000000,
+   "taxValue": 2000000,
    "salaryPrevYear": 945000,
    "arbYear": 2,
-   "mlbamId": 680700
+   "mlbamId": 680700,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Kevin Kelly",
@@ -247,11 +268,12 @@
    "mls": 2.156,
    "contract": "1 y/$925,000 (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 2600000,
+   "taxValue": 2600000,
    "salaryPrevYear": 925000,
    "arbYear": 2,
-   "mlbamId": 687330
+   "mlbamId": 687330,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Jonathan Aranda",
@@ -261,11 +283,12 @@
    "mls": 2.03,
    "contract": "1 y/$796,400 (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 4100000,
+   "taxValue": 4100000,
    "salaryPrevYear": 796400,
    "arbYear": 1,
-   "mlbamId": 666018
+   "mlbamId": 666018,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Junior Caminero",
@@ -275,10 +298,11 @@
    "mls": 1.058,
    "contract": "1 y/$794,800 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 794800,
-   "mlbamId": 691406
+   "mlbamId": 691406,
+   "salarySource": "minimum"
   },
   {
    "name": "Manuel Rodríguez",
@@ -288,11 +312,12 @@
    "mls": 2.139,
    "contract": "1 y/$793,600 (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 900000,
+   "taxValue": 900000,
    "salaryPrevYear": 793600,
    "arbYear": 2,
-   "mlbamId": 655889
+   "mlbamId": 655889,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Jonny DeLuca",
@@ -302,11 +327,12 @@
    "mls": 2.085,
    "contract": "1 y/$789,300 (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 1700000,
+   "taxValue": 1700000,
    "salaryPrevYear": 789300,
    "arbYear": 1,
-   "mlbamId": 676356
+   "mlbamId": 676356,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Mason Englert",
@@ -316,11 +342,12 @@
    "mls": 1.168,
    "contract": "1 y/$788,100 (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 1000000,
+   "taxValue": 1000000,
    "salaryPrevYear": 372795,
    "arbYear": 1,
-   "mlbamId": 669438
+   "mlbamId": 669438,
+   "salarySource": "rough-arb"
   },
   {
    "name": "Ben Williamson",
@@ -330,10 +357,11 @@
    "mls": 0.11,
    "contract": "1 y/$785,700 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 785700,
-   "mlbamId": 810938
+   "mlbamId": 810938,
+   "salarySource": "minimum"
   },
   {
    "name": "Chandler Simpson",
@@ -343,10 +371,11 @@
    "mls": 0.14,
    "contract": "1 y/$785,100 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 785100,
-   "mlbamId": 802415
+   "mlbamId": 802415,
+   "salarySource": "minimum"
   },
   {
    "name": "Joe Boyle",
@@ -356,10 +385,11 @@
    "mls": 1.005,
    "contract": "1 y/$784,200 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 365259,
-   "mlbamId": 671212
+   "mlbamId": 671212,
+   "salarySource": "minimum"
   },
   {
    "name": "Ian Seymour",
@@ -369,10 +399,11 @@
    "mls": 0.085,
    "contract": "1 y/$783,800 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 783800,
-   "mlbamId": 693855
+   "mlbamId": 693855,
+   "salarySource": "minimum"
   },
   {
    "name": "Carson Williams",
@@ -382,10 +413,11 @@
    "mls": 0.039,
    "contract": "1 y/$780,800 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 186722,
-   "mlbamId": 700246
+   "mlbamId": 700246,
+   "salarySource": "minimum"
   },
   {
    "name": "Jadher Areinamo",
@@ -395,10 +427,11 @@
    "mls": 0,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 63600,
-   "mlbamId": 699130
+   "mlbamId": 699130,
+   "salarySource": "minimum"
   },
   {
    "name": "Cam Booser",
@@ -408,10 +441,11 @@
    "mls": 1.105,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 607338,
-   "mlbamId": 592155
+   "mlbamId": 592155,
+   "salarySource": "minimum"
   },
   {
    "name": "Alex Cook",
@@ -421,10 +455,11 @@
    "mls": 0,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 140220,
-   "mlbamId": 702047
+   "mlbamId": 702047,
+   "salarySource": "minimum"
   },
   {
    "name": "Liam Hicks",
@@ -434,10 +469,11 @@
    "mls": 1,
    "contract": "1 y/$790,000 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 232353,
-   "mlbamId": 689414
+   "mlbamId": 689414,
+   "salarySource": "minimum"
   },
   {
    "name": "Brody Hopkins",
@@ -447,10 +483,11 @@
    "mls": 0,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 66738,
-   "mlbamId": 811315
+   "mlbamId": 811315,
+   "salarySource": "minimum"
   },
   {
    "name": "Ty Johnson",
@@ -460,10 +497,11 @@
    "mls": 0,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 92445,
-   "mlbamId": 694494
+   "mlbamId": 694494,
+   "salarySource": "minimum"
   },
   {
    "name": "Casey Legumina",
@@ -473,10 +511,11 @@
    "mls": 1.111,
    "contract": "1 y/$787,900 (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 657286,
-   "mlbamId": 668984
+   "mlbamId": 668984,
+   "salarySource": "minimum"
   },
   {
    "name": "Nick Madrigal",
@@ -489,7 +528,8 @@
    "salary": null,
    "taxValue": null,
    "salaryPrevYear": 104679,
-   "mlbamId": 663611
+   "mlbamId": 663611,
+   "salarySource": "none"
   },
   {
    "name": "Jorge Mateo",
@@ -502,7 +542,8 @@
    "salary": null,
    "taxValue": null,
    "salaryPrevYear": 191872,
-   "mlbamId": 622761
+   "mlbamId": 622761,
+   "salarySource": "none"
   },
   {
    "name": "Jacob Melton",
@@ -512,10 +553,11 @@
    "mls": 0.111,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 190443,
-   "mlbamId": 689200
+   "mlbamId": 689200,
+   "salarySource": "minimum"
   },
   {
    "name": "Victor Jr. Mesa",
@@ -525,10 +567,11 @@
    "mls": 0.034,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 570514,
-   "mlbamId": 683748
+   "mlbamId": 683748,
+   "salarySource": "minimum"
   },
   {
    "name": "Freddy Peralta",
@@ -541,7 +584,8 @@
    "salary": null,
    "taxValue": null,
    "salaryPrevYear": 2395722,
-   "mlbamId": 642547
+   "mlbamId": 642547,
+   "salarySource": "none"
   },
   {
    "name": "Kenny Piper",
@@ -551,10 +595,11 @@
    "mls": 0,
    "contract": "1 y (26)",
    "status": "prearb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 780000,
+   "taxValue": 780000,
    "salaryPrevYear": 135823,
-   "mlbamId": 700652
+   "mlbamId": 700652,
+   "salarySource": "minimum"
   },
   {
    "name": "Jesse Scholtens",
@@ -564,11 +609,12 @@
    "mls": 2.091,
    "contract": "1 y (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 900000,
+   "taxValue": 900000,
    "salaryPrevYear": 578218,
    "arbYear": 1,
-   "mlbamId": 669947
+   "mlbamId": 669947,
+   "salarySource": "mlbtr-arb"
   },
   {
    "name": "Tyler Wells",
@@ -578,11 +624,12 @@
    "mls": 4.132,
    "contract": "1 y/$2.455M (26)",
    "status": "arb",
-   "salary": null,
-   "taxValue": null,
+   "salary": 4000000,
+   "taxValue": 4000000,
    "salaryPrevYear": 722059,
    "arbYear": 4,
-   "mlbamId": 669330
+   "mlbamId": 669330,
+   "salarySource": "mlbtr-arb"
   }
  ],
  "deadMoney": [
