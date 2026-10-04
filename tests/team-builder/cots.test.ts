@@ -85,3 +85,13 @@ describe('statuses', () => {
     expect(find('Paul Goldschmidt', load('NYY')).status).toBe('fa')
   })
 })
+
+describe('option years written as a range', () => {
+  test('"+26-28 opts" covers 2027 even with a blank 2027 cell', () => {
+    const munoz = load('SEA').players.find((p) => p.name === 'Andrés Muñoz')!
+    expect(munoz.status).toBe('option')
+  })
+  test('"+25-26 opts" does not', () => {
+    expect(load('PIT').players.find((p) => p.name === 'Brandon Lowe')!.status).toBe('fa')
+  })
+})

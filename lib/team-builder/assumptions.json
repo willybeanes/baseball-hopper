@@ -1,0 +1,11 @@
+{
+  "_readme": "Every assumption the Team Builder makes, in one place. The page shows these to users.",
+  "leagueMinimum": {
+    "value": 780000,
+    "note": "2026 minimum. The 2027 figure depends on the next labor agreement, so pre-arb salaries are an estimate."
+  },
+  "roughArbitration": {
+    "note": "Only for arbitration players MLBTR didn't project: a flat figure by arbitration year, or last year's pay if higher.",
+    "byYear": { "1": 1000000, "2": 1800000, "3": 3000000, "4": 4500000 }
+  }
+}

@@ -9,13 +9,17 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import config from '../../lib/team-builder/cots-sheets.json'
 import overrides from '../../lib/team-builder/id-overrides.json'
+import assumptions from '../../lib/team-builder/assumptions.json'
+import optionsFile from '../../lib/team-builder/options-2027.json'
+import arbFile from '../../lib/team-builder/mlbtr-arb-2027.json'
+import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
-import { MLB_TEAM_IDS, matchPlayer, type RosterPerson } from '../../lib/team-builder/ids'
+import { matchPlayer } from '../../lib/team-builder/ids'
+import { leaguePool, teamPool } from '../../lib/team-builder/rosters'
 
 const OUT_DIR = join(import.meta.dir, '../../public/data/team-builder')
 const TIER_STEPS = [20e6, 40e6, 60e6] // gaps above the base line used since 2022
 const MAX_UNMATCHED = 15 // more than this many unmatched names means something is broken, not just new
-const STATS_API = 'https://statsapi.mlb.com/api/v1'
 
 const arg = (name: string) => {
   const i = process.argv.indexOf(name)
@@ -41,37 +45,14 @@ async function download(team: string, id: string): Promise<string> {
   throw new Error(`${team}: download failed — ${lastError}`)
 }
 
-async function statsApi<T>(path: string): Promise<T> {
-  const r = await fetch(STATS_API + path, { signal: AbortSignal.timeout(30_000) })
-  if (!r.ok) throw new Error(`MLB stats API ${path} returned HTTP ${r.status}`)
-  return r.json() as Promise<T>
-}
-
-// Each team's 40-man, everyone it used this season, and its whole organization.
-async function teamPool(team: string): Promise<{ pool: RosterPerson[]; fortyMan: Set<number> }> {
-  const types = ['40Man', 'fullSeason', 'fullRoster']
-  const rosters = await Promise.all(
-    types.map((t) => statsApi<{ roster?: { person: RosterPerson }[] }>(`/teams/${MLB_TEAM_IDS[team]}/roster?rosterType=${t}&season=${config.firstYear}`)),
-  )
-  const people = rosters.map((d) => (d.roster ?? []).map((r) => ({ id: r.person.id, fullName: r.person.fullName })))
-  return { pool: people.flat(), fortyMan: new Set(people[0].map((p) => p.id)) }
-}
-
-// Everyone who played in the majors this season or last.
-async function leaguePool(): Promise<RosterPerson[]> {
-  const seasons = [config.firstYear, config.firstYear - 1]
-  const lists = await Promise.all(seasons.map((y) => statsApi<{ people: RosterPerson[] }>(`/sports/1/players?season=${y}`)))
-  return lists.flatMap((d) => d.people.map((p) => ({ id: p.id, fullName: p.fullName })))
-}
-
 async function assignIds(sheets: TeamSheet[]): Promise<{ unmatched: string[]; fuzzy: string[]; stale: string[] }> {
-  const league = await leaguePool()
+  const league = await leaguePool(config.firstYear)
   const known = overrides as Record<string, number>
   const unmatched: string[] = []
   const fuzzy: string[] = []
   const fortyMen = new Map<string, Set<number>>()
   for (const sheet of sheets) {
-    const { pool, fortyMan } = await teamPool(sheet.team)
+    const { pool, fortyMan } = await teamPool(sheet.team, config.firstYear)
     fortyMen.set(sheet.team, fortyMan)
     const everyone = [...pool, ...league]
     for (const p of sheet.players) {
@@ -164,6 +145,8 @@ async function main() {
     process.exit(1)
   }
 
+  for (const s of sheets) applyEstimates(s, optionsFile.options as OptionFact[], arbFile.players, assumptions)
+
   const base = mode(sheets.map((s) => s.threshold).filter((t): t is number => t != null))
   const meta = {
     sheetsCollected: config.sheetsCollected,
@@ -172,6 +155,12 @@ async function main() {
     // and are placeholders until a new labor agreement sets real ones.
     taxThreshold: base == null ? null : { base, tiers: TIER_STEPS.map((step) => base + step), derived: true },
     teams: sheets.map((s) => s.team).sort(),
+    assumptions: { leagueMinimum: assumptions.leagueMinimum, roughArbitration: assumptions.roughArbitration },
+    sources: {
+      contracts: "Cot's Baseball Contracts",
+      arbitration: arbFile.source,
+      options: { compiled: optionsFile.compiled, ...optionsFile.sources },
+    },
   }
 
   // Only touch the files when the data itself changed, so a quiet day makes no commit
@@ -194,6 +183,10 @@ async function main() {
       ? `Updated ${changed.length} of ${sheets.length} teams in public/data/team-builder (base tax line ${base ? `$${base / 1e6}M` : 'not found'}).`
       : `No changes since the last refresh (${prevMeta.updatedAt}).`,
   )
+  const by = (src: string) => sheets.reduce((n, s) => n + s.players.filter((p) => (p as { salarySource?: string }).salarySource === src).length, 0)
+  console.log(`2027 salaries: ${['cots', 'option', 'mlbtr-arb', 'rough-arb', 'minimum', 'unknown'].map((s) => `${by(s)} ${s}`).join(', ')}`)
+  const unknown = sheets.flatMap((s) => s.players.filter((p) => (p as { salarySource?: string }).salarySource === 'unknown').map((p) => `${s.team} ${p.name}`))
+  if (unknown.length) console.log(`Options with no known salary (left out of payroll): ${unknown.join(', ')}`)
   console.log(`Players: ${['signed', 'arb', 'prearb', 'option', 'fa', 'unknown'].map((s) => `${count(s)} ${s}`).join(', ')}`)
   console.log(`MLBAM ids: ${count('signed') + count('arb') + count('prearb') + count('option') + count('fa') + count('unknown') - ids.unmatched.length} matched, ${ids.unmatched.length} unmatched.`)
   if (ids.stale.length) console.log(`Same player on two sheets:\n  ${ids.stale.join('\n  ')}`)

@@ -1,0 +1,751 @@
+{
+ "_readme": "2027 option facts, mostly from MLB Trade Rumors, keyed by MLBAM id. Cot's wins whenever it shows a real 2027 figure; the daily refresh applies these only while an option is still pending (lib/team-builder/estimates.ts). salary null = unknown: the player is left out of payroll with a warning. decidedBy: club, player, or both (mutual). type opt-out: the player can leave a signed deal (salary comes from Cot's).",
+ "compiled": "2026-10-03",
+ "sources": {
+  "clubOptions": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html",
+  "clubAndMutualByDivision": [
+   "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html",
+   "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-central.html",
+   "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-al-west.html",
+   "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html",
+   "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-east.html",
+   "https://www.mlbtraderumors.com/2026/06/2026-27-club-options-nl-west.html"
+  ],
+  "playerOptions": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+ },
+ "options": [
+  {
+   "mlbamId": 669203,
+   "team": "ARI",
+   "name": "Corbin Burnes",
+   "decidedBy": "player",
+   "type": "opt-out",
+   "salary": null,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 647336,
+   "team": "ARI",
+   "name": "Michael Soroka",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 10000000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/06/2026-27-club-options-nl-west.html"
+  },
+  {
+   "mlbamId": 643446,
+   "team": "ATH",
+   "name": "Jeff McNeil",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 15750000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 605488,
+   "team": "ATH",
+   "name": "Jeffrey Springs",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 15000000,
+   "buyout": 750000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 622663,
+   "team": "ATH",
+   "name": "Luis Severino",
+   "decidedBy": "player",
+   "type": "player",
+   "salary": 22000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 645277,
+   "team": "ATL",
+   "name": "Ozzie Albies",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 7000000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 625643,
+   "team": "ATL",
+   "name": "Reynaldo López",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 8000000,
+   "buyout": 8000000,
+   "source": "https://www.espn.com/mlb/story/_/id/38944616/braves-add-veteran-right-hander-reynaldo-lopez-26m-3-year-deal",
+   "note": "Restructure effectively guaranteed the $8M option; Cot's shows $8.0M in the buyout slot"
+  },
+  {
+   "mlbamId": 660670,
+   "team": "ATL",
+   "name": "Ronald Acuña Jr.",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 17000000,
+   "buyout": 10000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 673357,
+   "team": "BAL",
+   "name": "Luis Robert Jr.",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 20000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 664854,
+   "team": "BAL",
+   "name": "Ryan Helsley",
+   "decidedBy": "player",
+   "type": "player",
+   "salary": 14000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 663624,
+   "team": "BAL",
+   "name": "Ryan Mountcastle",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 7500000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 621107,
+   "team": "BAL",
+   "name": "Zach Eflin",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 25000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html"
+  },
+  {
+   "mlbamId": 547973,
+   "team": "BOS",
+   "name": "Aroldis Chapman",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 13000000,
+   "buyout": 300000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html"
+  },
+  {
+   "mlbamId": 676477,
+   "team": "BOS",
+   "name": "Garrett Whitlock",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 8250000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 543243,
+   "team": "BOS",
+   "name": "Sonny Gray",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 30000000,
+   "buyout": 10000000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html"
+  },
+  {
+   "mlbamId": 573204,
+   "team": "CHC",
+   "name": "Caleb Thielbar",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 6000000,
+   "buyout": 500000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 608348,
+   "team": "CHC",
+   "name": "Carson Kelly",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 7500000,
+   "buyout": 1500000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 605280,
+   "team": "CHC",
+   "name": "Clay Holmes",
+   "decidedBy": "player",
+   "type": "player",
+   "salary": 12000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 607067,
+   "team": "CHC",
+   "name": "Colin Rea",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 7500000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 640451,
+   "team": "CHC",
+   "name": "Hunter Harvey",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 8000000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 657097,
+   "team": "CHC",
+   "name": "Jacob Webb",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 2500000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 665871,
+   "team": "CHC",
+   "name": "Javier Assad",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 3300000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 571510,
+   "team": "CHC",
+   "name": "Matt Boyd",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 15000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 641941,
+   "team": "CIN",
+   "name": "Emilio Pagán",
+   "decidedBy": "player",
+   "type": "player",
+   "salary": 10000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 553993,
+   "team": "CIN",
+   "name": "Eugenio Suárez",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 16000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 572955,
+   "team": "CIN",
+   "name": "Pierce Johnson",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 8000000,
+   "buyout": 1500000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 661403,
+   "team": "CLE",
+   "name": "Emmanuel Clase",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 10000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 542888,
+   "team": "CLE",
+   "name": "Shawn Armstrong",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 8000000,
+   "buyout": 1500000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-central.html"
+  },
+  {
+   "mlbamId": 607536,
+   "team": "COL",
+   "name": "Kyle Freeland",
+   "decidedBy": "player",
+   "type": "player",
+   "salary": 17000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 547179,
+   "team": "COL",
+   "name": "Michael Lorenzen",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 9000000,
+   "buyout": 250000,
+   "source": "https://www.mlbtraderumors.com/2026/06/2026-27-club-options-nl-west.html"
+  },
+  {
+   "mlbamId": 623454,
+   "team": "DET",
+   "name": "Drew Anderson",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 10000000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 445276,
+   "team": "DET",
+   "name": "Kenley Jansen",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 12000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 641755,
+   "team": "DET",
+   "name": "Tyler Kinley",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 5500000,
+   "buyout": 1250000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-east.html"
+  },
+  {
+   "mlbamId": 670623,
+   "team": "HOU",
+   "name": "Isaac Paredes",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 13350000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 837227,
+   "team": "HOU",
+   "name": "Tatsuya Imai",
+   "decidedBy": "player",
+   "type": "opt-out",
+   "salary": null,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 608032,
+   "team": "KC",
+   "name": "Carlos Estévez",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 13000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 664062,
+   "team": "KC",
+   "name": "Tony Gonsolin",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 2500000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 596112,
+   "team": "LAA",
+   "name": "Robert Stephenson",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 2500000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 645261,
+   "team": "MIA",
+   "name": "Sandy Alcantara",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 21000000,
+   "buyout": 2000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 622608,
+   "team": "MIL",
+   "name": "Antonio Senzatela",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 14000000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 669160,
+   "team": "MIL",
+   "name": "Dustin May",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 20000000,
+   "buyout": 500000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 596142,
+   "team": "MIL",
+   "name": "Gary Sánchez",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": null,
+   "buyout": 250000,
+   "source": null,
+   "note": "Option amount not disclosed (Brewers press release, AP); stays unknown"
+  },
+  {
+   "mlbamId": 661388,
+   "team": "MIL",
+   "name": "William Contreras",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 14500000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 657746,
+   "team": "MIN",
+   "name": "Joe Ryan",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 13000000,
+   "buyout": 100000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-central.html"
+  },
+  {
+   "mlbamId": 605137,
+   "team": "MIN",
+   "name": "Josh Bell",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 10000000,
+   "buyout": 1250000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-central.html"
+  },
+  {
+   "mlbamId": 666182,
+   "team": "NYM",
+   "name": "Bo Bichette",
+   "decidedBy": "player",
+   "type": "opt-out",
+   "salary": null,
+   "buyout": 5000000,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 669720,
+   "team": "SD",
+   "name": "Austin Hays",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 8000000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-central.html"
+  },
+  {
+   "mlbamId": 656288,
+   "team": "SD",
+   "name": "Griffin Canning",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": null,
+   "buyout": 1500000,
+   "source": null
+  },
+  {
+   "mlbamId": 606996,
+   "team": "SD",
+   "name": "Kyle Hart",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 2500000,
+   "buyout": 200000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 608337,
+   "team": "SD",
+   "name": "Lucas Giolito",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 8000000,
+   "buyout": 1500000,
+   "source": "https://www.mlbtraderumors.com/2026/06/2026-27-club-options-nl-west.html"
+  },
+  {
+   "mlbamId": 650859,
+   "team": "SD",
+   "name": "Luis Rengifo",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 10000000,
+   "buyout": 1500000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-central.html"
+  },
+  {
+   "mlbamId": 650633,
+   "team": "SD",
+   "name": "Michael King",
+   "decidedBy": "player",
+   "type": "opt-out",
+   "salary": null,
+   "buyout": 5000000,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 609280,
+   "team": "SD",
+   "name": "Miguel Andujar",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": null,
+   "buyout": 2500000,
+   "source": null
+  },
+  {
+   "mlbamId": 601713,
+   "team": "SD",
+   "name": "Nick Pivetta",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 14000000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 593974,
+   "team": "SD",
+   "name": "Wandy Peralta",
+   "decidedBy": "player",
+   "type": "player",
+   "salary": 4450000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 673513,
+   "team": "SD",
+   "name": "Yuki Matsui",
+   "decidedBy": "player",
+   "type": "opt-out",
+   "salary": null,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 662253,
+   "team": "SEA",
+   "name": "Andrés Muñoz",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 9000000,
+   "buyout": 0,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 682243,
+   "team": "SEA",
+   "name": "Bryce Miller",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 6075000,
+   "buyout": 15000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 645302,
+   "team": "SEA",
+   "name": "Victor Robles",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 9000000,
+   "buyout": 500000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 592858,
+   "team": "SF",
+   "name": "Rowan Wick",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 800000,
+   "buyout": 100000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 669467,
+   "team": "STL",
+   "name": "Andre Pallante",
+   "decidedBy": "club",
+   "type": "unknown",
+   "salary": null,
+   "buyout": null,
+   "source": null,
+   "note": "Cot's marks a 2027 option but no source gives an amount; MLBTR lists him as arbitration-eligible, so the arbitration estimate is used"
+  },
+  {
+   "mlbamId": 592773,
+   "team": "STL",
+   "name": "Ryne Stanek",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 6000000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 656775,
+   "team": "TB",
+   "name": "Cedric Mullins",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 10000000,
+   "buyout": 500000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html"
+  },
+  {
+   "mlbamId": 656876,
+   "team": "TB",
+   "name": "Drew Rasmussen",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 20000000,
+   "buyout": 500000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 607259,
+   "team": "TB",
+   "name": "Nick Martinez",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 20000000,
+   "buyout": 4000000,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html"
+  },
+  {
+   "mlbamId": 670764,
+   "team": "TB",
+   "name": "Taylor Walls",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 3100000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 650490,
+   "team": "TB",
+   "name": "Yandy Díaz",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 10000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/04/2026-27-club-options-al-east.html"
+  },
+  {
+   "mlbamId": 596001,
+   "team": "TEX",
+   "name": "Jakob Junis",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 5000000,
+   "buyout": 1250000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-al-west.html"
+  },
+  {
+   "mlbamId": 592626,
+   "team": "TEX",
+   "name": "Joc Pederson",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 18750000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-al-west.html"
+  },
+  {
+   "mlbamId": 543309,
+   "team": "TEX",
+   "name": "Kyle Higashioka",
+   "decidedBy": "both",
+   "type": "mutual",
+   "salary": 7000000,
+   "buyout": 1000000,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-al-west.html"
+  },
+  {
+   "mlbamId": 621244,
+   "team": "TOR",
+   "name": "José O. Berríos",
+   "decidedBy": "player",
+   "type": "opt-out",
+   "salary": null,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/09/2026-27-player-option-opt-out-preview-september-edition.html"
+  },
+  {
+   "mlbamId": 664702,
+   "team": "TOR",
+   "name": "Myles Straw",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 8000000,
+   "buyout": 1750000,
+   "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
+  },
+  {
+   "mlbamId": 676917,
+   "team": "WSH",
+   "name": "Cade Cavalli",
+   "decidedBy": "club",
+   "type": "club",
+   "salary": 4000000,
+   "buyout": null,
+   "source": "https://www.mlbtraderumors.com/2026/05/2026-27-club-options-nl-east.html"
+  }
+ ]
+}

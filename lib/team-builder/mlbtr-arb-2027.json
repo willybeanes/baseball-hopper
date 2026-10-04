@@ -1,0 +1,2089 @@
+{
+ "source": {
+  "title": "Projected Arbitration Salaries For 2027",
+  "site": "MLB Trade Rumors",
+  "author": "Matt Swartz",
+  "url": "https://www.mlbtraderumors.com/2026/10/projected-arbitration-salaries-for-2027.html",
+  "importedAt": "2026-10-04"
+ },
+ "players": [
+  {
+   "team": "ARI",
+   "name": "Lars Nootbaar",
+   "mls": 5.076,
+   "salary": 6300000,
+   "mlbamId": 663457
+  },
+  {
+   "team": "ARI",
+   "name": "Pavin Smith",
+   "mls": 4.144,
+   "salary": 2500000,
+   "mlbamId": 656976
+  },
+  {
+   "team": "ARI",
+   "name": "Gabriel Moreno",
+   "mls": 4.061,
+   "salary": 6100000,
+   "mlbamId": 672515
+  },
+  {
+   "team": "ARI",
+   "name": "Ryne Nelson",
+   "mls": 4.02,
+   "salary": 3400000,
+   "mlbamId": 669194
+  },
+  {
+   "team": "ATH",
+   "name": "Shea Langeliers",
+   "mls": 4.051,
+   "salary": 8700000,
+   "mlbamId": 669127
+  },
+  {
+   "team": "ATH",
+   "name": "Luis Medina",
+   "mls": 3.146,
+   "salary": 1400000,
+   "mlbamId": 665622
+  },
+  {
+   "team": "ATH",
+   "name": "Zack Gelof",
+   "mls": 3.05,
+   "salary": 2900000,
+   "mlbamId": 680869
+  },
+  {
+   "team": "ATH",
+   "name": "Hogan Harris",
+   "mls": 2.146,
+   "salary": 2300000,
+   "mlbamId": 663687
+  },
+  {
+   "team": "ATL",
+   "name": "Dylan Lee",
+   "mls": 4.15,
+   "salary": 4200000,
+   "mlbamId": 669276
+  },
+  {
+   "team": "ATL",
+   "name": "James Karinchak",
+   "mls": 4.13,
+   "salary": 1100000,
+   "mlbamId": 675916
+  },
+  {
+   "team": "ATL",
+   "name": "Joey Wentz",
+   "mls": 3.166,
+   "salary": 900000,
+   "mlbamId": 666214
+  },
+  {
+   "team": "ATL",
+   "name": "Michael Grove",
+   "mls": 3.122,
+   "salary": 1000000,
+   "mlbamId": 675627
+  },
+  {
+   "team": "ATL",
+   "name": "Luke Williams",
+   "mls": 3.07,
+   "salary": 900000,
+   "mlbamId": 663897
+  },
+  {
+   "team": "ATL",
+   "name": "Bryce Elder",
+   "mls": 3.069,
+   "salary": 4000000,
+   "mlbamId": 693821
+  },
+  {
+   "team": "BAL",
+   "name": "Leody Taveras",
+   "mls": 5.031,
+   "salary": 3700000,
+   "mlbamId": 665750
+  },
+  {
+   "team": "BAL",
+   "name": "Félix Bautista",
+   "mls": 5,
+   "salary": 2400000,
+   "mlbamId": 642585
+  },
+  {
+   "team": "BAL",
+   "name": "Codi Heuer",
+   "mls": 4.059,
+   "salary": 1100000,
+   "mlbamId": 676051
+  },
+  {
+   "team": "BAL",
+   "name": "Gunnar Henderson",
+   "mls": 4.036,
+   "salary": 14100000,
+   "mlbamId": 683002
+  },
+  {
+   "team": "BAL",
+   "name": "Albert Suárez",
+   "mls": 3.159,
+   "salary": 1100000,
+   "mlbamId": 544150
+  },
+  {
+   "team": "BAL",
+   "name": "Jordan Westburg",
+   "mls": 3.098,
+   "salary": 1500000,
+   "mlbamId": 676059
+  },
+  {
+   "team": "BAL",
+   "name": "Colton Cowser",
+   "mls": 3.043,
+   "salary": 2200000,
+   "mlbamId": 681297
+  },
+  {
+   "team": "BOS",
+   "name": "Tanner Houck",
+   "mls": 5.1,
+   "salary": 4100000,
+   "mlbamId": 656557
+  },
+  {
+   "team": "BOS",
+   "name": "Johan Oviedo",
+   "mls": 5.079,
+   "salary": 1800000,
+   "mlbamId": 670912
+  },
+  {
+   "team": "BOS",
+   "name": "Adley Rutschman",
+   "mls": 5,
+   "salary": 9100000,
+   "mlbamId": 668939
+  },
+  {
+   "team": "BOS",
+   "name": "Jarren Duran",
+   "mls": 4.155,
+   "salary": 11100000,
+   "mlbamId": 680776
+  },
+  {
+   "team": "BOS",
+   "name": "Eli White",
+   "mls": 4.14,
+   "salary": 1400000,
+   "mlbamId": 642201
+  },
+  {
+   "team": "BOS",
+   "name": "Kutter Crawford",
+   "mls": 4.136,
+   "salary": 2800000,
+   "mlbamId": 676710
+  },
+  {
+   "team": "BOS",
+   "name": "Connor Wong",
+   "mls": 4.079,
+   "salary": 2000000,
+   "mlbamId": 657136
+  },
+  {
+   "team": "BOS",
+   "name": "Romy González",
+   "mls": 4.044,
+   "salary": 1800000,
+   "mlbamId": 663853
+  },
+  {
+   "team": "BOS",
+   "name": "Triston Casas",
+   "mls": 4.032,
+   "salary": 1700000,
+   "mlbamId": 671213
+  },
+  {
+   "team": "BOS",
+   "name": "Andruw Monasterio",
+   "mls": 3.099,
+   "salary": 1600000,
+   "mlbamId": 655316
+  },
+  {
+   "team": "BOS",
+   "name": "Zack Kelly",
+   "mls": 3.08,
+   "salary": 800000,
+   "mlbamId": 677161
+  },
+  {
+   "team": "BOS",
+   "name": "Greg Weissert",
+   "mls": 3.079,
+   "salary": 1200000,
+   "mlbamId": 669711
+  },
+  {
+   "team": "BOS",
+   "name": "Wilyer Abreu",
+   "mls": 3.041,
+   "salary": 4600000,
+   "mlbamId": 677800
+  },
+  {
+   "team": "BOS",
+   "name": "Erik Miller",
+   "mls": 3,
+   "salary": 1500000,
+   "mlbamId": 669062
+  },
+  {
+   "team": "BOS",
+   "name": "Justin Slaten",
+   "mls": 3,
+   "salary": 1200000,
+   "mlbamId": 686580
+  },
+  {
+   "team": "BOS",
+   "name": "Jahmai Jones",
+   "mls": 2.148,
+   "salary": 900000,
+   "mlbamId": 663330
+  },
+  {
+   "team": "BOS",
+   "name": "Tyron Guerrero",
+   "mls": 2.133,
+   "salary": 1100000,
+   "mlbamId": 594027
+  },
+  {
+   "team": "CHC",
+   "name": "Justin Steele",
+   "mls": 5.143,
+   "salary": 6800000,
+   "mlbamId": 657006
+  },
+  {
+   "team": "CHC",
+   "name": "Edward Cabrera",
+   "mls": 4.147,
+   "salary": 4800000,
+   "mlbamId": 665795
+  },
+  {
+   "team": "CHC",
+   "name": "Braxton Garrett",
+   "mls": 4.006,
+   "salary": 1600000,
+   "mlbamId": 666129
+  },
+  {
+   "team": "CHC",
+   "name": "Javier Assad",
+   "mls": 3.167,
+   "salary": 2300000,
+   "note": "Cubs hold a $3.3MM option",
+   "mlbamId": 665871
+  },
+  {
+   "team": "CHC",
+   "name": "Tyler Austin",
+   "mls": 3.151,
+   "salary": 1300000,
+   "mlbamId": 592122
+  },
+  {
+   "team": "CHC",
+   "name": "Miguel Amaya",
+   "mls": 3.13,
+   "salary": 1700000,
+   "mlbamId": 665804
+  },
+  {
+   "team": "CHC",
+   "name": "Gabriel Arias",
+   "mls": 3.124,
+   "salary": 1300000,
+   "mlbamId": 672356
+  },
+  {
+   "team": "CHC",
+   "name": "Ryan Rolison",
+   "mls": 3.109,
+   "salary": 1100000,
+   "mlbamId": 669020
+  },
+  {
+   "team": "CHC",
+   "name": "Ethan Roberts",
+   "mls": 3.08,
+   "salary": 800000,
+   "mlbamId": 681799
+  },
+  {
+   "team": "CHC",
+   "name": "Michael Busch",
+   "mls": 3.045,
+   "salary": 5400000,
+   "mlbamId": 683737
+  },
+  {
+   "team": "CHC",
+   "name": "Ben Brown",
+   "mls": 2.169,
+   "salary": 1300000,
+   "mlbamId": 676962
+  },
+  {
+   "team": "CHC",
+   "name": "Daniel Palencia",
+   "mls": 2.154,
+   "salary": 1200000,
+   "mlbamId": 694037
+  },
+  {
+   "team": "CWS",
+   "name": "Joey Bart",
+   "mls": 5.02,
+   "salary": 2900000,
+   "mlbamId": 663698
+  },
+  {
+   "team": "CWS",
+   "name": "Huascar Brazobán",
+   "mls": 3.17,
+   "salary": 1600000,
+   "mlbamId": 623211
+  },
+  {
+   "team": "CWS",
+   "name": "Brenton Doyle",
+   "mls": 3.161,
+   "salary": 3600000,
+   "mlbamId": 686668
+  },
+  {
+   "team": "CWS",
+   "name": "Miguel Vargas",
+   "mls": 3.101,
+   "salary": 5400000,
+   "mlbamId": 678246
+  },
+  {
+   "team": "CWS",
+   "name": "Chris Murphy",
+   "mls": 3.055,
+   "salary": 900000,
+   "mlbamId": 669684
+  },
+  {
+   "team": "CWS",
+   "name": "Jordan Leasure",
+   "mls": 2.161,
+   "salary": 1000000,
+   "mlbamId": 673929
+  },
+  {
+   "team": "CIN",
+   "name": "Tejay Antone",
+   "mls": 5.145,
+   "salary": 1500000,
+   "mlbamId": 622088
+  },
+  {
+   "team": "CIN",
+   "name": "Nick Lodolo",
+   "mls": 5,
+   "salary": 5700000,
+   "mlbamId": 666157
+  },
+  {
+   "team": "CIN",
+   "name": "Graham Ashcraft",
+   "mls": 4.13,
+   "salary": 2200000,
+   "mlbamId": 668933
+  },
+  {
+   "team": "CIN",
+   "name": "Tony Santillan",
+   "mls": 4.099,
+   "salary": 2500000,
+   "mlbamId": 663574
+  },
+  {
+   "team": "CIN",
+   "name": "Spencer Steer",
+   "mls": 4.035,
+   "salary": 5700000,
+   "mlbamId": 668715
+  },
+  {
+   "team": "CIN",
+   "name": "JJ Bleday",
+   "mls": 4.013,
+   "salary": 4800000,
+   "mlbamId": 668709
+  },
+  {
+   "team": "CIN",
+   "name": "Matt McLain",
+   "mls": 3.14,
+   "salary": 4000000,
+   "mlbamId": 680574
+  },
+  {
+   "team": "CIN",
+   "name": "Brandon Williamson",
+   "mls": 3.139,
+   "salary": 1300000,
+   "mlbamId": 682227
+  },
+  {
+   "team": "CIN",
+   "name": "Andrew Abbott",
+   "mls": 3.119,
+   "salary": 4500000,
+   "mlbamId": 671096
+  },
+  {
+   "team": "CIN",
+   "name": "Elly De La Cruz",
+   "mls": 3.118,
+   "salary": 7900000,
+   "mlbamId": 682829
+  },
+  {
+   "team": "CIN",
+   "name": "Oswaldo Cabrera",
+   "mls": 3.069,
+   "salary": 1100000,
+   "mlbamId": 665828
+  },
+  {
+   "team": "CIN",
+   "name": "Dane Myers",
+   "mls": 3.037,
+   "salary": 1500000,
+   "mlbamId": 667472
+  },
+  {
+   "team": "CLE",
+   "name": "Jo Adell",
+   "mls": 5.085,
+   "salary": 9600000,
+   "mlbamId": 666176
+  },
+  {
+   "team": "CLE",
+   "name": "Steven Kwan",
+   "mls": 5,
+   "salary": 11300000,
+   "mlbamId": 680757
+  },
+  {
+   "team": "CLE",
+   "name": "Colin Holderman",
+   "mls": 4.108,
+   "salary": 2300000,
+   "mlbamId": 670059
+  },
+  {
+   "team": "CLE",
+   "name": "David Fry",
+   "mls": 3.154,
+   "salary": 1900000,
+   "mlbamId": 681807
+  },
+  {
+   "team": "CLE",
+   "name": "Matt Festa",
+   "mls": 3.153,
+   "salary": 1500000,
+   "mlbamId": 670036
+  },
+  {
+   "team": "CLE",
+   "name": "Patrick Bailey",
+   "mls": 3.136,
+   "salary": 2300000,
+   "mlbamId": 672275
+  },
+  {
+   "team": "CLE",
+   "name": "Gavin Williams",
+   "mls": 3.103,
+   "salary": 4800000,
+   "mlbamId": 668909
+  },
+  {
+   "team": "CLE",
+   "name": "Blake Perkins",
+   "mls": 3.075,
+   "salary": 900000,
+   "mlbamId": 663368
+  },
+  {
+   "team": "CLE",
+   "name": "Hunter Gaddis",
+   "mls": 3.073,
+   "salary": 2200000,
+   "mlbamId": 683769
+  },
+  {
+   "team": "CLE",
+   "name": "Tim Herrin",
+   "mls": 3.058,
+   "salary": 1300000,
+   "mlbamId": 682120
+  },
+  {
+   "team": "CLE",
+   "name": "Brayan Rocchio",
+   "mls": 3.001,
+   "salary": 3100000,
+   "mlbamId": 677587
+  },
+  {
+   "team": "CLE",
+   "name": "Cade Smith",
+   "mls": 3,
+   "salary": 5500000,
+   "mlbamId": 671922
+  },
+  {
+   "team": "CLE",
+   "name": "Slade Cecconi",
+   "mls": 2.155,
+   "salary": 2000000,
+   "mlbamId": 677944
+  },
+  {
+   "team": "COL",
+   "name": "Jimmy Herget",
+   "mls": 5.069,
+   "salary": 2400000,
+   "mlbamId": 623474
+  },
+  {
+   "team": "COL",
+   "name": "Jake McCarthy",
+   "mls": 4.074,
+   "salary": 4600000,
+   "mlbamId": 664983
+  },
+  {
+   "team": "COL",
+   "name": "Ryan Feltner",
+   "mls": 4.071,
+   "salary": 3800000,
+   "mlbamId": 663372
+  },
+  {
+   "team": "COL",
+   "name": "Brennan Bernardino",
+   "mls": 3.153,
+   "salary": 1600000,
+   "mlbamId": 657514
+  },
+  {
+   "team": "COL",
+   "name": "Hunter Goodman",
+   "mls": 3.01,
+   "salary": 6200000,
+   "mlbamId": 696100
+  },
+  {
+   "team": "COL",
+   "name": "Jordan Beck",
+   "mls": 2.133,
+   "salary": 1200000,
+   "mlbamId": 687597
+  },
+  {
+   "team": "DET",
+   "name": "Will Vest",
+   "mls": 5.1,
+   "salary": 4400000,
+   "mlbamId": 676684
+  },
+  {
+   "team": "DET",
+   "name": "Zach McKinstry",
+   "mls": 5.099,
+   "salary": 5000000,
+   "mlbamId": 656716
+  },
+  {
+   "team": "DET",
+   "name": "Matt Vierling",
+   "mls": 5.026,
+   "salary": 3700000,
+   "mlbamId": 663837
+  },
+  {
+   "team": "DET",
+   "name": "Riley Greene",
+   "mls": 4.11,
+   "salary": 9300000,
+   "mlbamId": 682985
+  },
+  {
+   "team": "DET",
+   "name": "Spencer Torkelson",
+   "mls": 4.076,
+   "salary": 7700000,
+   "mlbamId": 679529
+  },
+  {
+   "team": "DET",
+   "name": "Kerry Carpenter",
+   "mls": 4.057,
+   "salary": 4100000,
+   "mlbamId": 681481
+  },
+  {
+   "team": "DET",
+   "name": "Tyler Holton",
+   "mls": 4.047,
+   "salary": 2400000,
+   "mlbamId": 663947
+  },
+  {
+   "team": "DET",
+   "name": "Beau Brieske",
+   "mls": 4.007,
+   "salary": 1500000,
+   "mlbamId": 689225
+  },
+  {
+   "team": "DET",
+   "name": "Reese Olson",
+   "mls": 3.123,
+   "salary": 1500000,
+   "mlbamId": 681857
+  },
+  {
+   "team": "DET",
+   "name": "Wenceel Pérez",
+   "mls": 3,
+   "salary": 1400000,
+   "mlbamId": 672761
+  },
+  {
+   "team": "DET",
+   "name": "Parker Meadows",
+   "mls": 2.169,
+   "salary": 1000000,
+   "mlbamId": 678009
+  },
+  {
+   "team": "HOU",
+   "name": "Isaac Paredes",
+   "mls": 5.16,
+   "salary": 15000000,
+   "note": "Astros hold a $13.35MM club option",
+   "mlbamId": 670623
+  },
+  {
+   "team": "HOU",
+   "name": "Peter Lambert",
+   "mls": 5.069,
+   "salary": 4600000,
+   "mlbamId": 663567
+  },
+  {
+   "team": "HOU",
+   "name": "Jeremy Peña",
+   "mls": 5,
+   "salary": 13100000,
+   "mlbamId": 665161
+  },
+  {
+   "team": "HOU",
+   "name": "Jake Meyers",
+   "mls": 4.161,
+   "salary": 3600000,
+   "mlbamId": 676694
+  },
+  {
+   "team": "HOU",
+   "name": "Hunter Brown",
+   "mls": 4.035,
+   "salary": 6800000,
+   "mlbamId": 686613
+  },
+  {
+   "team": "HOU",
+   "name": "Yainer Diaz",
+   "mls": 4.035,
+   "salary": 6300000,
+   "mlbamId": 673237
+  },
+  {
+   "team": "HOU",
+   "name": "Hayden Wesneski",
+   "mls": 3.17,
+   "salary": 1800000,
+   "mlbamId": 669713
+  },
+  {
+   "team": "HOU",
+   "name": "Nick Allen",
+   "mls": 3.164,
+   "salary": 1800000,
+   "mlbamId": 669397
+  },
+  {
+   "team": "HOU",
+   "name": "Bennett Sousa",
+   "mls": 3.156,
+   "salary": 1300000,
+   "mlbamId": 656986
+  },
+  {
+   "team": "HOU",
+   "name": "Taylor Trammell",
+   "mls": 3.143,
+   "salary": 1500000,
+   "mlbamId": 666211
+  },
+  {
+   "team": "HOU",
+   "name": "Ronel Blanco",
+   "mls": 3.1,
+   "salary": 1400000,
+   "mlbamId": 669854
+  },
+  {
+   "team": "KC",
+   "name": "Kyle Isbel",
+   "mls": 5.043,
+   "salary": 3500000,
+   "mlbamId": 664728
+  },
+  {
+   "team": "KC",
+   "name": "Nate Pearson",
+   "mls": 5.042,
+   "salary": 2000000,
+   "mlbamId": 663878
+  },
+  {
+   "team": "KC",
+   "name": "Nick Mears",
+   "mls": 5.022,
+   "salary": 2200000,
+   "mlbamId": 683232
+  },
+  {
+   "team": "KC",
+   "name": "Alex Lange",
+   "mls": 4.145,
+   "salary": 1700000,
+   "mlbamId": 656638
+  },
+  {
+   "team": "KC",
+   "name": "Daniel Lynch IV",
+   "mls": 4.136,
+   "salary": 1800000,
+   "mlbamId": 663738
+  },
+  {
+   "team": "KC",
+   "name": "Michael Massey",
+   "mls": 4.068,
+   "salary": 3200000,
+   "mlbamId": 686681
+  },
+  {
+   "team": "KC",
+   "name": "Anthony Gose",
+   "mls": 4.019,
+   "salary": 1100000,
+   "mlbamId": 543238
+  },
+  {
+   "team": "KC",
+   "name": "James McArthur",
+   "mls": 3.15,
+   "salary": 800000,
+   "mlbamId": 663704
+  },
+  {
+   "team": "KC",
+   "name": "Randy Dobnak",
+   "mls": 3.148,
+   "salary": 2300000,
+   "mlbamId": 677976
+  },
+  {
+   "team": "KC",
+   "name": "Lucas Erceg",
+   "mls": 3.125,
+   "salary": 2300000,
+   "mlbamId": 668674
+  },
+  {
+   "team": "KC",
+   "name": "Alec Marsh",
+   "mls": 3.078,
+   "salary": 1100000,
+   "mlbamId": 679525
+  },
+  {
+   "team": "LAA",
+   "name": "Reid Detmers",
+   "mls": 4.159,
+   "salary": 7500000,
+   "mlbamId": 672282
+  },
+  {
+   "team": "LAA",
+   "name": "Jose Siri",
+   "mls": 4.15,
+   "salary": 2300000,
+   "mlbamId": 642350
+  },
+  {
+   "team": "LAA",
+   "name": "Josh Lowe",
+   "mls": 4.075,
+   "salary": 3600000,
+   "mlbamId": 666139
+  },
+  {
+   "team": "LAA",
+   "name": "Tyler Heineman",
+   "mls": 4.066,
+   "salary": 1500000,
+   "mlbamId": 623168
+  },
+  {
+   "team": "LAA",
+   "name": "Tayler Saucedo",
+   "mls": 4.043,
+   "salary": 1500000,
+   "mlbamId": 642048
+  },
+  {
+   "team": "LAA",
+   "name": "Zach Neto",
+   "mls": 3.17,
+   "salary": 9800000,
+   "mlbamId": 687263
+  },
+  {
+   "team": "LAA",
+   "name": "Grayson Rodriguez",
+   "mls": 3.129,
+   "salary": 2100000,
+   "mlbamId": 680570
+  },
+  {
+   "team": "LAA",
+   "name": "Ben Joyce",
+   "mls": 3.075,
+   "salary": 1100000,
+   "mlbamId": 690829
+  },
+  {
+   "team": "LAA",
+   "name": "Nolan Schanuel",
+   "mls": 3.045,
+   "salary": 3000000,
+   "mlbamId": 694384
+  },
+  {
+   "team": "LAA",
+   "name": "Oswald Peraza",
+   "mls": 3.014,
+   "salary": 1400000,
+   "mlbamId": 672724
+  },
+  {
+   "team": "LAA",
+   "name": "Sam Bachman",
+   "mls": 2.149,
+   "salary": 1100000,
+   "mlbamId": 696147
+  },
+  {
+   "team": "LAD",
+   "name": "Brock Stewart",
+   "mls": 5.093,
+   "salary": 1800000,
+   "mlbamId": 592779
+  },
+  {
+   "team": "LAD",
+   "name": "Jake Cousins",
+   "mls": 4.091,
+   "salary": 1000000,
+   "mlbamId": 664776
+  },
+  {
+   "team": "LAD",
+   "name": "Alex Call",
+   "mls": 3.161,
+   "salary": 1900000,
+   "mlbamId": 669743
+  },
+  {
+   "team": "LAD",
+   "name": "Emmet Sheehan",
+   "mls": 3.063,
+   "salary": 2100000,
+   "mlbamId": 686218
+  },
+  {
+   "team": "LAD",
+   "name": "Gavin Stone",
+   "mls": 3.034,
+   "salary": 1200000,
+   "mlbamId": 694813
+  },
+  {
+   "team": "LAD",
+   "name": "Andy Pages",
+   "mls": 2.155,
+   "salary": 4900000,
+   "mlbamId": 681624
+  },
+  {
+   "team": "MIA",
+   "name": "Anthony Bender",
+   "mls": 5.153,
+   "salary": 3400000,
+   "mlbamId": 669622
+  },
+  {
+   "team": "MIA",
+   "name": "Andrew Nardi",
+   "mls": 4.053,
+   "salary": 1100000,
+   "mlbamId": 677053
+  },
+  {
+   "team": "MIA",
+   "name": "Max Meyer",
+   "mls": 3.166,
+   "salary": 2700000,
+   "mlbamId": 676974
+  },
+  {
+   "team": "MIA",
+   "name": "Calvin Faucher",
+   "mls": 3.156,
+   "salary": 2900000,
+   "mlbamId": 676534
+  },
+  {
+   "team": "MIA",
+   "name": "Eury Pérez",
+   "mls": 3.113,
+   "salary": 3200000,
+   "mlbamId": 691587
+  },
+  {
+   "team": "MIA",
+   "name": "Otto Lopez",
+   "mls": 3.109,
+   "salary": 5400000,
+   "mlbamId": 672640
+  },
+  {
+   "team": "MIA",
+   "name": "Tyler Zuber",
+   "mls": 3.104,
+   "salary": 900000,
+   "mlbamId": 676604
+  },
+  {
+   "team": "MIA",
+   "name": "Esteury Ruiz",
+   "mls": 3.064,
+   "salary": 1300000,
+   "mlbamId": 665923
+  },
+  {
+   "team": "MIA",
+   "name": "Xavier Edwards",
+   "mls": 3.034,
+   "salary": 3500000,
+   "mlbamId": 669364
+  },
+  {
+   "team": "MIA",
+   "name": "Victor Vodnik",
+   "mls": 3.024,
+   "salary": 1400000,
+   "mlbamId": 680767
+  },
+  {
+   "team": "MIA",
+   "name": "Kyle Stowers",
+   "mls": 3.012,
+   "salary": 3200000,
+   "mlbamId": 669065
+  },
+  {
+   "team": "MIL",
+   "name": "Andrew Vaughn",
+   "mls": 5.142,
+   "salary": 8500000,
+   "mlbamId": 683734
+  },
+  {
+   "team": "MIL",
+   "name": "William Contreras",
+   "mls": 5.112,
+   "salary": 14600000,
+   "note": "Brewers hold $14.5MM club option",
+   "mlbamId": 661388
+  },
+  {
+   "team": "MIL",
+   "name": "Bryse Wilson",
+   "mls": 5.049,
+   "salary": 1100000,
+   "mlbamId": 669060
+  },
+  {
+   "team": "MIL",
+   "name": "Trevor Megill",
+   "mls": 5.002,
+   "salary": 8000000,
+   "mlbamId": 656730
+  },
+  {
+   "team": "MIL",
+   "name": "Angel Zerpa",
+   "mls": 4.082,
+   "salary": 1300000,
+   "mlbamId": 672582
+  },
+  {
+   "team": "MIL",
+   "name": "Garrett Mitchell",
+   "mls": 4.04,
+   "salary": 2700000,
+   "mlbamId": 669003
+  },
+  {
+   "team": "MIL",
+   "name": "Brice Turang",
+   "mls": 3.165,
+   "salary": 9500000,
+   "mlbamId": 668930
+  },
+  {
+   "team": "MIL",
+   "name": "Akil Baddoo",
+   "mls": 3.082,
+   "salary": 1300000,
+   "mlbamId": 668731
+  },
+  {
+   "team": "MIL",
+   "name": "DL Hall",
+   "mls": 3.074,
+   "salary": 1000000,
+   "mlbamId": 669084
+  },
+  {
+   "team": "MIL",
+   "name": "Sal Frelick",
+   "mls": 3.072,
+   "salary": 2400000,
+   "mlbamId": 686217
+  },
+  {
+   "team": "MIL",
+   "name": "Joey Ortiz",
+   "mls": 3.03,
+   "salary": 2400000,
+   "mlbamId": 687401
+  },
+  {
+   "team": "MIL",
+   "name": "Bo Naylor",
+   "mls": 3.014,
+   "salary": 1500000,
+   "mlbamId": 666310
+  },
+  {
+   "team": "MIL",
+   "name": "David Hamilton",
+   "mls": 3.011,
+   "salary": 1600000,
+   "mlbamId": 666152
+  },
+  {
+   "team": "MIL",
+   "name": "Grant Anderson",
+   "mls": 3.007,
+   "salary": 1000000,
+   "mlbamId": 681982
+  },
+  {
+   "team": "MIL",
+   "name": "Jared Koenig",
+   "mls": 2.158,
+   "salary": 900000,
+   "mlbamId": 657649
+  },
+  {
+   "team": "MIL",
+   "name": "Quinn Priester",
+   "mls": 2.134,
+   "salary": 1300000,
+   "mlbamId": 682990
+  },
+  {
+   "team": "MIN",
+   "name": "Anthony Banda",
+   "mls": 5.135,
+   "salary": 2300000,
+   "mlbamId": 607455
+  },
+  {
+   "team": "MIN",
+   "name": "Dean Kremer",
+   "mls": 5.107,
+   "salary": 6500000,
+   "mlbamId": 665152
+  },
+  {
+   "team": "MIN",
+   "name": "Bailey Ober",
+   "mls": 5.093,
+   "salary": 6900000,
+   "mlbamId": 641927
+  },
+  {
+   "team": "MIN",
+   "name": "Joe Ryan",
+   "mls": 5.033,
+   "salary": 9600000,
+   "note": "current deal has $13MM mutual option for 2027 with $100K buyout",
+   "mlbamId": 657746
+  },
+  {
+   "team": "MIN",
+   "name": "Trevor Larnach",
+   "mls": 5.014,
+   "salary": 6300000,
+   "mlbamId": 663616
+  },
+  {
+   "team": "MIN",
+   "name": "Royce Lewis",
+   "mls": 4.139,
+   "salary": 5100000,
+   "mlbamId": 668904
+  },
+  {
+   "team": "MIN",
+   "name": "Cole Sands",
+   "mls": 4.017,
+   "salary": 1300000,
+   "mlbamId": 663485
+  },
+  {
+   "team": "MIN",
+   "name": "Tommy Nance",
+   "mls": 3.165,
+   "salary": 1200000,
+   "mlbamId": 667297
+  },
+  {
+   "team": "MIN",
+   "name": "Kody Clemens",
+   "mls": 3.134,
+   "salary": 3600000,
+   "mlbamId": 665019
+  },
+  {
+   "team": "MIN",
+   "name": "Taj Bradley",
+   "mls": 3.097,
+   "salary": 4500000,
+   "mlbamId": 671737
+  },
+  {
+   "team": "NYM",
+   "name": "Cionel Pérez",
+   "mls": 5.139,
+   "salary": 1200000,
+   "mlbamId": 672335
+  },
+  {
+   "team": "NYM",
+   "name": "Tylor Megill",
+   "mls": 5.031,
+   "salary": 2500000,
+   "mlbamId": 656731
+  },
+  {
+   "team": "NYM",
+   "name": "Christopher Morel",
+   "mls": 4.08,
+   "salary": 2100000,
+   "mlbamId": 666624
+  },
+  {
+   "team": "NYM",
+   "name": "Francisco Alvarez",
+   "mls": 3.164,
+   "salary": 4100000,
+   "mlbamId": 682626
+  },
+  {
+   "team": "NYM",
+   "name": "Reed Garrett",
+   "mls": 3.143,
+   "salary": 1300000,
+   "mlbamId": 657585
+  },
+  {
+   "team": "NYM",
+   "name": "Austin Warren",
+   "mls": 3.137,
+   "salary": 1200000,
+   "mlbamId": 681810
+  },
+  {
+   "team": "NYM",
+   "name": "Mark Vientos",
+   "mls": 3.102,
+   "salary": 2400000,
+   "mlbamId": 668901
+  },
+  {
+   "team": "NYM",
+   "name": "Brett Baty",
+   "mls": 3.088,
+   "salary": 2500000,
+   "mlbamId": 683146
+  },
+  {
+   "team": "NYM",
+   "name": "Cristian Pache",
+   "mls": 3.086,
+   "salary": 800000,
+   "mlbamId": 665506
+  },
+  {
+   "team": "NYM",
+   "name": "Dedniel Núñez",
+   "mls": 3.074,
+   "salary": 900000,
+   "mlbamId": 673380
+  },
+  {
+   "team": "NYY",
+   "name": "Clarke Schmidt",
+   "mls": 5.148,
+   "salary": 4500000,
+   "mlbamId": 657376
+  },
+  {
+   "team": "NYY",
+   "name": "Luis García Jr.",
+   "mls": 5.142,
+   "salary": 11000000,
+   "mlbamId": 671277
+  },
+  {
+   "team": "NYY",
+   "name": "Ryan Weathers",
+   "mls": 4.066,
+   "salary": 3100000,
+   "mlbamId": 677960
+  },
+  {
+   "team": "NYY",
+   "name": "Fernando Cruz",
+   "mls": 4.035,
+   "salary": 2300000,
+   "mlbamId": 518585
+  },
+  {
+   "team": "NYY",
+   "name": "José Caballero",
+   "mls": 3.17,
+   "salary": 3700000,
+   "mlbamId": 676609
+  },
+  {
+   "team": "NYY",
+   "name": "Anthony Volpe",
+   "mls": 3.142,
+   "salary": 4000000,
+   "mlbamId": 683011
+  },
+  {
+   "team": "NYY",
+   "name": "Luis Gil",
+   "mls": 3.119,
+   "salary": 2300000,
+   "mlbamId": 661563
+  },
+  {
+   "team": "NYY",
+   "name": "Heliot Ramos",
+   "mls": 3.103,
+   "salary": 3200000,
+   "mlbamId": 671218
+  },
+  {
+   "team": "NYY",
+   "name": "Austin Wells",
+   "mls": 3.031,
+   "salary": 2600000,
+   "mlbamId": 669224
+  },
+  {
+   "team": "PHI",
+   "name": "Garrett Stubbs",
+   "mls": 5.139,
+   "salary": 1000000,
+   "mlbamId": 596117
+  },
+  {
+   "team": "PHI",
+   "name": "Brandon Marsh",
+   "mls": 5.078,
+   "salary": 8300000,
+   "mlbamId": 669016
+  },
+  {
+   "team": "PHI",
+   "name": "Jhoan Duran",
+   "mls": 5,
+   "salary": 10900000,
+   "mlbamId": 661395
+  },
+  {
+   "team": "PHI",
+   "name": "Bryson Stott",
+   "mls": 5,
+   "salary": 9200000,
+   "mlbamId": 681082
+  },
+  {
+   "team": "PHI",
+   "name": "Tanner Banks",
+   "mls": 4.092,
+   "salary": 1400000,
+   "mlbamId": 621383
+  },
+  {
+   "team": "PHI",
+   "name": "Derek Hill",
+   "mls": 4.04,
+   "salary": 1500000,
+   "mlbamId": 656537
+  },
+  {
+   "team": "PHI",
+   "name": "Rafael Marchán",
+   "mls": 4.006,
+   "salary": 1000000,
+   "mlbamId": 665561
+  },
+  {
+   "team": "PHI",
+   "name": "Bryan De La Cruz",
+   "mls": 3.148,
+   "salary": 1200000,
+   "mlbamId": 650559
+  },
+  {
+   "team": "PHI",
+   "name": "Orion Kerkering",
+   "mls": 3.01,
+   "salary": 1500000,
+   "mlbamId": 689147
+  },
+  {
+   "team": "PIT",
+   "name": "Yohan Ramírez",
+   "mls": 4.135,
+   "salary": 1500000,
+   "mlbamId": 670990
+  },
+  {
+   "team": "PIT",
+   "name": "Oneil Cruz",
+   "mls": 4.11,
+   "salary": 6300000,
+   "mlbamId": 665833
+  },
+  {
+   "team": "PIT",
+   "name": "Carmen Mlodzinski",
+   "mls": 3.081,
+   "salary": 1600000,
+   "mlbamId": 669387
+  },
+  {
+   "team": "PIT",
+   "name": "Jared Triolo",
+   "mls": 3.071,
+   "salary": 1800000,
+   "mlbamId": 669707
+  },
+  {
+   "team": "PIT",
+   "name": "Endy Rodríguez",
+   "mls": 3.044,
+   "salary": 1200000,
+   "mlbamId": 682848
+  },
+  {
+   "team": "PIT",
+   "name": "Henry Davis",
+   "mls": 3.039,
+   "salary": 1400000,
+   "mlbamId": 680779
+  },
+  {
+   "team": "PIT",
+   "name": "Nick Gonzales",
+   "mls": 3.018,
+   "salary": 3100000,
+   "mlbamId": 693304
+  },
+  {
+   "team": "PIT",
+   "name": "Jared Jones",
+   "mls": 3,
+   "salary": 2100000,
+   "mlbamId": 683003
+  },
+  {
+   "team": "PIT",
+   "name": "Paul Skenes",
+   "mls": 3,
+   "salary": 7200000,
+   "mlbamId": 694973
+  },
+  {
+   "team": "PIT",
+   "name": "Spencer Horwitz",
+   "mls": 2.152,
+   "salary": 2500000,
+   "mlbamId": 687462
+  },
+  {
+   "team": "SD",
+   "name": "Gavin Sheets",
+   "mls": 5.076,
+   "salary": 6500000,
+   "mlbamId": 657757
+  },
+  {
+   "team": "SD",
+   "name": "Luis Campusano",
+   "mls": 4.003,
+   "salary": 1700000,
+   "mlbamId": 669134
+  },
+  {
+   "team": "SD",
+   "name": "Mason Miller",
+   "mls": 3.166,
+   "salary": 8100000,
+   "mlbamId": 695243
+  },
+  {
+   "team": "SD",
+   "name": "Freddy Fermin",
+   "mls": 3.165,
+   "salary": 2600000,
+   "mlbamId": 666023
+  },
+  {
+   "team": "SD",
+   "name": "Bryan Hoeing",
+   "mls": 3.133,
+   "salary": 800000,
+   "mlbamId": 663773
+  },
+  {
+   "team": "SD",
+   "name": "JP Sears",
+   "mls": 3.108,
+   "salary": 2800000,
+   "mlbamId": 676664
+  },
+  {
+   "team": "SD",
+   "name": "Jeremiah Estrada",
+   "mls": 3.069,
+   "salary": 1300000,
+   "mlbamId": 669093
+  },
+  {
+   "team": "SD",
+   "name": "Jhony Brito",
+   "mls": 2.138,
+   "salary": 800000,
+   "mlbamId": 666745
+  },
+  {
+   "team": "SF",
+   "name": "Sam Hentges",
+   "mls": 5.157,
+   "salary": 2000000,
+   "mlbamId": 656529
+  },
+  {
+   "team": "SF",
+   "name": "Andrew Knizner",
+   "mls": 5.139,
+   "salary": 1000000,
+   "mlbamId": 668800
+  },
+  {
+   "team": "SF",
+   "name": "Camilo Doval",
+   "mls": 5.071,
+   "salary": 6600000,
+   "mlbamId": 666808
+  },
+  {
+   "team": "SF",
+   "name": "Jason Foley",
+   "mls": 4.15,
+   "salary": 2300000,
+   "mlbamId": 671345
+  },
+  {
+   "team": "SF",
+   "name": "Rowan Wick",
+   "mls": 4.114,
+   "salary": 800000,
+   "mlbamId": 592858
+  },
+  {
+   "team": "SF",
+   "name": "Ryan Walker",
+   "mls": 3.05,
+   "salary": 1600000,
+   "mlbamId": 676254
+  },
+  {
+   "team": "SF",
+   "name": "Casey Schmitt",
+   "mls": 3.035,
+   "salary": 2500000,
+   "mlbamId": 669477
+  },
+  {
+   "team": "SF",
+   "name": "José Buttó",
+   "mls": 2.168,
+   "salary": 800000,
+   "mlbamId": 676130
+  },
+  {
+   "team": "SF",
+   "name": "Randy Rodríguez",
+   "mls": 2.148,
+   "salary": 800000,
+   "mlbamId": 678495
+  },
+  {
+   "team": "SEA",
+   "name": "Logan Gilbert",
+   "mls": 5.144,
+   "salary": 15400000,
+   "mlbamId": 669302
+  },
+  {
+   "team": "SEA",
+   "name": "Brendan Donovan",
+   "mls": 5,
+   "salary": 6100000,
+   "mlbamId": 680977
+  },
+  {
+   "team": "SEA",
+   "name": "Gabe Speier",
+   "mls": 5,
+   "salary": 3300000,
+   "mlbamId": 642100
+  },
+  {
+   "team": "SEA",
+   "name": "George Kirby",
+   "mls": 4.151,
+   "salary": 9800000,
+   "mlbamId": 669923
+  },
+  {
+   "team": "SEA",
+   "name": "Patrick Wisdom",
+   "mls": 4.135,
+   "salary": 1100000,
+   "mlbamId": 621550
+  },
+  {
+   "team": "SEA",
+   "name": "Matt Brash",
+   "mls": 4.121,
+   "salary": 1800000,
+   "mlbamId": 666374
+  },
+  {
+   "team": "SEA",
+   "name": "Luke Raley",
+   "mls": 4.106,
+   "salary": 3100000,
+   "mlbamId": 670042
+  },
+  {
+   "team": "SEA",
+   "name": "Bryce Miller",
+   "mls": 3.153,
+   "salary": 3900000,
+   "note": "Mariners hold a $6.075MM option with $15K buyout",
+   "mlbamId": 682243
+  },
+  {
+   "team": "SEA",
+   "name": "Bryan Woo",
+   "mls": 3.121,
+   "salary": 5200000,
+   "mlbamId": 693433
+  },
+  {
+   "team": "SEA",
+   "name": "Eduard Bazardo",
+   "mls": 3.118,
+   "salary": 1500000,
+   "mlbamId": 660825
+  },
+  {
+   "team": "SEA",
+   "name": "Jose A. Ferrer",
+   "mls": 3.094,
+   "salary": 1600000,
+   "mlbamId": 678606
+  },
+  {
+   "team": "SEA",
+   "name": "Michael Rucker",
+   "mls": 3.069,
+   "salary": 800000,
+   "mlbamId": 621074
+  },
+  {
+   "team": "SEA",
+   "name": "Dominic Canzone",
+   "mls": 3.014,
+   "salary": 3000000,
+   "mlbamId": 686527
+  },
+  {
+   "team": "SEA",
+   "name": "Cooper Criswell",
+   "mls": 2.143,
+   "salary": 900000,
+   "mlbamId": 681867
+  },
+  {
+   "team": "SEA",
+   "name": "Carlos Vargas",
+   "mls": 2.14,
+   "salary": 800000,
+   "mlbamId": 672841
+  },
+  {
+   "team": "STL",
+   "name": "Andre Pallante",
+   "mls": 4.145,
+   "salary": 7500000,
+   "mlbamId": 669467
+  },
+  {
+   "team": "STL",
+   "name": "Nolan Gorman",
+   "mls": 4.055,
+   "salary": 3400000,
+   "mlbamId": 669357
+  },
+  {
+   "team": "STL",
+   "name": "Alec Burleson",
+   "mls": 4.029,
+   "salary": 8300000,
+   "mlbamId": 676475
+  },
+  {
+   "team": "STL",
+   "name": "Matthew Liberatore",
+   "mls": 3.144,
+   "salary": 3600000,
+   "mlbamId": 669461
+  },
+  {
+   "team": "STL",
+   "name": "Masyn Winn",
+   "mls": 3.045,
+   "salary": 3300000,
+   "mlbamId": 691026
+  },
+  {
+   "team": "STL",
+   "name": "Jordan Walker",
+   "mls": 3.044,
+   "salary": 5100000,
+   "mlbamId": 691023
+  },
+  {
+   "team": "STL",
+   "name": "Iván Herrera",
+   "mls": 3.034,
+   "salary": 5500000,
+   "mlbamId": 671056
+  },
+  {
+   "team": "STL",
+   "name": "Pedro Pagés",
+   "mls": 2.166,
+   "salary": 1300000,
+   "mlbamId": 686780
+  },
+  {
+   "team": "STL",
+   "name": "Kyle Leahy",
+   "mls": 2.14,
+   "salary": 2800000,
+   "mlbamId": 681517
+  },
+  {
+   "team": "TB",
+   "name": "Shane McClanahan",
+   "mls": 5.158,
+   "salary": 6600000,
+   "mlbamId": 663556
+  },
+  {
+   "team": "TB",
+   "name": "Nick Madrigal",
+   "mls": 5.137,
+   "salary": 1100000,
+   "mlbamId": 663611
+  },
+  {
+   "team": "TB",
+   "name": "Tyler Wells",
+   "mls": 5.132,
+   "salary": 4000000,
+   "mlbamId": 669330
+  },
+  {
+   "team": "TB",
+   "name": "Cole Sulser",
+   "mls": 5.096,
+   "salary": 1900000,
+   "mlbamId": 642121
+  },
+  {
+   "team": "TB",
+   "name": "Taylor Walls",
+   "mls": 5.092,
+   "salary": 3500000,
+   "note": "Rays hold a $3.1MM club option",
+   "mlbamId": 670764
+  },
+  {
+   "team": "TB",
+   "name": "Griffin Jax",
+   "mls": 5.091,
+   "salary": 5700000,
+   "mlbamId": 643377
+  },
+  {
+   "team": "TB",
+   "name": "Garrett Cleavinger",
+   "mls": 5.06,
+   "salary": 3700000,
+   "mlbamId": 664076
+  },
+  {
+   "team": "TB",
+   "name": "Nick Fortes",
+   "mls": 4.149,
+   "salary": 3400000,
+   "mlbamId": 663743
+  },
+  {
+   "team": "TB",
+   "name": "Bryan Baker",
+   "mls": 4.049,
+   "salary": 4100000,
+   "mlbamId": 641329
+  },
+  {
+   "team": "TB",
+   "name": "Ryan Pepiot",
+   "mls": 4.005,
+   "salary": 3100000,
+   "mlbamId": 686752
+  },
+  {
+   "team": "TB",
+   "name": "Kevin Kelly",
+   "mls": 3.156,
+   "salary": 2600000,
+   "mlbamId": 687330
+  },
+  {
+   "team": "TB",
+   "name": "Richie Palacios",
+   "mls": 3.156,
+   "salary": 2000000,
+   "mlbamId": 680700
+  },
+  {
+   "team": "TB",
+   "name": "Edwin Uceta",
+   "mls": 3.15,
+   "salary": 1500000,
+   "mlbamId": 670955
+  },
+  {
+   "team": "TB",
+   "name": "Manuel Rodríguez",
+   "mls": 3.139,
+   "salary": 900000,
+   "mlbamId": 655889
+  },
+  {
+   "team": "TB",
+   "name": "Jonny DeLuca",
+   "mls": 3.085,
+   "salary": 1700000,
+   "mlbamId": 676356
+  },
+  {
+   "team": "TB",
+   "name": "Jesse Scholtens",
+   "mls": 3.032,
+   "salary": 900000,
+   "mlbamId": 669947
+  },
+  {
+   "team": "TB",
+   "name": "Jonathan Aranda",
+   "mls": 3.03,
+   "salary": 4100000,
+   "mlbamId": 666018
+  },
+  {
+   "team": "TEX",
+   "name": "MacKenzie Gore",
+   "mls": 5,
+   "salary": 8700000,
+   "mlbamId": 669022
+  },
+  {
+   "team": "TEX",
+   "name": "Jake Burger",
+   "mls": 4.127,
+   "salary": 6900000,
+   "mlbamId": 669394
+  },
+  {
+   "team": "TEX",
+   "name": "Ezequiel Durán",
+   "mls": 4.053,
+   "salary": 4000000,
+   "mlbamId": 677649
+  },
+  {
+   "team": "TEX",
+   "name": "Josh Jung",
+   "mls": 4.027,
+   "salary": 5200000,
+   "mlbamId": 673962
+  },
+  {
+   "team": "TEX",
+   "name": "Logan O’Hoppe",
+   "mls": 3.171,
+   "salary": 3100000,
+   "mlbamId": 681351
+  },
+  {
+   "team": "TEX",
+   "name": "Cody Bradford",
+   "mls": 3.086,
+   "salary": 1300000,
+   "mlbamId": 674003
+  },
+  {
+   "team": "TEX",
+   "name": "Robert Garcia",
+   "mls": 3.086,
+   "salary": 1100000,
+   "mlbamId": 676395
+  },
+  {
+   "team": "TEX",
+   "name": "Wyatt Langford",
+   "mls": 3,
+   "salary": 3300000,
+   "mlbamId": 694671
+  },
+  {
+   "team": "TEX",
+   "name": "Evan Carter",
+   "mls": 2.17,
+   "salary": 1700000,
+   "mlbamId": 694497
+  },
+  {
+   "team": "TEX",
+   "name": "Jacob Latz",
+   "mls": 2.17,
+   "salary": 3000000,
+   "mlbamId": 656641
+  },
+  {
+   "team": "TOR",
+   "name": "Ernie Clement",
+   "mls": 4.168,
+   "salary": 7600000,
+   "mlbamId": 676391
+  },
+  {
+   "team": "TOR",
+   "name": "José Soriano",
+   "mls": 4.121,
+   "salary": 5600000,
+   "mlbamId": 667755
+  },
+  {
+   "team": "TOR",
+   "name": "Josh Smith",
+   "mls": 4.116,
+   "salary": 3700000,
+   "mlbamId": 669701
+  },
+  {
+   "team": "TOR",
+   "name": "Bowden Francis",
+   "mls": 3.098,
+   "salary": 1300000,
+   "mlbamId": 670102
+  },
+  {
+   "team": "TOR",
+   "name": "Spencer Arrighetti",
+   "mls": 2.166,
+   "salary": 1900000,
+   "mlbamId": 681293
+  },
+  {
+   "team": "TOR",
+   "name": "Louis Varland",
+   "mls": 2.163,
+   "salary": 3800000,
+   "mlbamId": 686973
+  },
+  {
+   "team": "TOR",
+   "name": "Nathan Lukes",
+   "mls": 2.145,
+   "salary": 2100000,
+   "mlbamId": 664770
+  },
+  {
+   "team": "TOR",
+   "name": "Davis Schneider",
+   "mls": 2.142,
+   "salary": 1300000,
+   "mlbamId": 676914
+  },
+  {
+   "team": "WSH",
+   "name": "Josiah Gray",
+   "mls": 5.075,
+   "salary": 1600000,
+   "mlbamId": 680686
+  },
+  {
+   "team": "WSH",
+   "name": "CJ Abrams",
+   "mls": 4.13,
+   "salary": 10200000,
+   "mlbamId": 682928
+  },
+  {
+   "team": "WSH",
+   "name": "Richard Lovelady",
+   "mls": 4.052,
+   "salary": 1700000,
+   "mlbamId": 663992
+  },
+  {
+   "team": "WSH",
+   "name": "Jake Bird",
+   "mls": 3.169,
+   "salary": 1300000,
+   "mlbamId": 656234
+  },
+  {
+   "team": "WSH",
+   "name": "Jake Irvin",
+   "mls": 3.152,
+   "salary": 3400000,
+   "mlbamId": 663623
+  },
+  {
+   "team": "WSH",
+   "name": "Ken Waldichuk",
+   "mls": 3.15,
+   "salary": 1000000,
+   "mlbamId": 686610
+  },
+  {
+   "team": "WSH",
+   "name": "Jacob Young",
+   "mls": 3.037,
+   "salary": 2300000,
+   "mlbamId": 696285
+  },
+  {
+   "team": "WSH",
+   "name": "Mitchell Parker",
+   "mls": 2.167,
+   "salary": 1100000,
+   "mlbamId": 680730
+  }
+ ]
+}

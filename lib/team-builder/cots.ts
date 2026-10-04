@@ -105,7 +105,15 @@ export function parseTeamSheet(team: string, csv: string, firstYear: number, tar
   const millions = targetYear !== firstYear
   const cell = (r: string[], i: number) => (r[i] ?? '').trim()
   const label = (r: string[]) => (r[0] ?? '').trim()
-  const optionInLine = (line: string) => line.split('+').slice(1).some((seg) => new RegExp(`\\b${targetYear % 100}\\b`).test(seg) && /opt/i.test(seg))
+  // "+27 cl opt", "+26-28 opts" (a range covering 27), "+26, 27 opts"
+  const optionInLine = (line: string) =>
+    line.split('+').slice(1).some((seg) => {
+      if (!/opt/i.test(seg)) return false
+      const yy = targetYear % 100
+      const head = seg.match(/^\s*([\d\s,-]+)/)?.[1] ?? ''
+      const ranges = [...head.matchAll(/(\d{2})(?:\s*-\s*(\d{2}))?/g)].map((m) => [Number(m[1]), Number(m[2] ?? m[1])])
+      return ranges.some(([a, b]) => a <= yy && yy <= b)
+    })
 
   const players: CotsPlayer[] = []
   const dead = new Map<string, DeadMoney>()
