@@ -1,19 +1,30 @@
 name: Team Builder data
 
-# Step 1 of the Team Builder build: prove a GitHub runner can download the 30 Cot's
-# sheets without a Google login, and that they pass every check. Nothing is committed
-# yet — the snapshot is attached to the run as a download. The daily schedule and the
-# commit step come later.
+# Pulls the 30 Cot's sheets, checks them, matches players to MLBAM ids, and commits the
+# snapshot in public/data/team-builder to main (Vercel then redeploys). If any check fails
+# the job fails, nothing is committed, and yesterday's data stays live. A quiet day with no
+# changes on Cot's makes no commit.
 
 on:
-  push:
-    branches: [team-builder]
+  schedule:
+    # 10:00 UTC = 6am ET. Daily October–March (the offseason), weekly on Mondays otherwise.
+    - cron: '0 10 * 1-3,10-12 *'
+    - cron: '0 10 * 4-9 1'
+  workflow_dispatch:
+  # Code changes get tested (and a dry-run refresh) before they're merged; nothing is committed.
+  pull_request:
     paths:
       - 'lib/team-builder/**'
       - 'scripts/team-builder/**'
       - 'tests/team-builder/**'
       - '.github/workflows/team-builder-data.yml'
-  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: team-builder-data
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -26,15 +37,26 @@ jobs:
       - name: Test the sheet reader against saved sheets
         run: bun test tests/team-builder
 
-      - name: Download and check the live sheets
+      - name: Download, check and match the live sheets
         run: bun scripts/team-builder/refresh-cots.ts --save-raw raw-sheets
 
-      - name: Attach the snapshot to this run
-        if: always()
+      - name: Commit the snapshot if it changed
+        if: github.event_name != 'pull_request'
+        run: |
+          git add public/data/team-builder
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Team Builder data: refresh from Cot's"
+          git pull --rebase --quiet && git push
+
+      - name: Keep the downloaded sheets with the run
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: team-builder-snapshot
-          path: |
-            raw-sheets/
-            public/data/team-builder/
-          if-no-files-found: warn
+          name: cots-sheets
+          path: raw-sheets/
+          if-no-files-found: ignore

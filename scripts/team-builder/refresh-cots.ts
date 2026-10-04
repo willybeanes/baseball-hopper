@@ -166,7 +166,6 @@ async function main() {
 
   const base = mode(sheets.map((s) => s.threshold).filter((t): t is number => t != null))
   const meta = {
-    refreshedAt: new Date().toISOString(),
     sheetsCollected: config.sheetsCollected,
     targetYear: config.targetYear,
     // Cot's carries only the 2027 base line, and only on some sheets. The tiers are derived
@@ -175,12 +174,26 @@ async function main() {
     teams: sheets.map((s) => s.team).sort(),
   }
 
-  mkdirSync(join(OUT_DIR, 'teams'), { recursive: true })
-  for (const s of sheets) writeFileSync(join(OUT_DIR, 'teams', `${s.team}.json`), JSON.stringify(s, null, 1) + '\n')
-  writeFileSync(join(OUT_DIR, 'meta.json'), JSON.stringify(meta, null, 2) + '\n')
+  // Only touch the files when the data itself changed, so a quiet day makes no commit
+  // and no redeploy. updatedAt is therefore "when Cot's last changed", not "when we last looked".
+  const files = new Map(sheets.map((s) => [join(OUT_DIR, 'teams', `${s.team}.json`), JSON.stringify(s, null, 1) + '\n']))
+  const metaFile = join(OUT_DIR, 'meta.json')
+  const prevMeta = existsSync(metaFile) ? JSON.parse(readFileSync(metaFile, 'utf8')) : null
+  const changed = [...files].filter(([f, text]) => !existsSync(f) || readFileSync(f, 'utf8') !== text)
+  const metaChanged = !prevMeta || JSON.stringify({ ...prevMeta, updatedAt: undefined }) !== JSON.stringify({ ...meta, updatedAt: undefined })
+
+  if (changed.length || metaChanged) {
+    mkdirSync(join(OUT_DIR, 'teams'), { recursive: true })
+    for (const [f, text] of changed) writeFileSync(f, text)
+    writeFileSync(metaFile, JSON.stringify({ updatedAt: new Date().toISOString(), ...meta }, null, 2) + '\n')
+  }
 
   const count = (status: string) => sheets.reduce((n, s) => n + s.players.filter((p) => p.status === status).length, 0)
-  console.log(`Wrote ${sheets.length} teams to public/data/team-builder (base tax line ${base ? `$${base / 1e6}M` : 'not found'}).`)
+  console.log(
+    changed.length || metaChanged
+      ? `Updated ${changed.length} of ${sheets.length} teams in public/data/team-builder (base tax line ${base ? `$${base / 1e6}M` : 'not found'}).`
+      : `No changes since the last refresh (${prevMeta.updatedAt}).`,
+  )
   console.log(`Players: ${['signed', 'arb', 'prearb', 'option', 'fa', 'unknown'].map((s) => `${count(s)} ${s}`).join(', ')}`)
   console.log(`MLBAM ids: ${count('signed') + count('arb') + count('prearb') + count('option') + count('fa') + count('unknown') - ids.unmatched.length} matched, ${ids.unmatched.length} unmatched.`)
   if (ids.stale.length) console.log(`Same player on two sheets:\n  ${ids.stale.join('\n  ')}`)
