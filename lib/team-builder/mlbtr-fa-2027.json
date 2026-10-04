@@ -1,0 +1,2253 @@
+{
+ "source": {
+  "title": "2026-27 MLB Free Agents",
+  "site": "MLB Trade Rumors",
+  "url": "https://www.mlbtraderumors.com/2025/08/2026-27-mlb-free-agents.html",
+  "updated": "9-30-26",
+  "importedAt": "2026-10-04"
+ },
+ "players": [
+  {
+   "name": "Travis d’Arnaud",
+   "age": 38,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 518595
+  },
+  {
+   "name": "Elias Diaz",
+   "age": 36,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 553869
+  },
+  {
+   "name": "Mitch Garver",
+   "age": 36,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 641598
+  },
+  {
+   "name": "Austin Hedges",
+   "age": 34,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 595978
+  },
+  {
+   "name": "Jonah Heim",
+   "age": 32,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 641680
+  },
+  {
+   "name": "Kyle Higashioka",
+   "age": 37,
+   "positions": [
+    "c"
+   ],
+   "note": "$7MM mutual option with a $1MM buyout",
+   "mlbamId": 543309
+  },
+  {
+   "name": "Ryan Jeffers",
+   "age": 30,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 680777
+  },
+  {
+   "name": "Carson Kelly",
+   "age": 32,
+   "positions": [
+    "c"
+   ],
+   "note": "$7.5MM mutual option with a $1.5MM buyout",
+   "mlbamId": 608348
+  },
+  {
+   "name": "Luke Maile",
+   "age": 36,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 571912
+  },
+  {
+   "name": "James McCann",
+   "age": 37,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 543510
+  },
+  {
+   "name": "Reese McGuire",
+   "age": 32,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 624512
+  },
+  {
+   "name": "Jake Rogers",
+   "age": 32,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 668670
+  },
+  {
+   "name": "Gary Sanchez",
+   "age": 34,
+   "positions": [
+    "c"
+   ],
+   "note": "mutual option",
+   "mlbamId": 596142
+  },
+  {
+   "name": "Tyler Stephenson",
+   "age": 30,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 663886
+  },
+  {
+   "name": "Christian Vazquez",
+   "age": 36,
+   "positions": [
+    "c"
+   ],
+   "mlbamId": 543877
+  },
+  {
+   "name": "Jake Bauers",
+   "age": 31,
+   "positions": [
+    "1b",
+    "lf"
+   ],
+   "mlbamId": 641343
+  },
+  {
+   "name": "Alec Bohm",
+   "age": 30,
+   "positions": [
+    "1b",
+    "3b"
+   ],
+   "mlbamId": 664761
+  },
+  {
+   "name": "Ty France",
+   "age": 32,
+   "positions": [
+    "1b"
+   ],
+   "mlbamId": 664034
+  },
+  {
+   "name": "Paul Goldschmidt",
+   "age": 39,
+   "positions": [
+    "1b"
+   ],
+   "mlbamId": 502671
+  },
+  {
+   "name": "Rhys Hoskins",
+   "age": 34,
+   "positions": [
+    "1b"
+   ],
+   "mlbamId": 656555
+  },
+  {
+   "name": "Nathaniel Lowe",
+   "age": 31,
+   "positions": [
+    "1b"
+   ],
+   "mlbamId": 663993
+  },
+  {
+   "name": "Ryan Mountcastle",
+   "age": 30,
+   "positions": [
+    "1b"
+   ],
+   "note": "$7.5MM club option",
+   "mlbamId": 663624
+  },
+  {
+   "name": "Carlos Santana",
+   "age": 41,
+   "positions": [
+    "1b"
+   ],
+   "note": "$2MM mutual option",
+   "mlbamId": 467793
+  },
+  {
+   "name": "Dominic Smith",
+   "age": 32,
+   "positions": [
+    "1b"
+   ],
+   "mlbamId": 642086
+  },
+  {
+   "name": "Rowdy Tellez",
+   "age": 32,
+   "positions": [
+    "1b"
+   ],
+   "mlbamId": 642133
+  },
+  {
+   "name": "Ozzie Albies",
+   "age": 30,
+   "positions": [
+    "2b"
+   ],
+   "note": "$7MM club option",
+   "mlbamId": 645277
+  },
+  {
+   "name": "Luis Arraez",
+   "age": 30,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 650333
+  },
+  {
+   "name": "Bo Bichette",
+   "age": 29,
+   "positions": [
+    "2b",
+    "3b"
+   ],
+   "note": "can opt out of remaining two years, $84MM, resulting in a $5MM buyout",
+   "mlbamId": 666182
+  },
+  {
+   "name": "Cavan Biggio",
+   "age": 32,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 624415
+  },
+  {
+   "name": "Jazz Chisholm Jr.",
+   "age": 29,
+   "positions": [
+    "2b",
+    "3b"
+   ],
+   "mlbamId": 665862
+  },
+  {
+   "name": "Mauricio Dubon",
+   "age": 32,
+   "positions": [
+    "2b",
+    "ss",
+    "3b"
+   ],
+   "mlbamId": 643289
+  },
+  {
+   "name": "Kyle Farmer",
+   "age": 35,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 571657
+  },
+  {
+   "name": "Adam Frazier",
+   "age": 35,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 624428
+  },
+  {
+   "name": "Jonathan India",
+   "age": 30,
+   "positions": [
+    "2b",
+    "3b",
+    "lf"
+   ],
+   "mlbamId": 663697
+  },
+  {
+   "name": "Brandon Lowe",
+   "age": 32,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 664040
+  },
+  {
+   "name": "Gavin Lux",
+   "age": 29,
+   "positions": [
+    "2b",
+    "lf"
+   ],
+   "mlbamId": 666158
+  },
+  {
+   "name": "Nick Madrigal",
+   "age": 30,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 663611
+  },
+  {
+   "name": "Dylan Moore",
+   "age": 34,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 664238
+  },
+  {
+   "name": "Brendan Rodgers",
+   "age": 30,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 663898
+  },
+  {
+   "name": "Amed Rosario",
+   "age": 31,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 642708
+  },
+  {
+   "name": "Lenyn Sosa",
+   "age": 27,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 672820
+  },
+  {
+   "name": "Gleyber Torres",
+   "age": 30,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 650402
+  },
+  {
+   "name": "Luis Urias",
+   "age": 30,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 649966
+  },
+  {
+   "name": "Ildemaro Vargas",
+   "age": 35,
+   "positions": [
+    "2b"
+   ],
+   "mlbamId": 545121
+  },
+  {
+   "name": "Orlando Arcia",
+   "age": 32,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 606115
+  },
+  {
+   "name": "J.P. Crawford",
+   "age": 32,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 641487
+  },
+  {
+   "name": "Paul DeJong",
+   "age": 33,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 657557
+  },
+  {
+   "name": "Ha-Seong Kim",
+   "age": 31,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 673490
+  },
+  {
+   "name": "Isiah Kiner-Falefa",
+   "age": 32,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 643396
+  },
+  {
+   "name": "Jorge Mateo",
+   "age": 32,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 622761
+  },
+  {
+   "name": "Kevin Newman",
+   "age": 33,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 621028
+  },
+  {
+   "name": "Zack Short",
+   "age": 32,
+   "positions": [
+    "ss"
+   ],
+   "mlbamId": 670097
+  },
+  {
+   "name": "Jeimer Candelario",
+   "age": 33,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 600869
+  },
+  {
+   "name": "Santiago Espinal",
+   "age": 32,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 669289
+  },
+  {
+   "name": "Kiké Hernandez",
+   "age": 35,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 571771
+  },
+  {
+   "name": "Leo Jimenez",
+   "age": 26,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 677870
+  },
+  {
+   "name": "Yoan Moncada",
+   "age": 32,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 660162
+  },
+  {
+   "name": "Anthony Rendon",
+   "age": 37,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 543685
+  },
+  {
+   "name": "Luis Rengifo",
+   "age": 30,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 650859
+  },
+  {
+   "name": "Josh Rojas",
+   "age": 33,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 668942
+  },
+  {
+   "name": "Edmundo Sosa",
+   "age": 31,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 624641
+  },
+  {
+   "name": "Ramon Urias",
+   "age": 33,
+   "positions": [
+    "3b"
+   ],
+   "mlbamId": 602104
+  },
+  {
+   "name": "Miguel Andujar",
+   "age": 32,
+   "positions": [
+    "lf"
+   ],
+   "note": "$8MM mutual option with a $2.5MM buyout",
+   "mlbamId": 609280
+  },
+  {
+   "name": "Randy Arozarena",
+   "age": 32,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 668227
+  },
+  {
+   "name": "Dylan Carlson",
+   "age": 28,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 666185
+  },
+  {
+   "name": "Michael Conforto",
+   "age": 34,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 624424
+  },
+  {
+   "name": "Lourdes Gurriel Jr.",
+   "age": 33,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 666971
+  },
+  {
+   "name": "Sam Haggerty",
+   "age": 33,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 664059
+  },
+  {
+   "name": "Ian Happ",
+   "age": 32,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 664023
+  },
+  {
+   "name": "Austin Hays",
+   "age": 31,
+   "positions": [
+    "lf"
+   ],
+   "note": "$8MM mutual option with a $1MM buyout",
+   "mlbamId": 669720
+  },
+  {
+   "name": "Ramon Laureano",
+   "age": 32,
+   "positions": [
+    "lf",
+    "rf"
+   ],
+   "mlbamId": 657656
+  },
+  {
+   "name": "Tommy Pham",
+   "age": 39,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 502054
+  },
+  {
+   "name": "Rob Refsnyder",
+   "age": 36,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 608701
+  },
+  {
+   "name": "Alex Verdugo",
+   "age": 31,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 657077
+  },
+  {
+   "name": "Taylor Ward",
+   "age": 33,
+   "positions": [
+    "lf"
+   ],
+   "mlbamId": 621493
+  },
+  {
+   "name": "TJ Friedl",
+   "age": 31,
+   "positions": [
+    "cf"
+   ],
+   "mlbamId": 670770
+  },
+  {
+   "name": "Trent Grisham",
+   "age": 30,
+   "positions": [
+    "cf"
+   ],
+   "mlbamId": 663757
+  },
+  {
+   "name": "Jeff McNeil",
+   "age": 35,
+   "positions": [
+    "cf"
+   ],
+   "note": "$15.75MM club option with a $2MM buyout",
+   "mlbamId": 643446
+  },
+  {
+   "name": "Cedric Mullins",
+   "age": 32,
+   "positions": [
+    "cf"
+   ],
+   "note": "$10MM mutual option with a $500K buyout",
+   "mlbamId": 656775
+  },
+  {
+   "name": "Luis Robert Jr.",
+   "age": 29,
+   "positions": [
+    "cf"
+   ],
+   "note": "$20MM club option with a $2MM buyout",
+   "mlbamId": 673357
+  },
+  {
+   "name": "Victor Robles",
+   "age": 30,
+   "positions": [
+    "cf"
+   ],
+   "note": "$9MM club option with a $500K buyout",
+   "mlbamId": 645302
+  },
+  {
+   "name": "Myles Straw",
+   "age": 32,
+   "positions": [
+    "cf"
+   ],
+   "note": "$8MM club option with a $1.75MM buyout",
+   "mlbamId": 664702
+  },
+  {
+   "name": "Tyrone Taylor",
+   "age": 33,
+   "positions": [
+    "cf"
+   ],
+   "mlbamId": 621438
+  },
+  {
+   "name": "Alek Thomas",
+   "age": 27,
+   "positions": [
+    "cf"
+   ],
+   "mlbamId": 677950
+  },
+  {
+   "name": "Lane Thomas",
+   "age": 31,
+   "positions": [
+    "cf"
+   ],
+   "mlbamId": 657041
+  },
+  {
+   "name": "Daulton Varsho",
+   "age": 30,
+   "positions": [
+    "cf"
+   ],
+   "mlbamId": 662139
+  },
+  {
+   "name": "Ronald Acuña Jr.",
+   "age": 29,
+   "positions": [
+    "rf"
+   ],
+   "note": "$17MM club option with a $10MM buyout",
+   "mlbamId": 660670
+  },
+  {
+   "name": "Nick Castellanos",
+   "age": 35,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 592206
+  },
+  {
+   "name": "Jake Fraley",
+   "age": 32,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 641584
+  },
+  {
+   "name": "Adolis Garcia",
+   "age": 34,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 666969
+  },
+  {
+   "name": "Randal Grichuk",
+   "age": 35,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 545341
+  },
+  {
+   "name": "Max Kepler",
+   "age": 34,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 596146
+  },
+  {
+   "name": "Austin Slater",
+   "age": 34,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 596103
+  },
+  {
+   "name": "Jorge Soler",
+   "age": 35,
+   "positions": [
+    "rf",
+    "dh"
+   ],
+   "mlbamId": 624585
+  },
+  {
+   "name": "George Springer",
+   "age": 37,
+   "positions": [
+    "rf",
+    "dh"
+   ],
+   "mlbamId": 543807
+  },
+  {
+   "name": "Seiya Suzuki",
+   "age": 32,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 673548
+  },
+  {
+   "name": "Mike Tauchman",
+   "age": 36,
+   "positions": [
+    "rf"
+   ],
+   "mlbamId": 643565
+  },
+  {
+   "name": "Josh Bell",
+   "age": 34,
+   "positions": [
+    "dh"
+   ],
+   "note": "$10MM mutual option with a $1.25MM buyout",
+   "mlbamId": 605137
+  },
+  {
+   "name": "Starling Marte",
+   "age": 38,
+   "positions": [
+    "dh"
+   ],
+   "mlbamId": 516782
+  },
+  {
+   "name": "Andrew McCutchen",
+   "age": 40,
+   "positions": [
+    "dh"
+   ],
+   "mlbamId": 457705
+  },
+  {
+   "name": "Marcell Ozuna",
+   "age": 36,
+   "positions": [
+    "dh"
+   ],
+   "note": "$16MM mutual option with a $1.5MM buyout",
+   "mlbamId": 542303
+  },
+  {
+   "name": "Joc Pederson",
+   "age": 35,
+   "positions": [
+    "dh"
+   ],
+   "note": "$18.5MM mutual option (no buyout)",
+   "mlbamId": 592626
+  },
+  {
+   "name": "Eugenio Suarez",
+   "age": 35,
+   "positions": [
+    "dh"
+   ],
+   "note": "$16MM mutual option (no buyout)",
+   "mlbamId": 553993
+  },
+  {
+   "name": "Sandy Alcantara",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "note": "$21MM club option with a $2MM buyout",
+   "mlbamId": 645261
+  },
+  {
+   "name": "Chris Bassitt",
+   "age": 38,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 605135
+  },
+  {
+   "name": "Jose Berrios",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "note": "can opt out of remaining two years, $48MM",
+   "mlbamId": 621244
+  },
+  {
+   "name": "Shane Bieber",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 669456
+  },
+  {
+   "name": "Paul Blackburn",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 621112
+  },
+  {
+   "name": "Matthew Boyd",
+   "age": 36,
+   "positions": [
+    "sp"
+   ],
+   "note": "$15MM mutual option with a $2MM buyout",
+   "mlbamId": 571510
+  },
+  {
+   "name": "Kris Bubic",
+   "age": 29,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 663460
+  },
+  {
+   "name": "Walker Buehler",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 621111
+  },
+  {
+   "name": "Corbin Burnes",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "note": "can opt out of remaining four years and $140MM",
+   "mlbamId": 669203
+  },
+  {
+   "name": "Griffin Canning",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "note": "$5MM mutual option with a $1.5MM buyout",
+   "mlbamId": 656288
+  },
+  {
+   "name": "Carlos Carrasco",
+   "age": 40,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 471911
+  },
+  {
+   "name": "Aaron Civale",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 650644
+  },
+  {
+   "name": "Patrick Corbin",
+   "age": 37,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 571578
+  },
+  {
+   "name": "Zach Eflin",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "note": "$25MM mutual option with a $2MM buyout",
+   "mlbamId": 621107
+  },
+  {
+   "name": "Erick Fedde",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 607200
+  },
+  {
+   "name": "Jack Flaherty",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 656427
+  },
+  {
+   "name": "Kyle Freeland",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "note": "$17MM player option for 2027 with 170 innings pitched in 2026",
+   "mlbamId": 607536
+  },
+  {
+   "name": "Zac Gallen",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 668678
+  },
+  {
+   "name": "Luis Garcia",
+   "age": 30,
+   "positions": [
+    "sp",
+    "rhp"
+   ],
+   "mlbamId": 671277
+  },
+  {
+   "name": "Kevin Gausman",
+   "age": 36,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 592332
+  },
+  {
+   "name": "Lucas Giolito",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "note": "$8MM mutual option with a $1.5MM buyout",
+   "mlbamId": 608337
+  },
+  {
+   "name": "Austin Gomber",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 596295
+  },
+  {
+   "name": "Tony Gonsolin",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "note": "$2.5MM club option",
+   "mlbamId": 664062
+  },
+  {
+   "name": "Sonny Gray",
+   "age": 37,
+   "positions": [
+    "sp"
+   ],
+   "note": "$30MM mutual option with a $10MM buyout",
+   "mlbamId": 543243
+  },
+  {
+   "name": "Foster Griffin",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 656492
+  },
+  {
+   "name": "Kyle Hart",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "note": "$2.5MM club option with $200K buyout",
+   "mlbamId": 606996
+  },
+  {
+   "name": "Clay Holmes",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "note": "can opt out of remaining one year, $12MM",
+   "mlbamId": 605280
+  },
+  {
+   "name": "Tatsuya Imai",
+   "age": 29,
+   "positions": [
+    "sp"
+   ],
+   "note": "can opt out of remaining two years, $36MM",
+   "mlbamId": 837227
+  },
+  {
+   "name": "Shota Imanaga",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 684007
+  },
+  {
+   "name": "Michael King",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "note": "can opt out of remaining two years, $58MM for a $5MM buyout",
+   "mlbamId": 650633
+  },
+  {
+   "name": "Zack Littell",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "note": "mutual option",
+   "mlbamId": 641793
+  },
+  {
+   "name": "Michael Lorenzen",
+   "age": 35,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 547179
+  },
+  {
+   "name": "Tyler Mahle",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 641816
+  },
+  {
+   "name": "German Marquez",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "note": "mutual option",
+   "mlbamId": 608566
+  },
+  {
+   "name": "Nick Martinez",
+   "age": 36,
+   "positions": [
+    "sp",
+    "rhp"
+   ],
+   "note": "$20MM mutual option with a $4MM buyout",
+   "mlbamId": 607259
+  },
+  {
+   "name": "Dustin May",
+   "age": 29,
+   "positions": [
+    "sp"
+   ],
+   "note": "$20MM mutual option with a $500K buyout",
+   "mlbamId": 669160
+  },
+  {
+   "name": "Lance McCullers Jr.",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 621121
+  },
+  {
+   "name": "John Means",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 607644
+  },
+  {
+   "name": "Miles Mikolas",
+   "age": 38,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 571945
+  },
+  {
+   "name": "Casey Mize",
+   "age": 30,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 663554
+  },
+  {
+   "name": "Frankie Montas",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 593423
+  },
+  {
+   "name": "Jordan Montgomery",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 656756
+  },
+  {
+   "name": "Chris Paddack",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 663978
+  },
+  {
+   "name": "Freddy Peralta",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 642547
+  },
+  {
+   "name": "Martin Perez",
+   "age": 36,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 527048
+  },
+  {
+   "name": "David Peterson",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 656849
+  },
+  {
+   "name": "Nick Pivetta",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "note": "$14MM player option for 2027; $18MM player option for ’28 if ’27 is exercised. Can change based on injury",
+   "mlbamId": 601713
+  },
+  {
+   "name": "Cal Quantrill",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 615698
+  },
+  {
+   "name": "Jose Quintana",
+   "age": 38,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 500779
+  },
+  {
+   "name": "Drew Rasmussen",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "note": "$8MM club option with a $500K buyout",
+   "mlbamId": 656876
+  },
+  {
+   "name": "Robbie Ray",
+   "age": 35,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 592662
+  },
+  {
+   "name": "Colin Rea",
+   "age": 36,
+   "positions": [
+    "sp"
+   ],
+   "note": "$7.5MM club option with a $1MM buyout",
+   "mlbamId": 607067
+  },
+  {
+   "name": "Trevor Rogers",
+   "age": 29,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 669432
+  },
+  {
+   "name": "Patrick Sandoval",
+   "age": 29,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 663776
+  },
+  {
+   "name": "Max Scherzer",
+   "age": 42,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 453286
+  },
+  {
+   "name": "Antonio Senzatela",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "note": "$14MM club option",
+   "mlbamId": 622608
+  },
+  {
+   "name": "Luis Severino",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "note": "$22MM player option",
+   "mlbamId": 622663
+  },
+  {
+   "name": "Brady Singer",
+   "age": 30,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 663903
+  },
+  {
+   "name": "Tarik Skubal",
+   "age": 30,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 669373
+  },
+  {
+   "name": "Michael Soroka",
+   "age": 29,
+   "positions": [
+    "sp"
+   ],
+   "note": "$10MM mutual option with a $1MM buyout",
+   "mlbamId": 647336
+  },
+  {
+   "name": "Jeffrey Springs",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "note": "$15MM club option with a $750K buyout",
+   "mlbamId": 605488
+  },
+  {
+   "name": "Tomoyuki Sugano",
+   "age": 37,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 608372
+  },
+  {
+   "name": "Jameson Taillon",
+   "age": 35,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 592791
+  },
+  {
+   "name": "Jose Urquidy",
+   "age": 32,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 664353
+  },
+  {
+   "name": "Justin Verlander",
+   "age": 44,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 434378
+  },
+  {
+   "name": "Taijuan Walker",
+   "age": 34,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 592836
+  },
+  {
+   "name": "Ryan Weiss",
+   "age": 30,
+   "positions": [
+    "sp",
+    "rhp"
+   ],
+   "note": "$5MM club option with a $500K buyout",
+   "mlbamId": 680802
+  },
+  {
+   "name": "Trevor Williams",
+   "age": 35,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 592866
+  },
+  {
+   "name": "Brandon Woodruff",
+   "age": 33,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 605540
+  },
+  {
+   "name": "Kyle Wright",
+   "age": 31,
+   "positions": [
+    "sp"
+   ],
+   "mlbamId": 657140
+  },
+  {
+   "name": "Bryan Abreu",
+   "age": 30,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 650556
+  },
+  {
+   "name": "Jason Adam",
+   "age": 35,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 592094
+  },
+  {
+   "name": "Jorge Alcala",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 660896
+  },
+  {
+   "name": "Dan Altavilla",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 656186
+  },
+  {
+   "name": "Adbert Alzolay",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 640470
+  },
+  {
+   "name": "Drew Anderson",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$10MM club option with no buyout",
+   "mlbamId": 623454
+  },
+  {
+   "name": "Shawn Armstrong",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$8MM mutual option with a $1.5MM buyout",
+   "mlbamId": 542888
+  },
+  {
+   "name": "Scott Barlow",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 605130
+  },
+  {
+   "name": "David Bednar",
+   "age": 32,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 670280
+  },
+  {
+   "name": "Matt Bowman",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 621199
+  },
+  {
+   "name": "Ryan Brasier",
+   "age": 39,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 518489
+  },
+  {
+   "name": "Taylor Clarke",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 664199
+  },
+  {
+   "name": "Emmanuel Clase",
+   "age": 29,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$10MM club option with a $2MM buyout",
+   "mlbamId": 661403
+  },
+  {
+   "name": "Enyel De Los Santos",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 660853
+  },
+  {
+   "name": "Chris Devenski",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 606965
+  },
+  {
+   "name": "Carlos Estevez",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$13MM club option with a $2MM buyout",
+   "mlbamId": 608032
+  },
+  {
+   "name": "Pete Fairbanks",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 664126
+  },
+  {
+   "name": "Yimi Garcia",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 554340
+  },
+  {
+   "name": "Kevin Ginkel",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 656464
+  },
+  {
+   "name": "Brusdar Graterol",
+   "age": 28,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 660813
+  },
+  {
+   "name": "Hunter Harvey",
+   "age": 32,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$8MM mutual option with a $1MM buyout",
+   "mlbamId": 640451
+  },
+  {
+   "name": "Ryan Helsley",
+   "age": 32,
+   "positions": [
+    "rhp"
+   ],
+   "note": "can opt out of remaining one year, $14MM",
+   "mlbamId": 664854
+  },
+  {
+   "name": "Liam Hendriks",
+   "age": 37,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 521230
+  },
+  {
+   "name": "Raisel Iglesias",
+   "age": 37,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 628452
+  },
+  {
+   "name": "Luke Jackson",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 592426
+  },
+  {
+   "name": "Kenley Jansen",
+   "age": 39,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$12MM club option with a $2MM buyout",
+   "mlbamId": 445276
+  },
+  {
+   "name": "Joe Jimenez",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 641729
+  },
+  {
+   "name": "Pierce Johnson",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$8MM mutual option with a $1MM buyout",
+   "mlbamId": 572955
+  },
+  {
+   "name": "Jakob Junis",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$5MM mutual option with a $1.25MM buyout",
+   "mlbamId": 596001
+  },
+  {
+   "name": "Tommy Kahnle",
+   "age": 37,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 592454
+  },
+  {
+   "name": "Tyler Kinley",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$5.5MM club option with a $1.25MM buyout",
+   "mlbamId": 641755
+  },
+  {
+   "name": "Andrew Kittredge",
+   "age": 37,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 552640
+  },
+  {
+   "name": "Jose Leclerc",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 600917
+  },
+  {
+   "name": "Mark Leiter Jr.",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 643410
+  },
+  {
+   "name": "Jonathan Loaisiga",
+   "age": 32,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 642528
+  },
+  {
+   "name": "Chris Martin",
+   "age": 41,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 455119
+  },
+  {
+   "name": "Rafael Montero",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 606160
+  },
+  {
+   "name": "Andres Muñoz",
+   "age": 28,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$8MM club option",
+   "mlbamId": 662253
+  },
+  {
+   "name": "Hector Neris",
+   "age": 38,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 593576
+  },
+  {
+   "name": "Emilio Pagan",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$10MM player option",
+   "mlbamId": 641941
+  },
+  {
+   "name": "Evan Phillips",
+   "age": 32,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 623465
+  },
+  {
+   "name": "Tanner Rainey",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 663432
+  },
+  {
+   "name": "Jordan Romano",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 605447
+  },
+  {
+   "name": "Joe Ross",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 605452
+  },
+  {
+   "name": "Dennis Santana",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 642701
+  },
+  {
+   "name": "John Schreiber",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 670167
+  },
+  {
+   "name": "Paul Sewald",
+   "age": 37,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 623149
+  },
+  {
+   "name": "Drew Smith",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 622098
+  },
+  {
+   "name": "Ryne Stanek",
+   "age": 35,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$6MM club option with a $1MM buyout",
+   "mlbamId": 592773
+  },
+  {
+   "name": "Trevor Stephan",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$7.25MM club option with a $1.25MM buyout",
+   "mlbamId": 663986
+  },
+  {
+   "name": "Robert Stephenson",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$2.5MM club option",
+   "mlbamId": 596112
+  },
+  {
+   "name": "Hunter Strickland",
+   "age": 38,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 519326
+  },
+  {
+   "name": "Ryan Thompson",
+   "age": 35,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 657044
+  },
+  {
+   "name": "Trent Thornton",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 663423
+  },
+  {
+   "name": "Justin Topa",
+   "age": 36,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 623437
+  },
+  {
+   "name": "Blake Treinen",
+   "age": 39,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 595014
+  },
+  {
+   "name": "Lou Trivino",
+   "age": 35,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 642152
+  },
+  {
+   "name": "Jacob Webb",
+   "age": 33,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$2.5MM club option (no buyout)",
+   "mlbamId": 657097
+  },
+  {
+   "name": "Garrett Whitlock",
+   "age": 31,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$8.25MM club option with a $1MM buyout",
+   "mlbamId": 676477
+  },
+  {
+   "name": "Rowan Wick",
+   "age": 34,
+   "positions": [
+    "rhp"
+   ],
+   "note": "$800K club option with a $100K buyout",
+   "mlbamId": 592858
+  },
+  {
+   "name": "Jake Woodford",
+   "age": 30,
+   "positions": [
+    "rhp"
+   ],
+   "mlbamId": 663765
+  },
+  {
+   "name": "Keegan Akin",
+   "age": 32,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 669211
+  },
+  {
+   "name": "Tyler Alexander",
+   "age": 32,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 641302
+  },
+  {
+   "name": "Kolby Allard",
+   "age": 29,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 663465
+  },
+  {
+   "name": "Jose Alvarado",
+   "age": 32,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 621237
+  },
+  {
+   "name": "Jalen Beeks",
+   "age": 33,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 656222
+  },
+  {
+   "name": "Ryan Borucki",
+   "age": 33,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 621366
+  },
+  {
+   "name": "Aaron Bummer",
+   "age": 33,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 607481
+  },
+  {
+   "name": "Brock Burke",
+   "age": 30,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 656271
+  },
+  {
+   "name": "Genesis Cabrera",
+   "age": 30,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 650893
+  },
+  {
+   "name": "Andrew Chafin",
+   "age": 37,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 605177
+  },
+  {
+   "name": "Aroldis Chapman",
+   "age": 39,
+   "positions": [
+    "lhp"
+   ],
+   "note": "$13MM mutual option with a $300K buyout.  Guaranteed if Chapman pitches 40 innings in 2026 (met) and passes post-season physical exam",
+   "mlbamId": 547973
+  },
+  {
+   "name": "Danny Coulombe",
+   "age": 37,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 543056
+  },
+  {
+   "name": "Dietrich Enns",
+   "age": 36,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 608650
+  },
+  {
+   "name": "Caleb Ferguson",
+   "age": 30,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 657571
+  },
+  {
+   "name": "Tim Hill",
+   "age": 37,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 657612
+  },
+  {
+   "name": "Joey Lucchesi",
+   "age": 34,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 664192
+  },
+  {
+   "name": "Yuki Matsui",
+   "age": 31,
+   "positions": [
+    "lhp"
+   ],
+   "note": "can opt out of remaining two years, $13.5MM",
+   "mlbamId": 673513
+  },
+  {
+   "name": "Hoby Milner",
+   "age": 36,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 571948
+  },
+  {
+   "name": "A.J. Minter",
+   "age": 33,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 621345
+  },
+  {
+   "name": "Sam Moll",
+   "age": 35,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 594580
+  },
+  {
+   "name": "Adrian Morejon",
+   "age": 28,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 670970
+  },
+  {
+   "name": "Sean Newcomb",
+   "age": 34,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 656794
+  },
+  {
+   "name": "Steven Okert",
+   "age": 35,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 595345
+  },
+  {
+   "name": "Wandy Peralta",
+   "age": 35,
+   "positions": [
+    "lhp"
+   ],
+   "note": "$4.45MM player option",
+   "mlbamId": 593974
+  },
+  {
+   "name": "Drew Pomeranz",
+   "age": 38,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 519141
+  },
+  {
+   "name": "A.J. Puk",
+   "age": 32,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 640462
+  },
+  {
+   "name": "Brooks Raley",
+   "age": 39,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 548384
+  },
+  {
+   "name": "Taylor Rogers",
+   "age": 36,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 573124
+  },
+  {
+   "name": "JoJo Romero",
+   "age": 30,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 668941
+  },
+  {
+   "name": "Gregory Soto",
+   "age": 32,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 642397
+  },
+  {
+   "name": "Matt Strahm",
+   "age": 35,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 621381
+  },
+  {
+   "name": "Jose Suarez",
+   "age": 29,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 660761
+  },
+  {
+   "name": "Brent Suter",
+   "age": 37,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 608718
+  },
+  {
+   "name": "Caleb Thielbar",
+   "age": 40,
+   "positions": [
+    "lhp"
+   ],
+   "note": "$6MM mutual option with a $500K buyout",
+   "mlbamId": 573204
+  },
+  {
+   "name": "Alex Vesia",
+   "age": 31,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 681911
+  },
+  {
+   "name": "Ryan Yarbrough",
+   "age": 35,
+   "positions": [
+    "lhp"
+   ],
+   "mlbamId": 642232
+  }
+ ]
+}

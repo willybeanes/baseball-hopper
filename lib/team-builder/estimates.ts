@@ -4,7 +4,7 @@
 
 import type { CotsPlayer, TeamSheet } from './cots'
 
-export type SalarySource = 'cots' | 'option' | 'mlbtr-arb' | 'rough-arb' | 'minimum' | 'unknown' | 'none'
+export type SalarySource = 'cots' | 'option' | 'mlbtr-arb' | 'cots-arb' | 'rough-arb' | 'minimum' | 'unknown' | 'none'
 
 export interface OptionFact {
   mlbamId: number
@@ -89,6 +89,9 @@ export function applyEstimates(
       p.status = 'arb'
       p.salary = p.taxValue = arbSalary
       p.salarySource = 'mlbtr-arb'
+    } else if (p.status === 'arb' && p.cotsEstimate != null) {
+      p.salary = p.taxValue = p.cotsEstimate
+      p.salarySource = 'cots-arb'
     } else if (p.status === 'arb') {
       const flat = assumptions.roughArbitration.byYear[String(p.arbYear ?? 1)] ?? assumptions.roughArbitration.byYear['1']
       p.salary = p.taxValue = Math.max(flat, p.salaryPrevYear ?? 0, min)

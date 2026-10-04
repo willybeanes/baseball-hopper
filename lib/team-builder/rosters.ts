@@ -25,3 +25,11 @@ export async function leaguePool(season: number): Promise<RosterPerson[]> {
   const lists = await Promise.all(seasons.map((y) => statsApi<{ people: RosterPerson[] }>(`/sports/1/players?season=${y}`)))
   return lists.flatMap((d) => d.people.map((p) => ({ id: p.id, fullName: p.fullName })))
 }
+
+// Last resort for a name with no team: MLB's own name search. Only a single result who has
+// played in the majors counts, so a common name returns null rather than a guess.
+export async function searchMajorLeaguer(name: string): Promise<number | null> {
+  const d = await statsApi<{ people?: { id: number; mlbDebutDate?: string }[] }>(`/people/search?names=${encodeURIComponent(name)}`)
+  const debuted = (d.people ?? []).filter((p) => p.mlbDebutDate)
+  return debuted.length === 1 ? debuted[0].id : null
+}
