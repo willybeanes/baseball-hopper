@@ -28,9 +28,9 @@ describe('salaries the sheet does not give', () => {
 })
 
 describe('options', () => {
-  test('exercised by default at the MLBTR salary, buyout from the sheet', () => {
+  test('mutual option: priced from MLBTR, buyout from the sheet, declined by default', () => {
     const find = load('ARI', { 'Michael Soroka': 1 }, [opt(1, { decidedBy: 'both', type: 'mutual', salary: 10e6, buyout: 1e6 })])
-    expect(find('Michael Soroka')).toMatchObject({ status: 'option', salary: 10e6, buyout: 1e6, decidedBy: 'both', salarySource: 'option' })
+    expect(find('Michael Soroka')).toMatchObject({ status: 'option', salary: 10e6, buyout: 1e6, decidedBy: 'both', salarySource: 'option', defaultExercised: false })
   })
   test('unknown option salary stays unknown', () => {
     const find = load('MIL', { 'Gary Sánchez': 1 }, [opt(1, { decidedBy: 'both', type: 'mutual', buyout: 250_000 })])
@@ -43,7 +43,7 @@ describe('options', () => {
   })
   test("pending option Cot's marks FA", () => {
     const find = load('BOS', { 'Garrett Whitlock': 1 }, [opt(1, { salary: 8.25e6, buyout: 1e6 })])
-    expect(find('Garrett Whitlock')).toMatchObject({ status: 'option', salary: 8.25e6, buyout: 1e6 })
+    expect(find('Garrett Whitlock')).toMatchObject({ status: 'option', salary: 8.25e6, buyout: 1e6, defaultExercised: true })
   })
   test('unpriced option on an arbitration-eligible player uses the arbitration estimate', () => {
     const find = load('STL', { 'Andre Pallante': 1 }, [opt(1, { type: 'unknown' })], [{ mlbamId: 1, salary: 7.5e6 }])

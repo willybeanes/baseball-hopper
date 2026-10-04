@@ -19,6 +19,7 @@ export interface ArbEstimate { mlbamId: number | null; salary: number }
 export interface Assumptions {
   leagueMinimum: { value: number }
   roughArbitration: { byYear: Record<string, number> }
+  optionDefaults: { club: string; player: string; mutual: string }
 }
 
 // Fields the refresh adds on top of what the sheet says.
@@ -26,6 +27,7 @@ export interface EstimatedFields {
   salarySource?: SalarySource
   decidedBy?: 'club' | 'player' | 'both'
   playerOption?: { type: string; buyout: number | null } // signed, but the player can walk away
+  defaultExercised?: boolean // options only: on the default 2027 roster, or declined with the buyout counted
   corrected?: string // why we overrode Cot's status, if we did
 }
 
@@ -58,6 +60,8 @@ export function applyEstimates(
     if (p.status === 'option') {
       if (opt) p.optionType = (opt.type as CotsPlayer['optionType']) ?? p.optionType
       p.decidedBy = opt?.decidedBy ?? (p.optionType === 'mutual' ? 'both' : 'club')
+      const rule = p.decidedBy === 'both' ? assumptions.optionDefaults.mutual : p.decidedBy === 'player' ? assumptions.optionDefaults.player : assumptions.optionDefaults.club
+      p.defaultExercised = rule === 'exercised'
       if (p.buyout == null && opt?.buyout != null) p.buyout = opt.buyout
       if (opt?.salary != null) {
         p.salary = p.taxValue = opt.salary
@@ -67,6 +71,7 @@ export function applyEstimates(
         p.status = 'arb'
         p.salary = p.taxValue = arbSalary
         p.salarySource = 'mlbtr-arb'
+        delete p.defaultExercised
       } else {
         p.salarySource = 'unknown'
       }
