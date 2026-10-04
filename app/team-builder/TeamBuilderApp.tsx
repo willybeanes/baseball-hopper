@@ -6,21 +6,38 @@ import { headshotUrl } from '@/lib/player'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { isEstimate, money, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
+import type { PoolPlayer } from '@/lib/team-builder/pool'
 
 const DATA = '/data/team-builder'
 const DEFAULT_TEAM = 'NYM'
 
 const GROUPS: { key: string; title: string; test: (s: Slot) => boolean }[] = [
-  { key: 'signed', title: 'Signed', test: (s) => s.player.status === 'signed' },
-  { key: 'option', title: 'Options, exercised', test: (s) => s.player.status === 'option' },
-  { key: 'arb', title: 'Arbitration', test: (s) => s.player.status === 'arb' },
-  { key: 'prearb', title: 'Pre-arbitration', test: (s) => s.player.status === 'prearb' },
-  { key: 'resigned', title: 'Re-signed free agents', test: (s) => s.player.status === 'fa' },
+  { key: 'added', title: 'Added players', test: (s) => !!s.added },
+  { key: 'signed', title: 'Signed', test: (s) => !s.added && s.player.status === 'signed' },
+  { key: 'option', title: 'Options, exercised', test: (s) => !s.added && s.player.status === 'option' },
+  { key: 'arb', title: 'Arbitration', test: (s) => !s.added && s.player.status === 'arb' },
+  { key: 'prearb', title: 'Pre-arbitration', test: (s) => !s.added && s.player.status === 'prearb' },
+  { key: 'resigned', title: 'Re-signed free agents', test: (s) => !s.added && s.player.status === 'fa' },
 ]
+
+const POSITIONS: { key: string; label: string; test: (pos: string) => boolean }[] = [
+  { key: 'all', label: 'All positions', test: () => true },
+  { key: 'c', label: 'C', test: (p) => /(^|-)c($|-)/.test(p) && !/hp/.test(p) }, // "rhp-c" is a closer, not a catcher
+  { key: '1b', label: '1B', test: (p) => p.includes('1b') },
+  { key: '2b', label: '2B', test: (p) => p.includes('2b') },
+  { key: 'ss', label: 'SS', test: (p) => p.includes('ss') },
+  { key: '3b', label: '3B', test: (p) => p.includes('3b') },
+  { key: 'of', label: 'OF', test: (p) => /of|lf|cf|rf/.test(p) },
+  { key: 'dh', label: 'DH', test: (p) => p.includes('dh') },
+  { key: 'sp', label: 'SP', test: (p) => /-s\b|(^|-)sp($|-)/.test(p) },
+  { key: 'rp', label: 'RP', test: (p) => /hp/.test(p) && !/-s\b/.test(p) },
+]
+const POOL_PAGE = 10
 
 const SOURCE_LABEL: Record<string, string> = {
   option: 'Option salary from the contract, via MLB Trade Rumors',
   'mlbtr-arb': 'Arbitration projection (MLB Trade Rumors)',
+  'cots-arb': "Arbitration estimate from Cot's (MLBTR has no projection for this player)",
   'rough-arb': 'Rough estimate: MLBTR has no projection for this player',
   minimum: 'League minimum (2026 figure)',
 }
@@ -40,8 +57,12 @@ function Chip({ children, tone = 'plain' }: { children: React.ReactNode; tone?: 
   return <span className={`inline-block whitespace-nowrap rounded border px-1.5 py-px text-[10px] font-medium leading-4 ${cls}`}>{children}</span>
 }
 
-function statusChips(p: Player) {
+function statusChips(p: Player, added?: Slot['added']) {
   const chips: React.ReactNode[] = []
+  if (added) {
+    chips.push(<Chip key="ad" tone="solid">{added.kind === 'fa' ? 'Free-agent signing' : `Trade from ${added.from}`}</Chip>)
+    return chips
+  }
   if (p.status === 'signed') {
     chips.push(<Chip key="s" tone="solid">Signed</Chip>)
     if (p.walkYear) chips.push(<Chip key="w">Free agent after 2027</Chip>)
@@ -77,7 +98,7 @@ function Salary({ s }: { s: Slot }) {
   return <span className="font-mono text-xs text-[var(--text)]" title={SOURCE_LABEL[p.salarySource ?? '']}>{money(s.salary, 2)}</span>
 }
 
-const ageText = (p: Player) => (p.age != null ? `age ${p.age + 1}` : '')
+const ageText = (p: Player) => (p.age != null ? `age ${p.age}` : '')
 
 function ActionButton({ onClick, children, label }: { onClick: () => void; children: React.ReactNode; label: string }) {
   return (
@@ -146,7 +167,7 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
               <span className="text-[11px] uppercase text-[var(--dimmer)]">{p.pos}</span>
             </div>
             <div className="mt-0.5 flex flex-wrap items-center gap-1">
-              {statusChips(p)}
+              {statusChips(p, s.added)}
               <span className="text-[11px] text-[var(--dimmer)] sm:hidden">{ageText(p)}</span>
             </div>
             {actions && <div className="mt-1.5 flex flex-wrap gap-1.5">{actions}</div>}
@@ -245,6 +266,7 @@ function describeMove(m: Move, name: string): string {
     case 'optOut': return `${name} opted out`
     case 'resign': return `Re-signed ${name} at ${money(m.salary)}`
     case 'salary': return `Set ${name}'s salary to ${money(m.salary)}`
+    case 'add': return m.salary != null ? `Signed ${name} at ${money(m.salary)}` : `Traded for ${name}`
   }
 }
 
@@ -258,7 +280,12 @@ export default function TeamBuilderApp() {
   const [data, setData] = useState<TeamFile | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [movesByTeam, setMovesByTeam] = useState<Record<string, Move[]>>({})
-  const [editing, setEditing] = useState<{ id: number; kind: 'resign' | 'exercise' | 'salary' } | null>(null)
+  const [editing, setEditing] = useState<{ id: number; kind: 'resign' | 'exercise' | 'salary' | 'add' } | null>(null)
+  const [pool, setPool] = useState<PoolPlayer[]>([])
+  const [poolKind, setPoolKind] = useState<'fa' | 'roster'>('fa')
+  const [poolPos, setPoolPos] = useState('all')
+  const [poolQuery, setPoolQuery] = useState('')
+  const [poolShown, setPoolShown] = useState(POOL_PAGE)
 
   const moves = movesByTeam[team] ?? []
   const setMoves = (next: Move[]) => setMovesByTeam((all) => ({ ...all, [team]: next }))
@@ -267,6 +294,8 @@ export default function TeamBuilderApp() {
 
   useEffect(() => {
     fetch(`${DATA}/meta.json`).then((r) => r.json()).then(setMeta).catch(() => setError('Could not load the roster data.'))
+    // The add-players list isn't needed to draw the roster, so a failure here is not fatal.
+    fetch(`${DATA}/pool.json`).then((r) => r.json()).then(setPool).catch(() => setPool([]))
   }, [])
 
   useEffect(() => {
@@ -279,7 +308,18 @@ export default function TeamBuilderApp() {
   }, [team])
 
   const start = useMemo(() => (data ? buildRoster(data, []) : null), [data])
-  const built = useMemo(() => (data ? buildRoster(data, moves) : null), [data, moves])
+  const built = useMemo(() => (data ? buildRoster(data, moves, pool) : null), [data, moves, pool])
+
+  const poolResults = useMemo(() => {
+    if (!built) return []
+    const here = new Set(built.slots.filter((s) => s.onRoster).map((s) => s.player.mlbamId))
+    const q = poolQuery.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    const posTest = POSITIONS.find((x) => x.key === poolPos)!.test
+    return pool
+      .filter((e) => e.kind === poolKind && e.from !== team && !here.has(e.mlbamId) && posTest(e.pos.toLowerCase()))
+      .filter((e) => !q || e.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(q))
+      .sort((a, b) => (poolKind === 'fa' ? (b.salaryPrevYear ?? 0) - (a.salaryPrevYear ?? 0) : (b.salary ?? 0) - (a.salary ?? 0)) || a.name.localeCompare(b.name))
+  }, [built, pool, poolKind, poolPos, poolQuery, team])
 
   const pickTeam = (t: string) => {
     const q = new URLSearchParams(params.toString())
@@ -293,9 +333,27 @@ export default function TeamBuilderApp() {
   const nameOf = (id: number) => built?.slots.find((s) => s.player.mlbamId === id)?.player.name ?? 'Player'
   const touched = new Set(moves.map((m) => m.id))
 
+  const addEditor = (e: PoolPlayer) => {
+    if (editing?.id !== e.mlbamId || editing.kind !== 'add') return undefined
+    return (
+      <SalaryForm
+        initial={e.kind === 'fa' ? Math.max(e.salaryPrevYear ?? minimum, minimum) : null}
+        hint={
+          e.kind === 'fa'
+            ? e.salaryPrevYear != null
+              ? 'Pre-filled with his 2026 salary as a placeholder. A projection-based price comes once WAR is added.'
+              : 'No 2026 salary on file; pre-filled at the league minimum. Enter your own figure.'
+            : "No source gives this player's 2027 salary. Enter a figure to trade for him."
+        }
+        onSave={(salary) => act({ type: 'add', id: e.mlbamId, salary })}
+        onCancel={() => setEditing(null)}
+      />
+    )
+  }
+
   const editorFor = (s: Slot) => {
     const id = s.player.mlbamId!
-    if (editing?.id !== id) return undefined
+    if (editing?.id !== id || editing.kind === 'add') return undefined
     if (editing.kind === 'resign') {
       const prev = s.player.salaryPrevYear
       return (
@@ -333,6 +391,11 @@ export default function TeamBuilderApp() {
     const id = p.mlbamId
     if (!id) return null
     const b: React.ReactNode[] = []
+    if (s.added) {
+      if (salaryEditable(s)) b.push(<ActionButton key="e" label={`Edit ${p.name}'s salary`} onClick={() => setEditing({ id, kind: 'salary' })}>Edit salary</ActionButton>)
+      b.push(<ActionButton key="u" label={`Remove ${p.name}`} onClick={() => undo(id)}>Remove</ActionButton>)
+      return b
+    }
     if (p.status === 'option') {
       b.push(
         <ActionButton key="d" label={`Decline ${p.name}'s option`} onClick={() => act({ type: 'decline', id })}>
@@ -398,7 +461,7 @@ export default function TeamBuilderApp() {
       <header className="mb-5">
         <h1 className="mb-1 text-2xl font-bold tracking-tight">Team Builder</h1>
         <p className="max-w-2xl text-sm text-[var(--dim)]">
-          Every team&apos;s 2027 roster as it stands today. Decline options, non-tender, trade players away or re-sign your free agents, and watch payroll and the luxury tax move.
+          Every team&apos;s 2027 roster as it stands today. Decline options, non-tender or trade players away, re-sign your free agents or sign someone else's, and watch payroll and the luxury tax move.
         </p>
       </header>
 
@@ -469,6 +532,94 @@ export default function TeamBuilderApp() {
             </section>
           )}
 
+          {/* Add players: free agents, or anyone on another team (a pretend trade) */}
+          <section id="add-players" className="overflow-hidden rounded-xl border border-[var(--rule)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--rule)] px-4 py-2.5">
+              <h2 className="text-sm font-semibold">Add players</h2>
+              <div className="flex rounded-lg border border-[var(--rule)] p-0.5 text-xs" role="tablist" aria-label="Player pool">
+                {(['fa', 'roster'] as const).map((k) => (
+                  <button
+                    key={k}
+                    type="button"
+                    role="tab"
+                    aria-selected={poolKind === k}
+                    onClick={() => { setPoolKind(k); setPoolShown(POOL_PAGE); setEditing(null) }}
+                    className={`rounded-md px-2.5 py-1 font-medium ${poolKind === k ? 'bg-[var(--text)] text-[var(--panel)]' : 'text-[var(--dim)] hover:text-[var(--text)]'}`}
+                  >
+                    {k === 'fa' ? 'Free agents' : 'Trade for a player'}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2 border-b border-[var(--rule)] bg-[var(--bg)]/40 px-4 py-2">
+              <input
+                type="search"
+                value={poolQuery}
+                onChange={(e) => { setPoolQuery(e.target.value); setPoolShown(POOL_PAGE) }}
+                placeholder={poolKind === 'fa' ? 'Search free agents' : 'Search every other team'}
+                aria-label="Search players"
+                className="min-w-0 flex-1 rounded-lg border border-[var(--rule)] bg-[var(--panel)] px-3 py-1.5 text-sm"
+              />
+              <select
+                value={poolPos}
+                onChange={(e) => { setPoolPos(e.target.value); setPoolShown(POOL_PAGE) }}
+                aria-label="Position"
+                className="rounded-lg border border-[var(--rule)] bg-[var(--panel)] px-2 py-1.5 text-sm"
+              >
+                {POSITIONS.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}
+              </select>
+            </div>
+            <p className="border-b border-[var(--rule)] px-4 py-2 text-[11px] text-[var(--dim)]">
+              {poolKind === 'fa'
+                ? <>Players projected to be free agents, from Cot&apos;s and MLB Trade Rumors&apos; list, sorted by 2026 salary. Signing one is a one-year figure you set; until WAR projections are added, it starts at his 2026 salary.</>
+                : <>Every player on another team&apos;s 2027 roster. Trading for one brings his 2027 salary; who goes back the other way isn&apos;t modelled, so remove players yourself.</>}
+            </p>
+            <div className="divide-y divide-[var(--rule)]">
+              {poolResults.slice(0, poolShown).map((e) => (
+                <div key={e.mlbamId}>
+                  <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_190px_110px]">
+                    <div className="flex min-w-0 items-center gap-2.5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={headshotUrl(e.mlbamId)} alt="" loading="lazy" className="h-8 w-8 shrink-0 rounded-full bg-[var(--track)] object-cover" />
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-1.5">
+                          <a href={`/player/${e.mlbamId}`} className="truncate text-sm font-medium hover:underline">{e.name}</a>
+                          <span className="text-[11px] uppercase text-[var(--dimmer)]">{e.pos}</span>
+                        </div>
+                        <div className="text-[11px] text-[var(--dimmer)]">
+                          {[e.from ? (e.kind === 'fa' ? `last with ${e.from}` : e.from) : null, e.age != null ? `age ${e.age}` : null, e.note].filter(Boolean).join(' · ')}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="hidden truncate text-[11px] text-[var(--dim)] sm:block" title={e.contract}>{e.contract}</div>
+                    <div className="flex items-center justify-end gap-2">
+                      <span className="text-right font-mono text-[11px] text-[var(--dim)]">
+                        {e.kind === 'fa'
+                          ? e.salaryPrevYear != null ? <>{money(e.salaryPrevYear)}<span className="block font-sans text-[10px] text-[var(--dimmer)]">2026</span></> : '—'
+                          : e.salary != null ? <>{money(e.salary)}<span className="block font-sans text-[10px] text-[var(--dimmer)]">2027</span></> : 'unknown'}
+                      </span>
+                      <ActionButton
+                        label={`${e.kind === 'fa' ? 'Sign' : 'Trade for'} ${e.name}`}
+                        onClick={() => (e.kind === 'roster' && e.salary != null ? act({ type: 'add', id: e.mlbamId }) : setEditing({ id: e.mlbamId, kind: 'add' }))}
+                      >
+                        {e.kind === 'fa' ? 'Sign' : 'Trade for'}
+                      </ActionButton>
+                    </div>
+                  </div>
+                  {addEditor(e)}
+                </div>
+              ))}
+              {poolResults.length === 0 && (
+                <p className="px-4 py-4 text-center text-xs text-[var(--dimmer)]">{pool.length ? 'No players match.' : 'Loading players…'}</p>
+              )}
+            </div>
+            {poolResults.length > poolShown && (
+              <button type="button" onClick={() => setPoolShown((n) => n + 25)} className="w-full border-t border-[var(--rule)] py-2 text-xs font-medium text-[var(--dim)] hover:bg-[var(--bg)] hover:text-[var(--text)]">
+                Show more ({poolResults.length - poolShown} more)
+              </button>
+            )}
+          </section>
+
           {/* Roster, by status */}
           {GROUPS.map((g) => {
             const slots = built.slots.filter((s) => s.onRoster && g.test(s)).sort(bySalary)
@@ -487,7 +638,9 @@ export default function TeamBuilderApp() {
                         ? `At the league minimum. ${money(minimum, 2)} is the 2026 figure; 2027's depends on the next labor deal.`
                         : g.key === 'resigned'
                           ? 'One-year figures you entered.'
-                          : undefined
+                          : g.key === 'added'
+                            ? 'Free agents at the one-year figure you entered; traded-for players at their 2027 salary.'
+                            : undefined
                 }
               >
                 <ColumnHeads />

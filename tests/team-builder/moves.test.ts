@@ -84,3 +84,35 @@ describe('the change list', () => {
     expect(undoPlayer(m, 3)).toEqual([{ type: 'remove', id: 5 }])
   })
 })
+
+describe('adding players from the pool', () => {
+  const pool = [
+    { mlbamId: 900, name: 'Free Agent', pos: 'ss', age: 30, from: 'NYY', kind: 'fa' as const, status: 'fa' as const, salary: null, taxValue: null, salaryPrevYear: 5e6, contract: '' },
+    { mlbamId: 901, name: 'Trade Target', pos: 'rhp', age: 28, from: 'NYM', kind: 'roster' as const, status: 'signed' as const, salary: 20e6, taxValue: 18e6, salarySource: 'cots' as const, salaryPrevYear: 20e6, contract: '5 y/$90M' },
+    { mlbamId: 5, name: 'Already Here', pos: 'lhp', age: 28, from: 'BOS', kind: 'roster' as const, status: 'signed' as const, salary: 1, taxValue: 1, salaryPrevYear: 1, contract: '' },
+  ]
+
+  test('sign a free agent at a typed salary', () => {
+    const r = buildRoster(team, [{ type: 'add', id: 900, salary: 12e6 }], pool)
+    expect(r.payroll - base.payroll).toBe(12e6)
+    expect(r.taxPayroll - base.taxPayroll).toBe(12e6)
+    expect(slot(r, 900)).toMatchObject({ onRoster: true, added: { kind: 'fa', from: 'NYY' } })
+  })
+  test('a free agent with no salary is not added', () => {
+    expect(buildRoster(team, [{ type: 'add', id: 900 }], pool).rosterCount).toBe(base.rosterCount)
+  })
+  test('trade for a player: brings his salary and tax value', () => {
+    const r = buildRoster(team, [{ type: 'add', id: 901 }], pool)
+    expect(r.payroll - base.payroll).toBe(20e6)
+    expect(r.taxPayroll - base.taxPayroll).toBe(18e6)
+    expect(slot(r, 901).added).toEqual({ kind: 'trade', from: 'NYM' })
+  })
+  test("can't add someone already on the team", () => {
+    expect(buildRoster(team, [{ type: 'add', id: 5 }], pool).payroll).toBe(base.payroll)
+  })
+  test('removing an added player cancels the add', () => {
+    let m: Move[] = addMove([], { type: 'add', id: 901 })
+    m = addMove(m, { type: 'remove', id: 901 })
+    expect(m).toEqual([])
+  })
+})
