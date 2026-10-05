@@ -13,7 +13,8 @@ import assumptions from '../../lib/team-builder/assumptions.json'
 import optionsFile from '../../lib/team-builder/options-2027.json'
 import arbFile from '../../lib/team-builder/mlbtr-arb-2027.json'
 import faFile from '../../lib/team-builder/mlbtr-fa-2027.json'
-import { buildPool } from '../../lib/team-builder/pool'
+import { buildPool, type PoolPlayer } from '../../lib/team-builder/pool'
+import { fetchProjections, type Projection } from '../../lib/team-builder/projections'
 import type { TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
@@ -22,6 +23,7 @@ import { leaguePool, teamPool } from '../../lib/team-builder/rosters'
 
 const OUT_DIR = join(import.meta.dir, '../../public/data/team-builder')
 const TIER_STEPS = [20e6, 40e6, 60e6] // gaps above the base line used since 2022
+const MAX_STALE_TEAMS = 5 // more than this many teams failing at once stops the whole refresh
 const MAX_UNMATCHED = 15 // more than this many unmatched names means something is broken, not just new
 
 const arg = (name: string) => {
@@ -96,7 +98,9 @@ function mode(values: number[]): number | null {
 async function main() {
   const teams = Object.entries(config.teams)
   const known = config.knownMismatches as unknown as Record<string, { payroll?: KnownMismatch; tax?: KnownMismatch }>
-  const errors: string[] = []
+  const errors: string[] = [] // problems that stop the whole refresh
+  const teamErrors = new Map<string, string[]>() // problems with one team's sheet
+  const flag = (team: string, msg: string) => teamErrors.set(team, [...(teamErrors.get(team) ?? []), msg])
   const sheets: TeamSheet[] = []
 
   const csvs = await Promise.all(
@@ -106,7 +110,7 @@ async function main() {
         if (rawDir) { mkdirSync(rawDir, { recursive: true }); writeFileSync(join(rawDir, `${team}.csv`), text) }
         return [team, text] as const
       } catch (e) {
-        errors.push((e as Error).message)
+        flag(team, (e as Error).message)
         return [team, null] as const
       }
     }),
@@ -116,7 +120,7 @@ async function main() {
     if (text == null) continue
     try {
       const sheet = parseTeamSheet(team, text, config.firstYear, config.targetYear)
-      errors.push(...checkTeamSheet(sheet, known[team]))
+      for (const msg of checkTeamSheet(sheet, known[team])) flag(team, msg)
 
       const prevFile = join(OUT_DIR, 'teams', `${team}.json`)
       if (existsSync(prevFile)) {
@@ -125,17 +129,28 @@ async function main() {
         // the day Cot's rolls it over to the new season, when last season's free agents drop off.
         const justRolled = sheet.sheetFirstYear !== (prev.sheetFirstYear ?? config.firstYear)
         if (!justRolled && sheet.players.length < prev.players.length * 0.8) {
-          errors.push(`${team}: ${sheet.players.length} players, down from ${prev.players.length} last refresh`)
+          flag(team, `${team}: ${sheet.players.length} players, down from ${prev.players.length} last refresh`)
         }
         // A rolled-over sheet no longer shows last season's pay; keep it from the last snapshot.
         const prevPay = new Map(prev.players.map((p) => [p.sheetName, p.salaryPrevYear]))
         for (const p of sheet.players) if (p.salaryPrevYear == null) p.salaryPrevYear = prevPay.get(p.sheetName) ?? null
       }
-      sheets.push(sheet)
+      if (!teamErrors.has(team)) sheets.push(sheet)
     } catch (e) {
-      errors.push((e as Error).message)
+      flag(team, (e as Error).message)
     }
   }
+
+  // One team's sheet failing a check (often Cot's mid-edit) shouldn't freeze the other 29: keep
+  // that team's last good snapshot, publish the rest, and fail the run so someone hears about it.
+  // A team with no snapshot to fall back on, or many failing at once, stops everything.
+  const kept: TeamFile[] = []
+  for (const [team, msgs] of teamErrors) {
+    const prevFile = join(OUT_DIR, 'teams', `${team}.json`)
+    if (existsSync(prevFile)) kept.push(JSON.parse(readFileSync(prevFile, 'utf8')) as TeamFile)
+    else errors.push(...msgs, `${team}: no earlier snapshot to fall back on`)
+  }
+  if (teamErrors.size > MAX_STALE_TEAMS) errors.push(`${teamErrors.size} teams failed their checks at once — more likely a code or layout problem than Cot's edits`)
 
   let ids = { unmatched: [] as string[], fuzzy: [] as string[], stale: [] as string[] }
   if (!errors.length) {
@@ -154,6 +169,30 @@ async function main() {
   }
 
   for (const s of sheets) applyEstimates(s, optionsFile.options as OptionFact[], arbFile.players, assumptions)
+  // Kept teams already carry their estimates; from here on they're handled like the others.
+  sheets.push(...(kept as unknown as TeamSheet[]))
+
+  // Projected WAR. If FanGraphs (or fg-proxy's cookie) fails, keep the last good projections,
+  // still publish the contract changes, and fail the run afterwards so someone hears about it.
+  const projFile = join(OUT_DIR, 'projections.json')
+  const prevProj = existsSync(projFile) ? (JSON.parse(readFileSync(projFile, 'utf8')) as { fetchedAt: string; players: Record<number, Projection> }) : null
+  let projections: Record<number, Projection> = prevProj?.players ?? {}
+  let projFetchedAt = prevProj?.fetchedAt ?? null
+  let projError: string | null = null
+  try {
+    projections = await fetchProjections(assumptions.projections.system)
+    projFetchedAt = new Date().toISOString().slice(0, 10)
+  } catch (e) {
+    projError = (e as Error).message
+  }
+  for (const s of sheets) {
+    for (const p of s.players as (typeof s.players[number] & { war?: number | null; pa?: number; ip?: number })[]) {
+      const pr = p.mlbamId ? projections[p.mlbamId] : undefined
+      p.war = pr?.war ?? null
+      if (pr?.pa) p.pa = pr.pa
+      if (pr?.ip) p.ip = pr.ip
+    }
+  }
 
   const base = mode(sheets.map((s) => s.threshold).filter((t): t is number => t != null))
   const sheetTiers = sheets.find((s) => s.tiers && s.tiers[0] === base)?.tiers ?? null
@@ -164,7 +203,15 @@ async function main() {
     // Once Cot's rolls sheets over they spell out the tiers; until then they're derived.
     taxThreshold: base == null ? null : sheetTiers ? { base, tiers: sheetTiers.slice(1), derived: false } : { base, tiers: TIER_STEPS.map((step) => base + step), derived: true },
     teams: sheets.map((s) => s.team).sort(),
-    assumptions: { leagueMinimum: assumptions.leagueMinimum, roughArbitration: assumptions.roughArbitration },
+    assumptions: {
+      leagueMinimum: assumptions.leagueMinimum,
+      roughArbitration: assumptions.roughArbitration,
+      optionDefaults: assumptions.optionDefaults,
+      dollarsPerWar: assumptions.dollarsPerWar,
+    },
+    projections: { ...assumptions.projections, fetchedAt: projFetchedAt, players: Object.keys(projections).length },
+    // Teams showing their last good snapshot because today's sheet failed a check.
+    staleTeams: Object.fromEntries([...teamErrors].map(([t, msgs]) => [t, msgs])),
     sources: {
       contracts: "Cot's Baseball Contracts",
       arbitration: arbFile.source,
@@ -177,8 +224,23 @@ async function main() {
   // and no redeploy. updatedAt is therefore "when Cot's last changed", not "when we last looked".
   const files = new Map(sheets.map((s) => [join(OUT_DIR, 'teams', `${s.team}.json`), JSON.stringify(s, null, 1) + '\n']))
   // One file with every player a user could add (free agents and other teams' players).
-  const pool = buildPool(sheets as unknown as TeamFile[], faFile.players)
+  // Once Cot's rolls a sheet over, that team's free agents drop off it and only MLBTR's list
+  // (which has no team) still carries them. Keep their last team, contract and pay from the
+  // previous pool so "re-sign your own free agent" keeps working.
+  const poolFile = join(OUT_DIR, 'pool.json')
+  const prevPool = new Map<number, PoolPlayer>(
+    existsSync(poolFile) ? (JSON.parse(readFileSync(poolFile, 'utf8')) as PoolPlayer[]).map((e) => [e.mlbamId, e]) : [],
+  )
+  const pool = buildPool(sheets as unknown as TeamFile[], faFile.players).map((e) => {
+    const prev = prevPool.get(e.mlbamId)
+    const carried = e.from == null && prev?.kind === 'fa' && prev.from
+      ? { from: prev.from, contract: prev.contract, salaryPrevYear: prev.salaryPrevYear, pos: prev.pos }
+      : {}
+    const pr = projections[e.mlbamId]
+    return { ...e, ...carried, war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
+  })
   files.set(join(OUT_DIR, 'pool.json'), JSON.stringify(pool) + '\n')
+  if (projFetchedAt) files.set(projFile, JSON.stringify({ system: assumptions.projections.system, fetchedAt: projFetchedAt, players: projections }) + '\n')
   const metaFile = join(OUT_DIR, 'meta.json')
   const prevMeta = existsSync(metaFile) ? JSON.parse(readFileSync(metaFile, 'utf8')) : null
   const changed = [...files].filter(([f, text]) => !existsSync(f) || readFileSync(f, 'utf8') !== text)
@@ -210,6 +272,17 @@ async function main() {
       const lines = ['### Team Builder: players without an MLBAM id', '', ...ids.unmatched.map((u) => `- \`${u}\``)]
       writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n', { flag: 'a' })
     }
+  }
+  const projected = sheets.reduce((n, s) => n + s.players.filter((p) => (p as { war?: number | null }).war != null).length, 0)
+  console.log(`Projections (${assumptions.projections.system}): ${projected} of ${sheets.reduce((n, s) => n + s.players.length, 0)} sheet players have a projected WAR.`)
+  if (projError) {
+    console.error(`Projections failed, kept the ones from ${projFetchedAt ?? 'never'}: ${projError}`)
+    process.exitCode = 1
+  }
+  if (teamErrors.size) {
+    console.error(`Kept the last good snapshot for ${[...teamErrors.keys()].join(', ')}:`)
+    for (const msgs of teamErrors.values()) for (const m of msgs) console.error(`  - ${m}`)
+    process.exitCode = 1
   }
 }
 

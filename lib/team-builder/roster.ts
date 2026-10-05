@@ -15,10 +15,14 @@ export interface Meta {
     leagueMinimum: { value: number; note: string }
     roughArbitration: { note: string; byYear: Record<string, number> }
     optionDefaults?: { note: string }
+    dollarsPerWar?: { value: number; note: string; url: string } // missing in data written before WAR was added
   }
+  projections?: { system: string; label: string; note: string; url: string; fetchedAt: string | null; players: number }
+  staleTeams?: Record<string, string[]>
   sources: {
     arbitration: { title: string; site: string; author: string; url: string; importedAt: string }
     options: { compiled: string; clubOptions: string; playerOptions: string }
+    freeAgents?: { title: string; url: string; updated: string | null }
   }
   teams: string[]
 }
@@ -64,3 +68,12 @@ export function money(dollars: number, digits = 1): string {
   if (abs < 1e6 && abs !== 0) return `${sign}$${Math.round(abs / 1000)}K`
   return `${sign}$${(abs / 1e6).toFixed(digits)}M`
 }
+
+// What a free agent might cost for one year: projected WAR times the market price of a win,
+// rounded to $100K and never below the league minimum. Null without a projection.
+export function warPrice(war: number | null | undefined, dollarsPerWar: number, minimum: number): number | null {
+  if (war == null) return null
+  return Math.max(minimum, Math.round((war * dollarsPerWar) / 1e5) * 1e5)
+}
+
+export const fmtWar = (war: number | null | undefined) => (war == null ? '—' : war.toFixed(1))
