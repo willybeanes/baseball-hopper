@@ -36,7 +36,7 @@ interface CompareRow {
 }
 
 function deltaColor(d: number | null) {
-  if (d == null) return 'text-[#999]'
+  if (d == null) return 'text-[var(--dimmer)]'
   if (d > 10)  return 'text-red-500 font-semibold'
   if (d > 5)   return 'text-orange-400'
   if (d < -10) return 'text-blue-500 font-semibold'
@@ -45,12 +45,12 @@ function deltaColor(d: number | null) {
 }
 
 function fmt(v: number | null, d = 1) {
-  if (v == null) return <span className="text-[#bbb]">—</span>
+  if (v == null) return <span className="text-[var(--dimmer)]">—</span>
   return v.toFixed(d)
 }
 
 function fmtDelta(v: number | null) {
-  if (v == null) return <span className="text-[#bbb]">—</span>
+  if (v == null) return <span className="text-[var(--dimmer)]">—</span>
   return (v > 0 ? '+' : '') + v.toFixed(1)
 }
 
@@ -91,7 +91,7 @@ export default function FgComparePage() {
     return (
       <th
         onClick={() => handleSort(col)}
-        className={`px-2 py-2 text-left text-[10px] font-semibold uppercase tracking-wide text-[#888] whitespace-nowrap cursor-pointer hover:text-[#1a1a1a] select-none ${className}`}
+        className={`px-2 py-2 text-left text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] whitespace-nowrap cursor-pointer hover:text-[#1a1a1a] select-none ${className}`}
       >
         {label}<SortIcon col={col} />
       </th>
@@ -138,7 +138,7 @@ export default function FgComparePage() {
 
         {/* Header */}
         <div>
-          <a href="/stuff/platoon" className="text-sm text-[#888] hover:text-[#1a1a1a] transition-colors">← Stuff Splits</a>
+          <a href="/stuff/platoon" className="text-sm text-[var(--dim)] hover:text-[#1a1a1a] transition-colors">← Stuff Splits</a>
           <h1 className="text-3xl font-black tracking-tight mt-1">FanGraphs Comparison</h1>
           <p className="text-sm text-[#666] mt-1">
             Our Stuff+ / Loc+ vs FanGraphs pitch-level grades · 2026
@@ -154,7 +154,7 @@ export default function FgComparePage() {
               { label: 'Bias (our − FG)', value: (bias! > 0 ? '+' : '') + bias!.toFixed(1) + ' pts' },
             ].map(({ label, value }) => (
               <div key={label} className="bg-white border border-[#ddd8d0] rounded-xl px-4 py-2.5 shadow-sm">
-                <p className="text-[10px] uppercase tracking-wide text-[#999] font-semibold">{label}</p>
+                <p className="text-[11px] uppercase tracking-wide text-[var(--dimmer)] font-medium">{label}</p>
                 <p className="text-lg font-black text-[#1a1a1a]">{value}</p>
               </div>
             ))}
@@ -164,11 +164,11 @@ export default function FgComparePage() {
         {/* MAE by pitch type */}
         {!loading && maeByType.length > 0 && (
           <div className="bg-white border border-[#ddd8d0] rounded-2xl shadow-sm px-5 py-4">
-            <p className="text-[10px] uppercase tracking-wide text-[#999] font-semibold mb-3">MAE by pitch type · Stuff+ vs FanGraphs (all pitchers)</p>
+            <p className="text-[11px] uppercase tracking-wide text-[var(--dimmer)] font-medium mb-3">MAE by pitch type · Stuff+ vs FanGraphs (all pitchers)</p>
             <div className="overflow-x-auto">
               <table className="text-xs w-full">
                 <thead>
-                  <tr className="text-[10px] uppercase tracking-wide text-[#aaa] border-b border-[#f0ece4]">
+                  <tr className="text-[11px] uppercase tracking-wide text-[var(--dimmer)] border-b border-[#f0ece4]">
                     <th className="text-left pb-1.5 pr-6">Pitch type</th>
                     <th className="text-right pb-1.5 pr-6">Pairs</th>
                     <th className="text-right pb-1.5 pr-6">MAE</th>
@@ -179,7 +179,7 @@ export default function FgComparePage() {
                   {maeByType.sort((a, b) => b.mae - a.mae).map(({ pt, label, mae: ptMae, bias: ptBias, n }) => (
                     <tr key={pt} className="border-t border-[#f5f2ed]">
                       <td className="py-1.5 pr-6 font-medium text-[#1a1a1a]">{label}</td>
-                      <td className="py-1.5 pr-6 text-right text-[#999]">{n}</td>
+                      <td className="py-1.5 pr-6 text-right text-[var(--dimmer)]">{n}</td>
                       <td className={`py-1.5 pr-6 text-right font-semibold ${ptMae > 10 ? 'text-red-500' : ptMae > 7 ? 'text-orange-400' : 'text-[#22a55e]'}`}>
                         {ptMae.toFixed(1)}
                       </td>
@@ -224,7 +224,7 @@ export default function FgComparePage() {
 
           <div className="w-px h-5 bg-[#e0dbd2] hidden sm:block" />
 
-          <label className="flex items-center gap-2 text-xs text-[#888]">
+          <label className="flex items-center gap-2 text-xs text-[var(--dim)]">
             Min pitches
             <select
               value={minN}
@@ -245,11 +245,11 @@ export default function FgComparePage() {
             <table className="w-full text-sm border-collapse">
               <thead className="bg-[#f5f2ed] border-b border-[#e8e3db]">
                 <tr>
-                  <th className="px-2 py-2 text-left text-[10px] font-semibold uppercase tracking-wide text-[#888] whitespace-nowrap" colSpan={3} />
-                  <th className="px-2 py-2 text-[10px] font-bold uppercase tracking-wide text-[#4A90D9] text-center border-l border-[#e8e3db]" colSpan={2}>Stuff+</th>
-                  <th className="px-2 py-2 text-[10px] font-semibold uppercase tracking-wide text-[#888] text-center border-l border-[#e8e3db]" colSpan={1}>Δ</th>
-                  <th className="px-2 py-2 text-[10px] font-bold uppercase tracking-wide text-[#4A90D9] text-center border-l border-[#e8e3db]" colSpan={2}>Loc+</th>
-                  <th className="px-2 py-2 text-[10px] font-semibold uppercase tracking-wide text-[#888] text-center border-l border-[#e8e3db]" colSpan={1}>Δ</th>
+                  <th className="px-2 py-2 text-left text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] whitespace-nowrap" colSpan={3} />
+                  <th className="px-2 py-2 text-[11px] font-bold uppercase tracking-wide text-[#4A90D9] text-center border-l border-[#e8e3db]" colSpan={2}>Stuff+</th>
+                  <th className="px-2 py-2 text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] text-center border-l border-[#e8e3db]" colSpan={1}>Δ</th>
+                  <th className="px-2 py-2 text-[11px] font-bold uppercase tracking-wide text-[#4A90D9] text-center border-l border-[#e8e3db]" colSpan={2}>Loc+</th>
+                  <th className="px-2 py-2 text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] text-center border-l border-[#e8e3db]" colSpan={1}>Δ</th>
                 </tr>
                 <tr className="bg-[#f0ece4] border-b border-[#e8e3db]">
                   <Th col="pitcher_name" label="Pitcher"  className="min-w-[130px]" />
@@ -265,17 +265,17 @@ export default function FgComparePage() {
               </thead>
               <tbody>
                 {loading && (
-                  <tr><td colSpan={9} className="text-center text-[#aaa] py-12 text-sm">Loading…</td></tr>
+                  <tr><td colSpan={9} className="text-center text-[var(--dimmer)] py-12 text-sm">Loading…</td></tr>
                 )}
                 {!loading && visible.length === 0 && (
-                  <tr><td colSpan={9} className="text-center text-[#aaa] py-12 text-sm">No results</td></tr>
+                  <tr><td colSpan={9} className="text-center text-[var(--dimmer)] py-12 text-sm">No results</td></tr>
                 )}
                 {!loading && visible.map((row, i) => (
                   <tr key={`${row.pitcher_id}__${row.pitch_type}`}
                     className={`border-b border-[#f0ece4] ${i % 2 === 0 ? '' : 'bg-[#faf8f5]'}`}>
                     <td className="px-2 py-2.5 font-medium text-[#1a1a1a] text-xs">{row.pitcher_name}</td>
                     <td className="px-2 py-2.5 text-[#555] text-xs">{PITCH_LABELS[row.pitch_type] ?? row.pitch_type}</td>
-                    <td className="px-2 py-2.5 text-[#999] text-xs">{row.n}</td>
+                    <td className="px-2 py-2.5 text-[var(--dimmer)] text-xs">{row.n}</td>
 
                     <td className="px-2 py-2.5 text-center text-xs border-l border-[#f0ece4]">{fmt(row.our_stuff)}</td>
                     <td className="px-2 py-2.5 text-center text-xs">{fmt(row.fg_stuff)}</td>
@@ -293,7 +293,7 @@ export default function FgComparePage() {
               </tbody>
             </table>
           </div>
-          <p className="text-[10px] text-[#bbb] px-5 py-3">
+          <p className="text-[11px] text-[var(--dimmer)] px-5 py-3">
             Δ = Ours − FanGraphs. Red = we grade higher than FG, Blue = FG grades higher than us.
           </p>
         </div>

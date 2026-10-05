@@ -77,7 +77,7 @@ function TypeBadge({ category }: { category: Category }) {
   const label = isWin ? WIN_LABEL[category] : LOSS_LABEL[category]
 
   const bgClass = isExtras
-    ? 'bg-[#b0aaa3]/20 text-[#777]'
+    ? 'bg-[#b0aaa3]/20 text-[var(--dim)]'
     : isWin
       ? isHatch
         ? 'bg-[#1a7a3a]/10 text-[#1a7a3a]'
@@ -87,7 +87,7 @@ function TypeBadge({ category }: { category: Category }) {
         : 'bg-[#c0392b]/15 text-[#c0392b]'
 
   return (
-    <span className={`inline-block text-[10px] font-medium px-1.5 py-0.5 rounded ${bgClass}`}>
+    <span className={`inline-block text-[11px] font-medium px-1.5 py-0.5 rounded ${bgClass}`}>
       {label}
     </span>
   )
@@ -127,11 +127,11 @@ function RecentGamesTable({ season }: { season: number }) {
         <>
           {/* Header */}
           <div className="grid grid-cols-[80px_1fr_1fr_1fr_1fr] gap-2 px-4 py-1.5 border-b border-[var(--rule)] bg-[var(--panel)]">
-            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Date</span>
-            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Away</span>
-            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Home</span>
-            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Win type</span>
-            <span className="text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">Loss type</span>
+            <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Date</span>
+            <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Away</span>
+            <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Home</span>
+            <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Win type</span>
+            <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Loss type</span>
           </div>
 
           <div className="divide-y divide-[var(--rule)]">
@@ -157,7 +157,7 @@ function RecentGamesTable({ season }: { season: number }) {
                     <span className={`ml-1.5 text-xs font-mono ${awayWon ? 'text-[#1a7a3a] font-bold' : 'text-[#c0392b]'}`}>
                       {g.away_score}
                     </span>
-                    {extras && awayWon && <span className="ml-1 text-[9px] text-[var(--dimmer)]">F/{g.innings_played}</span>}
+                    {extras && awayWon && <span className="ml-1 text-[11px] text-[var(--dimmer)]">F/{g.innings_played}</span>}
                   </a>
 
                   <a
@@ -172,7 +172,7 @@ function RecentGamesTable({ season }: { season: number }) {
                     <span className={`ml-1.5 text-xs font-mono ${!awayWon ? 'text-[#1a7a3a] font-bold' : 'text-[#c0392b]'}`}>
                       {g.home_score}
                     </span>
-                    {extras && !awayWon && <span className="ml-1 text-[9px] text-[var(--dimmer)]">F/{g.innings_played}</span>}
+                    {extras && !awayWon && <span className="ml-1 text-[11px] text-[var(--dimmer)]">F/{g.innings_played}</span>}
                   </a>
 
                   <div><TypeBadge category={winCat} /></div>
@@ -229,14 +229,14 @@ function GameDetailRows({ teamId, season, category }: { teamId: number; season: 
 
   if (loading) {
     return (
-      <div className="bg-[#faf8f5] border-b border-[var(--rule)] px-6 py-3 text-xs text-[#aaa]">
+      <div className="bg-[#faf8f5] border-b border-[var(--rule)] px-6 py-3 text-xs text-[var(--dimmer)]">
         Loading…
       </div>
     )
   }
   if (!games || games.length === 0) {
     return (
-      <div className="bg-[#faf8f5] border-b border-[var(--rule)] px-6 py-3 text-xs text-[#aaa]">
+      <div className="bg-[#faf8f5] border-b border-[var(--rule)] px-6 py-3 text-xs text-[var(--dimmer)]">
         No games found.
       </div>
     )
@@ -246,16 +246,16 @@ function GameDetailRows({ teamId, season, category }: { teamId: number; season: 
     <div className="bg-[#faf8f5] border-b border-[var(--rule)]">
       {/* Sub-header */}
       <div className="flex items-center gap-4 px-6 py-1.5 border-b border-[#ede8e1]">
-        <span className="text-[10px] font-semibold text-[#aaa] uppercase tracking-wider w-14">Date</span>
-        <span className="text-[10px] font-semibold text-[#aaa] uppercase tracking-wider flex-1">Opponent</span>
-        <span className="text-[10px] font-semibold text-[#aaa] uppercase tracking-wider w-16 text-right">Score</span>
-        <span className="text-[10px] font-semibold text-[#aaa] uppercase tracking-wider w-8 text-center">Inn</span>
+        <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider w-14">Date</span>
+        <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider flex-1">Opponent</span>
+        <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider w-16 text-right">Score</span>
+        <span className="text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider w-8 text-center">Inn</span>
       </div>
       {games.map((g, i) => (
         <div key={i} className="flex items-center gap-4 px-6 py-1.5 border-b border-[#ede8e1] last:border-b-0 hover:bg-[#f3f0eb] transition-colors">
           <span className="text-xs font-mono text-[#555] w-14 whitespace-nowrap">{fmtDate(g.game_date)}</span>
           <span className="text-xs text-[var(--text)] flex-1 whitespace-nowrap">
-            <span className="text-[#aaa] mr-1">{g.is_home ? 'vs' : '@'}</span>
+            <span className="text-[var(--dimmer)] mr-1">{g.is_home ? 'vs' : '@'}</span>
             {nickName(g.opponent_name)}
           </span>
           <a
@@ -266,7 +266,7 @@ function GameDetailRows({ teamId, season, category }: { teamId: number; season: 
           >
             {isWin ? 'W' : 'L'} {g.team_score}–{g.opponent_score}
           </a>
-          <span className="text-[10px] font-mono text-[#aaa] w-8 text-center">
+          <span className="text-[11px] font-mono text-[var(--dimmer)] w-8 text-center">
             {g.innings_played > 9 ? `F/${g.innings_played}` : ''}
           </span>
         </div>
@@ -292,7 +292,7 @@ function Seg({
       onClick={onClick}
     >
       {width >= 20 && (
-        <span className={`text-[10px] font-bold leading-none select-none ${darkText ? 'text-[#222]' : 'text-white drop-shadow-sm'}`}>
+        <span className={`text-[11px] font-bold leading-none select-none ${darkText ? 'text-[#222]' : 'text-white drop-shadow-sm'}`}>
           {count}
         </span>
       )}
@@ -388,7 +388,7 @@ export default function BlameSplitApp() {
         {expanded && (
           <span className="text-xs text-[var(--dim)] bg-[var(--panel)] border border-[var(--rule)] rounded-md px-2 py-1">
             {CATEGORY_LABEL[expanded.category]}
-            <button onClick={() => setExpanded(null)} className="ml-2 text-[#bbb] hover:text-[var(--text)]">✕</button>
+            <button onClick={() => setExpanded(null)} className="ml-2 text-[var(--dimmer)] hover:text-[var(--text)]">✕</button>
           </span>
         )}
       </div>
@@ -403,9 +403,9 @@ export default function BlameSplitApp() {
           <div className="flex items-center border-b border-[var(--rule)] px-4 py-2.5">
             <div className="w-28 shrink-0" />
             <div className="flex items-center" style={{ width: SIDE * 2 + 2 }}>
-              <span className="flex-1 text-center text-[11px] font-semibold text-[var(--dim)] uppercase tracking-wider">← Losses</span>
+              <span className="flex-1 text-center text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider">← Losses</span>
               <div className="w-px h-4 bg-[var(--rule)]" />
-              <span className="flex-1 text-center text-[11px] font-semibold text-[var(--dim)] uppercase tracking-wider">Wins →</span>
+              <span className="flex-1 text-center text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider">Wins →</span>
             </div>
             <div className="w-14 shrink-0" />
           </div>
@@ -416,13 +416,13 @@ export default function BlameSplitApp() {
             <div className="flex items-end" style={{ width: SIDE * 2 + 2 }}>
               <div className="flex justify-between" style={{ width: SIDE, direction: 'rtl' }}>
                 {ticks.filter(t => t > 0).map(t => (
-                  <span key={t} className="text-[9px] text-[var(--dimmer)] tabular-nums">{t}</span>
+                  <span key={t} className="text-[11px] text-[var(--dimmer)] tabular-nums">{t}</span>
                 ))}
               </div>
               <div className="w-px" />
               <div className="flex justify-between" style={{ width: SIDE }}>
                 {ticks.filter(t => t > 0).map(t => (
-                  <span key={t} className="text-[9px] text-[var(--dimmer)] tabular-nums">{t}</span>
+                  <span key={t} className="text-[11px] text-[var(--dimmer)] tabular-nums">{t}</span>
                 ))}
               </div>
             </div>
@@ -448,7 +448,7 @@ export default function BlameSplitApp() {
                     {/* Team label */}
                     <div className="w-28 shrink-0 flex items-center justify-end gap-1 pr-2">
                       <span className="text-[11px] text-[var(--text)] truncate font-medium">{nickName(row.team_name)}</span>
-                      <span className="text-[10px] text-[#bbb] shrink-0">–</span>
+                      <span className="text-[11px] text-[var(--dimmer)] shrink-0">–</span>
                     </div>
 
                     {/* Loss bars (flex-row-reverse so segments grow left from center) */}
@@ -514,7 +514,7 @@ export default function BlameSplitApp() {
             ].map(({ style, label }) => (
               <div key={label} className="flex items-center gap-1.5">
                 <div className="w-4 h-3 rounded-[2px] shrink-0" style={style} />
-                <span className="text-[10px] text-[var(--dim)]">{label}</span>
+                <span className="text-[11px] text-[var(--dim)]">{label}</span>
               </div>
             ))}
           </div>

@@ -1136,7 +1136,7 @@ export default function HHPSExplorer({
                 <span
                   key={t.label}
                   title={`${t.label}: ${(t.v * 100).toFixed(1)}%`}
-                  className="absolute -bottom-3 -translate-x-1/2 text-[9px] leading-none text-[var(--dimmer)] pointer-events-none"
+                  className="absolute -bottom-3 -translate-x-1/2 text-[11px] leading-none text-[var(--dimmer)] pointer-events-none"
                   style={{ left: `calc(${pos}% + ${(0.5 - pos / 100) * 16}px)` }}
                 >
                   {t.label === "standard" ? "▲" : "│"}
@@ -1160,7 +1160,7 @@ export default function HHPSExplorer({
           >
             Reset
           </button>
-          <span className="text-[10px] text-[var(--dimmer)]">
+          <span className="text-[11px] text-[var(--dimmer)]">
             ▲ standard {(fixed * 100).toFixed(1)}%
             {info.league !== undefined && <> · │ league avg {(info.league * 100).toFixed(1)}%</>}
             {" · leaderboard stays on the standard bar"}
@@ -1435,13 +1435,13 @@ export default function HHPSExplorer({
           {circlesActive ? (
             <>
               {TYPE_BUTTON_ORDER.filter((k) => circTypes[k]).map((k) => (
-                <span key={k} className="inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] leading-4 font-semibold text-white" style={{ background: typeInfo(k).color }}>
+                <span key={k} className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] leading-4 font-semibold text-white" style={{ background: typeInfo(k).color }}>
                   {typeInfo(k).label}
                   <span className="font-normal opacity-85">· each event</span>
                 </span>
               ))}
               {RESULTS.filter((r) => circRes[r.code]).map((r) => (
-                <span key={r.code} className="inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] leading-4 font-semibold text-white" style={{ background: r.color }}>
+                <span key={r.code} className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] leading-4 font-semibold text-white" style={{ background: r.color }}>
                   {r.label}
                   <span className="font-normal opacity-85">· result</span>
                 </span>
@@ -1450,7 +1450,7 @@ export default function HHPSExplorer({
           ) : (
             <>
               <span
-                className="inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] leading-4 font-semibold text-white"
+                className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] leading-4 font-semibold text-white"
                 style={{ background: outcomeColor(outcome) }}
               >
                 {outcome === "hard" ? "Hard-hit" : outcome === "whiff" ? "Whiffs" : outcome === "soft" ? "Soft-hit" : "Barrels"}
@@ -1458,7 +1458,7 @@ export default function HHPSExplorer({
               </span>
               {alsoWhiff && outcome !== "whiff" && (
                 <span
-                  className="inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] leading-4 font-semibold text-white"
+                  className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] leading-4 font-semibold text-white"
                   style={{ background: outcomeColor("whiff") }}
                 >
                   Whiffs

@@ -47,12 +47,12 @@ interface Props {
 type ExpandedKey = string  // `${pitcher_id}__${pitch_type}`
 
 function fmt(v: number | null, decimals = 1) {
-  if (v == null) return <span className="text-[#bbb]">—</span>
+  if (v == null) return <span className="text-[var(--dimmer)]">—</span>
   return v.toFixed(decimals)
 }
 
 function gapColor(v: number | null) {
-  if (v == null) return 'text-[#999]'
+  if (v == null) return 'text-[var(--dimmer)]'
   if (v > 5)  return 'text-emerald-600 font-semibold'
   if (v > 2)  return 'text-emerald-500'
   if (v < -5) return 'text-red-500 font-semibold'
@@ -71,7 +71,7 @@ function Th({ col, label, sortCol, sortDir, onSort, className = '' }: {
 }) {
   return (
     <th
-      className={`px-2 py-2 text-left text-[10px] font-semibold uppercase tracking-wide text-[#888] whitespace-nowrap cursor-pointer hover:text-[#1a1a1a] select-none ${className}`}
+      className={`px-2 py-2 text-left text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] whitespace-nowrap cursor-pointer hover:text-[#1a1a1a] select-none ${className}`}
       onClick={() => onSort(col)}
     >
       {label}<SortIcon col={col} sortCol={sortCol} sortDir={sortDir} />
@@ -89,25 +89,25 @@ export function PlatoonTable({ rows, total, page, pageSize, sortCol, sortDir, on
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="overflow-x-auto rounded-xl border border-[#e8e3db]">
+      <div className="overflow-x-auto">
         <table className="w-full text-sm border-collapse">
           <thead className="bg-[#f5f2ed] border-b border-[#e8e3db]">
             <tr>
-              <th className="px-3 py-2 text-left text-[10px] font-semibold uppercase tracking-wide text-[#888] w-6" />
+              <th className="px-3 py-2 text-left text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] w-6" />
               <Th col="pitcher_name" label="Pitcher"    sortCol={sortCol} sortDir={sortDir} onSort={onSort} className="min-w-[130px]" />
               <Th col="pitch_label"  label="Pitch"      sortCol={sortCol} sortDir={sortDir} onSort={onSort} />
 
               {/* Overall */}
-              <th className="px-2 py-2 text-[10px] font-semibold uppercase tracking-wide text-[#888] text-center border-l border-[#e8e3db]" colSpan={1}>Overall</th>
+              <th className="px-2 py-2 text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] text-center border-l border-[#e8e3db]" colSpan={1}>Overall</th>
 
               {/* vs L */}
-              <th className="px-2 py-2 text-[10px] font-bold uppercase tracking-wide text-[#4A90D9] text-center border-l border-[#e8e3db]" colSpan={4}>vs LHB</th>
+              <th className="px-2 py-2 text-[11px] font-bold uppercase tracking-wide text-[#4A90D9] text-center border-l border-[#e8e3db]" colSpan={4}>vs LHB</th>
 
               {/* Gap */}
-              <th className="px-2 py-2 text-[10px] font-semibold uppercase tracking-wide text-[#888] text-center border-l border-[#e8e3db]" colSpan={3}>Gap (L−R)</th>
+              <th className="px-2 py-2 text-[11px] font-medium uppercase tracking-wide text-[var(--dim)] text-center border-l border-[#e8e3db]" colSpan={3}>Gap (L−R)</th>
 
               {/* vs R */}
-              <th className="px-2 py-2 text-[10px] font-bold uppercase tracking-wide text-[#E8543A] text-center border-l border-[#e8e3db]" colSpan={4}>vs RHB</th>
+              <th className="px-2 py-2 text-[11px] font-bold uppercase tracking-wide text-[#E8543A] text-center border-l border-[#e8e3db]" colSpan={4}>vs RHB</th>
             </tr>
             <tr className="bg-[#f0ece4] border-b border-[#e8e3db]">
               <th />
@@ -133,10 +133,10 @@ export function PlatoonTable({ rows, total, page, pageSize, sortCol, sortDir, on
           </thead>
           <tbody>
             {loading && (
-              <tr><td colSpan={15} className="text-center text-[#aaa] py-12 text-sm">Loading…</td></tr>
+              <tr><td colSpan={15} className="text-center text-[var(--dimmer)] py-12 text-sm">Loading…</td></tr>
             )}
             {!loading && rows.length === 0 && (
-              <tr><td colSpan={15} className="text-center text-[#aaa] py-12 text-sm">No results</td></tr>
+              <tr><td colSpan={15} className="text-center text-[var(--dimmer)] py-12 text-sm">No results</td></tr>
             )}
             {!loading && rows.map(row => {
               const key = `${row.pitcher_id}__${row.pitch_type}`
@@ -148,7 +148,7 @@ export function PlatoonTable({ rows, total, page, pageSize, sortCol, sortDir, on
                     className={`border-b border-[#f0ece4] cursor-pointer transition-colors
                       ${isOpen ? 'bg-[#f5f2ed]' : 'hover:bg-[#faf8f5]'}`}
                   >
-                    <td className="px-3 py-2.5 text-[#aaa] text-xs">{isOpen ? '▼' : '▶'}</td>
+                    <td className="px-3 py-2.5 text-[var(--dimmer)] text-xs">{isOpen ? '▼' : '▶'}</td>
                     <td className="px-2 py-2.5 font-medium text-[#1a1a1a] text-xs">{row.pitcher_name}</td>
                     <td className="px-2 py-2.5 text-[#555] text-xs">{row.pitch_label}</td>
 
@@ -156,7 +156,7 @@ export function PlatoonTable({ rows, total, page, pageSize, sortCol, sortDir, on
                     <td className="px-2 py-2.5 text-center text-xs font-semibold border-l border-[#f0ece4]">{fmt(row.stuff_overall)}</td>
 
                     {/* vs L */}
-                    <td className="px-2 py-2.5 text-center text-[#999] text-xs border-l border-[#f0ece4]">{row.n_l ?? '—'}</td>
+                    <td className="px-2 py-2.5 text-center text-[var(--dimmer)] text-xs border-l border-[#f0ece4]">{row.n_l ?? '—'}</td>
                     <td className="px-2 py-2.5 text-center text-xs">{fmt(row.stuff_l)}</td>
                     <td className="px-2 py-2.5 text-center text-xs">{fmt(row.loc_l)}</td>
                     <td className="px-2 py-2.5 text-center text-xs font-medium">{fmt(row.pitching_l)}</td>
@@ -173,7 +173,7 @@ export function PlatoonTable({ rows, total, page, pageSize, sortCol, sortDir, on
                     </td>
 
                     {/* vs R */}
-                    <td className="px-2 py-2.5 text-center text-[#999] text-xs border-l border-[#f0ece4]">{row.n_r ?? '—'}</td>
+                    <td className="px-2 py-2.5 text-center text-[var(--dimmer)] text-xs border-l border-[#f0ece4]">{row.n_r ?? '—'}</td>
                     <td className="px-2 py-2.5 text-center text-xs">{fmt(row.stuff_r)}</td>
                     <td className="px-2 py-2.5 text-center text-xs">{fmt(row.loc_r)}</td>
                     <td className="px-2 py-2.5 text-center text-xs font-medium">{fmt(row.pitching_r)}</td>
@@ -206,7 +206,7 @@ export function PlatoonTable({ rows, total, page, pageSize, sortCol, sortDir, on
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between text-xs text-[#888]">
+        <div className="flex items-center justify-between text-xs text-[var(--dim)]">
           <span>{total.toLocaleString()} rows</span>
           <div className="flex items-center gap-1">
             <button

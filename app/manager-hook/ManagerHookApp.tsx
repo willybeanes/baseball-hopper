@@ -77,14 +77,14 @@ function StartDetailRows({ managerName, season }: { managerName: string; season:
   if (loading) {
     return (
       <tr className="bg-[#faf8f5]">
-        <td colSpan={9} className="px-6 py-3 text-xs text-[#aaa]">Loading…</td>
+        <td colSpan={9} className="px-6 py-3 text-xs text-[var(--dimmer)]">Loading…</td>
       </tr>
     )
   }
   if (!starts || starts.length === 0) {
     return (
       <tr className="bg-[#faf8f5]">
-        <td colSpan={9} className="px-6 py-3 text-xs text-[#aaa]">No starts found.</td>
+        <td colSpan={9} className="px-6 py-3 text-xs text-[var(--dimmer)]">No starts found.</td>
       </tr>
     )
   }
@@ -109,7 +109,7 @@ function StartDetailRows({ managerName, season }: { managerName: string; season:
 
   const SubTh = ({ col, label, right = true }: { col: StartSortCol; label: string; right?: boolean }) => (
     <td
-      className={`px-3 py-1.5 text-[10px] font-semibold text-[#888] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap ${right ? 'text-right' : ''}`}
+      className={`px-3 py-1.5 text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap ${right ? 'text-right' : ''}`}
       onClick={() => handleSort(col)}
     >
       {label}<Arrow col={col} />
@@ -213,7 +213,7 @@ export default function ManagerHookApp() {
 
   const Th = ({ col, label, title, right = true }: { col: SortCol; label: string; title?: string; right?: boolean }) => (
     <th
-      className={`px-3 py-2.5 text-[10px] font-semibold text-[#888] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap ${right ? 'text-right' : 'text-left'}`}
+      className={`px-3 py-2.5 text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap ${right ? 'text-right' : 'text-left'}`}
       onClick={() => handleSort(col)}
       title={title}
     >
@@ -248,10 +248,10 @@ export default function ManagerHookApp() {
           <p>
             <span className="font-semibold text-[var(--text)]">Hook Efficiency</span>
             {' = cumulative actual GSv2 ÷ cumulative perfect GSv2'}
-            <span className="ml-2 text-[10px] text-[var(--dimmer)]">(perfect = peak GSv2 achieved within each start)</span>
+            <span className="ml-2 text-[11px] text-[var(--dimmer)]">(perfect = peak GSv2 achieved within each start)</span>
           </p>
           {leagueAvg !== null && (
-            <p className="text-[10px] text-[var(--dimmer)]">
+            <p className="text-[11px] text-[var(--dimmer)]">
               League avg: <span className="font-semibold text-[var(--text)]">{leagueAvg.toFixed(3)}</span>
             </p>
           )}
@@ -269,7 +269,7 @@ export default function ManagerHookApp() {
                 <th className="w-8 px-3 py-2.5" />
                 <th className="w-10 px-2 py-2.5" />
                 <Th col="starts" label="Manager" right={false} title="Click to expand starts" />
-                <th className="px-3 py-2.5 text-left text-[10px] font-semibold text-[#888] uppercase tracking-wider">Team</th>
+                <th className="px-3 py-2.5 text-left text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider">Team</th>
                 <Th col="starts" label="GS" title="Games started by managed pitchers" />
                 <Th col="hook_efficiency" label="Hook Eff" title="Actual GSv2 ÷ Perfect GSv2" />
                 <Th col="pts_left" label="Pts Left" title="Perfect − Actual GSv2 (lower is better)" />
@@ -280,7 +280,7 @@ export default function ManagerHookApp() {
             <tbody>
               {!loading && !error && sorted.length === 0 && (
                 <tr>
-                  <td colSpan={9} className="px-6 py-8 text-center text-sm text-[#aaa]">
+                  <td colSpan={9} className="px-6 py-8 text-center text-sm text-[var(--dimmer)]">
                     No data found.
                   </td>
                 </tr>
@@ -293,7 +293,7 @@ export default function ManagerHookApp() {
                     }`}
                     onClick={() => toggleExpand(row.manager_name)}
                   >
-                    <td className="px-3 py-2 text-center text-xs text-[#bbb] w-8">
+                    <td className="px-3 py-2 text-center text-xs text-[var(--dimmer)] w-8">
                       {expandedName === row.manager_name ? '▾' : '▸'}
                     </td>
                     <td className="px-2 py-1.5 w-10">
@@ -312,10 +312,10 @@ export default function ManagerHookApp() {
                       )}
                     </td>
                     <td className="px-3 py-2 font-medium whitespace-nowrap">
-                      <span className="text-[#aaa] text-[11px] mr-2 tabular-nums">{i + 1}</span>
+                      <span className="text-[var(--dimmer)] text-[11px] mr-2 tabular-nums">{i + 1}</span>
                       {row.manager_name}
                     </td>
-                    <td className="px-3 py-2 text-xs text-[#888] font-mono">{row.team ?? '—'}</td>
+                    <td className="px-3 py-2 text-xs text-[var(--dim)] font-mono">{row.team ?? '—'}</td>
                     <td className="px-3 py-2 text-right text-xs font-mono text-[#555]">{row.starts}</td>
                     <td className="px-3 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">

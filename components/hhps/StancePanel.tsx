@@ -10,7 +10,7 @@ const ang = (v: number | null | undefined) => (v == null ? "—" : `${v > 0 ? "+
 function Tile({ label, value, league, title }: { label: string; value: string; league?: string; title?: string }) {
   return (
     <div className="rounded-lg border border-[var(--rule)] p-3" title={title}>
-      <div className="text-[10px] font-bold uppercase tracking-wider text-[var(--dim)]">{label}</div>
+      <div className="text-[11px] font-bold uppercase tracking-wider text-[var(--dim)]">{label}</div>
       <div className="mt-1 text-xl font-bold tabular-nums">{value}</div>
       {league && <div className="text-[11px] text-[var(--dimmer)]">league median {league}</div>}
     </div>

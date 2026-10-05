@@ -236,7 +236,7 @@ function HomeContent() {
               )}
               {tab !== 'teams' && tab !== 'games' && <button
                 onClick={() => setShowSearch(s => !s)}
-                className="ml-auto flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-[#888] hover:text-[#1a1a1a] transition-colors rounded-lg hover:bg-[#f5f2ed]"
+                className="ml-auto flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-[var(--dim)] hover:text-[#1a1a1a] transition-colors rounded-lg hover:bg-[#f5f2ed]"
               >
                 Search
                 <svg className={`w-3.5 h-3.5 transition-transform ${showSearch ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,10 +281,10 @@ function HomeContent() {
           <div className="px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div>
               <h2 className="text-sm font-bold text-[#1a1a1a]">{subtitle()}</h2>
-              {(tab === 'games' ? gameLogData : data) && <p className="text-xs text-[#999] mt-0.5">{total.toLocaleString()} {tab === 'catcher' ? 'catchers' : tab === 'battery' ? 'combinations' : tab === 'teams' ? 'teams' : tab === 'games' ? 'games' : 'pitchers'}</p>}
+              {(tab === 'games' ? gameLogData : data) && <p className="text-xs text-[var(--dimmer)] mt-0.5">{total.toLocaleString()} {tab === 'catcher' ? 'catchers' : tab === 'battery' ? 'combinations' : tab === 'teams' ? 'teams' : tab === 'games' ? 'games' : 'pitchers'}</p>}
             </div>
             <div className="flex items-center gap-3">
-              {(loading || gameLogLoading) && <span className="text-xs text-[#999] animate-pulse">Loading…</span>}
+              {(loading || gameLogLoading) && <span className="text-xs text-[var(--dimmer)] animate-pulse">Loading…</span>}
               {data && !loading && tab !== 'teams' && tab !== 'games' && (
                 <a
                   href={buildExportUrl()}
@@ -339,12 +339,12 @@ function HomeContent() {
             {tab === 'games' && (
               pitcher
                 ? <GamesTable rows={gameLogData?.rows ?? []} loading={gameLogLoading} />
-                : <p className="text-center text-sm text-[#aaa] py-12">Search for a pitcher above to see their 2026 game log.</p>
+                : <p className="text-center text-sm text-[var(--dimmer)] py-12">Search for a pitcher above to see their 2026 game log.</p>
             )}
           </div>
         </div>
 
-        <p className="text-xs text-[#aaa] text-center pb-4">
+        <p className="text-xs text-[var(--dimmer)] text-center pb-4">
           Data via Baseball Savant
         </p>
       </div>
