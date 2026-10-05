@@ -54,7 +54,7 @@ function Chip({ children, tone = 'plain' }: { children: React.ReactNode; tone?: 
       : tone === 'warn'
         ? 'bg-[var(--accent-dim)] text-[var(--accent)] border-[var(--accent)]/30'
         : 'bg-transparent text-[var(--dim)] border-[var(--rule)]'
-  return <span className={`inline-block whitespace-nowrap rounded border px-1.5 py-px text-[10px] font-medium leading-4 ${cls}`}>{children}</span>
+  return <span className={`inline-block whitespace-nowrap rounded border px-1.5 py-px text-[11px] font-medium leading-4 ${cls}`}>{children}</span>
 }
 
 function statusChips(p: Player, added?: Slot['added']) {
@@ -84,14 +84,14 @@ function Salary({ s }: { s: Slot }) {
   if (s.userSalary) {
     return (
       <span className="font-mono text-xs text-[var(--text)]" title="Salary you entered">
-        {money(s.salary, 2)} <span className="font-sans text-[10px] text-[var(--accent)]">yours</span>
+        {money(s.salary, 2)} <span className="font-sans text-[11px] text-[var(--accent)]">yours</span>
       </span>
     )
   }
   if (isEstimate(p)) {
     return (
       <span className="font-mono text-xs italic text-[var(--text)]" title={SOURCE_LABEL[p.salarySource ?? ''] ?? 'Estimate'}>
-        {money(s.salary, 2)} <span className="not-italic text-[10px] text-[var(--dimmer)]">est.</span>
+        {money(s.salary, 2)} <span className="not-italic text-[11px] text-[var(--dimmer)]">est.</span>
       </span>
     )
   }
@@ -189,12 +189,12 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
 
 function Section({ title, note, count, children }: { title: string; note?: React.ReactNode; count?: number; children: React.ReactNode }) {
   return (
-    <section className="overflow-hidden rounded-xl border border-[var(--rule)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
-      <div className="flex items-baseline justify-between gap-3 border-b border-[var(--rule)] px-4 py-2.5">
-        <h2 className="text-sm font-semibold">{title}</h2>
+    <section className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
+      <div className="flex items-baseline justify-between gap-3 px-4 pb-1 pt-3">
+        <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">{title}</h2>
         {count != null && <span className="text-xs text-[var(--dimmer)]">{count}</span>}
       </div>
-      {note && <p className="border-b border-[var(--rule)] bg-[var(--bg)]/40 px-4 py-2 text-[11px] text-[var(--dim)]">{note}</p>}
+      {note && <p className="max-w-[58ch] px-4 pb-2.5 pt-0 text-[11px] text-[var(--dim)]">{note}</p>}
       <div className="divide-y divide-[var(--rule)]">{children}</div>
     </section>
   )
@@ -202,7 +202,7 @@ function Section({ title, note, count, children }: { title: string; note?: React
 
 function ColumnHeads({ salary = '2027 salary' }: { salary?: string }) {
   return (
-    <div className="hidden grid-cols-[1fr_190px_90px_90px] gap-3 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--dimmer)] sm:grid">
+    <div className="hidden grid-cols-[1fr_190px_90px_90px] gap-3 px-4 py-1.5 text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)] sm:grid">
       <span>Player</span>
       <span>Contract</span>
       <span className="text-right">{salary}</span>
@@ -219,12 +219,17 @@ function TaxBar({ taxPayroll, threshold }: { taxPayroll: number; threshold: NonN
   return (
     <div>
       <div className="relative h-3 rounded-full bg-[var(--track)]" role="img" aria-label={`Luxury-tax payroll ${money(taxPayroll)} against a ${money(threshold.base, 0)} base line`}>
-        <div className="absolute inset-y-0 left-0 rounded-full bg-[var(--accent)] transition-[width] duration-300" style={{ width: pct(taxPayroll) }} />
+        <div className="absolute inset-0 overflow-hidden rounded-full">
+          <div
+            className="h-full w-full origin-left bg-[var(--accent)] transition-transform duration-300"
+            style={{ transform: `translateX(-${100 - Math.min(100, (taxPayroll / max) * 100)}%)` }}
+          />
+        </div>
         {lines.map((v, i) => (
           <div key={v} className={`absolute -top-1 -bottom-1 w-px ${i === 0 ? 'bg-[var(--text)]' : 'bg-[var(--dim)]'}`} style={{ left: pct(v) }} />
         ))}
       </div>
-      <div className="relative mt-1 h-4 text-[10px] text-[var(--dim)]">
+      <div className="relative mt-1 h-4 text-[11px] text-[var(--dim)]">
         {lines.map((v, i) => (
           // The base label sits left of its line so the closely spaced tier labels have room.
           <span key={v} className={`absolute whitespace-nowrap ${i === 0 ? '-translate-x-full pr-1 font-medium text-[var(--text)]' : '-translate-x-1/2'}`} style={{ left: pct(v) }}>
@@ -232,7 +237,7 @@ function TaxBar({ taxPayroll, threshold }: { taxPayroll: number; threshold: NonN
           </span>
         ))}
       </div>
-      <p className="mt-1 text-[11px] text-[var(--dim)]">
+      <p className="mt-1 max-w-[58ch] text-[11px] text-[var(--dim)]">
         {over > 0 ? `${money(over)} over the base line.` : `${money(-over)} under the base line.`}{' '}
         <span className="text-[var(--dimmer)]">
           The labor agreement expired after 2026, so the 2027 line ({money(threshold.base, 0)}, from Cot&apos;s) and the tiers 20, 40 and 60 million above it are placeholders until a new deal is signed.
@@ -251,7 +256,7 @@ function Delta({ now, then }: { now: number; then: number }) {
 function Stat({ label, value, delta, sub }: { label: string; value: string; delta?: React.ReactNode; sub?: React.ReactNode }) {
   return (
     <div>
-      <div className="text-[10px] font-semibold uppercase tracking-wider text-[var(--dimmer)]">{label}</div>
+      <div className="text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">{label}</div>
       <div className="text-2xl font-bold tracking-tight" aria-live="polite">{value}{delta}</div>
       {sub && <div className="text-[11px] text-[var(--dim)]">{sub}</div>}
     </div>
@@ -460,7 +465,7 @@ export default function TeamBuilderApp() {
     <div className="mx-auto max-w-5xl px-4 py-8">
       <header className="mb-5">
         <h1 className="mb-1 text-2xl font-bold tracking-tight">Team Builder</h1>
-        <p className="max-w-2xl text-sm text-[var(--dim)]">
+        <p className="max-w-[55ch] text-sm text-[var(--dim)]">
           Every team&apos;s 2027 roster as it stands today. Decline options, non-tender or trade players away, re-sign your free agents or sign someone else's, and watch payroll and the luxury tax move.
         </p>
       </header>
@@ -488,7 +493,7 @@ export default function TeamBuilderApp() {
       {built && start && meta && (
         <div className="space-y-4">
           {/* Totals: sticky so they stay in view while making moves */}
-          <section className="z-10 rounded-xl sm:sticky sm:top-14 border border-[var(--rule)] bg-[var(--panel)] p-4 shadow-[var(--panel-shadow)]">
+          <section className="z-10 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] p-4 shadow-[var(--panel-shadow)] sm:sticky sm:top-14">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money and buyouts" />
               <Stat label="2027 luxury-tax payroll" value={money(built.taxPayroll)} delta={<Delta now={built.taxPayroll} then={start.taxPayroll} />} sub="Average annual values plus benefits" />
@@ -504,7 +509,7 @@ export default function TeamBuilderApp() {
               </div>
             )}
             {built.unknownSalaries.length > 0 && (
-              <p className="mt-3 rounded-lg bg-[var(--accent-dim)] px-3 py-2 text-[11px] text-[var(--accent)]">
+              <p className="mt-3 border-t border-[var(--rule)] pt-2 text-[11px] text-[var(--accent)]">
                 Left out of both totals because no source gives the salary: {built.unknownSalaries.map((p) => p.name).join(', ')}.
               </p>
             )}
@@ -512,9 +517,9 @@ export default function TeamBuilderApp() {
 
           {/* The change list */}
           {moves.length > 0 && (
-            <section className="rounded-xl border border-[var(--rule)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
+            <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
               <div className="mb-1.5 flex items-center justify-between">
-                <h2 className="text-sm font-semibold">Your changes <span className="font-normal text-[var(--dimmer)]">({moves.length})</span></h2>
+                <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Your changes <span className="font-normal text-[var(--dimmer)]">({moves.length})</span></h2>
                 <button type="button" onClick={() => { setMoves([]); setEditing(null) }} className="text-xs font-medium text-[var(--accent)] hover:underline">
                   Reset to today&apos;s roster
                 </button>
@@ -533,10 +538,10 @@ export default function TeamBuilderApp() {
           )}
 
           {/* Add players: free agents, or anyone on another team (a pretend trade) */}
-          <section id="add-players" className="overflow-hidden rounded-xl border border-[var(--rule)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--rule)] px-4 py-2.5">
-              <h2 className="text-sm font-semibold">Add players</h2>
-              <div className="flex rounded-lg border border-[var(--rule)] p-0.5 text-xs" role="tablist" aria-label="Player pool">
+          <section id="add-players" className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-4 pb-1 pt-3">
+              <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Add players</h2>
+              <div className="flex gap-1 text-xs" role="tablist" aria-label="Player pool">
                 {(['fa', 'roster'] as const).map((k) => (
                   <button
                     key={k}
@@ -551,30 +556,30 @@ export default function TeamBuilderApp() {
                 ))}
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 border-b border-[var(--rule)] bg-[var(--bg)]/40 px-4 py-2">
+            <div className="flex flex-wrap gap-2 px-4 pb-2 pt-1">
               <input
                 type="search"
                 value={poolQuery}
                 onChange={(e) => { setPoolQuery(e.target.value); setPoolShown(POOL_PAGE) }}
                 placeholder={poolKind === 'fa' ? 'Search free agents' : 'Search every other team'}
                 aria-label="Search players"
-                className="min-w-0 flex-1 rounded-lg border border-[var(--rule)] bg-[var(--panel)] px-3 py-1.5 text-sm"
+                className="min-w-0 flex-1 rounded-lg border border-[var(--rule)] bg-transparent px-3 py-1.5 text-sm"
               />
               <select
                 value={poolPos}
                 onChange={(e) => { setPoolPos(e.target.value); setPoolShown(POOL_PAGE) }}
                 aria-label="Position"
-                className="rounded-lg border border-[var(--rule)] bg-[var(--panel)] px-2 py-1.5 text-sm"
+                className="rounded-lg border border-[var(--rule)] bg-transparent px-2 py-1.5 text-sm"
               >
                 {POSITIONS.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}
               </select>
             </div>
-            <p className="border-b border-[var(--rule)] px-4 py-2 text-[11px] text-[var(--dim)]">
+            <p className="max-w-[58ch] px-4 pb-2.5 text-[11px] text-[var(--dim)]">
               {poolKind === 'fa'
                 ? <>Players projected to be free agents, from Cot&apos;s and MLB Trade Rumors&apos; list, sorted by 2026 salary. Signing one is a one-year figure you set; until WAR projections are added, it starts at his 2026 salary.</>
                 : <>Every player on another team&apos;s 2027 roster. Trading for one brings his 2027 salary; who goes back the other way isn&apos;t modelled, so remove players yourself.</>}
             </p>
-            <div className="divide-y divide-[var(--rule)]">
+            <div className="divide-y divide-[var(--rule)] border-t border-[var(--rule)]">
               {poolResults.slice(0, poolShown).map((e) => (
                 <div key={e.mlbamId}>
                   <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_190px_110px]">
@@ -595,8 +600,8 @@ export default function TeamBuilderApp() {
                     <div className="flex items-center justify-end gap-2">
                       <span className="text-right font-mono text-[11px] text-[var(--dim)]">
                         {e.kind === 'fa'
-                          ? e.salaryPrevYear != null ? <>{money(e.salaryPrevYear)}<span className="block font-sans text-[10px] text-[var(--dimmer)]">2026</span></> : '—'
-                          : e.salary != null ? <>{money(e.salary)}<span className="block font-sans text-[10px] text-[var(--dimmer)]">2027</span></> : 'unknown'}
+                          ? e.salaryPrevYear != null ? <>{money(e.salaryPrevYear)}<span className="block font-sans text-[11px] text-[var(--dimmer)]">2026</span></> : '—'
+                          : e.salary != null ? <>{money(e.salary)}<span className="block font-sans text-[11px] text-[var(--dimmer)]">2027</span></> : 'unknown'}
                       </span>
                       <ActionButton
                         label={`${e.kind === 'fa' ? 'Sign' : 'Trade for'} ${e.name}`}
@@ -696,7 +701,7 @@ export default function TeamBuilderApp() {
             </span>
           </div>
 
-          <footer className="space-y-1 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0">
+          <footer className="max-w-[58ch] space-y-1 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0">
             <p>
               Contracts from Cot&apos;s Baseball Contracts{updated ? `, last changed ${updated}` : ''}. Checked daily through March.
               Arbitration projections from{' '}
