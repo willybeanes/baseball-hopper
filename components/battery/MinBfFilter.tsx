@@ -10,7 +10,7 @@ interface Props {
 export function MinBfFilter({ value, onChange }: Props) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs font-semibold text-[#888] uppercase tracking-widest">Min BF</span>
+      <span className="text-xs font-medium text-[var(--dim)] uppercase tracking-widest">Min BF</span>
       <select
         value={value}
         onChange={e => onChange(parseInt(e.target.value))}

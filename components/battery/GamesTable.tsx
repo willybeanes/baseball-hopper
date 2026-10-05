@@ -25,14 +25,14 @@ interface Props {
 
 export function GamesTable({ rows, loading }: Props) {
   if (!loading && rows.length === 0) {
-    return <p className="text-center text-sm text-[#aaa] py-12">No games found for 2026.</p>
+    return <p className="text-center text-sm text-[var(--dimmer)] py-12">No games found for 2026.</p>
   }
 
   return (
     <div className={`overflow-x-auto ${loading ? 'opacity-50' : ''}`}>
       <table className="w-full text-sm border-collapse">
         <thead>
-          <tr className="border-b border-[#ece8e1] text-[10px] font-bold uppercase tracking-wider text-[#999]">
+          <tr className="border-b border-[#ece8e1] text-[11px] font-bold uppercase tracking-wider text-[var(--dimmer)]">
             <th className="py-2 px-3 text-left">Date</th>
             <th className="py-2 px-3 text-left">Opp</th>
             <th className="py-2 px-3 text-left">Catcher</th>

@@ -54,10 +54,10 @@ function BatteryRow({ entry, kind }: { entry: TeamBatteryEntry; kind: 'best' | '
     <div className={`px-4 py-3 ${isBest ? 'border-b border-[#ece8e1]' : ''}`}>
       {/* Label */}
       <div className="flex items-center gap-1.5 mb-2">
-        <span className={`text-[10px] font-black uppercase tracking-widest ${isBest ? 'text-[#0a7a52]' : 'text-[#b02020]'}`}>
+        <span className={`text-[11px] font-black uppercase tracking-widest ${isBest ? 'text-[#0a7a52]' : 'text-[#b02020]'}`}>
           {isBest ? '▲ Best' : '▼ Worst'}
         </span>
-        <span className="text-[10px] text-[#bbb]">Chemistry</span>
+        <span className="text-[11px] text-[var(--dimmer)]">Chemistry</span>
       </div>
 
       {/* Players */}
@@ -73,7 +73,7 @@ function BatteryRow({ entry, kind }: { entry: TeamBatteryEntry; kind: 'best' | '
               unoptimized
             />
           </div>
-          <span className="text-[9px] text-[#999] font-medium text-center leading-tight max-w-[48px] truncate">P</span>
+          <span className="text-[11px] text-[var(--dimmer)] font-medium text-center leading-tight max-w-[48px] truncate">P</span>
         </div>
 
         {/* Names + stats */}
@@ -87,14 +87,14 @@ function BatteryRow({ entry, kind }: { entry: TeamBatteryEntry; kind: 'best' | '
             <span className="text-xs font-black font-mono" style={{ color: chemColor(entry.chem_score) }}>
               {entry.chem_score}
             </span>
-            <span className="text-[10px] text-[#bbb]">·</span>
-            <span className="text-[10px] text-[#999]">Overall Pitcher FIP</span>
+            <span className="text-[11px] text-[var(--dimmer)]">·</span>
+            <span className="text-[11px] text-[var(--dimmer)]">Overall Pitcher FIP</span>
             <span className="text-xs font-mono text-[#444]">{fmt(entry.pitcher_fip)}</span>
-            <span className="text-[10px] text-[#bbb]">·</span>
-            <span className="text-[10px] text-[#999]">Battery FIP</span>
+            <span className="text-[11px] text-[var(--dimmer)]">·</span>
+            <span className="text-[11px] text-[var(--dimmer)]">Battery FIP</span>
             <span className="text-xs font-mono text-[#444]">{fmt(entry.battery_fip)}</span>
-            <span className="text-[10px] text-[#bbb]">·</span>
-            <span className="text-[10px] text-[#999]">{fmtIp(entry.ip)} IP</span>
+            <span className="text-[11px] text-[var(--dimmer)]">·</span>
+            <span className="text-[11px] text-[var(--dimmer)]">{fmtIp(entry.ip)} IP</span>
           </div>
         </div>
 
@@ -109,7 +109,7 @@ function BatteryRow({ entry, kind }: { entry: TeamBatteryEntry; kind: 'best' | '
               unoptimized
             />
           </div>
-          <span className="text-[9px] text-[#999] font-medium text-center leading-tight max-w-[48px] truncate">C</span>
+          <span className="text-[11px] text-[var(--dimmer)] font-medium text-center leading-tight max-w-[48px] truncate">C</span>
         </div>
       </div>
     </div>
@@ -133,11 +133,11 @@ function TeamCard({ row }: { row: TeamChemRow }) {
       {/* Batteries */}
       {row.best
         ? <BatteryRow entry={row.best} kind="best" />
-        : <div className="px-4 py-3 text-sm text-[#ccc] border-b border-[#ece8e1]">No qualifying battery</div>
+        : <div className="px-4 py-3 text-sm text-[var(--dimmer)] border-b border-[#ece8e1]">No qualifying battery</div>
       }
       {row.worst
         ? <BatteryRow entry={row.worst} kind="worst" />
-        : <div className="px-4 py-3 text-sm text-[#ccc]">No qualifying battery</div>
+        : <div className="px-4 py-3 text-sm text-[var(--dimmer)]">No qualifying battery</div>
       }
     </div>
   )
@@ -150,7 +150,7 @@ interface Props {
 
 export function TeamsTable({ rows, loading }: Props) {
   if (!loading && rows.length === 0) {
-    return <p className="text-center text-sm text-[#aaa] py-12">No data available.</p>
+    return <p className="text-center text-sm text-[var(--dimmer)] py-12">No data available.</p>
   }
 
   return (

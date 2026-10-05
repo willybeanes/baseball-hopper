@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   title: "Baseball Hopper",
   description:
     "The unified home for Balls & Sticks baseball tools — scatter plots, splits, grades, and more, cross-referenced around a shared player identity.",
-  icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>",
-  },
 };
 
 export default function RootLayout({

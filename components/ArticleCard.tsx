@@ -14,7 +14,7 @@ export default function ArticleCard({ article }: { article: Article }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={article.img} alt={article.title} className="w-full h-32 object-cover" />
       <div className="p-4">
-        <p className="text-[10px] text-[var(--dimmer)] mb-1">{article.date}</p>
+        <p className="text-[11px] text-[var(--dimmer)] mb-1">{article.date}</p>
         <p className="text-sm font-semibold leading-snug tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-1">
           {article.title}
         </p>
@@ -22,7 +22,7 @@ export default function ArticleCard({ article }: { article: Article }) {
         <div className="flex items-center gap-1.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={AUTHOR_AVATAR} alt="Will Harris" className="w-4 h-4 rounded-full object-cover" />
-          <span className="text-[10px] text-[var(--dimmer)]">Will Harris</span>
+          <span className="text-[11px] text-[var(--dimmer)]">Will Harris</span>
         </div>
       </div>
     </Link>

@@ -139,7 +139,7 @@ export default function PlayerCard({
           <div className="text-[40px] font-bold leading-none tabular-nums sm:text-[52px]" style={{ color: ramp(hp) }}>
             {fmtNum(d["Hitting+"], 0)}
           </div>
-          <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--dim)]">Hitting+</div>
+          <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--dim)]">Hitting+</div>
           <div className="mt-0.5 text-xs text-[var(--dim)]">{hp == null ? "" : fmtPercentile(hp)}</div>
           {hittingTier !== "full" && hittingConf != null && (
             <div className="mt-0.5 text-xs text-[var(--dimmer)]" title={CONFIDENCE_NOTE}>
@@ -150,7 +150,7 @@ export default function PlayerCard({
       </div>
 
       <div className="mt-6">
-        <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+        <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
           The swing, in order
         </h2>
         <div className="relative space-y-[18px] pl-[26px]">
@@ -203,10 +203,10 @@ export default function PlayerCard({
       </div>
 
       <div className="mt-6">
-        <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+        <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
           Where he meets the ball
         </h2>
-        <div className="rounded-[10px] border border-[var(--rule)] bg-[var(--track)] px-4 pb-3 pt-[18px] sm:px-5">
+        <div className="rounded-[10px] bg-[var(--track)] px-4 pb-3 pt-[18px] sm:px-5">
           <ContactDiagram player={d} leagueDepth={leagueDepth} eliteGap={eliteGap} />
         </div>
         <p className="mt-2 text-[11px] text-[var(--dimmer)]">
@@ -215,10 +215,10 @@ export default function PlayerCard({
       </div>
 
       <div className="mt-6">
-        <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+        <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
           Whether he made contact
         </h2>
-        <div className="rounded-[10px] border border-[var(--rule)] bg-[var(--track)] px-4 pb-3 pt-[18px] sm:px-5">
+        <div className="rounded-[10px] bg-[var(--track)] px-4 pb-3 pt-[18px] sm:px-5">
           <WhiffDiagram player={d} leagueGap={leagueWhiffGap} eliteGap={eliteWhiffGap} />
         </div>
         <p className="mt-2 text-[11px] text-[var(--dimmer)]">
@@ -227,10 +227,10 @@ export default function PlayerCard({
       </div>
 
       <div className="mt-6">
-        <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+        <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
           What the bat did on contact
         </h2>
-        <div className="rounded-[10px] border border-[var(--rule)] bg-[var(--track)] px-4 pb-3 pt-[18px] sm:px-5">
+        <div className="rounded-[10px] bg-[var(--track)] px-4 pb-3 pt-[18px] sm:px-5">
           <PowerDiagram player={d} leagueBS={leagueBS} leagueAA={leagueAA} eliteBS={eliteBS} eliteAA={eliteAA} />
         </div>
         <p className="mt-2 text-[11px] text-[var(--dimmer)]">
@@ -245,10 +245,10 @@ export default function PlayerCard({
       <RollingChart gamelog={gamelog === "loading" ? null : gamelog} loading={gamelog === "loading"} />
 
       <div className="mt-6">
-        <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+        <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
           Grade against results
         </h2>
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[10px] border border-[var(--rule)] bg-[var(--rule)] sm:grid-cols-5">
+        <div className="grid grid-cols-2 gap-px overflow-hidden bg-[var(--rule)] sm:grid-cols-5">
           <div className="bg-[var(--panel)] px-4 py-3.5">
             <div className="text-[11px] uppercase tracking-[0.1em] text-[var(--dim)]">Hitting+</div>
             <div className="mt-1 text-xl font-bold tabular-nums" style={{ color: ramp(hp) }}>

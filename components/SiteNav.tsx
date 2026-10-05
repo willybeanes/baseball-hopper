@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import BallMark from "@/components/BallMark";
 
 const NAV_GROUPS = [
   {
@@ -63,25 +64,26 @@ export default function SiteNav() {
       <div ref={navRef} className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between gap-4">
 
         {/* Wordmark */}
-        <a
-          href="/"
-          className="flex items-center gap-2 group shrink-0"
-          aria-label="Baseball Hopper home"
-        >
-          <span className="text-base leading-none">⚾</span>
-          <span className="font-bold text-[15px] tracking-tight group-hover:text-[var(--accent)] transition-colors">
-            Baseball Hopper
-          </span>
+        <div className="flex items-center gap-2 shrink-0">
+          <a
+            href="/"
+            className="flex items-center gap-2 group"
+            aria-label="Baseball Hopper home"
+          >
+            <BallMark size={18} className="shrink-0" />
+            <span className="font-bold text-[15px] tracking-tight group-hover:text-[var(--accent)] transition-colors">
+              Baseball Hopper
+            </span>
+          </a>
           <a
             href="https://ballsandsticks.beehiiv.com/"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
             className="hidden sm:inline text-[11px] text-[var(--dimmer)] ml-0.5 font-normal hover:text-[var(--accent)] transition-colors"
           >
             · Balls &amp; Sticks
           </a>
-        </a>
+        </div>
 
         {/* Desktop nav groups */}
         <nav className="hidden lg:flex items-center gap-1">
@@ -115,7 +117,7 @@ export default function SiteNav() {
                       className="flex items-center justify-between px-3.5 py-2 text-sm text-[var(--text)] hover:bg-[var(--bg)] transition-colors"
                     >
                       {tool.label}
-                      {tool.external && <span className="text-[var(--dimmer)] text-[10px]">↗</span>}
+                      {tool.external && <span className="text-[var(--dimmer)] text-[11px]">↗</span>}
                     </a>
                   ))}
                 </div>
@@ -141,7 +143,7 @@ export default function SiteNav() {
               {NAV_GROUPS.map((group, gi) => (
                 <div key={group.label}>
                   {gi > 0 && <div className="my-1 border-t border-[var(--panel-border)]" />}
-                  <p className="px-3.5 py-1 text-[10px] font-semibold text-[var(--dimmer)] uppercase tracking-wider">
+                  <p className="px-3.5 py-1 text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">
                     {group.label}
                   </p>
                   {group.tools.map((tool) => (
@@ -153,7 +155,7 @@ export default function SiteNav() {
                       className="flex items-center justify-between px-3.5 py-2 text-sm text-[var(--text)] hover:bg-[var(--bg)] transition-colors"
                     >
                       {tool.label}
-                      {tool.external && <span className="text-[var(--dimmer)] text-[10px]">↗</span>}
+                      {tool.external && <span className="text-[var(--dimmer)] text-[11px]">↗</span>}
                     </a>
                   ))}
                 </div>

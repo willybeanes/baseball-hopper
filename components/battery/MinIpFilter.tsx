@@ -14,7 +14,7 @@ interface Props {
 export function MinIpFilter({ value, onChange, hideQualified }: Props) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs font-semibold text-[#888] uppercase tracking-widest">Min IP</span>
+      <span className="text-xs font-medium text-[var(--dim)] uppercase tracking-widest">Min IP</span>
       <select
         value={value}
         onChange={e => onChange(parseFloat(e.target.value))}

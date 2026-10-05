@@ -32,23 +32,23 @@ export default function YearOverYear({
 
   return (
     <div className="mt-6">
-      <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+      <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
         Year over year
       </h2>
-      <div className="overflow-x-auto rounded-[10px] border border-[var(--rule)]">
+      <div className="overflow-x-auto rounded-[10px] border border-[var(--panel-border)]">
         <table className="w-full min-w-[480px] border-collapse text-sm">
           <thead>
             <tr>
-              <th className="sticky left-0 z-10 bg-[var(--panel)] px-2.5 py-2 text-left text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
+              <th className="sticky left-0 z-10 bg-[var(--panel)] px-2.5 py-2 text-left text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
                 Season
               </th>
-              <th className="px-2.5 py-2 text-right text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
+              <th className="px-2.5 py-2 text-right text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
                 PA
               </th>
               {COLUMNS.map((c) => (
                 <th
                   key={c.key}
-                  className="px-2.5 py-2 text-right text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]"
+                  className="px-2.5 py-2 text-right text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]"
                 >
                   {c.label}
                 </th>
@@ -71,7 +71,7 @@ export default function YearOverYear({
                     style={{ background: isCurrent ? "var(--track)" : "var(--panel)" }}
                   >
                     {r.game_year}
-                    {isCurrent && <span className="ml-1.5 text-[10px] font-normal text-[var(--dimmer)]">(shown above)</span>}
+                    {isCurrent && <span className="ml-1.5 text-[11px] font-normal text-[var(--dimmer)]">(shown above)</span>}
                   </td>
                   <td className="px-2.5 py-2 text-right tabular-nums text-[var(--dim)]">{r.pa}</td>
                   {COLUMNS.map((c) => {
