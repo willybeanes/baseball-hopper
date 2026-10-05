@@ -107,6 +107,15 @@ describe('adding players from the pool', () => {
     expect(r.taxPayroll - base.taxPayroll).toBe(18e6)
     expect(slot(r, 901).added).toEqual({ kind: 'trade', from: 'NYM' })
   })
+  test("re-signing the team's own free agent from the pool", () => {
+    const own = { ...pool[0], mlbamId: 902, from: 'BOS' }
+    const r = buildRoster(team, [{ type: 'add', id: 902, salary: 4e6 }], [...pool, own])
+    expect(slot(r, 902).added).toEqual({ kind: 'resign', from: 'BOS' })
+  })
+  test("can't trade for your own player", () => {
+    const own = { ...pool[1], mlbamId: 903, from: 'BOS' }
+    expect(buildRoster(team, [{ type: 'add', id: 903 }], [...pool, own]).payroll).toBe(base.payroll)
+  })
   test("can't add someone already on the team", () => {
     expect(buildRoster(team, [{ type: 'add', id: 5 }], pool).payroll).toBe(base.payroll)
   })

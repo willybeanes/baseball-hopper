@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { headshotUrl } from '@/lib/player'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
-import { isEstimate, money, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
-import { addMove, buildRoster, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
+import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
+import { addMove, buildRoster, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
 import type { PoolPlayer } from '@/lib/team-builder/pool'
 
 const DATA = '/data/team-builder'
@@ -34,6 +34,25 @@ const POSITIONS: { key: string; label: string; test: (pos: string) => boolean }[
 ]
 const POOL_PAGE = 10
 
+// A team's own free agent who has already dropped off its sheet (Cot's rolled it over) but is
+// still in the pool, shown in "Not on the 2027 roster" so he can be re-signed.
+type PoolSlot = Slot & { fromPool?: boolean }
+
+// Roughly what one team uses in a season, for the playing-time check.
+const SEASON_PA = 6200
+const SEASON_IP = 1450
+
+// Primary position bucket for the roster tally, from Cot's position text ("lhp-s", "1b-3b", "cf-inf").
+function posBucket(pos: string): string {
+  const p = pos.toLowerCase()
+  if (p.includes('hp') || p === 'sp') return /-s\b/.test(p) || p === 'sp' ? 'SP' : 'RP'
+  const first = p.split('-')[0]
+  if (['lf', 'cf', 'rf', 'of'].includes(first)) return 'OF'
+  if (first === 'inf') return 'IF'
+  return first.toUpperCase()
+}
+const TALLY_ORDER = ['C', '1B', '2B', 'SS', '3B', 'IF', 'OF', 'DH', 'SP', 'RP']
+
 const SOURCE_LABEL: Record<string, string> = {
   option: 'Option salary from the contract, via MLB Trade Rumors',
   'mlbtr-arb': 'Arbitration projection (MLB Trade Rumors)',
@@ -60,7 +79,7 @@ function Chip({ children, tone = 'plain' }: { children: React.ReactNode; tone?: 
 function statusChips(p: Player, added?: Slot['added']) {
   const chips: React.ReactNode[] = []
   if (added) {
-    chips.push(<Chip key="ad" tone="solid">{added.kind === 'fa' ? 'Free-agent signing' : `Trade from ${added.from}`}</Chip>)
+    chips.push(<Chip key="ad" tone="solid">{added.kind === 'fa' ? 'Free-agent signing' : added.kind === 'resign' ? 'Re-signed' : `Trade from ${added.from}`}</Chip>)
     return chips
   }
   if (p.status === 'signed') {
@@ -149,7 +168,7 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
   const p = s.player
   return (
     <div>
-      <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_190px_90px_90px]">
+      <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_170px_48px_90px_90px]">
         <div className="flex min-w-0 items-center gap-2.5">
           {p.mlbamId ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -177,7 +196,11 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
           {p.contract}
           <span className="block text-[var(--dimmer)]">{ageText(p)}</span>
         </div>
-        <div className="text-right">{right ?? <Salary s={s} />}</div>
+        <div className="hidden text-right font-mono text-xs text-[var(--text)] sm:block" title={p.war == null ? 'No projection: counts as 0' : undefined}>{fmtWar(p.war)}</div>
+        <div className="text-right">
+          {right ?? <Salary s={s} />}
+          <span className="block text-[11px] text-[var(--dimmer)] sm:hidden">{fmtWar(p.war)} WAR</span>
+        </div>
         <div className="hidden text-right font-mono text-xs text-[var(--dim)] sm:block">
           {s.onRoster && s.taxValue != null ? money(s.taxValue, 2) : '—'}
         </div>
@@ -202,9 +225,10 @@ function Section({ title, note, count, children }: { title: string; note?: React
 
 function ColumnHeads({ salary = '2027 salary' }: { salary?: string }) {
   return (
-    <div className="hidden grid-cols-[1fr_190px_90px_90px] gap-3 px-4 py-1.5 text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)] sm:grid">
+    <div className="hidden grid-cols-[1fr_170px_48px_90px_90px] gap-3 px-4 py-1.5 text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)] sm:grid">
       <span>Player</span>
       <span>Contract</span>
+      <span className="text-right">WAR</span>
       <span className="text-right">{salary}</span>
       <span className="text-right">Tax value</span>
     </div>
@@ -253,6 +277,12 @@ function Delta({ now, then }: { now: number; then: number }) {
   return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[var(--accent)]' : 'text-[#1a7a3a]'}`}>{d > 0 ? '+' : ''}{money(d)}</span>
 }
 
+function WarDelta({ now, then }: { now: number; then: number }) {
+  const d = Math.round((now - then) * 10) / 10
+  if (!d) return null
+  return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[#1a7a3a]' : 'text-[var(--accent)]'}`}>{d > 0 ? '+' : ''}{d.toFixed(1)}</span>
+}
+
 function Stat({ label, value, delta, sub }: { label: string; value: string; delta?: React.ReactNode; sub?: React.ReactNode }) {
   return (
     <div>
@@ -263,7 +293,7 @@ function Stat({ label, value, delta, sub }: { label: string; value: string; delt
   )
 }
 
-function describeMove(m: Move, name: string): string {
+function describeMove(m: Move, name: string, ownPlayer = false): string {
   switch (m.type) {
     case 'remove': return `Removed ${name}`
     case 'decline': return `Declined ${name}'s option`
@@ -271,7 +301,7 @@ function describeMove(m: Move, name: string): string {
     case 'optOut': return `${name} opted out`
     case 'resign': return `Re-signed ${name} at ${money(m.salary)}`
     case 'salary': return `Set ${name}'s salary to ${money(m.salary)}`
-    case 'add': return m.salary != null ? `Signed ${name} at ${money(m.salary)}` : `Traded for ${name}`
+    case 'add': return m.salary != null ? `${ownPlayer ? 'Re-signed' : 'Signed'} ${name} at ${money(m.salary)}` : `Traded for ${name}`
   }
 }
 
@@ -323,7 +353,7 @@ export default function TeamBuilderApp() {
     return pool
       .filter((e) => e.kind === poolKind && e.from !== team && !here.has(e.mlbamId) && posTest(e.pos.toLowerCase()))
       .filter((e) => !q || e.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(q))
-      .sort((a, b) => (poolKind === 'fa' ? (b.salaryPrevYear ?? 0) - (a.salaryPrevYear ?? 0) : (b.salary ?? 0) - (a.salary ?? 0)) || a.name.localeCompare(b.name))
+      .sort((a, b) => (poolKind === 'fa' ? (b.war ?? -99) - (a.war ?? -99) : (b.salary ?? 0) - (a.salary ?? 0)) || a.name.localeCompare(b.name))
   }, [built, pool, poolKind, poolPos, poolQuery, team])
 
   const pickTeam = (t: string) => {
@@ -335,21 +365,44 @@ export default function TeamBuilderApp() {
   const updated = meta ? new Date(meta.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null
   const bySalary = (a: Slot, b: Slot) => (b.salary ?? -1) - (a.salary ?? -1)
   const minimum = meta?.assumptions.leagueMinimum.value ?? 780_000
+  const perWin = meta?.assumptions.dollarsPerWar?.value ?? 11_200_000
+  const priceOf = (war: number | null | undefined) => warPrice(war, perWin, minimum)
+  // The opening figure for signing a free agent: WAR × $/win, else his 2026 pay, else the minimum.
+  const signingStart = (war: number | null | undefined, prev: number | null) => priceOf(war) ?? Math.max(prev ?? minimum, minimum)
+  const signingHint = (war: number | null | undefined) =>
+    war != null
+      ? `${war.toFixed(1)} projected WAR × ${money(perWin)} per win (FanGraphs' 2026 free-agent study). A one-year figure; change it freely.`
+      : 'No projection for him, so this starts at his 2026 salary (or the league minimum). Change it freely.'
   const nameOf = (id: number) => built?.slots.find((s) => s.player.mlbamId === id)?.player.name ?? 'Player'
   const touched = new Set(moves.map((m) => m.id))
+
+  const ownPoolFreeAgents: PoolSlot[] = built
+    ? pool
+        .filter((e) => e.kind === 'fa' && e.from === team && !built.slots.some((s) => s.player.mlbamId === e.mlbamId))
+        .map((e) => ({ player: poolToPlayer(e), onRoster: false, salary: null, taxValue: null, owed: 0, offReason: 'free-agent' as const, fromPool: true }))
+    : []
+
+  const sumWar = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((n, s) => n + (s.player.war ?? 0), 0)
+  const teamWar = built ? sumWar(built.slots) : 0
+  const startWar = start ? sumWar(start.slots) : 0
+  const onRoster = built ? built.slots.filter((s) => s.onRoster) : []
+  const playingTime = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((t, s) => ({ pa: t.pa + (s.player.pa ?? 0), ip: t.ip + (s.player.ip ?? 0) }), { pa: 0, ip: 0 })
+  const { pa: hitterPa, ip: pitcherIp } = playingTime(built?.slots ?? [])
+  const startTime = playingTime(start?.slots ?? [])
+  // Every 40-man is projected for more playing time than a season has (ZiPS projects each player
+  // on his own), so only warn when the user's moves push well past today's roster.
+  const addedPa = hitterPa - startTime.pa
+  const addedIp = pitcherIp - startTime.ip
+  const overPlaying = addedPa > startTime.pa * 0.15 || addedIp > startTime.ip * 0.15
+  const tally = onRoster.reduce<Record<string, number>>((t, s) => { const b = posBucket(s.player.pos); t[b] = (t[b] ?? 0) + 1; return t }, {})
+  const stale = meta?.staleTeams?.[team]
 
   const addEditor = (e: PoolPlayer) => {
     if (editing?.id !== e.mlbamId || editing.kind !== 'add') return undefined
     return (
       <SalaryForm
-        initial={e.kind === 'fa' ? Math.max(e.salaryPrevYear ?? minimum, minimum) : null}
-        hint={
-          e.kind === 'fa'
-            ? e.salaryPrevYear != null
-              ? 'Pre-filled with his 2026 salary as a placeholder. A projection-based price comes once WAR is added.'
-              : 'No 2026 salary on file; pre-filled at the league minimum. Enter your own figure.'
-            : "No source gives this player's 2027 salary. Enter a figure to trade for him."
-        }
+        initial={e.kind === 'fa' ? signingStart(e.war, e.salaryPrevYear) : null}
+        hint={e.kind === 'fa' ? signingHint(e.war) : "No source gives this player's 2027 salary. Enter a figure to trade for him."}
         onSave={(salary) => act({ type: 'add', id: e.mlbamId, salary })}
         onCancel={() => setEditing(null)}
       />
@@ -360,12 +413,12 @@ export default function TeamBuilderApp() {
     const id = s.player.mlbamId!
     if (editing?.id !== id || editing.kind === 'add') return undefined
     if (editing.kind === 'resign') {
-      const prev = s.player.salaryPrevYear
       return (
         <SalaryForm
-          initial={Math.max(prev ?? minimum, minimum)}
-          hint="Pre-filled with his 2026 salary as a placeholder. A projection-based price comes once WAR is added."
-          onSave={(salary) => act({ type: 'resign', id, salary })}
+          initial={signingStart(s.player.war, s.player.salaryPrevYear)}
+          hint={signingHint(s.player.war)}
+          // A free agent who has already dropped off the team's sheet comes back from the pool.
+          onSave={(salary) => act({ type: (s as PoolSlot).fromPool ? 'add' : 'resign', id, salary })}
           onCancel={() => setEditing(null)}
         />
       )
@@ -492,11 +545,23 @@ export default function TeamBuilderApp() {
 
       {built && start && meta && (
         <div className="space-y-4">
+          {stale && (
+            <p className="max-w-[58ch] text-xs text-[var(--accent)]">
+              {`Cot's sheet for the ${TEAM_NAMES[team]} didn't pass today's checks (it's probably mid-update), so this shows the last version that did.`}
+            </p>
+          )}
+
           {/* Totals: sticky so they stay in view while making moves */}
           <section className="z-10 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] p-4 shadow-[var(--panel-shadow)] sm:sticky sm:top-14">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money and buyouts" />
               <Stat label="2027 luxury-tax payroll" value={money(built.taxPayroll)} delta={<Delta now={built.taxPayroll} then={start.taxPayroll} />} sub="Average annual values plus benefits" />
+              <Stat
+                label="Projected WAR"
+                value={teamWar.toFixed(1)}
+                delta={<WarDelta now={teamWar} then={startWar} />}
+                sub={meta.projections?.label ?? 'Projections not loaded yet'}
+              />
               <Stat
                 label="40-man roster"
                 value={`${built.rosterCount} / 40`}
@@ -508,6 +573,20 @@ export default function TeamBuilderApp() {
                 <TaxBar taxPayroll={built.taxPayroll} threshold={meta.taxThreshold} />
               </div>
             )}
+            <div className="mt-3 space-y-1 border-t border-[var(--rule)] pt-2 text-[11px] text-[var(--dim)]">
+              <p className="max-w-[58ch]">
+                Team WAR is a straight sum of every player&apos;s projection, and each projection assumes his usual playing time. Together this roster is projected for {hitterPa.toLocaleString()} PA and {Math.round(pitcherIp).toLocaleString()} IP, against about {SEASON_PA.toLocaleString()} and {SEASON_IP.toLocaleString()} in a season, so treat the total as a rough guide.
+              </p>
+              {overPlaying && (
+                <p className="max-w-[58ch] text-[var(--accent)]">
+                  Your moves add {Math.max(0, addedPa).toLocaleString()} PA and {Math.max(0, Math.round(addedIp)).toLocaleString()} IP of projected playing time beyond today&apos;s roster. Not all of the extra WAR would fit, since nine outfielders can&apos;t all play.
+                </p>
+              )}
+              <p className="text-[var(--dimmer)]">
+                {TALLY_ORDER.filter((b) => tally[b]).map((b) => `${b} ${tally[b]}`).join(' · ')}
+                {Object.keys(tally).filter((b) => !TALLY_ORDER.includes(b)).map((b) => ` · ${b} ${tally[b]}`).join('')}
+              </p>
+            </div>
             {built.unknownSalaries.length > 0 && (
               <p className="mt-3 border-t border-[var(--rule)] pt-2 text-[11px] text-[var(--accent)]">
                 Left out of both totals because no source gives the salary: {built.unknownSalaries.map((p) => p.name).join(', ')}.
@@ -525,14 +604,17 @@ export default function TeamBuilderApp() {
                 </button>
               </div>
               <ul className="space-y-1">
-                {moves.map((m) => (
+                {moves.map((m) => {
+                  const text = describeMove(m, nameOf(m.id), pool.some((e) => e.mlbamId === m.id && e.from === team))
+                  return (
                   <li key={`${m.type}-${m.id}`} className="flex items-center justify-between gap-2 text-xs text-[var(--dim)]">
-                    <span>{describeMove(m, nameOf(m.id))}</span>
-                    <button type="button" onClick={() => setMoves(moves.filter((x) => x !== m))} className="shrink-0 text-[11px] text-[var(--dimmer)] hover:text-[var(--text)] hover:underline" aria-label={`Undo: ${describeMove(m, nameOf(m.id))}`}>
+                    <span>{text}</span>
+                    <button type="button" onClick={() => setMoves(moves.filter((x) => x !== m))} className="shrink-0 text-[11px] text-[var(--dimmer)] hover:text-[var(--text)] hover:underline" aria-label={`Undo: ${text}`}>
                       Undo
                     </button>
                   </li>
-                ))}
+                  )
+                })}
               </ul>
             </section>
           )}
@@ -576,13 +658,13 @@ export default function TeamBuilderApp() {
             </div>
             <p className="max-w-[58ch] px-4 pb-2.5 text-[11px] text-[var(--dim)]">
               {poolKind === 'fa'
-                ? <>Players projected to be free agents, from Cot&apos;s and MLB Trade Rumors&apos; list, sorted by 2026 salary. Signing one is a one-year figure you set; until WAR projections are added, it starts at his 2026 salary.</>
+                ? <>Players projected to be free agents, from Cot&apos;s and MLB Trade Rumors&apos; list, best projected WAR first. The price is a one-year estimate: projected WAR × {money(perWin)} per win, never below the minimum. You can change it when signing.</>
                 : <>Every player on another team&apos;s 2027 roster. Trading for one brings his 2027 salary; who goes back the other way isn&apos;t modelled, so remove players yourself.</>}
             </p>
             <div className="divide-y divide-[var(--rule)] border-t border-[var(--rule)]">
               {poolResults.slice(0, poolShown).map((e) => (
                 <div key={e.mlbamId}>
-                  <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_190px_110px]">
+                  <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_170px_160px]">
                     <div className="flex min-w-0 items-center gap-2.5">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={headshotUrl(e.mlbamId)} alt="" loading="lazy" className="h-8 w-8 shrink-0 rounded-full bg-[var(--track)] object-cover" />
@@ -598,10 +680,11 @@ export default function TeamBuilderApp() {
                     </div>
                     <div className="hidden truncate text-[11px] text-[var(--dim)] sm:block" title={e.contract}>{e.contract}</div>
                     <div className="flex items-center justify-end gap-2">
-                      <span className="text-right font-mono text-[11px] text-[var(--dim)]">
+                      <span className="whitespace-nowrap text-right font-mono text-[11px] text-[var(--dim)]">
                         {e.kind === 'fa'
-                          ? e.salaryPrevYear != null ? <>{money(e.salaryPrevYear)}<span className="block font-sans text-[11px] text-[var(--dimmer)]">2026</span></> : '—'
-                          : e.salary != null ? <>{money(e.salary)}<span className="block font-sans text-[11px] text-[var(--dimmer)]">2027</span></> : 'unknown'}
+                          ? priceOf(e.war) != null ? <span className="italic text-[var(--text)]">{money(priceOf(e.war)!)} <span className="not-italic text-[var(--dimmer)]">est.</span></span> : '—'
+                          : e.salary != null ? <span className="text-[var(--text)]">{money(e.salary)}</span> : 'unknown'}
+                        <span className="block font-sans text-[11px] text-[var(--dimmer)]">{fmtWar(e.war)} WAR</span>
                       </span>
                       <ActionButton
                         label={`${e.kind === 'fa' ? 'Sign' : 'Trade for'} ${e.name}`}
@@ -657,9 +740,10 @@ export default function TeamBuilderApp() {
           {built.deadMoney.length > 0 && (
             <Section title="Dead money" count={built.deadMoney.length} note="Players no longer on the team who are still owed 2027 money. Counts toward payroll; can't be removed.">
               {built.deadMoney.map((d) => (
-                <div key={d.name} className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_190px_90px_90px]">
+                <div key={d.name} className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2 sm:grid-cols-[1fr_170px_48px_90px_90px]">
                   <span className="text-sm">{d.name}</span>
                   <span className="hidden truncate text-[11px] text-[var(--dim)] sm:block">{d.note}</span>
+                  <span className="hidden sm:block" />
                   <span className="text-right font-mono text-xs">{money(d.salary, 2)}</span>
                   <span className="hidden text-right font-mono text-xs text-[var(--dim)] sm:block">{money(d.taxValue, 2)}</span>
                 </div>
@@ -668,10 +752,10 @@ export default function TeamBuilderApp() {
           )}
 
           {(() => {
-            const off = built.slots.filter((s) => !s.onRoster)
+            const off: PoolSlot[] = [...built.slots.filter((s) => !s.onRoster), ...ownPoolFreeAgents]
             if (!off.length) return null
             const order = { removed: 0, 'opted-out': 1, declined: 2, 'free-agent': 3 } as const
-            off.sort((a, b) => order[a.offReason!] - order[b.offReason!] || (b.player.salary ?? b.player.salaryPrevYear ?? 0) - (a.player.salary ?? a.player.salaryPrevYear ?? 0))
+            off.sort((a, b) => order[a.offReason!] - order[b.offReason!] || (b.player.war ?? -99) - (a.player.war ?? -99))
             return (
               <Section
                 title="Not on the 2027 roster"
@@ -710,6 +794,14 @@ export default function TeamBuilderApp() {
               <a href={meta.sources.options.clubOptions} className="underline hover:text-[var(--dim)]">club</a> and{' '}
               <a href={meta.sources.options.playerOptions} className="underline hover:text-[var(--dim)]">player option</a> previews.
             </p>
+            {meta.projections && meta.assumptions.dollarsPerWar && (
+              <p>
+                Projected WAR from FanGraphs&apos;{' '}
+                <a href={meta.projections.url} className="underline hover:text-[var(--dim)]">{meta.projections.label}</a>. {meta.projections.note} Players with no projection show a dash and count as 0.
+                Free-agent prices use {money(perWin)} per win, from FanGraphs&apos;{' '}
+                <a href={meta.assumptions.dollarsPerWar.url} className="underline hover:text-[var(--dim)]">2026 study of what teams paid per win</a>.
+              </p>
+            )}
             <p>
               Estimates are in italics with &quot;est.&quot; Hover one to see where it comes from. &quot;Trade away&quot; drops the player&apos;s salary; who comes back in a trade isn&apos;t modelled.
               Ages are for the 2027 season. Your changes aren&apos;t saved yet; share links are coming.

@@ -24,7 +24,7 @@ export interface Slot {
   owed: number // buyout still paid while off the roster
   offReason?: OffReason
   userSalary?: boolean // salary typed by the user
-  added?: { kind: 'fa' | 'trade'; from: string | null } // brought in from the pool
+  added?: { kind: 'fa' | 'trade' | 'resign'; from: string | null } // brought in from the pool
 }
 
 export interface BuiltRoster {
@@ -42,11 +42,12 @@ const idOf = (p: Player) => p.mlbamId ?? -1
 export const salaryEditable = (s: Slot) => s.onRoster && (s.userSalary || s.player.salarySource !== 'cots')
 
 // A pool entry dressed as a roster player, so added players render like everyone else.
-function poolToPlayer(e: PoolPlayer): Player {
+export function poolToPlayer(e: PoolPlayer): Player {
   return {
     mlbamId: e.mlbamId, name: e.name, sheetName: e.name, pos: e.pos, age: e.age, mls: null, contract: e.contract,
     status: e.kind === 'fa' ? 'fa' : e.status, salary: e.salary, taxValue: e.taxValue,
     salaryPrevYear: e.salaryPrevYear, salarySource: e.salarySource,
+    war: e.war ?? null, pa: e.pa, ip: e.ip,
   }
 }
 
@@ -62,7 +63,8 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
   for (const m of moves) {
     if (m.type === 'add') {
       const e = poolById.get(m.id)
-      if (!e || slots.has(m.id) || e.from === team.team) continue
+      // The team's own former players can only come back as free agents (a re-signing).
+      if (!e || slots.has(m.id) || (e.from === team.team && e.kind !== 'fa')) continue
       const salary = m.salary ?? (e.kind === 'roster' ? e.salary : null)
       if (salary == null) continue // a free agent needs a price
       slots.set(m.id, {
@@ -72,7 +74,7 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
         taxValue: m.salary ?? e.taxValue ?? salary,
         owed: 0,
         userSalary: m.salary != null,
-        added: { kind: e.kind === 'fa' ? 'fa' : 'trade', from: e.from },
+        added: { kind: e.kind !== 'fa' ? 'trade' : e.from === team.team ? 'resign' : 'fa', from: e.from },
       })
       continue
     }
