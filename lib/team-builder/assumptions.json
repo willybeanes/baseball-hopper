@@ -18,5 +18,16 @@
     "club": "exercised",
     "player": "exercised",
     "mutual": "declined"
+  },
+  "projections": {
+    "system": "zipsp1",
+    "label": "ZiPS 3-year projection for 2027",
+    "note": "Made before the 2026 season. Switches to the fresh 2027 projection once FanGraphs publishes it (Steamer usually in November, ZiPS in January).",
+    "url": "https://www.fangraphs.com/projections?type=zipsp1"
+  },
+  "dollarsPerWar": {
+    "value": 11200000,
+    "note": "What teams paid per projected WAR in the 2025-26 free-agent market ($11.23M), from FanGraphs' 'What Are Teams Paying For A Win In Free Agency? 2026 Edition' (Ben Clemens, Feb 24, 2026). Cheaper players went for less per win and stars for more.",
+    "url": "https://blogs.fangraphs.com/what-are-teams-paying-for-a-win-in-free-agency-2026-edition/"
   }
 }

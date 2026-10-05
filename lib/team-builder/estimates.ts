@@ -29,6 +29,9 @@ export interface EstimatedFields {
   playerOption?: { type: string; buyout: number | null } // signed, but the player can walk away
   defaultExercised?: boolean // options only: on the default 2027 roster, or declined with the buyout counted
   corrected?: string // why we overrode Cot's status, if we did
+  war?: number | null // projected target-year WAR (null: no projection)
+  pa?: number // projected plate appearances
+  ip?: number // projected innings
 }
 
 export function applyEstimates(

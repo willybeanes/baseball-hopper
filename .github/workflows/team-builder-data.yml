@@ -37,7 +37,12 @@ jobs:
       - name: Test the sheet reader against saved sheets
         run: bun test tests/team-builder
 
+      # A partial problem (one team's sheet failing its checks, or projections failing) still
+      # writes everything else and then exits non-zero. Commit what was written, then fail the
+      # job at the end so the problem gets an email. A total failure writes nothing.
       - name: Download, check and match the live sheets
+        id: refresh
+        continue-on-error: true
         run: bun scripts/team-builder/refresh-cots.ts --save-raw raw-sheets
 
       - name: Commit the snapshot if it changed
@@ -54,9 +59,15 @@ jobs:
           git pull --rebase --quiet && git push
 
       - name: Keep the downloaded sheets with the run
-        if: failure()
+        if: steps.refresh.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: cots-sheets
           path: raw-sheets/
           if-no-files-found: ignore
+
+      - name: Fail the run if the refresh reported problems
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "The refresh reported problems; see the 'Download, check and match' step above."
+          exit 1

@@ -5,7 +5,7 @@ import { join } from 'path'
 import assumptions from '../../lib/team-builder/assumptions.json'
 import { parseTeamSheet } from '../../lib/team-builder/cots'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
-import { defaultRoster, money, type TeamFile } from '../../lib/team-builder/roster'
+import { defaultRoster, money, warPrice, type TeamFile } from '../../lib/team-builder/roster'
 
 function team(code: string, ids: Record<string, number> = {}, options: OptionFact[] = []) {
   const s = parseTeamSheet(code, readFileSync(join(import.meta.dir, 'fixtures', `${code}.csv`), 'utf8'), 2026, 2027)
@@ -50,5 +50,14 @@ describe('money', () => {
     expect(money(57_500_000, 2)).toBe('$57.50M')
     expect(money(780_000)).toBe('$780K')
     expect(money(-2_000_000, 2)).toBe('−$2.00M')
+  })
+})
+
+describe('warPrice', () => {
+  test('WAR times dollars per win, rounded, floored at the minimum', () => {
+    expect(warPrice(2.36, 11.2e6, 780_000)).toBe(26_400_000)
+    expect(warPrice(0.03, 11.2e6, 780_000)).toBe(780_000)
+    expect(warPrice(-0.5, 11.2e6, 780_000)).toBe(780_000)
+    expect(warPrice(null, 11.2e6, 780_000)).toBeNull()
   })
 })

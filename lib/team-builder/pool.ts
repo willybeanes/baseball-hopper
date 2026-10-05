@@ -17,6 +17,9 @@ export interface PoolPlayer {
   salaryPrevYear: number | null // 2026 pay, the placeholder price for a free agent
   contract: string
   note?: string
+  war?: number | null // projected target-year WAR
+  pa?: number
+  ip?: number
 }
 
 export interface MlbtrFreeAgent { name: string; age: number; positions: string[]; note?: string; mlbamId: number | null }
