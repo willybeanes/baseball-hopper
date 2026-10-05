@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T14:10:38.959Z",
+  "updatedAt": "2026-10-05T18:03:14.212Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -56,7 +56,32 @@
         "3": 3000000,
         "4": 4500000
       }
+    },
+    "optionDefaults": {
+      "note": "Club and player options start exercised. Mutual options start declined with the buyout counted, because both sides almost never pick one up (Will, 2026-10-03).",
+      "club": "exercised",
+      "player": "exercised",
+      "mutual": "declined"
+    },
+    "dollarsPerWar": {
+      "value": 11200000,
+      "note": "What teams paid per projected WAR in the 2025-26 free-agent market ($11.23M), from FanGraphs' 'What Are Teams Paying For A Win In Free Agency? 2026 Edition' (Ben Clemens, Feb 24, 2026). Cheaper players went for less per win and stars for more.",
+      "url": "https://blogs.fangraphs.com/what-are-teams-paying-for-a-win-in-free-agency-2026-edition/"
     }
+  },
+  "projections": {
+    "system": "zipsp1",
+    "label": "ZiPS 3-year projection for 2027",
+    "note": "Made before the 2026 season. Switches to the fresh 2027 projection once FanGraphs publishes it (Steamer usually in November, ZiPS in January).",
+    "url": "https://www.fangraphs.com/projections?type=zipsp1",
+    "fetchedAt": "2026-10-05",
+    "players": 3739
+  },
+  "staleTeams": {
+    "LAD": [
+      "LAD: payroll rows add up to $358.106M but the sheet says $366.006M",
+      "LAD: tax payroll rows add up to $380.575M but the sheet says $388.475M"
+    ]
   },
   "sources": {
     "contracts": "Cot's Baseball Contracts",
