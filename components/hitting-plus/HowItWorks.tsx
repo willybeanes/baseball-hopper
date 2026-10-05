@@ -205,8 +205,8 @@ function DiagramPanel({ activeId, level }: { activeId: string; level: number }) 
               </div>
               <div className="relative h-[8px] overflow-hidden rounded-full bg-white">
                 <span
-                  className="gauge-fill absolute bottom-0 left-0 top-0 rounded-full bg-[var(--accent)]"
-                  style={{ width: revealed ? `${b.pct}%` : "0%", transition: "width 900ms ease-out" }}
+                  className="gauge-fill absolute bottom-0 left-0 top-0 w-full rounded-full bg-[var(--accent)]"
+                  style={{ transform: `translateX(${revealed ? b.pct - 100 : -100}%)`, transition: "transform 900ms ease-out" }}
                 />
               </div>
             </div>
@@ -223,8 +223,8 @@ function DiagramPanel({ activeId, level }: { activeId: string; level: number }) 
         </div>
         <div className="relative h-[12px] overflow-hidden rounded-full bg-white">
           <span
-            className="gauge-fill absolute bottom-0 left-0 top-0 rounded-full bg-[var(--text)]"
-            style={{ width: level >= 5 ? `${HITTING_PCT}%` : "0%", transition: "width 900ms ease-out" }}
+            className="gauge-fill absolute bottom-0 left-0 top-0 w-full rounded-full bg-[var(--text)]"
+            style={{ transform: `translateX(${level >= 5 ? HITTING_PCT - 100 : -100}%)`, transition: "transform 900ms ease-out" }}
           />
         </div>
       </div>

@@ -176,7 +176,7 @@ export default function BatterAnimation({
 }) {
   const p = easeOut3(progress);
   return (
-    <div className="mt-5 overflow-hidden rounded-[10px] border border-[var(--rule)] bg-[var(--track)]">
+    <div className="mt-5 overflow-hidden rounded-[10px] bg-[var(--track)]">
       <svg viewBox="0 0 300 165" width="100%" style={{ display: "block" }}
         role="img" aria-label={label}>
         <line x1={15}  y1={148} x2={285} y2={148} stroke="var(--rule)"   strokeWidth={1.5} />

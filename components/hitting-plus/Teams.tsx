@@ -157,7 +157,7 @@ export default function Teams({
   }
 
   const thBase =
-    "py-2.5 pr-3 text-right text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)] cursor-pointer select-none hover:text-[var(--text)]";
+    "py-2.5 pr-3 text-right text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)] cursor-pointer select-none hover:text-[var(--text)]";
 
   return (
     <div className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
@@ -165,7 +165,7 @@ export default function Teams({
         <table className="w-full min-w-[640px] border-collapse">
           <thead>
             <tr className="border-b border-[var(--rule)]">
-              <th className="py-2.5 pl-5 pr-3 text-left text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
+              <th className="py-2.5 pl-5 pr-3 text-left text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
                 Team
               </th>
               <th
@@ -228,7 +228,7 @@ export default function Teams({
                   {isExpanded && expandedPlayers.length > 0 && (
                     <tr key={row.team + "-expanded"} className="border-t border-[var(--rule)] bg-[var(--track)]">
                       <td colSpan={3 + GRADE_COLS.length} className="px-5 pb-3 pt-2">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)] mb-2">
+                        <div className="text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)] mb-2">
                           {row.team} — {season} ({row.players} batters)
                         </div>
                         <div className="flex flex-wrap gap-x-4 gap-y-1">

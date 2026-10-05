@@ -47,14 +47,14 @@ export function SeasonToggle({ value, onChange, singleSelect = false }: Props) {
 
   return (
     <div className="flex items-center gap-2" ref={ref}>
-      <span className="text-xs font-semibold text-[#888] uppercase tracking-widest">Season</span>
+      <span className="text-xs font-medium text-[var(--dim)] uppercase tracking-widest">Season</span>
       <div className="relative">
         <button
           onClick={() => setOpen(o => !o)}
           className="bg-white border border-[#d0cbc3] rounded-lg px-3 py-1.5 text-sm font-semibold text-[#1a1a1a] outline-none cursor-pointer flex items-center gap-2 hover:border-[#aaa] transition-colors min-w-[90px]"
         >
           <span className="flex-1 text-left">{label(value)}</span>
-          <svg className={`w-3.5 h-3.5 text-[#aaa] transition-transform shrink-0 ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className={`w-3.5 h-3.5 text-[var(--dimmer)] transition-transform shrink-0 ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
           </svg>
         </button>

@@ -26,7 +26,7 @@ export function TabNav({ value, onChange }: Props) {
           className={`px-5 py-3 text-sm font-bold transition-colors border-b-2 -mb-px ${
             value === t.id
               ? 'border-[#1a1a1a] text-[#1a1a1a]'
-              : 'border-transparent text-[#999] hover:text-[#444]'
+              : 'border-transparent text-[var(--dimmer)] hover:text-[#444]'
           }`}
         >
           {t.label}

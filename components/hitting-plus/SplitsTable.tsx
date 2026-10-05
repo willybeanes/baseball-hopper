@@ -85,23 +85,23 @@ export default function SplitsTable({ splits }: { splits: Splits | undefined }) 
 
   return (
     <div className="mt-6">
-      <h2 className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+      <h2 className="mb-3 text-[15px] font-semibold tracking-tight text-[var(--text)]">
         Splits
       </h2>
-      <div className="overflow-x-auto rounded-[10px] border border-[var(--rule)]">
+      <div className="overflow-x-auto rounded-[10px] border border-[var(--panel-border)]">
         <table className="w-full min-w-[380px] border-collapse">
           <thead>
             <tr>
-              <th className="py-2 pl-4 pr-2 text-left text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
+              <th className="py-2 pl-4 pr-2 text-left text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
                 Split
               </th>
-              <th className="py-2 pr-3 text-right text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
+              <th className="py-2 pr-3 text-right text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
                 PA
               </th>
               {COLS.map(({ key, label }) => (
                 <th
                   key={key}
-                  className="py-2 pr-3 text-right text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]"
+                  className="py-2 pr-3 text-right text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]"
                 >
                   {label}
                 </th>
@@ -114,7 +114,7 @@ export default function SplitsTable({ splits }: { splits: Splits | undefined }) 
               <tr>
                 <td
                   colSpan={7}
-                  className="border-t border-[var(--rule)] bg-[var(--track)] py-1 pl-4 text-[9px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)]"
+                  className="border-t border-[var(--rule)] bg-[var(--track)] py-1 pl-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)]"
                 >
                   Platoon
                 </td>
@@ -130,7 +130,7 @@ export default function SplitsTable({ splits }: { splits: Splits | undefined }) 
               <tr>
                 <td
                   colSpan={7}
-                  className="border-t border-[var(--rule)] bg-[var(--track)] py-1 pl-4 text-[9px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)]"
+                  className="border-t border-[var(--rule)] bg-[var(--track)] py-1 pl-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)]"
                 >
                   By month
                 </td>

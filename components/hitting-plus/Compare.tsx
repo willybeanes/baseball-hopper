@@ -65,7 +65,7 @@ export default function Compare({
 
   return (
     <div className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-6 shadow-[var(--panel-shadow)] sm:px-7 sm:py-6">
-      <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+      <h2 className="mb-4 text-[15px] font-semibold tracking-tight text-[var(--text)]">
         Compare, two or three hitters
       </h2>
 
@@ -91,7 +91,7 @@ export default function Compare({
           <table className="w-full min-w-[420px] border-collapse text-sm">
             <thead>
               <tr>
-                <th className="px-3 pb-3 text-left text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
+                <th className="px-3 pb-3 text-left text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--dim)]">
                   &nbsp;
                 </th>
                 {chosen.map((p) => (
@@ -112,7 +112,7 @@ export default function Compare({
             <tbody>
               {ROWS.map((row) => (
                 <tr key={row.key} className="border-t border-[var(--rule)]">
-                  <td className="px-3 py-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--dim)]">
+                  <td className="px-3 py-2.5 text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--dim)]">
                     {row.label}
                     {COMPONENT_KEYS.includes(row.key as ComponentKey) && (
                       <div className="mt-0.5 normal-case tracking-normal text-[var(--dimmer)]">

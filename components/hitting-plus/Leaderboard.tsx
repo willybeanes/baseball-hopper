@@ -178,7 +178,7 @@ export default function Leaderboard({
   return (
     <div className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-6 shadow-[var(--panel-shadow)] sm:px-7 sm:py-6">
       <div className="mb-3.5 flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+        <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
           Hitters with {minPA}+ PA
         </h2>
         <div className="flex items-center gap-3">
@@ -238,7 +238,7 @@ export default function Leaderboard({
         shows every club he hit for that year. Position comes from his current MLB roster listing.
       </p>
 
-      <div className="max-h-[70vh] overflow-auto rounded-[10px] border border-[var(--rule)]">
+      <div className="max-h-[70vh] overflow-auto">
         <table className="w-full min-w-[680px] border-collapse text-sm">
           <thead>
             <tr>
@@ -248,7 +248,7 @@ export default function Leaderboard({
                   scope="col"
                   onClick={() => onSort(c.key as string)}
                   aria-sort={sort.k === c.key ? (sort.dir === 1 ? "ascending" : "descending") : "none"}
-                  className={`sticky top-0 cursor-pointer select-none whitespace-nowrap border-b border-[var(--rule)] bg-[var(--panel)] px-2.5 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] shadow-[0_1px_0_var(--rule)] hover:text-[var(--text)] ${
+                  className={`sticky top-0 cursor-pointer select-none whitespace-nowrap border-b border-[var(--rule)] bg-[var(--panel)] px-2.5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] shadow-[0_1px_0_var(--rule)] hover:text-[var(--text)] ${
                     c.key === "player_name" ? "left-0 z-20 text-left" : "z-10 text-right"
                   } ${sort.k === c.key ? "text-[var(--accent)]" : "text-[var(--dim)]"}`}
                 >

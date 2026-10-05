@@ -43,7 +43,7 @@ interface Props {
 export function TeamFilter({ value, onChange, label = 'Team' }: Props) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs font-semibold text-[#888] uppercase tracking-widest">{label}</span>
+      <span className="text-xs font-medium text-[var(--dim)] uppercase tracking-widest">{label}</span>
       <select
         value={value}
         onChange={e => onChange(e.target.value)}

@@ -59,14 +59,14 @@ function StartDetailRows({ pitcherId, season }: { pitcherId: number; season: num
   if (loading) {
     return (
       <tr className="bg-[#faf8f5]">
-        <td colSpan={9} className="px-6 py-3 text-xs text-[#aaa]">Loading…</td>
+        <td colSpan={9} className="px-6 py-3 text-xs text-[var(--dimmer)]">Loading…</td>
       </tr>
     )
   }
   if (!starts || starts.length === 0) {
     return (
       <tr className="bg-[#faf8f5]">
-        <td colSpan={9} className="px-6 py-3 text-xs text-[#aaa]">No starts found.</td>
+        <td colSpan={9} className="px-6 py-3 text-xs text-[var(--dimmer)]">No starts found.</td>
       </tr>
     )
   }
@@ -79,7 +79,7 @@ function StartDetailRows({ pitcherId, season }: { pitcherId: number; season: num
         <tr key={i} className={`bg-[#faf8f5] border-b border-[#ede8e1] last:border-b-0 ${gsvBg(s.gsv2)}`}>
           <td colSpan={2} />
           <td className="px-3 py-1.5 text-xs text-[#555] whitespace-nowrap font-mono">{s.game_date}</td>
-          <td className="px-3 py-1.5 text-xs text-[#888] whitespace-nowrap">{s.opponent_team ?? '—'}</td>
+          <td className="px-3 py-1.5 text-xs text-[var(--dim)] whitespace-nowrap">{s.opponent_team ?? '—'}</td>
           <td className="px-3 py-1.5 text-right text-xs font-mono text-[#555]">{fmtIp(s.ip)}</td>
           <td className="px-3 py-1.5 text-right text-xs font-mono text-[#555]">{s.so}</td>
           <td className="px-3 py-1.5 text-right text-xs font-mono text-[#555]">{s.bb}</td>
@@ -167,7 +167,7 @@ export default function HookApp() {
 
   const Th = ({ col, label, title }: { col: SortCol; label: string; title?: string }) => (
     <th
-      className="px-3 py-2.5 text-right text-[10px] font-semibold text-[#888] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap"
+      className="px-3 py-2.5 text-right text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider cursor-pointer hover:text-[#555] select-none whitespace-nowrap"
       onClick={() => handleSort(col)}
       title={title}
     >
@@ -199,9 +199,9 @@ export default function HookApp() {
           <p>
             <span className="font-semibold text-[var(--text)]">GSv2</span>
             {' = 40 + 2×outs + K − 2×BB − 2×H − 3×R − 6×HR'}
-            <span className="ml-2 text-[10px] text-[var(--dimmer)]">(ER used as proxy for R)</span>
+            <span className="ml-2 text-[11px] text-[var(--dimmer)]">(ER used as proxy for R)</span>
           </p>
-          <p className="text-[10px] text-[var(--dimmer)]">
+          <p className="text-[11px] text-[var(--dimmer)]">
             Full Hook Efficiency (actual/perfect GSv2 ratio) requires intra-start pitch data — coming soon.
             QS+ counts starts with GSv2 ≥ 50.
           </p>
@@ -250,8 +250,8 @@ export default function HookApp() {
             <thead>
               <tr className="border-b border-[var(--rule)]">
                 <th className="w-8 px-3 py-2.5" />
-                <th className="px-3 py-2.5 text-left text-[10px] font-semibold text-[#888] uppercase tracking-wider">Pitcher</th>
-                <th className="px-3 py-2.5 text-left text-[10px] font-semibold text-[#888] uppercase tracking-wider">Team</th>
+                <th className="px-3 py-2.5 text-left text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider">Pitcher</th>
+                <th className="px-3 py-2.5 text-left text-[11px] font-medium text-[var(--dim)] uppercase tracking-wider">Team</th>
                 <Th col="starts" label="GS" title="Games Started" />
                 <Th col="avg_gsv2" label="Avg GSv2" title="Average Game Score v2 per start" />
                 <Th col="med_gsv2" label="Med" title="Median GSv2 per start" />
@@ -263,7 +263,7 @@ export default function HookApp() {
             <tbody>
               {!loading && sorted.length === 0 && (
                 <tr>
-                  <td colSpan={9} className="px-6 py-8 text-center text-sm text-[#aaa]">
+                  <td colSpan={9} className="px-6 py-8 text-center text-sm text-[var(--dimmer)]">
                     No data — try lowering Min GS or switching seasons.
                   </td>
                 </tr>
@@ -276,14 +276,14 @@ export default function HookApp() {
                     }`}
                     onClick={() => toggleExpand(row.pitcher_id)}
                   >
-                    <td className="px-3 py-2 text-center text-xs text-[#bbb] w-8">
+                    <td className="px-3 py-2 text-center text-xs text-[var(--dimmer)] w-8">
                       {expandedId === row.pitcher_id ? '▾' : '▸'}
                     </td>
                     <td className="px-3 py-2 font-medium whitespace-nowrap">
-                      <span className="text-[#aaa] text-[11px] mr-2 tabular-nums">{i + 1}</span>
+                      <span className="text-[var(--dimmer)] text-[11px] mr-2 tabular-nums">{i + 1}</span>
                       {row.pitcher_name}
                     </td>
-                    <td className="px-3 py-2 text-xs text-[#888] font-mono">{row.pitcher_team ?? '—'}</td>
+                    <td className="px-3 py-2 text-xs text-[var(--dim)] font-mono">{row.pitcher_team ?? '—'}</td>
                     <td className="px-3 py-2 text-right text-xs font-mono text-[#555]">{row.starts}</td>
                     <td className="px-3 py-2 text-right font-mono">
                       <span className={`text-sm ${gsvColor(row.avg_gsv2)}`}>{fmt(row.avg_gsv2, 1)}</span>
@@ -299,20 +299,20 @@ export default function HookApp() {
                     </td>
                     <td className="px-3 py-2 text-right text-xs font-mono text-[#555]">
                       {row.qs}
-                      <span className="text-[#bbb] ml-1">/ {row.starts}</span>
+                      <span className="text-[var(--dimmer)] ml-1">/ {row.starts}</span>
                     </td>
                   </tr>
                   {expandedId === row.pitcher_id && (
                     <>
                       <tr className="bg-[#faf8f5]">
                         <td colSpan={2} />
-                        <td className="px-3 py-1.5 text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Date</td>
-                        <td className="px-3 py-1.5 text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">Opp</td>
-                        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">IP</td>
-                        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">K</td>
-                        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">BB</td>
-                        <td className="px-3 py-1.5 text-right text-[10px] font-semibold text-[#aaa] uppercase tracking-wider">H</td>
-                        <td className="px-3 py-1.5 text-[10px] font-semibold text-[#aaa] uppercase tracking-wider pl-3">GSv2</td>
+                        <td className="px-3 py-1.5 text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Date</td>
+                        <td className="px-3 py-1.5 text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">Opp</td>
+                        <td className="px-3 py-1.5 text-right text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">IP</td>
+                        <td className="px-3 py-1.5 text-right text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">K</td>
+                        <td className="px-3 py-1.5 text-right text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">BB</td>
+                        <td className="px-3 py-1.5 text-right text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider">H</td>
+                        <td className="px-3 py-1.5 text-[11px] font-medium text-[var(--dimmer)] uppercase tracking-wider pl-3">GSv2</td>
                       </tr>
                       <StartDetailRows pitcherId={row.pitcher_id} season={season} />
                     </>

@@ -183,7 +183,7 @@ export default async function PlayerPage({ params }: Props) {
                 {tool.label}
               </span>
               <span
-                className={`shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full ${TAG_BG[tool.tag] ?? "bg-[var(--bg)] text-[var(--dim)]"}`}
+                className={`shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full ${TAG_BG[tool.tag] ?? "bg-[var(--bg)] text-[var(--dim)]"}`}
               >
                 {tool.tag}
               </span>
@@ -203,7 +203,7 @@ export default async function PlayerPage({ params }: Props) {
                 Lit 3-inch cubes of hard contact and barrels around the hitter&apos;s body · {hhps.season} · {hhps.bip} BIP
               </p>
             </div>
-            <span className="shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#1e40af]">
+            <span className="shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#1e40af]">
               Hitters
             </span>
           </div>
@@ -214,7 +214,7 @@ export default async function PlayerPage({ params }: Props) {
                 href={s.href}
                 className="block rounded-lg border border-[var(--rule)] p-3 hover:border-[var(--dim)] transition-colors"
               >
-                <div className="text-[10px] font-bold uppercase tracking-wider" style={{ color: s.color }}>
+                <div className="text-[11px] font-bold uppercase tracking-wider" style={{ color: s.color }}>
                   {s.label}
                 </div>
                 <div className="mt-1 text-2xl font-bold tabular-nums">{s.n}</div>

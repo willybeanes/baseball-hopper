@@ -19,7 +19,7 @@ export function StatHeader({ col, label, sortCol, sortDir, onSort, align = 'righ
       title={title}
       onClick={() => onSort(col)}
       className={`px-3 py-3 text-xs font-semibold uppercase tracking-wider cursor-pointer select-none whitespace-nowrap transition-colors
-        ${active ? 'text-[#1a1a1a]' : 'text-[#999] hover:text-[#1a1a1a]'}
+        ${active ? 'text-[#1a1a1a]' : 'text-[var(--dimmer)] hover:text-[#1a1a1a]'}
         ${align === 'right' ? 'text-right' : 'text-left'}
       `}
     >

@@ -103,7 +103,7 @@ export default function DecisionDiagram({ player }: { player: Player }) {
         </text>
       </svg>
 
-      <div className="mt-1 flex items-center justify-center gap-2 text-[10px] text-[var(--dimmer)]">
+      <div className="mt-1 flex items-center justify-center gap-2 text-[11px] text-[var(--dimmer)]">
         <span>good swing/take decisions</span>
         <span
           className="h-2 w-24 rounded-full"

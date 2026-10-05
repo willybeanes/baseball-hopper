@@ -205,16 +205,29 @@ export default async function HomePage() {
 
 
   return (
-    // Home page reads better slightly larger; scale it like 110% browser zoom
-    // on desktop (nav stays the same size as on other pages).
-    <main className="flex-1 w-full md:[zoom:1.1]">
+    <main className="flex-1 w-full">
+      {/* Quick tool links: below lg the blog fills the first screen, so surface the tools first */}
+      <nav aria-label="Tools" className="lg:hidden max-w-6xl mx-auto pt-5">
+        <div className="flex gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {TOOLS.map((tool) => (
+            <a
+              key={tool.slug}
+              href={tool.href}
+              className="shrink-0 rounded-full border border-[var(--panel-border)] bg-[var(--panel)] px-3.5 py-2 text-sm font-medium text-[var(--text)] hover:text-[var(--accent)] hover:border-[var(--rule)] transition-colors"
+            >
+              {tool.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
       {/* Feature strip: Articles + Sidebar */}
-      <div className="max-w-6xl mx-auto px-6 pt-8 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pt-6 lg:pt-8 pb-10">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Articles */}
           <section className="w-full lg:w-[52%] shrink-0 min-w-0">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight">
+              <h2 className="text-lg font-semibold text-[var(--text)] tracking-tight">
                 From the blog
               </h2>
               <Link
@@ -236,12 +249,12 @@ export default async function HomePage() {
             {/* Hitting+ leaderboard */}
             <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl p-4 shadow-[var(--panel-shadow)]">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">
+                <h3 className="text-sm font-semibold text-[var(--text)] tracking-tight">
                   Hitting+ Leaders <span className="text-[var(--dimmer)] font-normal">2026</span>
                 </h3>
                 <Link
                   href="/hitting-plus?tab=leaderboard&season=2026"
-                  className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
+                  className="text-[11px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors"
                 >
                   Full table →
                 </Link>
@@ -255,7 +268,7 @@ export default async function HomePage() {
                       href={`/hitting-plus?tab=card&player=${encodeURIComponent(p.player_name)}&season=2026`}
                       className="flex items-center gap-2 py-1.5 hover:bg-[var(--track)] -mx-1 px-1 rounded-lg transition-colors group/row"
                     >
-                      <span className="text-[10px] text-[var(--dimmer)] w-4 text-right shrink-0">{i + 1}</span>
+                      <span className="text-[11px] text-[var(--dimmer)] w-4 text-right shrink-0">{i + 1}</span>
                       {shot ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={shot} alt="" className="w-7 h-7 rounded-full object-cover shrink-0 bg-[var(--track)]" style={{ objectPosition: "50% 15%" }} />
@@ -276,8 +289,8 @@ export default async function HomePage() {
             {/* Scatter embeds */}
             <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
               <div className="flex items-center justify-between px-4 pt-3 pb-2">
-                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Pitching · SIERA vs ERA · Last 90 Days</h3>
-                <a href="/scatter?mode=pitching&season=2026&split=39&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
+                <h3 className="text-sm font-semibold text-[var(--text)] tracking-tight">Pitching · SIERA vs ERA · Last 90 Days</h3>
+                <a href="/scatter?mode=pitching&season=2026&split=39&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.4" className="text-[11px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
               <iframe
                 src="/scatter-app/index.html?mode=pitching&season=2026&split=39&stats=pit&lg=all&hand=&qual=y&team=0&group=player&x=SIERA&y=ERA&size=1.0&embed=1"
@@ -289,8 +302,8 @@ export default async function HomePage() {
 
             <div className="bg-[var(--panel)] border border-[var(--panel-border)] rounded-xl overflow-hidden shadow-[var(--panel-shadow)]">
               <div className="flex items-center justify-between px-4 pt-3 pb-2">
-                <h3 className="text-xs font-semibold text-[var(--text)] tracking-tight">Hitting · xwOBA vs wOBA · Last 90 Days</h3>
-                <a href="/scatter?mode=hitting&season=2026&split=39&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4" className="text-[10px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
+                <h3 className="text-sm font-semibold text-[var(--text)] tracking-tight">Hitting · xwOBA vs wOBA · Last 90 Days</h3>
+                <a href="/scatter?mode=hitting&season=2026&split=39&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.4" className="text-[11px] text-[var(--dim)] hover:text-[var(--accent)] transition-colors">Open →</a>
               </div>
               <iframe
                 src="/scatter-app/index.html?mode=hitting&season=2026&split=39&stats=all&lg=all&hand=&qual=y&team=0&group=player&x=xwOBA&y=wOBA&size=1.0&embed=1"
@@ -311,7 +324,7 @@ export default async function HomePage() {
 
       {/* Tool grid */}
       <section className="max-w-6xl mx-auto px-6 py-8">
-        <h2 className="text-sm font-semibold text-[var(--text)] tracking-tight mb-4">Tools</h2>
+        <h2 className="text-lg font-semibold text-[var(--text)] tracking-tight mb-4">Tools</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {TOOLS.map((tool) => {
             const cardClass =
@@ -323,7 +336,7 @@ export default async function HomePage() {
                     {tool.label}
                   </h3>
                   <span
-                    className={`shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full ${TAG_COLORS[tool.tag] ?? "bg-[var(--bg)] text-[var(--dim)]"}`}
+                    className={`shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full ${TAG_COLORS[tool.tag] ?? "bg-[var(--bg)] text-[var(--dim)]"}`}
                   >
                     {tool.tag}
                   </span>

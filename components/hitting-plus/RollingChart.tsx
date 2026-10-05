@@ -88,7 +88,7 @@ export default function RollingChart({
     return (
       <div className="mt-6">
         <SectionHeader />
-        <div className="mt-4 flex h-[200px] items-center justify-center rounded-[10px] border border-[var(--rule)] bg-[var(--track)]">
+        <div className="mt-4 flex h-[200px] items-center justify-center rounded-[10px] bg-[var(--track)]">
           <span className="text-sm text-[var(--dimmer)]">Loading…</span>
         </div>
       </div>
@@ -99,7 +99,7 @@ export default function RollingChart({
     return (
       <div className="mt-6">
         <SectionHeader />
-        <div className="mt-4 flex h-[120px] items-center justify-center rounded-[10px] border border-[var(--rule)] bg-[var(--track)]">
+        <div className="mt-4 flex h-[120px] items-center justify-center rounded-[10px] bg-[var(--track)]">
           <span className="text-sm text-[var(--dimmer)]">Not enough data for a rolling chart.</span>
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function RollingChart({
       </div>
 
       {/* Chart */}
-      <div className="relative mt-3 overflow-hidden rounded-[10px] border border-[var(--rule)] bg-[var(--track)]">
+      <div className="relative mt-3 overflow-hidden rounded-[10px] bg-[var(--track)]">
         <svg
           ref={svgRef}
           viewBox={`0 0 ${W} ${H}`}
@@ -254,7 +254,7 @@ export default function RollingChart({
                 : `calc(${(xs[hover] / W) * 100}% + 8px)`,
             }}
           >
-            <div className="mb-1 text-[10px] text-[var(--dimmer)]">{log.dates[hover]}</div>
+            <div className="mb-1 text-[11px] text-[var(--dimmer)]">{log.dates[hover]}</div>
             {METRICS.filter(({ key }) => active.has(key)).map(({ key, color }) => {
               const v = log[key][hover];
               return (
@@ -271,8 +271,8 @@ export default function RollingChart({
         )}
 
         {/* 30-day label */}
-        <div className="absolute bottom-1 right-2 text-[9px] text-[var(--dimmer)]">30-day rolling</div>
-        <div className="absolute bottom-1 left-2 text-[9px] text-[var(--dimmer)]">wOBA+ = wOBA / lg avg × 100, no park adj</div>
+        <div className="absolute bottom-1 right-2 text-[11px] text-[var(--dimmer)]">30-day rolling</div>
+        <div className="absolute bottom-1 left-2 text-[11px] text-[var(--dimmer)]">wOBA+ = wOBA / lg avg × 100, no park adj</div>
       </div>
     </div>
   );
@@ -280,7 +280,7 @@ export default function RollingChart({
 
 function SectionHeader() {
   return (
-    <h2 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--dim)]">
+    <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
       Rolling grades
     </h2>
   );

@@ -145,7 +145,7 @@ function PlatoonContent() {
             <div className="w-px h-5 bg-[#e0dbd2] hidden sm:block" />
 
             {/* Min pitches */}
-            <label className="flex items-center gap-2 text-xs text-[#888]">
+            <label className="flex items-center gap-2 text-xs text-[var(--dim)]">
               Min pitches per hand
               <select
                 value={minN}
@@ -166,9 +166,9 @@ function PlatoonContent() {
                 {pitcher ? pitcher.name : 'All Pitchers'}
                 {pitchType ? ` · ${PITCH_TYPES.find(p => p.value === pitchType)?.label}` : ''}
               </h2>
-              <p className="text-xs text-[#999] mt-0.5">{total.toLocaleString()} pitcher-pitch combinations</p>
+              <p className="text-xs text-[var(--dimmer)] mt-0.5">{total.toLocaleString()} pitcher-pitch combinations</p>
             </div>
-            {loading && <span className="text-xs text-[#999] animate-pulse">Loading…</span>}
+            {loading && <span className="text-xs text-[var(--dimmer)] animate-pulse">Loading…</span>}
           </div>
 
           {error && (
@@ -191,7 +191,7 @@ function PlatoonContent() {
           </div>
         </div>
 
-        <p className="text-xs text-[#aaa] text-center pb-4">
+        <p className="text-xs text-[var(--dimmer)] text-center pb-4">
           Pitch grades calibrated to Fangraphs Stuff+/Loc+/Pitching+ scale · Click any row to explore pitch locations
         </p>
       </div>
