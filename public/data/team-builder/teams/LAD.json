@@ -14,7 +14,9 @@
    "salaryPrevYear": 33000000,
    "walkYear": false,
    "mlbamId": 663656,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 3.93,
+   "pa": 570
   },
   {
    "name": "Tyler Glasnow",
@@ -29,7 +31,9 @@
    "salaryPrevYear": 32500000,
    "walkYear": false,
    "mlbamId": 607192,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 1.78,
+   "ip": 99
   },
   {
    "name": "Tarik Skubal",
@@ -43,7 +47,9 @@
    "taxValue": null,
    "salaryPrevYear": 9582888,
    "mlbamId": 669373,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 5.94,
+   "ip": 182.3
   },
   {
    "name": "Shohei Ohtani",
@@ -58,7 +64,10 @@
    "salaryPrevYear": 28216994,
    "walkYear": false,
    "mlbamId": 660271,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 7.49,
+   "pa": 693,
+   "ip": 95.3
   },
   {
    "name": "Blake Snell",
@@ -73,7 +82,9 @@
    "salaryPrevYear": 27869485,
    "walkYear": false,
    "mlbamId": 605483,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 1.89,
+   "ip": 98.3
   },
   {
    "name": "Mookie Betts",
@@ -88,7 +99,9 @@
    "salaryPrevYear": 25167520,
    "walkYear": false,
    "mlbamId": 605141,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 3.44,
+   "pa": 578
   },
   {
    "name": "Freddie Freeman",
@@ -103,7 +116,9 @@
    "salaryPrevYear": 22874920,
    "walkYear": true,
    "mlbamId": 518692,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 2.06,
+   "pa": 533
   },
   {
    "name": "Yoshinobu Yamamoto",
@@ -118,7 +133,9 @@
    "salaryPrevYear": 16166667,
    "walkYear": false,
    "mlbamId": 808967,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 4,
+   "ip": 165
   },
   {
    "name": "Teoscar Hernández",
@@ -133,7 +150,9 @@
    "salaryPrevYear": 15558798,
    "walkYear": false,
    "mlbamId": 606192,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 1.06,
+   "pa": 517
   },
   {
    "name": "Edwin Díaz",
@@ -148,7 +167,9 @@
    "salaryPrevYear": 14010520,
    "walkYear": false,
    "mlbamId": 621242,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 0.84,
+   "ip": 56.7
   },
   {
    "name": "Blake Treinen",
@@ -162,7 +183,9 @@
    "taxValue": null,
    "salaryPrevYear": 13500000,
    "mlbamId": 595014,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 0.08,
+   "ip": 36.3
   },
   {
    "name": "Will Smith",
@@ -177,7 +200,9 @@
    "salaryPrevYear": 12927716,
    "walkYear": false,
    "mlbamId": 669257,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 2.92,
+   "pa": 468
   },
   {
    "name": "Tanner Scott",
@@ -192,7 +217,9 @@
    "salaryPrevYear": 12466680,
    "walkYear": false,
    "mlbamId": 656945,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 0.7,
+   "ip": 58.7
   },
   {
    "name": "Tommy Edman",
@@ -207,7 +234,9 @@
    "salaryPrevYear": 12091513,
    "walkYear": false,
    "mlbamId": 669242,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 1.61,
+   "pa": 394
   },
   {
    "name": "Max Muncy",
@@ -222,7 +251,9 @@
    "salaryPrevYear": 10000000,
    "walkYear": false,
    "mlbamId": 571970,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 1.31,
+   "pa": 378
   },
   {
    "name": "Evan Phillips",
@@ -236,7 +267,9 @@
    "taxValue": null,
    "salaryPrevYear": 6500000,
    "mlbamId": 623465,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 0.55,
+   "ip": 55
   },
   {
    "name": "Miguel Rojas",
@@ -250,7 +283,9 @@
    "taxValue": null,
    "salaryPrevYear": 5500000,
    "mlbamId": 500743,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 0.89,
+   "pa": 307
   },
   {
    "name": "Kiké Hernández",
@@ -264,7 +299,9 @@
    "taxValue": null,
    "salaryPrevYear": 4500000,
    "mlbamId": 571771,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": -0.65,
+   "pa": 333
   },
   {
    "name": "Alex Vesia",
@@ -278,7 +315,9 @@
    "taxValue": null,
    "salaryPrevYear": 3550000,
    "mlbamId": 681911,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 0.79,
+   "ip": 59.7
   },
   {
    "name": "Brusdar Graterol",
@@ -292,7 +331,9 @@
    "taxValue": null,
    "salaryPrevYear": 2800000,
    "mlbamId": 660813,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 0.74,
+   "ip": 53.7
   },
   {
    "name": "Alex Call",
@@ -307,7 +348,9 @@
    "salaryPrevYear": 1600000,
    "arbYear": 2,
    "mlbamId": 669743,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 1.54,
+   "pa": 370
   },
   {
    "name": "Brock Stewart",
@@ -322,7 +365,9 @@
    "salaryPrevYear": 1300000,
    "arbYear": 3,
    "mlbamId": 592779,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.08,
+   "ip": 40
   },
   {
    "name": "Jake Cousins",
@@ -337,7 +382,9 @@
    "salaryPrevYear": 950000,
    "arbYear": 2,
    "mlbamId": 664776,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.05,
+   "ip": 41
   },
   {
    "name": "Jack Dreyer",
@@ -351,7 +398,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 810000,
    "mlbamId": 676263,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.81,
+   "ip": 65.3
   },
   {
    "name": "Emmet Sheehan",
@@ -366,7 +415,9 @@
    "salaryPrevYear": 704477,
    "arbYear": 1,
    "mlbamId": 686218,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 1.63,
+   "ip": 87
   },
   {
    "name": "Gavin Stone",
@@ -381,7 +432,9 @@
    "salaryPrevYear": 810000,
    "arbYear": 1,
    "mlbamId": 694813,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 1.41,
+   "ip": 100.7
   },
   {
    "name": "Ben Casparius",
@@ -395,7 +448,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 800000,
    "mlbamId": 676508,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.66,
+   "ip": 78.3
   },
   {
    "name": "Bobby Miller",
@@ -409,7 +464,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 698993,
    "mlbamId": 676272,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.88,
+   "ip": 92.3
   },
   {
    "name": "Andy Pages",
@@ -424,7 +481,9 @@
    "salaryPrevYear": 800000,
    "arbYear": 1,
    "mlbamId": 681624,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 2.88,
+   "pa": 597
   },
   {
    "name": "Rōki Sasaki",
@@ -438,7 +497,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 800000,
    "mlbamId": 808963,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.7,
+   "ip": 97.7
   },
   {
    "name": "Edgardo Henriquez",
@@ -452,7 +513,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 790000,
    "mlbamId": 683618,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.36,
+   "ip": 51.3
   },
   {
    "name": "Will Klein",
@@ -466,7 +529,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 790000,
    "mlbamId": 694361,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.12,
+   "ip": 56.7
   },
   {
    "name": "Landon Knack",
@@ -480,7 +545,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 552795,
    "mlbamId": 689017,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.91,
+   "ip": 114.3
   },
   {
    "name": "Dalton Rushing",
@@ -494,7 +561,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 790000,
    "mlbamId": 687221,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 2.22,
+   "pa": 392
   },
   {
    "name": "Justin Wrobleski",
@@ -508,7 +577,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 790000,
    "mlbamId": 680736,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.63,
+   "ip": 111
   },
   {
    "name": "Alex Freeland",
@@ -522,7 +593,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 593240,
    "mlbamId": 690976,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 2.79,
+   "pa": 599
   },
   {
    "name": "Eliezer Alfonzo",
@@ -536,7 +609,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 221519,
    "mlbamId": 672613,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": -0.52,
+   "pa": 329
   },
   {
    "name": "Kris Bubic",
@@ -550,7 +625,9 @@
    "taxValue": null,
    "salaryPrevYear": 1808824,
    "mlbamId": 663460,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 2.44,
+   "ip": 112.3
   },
   {
    "name": "Josue De Paula",
@@ -564,7 +641,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 53452,
    "mlbamId": 800543,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.37,
+   "pa": 504
   },
   {
    "name": "Hunter Feduccia",
@@ -578,7 +657,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 230000,
    "mlbamId": 676439,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.58,
+   "pa": 373
   },
   {
    "name": "Paul Gervase",
@@ -592,7 +673,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 217878,
    "mlbamId": 801434,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.09,
+   "ip": 57.3
   },
   {
    "name": "Seth Halvorsen",
@@ -606,7 +689,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 241193,
    "mlbamId": 678020,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.15,
+   "ip": 43.7
   },
   {
    "name": "Kyle Hurt",
@@ -620,7 +705,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 649225,
    "mlbamId": 669165,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.82,
+   "ip": 76.3
   },
   {
    "name": "Hyeseong Kim",
@@ -635,7 +722,9 @@
    "salaryPrevYear": 4083000,
    "walkYear": false,
    "mlbamId": 808975,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 0.5,
+   "pa": 371
   },
   {
    "name": "Ronan Kopp",
@@ -649,7 +738,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 63600,
    "mlbamId": 691947,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.14,
+   "ip": 56.7
   },
   {
    "name": "Eric Lauer",
@@ -663,7 +754,9 @@
    "taxValue": null,
    "salaryPrevYear": 3129412,
    "mlbamId": 641778,
-   "salarySource": "none"
+   "salarySource": "none",
+   "war": 0.88,
+   "ip": 97
   }
  ],
  "deadMoney": [],

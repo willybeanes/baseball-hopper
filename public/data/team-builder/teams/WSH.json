@@ -15,7 +15,9 @@
    "arbYear": 2,
    "cotsEstimate": 9750000,
    "mlbamId": 682928,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 3.04,
+   "pa": 630
   },
   {
    "name": "Keibert Ruiz",
@@ -30,7 +32,9 @@
    "salaryPrevYear": 5375000,
    "walkYear": false,
    "mlbamId": 660688,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 0.08,
+   "pa": 398
   },
   {
    "name": "Cade Cavalli",
@@ -45,7 +49,9 @@
    "salaryPrevYear": 862500,
    "walkYear": false,
    "mlbamId": 676917,
-   "salarySource": "cots"
+   "salarySource": "cots",
+   "war": 1.29,
+   "ip": 101.3
   },
   {
    "name": "Jake Irvin",
@@ -61,7 +67,9 @@
    "arbYear": 2,
    "cotsEstimate": 3000000,
    "mlbamId": 663623,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.66,
+   "ip": 143.3
   },
   {
    "name": "Jacob Young",
@@ -77,7 +85,9 @@
    "arbYear": 1,
    "cotsEstimate": 2250000,
    "mlbamId": 696285,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 1.32,
+   "pa": 479
   },
   {
    "name": "Josiah Gray",
@@ -93,7 +103,9 @@
    "arbYear": 3,
    "cotsEstimate": 1950000,
    "mlbamId": 680686,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.68,
+   "ip": 110.3
   },
   {
    "name": "Richard Lovelady",
@@ -109,7 +121,9 @@
    "arbYear": 2,
    "cotsEstimate": 1500000,
    "mlbamId": 663992,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.19,
+   "ip": 47
   },
   {
    "name": "Jake Bird",
@@ -125,7 +139,9 @@
    "arbYear": 2,
    "cotsEstimate": 1150000,
    "mlbamId": 656234,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.4,
+   "ip": 67
   },
   {
    "name": "Mitchell Parker",
@@ -141,7 +157,9 @@
    "arbYear": 1,
    "cotsEstimate": 985000,
    "mlbamId": 680730,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 1.67,
+   "ip": 134.7
   },
   {
    "name": "Ken Waldichuk",
@@ -157,7 +175,9 @@
    "arbYear": 2,
    "cotsEstimate": 925000,
    "mlbamId": 686610,
-   "salarySource": "mlbtr-arb"
+   "salarySource": "mlbtr-arb",
+   "war": 0.88,
+   "ip": 87.7
   },
   {
    "name": "Matt Waldron",
@@ -171,7 +191,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 153395,
    "mlbamId": 663362,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.71,
+   "ip": 102
   },
   {
    "name": "D.J. Herz",
@@ -185,7 +207,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 784200,
    "mlbamId": 687792,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.22,
+   "ip": 96
   },
   {
    "name": "James Wood",
@@ -199,7 +223,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 806900,
    "mlbamId": 695578,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 2.97,
+   "pa": 650
   },
   {
    "name": "Nasim Nuñez",
@@ -213,7 +239,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 783100,
    "mlbamId": 683083,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.21,
+   "pa": 445
   },
   {
    "name": "Drew Millas",
@@ -227,7 +255,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 782700,
    "mlbamId": 686452,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.93,
+   "pa": 310
   },
   {
    "name": "José Tena",
@@ -241,7 +271,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 784400,
    "mlbamId": 677588,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.65,
+   "pa": 502
   },
   {
    "name": "Brad Lord",
@@ -255,7 +287,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 785200,
    "mlbamId": 695418,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.03,
+   "ip": 107.7
   },
   {
    "name": "Dylan Crews",
@@ -269,7 +303,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 669677,
    "mlbamId": 686611,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.74,
+   "pa": 463
   },
   {
    "name": "Orlando Ribalta",
@@ -283,7 +319,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 710195,
    "mlbamId": 687377,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": -0.07,
+   "ip": 39.7
   },
   {
    "name": "Andrés Chaparro",
@@ -297,7 +335,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 657022,
    "mlbamId": 665953,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.34,
+   "pa": 460
   },
   {
    "name": "Daylen Lile",
@@ -311,7 +351,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 786000,
    "mlbamId": 695734,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.63,
+   "pa": 574
   },
   {
    "name": "Clayton Beeter",
@@ -325,7 +367,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 732434,
    "mlbamId": 690925,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.94,
+   "ip": 68.3
   },
   {
    "name": "Kyle Nicolas",
@@ -339,7 +383,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 125597,
    "mlbamId": 693312,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.38,
+   "ip": 70.7
   },
   {
    "name": "Gus Varland",
@@ -353,7 +399,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 475638,
    "mlbamId": 681402,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.32,
+   "ip": 51.3
   },
   {
    "name": "Jorbit Vivas",
@@ -367,7 +415,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 790600,
    "mlbamId": 678391,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.1,
+   "pa": 529
   },
   {
    "name": "Brady House",
@@ -381,7 +431,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 576406,
    "mlbamId": 691781,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.09,
+   "pa": 557
   },
   {
    "name": "PJ Poulin",
@@ -395,7 +447,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 715370,
    "mlbamId": 676571,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.36,
+   "ip": 57.3
   },
   {
    "name": "Connelly Early",
@@ -409,7 +463,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 265981,
    "mlbamId": 813349,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 2.03,
+   "ip": 108.7
   },
   {
    "name": "Paxton Schultz",
@@ -423,7 +479,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 453987,
    "mlbamId": 687606,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.77,
+   "ip": 74.3
   },
   {
    "name": "Andrew Alvarez",
@@ -437,7 +495,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 584480,
    "mlbamId": 674841,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.3,
+   "ip": 117.7
   },
   {
    "name": "Harry Ford",
@@ -451,7 +511,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 382655,
    "mlbamId": 695670,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 2.1,
+   "pa": 507
   },
   {
    "name": "Will Dion",
@@ -465,7 +527,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 37583,
    "mlbamId": 702021,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.24,
+   "ip": 96.3
   },
   {
    "name": "Carson Palmquist",
@@ -479,7 +543,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 231601,
    "mlbamId": 687223,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.77,
+   "ip": 94
   },
   {
    "name": "Riley Cornelio",
@@ -493,7 +559,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 324109,
    "mlbamId": 683000,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.57,
+   "ip": 102
   },
   {
    "name": "Zak Kent",
@@ -507,7 +575,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 401600,
    "mlbamId": 687849,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.51,
+   "ip": 54.3
   },
   {
    "name": "Abimelec Ortiz",
@@ -521,7 +591,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 297292,
    "mlbamId": 694673,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.4,
+   "pa": 528
   },
   {
    "name": "Jackson Kent",
@@ -535,7 +607,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 179546,
    "mlbamId": 800600,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.14,
+   "ip": 108
   },
   {
    "name": "Andrew Pinckney",
@@ -549,7 +623,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 163951,
    "mlbamId": 687605,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.57,
+   "pa": 505
   },
   {
    "name": "Yovanny Cruz",
@@ -563,7 +639,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 163075,
    "mlbamId": 672442,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": -0.1,
+   "ip": 46.3
   },
   {
    "name": "Erik Tolman",
@@ -577,7 +655,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 167742,
    "mlbamId": 680899,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": -0.03,
+   "ip": 70
   },
   {
    "name": "Eddy Yean",
@@ -591,7 +671,8 @@
    "taxValue": 780000,
    "salaryPrevYear": 124110,
    "mlbamId": 678868,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": null
   },
   {
    "name": "Luis Perales",
@@ -605,7 +686,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 288392,
    "mlbamId": 691384,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 1.16,
+   "ip": 80.3
   },
   {
    "name": "Yohandy Morales",
@@ -619,7 +702,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 112620,
    "mlbamId": 691002,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": 0.15,
+   "pa": 516
   },
   {
    "name": "Jared Simpson",
@@ -633,7 +718,8 @@
    "taxValue": 780000,
    "salaryPrevYear": 88180,
    "mlbamId": 688692,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": null
   },
   {
    "name": "Jack Sinclair",
@@ -647,7 +733,9 @@
    "taxValue": 780000,
    "salaryPrevYear": 100107,
    "mlbamId": 695378,
-   "salarySource": "minimum"
+   "salarySource": "minimum",
+   "war": -0.36,
+   "ip": 54.3
   }
  ],
  "deadMoney": [
