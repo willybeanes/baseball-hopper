@@ -28,6 +28,11 @@ const TABS: { key: Tab; label: string }[] = [
   { key: "how", label: "How it works" },
 ];
 
+/** Pitcher-hand split from the URL: "L" or "R", anything else means no split. */
+function parseHand(q: string | null): string {
+  return q === "L" || q === "R" ? q : "";
+}
+
 export default function Explorer({ data }: { data: SwingPlusData }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -53,6 +58,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   });
   const [teamFilter, setTeamFilter] = useState<string>(() => searchParams.get("team") ?? "");
   const [rookieOnly, setRookieOnly] = useState<boolean>(() => searchParams.get("rookie") === "1");
+  const [hand, setHand] = useState<string>(() => parseHand(searchParams.get("hand")));
 
   const seasonPlayers = useMemo(
     () => data.players.filter((p) => p.game_year === season),
@@ -72,14 +78,17 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   );
 
   const rookieNames = useMemo(() => {
+    const result = new Set<string>();
+    // Prefer FanGraphs' rookie flag; fall back to first season in the dataset for players
+    // the flag could not be joined to.
     const firstSeason = new Map<string, number>();
     for (const p of data.players) {
       const cur = firstSeason.get(p.player_name);
       if (cur === undefined || p.game_year < cur) firstSeason.set(p.player_name, p.game_year);
     }
-    const result = new Set<string>();
-    for (const [name, first] of firstSeason) {
-      if (first === season) result.add(name);
+    for (const p of data.players) {
+      if (p.game_year !== season) continue;
+      if (p.rookie ?? firstSeason.get(p.player_name) === season) result.add(p.player_name);
     }
     return result;
   }, [data.players, season]);
@@ -176,6 +185,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     setCompareNames(c ? c.split("|").filter(Boolean) : []);
     setTeamFilter(searchParams.get("team") ?? "");
     setRookieOnly(searchParams.get("rookie") === "1");
+    setHand(parseHand(searchParams.get("hand")));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
@@ -196,6 +206,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     }
     if (tab === "leaderboard" && teamFilter) params.set("team", teamFilter);
     if (tab === "leaderboard" && rookieOnly) params.set("rookie", "1");
+    if (tab === "leaderboard" && hand) params.set("hand", hand);
     const next = params.toString();
     if (next !== searchParams.toString()) {
       const tabChanged = prevTabRef.current !== tab;
@@ -209,7 +220,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
       prevTabRef.current = tab;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab, season, pickedName, minPA, compareNames, teamFilter, rookieOnly]);
+  }, [tab, season, pickedName, minPA, compareNames, teamFilter, rookieOnly, hand]);
 
   const selectPlayer = useCallback((name: string) => {
     setPickedName(name);
@@ -341,6 +352,8 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
           onChangeTeamFilter={setTeamFilter}
           rookieOnly={rookieOnly}
           onChangeRookieOnly={setRookieOnly}
+          hand={hand}
+          onChangeHand={setHand}
           rookieNames={rookieNames}
         />
       )}

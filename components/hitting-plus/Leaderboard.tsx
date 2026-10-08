@@ -7,6 +7,43 @@ import { ramp } from "@/lib/hitting-plus/ramp";
 import { MlbInfo, resolveMlbInfo } from "@/lib/hitting-plus/headshot";
 import Headshot from "./Headshot";
 
+interface SplitRow {
+  pa: number;
+  "Decision+": number | null;
+  "Timing+": number | null;
+  "Contact+": number | null;
+  "Power+": number | null;
+  "Hitting+": number | null;
+}
+
+/** Per-season platoon grades by player, keyed by "L" / "R" (pitcher hand). */
+type PlatoonMap = Record<string, Record<string, SplitRow>>;
+
+const platoonCache: Record<number, Promise<PlatoonMap>> = {};
+
+function loadPlatoon(season: number): Promise<PlatoonMap> {
+  platoonCache[season] ??= fetch(`https://hitting-plus.vercel.app/data/gamelogs_${season}.json`)
+    .then((r) => r.json())
+    .then((data) => {
+      const out: PlatoonMap = {};
+      for (const [name, g] of Object.entries<{ splits?: { platoon?: Record<string, SplitRow> } }>(data?.players ?? {})) {
+        if (g?.splits?.platoon) out[name] = g.splits.platoon;
+      }
+      return out;
+    })
+    .catch(() => {
+      delete platoonCache[season];
+      throw new Error("platoon fetch failed");
+    });
+  return platoonCache[season];
+}
+
+/** Splits have no percentiles, so colour by value: 100 is average, 70-130 spans the ramp. */
+function rampByValue(v: number | null): string {
+  if (v == null) return "var(--text)";
+  return ramp(Math.max(0, Math.min(100, ((v - 70) / 60) * 100)));
+}
+
 type PctFn = (x: number | null | undefined) => number | null;
 
 interface Row extends Player {
@@ -65,6 +102,8 @@ export default function Leaderboard({
   rookieOnly,
   onChangeRookieOnly,
   rookieNames,
+  hand,
+  onChangeHand,
 }: {
   players: Player[];
   pct: Record<StatKey, PctFn>;
@@ -76,10 +115,29 @@ export default function Leaderboard({
   rookieOnly: boolean;
   onChangeRookieOnly: (v: boolean) => void;
   rookieNames: Set<string>;
+  hand: string;
+  onChangeHand: (h: string) => void;
 }) {
   const seasonKey = String(season);
   const [sort, setSort] = useState<{ k: string; dir: 1 | -1 }>({ k: "Hitting+", dir: -1 });
   const [posFilter, setPosFilter] = useState("");
+
+  const [platoon, setPlatoon] = useState<PlatoonMap | null>(null);
+  const [platoonError, setPlatoonError] = useState(false);
+  useEffect(() => {
+    if (!hand) return;
+    let cancelled = false;
+    setPlatoon(null);
+    setPlatoonError(false);
+    loadPlatoon(season)
+      .then((m) => !cancelled && setPlatoon(m))
+      .catch(() => !cancelled && setPlatoonError(true));
+    return () => {
+      cancelled = true;
+    };
+  }, [hand, season]);
+  const splitMinPA = Math.max(10, Math.round(minPA * 0.25));
+  const splitLoading = !!hand && !platoon && !platoonError;
 
   const names = useMemo(() => Array.from(new Set(players.map((p) => p.player_name))), [players]);
   const info = usePlayerInfo(names);
@@ -113,12 +171,30 @@ export default function Leaderboard({
         return rInfo?.team === teamFilter; // fallback for players absent from the snapshot
       })
       .filter((r) => !posFilter || info[r.player_name]?.position === posFilter)
+      .flatMap((r): Player[] => {
+        if (!hand) return [r];
+        const sp = platoon?.[r.player_name]?.[hand];
+        if (!sp || sp.pa < splitMinPA) return [];
+        // Split grades replace the season grades; xwOBA and wRC+ have no handed split.
+        return [{
+          ...r,
+          pa: sp.pa,
+          "Hitting+": sp["Hitting+"],
+          "Decision+": sp["Decision+"],
+          "Timing+": sp["Timing+"],
+          "Contact+": sp["Contact+"],
+          "Power+": sp["Power+"],
+          xwoba: null,
+          wrc_plus: null,
+        }];
+      })
       .map((r) => {
+        if (hand) return { ...r, gap: null };
         const hp = pct["Hitting+"](r["Hitting+"]);
         const xp = pct["xwoba"](r.xwoba);
         return { ...r, gap: hp != null && xp != null ? hp - xp : null };
       });
-  }, [players, pct, teamFilter, posFilter, info, seasonKey, rookieOnly, rookieNames]);
+  }, [players, pct, teamFilter, posFilter, info, seasonKey, rookieOnly, rookieNames, hand, platoon, splitMinPA]);
 
   const sorted = useMemo(() => {
     const copy = [...rows];
@@ -168,7 +244,7 @@ export default function Leaderboard({
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `hitting-plus-${season}-${minPA}pa.csv`;
+    a.download = `hitting-plus-${season}-${minPA}pa${hand ? `-vs${hand}HP` : ""}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -218,6 +294,16 @@ export default function Leaderboard({
             </option>
           ))}
         </select>
+        <select
+          value={hand}
+          onChange={(e) => onChangeHand(e.target.value)}
+          aria-label="Pitcher handedness"
+          className="rounded-lg border border-[var(--rule)] bg-white px-2.5 py-1.5 text-xs text-[var(--text)]"
+        >
+          <option value="">vs all pitchers</option>
+          <option value="L">vs LHP</option>
+          <option value="R">vs RHP</option>
+        </select>
         <label className="flex cursor-pointer select-none items-center gap-1.5 text-xs font-medium text-[var(--dim)]">
           <input
             type="checkbox"
@@ -227,6 +313,8 @@ export default function Leaderboard({
           />
           Rookies
         </label>
+        {splitLoading && <span className="text-[11px] text-[var(--dimmer)]">loading splits...</span>}
+        {platoonError && <span className="text-[11px] text-[var(--cool)]">could not load splits</span>}
         {loadingInfo && (
           <span className="text-[11px] text-[var(--dimmer)]">
             loading teams and positions ({resolvedCount}/{names.length})...
@@ -237,6 +325,13 @@ export default function Leaderboard({
         Team reflects who the player logged plate appearances for in the selected season; a player traded mid-year
         shows every club he hit for that year. Position comes from his current MLB roster listing.
       </p>
+
+      {hand && (
+        <p className="mb-3.5 -mt-1 text-[11px] text-[var(--dimmer)]">
+          Showing grades against {hand === "L" ? "left" : "right"}-handed pitchers only, for hitters with {splitMinPA}+ PA
+          in the split. PA is the split sample; xwOBA, wRC+ and Gap are season-level and not available by hand.
+        </p>
+      )}
 
       <div className="max-h-[70vh] overflow-auto">
         <table className="w-full min-w-[680px] border-collapse text-sm">
@@ -285,7 +380,7 @@ export default function Leaderboard({
                   </td>
                   {COLUMNS.slice(1).map((c) => {
                     const value = c.key === "gap" ? r.gap : (r[c.key as keyof Row] as number | null);
-                    const p50 = c.pctKey ? pct[c.pctKey](value) : c.key === "gap" ? null : null;
+                    const p50 = hand ? null : c.pctKey ? pct[c.pctKey](value) : null;
                     const color =
                       c.key === "gap"
                         ? r.gap == null
@@ -297,6 +392,8 @@ export default function Leaderboard({
                           : "var(--dim)"
                         : p50 != null
                         ? ramp(p50)
+                        : hand && c.pctKey && c.pctKey !== "xwoba" && c.pctKey !== "wrc_plus"
+                        ? rampByValue(value)
                         : "var(--text)";
                     const digits = c.key === "xwoba" ? 3 : 0;
                     const text = c.key === "gap" ? (r.gap == null ? "--" : fmtSigned(r.gap, 0)) : fmtNum(value, digits);

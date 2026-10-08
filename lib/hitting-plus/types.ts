@@ -49,6 +49,9 @@ export interface Player {
    *  of the swingplus engine's own output, so it can be null even when everything else
    *  on the row is present. */
   wrc_plus: number | null;
+  /** FanGraphs rookie flag for this season, joined at request time. Undefined when it
+   *  could not be fetched or the player has no MLBAM id. */
+  rookie?: boolean;
 }
 
 export interface SwingPlusData {
