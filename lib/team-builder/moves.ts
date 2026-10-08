@@ -13,8 +13,9 @@ export type Move =
   | { type: 'resign'; id: number; salary: number } // the team's own free agent re-signed for one year
   | { type: 'salary'; id: number; salary: number } // user's own figure for an estimated salary
   | { type: 'add'; id: number; salary?: number } // a free agent signed (salary required) or a player traded for
+  | { type: 'promote'; id: number } // one of the team's own minor leaguers added to the 40-man at the minimum
 
-export type OffReason = 'declined' | 'opted-out' | 'removed' | 'free-agent'
+export type OffReason = 'declined' | 'opted-out' | 'removed' | 'free-agent' | 'minors'
 
 export interface Slot {
   player: Player
@@ -25,6 +26,7 @@ export interface Slot {
   offReason?: OffReason
   userSalary?: boolean // salary typed by the user
   added?: { kind: 'fa' | 'trade' | 'resign'; from: string | null } // brought in from the pool
+  promoted?: boolean // a minor leaguer moved onto the 40-man
 }
 
 export interface BuiltRoster {
@@ -57,6 +59,15 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
   for (const p of base.onRoster) slots.set(idOf(p), { player: p, onRoster: true, salary: p.salary, taxValue: p.taxValue, owed: 0 })
   for (const p of base.declinedOptions) slots.set(idOf(p), { player: p, onRoster: false, salary: p.salary, taxValue: p.taxValue, owed: p.buyout ?? 0, offReason: 'declined' })
   for (const p of base.freeAgents) slots.set(idOf(p), { player: p, onRoster: false, salary: null, taxValue: null, owed: 0, offReason: 'free-agent' })
+  for (const m of team.minors ?? []) {
+    if (slots.has(m.mlbamId)) continue
+    const player: Player = {
+      mlbamId: m.mlbamId, name: m.name, sheetName: m.name, pos: m.pos, age: m.age, mls: null, contract: 'Minor leaguer',
+      status: 'prearb', salary: m.salary, taxValue: m.salary, salaryPrevYear: null, salarySource: 'minimum',
+      war: m.war, pa: m.pa, ip: m.ip,
+    }
+    slots.set(m.mlbamId, { player, onRoster: false, salary: m.salary, taxValue: m.salary, owed: 0, offReason: 'minors' })
+  }
 
   // Moves that no longer apply (the player left the sheet, or an earlier move was undone) are skipped.
   const poolById = new Map(pool.map((e) => [e.mlbamId, e]))
@@ -98,6 +109,9 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
       case 'optOut':
         if (s.onRoster && p.playerOption) Object.assign(s, { onRoster: false, owed: p.playerOption.buyout ?? 0, offReason: 'opted-out' })
         break
+      case 'promote':
+        if (!s.onRoster && s.offReason === 'minors') Object.assign(s, { onRoster: true, offReason: undefined, promoted: true })
+        break
       case 'resign':
         if (!s.onRoster && s.offReason === 'free-agent') {
           Object.assign(s, { onRoster: true, offReason: undefined, salary: m.salary, taxValue: m.salary, userSalary: true })
@@ -126,13 +140,14 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
 // and keeping only the latest salary edit per player.
 export function addMove(moves: Move[], m: Move): Move[] {
   const undoes: Record<Move['type'], Move['type'][]> = {
-    remove: ['resign', 'exercise', 'add'],
+    remove: ['resign', 'exercise', 'add', 'promote'],
     decline: ['exercise'],
     exercise: ['decline'],
     optOut: [],
     resign: ['remove'],
     salary: ['salary'],
     add: [],
+    promote: [],
   }
   const cancelled = moves.find((x) => x.id === m.id && undoes[m.type].includes(x.type) && m.type !== 'salary')
   if (cancelled) return moves.filter((x) => x !== cancelled && !(x.id === m.id && x.type === 'salary'))

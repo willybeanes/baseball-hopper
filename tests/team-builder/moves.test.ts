@@ -125,3 +125,22 @@ describe('adding players from the pool', () => {
     expect(m).toEqual([])
   })
 })
+
+describe('minor leaguers', () => {
+  const withMinors = { ...team, minors: [{ mlbamId: 950, name: 'Top Prospect', pos: 'ss', age: 21, war: 1.5, pa: 500, salary: 780_000 }] }
+  const start = buildRoster(withMinors, [])
+  test('start off the 40-man and outside both totals', () => {
+    expect(slot(start, 950)).toMatchObject({ onRoster: false, offReason: 'minors' })
+    expect(start.payroll).toBe(base.payroll)
+  })
+  test('promoting one adds him at the minimum and uses a 40-man spot', () => {
+    const r = buildRoster(withMinors, [{ type: 'promote', id: 950 }])
+    expect(r.payroll - start.payroll).toBe(780_000)
+    expect(r.rosterCount).toBe(start.rosterCount + 1)
+    expect(slot(r, 950)).toMatchObject({ onRoster: true, promoted: true })
+  })
+  test('removing a promoted player cancels the promotion', () => {
+    expect(addMove([{ type: 'promote', id: 950 }], { type: 'remove', id: 950 })).toEqual([])
+  })
+})
+
