@@ -463,6 +463,13 @@
           <input type="number" id="sel-season" min="2000" max="2100">
         </div>
         <div class="control-group">
+          <label>Season Type</label>
+          <select id="sel-season-type">
+            <option value="reg">Regular Season</option>
+            <option value="post">Postseason</option>
+          </select>
+        </div>
+        <div class="control-group">
           <label>Split</label>
           <select id="sel-split">
             <option value="0">Full Season</option>
@@ -660,6 +667,7 @@
 <script>
 const PROXY = 'https://fg-proxy.vercel.app/api/fangraphs';
 const SAVANT_PROXY = 'https://fg-proxy.vercel.app/api/savant';
+const COLEV_KEYS = new Set(['CoLev', 'CoLev_scaled', 'CoLev_dRE']);
 const BP_PROXY = 'https://fg-proxy.vercel.app/api/bp';
 const BP_HITTING_PROXY = 'https://fg-proxy.vercel.app/api/bphitting';
 
@@ -904,6 +912,22 @@ function getFGSplitParams(splitValue, season) {
   }
 }
 
+// FanGraphs params for the selected split. Postseason has no splits: full postseason totals only.
+function getFGParams(splitValue, season) {
+  return isPostseason() ? { month: '0', postseason: 'Y' } : getFGSplitParams(splitValue, season);
+}
+
+// Splits and the qualified filter don't apply to the postseason (tiny samples, no month/date splits).
+function updateSeasonTypeControls() {
+  const post = isPostseason();
+  if (post) selSplit.value = '0';
+  selSplit.disabled = post;
+  selSplit.style.opacity = post ? '0.4' : '1';
+  selSplit.title = post ? 'Splits are not available for the postseason' : '';
+  if (post && selQual.value === 'y') selQual.value = '1';
+  for (const opt of selQual.options) if (opt.value === 'y') opt.disabled = post;
+}
+
 // Disable split options that haven't started yet for the currently selected season.
 // FanGraphs silently returns full-season or empty data for future periods, so we
 // prevent selecting them in the first place.
@@ -970,7 +994,7 @@ async function fetchSavantCustom(type, season, selections) {
 async function fetchSavantSearch(playerType, groupBy, season, dateRange) {
   const params = new URLSearchParams({
     path: '/statcast_search/csv',
-    hfGT:        'R|',   // regular season only
+    hfGT:        isPostseason() ? 'F|D|L|W|' : 'R|',   // wild card / division / LCS / WS vs regular season
     hfSea:       `${season}|`,
     player_type: playerType,
     group_by:    groupBy,
@@ -1442,7 +1466,9 @@ const splitWarningEl = document.getElementById('split-warning');
 let splitWarningTimer = null;
 function showSplitWarning(statNames) {
   const plural = statNames.length > 1;
-  splitWarningEl.textContent = `⚠ ${statNames.join(' & ')} ${plural ? 'show' : 'shows'} full-season data only — splits aren't supported for ${plural ? 'these metrics' : 'this metric'}.`;
+  splitWarningEl.textContent = isPostseason()
+    ? `⚠ ${statNames.join(' & ')} ${plural ? 'are' : 'is'} not available for the postseason — ${plural ? 'these metrics' : 'this metric'} will be blank.`
+    : `⚠ ${statNames.join(' & ')} ${plural ? 'show' : 'shows'} full-season data only — splits aren't supported for ${plural ? 'these metrics' : 'this metric'}.`;
   splitWarningEl.classList.add('visible');
   clearTimeout(splitWarningTimer);
   splitWarningTimer = setTimeout(() => splitWarningEl.classList.remove('visible'), 4500);
@@ -1463,6 +1489,8 @@ let currentColorKey = 'none'; // color ring stat key, or 'none'
 
 // Elements
 const selSeason = document.getElementById('sel-season');
+const selSeasonType = document.getElementById('sel-season-type');
+const isPostseason = () => selSeasonType.value === 'post';
 const selStats = document.getElementById('sel-stats');
 const selLg = document.getElementById('sel-lg');
 const selHand = document.getElementById('sel-hand');
@@ -1649,6 +1677,7 @@ function switchMode(mode) {
     // Re-enable qual if it was disabled
     selQual.disabled = false;
     selQual.style.opacity = '1';
+    updateSeasonTypeControls();
   }
   // Clear chart + qual hint
   const _qh = document.getElementById('qual-hint');
@@ -1668,6 +1697,7 @@ function switchMode(mode) {
 (function init() {
   selSeason.value = new Date().getFullYear();
   selSeason.addEventListener('change', updateSplitAvailability);
+  selSeasonType.addEventListener('change', updateSeasonTypeControls);
   populateAxisDropdowns();
   selX.value = 'SIERA';
   selY.value = 'ERA';
@@ -1708,6 +1738,7 @@ function switchMode(mode) {
   if (urlP.get('mode') === 'hitting') switchMode('hitting');
   if (urlP.get('mode') === 'combined') switchMode('combined');
   if (urlP.has('season')) selSeason.value = urlP.get('season');
+  if (urlP.get('stype') === 'post') selSeasonType.value = 'post';
   if (urlP.has('split')) selSplit.value = urlP.get('split');
   if (urlP.has('stats')) selStats.value = urlP.get('stats');
   if (urlP.has('lg')) selLg.value = urlP.get('lg');
@@ -1736,6 +1767,7 @@ function switchMode(mode) {
   if (urlP.get('r2') === '1') chkR2.checked = true;
   if (urlP.get('rookie') === '1') chkRookie.checked = true;
   updateSplitAvailability();
+  updateSeasonTypeControls();
   if (urlP.has('season') || urlP.has('x') || urlP.has('y')) generate();
 
   // Zoom drag — mousedown on plot background starts a selection box
@@ -1947,6 +1979,7 @@ async function generate() {
 
   // Update URL with current state
   const urlState = new URLSearchParams({ mode: currentMode, season, split: selSplit.value });
+  if (isPostseason()) urlState.set('stype', 'post');
   if (!isCombined) {
     urlState.set('stats', selStats.value);
     urlState.set('lg', selLg.value);
@@ -1983,7 +2016,7 @@ async function generate() {
   try {
     if (isCombined) {
       // Fetch team-level batting and pitching data in parallel using team=0,ts
-      const baseParams = { pos: 'all', lg: selLg.value, qual: '0', type: '4', season, season1: season, ...getFGSplitParams(selSplit.value, season), ind: indParam, hand: '', team: '0,ts', pageitems: '100', pagenum: '1', sortstat: 'WAR', sortdir: 'default' };
+      const baseParams = { pos: 'all', lg: selLg.value, qual: '0', type: '4', season, season1: season, ...getFGParams(selSplit.value, season), ind: indParam, hand: '', team: '0,ts', pageitems: '100', pagenum: '1', sortstat: 'WAR', sortdir: 'default' };
       const [batResp, pitResp] = await Promise.all([
         fetch(`${PROXY}?${new URLSearchParams({ ...baseParams, stats: 'bat' })}`),
         fetch(`${PROXY}?${new URLSearchParams({ ...baseParams, stats: 'pit' })}`)
@@ -2025,7 +2058,7 @@ async function generate() {
         qual: '0',
         type: '4',
         season, season1: season,
-        ...getFGSplitParams(selSplit.value, season), ind: indParam,
+        ...getFGParams(selSplit.value, season), ind: indParam,
         hand: selHand.value,
         team: teamParam,
         pageitems: '10000', pagenum: '1',
@@ -2045,12 +2078,12 @@ async function generate() {
         PlayerName: t.TeamName || t.TeamNameAbb,
       }));
     } else {
-      const effectiveQual = selQual.value;
+      const effectiveQual = isPostseason() && selQual.value === 'y' ? '1' : selQual.value;
 
       // When using month=1000 (custom date range), FanGraphs' team filter is
       // unreliable — it silently drops players.  Always fetch team=0 for these
       // splits and apply the team filter client-side instead.
-      const fgSplitParams = getFGSplitParams(selSplit.value, season);
+      const fgSplitParams = getFGParams(selSplit.value, season);
       const usesCustomRange = fgSplitParams.month === '1000';
       const wantTeam = selTeam.value !== '0';
       const apiTeam = (usesCustomRange && wantTeam) ? '0' : selTeam.value;
@@ -2150,7 +2183,7 @@ async function generate() {
         qual: prevQual,
         type: '4',
         season: prevSeason, season1: prevSeason,
-        month: '0', ind: indParam,
+        ...getFGParams('0', prevSeason), ind: indParam,
         hand: '', team: isTeam ? '0,ts' : '0',
         pageitems: '10000', pagenum: '1',
         sortstat: 'WAR', sortdir: 'default'
@@ -2191,7 +2224,7 @@ async function generate() {
             const xBkPrev = selX.value.replace(/^(hit_|pit_)/, '');
             const savantDetail = SAVANT_FIELD_DETAIL[xBkPrev];
             // pitcherFallback stats (wOBA, SLG): FG already provides them for hitters
-            if (savantDetail && !(savantDetail.pitcherFallback && isHitting)) {
+            if (savantDetail && !isPostseason() && !(savantDetail.pitcherFallback && isHitting)) {
               try {
                 const lbType = (isHitting ? 'batter' : 'pitcher') + (isTeam ? '-team' : '');
                 const skipKeys = isHitting ? new Set(['xERA']) : new Set(['xwOBA', 'xSLG']);
@@ -2236,7 +2269,7 @@ async function generate() {
             // Pitcher wOBACON (prev year): if wOBACON is the X axis, ensure wOBA is fetched
             if (!isHitting && !isTeam && xBkPrev === 'wOBACON') {
               try {
-                if (!SAVANT_FIELD_DETAIL[xBkPrev]) { // wOBACON not in SAVANT_FIELD_DETAIL — fetch manually
+                if (!SAVANT_FIELD_DETAIL[xBkPrev] && !isPostseason()) { // wOBACON not in SAVANT_FIELD_DETAIL — fetch manually
                   const expRows = await fetchSavantLeaderboard('pitcher', 'expected_statistics', prevSeason);
                   prevPlayers = applySavantRows(prevPlayers, { expected: expRows }, isTeam, '', skipKeys, false);
                 }
@@ -2254,7 +2287,7 @@ async function generate() {
             }
 
             // If X is a BP Hitting stat, enrich prev year players with BP hitting data.
-            if (isHitting && !isTeam && BP_HITTING_KEYS.has(xBkPrev)) {
+            if (isHitting && !isTeam && !isPostseason() && BP_HITTING_KEYS.has(xBkPrev)) {
               try {
                 const bpHitMap = await fetchBPHitting(prevSeason);
                 for (const p of prevPlayers) {
@@ -2270,7 +2303,7 @@ async function generate() {
             }
 
             // If X is a BP Arsenal stat, enrich prev year players with BP data.
-            if (!isHitting && !isTeam && BP_ARSENAL_KEYS.has(xBkPrev)) {
+            if (!isHitting && !isTeam && !isPostseason() && BP_ARSENAL_KEYS.has(xBkPrev)) {
               try {
                 const bpMap = await fetchBPArsenal(prevSeason);
                 for (const p of prevPlayers) {
@@ -2291,7 +2324,7 @@ async function generate() {
             }
 
             // If X is a Hitting+ stat, enrich prev year players from Supabase hitting_plus table
-            if (isHitting && HITTING_PLUS_KEYS.has(xBkPrev)) {
+            if (isHitting && !isPostseason() && HITTING_PLUS_KEYS.has(xBkPrev)) {
               try {
                 if (!isTeam) {
                   const hpResp = await fetch(
@@ -2474,10 +2507,12 @@ async function generate() {
     const axisKeys = [xBk, yBk, ...(colorBk ? [colorBk] : [])];
     try {
       // Combined mode always uses leaderboard (no split controls shown)
-      const dateRange = isCombined ? null : getSavantDateRange(selSplit.value, season);
-      const useSearch = dateRange !== null;
+      const postseason = isPostseason();
+      const dateRange = (isCombined || postseason) ? null : getSavantDateRange(selSplit.value, season);
+      // Postseason: only statcast_search can filter by game type, so use it for everything
+      const useSearch = dateRange !== null || postseason;
 
-      // Warn if a split is active but any axis stat can't support splits (no searchCol)
+      // Warn if a split/postseason is active but any axis stat can't support it (no searchCol)
       if (useSearch) {
         const optionLabel = key => {
           for (const sel of [selX, selY, selColor]) {
@@ -2489,7 +2524,10 @@ async function generate() {
         const incompatibleKeys = [...new Set(
           axisKeys
             .map(k => baseKey(k))
-            .filter(k => ABARREL_KEYS.has(k) || (SAVANT_FIELD_DETAIL[k] && !SAVANT_FIELD_DETAIL[k].pitcherFallback && (SAVANT_FIELD_DETAIL[k].searchCol === null || SAVANT_FIELD_DETAIL[k].leaderEp === 'custom') && SAVANT_FIELD_DETAIL[k].leaderEp !== 'batted_ball' && SAVANT_FIELD_DETAIL[k].leaderEp !== 'bat_tracking' && SAVANT_FIELD_DETAIL[k].leaderEp !== 'bat_tracking_timing'))
+            .filter(k => postseason
+              ? (ABARREL_KEYS.has(k) || BP_HITTING_KEYS.has(k) || BP_ARSENAL_KEYS.has(k) || HITTING_PLUS_KEYS.has(k) || COLEV_KEYS.has(k)
+                 || (SAVANT_FIELD_DETAIL[k] && !SAVANT_FIELD_DETAIL[k].pitcherFallback && !SAVANT_FIELD_DETAIL[k].searchCol))
+              : (ABARREL_KEYS.has(k) || (SAVANT_FIELD_DETAIL[k] && !SAVANT_FIELD_DETAIL[k].pitcherFallback && (SAVANT_FIELD_DETAIL[k].searchCol === null || SAVANT_FIELD_DETAIL[k].leaderEp === 'custom') && SAVANT_FIELD_DETAIL[k].leaderEp !== 'batted_ball' && SAVANT_FIELD_DETAIL[k].leaderEp !== 'bat_tracking' && SAVANT_FIELD_DETAIL[k].leaderEp !== 'bat_tracking_timing')))
         )];
         if (incompatibleKeys.length) showSplitWarning(incompatibleKeys.map(optionLabel));
       }
@@ -2520,22 +2558,24 @@ async function generate() {
       // Do we still need leaderboard even in search mode?
       const needsLbEvenWithSearch = useSearch && axisKeys.some(k => {
         const d = SAVANT_FIELD_DETAIL[k];
-        return d && !d.searchCol && !d.pitcherFallback && d.leaderEp !== 'bat_tracking' && d.leaderEp !== 'batted_ball' && d.leaderEp !== 'bat_tracking_timing';
+        return !postseason && d && !d.searchCol && !d.pitcherFallback && d.leaderEp !== 'bat_tracking' && d.leaderEp !== 'batted_ball' && d.leaderEp !== 'bat_tracking_timing';
       });
       // Bat tracking leaderboard: hitters OR pitchers (against), always full-season player-level
-      const needsBatTracking = !isTeam && axisKeys.some(k => {
+      const needsBatTracking = !isTeam && !postseason && axisKeys.some(k => {
         const d = SAVANT_FIELD_DETAIL[k];
         return d?.leaderEp === 'bat_tracking' && !!d.leaderCol;
       });
       // Batted-ball direction leaderboard: always full-season, player-level
-      const needsBattedBall = !isTeam && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'batted_ball');
+      const needsBattedBall = !isTeam && !postseason && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'batted_ball');
       // Swing timing + miss distance leaderboard: full-season only, player-level
-      const needsSwingTiming = !isTeam && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'bat_tracking_timing');
+      const needsSwingTiming = !isTeam && !postseason && axisKeys.some(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'bat_tracking_timing');
       // Custom leaderboard stats (e.g. xwOBACON) — always full-season, player-level only
       const customSelections = axisKeys.flatMap(k => SAVANT_FIELD_DETAIL[k]?.leaderEp === 'custom' ? SAVANT_FIELD_DETAIL[k].selections : []);
-      const needsCustom = !isTeam && customSelections.length > 0;
+      const needsCustom = !isTeam && !postseason && customSelections.length > 0;
 
-      if (isCombined) {
+      if (isCombined && postseason) {
+        // Leaderboards have no postseason filter; leave Savant stats blank rather than show regular-season values
+      } else if (isCombined) {
         // Combined: hit_ and pit_ sides use leaderboard
         const xIsHit = selX.value.startsWith('hit_'), yIsHit = selY.value.startsWith('hit_');
         const xIsPit = selX.value.startsWith('pit_'), yIsPit = selY.value.startsWith('pit_');
@@ -2598,7 +2638,7 @@ async function generate() {
 
     // Adjusted Barrel enrichment — fetched from @collinmyshot's public Google Sheet,
     // matched to currentData by normalized player name.
-    if (isHitting && !isTeam && axisKeys.some(k => ABARREL_KEYS.has(baseKey(k)))) {
+    if (isHitting && !isTeam && !isPostseason() && axisKeys.some(k => ABARREL_KEYS.has(baseKey(k)))) {
       try {
         const aBarrelMap = await fetchABarrelData();
         for (const p of currentData) {
@@ -2614,7 +2654,7 @@ async function generate() {
     }
 
     // BP Hitting enrichment — hitter mode only, matched by xMLBAMID
-    if (isHitting && !isTeam && axisKeys.some(k => BP_HITTING_KEYS.has(baseKey(k)))) {
+    if (isHitting && !isTeam && !isPostseason() && axisKeys.some(k => BP_HITTING_KEYS.has(baseKey(k)))) {
       try {
         const bpHitMap = await fetchBPHitting(season);
         for (const p of currentData) {
@@ -2631,7 +2671,7 @@ async function generate() {
 
     // Hitting+ (swingplus) enrichment — hitter mode, full-season only.
     // The engine only publishes full-season grades, so leave them blank on date-range splits.
-    if (isHitting && selSplit.value === '0' && axisKeys.some(k => HITTING_PLUS_KEYS.has(baseKey(k)))) {
+    if (isHitting && selSplit.value === '0' && !isPostseason() && axisKeys.some(k => HITTING_PLUS_KEYS.has(baseKey(k)))) {
       try {
         if (!isTeam) {
           // Player mode: match by MLBAM ID
@@ -2686,8 +2726,7 @@ async function generate() {
     }
 
     // CoLev enrichment — pitcher mode only, matched by MLBAM ID then normalized name
-    const COLEV_KEYS = new Set(['CoLev', 'CoLev_scaled', 'CoLev_dRE']);
-    if (!isHitting && !isTeam && axisKeys.some(k => COLEV_KEYS.has(baseKey(k)))) {
+    if (!isHitting && !isTeam && !isPostseason() && axisKeys.some(k => COLEV_KEYS.has(baseKey(k)))) {
       try {
         const colevResp = await fetch(
           `${SUPABASE_URL}/rest/v1/colev?season=eq.${season}&select=name,mlbamid,colev,colev_scaled,colev_dre`,
@@ -2716,7 +2755,7 @@ async function generate() {
     }
 
     // BP Arsenal Pro enrichment — pitcher mode only, matched by xMLBAMID
-    if (!isHitting && !isTeam && axisKeys.some(k => BP_ARSENAL_KEYS.has(baseKey(k)))) {
+    if (!isHitting && !isTeam && !isPostseason() && axisKeys.some(k => BP_ARSENAL_KEYS.has(baseKey(k)))) {
       try {
         const bpMap = await fetchBPArsenal(season);
         for (const p of currentData) {
@@ -3357,7 +3396,7 @@ async function exportPNG() {
     const yLabel  = (currentYKey || 'y').replace(/[^a-zA-Z0-9%+\-]/g, '_');
     const season  = selSeason.value || '';
     const link    = document.createElement('a');
-    link.download = `scatter_${xLabel}_vs_${yLabel}_${season}.png`;
+    link.download = `scatter_${xLabel}_vs_${yLabel}_${season}${isPostseason() ? '_postseason' : ''}.png`;
     link.href     = canvas.toDataURL('image/png');
     link.click();
   } catch (e) {
@@ -3431,7 +3470,7 @@ function downloadCSV() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `fg-${currentMode}-${selSeason.value}-${split}.csv`;
+  a.download = `fg-${currentMode}-${selSeason.value}${isPostseason() ? '-postseason' : ''}-${split}.csv`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

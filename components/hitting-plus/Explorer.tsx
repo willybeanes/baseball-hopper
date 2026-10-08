@@ -17,8 +17,16 @@ const TAB_KEYS: Tab[] = ["card", "leaderboard", "compare", "teams", "how"];
 
 const DEPTH_KEYS: DepthKey[] = ["depth_FB", "depth_BR", "depth_OS"];
 const PCT_KEYS = [...COMPONENT_KEYS, "Hitting+", "xwoba", "wrc_plus"] as const;
-const PA_PRESETS = [10, 50, 150, 300, 500];
 const DEFAULT_MIN_PA = 150;
+const MAX_MIN_PA = 600;
+/** Quick-pick stops under the slider. 502 is the batting-title line (3.1 PA x 162 games). */
+const PA_STOPS = [
+  { pa: 10, label: "10" },
+  { pa: 50, label: "50" },
+  { pa: 150, label: "150" },
+  { pa: 300, label: "300" },
+  { pa: 502, label: "Qual." },
+];
 
 const TABS: { key: Tab; label: string }[] = [
   { key: "card", label: "Player" },
@@ -27,6 +35,11 @@ const TABS: { key: Tab; label: string }[] = [
   { key: "teams", label: "Teams" },
   { key: "how", label: "How it works" },
 ];
+
+/** Pitcher-hand split from the URL: "L" or "R", anything else means no split. */
+function parseHand(q: string | null): string {
+  return q === "L" || q === "R" ? q : "";
+}
 
 export default function Explorer({ data }: { data: SwingPlusData }) {
   const router = useRouter();
@@ -53,6 +66,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   });
   const [teamFilter, setTeamFilter] = useState<string>(() => searchParams.get("team") ?? "");
   const [rookieOnly, setRookieOnly] = useState<boolean>(() => searchParams.get("rookie") === "1");
+  const [hand, setHand] = useState<string>(() => parseHand(searchParams.get("hand")));
 
   const seasonPlayers = useMemo(
     () => data.players.filter((p) => p.game_year === season),
@@ -72,14 +86,17 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   );
 
   const rookieNames = useMemo(() => {
+    const result = new Set<string>();
+    // Prefer FanGraphs' rookie flag; fall back to first season in the dataset for players
+    // the flag could not be joined to.
     const firstSeason = new Map<string, number>();
     for (const p of data.players) {
       const cur = firstSeason.get(p.player_name);
       if (cur === undefined || p.game_year < cur) firstSeason.set(p.player_name, p.game_year);
     }
-    const result = new Set<string>();
-    for (const [name, first] of firstSeason) {
-      if (first === season) result.add(name);
+    for (const p of data.players) {
+      if (p.game_year !== season) continue;
+      if (p.rookie ?? firstSeason.get(p.player_name) === season) result.add(p.player_name);
     }
     return result;
   }, [data.players, season]);
@@ -176,6 +193,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     setCompareNames(c ? c.split("|").filter(Boolean) : []);
     setTeamFilter(searchParams.get("team") ?? "");
     setRookieOnly(searchParams.get("rookie") === "1");
+    setHand(parseHand(searchParams.get("hand")));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
@@ -196,6 +214,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     }
     if (tab === "leaderboard" && teamFilter) params.set("team", teamFilter);
     if (tab === "leaderboard" && rookieOnly) params.set("rookie", "1");
+    if (tab === "leaderboard" && hand) params.set("hand", hand);
     const next = params.toString();
     if (next !== searchParams.toString()) {
       const tabChanged = prevTabRef.current !== tab;
@@ -209,7 +228,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
       prevTabRef.current = tab;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab, season, pickedName, minPA, compareNames, teamFilter, rookieOnly]);
+  }, [tab, season, pickedName, minPA, compareNames, teamFilter, rookieOnly, hand]);
 
   const selectPlayer = useCallback((name: string) => {
     setPickedName(name);
@@ -282,23 +301,48 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
           <>
             <div className="mt-3 flex flex-wrap items-center gap-2.5 border-t border-[var(--rule)] pt-3">
               <span className="text-xs font-medium text-[var(--dim)]">Min PA</span>
-              <div className="flex gap-1" role="group" aria-label="Minimum plate appearances">
-                {PA_PRESETS.map((n) => (
+              <div className="relative mb-5 w-48 sm:w-72">
+                <input
+                  type="range"
+                  min={1}
+                  max={MAX_MIN_PA}
+                  step={1}
+                  value={Math.min(minPA, MAX_MIN_PA)}
+                  onChange={(e) => setMinPA(Number(e.target.value))}
+                  aria-label="Minimum plate appearances"
+                  className="block h-1.5 w-full cursor-pointer accent-[var(--accent)]"
+                />
+                {/* Stops sit on the track, inset by half the thumb width so they line up with the thumb centre. */}
+                {PA_STOPS.map(({ pa, label }) => (
                   <button
-                    key={n}
+                    key={pa}
                     type="button"
-                    onClick={() => setMinPA(n)}
-                    aria-pressed={minPA === n}
-                    className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
-                      minPA === n
-                        ? "border-[var(--accent)] bg-[var(--accent)] text-white"
-                        : "border-[var(--rule)] bg-white text-[var(--dim)] hover:text-[var(--text)]"
-                    }`}
+                    onClick={() => setMinPA(pa)}
+                    aria-pressed={minPA === pa}
+                    aria-label={`Minimum ${pa} plate appearances`}
+                    style={{ left: `calc(8px + (100% - 16px) * ${(pa - 1) / (MAX_MIN_PA - 1)})` }}
+                    className="group absolute top-[3px] -translate-x-1/2 -translate-y-1/2"
                   >
-                    {n}+
+                    <span
+                      className={`block h-3 w-3 rounded-full border-2 transition-colors ${
+                        minPA === pa
+                          ? "border-white bg-[var(--accent)] ring-1 ring-[var(--accent)]"
+                          : "border-[var(--dimmer)] bg-white group-hover:border-[var(--accent)]"
+                      }`}
+                    />
+                    <span
+                      className={`absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap text-[10px] leading-none ${
+                        minPA === pa ? "font-semibold text-[var(--accent)]" : "text-[var(--dimmer)]"
+                      }`}
+                    >
+                      {label}
+                    </span>
                   </button>
                 ))}
               </div>
+              <span className="min-w-[3.5rem] text-xs font-semibold tabular-nums text-[var(--text)]">
+                {minPA}+ PA
+              </span>
               <span className="text-xs text-[var(--dimmer)]">{visiblePlayers.length} shown</span>
             </div>
             <p className="mt-2 text-[11px] leading-relaxed text-[var(--dimmer)]">{PA_FILTER_NOTE}</p>
@@ -341,6 +385,8 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
           onChangeTeamFilter={setTeamFilter}
           rookieOnly={rookieOnly}
           onChangeRookieOnly={setRookieOnly}
+          hand={hand}
+          onChangeHand={setHand}
           rookieNames={rookieNames}
         />
       )}
