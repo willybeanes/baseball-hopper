@@ -681,5 +681,421 @@
  "sheetPayroll": 99373396,
  "sheetTaxPayroll": 123225988,
  "rowsPayroll": 99373396,
- "rowsTaxPayroll": 123225988
+ "rowsTaxPayroll": 123225988,
+ "minors": [
+  {
+   "mlbamId": 702518,
+   "name": "Jett Williams",
+   "pos": "ss",
+   "age": 23,
+   "war": 2.14,
+   "pa": 585,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692230,
+   "name": "Carlos Rodriguez",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.45,
+   "ip": 103,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 824620,
+   "name": "Tyson Hardin",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.38,
+   "ip": 100.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809229,
+   "name": "Jaron DeBerry",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.24,
+   "ip": 101,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678225,
+   "name": "Jihwan Bae",
+   "pos": "cf",
+   "age": 27,
+   "war": 1.15,
+   "pa": 408,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804249,
+   "name": "Tate Kuehner",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.14,
+   "ip": 97.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815908,
+   "name": "Jesús Made",
+   "pos": "ss",
+   "age": 20,
+   "war": 1.02,
+   "pa": 532,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694385,
+   "name": "Brock Wilken",
+   "pos": "3b",
+   "age": 25,
+   "war": 0.96,
+   "pa": 407,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702726,
+   "name": "Luke Adams",
+   "pos": "3b",
+   "age": 23,
+   "war": 0.82,
+   "pa": 352,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 821270,
+   "name": "Luis Peña",
+   "pos": "ss",
+   "age": 20,
+   "war": 0.7,
+   "pa": 423,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682633,
+   "name": "Eduardo Garcia",
+   "pos": "of",
+   "age": 24,
+   "war": 0.66,
+   "pa": 505,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687783,
+   "name": "Matthew Wood",
+   "pos": "c",
+   "age": 26,
+   "war": 0.56,
+   "pa": 387,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696501,
+   "name": "Mark Coley II",
+   "pos": "cf",
+   "age": 26,
+   "war": 0.52,
+   "pa": 307,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682641,
+   "name": "Luis Matos",
+   "pos": "rf",
+   "age": 25,
+   "war": 0.4,
+   "pa": 480,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680716,
+   "name": "Jonathan Ornelas",
+   "pos": "ss",
+   "age": 27,
+   "war": 0.38,
+   "pa": 471,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701392,
+   "name": "Marco Dinges",
+   "pos": "c",
+   "age": 23,
+   "war": 0.32,
+   "pa": 330,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670232,
+   "name": "Ramón Rodríguez",
+   "pos": "c",
+   "age": 28,
+   "war": 0.32,
+   "pa": 233,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815304,
+   "name": "Josh Adamczewski",
+   "pos": "of",
+   "age": 22,
+   "war": 0.3,
+   "pa": 342,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 674441,
+   "name": "Jacob Hurtubise",
+   "pos": "lf",
+   "age": 29,
+   "war": 0.27,
+   "pa": 344,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 642239,
+   "name": "Rob Zastryzny",
+   "pos": "rp",
+   "age": 35,
+   "war": 0.25,
+   "ip": 42,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814489,
+   "name": "Brett Wichrowski",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.21,
+   "ip": 91.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 663753,
+   "name": "Reiss Knehr",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.16,
+   "ip": 53.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682999,
+   "name": "Will Childers",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.1,
+   "ip": 55.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806581,
+   "name": "Nick Merkel",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.03,
+   "ip": 49.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 642520,
+   "name": "Gerson Garabito",
+   "pos": "sp",
+   "age": 31,
+   "war": 0,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 827744,
+   "name": "Tyler Bryant",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.03,
+   "ip": 38.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695871,
+   "name": "Jesús Broca",
+   "pos": "rp",
+   "age": 23,
+   "war": -0.04,
+   "ip": 63.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691602,
+   "name": "Stiven Cruz",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.04,
+   "ip": 61,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 671272,
+   "name": "David García",
+   "pos": "c",
+   "age": 27,
+   "war": -0.07,
+   "pa": 281,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700183,
+   "name": "Blake Holub",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.1,
+   "ip": 45.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680774,
+   "name": "Chase Costello",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.18,
+   "ip": 38.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668965,
+   "name": "Freddy Zamora",
+   "pos": "ss",
+   "age": 28,
+   "war": -0.19,
+   "pa": 400,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687152,
+   "name": "Darrien Miller",
+   "pos": "c",
+   "age": 26,
+   "war": -0.24,
+   "pa": 360,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 689337,
+   "name": "Kaleb Bowman",
+   "pos": "rp",
+   "age": 30,
+   "war": -0.28,
+   "ip": 42,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695501,
+   "name": "Blake Burke",
+   "pos": "1b",
+   "age": 24,
+   "war": -0.32,
+   "pa": 574,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701618,
+   "name": "Damon Keith",
+   "pos": "rf",
+   "age": 27,
+   "war": -0.47,
+   "pa": 407,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687521,
+   "name": "Eric Brown Jr.",
+   "pos": "ss",
+   "age": 26,
+   "war": -0.71,
+   "pa": 337,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696140,
+   "name": "Ethan Murray",
+   "pos": "ss",
+   "age": 27,
+   "war": -0.72,
+   "pa": 395,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682774,
+   "name": "Andrick Nava",
+   "pos": "c",
+   "age": 25,
+   "war": -0.87,
+   "pa": 218,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801670,
+   "name": "Mike Boeve",
+   "pos": "2b",
+   "age": 25,
+   "war": -1.05,
+   "pa": 312,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691600,
+   "name": "Blayberg Diaz",
+   "pos": "c",
+   "age": 24,
+   "war": -1.08,
+   "pa": 265,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695554,
+   "name": "Tayden Hall",
+   "pos": "1b",
+   "age": 24,
+   "war": -1.75,
+   "pa": 377,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800345,
+   "name": "Juan Baez",
+   "pos": "3b",
+   "age": 22,
+   "war": -1.91,
+   "pa": 472,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691621,
+   "name": "Jheremy Vargas",
+   "pos": "2b",
+   "age": 24,
+   "war": -2.09,
+   "pa": 373,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 808236,
+   "name": "Luiyin Alastre",
+   "pos": "3b",
+   "age": 21,
+   "war": -2.09,
+   "pa": 379,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694206,
+   "name": "Daniel Guilarte",
+   "pos": "ss",
+   "age": 23,
+   "war": -2.4,
+   "pa": 428,
+   "salary": 780000
+  }
+ ]
 }

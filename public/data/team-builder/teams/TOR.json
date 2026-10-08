@@ -721,5 +721,367 @@
  "sheetPayroll": 231308944,
  "sheetTaxPayroll": 230144416,
  "rowsPayroll": 231308944,
- "rowsTaxPayroll": 230144416
+ "rowsTaxPayroll": 230144416,
+ "minors": [
+  {
+   "mlbamId": 702302,
+   "name": "RJ Schreck",
+   "pos": "lf",
+   "age": 26,
+   "war": 1.6,
+   "pa": 434,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 663662,
+   "name": "Daz Cameron",
+   "pos": "lf",
+   "age": 30,
+   "war": 1.4,
+   "pa": 373,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 689041,
+   "name": "Rhylan Thomas",
+   "pos": "lf",
+   "age": 27,
+   "war": 1.19,
+   "pa": 544,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695776,
+   "name": "Josh Stephan",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.14,
+   "ip": 100,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800125,
+   "name": "Fernando Perez",
+   "pos": "sp",
+   "age": 23,
+   "war": 1.08,
+   "ip": 107,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814804,
+   "name": "Grant Rogers",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.06,
+   "ip": 122.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670174,
+   "name": "Josh Winckowski",
+   "pos": "rp",
+   "age": 29,
+   "war": 1.05,
+   "ip": 79.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681751,
+   "name": "Lazaro Estrada",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.77,
+   "ip": 89.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680436,
+   "name": "Trenton Wallace",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.69,
+   "ip": 79,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702690,
+   "name": "Cutter Coffey",
+   "pos": "3b",
+   "age": 23,
+   "war": 0.42,
+   "pa": 464,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800959,
+   "name": "Nick Goodwin",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.42,
+   "pa": 389,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806334,
+   "name": "Alex Amalfi",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.4,
+   "ip": 69.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 684320,
+   "name": "Yariel Rodríguez",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.38,
+   "ip": 68.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 693483,
+   "name": "Pat Gallagher",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.37,
+   "ip": 66.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692478,
+   "name": "Victor Arias",
+   "pos": "lf",
+   "age": 23,
+   "war": 0.31,
+   "pa": 491,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687288,
+   "name": "Devereaux Harrison",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.28,
+   "ip": 84.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691437,
+   "name": "Adrian Pinto",
+   "pos": "2b",
+   "age": 24,
+   "war": 0.21,
+   "pa": 121,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 663671,
+   "name": "Nic Enright",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.18,
+   "ip": 43.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700292,
+   "name": "Yondrei Rojas",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.16,
+   "ip": 49,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701511,
+   "name": "Ryan Watson",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.07,
+   "ip": 83,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 807410,
+   "name": "Chay Yeager",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.06,
+   "ip": 49.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688460,
+   "name": "Josh Kasevich",
+   "pos": "ss",
+   "age": 26,
+   "war": 0.06,
+   "pa": 419,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801957,
+   "name": "Dub Gleed",
+   "pos": "ss",
+   "age": 24,
+   "war": 0.02,
+   "pa": 305,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801590,
+   "name": "Aaron Parker",
+   "pos": "c",
+   "age": 24,
+   "war": 0,
+   "pa": 281,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 667690,
+   "name": "C.J. Stubbs",
+   "pos": "c",
+   "age": 30,
+   "war": 0,
+   "pa": 289,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 698927,
+   "name": "Edward Duran",
+   "pos": "c",
+   "age": 23,
+   "war": -0.01,
+   "pa": 432,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690957,
+   "name": "Jace Bohrofen",
+   "pos": "rf",
+   "age": 25,
+   "war": -0.05,
+   "pa": 413,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681084,
+   "name": "Tanner Andrews",
+   "pos": "rp",
+   "age": 31,
+   "war": -0.05,
+   "ip": 42,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685712,
+   "name": "Geovanny Planchart",
+   "pos": "c",
+   "age": 25,
+   "war": -0.14,
+   "pa": 247,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687069,
+   "name": "Josh Rivera",
+   "pos": "ss",
+   "age": 26,
+   "war": -0.15,
+   "pa": 423,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683341,
+   "name": "David Calabrese",
+   "pos": "cf",
+   "age": 24,
+   "war": -0.17,
+   "pa": 457,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 803385,
+   "name": "Jay Harry",
+   "pos": "2b",
+   "age": 24,
+   "war": -0.35,
+   "pa": 411,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692562,
+   "name": "Alexis Hernandez",
+   "pos": "rf",
+   "age": 24,
+   "war": -0.51,
+   "pa": 311,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814435,
+   "name": "Jacob Sharp",
+   "pos": "c",
+   "age": 25,
+   "war": -0.58,
+   "pa": 254,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702283,
+   "name": "Tucker Toman",
+   "pos": "3b",
+   "age": 23,
+   "war": -0.66,
+   "pa": 467,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805268,
+   "name": "Peyton Williams",
+   "pos": "1b",
+   "age": 26,
+   "war": -0.9,
+   "pa": 370,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701540,
+   "name": "J.R. Freethy",
+   "pos": "2b",
+   "age": 24,
+   "war": -0.92,
+   "pa": 379,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701860,
+   "name": "Carter Cunningham",
+   "pos": "1b",
+   "age": 26,
+   "war": -1.05,
+   "pa": 414,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691616,
+   "name": "Hedbert Perez",
+   "pos": "lf",
+   "age": 24,
+   "war": -1.09,
+   "pa": 355,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802511,
+   "name": "Sam Shaw",
+   "pos": "2b",
+   "age": 22,
+   "war": -1.24,
+   "pa": 333,
+   "salary": 780000
+  }
+ ]
 }

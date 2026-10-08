@@ -748,5 +748,358 @@
  "sheetPayroll": 123926190,
  "sheetTaxPayroll": 141368359,
  "rowsPayroll": 123926190,
- "rowsTaxPayroll": 141368359
+ "rowsTaxPayroll": 141368359,
+ "minors": [
+  {
+   "mlbamId": 806953,
+   "name": "Eduardo Tait",
+   "pos": "c",
+   "age": 20,
+   "war": 1.26,
+   "pa": 499,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691627,
+   "name": "Ricardo Olivar",
+   "pos": "c",
+   "age": 25,
+   "war": 1.15,
+   "pa": 424,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681433,
+   "name": "Noah Cardenas",
+   "pos": "c",
+   "age": 27,
+   "war": 1.08,
+   "pa": 320,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801594,
+   "name": "Ryan Gallagher",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.07,
+   "ip": 105.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 656577,
+   "name": "Alex Jackson",
+   "pos": "c",
+   "age": 31,
+   "war": 0.96,
+   "pa": 280,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690217,
+   "name": "C.J. Culpepper",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.93,
+   "ip": 91.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 693850,
+   "name": "Kala'i Rosario",
+   "pos": "rf",
+   "age": 24,
+   "war": 0.92,
+   "pa": 557,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694185,
+   "name": "Danny De Andrade",
+   "pos": "ss",
+   "age": 23,
+   "war": 0.81,
+   "pa": 507,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690462,
+   "name": "Ricky Castro",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.69,
+   "ip": 81.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691576,
+   "name": "Alejandro Hidalgo",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.57,
+   "ip": 92.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681355,
+   "name": "Andrew Cossetti",
+   "pos": "c",
+   "age": 27,
+   "war": 0.56,
+   "pa": 357,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814098,
+   "name": "Sam Armstrong",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.56,
+   "ip": 100.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 675375,
+   "name": "Cory Lewis",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.49,
+   "ip": 74.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 689520,
+   "name": "Cody Laweryson",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.48,
+   "ip": 51,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694536,
+   "name": "Trent Baker",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.45,
+   "ip": 84.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806263,
+   "name": "Brandon Winokur",
+   "pos": "ss",
+   "age": 22,
+   "war": 0.34,
+   "pa": 549,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 823295,
+   "name": "Jay Thomason",
+   "pos": "3b",
+   "age": 25,
+   "war": 0.21,
+   "pa": 247,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702065,
+   "name": "Aaron Rozek",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.16,
+   "ip": 85.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 675915,
+   "name": "David Bañuelos",
+   "pos": "c",
+   "age": 30,
+   "war": 0.15,
+   "pa": 130,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701549,
+   "name": "Jaylen Nowlin",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.12,
+   "ip": 66.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802355,
+   "name": "Tanner Schobel",
+   "pos": "2b",
+   "age": 26,
+   "war": 0.05,
+   "pa": 461,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814414,
+   "name": "Kyle DeBarge",
+   "pos": "ss",
+   "age": 23,
+   "war": 0.02,
+   "pa": 545,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676760,
+   "name": "Ron Marinaccio",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.01,
+   "ip": 53.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695347,
+   "name": "Hunter Gregory",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.05,
+   "ip": 52.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695000,
+   "name": "Poncho Ruiz",
+   "pos": "c",
+   "age": 25,
+   "war": -0.08,
+   "pa": 353,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804539,
+   "name": "Darren Bowen",
+   "pos": "sp",
+   "age": 26,
+   "war": -0.09,
+   "ip": 69.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 699980,
+   "name": "Preston Johnson",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.1,
+   "ip": 46.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804592,
+   "name": "Hunter Hoopes",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.14,
+   "ip": 46,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 657240,
+   "name": "Julian Merryweather",
+   "pos": "rp",
+   "age": 35,
+   "war": -0.14,
+   "ip": 38.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696521,
+   "name": "Garrett Spain",
+   "pos": "rf",
+   "age": 26,
+   "war": -0.25,
+   "pa": 473,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680253,
+   "name": "Kyle Bischoff",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.25,
+   "ip": 41.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696160,
+   "name": "Jake Rucker",
+   "pos": "2b",
+   "age": 27,
+   "war": -0.27,
+   "pa": 432,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814194,
+   "name": "Quinn McDaniel",
+   "pos": "2b",
+   "age": 24,
+   "war": -0.27,
+   "pa": 472,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814522,
+   "name": "Caden Kendle",
+   "pos": "of",
+   "age": 25,
+   "war": -0.32,
+   "pa": 385,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702889,
+   "name": "Andy Lugo",
+   "pos": "if",
+   "age": 23,
+   "war": -0.54,
+   "pa": 366,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691191,
+   "name": "Jose Salas",
+   "pos": "2b",
+   "age": 24,
+   "war": -0.79,
+   "pa": 352,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681357,
+   "name": "Cody Morissette",
+   "pos": "2b",
+   "age": 27,
+   "war": -0.95,
+   "pa": 412,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681134,
+   "name": "Caleb Roberts",
+   "pos": "of",
+   "age": 27,
+   "war": -1.14,
+   "pa": 451,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695634,
+   "name": "Jaime Ferrer",
+   "pos": "rf",
+   "age": 24,
+   "war": -2.18,
+   "pa": 384,
+   "salary": 780000
+  }
+ ]
 }

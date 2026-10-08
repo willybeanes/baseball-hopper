@@ -680,5 +680,385 @@
  "sheetPayroll": 215218333,
  "sheetTaxPayroll": 211294995,
  "rowsPayroll": 215218333,
- "rowsTaxPayroll": 211294995
+ "rowsTaxPayroll": 211294995,
+ "minors": [
+  {
+   "mlbamId": 813896,
+   "name": "Joseph Sullivan",
+   "pos": "cf",
+   "age": 25,
+   "war": 1.11,
+   "pa": 494,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809343,
+   "name": "Bryce Mayer",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.99,
+   "ip": 91.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801075,
+   "name": "Walker Janek",
+   "pos": "c",
+   "age": 24,
+   "war": 0.89,
+   "pa": 397,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801802,
+   "name": "James Hicks",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.88,
+   "ip": 81.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 663967,
+   "name": "César Salazar",
+   "pos": "c",
+   "age": 31,
+   "war": 0.87,
+   "pa": 281,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690667,
+   "name": "Trey Dombroski",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.69,
+   "ip": 96.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696280,
+   "name": "Alonzo Tredwell",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.64,
+   "ip": 81.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694545,
+   "name": "Jackson Nezuh",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.63,
+   "ip": 85.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670092,
+   "name": "Trenton Brooks",
+   "pos": "lf",
+   "age": 31,
+   "war": 0.56,
+   "pa": 412,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 673945,
+   "name": "Freuddy Batista",
+   "pos": "c",
+   "age": 27,
+   "war": 0.45,
+   "pa": 319,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680890,
+   "name": "Jax Biggers",
+   "pos": "2b",
+   "age": 30,
+   "war": 0.42,
+   "pa": 370,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682610,
+   "name": "Roddery Muñoz",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.41,
+   "ip": 82.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702462,
+   "name": "Nic Swanson",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.34,
+   "ip": 80.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691012,
+   "name": "Alex Santos II",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.29,
+   "ip": 63.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694381,
+   "name": "Trey McLoughlin",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.23,
+   "ip": 43,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664774,
+   "name": "LaMonte Wade Jr.",
+   "pos": "lf",
+   "age": 33,
+   "war": 0.22,
+   "pa": 340,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681077,
+   "name": "Michael Knorr",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.2,
+   "ip": 51.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685005,
+   "name": "Christian Roa",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.16,
+   "ip": 65.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 669699,
+   "name": "Braden Shewmake",
+   "pos": "ss",
+   "age": 29,
+   "war": 0.14,
+   "pa": 374,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686223,
+   "name": "Joey Mancini",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.06,
+   "ip": 94.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702847,
+   "name": "Amilcar Chirinos",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.03,
+   "ip": 47,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 828395,
+   "name": "Jason Schiavone",
+   "pos": "c",
+   "age": 24,
+   "war": -0.04,
+   "pa": 296,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815133,
+   "name": "Cameron Sisneros",
+   "pos": "1b",
+   "age": 26,
+   "war": -0.06,
+   "pa": 360,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 675989,
+   "name": "Cody Bolton",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.06,
+   "ip": 43.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 813844,
+   "name": "Will Bush",
+   "pos": "c",
+   "age": 23,
+   "war": -0.14,
+   "pa": 437,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687776,
+   "name": "Alejandro Torres",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.22,
+   "ip": 38,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680769,
+   "name": "CJ Alexander",
+   "pos": "1b",
+   "age": 30,
+   "war": -0.22,
+   "pa": 417,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814299,
+   "name": "Pascanel Ferreras",
+   "pos": "2b",
+   "age": 25,
+   "war": -0.22,
+   "pa": 465,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687817,
+   "name": "Andrew Marrero",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.23,
+   "ip": 40.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801039,
+   "name": "John Garcia",
+   "pos": "c",
+   "age": 26,
+   "war": -0.3,
+   "pa": 343,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802959,
+   "name": "Max Holy",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.37,
+   "pa": 395,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683988,
+   "name": "Railin Perez",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.4,
+   "ip": 55,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694939,
+   "name": "Marcus Brown",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.52,
+   "pa": 385,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 699043,
+   "name": "Yamal Encarnacion",
+   "pos": "2b",
+   "age": 23,
+   "war": -0.64,
+   "pa": 281,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805168,
+   "name": "Alejandro Nuñez",
+   "pos": "ss",
+   "age": 22,
+   "war": -0.65,
+   "pa": 437,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695046,
+   "name": "Drew Brutcher",
+   "pos": "cf",
+   "age": 25,
+   "war": -0.68,
+   "pa": 444,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695048,
+   "name": "Garret Guillemette",
+   "pos": "c",
+   "age": 25,
+   "war": -0.68,
+   "pa": 355,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 827504,
+   "name": "Hector Salas",
+   "pos": "ss",
+   "age": 23,
+   "war": -0.81,
+   "pa": 308,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809338,
+   "name": "Trevor Austin",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.86,
+   "pa": 424,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694380,
+   "name": "Jack Moss",
+   "pos": "1b",
+   "age": 25,
+   "war": -1.31,
+   "pa": 214,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703198,
+   "name": "Kenni Gomez",
+   "pos": "cf",
+   "age": 22,
+   "war": -1.42,
+   "pa": 435,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696264,
+   "name": "Tyler Whitaker",
+   "pos": "rf",
+   "age": 24,
+   "war": -2.1,
+   "pa": 402,
+   "salary": 780000
+  }
+ ]
 }
