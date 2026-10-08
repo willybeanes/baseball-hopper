@@ -639,5 +639,376 @@
  "sheetPayroll": 205025000,
  "sheetTaxPayroll": 202558334,
  "rowsPayroll": 205025000,
- "rowsTaxPayroll": 202558334
+ "rowsTaxPayroll": 202558334,
+ "minors": [
+  {
+   "mlbamId": 689172,
+   "name": "Brett Wisely",
+   "pos": "2b",
+   "age": 28,
+   "war": 1.49,
+   "pa": 432,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804542,
+   "name": "Landon Harper",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.82,
+   "ip": 88.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681256,
+   "name": "Ian Mejia",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.8,
+   "ip": 105,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 822412,
+   "name": "Brett Sears",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.77,
+   "ip": 100,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680672,
+   "name": "Luke Waddell",
+   "pos": "ss",
+   "age": 28,
+   "war": 0.51,
+   "pa": 446,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686588,
+   "name": "Blane Abeyta",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.44,
+   "ip": 76.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 665856,
+   "name": "Jair Camargo",
+   "pos": "c",
+   "age": 28,
+   "war": 0.39,
+   "pa": 307,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802357,
+   "name": "Drue Hackenberg",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.37,
+   "ip": 90.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 641656,
+   "name": "Ian Hamilton",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.34,
+   "ip": 50.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 640492,
+   "name": "José Azócar",
+   "pos": "rf",
+   "age": 31,
+   "war": 0.31,
+   "pa": 339,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682855,
+   "name": "Luis Vargas",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.28,
+   "ip": 71.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668974,
+   "name": "Maverick Handley",
+   "pos": "c",
+   "age": 29,
+   "war": 0.28,
+   "pa": 278,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678173,
+   "name": "David McCabe",
+   "pos": "3b",
+   "age": 27,
+   "war": 0.18,
+   "pa": 495,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 677954,
+   "name": "Jordan Groshans",
+   "pos": "3b",
+   "age": 27,
+   "war": 0.13,
+   "pa": 407,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 606992,
+   "name": "Eric Haase",
+   "pos": "c",
+   "age": 34,
+   "war": 0.11,
+   "pa": 251,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 666768,
+   "name": "Anderson Pilar",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.1,
+   "ip": 54,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696505,
+   "name": "Cory Wall",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.1,
+   "ip": 50.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 622694,
+   "name": "Elieser Hernández",
+   "pos": "sp",
+   "age": 32,
+   "war": 0.1,
+   "ip": 71,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 606303,
+   "name": "Joel Payamps",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.1,
+   "ip": 50,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806337,
+   "name": "Jarret Whorff",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.08,
+   "ip": 63.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 642020,
+   "name": "Chuckie Robinson",
+   "pos": "c",
+   "age": 32,
+   "war": -0.05,
+   "pa": 295,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 808535,
+   "name": "John Gil",
+   "pos": "3b",
+   "age": 21,
+   "war": -0.05,
+   "pa": 513,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664849,
+   "name": "Danny Young",
+   "pos": "rp",
+   "age": 33,
+   "war": -0.08,
+   "ip": 40.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681212,
+   "name": "Shay Schanaman",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.14,
+   "ip": 39.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690229,
+   "name": "LJ McDonough",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.22,
+   "ip": 43.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 666386,
+   "name": "Archer Brookman",
+   "pos": "c",
+   "age": 28,
+   "war": -0.26,
+   "pa": 236,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 679489,
+   "name": "Tyler LaPorte",
+   "pos": "rp",
+   "age": 30,
+   "war": -0.29,
+   "ip": 43.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 693176,
+   "name": "Elison Joseph",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.32,
+   "ip": 42.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802117,
+   "name": "Patrick Clohisy",
+   "pos": "cf",
+   "age": 25,
+   "war": -0.38,
+   "pa": 548,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683103,
+   "name": "Cade Doughty",
+   "pos": "3b",
+   "age": 26,
+   "war": -0.41,
+   "pa": 410,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 506702,
+   "name": "Sandy León",
+   "pos": "c",
+   "age": 38,
+   "war": -0.47,
+   "pa": 190,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694222,
+   "name": "Ambioris Tavarez",
+   "pos": "ss",
+   "age": 23,
+   "war": -0.55,
+   "pa": 455,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700845,
+   "name": "Adam Zebrowski",
+   "pos": "c",
+   "age": 26,
+   "war": -0.62,
+   "pa": 375,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815299,
+   "name": "Will Verdung",
+   "pos": "2b",
+   "age": 24,
+   "war": -0.67,
+   "pa": 348,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687201,
+   "name": "Kevin Kilpatrick Jr.",
+   "pos": "cf",
+   "age": 26,
+   "war": -0.75,
+   "pa": 461,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815586,
+   "name": "Joe Olsavsky",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.99,
+   "pa": 330,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695462,
+   "name": "Cal Conley",
+   "pos": "ss",
+   "age": 27,
+   "war": -1.11,
+   "pa": 512,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692371,
+   "name": "Lizandro Espinoza",
+   "pos": "ss",
+   "age": 24,
+   "war": -1.13,
+   "pa": 450,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806061,
+   "name": "Isaiah Drake",
+   "pos": "of",
+   "age": 21,
+   "war": -1.25,
+   "pa": 504,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 803475,
+   "name": "Colby Jones",
+   "pos": "ss",
+   "age": 23,
+   "war": -1.33,
+   "pa": 511,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701653,
+   "name": "Mason Guerra",
+   "pos": "1b",
+   "age": 24,
+   "war": -1.67,
+   "pa": 413,
+   "salary": 780000
+  }
+ ]
 }

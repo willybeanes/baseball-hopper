@@ -952,5 +952,340 @@
  "sheetPayroll": 173932144,
  "sheetTaxPayroll": 175830466,
  "rowsPayroll": 173932144,
- "rowsTaxPayroll": 175830466
+ "rowsTaxPayroll": 175830466,
+ "minors": [
+  {
+   "mlbamId": 678760,
+   "name": "Eddys Leonard",
+   "pos": "ss",
+   "age": 26,
+   "war": 1.4,
+   "pa": 501,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806401,
+   "name": "Dayson Croes",
+   "pos": "if",
+   "age": 27,
+   "war": 1.25,
+   "pa": 393,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692238,
+   "name": "Parks Harber",
+   "pos": "3b",
+   "age": 25,
+   "war": 1.03,
+   "pa": 353,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694196,
+   "name": "Diego Velasquez",
+   "pos": "ss",
+   "age": 23,
+   "war": 0.93,
+   "pa": 577,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802126,
+   "name": "Joe Whitman",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.9,
+   "ip": 103.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801639,
+   "name": "Trystan Vrieling",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.83,
+   "ip": 96.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692368,
+   "name": "Adrián Sugastey",
+   "pos": "c",
+   "age": 24,
+   "war": 0.77,
+   "pa": 348,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664141,
+   "name": "JT Brubaker",
+   "pos": "sp",
+   "age": 33,
+   "war": 0.71,
+   "ip": 73.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686823,
+   "name": "Will Brennan",
+   "pos": "lf",
+   "age": 29,
+   "war": 0.69,
+   "pa": 376,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805257,
+   "name": "Jack Choate",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.6,
+   "ip": 93,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687284,
+   "name": "Thomas Gavello",
+   "pos": "2b",
+   "age": 26,
+   "war": 0.56,
+   "pa": 383,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 802609,
+   "name": "John Michael Bertrand",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.47,
+   "ip": 112,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686873,
+   "name": "Nick Zwack",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.41,
+   "ip": 82,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694757,
+   "name": "Maui Ahuna",
+   "pos": "ss",
+   "age": 25,
+   "war": 0.31,
+   "pa": 278,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694754,
+   "name": "Sabin Ceballos",
+   "pos": "3b",
+   "age": 24,
+   "war": 0.27,
+   "pa": 483,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 672021,
+   "name": "Eric Cerantola",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.16,
+   "ip": 53.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806611,
+   "name": "Jancel Villarroel",
+   "pos": "c",
+   "age": 22,
+   "war": 0.15,
+   "pa": 447,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805117,
+   "name": "Jean Carlos Sió",
+   "pos": "ss",
+   "age": 23,
+   "war": 0.15,
+   "pa": 514,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 671117,
+   "name": "Darren Baker",
+   "pos": "2b",
+   "age": 28,
+   "war": 0.14,
+   "pa": 433,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 689359,
+   "name": "Dale Stanavich",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.1,
+   "ip": 50.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815780,
+   "name": "Shane Rademacher",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.1,
+   "ip": 91,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692024,
+   "name": "Alex Carrillo",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.06,
+   "ip": 44.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692366,
+   "name": "Onil Perez",
+   "pos": "c",
+   "age": 24,
+   "war": 0.03,
+   "pa": 321,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678576,
+   "name": "Wilkin Ramos",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.02,
+   "ip": 55.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688730,
+   "name": "Marques Johnson",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.06,
+   "ip": 50.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687218,
+   "name": "Will Bednar",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.06,
+   "ip": 49,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686846,
+   "name": "Reggie Crawford",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.1,
+   "ip": 32.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801592,
+   "name": "Zander Darby",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.12,
+   "pa": 326,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 823185,
+   "name": "Zane Zielinski",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.12,
+   "pa": 494,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692352,
+   "name": "Manuel Mercedes",
+   "pos": "sp",
+   "age": 24,
+   "war": -0.15,
+   "ip": 80.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804922,
+   "name": "Tyler Vogel",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.23,
+   "ip": 52,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805126,
+   "name": "Charlie Szykowny",
+   "pos": "3b",
+   "age": 27,
+   "war": -0.38,
+   "pa": 501,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815779,
+   "name": "Cole Hillier",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.45,
+   "ip": 55,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692374,
+   "name": "Jose Ramos",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.45,
+   "pa": 300,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694552,
+   "name": "Jack Payton",
+   "pos": "1b",
+   "age": 25,
+   "war": -0.94,
+   "pa": 295,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692348,
+   "name": "Aeverson Arteaga",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.99,
+   "pa": 498,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814451,
+   "name": "Jakob Christian",
+   "pos": "of",
+   "age": 24,
+   "war": -1.15,
+   "pa": 437,
+   "salary": 780000
+  }
+ ]
 }

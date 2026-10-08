@@ -607,5 +607,403 @@
  "sheetPayroll": 160679905,
  "sheetTaxPayroll": 193218377,
  "rowsPayroll": 160679905,
- "rowsTaxPayroll": 193218377
+ "rowsTaxPayroll": 193218377,
+ "minors": [
+  {
+   "mlbamId": 660821,
+   "name": "Jesús Sánchez",
+   "pos": "dh",
+   "age": 29,
+   "war": 1.48,
+   "pa": 472,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801517,
+   "name": "Spencer Giesting",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.96,
+   "ip": 120.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801179,
+   "name": "Yu-Min Lin",
+   "pos": "sp",
+   "age": 23,
+   "war": 0.88,
+   "ip": 106,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692416,
+   "name": "Christian Cerda",
+   "pos": "c",
+   "age": 24,
+   "war": 0.77,
+   "pa": 432,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800198,
+   "name": "Cristofer Torin",
+   "pos": "2b",
+   "age": 22,
+   "war": 0.72,
+   "pa": 594,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702679,
+   "name": "Demetrio Crisantes",
+   "pos": "ss",
+   "age": 22,
+   "war": 0.7,
+   "pa": 335,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682225,
+   "name": "Billy Corcoran",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.64,
+   "ip": 92.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 674072,
+   "name": "Tommy Henry",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.58,
+   "ip": 97.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686826,
+   "name": "Bryce Jarvis",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.55,
+   "ip": 86.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800306,
+   "name": "Jansel Luis",
+   "pos": "2b",
+   "age": 22,
+   "war": 0.41,
+   "pa": 532,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683008,
+   "name": "Avery Short",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.28,
+   "ip": 93.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685763,
+   "name": "Jonatan Bernal",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.27,
+   "ip": 69,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694900,
+   "name": "Kyle Amendt",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.23,
+   "ip": 44,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696508,
+   "name": "Alec Baker",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.22,
+   "ip": 73,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809109,
+   "name": "Roman Angelo",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.15,
+   "ip": 103,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691021,
+   "name": "A.J. Vukovich",
+   "pos": "cf",
+   "age": 25,
+   "war": 0.14,
+   "pa": 510,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702258,
+   "name": "Druw Jones",
+   "pos": "cf",
+   "age": 23,
+   "war": 0.1,
+   "pa": 575,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801938,
+   "name": "Avery Owusu-Asiedu",
+   "pos": "cf",
+   "age": 24,
+   "war": 0.07,
+   "pa": 438,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 808768,
+   "name": "Ben McLaughlin",
+   "pos": "3b",
+   "age": 25,
+   "war": 0.07,
+   "pa": 401,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814783,
+   "name": "Casey Anderson",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.01,
+   "ip": 78,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 663462,
+   "name": "Isaiah Campbell",
+   "pos": "rp",
+   "age": 29,
+   "war": 0,
+   "ip": 54.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681400,
+   "name": "Danny Serretti",
+   "pos": "3b",
+   "age": 27,
+   "war": -0.06,
+   "pa": 351,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 571882,
+   "name": "Derek Law",
+   "pos": "rp",
+   "age": 36,
+   "war": -0.07,
+   "ip": 52,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 677565,
+   "name": "Kristian Robinson",
+   "pos": "lf",
+   "age": 26,
+   "war": -0.1,
+   "pa": 474,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690841,
+   "name": "Matt O'Neill",
+   "pos": "c",
+   "age": 29,
+   "war": -0.14,
+   "pa": 210,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686184,
+   "name": "Sean Harney",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.18,
+   "ip": 39.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678099,
+   "name": "Gavin Logan",
+   "pos": "c",
+   "age": 27,
+   "war": -0.25,
+   "pa": 264,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700341,
+   "name": "Kenny Castillo",
+   "pos": "c",
+   "age": 23,
+   "war": -0.26,
+   "pa": 333,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694674,
+   "name": "Antonio Menendez",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.28,
+   "ip": 45,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683085,
+   "name": "Landon Sims",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.29,
+   "ip": 46.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801219,
+   "name": "Alfred Morillo",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.4,
+   "ip": 51,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691014,
+   "name": "Nate Savino",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.41,
+   "ip": 57.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815154,
+   "name": "Slade Caldwell",
+   "pos": "of",
+   "age": 21,
+   "war": -0.41,
+   "pa": 568,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695078,
+   "name": "Jean Walters",
+   "pos": "2b",
+   "age": 25,
+   "war": -0.45,
+   "pa": 317,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691292,
+   "name": "Angel Ortiz",
+   "pos": "of",
+   "age": 24,
+   "war": -0.46,
+   "pa": 502,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694211,
+   "name": "Manuel Pena",
+   "pos": "2b",
+   "age": 23,
+   "war": -0.47,
+   "pa": 519,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695521,
+   "name": "Gavin Conticello",
+   "pos": "of",
+   "age": 24,
+   "war": -0.65,
+   "pa": 539,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691285,
+   "name": "Junior Franco",
+   "pos": "lf",
+   "age": 24,
+   "war": -0.69,
+   "pa": 349,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678232,
+   "name": "Jesus Valdez",
+   "pos": "3b",
+   "age": 29,
+   "war": -0.83,
+   "pa": 274,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700369,
+   "name": "Adrian De Leon",
+   "pos": "c",
+   "age": 23,
+   "war": -1,
+   "pa": 344,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703641,
+   "name": "Adrian Rodriguez",
+   "pos": "ss",
+   "age": 23,
+   "war": -1.03,
+   "pa": 357,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 699232,
+   "name": "Anderdson Rojas",
+   "pos": "2b",
+   "age": 23,
+   "war": -1.14,
+   "pa": 505,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694815,
+   "name": "Jack Hurley",
+   "pos": "cf",
+   "age": 25,
+   "war": -1.36,
+   "pa": 401,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800029,
+   "name": "Modeifi Marte",
+   "pos": "1b",
+   "age": 24,
+   "war": -1.46,
+   "pa": 391,
+   "salary": 780000
+  }
+ ]
 }

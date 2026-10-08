@@ -739,5 +739,502 @@
  "sheetPayroll": 130627381,
  "sheetTaxPayroll": 162319877,
  "rowsPayroll": 130627381,
- "rowsTaxPayroll": 162319877
+ "rowsTaxPayroll": 162319877,
+ "minors": [
+  {
+   "mlbamId": 680573,
+   "name": "Simeon Woods Richardson",
+   "pos": "sp",
+   "age": 26,
+   "war": 2.1,
+   "ip": 125.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670156,
+   "name": "Miles Mastrobuoni",
+   "pos": "3b",
+   "age": 31,
+   "war": 1.14,
+   "pa": 346,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700032,
+   "name": "Victor Labrada",
+   "pos": "cf",
+   "age": 27,
+   "war": 1.06,
+   "pa": 476,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 646242,
+   "name": "Jhonathan Díaz",
+   "pos": "sp",
+   "age": 30,
+   "war": 1.01,
+   "ip": 108.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 807744,
+   "name": "Ty Cummings",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.87,
+   "ip": 103.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700815,
+   "name": "Matthew Ellis",
+   "pos": "c",
+   "age": 26,
+   "war": 0.8,
+   "pa": 349,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670234,
+   "name": "Seth Shuman",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.79,
+   "ip": 84,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 628451,
+   "name": "Andy Ibáñez",
+   "pos": "2b",
+   "age": 34,
+   "war": 0.76,
+   "pa": 331,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681098,
+   "name": "Bill Knight",
+   "pos": "of",
+   "age": 27,
+   "war": 0.73,
+   "pa": 496,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682077,
+   "name": "Gabe Mosser",
+   "pos": "sp",
+   "age": 31,
+   "war": 0.65,
+   "ip": 97.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814791,
+   "name": "Jared Sundstrom",
+   "pos": "of",
+   "age": 26,
+   "war": 0.64,
+   "pa": 484,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 641540,
+   "name": "Dane Dunning",
+   "pos": "sp",
+   "age": 32,
+   "war": 0.61,
+   "ip": 91.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804577,
+   "name": "Reid VanScoter",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.6,
+   "ip": 94.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695596,
+   "name": "Nick Raposo",
+   "pos": "c",
+   "age": 29,
+   "war": 0.56,
+   "pa": 300,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692044,
+   "name": "Luis Suisbel",
+   "pos": "1b",
+   "age": 24,
+   "war": 0.54,
+   "pa": 515,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691786,
+   "name": "Michael Morales",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.54,
+   "ip": 103,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 689070,
+   "name": "Spencer Packard",
+   "pos": "lf",
+   "age": 29,
+   "war": 0.54,
+   "pa": 456,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688548,
+   "name": "Nico Tellache",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.47,
+   "ip": 74.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 656413,
+   "name": "Stuart Fairchild",
+   "pos": "cf",
+   "age": 31,
+   "war": 0.44,
+   "pa": 288,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 679712,
+   "name": "Lael Lockhart",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.39,
+   "ip": 92.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681041,
+   "name": "Marcelo Perez",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.39,
+   "ip": 90,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 656883,
+   "name": "Jakson Reetz",
+   "pos": "c",
+   "age": 31,
+   "war": 0.31,
+   "pa": 279,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806464,
+   "name": "Connor Charping",
+   "pos": "c",
+   "age": 28,
+   "war": 0.28,
+   "pa": 228,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 665959,
+   "name": "Abdiel Mendoza",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.2,
+   "ip": 68.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 810897,
+   "name": "Charlie Beilenson",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.19,
+   "ip": 55,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 608334,
+   "name": "Carson Fulmer",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.15,
+   "ip": 61.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682445,
+   "name": "Domingo Gonzalez",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.09,
+   "ip": 57.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702795,
+   "name": "Ryan Loutos",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.04,
+   "ip": 54.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664123,
+   "name": "Scott Effross",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.01,
+   "ip": 42.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694356,
+   "name": "Nick Garcia",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.04,
+   "ip": 60.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 813860,
+   "name": "Charlie Pagliarini",
+   "pos": "3b",
+   "age": 26,
+   "war": -0.05,
+   "pa": 489,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685116,
+   "name": "Austin Kitchen",
+   "pos": "rp",
+   "age": 30,
+   "war": -0.08,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687730,
+   "name": "Caleb Cali",
+   "pos": "3b",
+   "age": 26,
+   "war": -0.08,
+   "pa": 471,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 674175,
+   "name": "Houston Roth",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.09,
+   "ip": 53.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700675,
+   "name": "Jimmy Kingsbury",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.09,
+   "ip": 56.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701314,
+   "name": "Nick Hull",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.09,
+   "ip": 59,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804663,
+   "name": "Tyler Cleveland",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.12,
+   "ip": 59,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688230,
+   "name": "Peyton Alford",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.14,
+   "ip": 48.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806958,
+   "name": "Felnin Celesten",
+   "pos": "ss",
+   "age": 21,
+   "war": -0.15,
+   "pa": 483,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 674022,
+   "name": "Jason Ruffcorn",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.16,
+   "ip": 52.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688519,
+   "name": "Sam Whiting",
+   "pos": "sp",
+   "age": 26,
+   "war": -0.21,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702751,
+   "name": "Jose Geraldo",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.24,
+   "ip": 41.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686445,
+   "name": "Sammy Siani",
+   "pos": "rf",
+   "age": 26,
+   "war": -0.26,
+   "pa": 445,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 826163,
+   "name": "Carter Dorighi",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.31,
+   "pa": 507,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 669419,
+   "name": "Michael Hobbs",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.34,
+   "ip": 45.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680212,
+   "name": "Conor Larkin",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.36,
+   "ip": 39.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690944,
+   "name": "Curtis Washington Jr.",
+   "pos": "cf",
+   "age": 27,
+   "war": -0.39,
+   "pa": 347,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686638,
+   "name": "Hunter Fitz-Gerald",
+   "pos": "1b",
+   "age": 26,
+   "war": -0.58,
+   "pa": 400,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701805,
+   "name": "Josh Caron",
+   "pos": "c",
+   "age": 23,
+   "war": -0.62,
+   "pa": 346,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 656582,
+   "name": "Connor Joe",
+   "pos": "rf",
+   "age": 34,
+   "war": -0.63,
+   "pa": 338,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 641924,
+   "name": "Jacob Nottingham",
+   "pos": "c",
+   "age": 32,
+   "war": -0.65,
+   "pa": 213,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 823703,
+   "name": "Anthony Donofrio",
+   "pos": "of",
+   "age": 27,
+   "war": -0.67,
+   "pa": 340,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681377,
+   "name": "Josh Hood",
+   "pos": "2b",
+   "age": 26,
+   "war": -0.94,
+   "pa": 464,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692046,
+   "name": "Axel Sanchez",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.99,
+   "pa": 311,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694806,
+   "name": "Brandon Eike",
+   "pos": "3b",
+   "age": 25,
+   "war": -1.88,
+   "pa": 397,
+   "salary": 780000
+  }
+ ]
 }

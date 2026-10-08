@@ -701,5 +701,376 @@
  "sheetPayroll": 93619047,
  "sheetTaxPayroll": 117075746,
  "rowsPayroll": 93619047,
- "rowsTaxPayroll": 117075746
+ "rowsTaxPayroll": 117075746,
+ "minors": [
+  {
+   "mlbamId": 666150,
+   "name": "Dominic Fletcher",
+   "pos": "rf",
+   "age": 29,
+   "war": 1.12,
+   "pa": 440,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691641,
+   "name": "Jose Acuna",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.72,
+   "ip": 89.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805723,
+   "name": "Jared Lyons",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.71,
+   "ip": 79.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681114,
+   "name": "Michael Trautwein",
+   "pos": "c",
+   "age": 27,
+   "war": 0.62,
+   "pa": 276,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 605335,
+   "name": "Brandon Leibrandt",
+   "pos": "sp",
+   "age": 34,
+   "war": 0.58,
+   "ip": 75,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688005,
+   "name": "Francisco Urbaez",
+   "pos": "2b",
+   "age": 29,
+   "war": 0.35,
+   "pa": 394,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805321,
+   "name": "Trevor Kuncl",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.28,
+   "ip": 48.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680397,
+   "name": "Sam Benschoter",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.23,
+   "ip": 76.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694829,
+   "name": "Connor Burns",
+   "pos": "c",
+   "age": 25,
+   "war": 0.15,
+   "pa": 332,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 674265,
+   "name": "Kevin Abel",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.15,
+   "ip": 92,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664948,
+   "name": "Anthony Misiewicz",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.05,
+   "ip": 42.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685396,
+   "name": "Nate Peterson",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.05,
+   "ip": 65.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 674114,
+   "name": "Ryan Garcia",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.03,
+   "ip": 66.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701734,
+   "name": "Ryan McCrystal",
+   "pos": "c",
+   "age": 24,
+   "war": 0.01,
+   "pa": 357,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694650,
+   "name": "Cameron Cotter",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.02,
+   "ip": 42.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687071,
+   "name": "Shane Sasaki",
+   "pos": "cf",
+   "age": 27,
+   "war": -0.03,
+   "pa": 370,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800176,
+   "name": "Carlos Sanchez",
+   "pos": "3b",
+   "age": 22,
+   "war": -0.06,
+   "pa": 503,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687192,
+   "name": "Cade Hunter",
+   "pos": "c",
+   "age": 26,
+   "war": -0.07,
+   "pa": 352,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 641658,
+   "name": "Garrett Hampson",
+   "pos": "2b",
+   "age": 32,
+   "war": -0.11,
+   "pa": 264,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702253,
+   "name": "Cam Collier",
+   "pos": "3b",
+   "age": 22,
+   "war": -0.15,
+   "pa": 478,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 679734,
+   "name": "Julio Carreras",
+   "pos": "3b",
+   "age": 27,
+   "war": -0.21,
+   "pa": 383,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688609,
+   "name": "Hunter Parks",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.23,
+   "ip": 53.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680846,
+   "name": "Pablo Aliendo",
+   "pos": "c",
+   "age": 26,
+   "war": -0.23,
+   "pa": 366,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702300,
+   "name": "Johnathan Lavallee",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.27,
+   "ip": 36.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687905,
+   "name": "Taylor Floyd",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.28,
+   "ip": 51.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686671,
+   "name": "Thomas Farr",
+   "pos": "sp",
+   "age": 28,
+   "war": -0.29,
+   "ip": 72,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702140,
+   "name": "Ruben Ibarra",
+   "pos": "1b",
+   "age": 28,
+   "war": -0.32,
+   "pa": 407,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 803174,
+   "name": "Anthony Stephan",
+   "pos": "of",
+   "age": 24,
+   "war": -0.37,
+   "pa": 400,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694689,
+   "name": "Dominic Pitelli",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.48,
+   "pa": 409,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683091,
+   "name": "Logan Tanner",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.56,
+   "pa": 235,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695481,
+   "name": "Jay Allen II",
+   "pos": "cf",
+   "age": 24,
+   "war": -0.64,
+   "pa": 491,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691392,
+   "name": "Johnny Ascanio",
+   "pos": "ss",
+   "age": 23,
+   "war": -0.66,
+   "pa": 367,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683061,
+   "name": "Alexander Vargas",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.7,
+   "pa": 430,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703150,
+   "name": "Ricky Cabrera",
+   "pos": "ss",
+   "age": 22,
+   "war": -0.7,
+   "pa": 369,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683104,
+   "name": "Trey Faltine",
+   "pos": "2b",
+   "age": 26,
+   "war": -0.91,
+   "pa": 174,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696510,
+   "name": "Peyton Stovall",
+   "pos": "2b",
+   "age": 24,
+   "war": -1.2,
+   "pa": 309,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 807728,
+   "name": "Carter Graham",
+   "pos": "1b",
+   "age": 25,
+   "war": -1.27,
+   "pa": 411,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702114,
+   "name": "John Michael Faile",
+   "pos": "c",
+   "age": 27,
+   "war": -1.27,
+   "pa": 365,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690988,
+   "name": "Austin Hendrick",
+   "pos": "rf",
+   "age": 26,
+   "war": -1.29,
+   "pa": 441,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703204,
+   "name": "Esmith Pineda",
+   "pos": "rf",
+   "age": 22,
+   "war": -1.55,
+   "pa": 483,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691398,
+   "name": "Yerlin Confidan",
+   "pos": "lf",
+   "age": 24,
+   "war": -1.77,
+   "pa": 466,
+   "salary": 780000
+  }
+ ]
 }

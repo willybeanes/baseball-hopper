@@ -771,5 +771,421 @@
  "sheetPayroll": 48285000,
  "sheetTaxPayroll": 76069167,
  "rowsPayroll": 48285000,
- "rowsTaxPayroll": 76069167
+ "rowsTaxPayroll": 76069167,
+ "minors": [
+  {
+   "mlbamId": 701603,
+   "name": "Tyler Stuart",
+   "pos": "sp",
+   "age": 27,
+   "war": 1.17,
+   "ip": 93,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691776,
+   "name": "Josh Hartle",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.07,
+   "ip": 103.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703186,
+   "name": "Jarlin Susana",
+   "pos": "sp",
+   "age": 23,
+   "war": 0.95,
+   "ip": 99,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 671083,
+   "name": "Buddy Kennedy",
+   "pos": "3b",
+   "age": 28,
+   "war": 0.92,
+   "pa": 447,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 669441,
+   "name": "Chandler Champlain",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.88,
+   "ip": 108,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702910,
+   "name": "Jhancarlos Lara",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.87,
+   "ip": 79.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701298,
+   "name": "Phillip Glasser",
+   "pos": "of",
+   "age": 27,
+   "war": 0.85,
+   "pa": 498,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806046,
+   "name": "Alex Clemmey",
+   "pos": "sp",
+   "age": 21,
+   "war": 0.82,
+   "ip": 104.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680734,
+   "name": "Kyle Luckham",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.75,
+   "ip": 112,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695763,
+   "name": "Sam Petersen",
+   "pos": "cf",
+   "age": 24,
+   "war": 0.73,
+   "pa": 235,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691251,
+   "name": "Andry Lara",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.63,
+   "ip": 84,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682119,
+   "name": "Levi Jordan",
+   "pos": "cf",
+   "age": 31,
+   "war": 0.52,
+   "pa": 394,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678894,
+   "name": "Liover Peguero",
+   "pos": "ss",
+   "age": 26,
+   "war": 0.42,
+   "pa": 491,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691024,
+   "name": "Cayden Wallace",
+   "pos": "3b",
+   "age": 25,
+   "war": 0.38,
+   "pa": 489,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814409,
+   "name": "Seaver King",
+   "pos": "ss",
+   "age": 24,
+   "war": 0.31,
+   "pa": 547,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664875,
+   "name": "Justin Lawrence",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.21,
+   "ip": 47.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670223,
+   "name": "Matt Mervis",
+   "pos": "1b",
+   "age": 29,
+   "war": 0.2,
+   "pa": 425,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668820,
+   "name": "Max Kranick",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.2,
+   "ip": 45,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686912,
+   "name": "Maxwell Romero Jr.",
+   "pos": "c",
+   "age": 26,
+   "war": 0.08,
+   "pa": 321,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814455,
+   "name": "Nick Mitchell",
+   "pos": "of",
+   "age": 23,
+   "war": 0.08,
+   "pa": 374,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702358,
+   "name": "Trey Lipscomb",
+   "pos": "3b",
+   "age": 27,
+   "war": 0.04,
+   "pa": 485,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685067,
+   "name": "Baron Stuart",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.03,
+   "ip": 68,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682775,
+   "name": "Kervin Pichardo",
+   "pos": "ss",
+   "age": 25,
+   "war": 0,
+   "pa": 413,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 640454,
+   "name": "Matt Krook",
+   "pos": "rp",
+   "age": 32,
+   "war": -0.01,
+   "ip": 52.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676680,
+   "name": "Tom Cosgrove",
+   "pos": "rp",
+   "age": 31,
+   "war": -0.06,
+   "ip": 46.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686463,
+   "name": "Thomas Schultz",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.1,
+   "ip": 52.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701616,
+   "name": "Caleb Lomavita",
+   "pos": "c",
+   "age": 24,
+   "war": -0.18,
+   "pa": 429,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691183,
+   "name": "Kevin Made",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.21,
+   "pa": 415,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 666121,
+   "name": "Tyler Baum",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.27,
+   "ip": 38.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676026,
+   "name": "Holden Powell",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.29,
+   "ip": 45,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805272,
+   "name": "Luke Young",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.29,
+   "ip": 58.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690469,
+   "name": "Kyle Hayes",
+   "pos": "c",
+   "age": 29,
+   "war": -0.31,
+   "pa": 152,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694544,
+   "name": "Austin Amaral",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.33,
+   "ip": 51.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701327,
+   "name": "Elijah Green",
+   "pos": "cf",
+   "age": 23,
+   "war": -0.36,
+   "pa": 419,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680770,
+   "name": "Chance Huff",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.37,
+   "ip": 53.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 625510,
+   "name": "Erick Mejia",
+   "pos": "rp",
+   "age": 32,
+   "war": -0.45,
+   "ip": 38,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 684976,
+   "name": "Johnathon Thomas",
+   "pos": "rf",
+   "age": 27,
+   "war": -0.47,
+   "pa": 370,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687751,
+   "name": "Cortland Lawson",
+   "pos": "ss",
+   "age": 27,
+   "war": -0.53,
+   "pa": 383,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668776,
+   "name": "Devin Ortiz",
+   "pos": "3b",
+   "age": 28,
+   "war": -0.67,
+   "pa": 464,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694399,
+   "name": "Elijah Nunez",
+   "pos": "lf",
+   "age": 25,
+   "war": -0.91,
+   "pa": 274,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694848,
+   "name": "Sam Brown",
+   "pos": "1b",
+   "age": 25,
+   "war": -0.98,
+   "pa": 517,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683610,
+   "name": "Leandro Pineda",
+   "pos": "rf",
+   "age": 25,
+   "war": -1.17,
+   "pa": 430,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702685,
+   "name": "Brenner Cox",
+   "pos": "rp",
+   "age": 23,
+   "war": -1.22,
+   "pa": 337,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680998,
+   "name": "Branden Boissiere",
+   "pos": "1b",
+   "age": 27,
+   "war": -1.28,
+   "pa": 451,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695493,
+   "name": "Teo Banks",
+   "pos": "of",
+   "age": 23,
+   "war": -1.36,
+   "pa": 192,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695604,
+   "name": "T.J. White",
+   "pos": "1b",
+   "age": 23,
+   "war": -1.67,
+   "pa": 472,
+   "salary": 780000
+  }
+ ]
 }

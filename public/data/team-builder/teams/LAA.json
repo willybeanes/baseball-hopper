@@ -694,5 +694,394 @@
  "sheetPayroll": 107724167,
  "sheetTaxPayroll": 126315834,
  "rowsPayroll": 107724167,
- "rowsTaxPayroll": 126315834
+ "rowsTaxPayroll": 126315834,
+ "minors": [
+  {
+   "mlbamId": 703185,
+   "name": "Nelson Rada",
+   "pos": "cf",
+   "age": 21,
+   "war": 1.33,
+   "pa": 622,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695524,
+   "name": "Jacob Cozart",
+   "pos": "c",
+   "age": 24,
+   "war": 0.96,
+   "pa": 410,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701836,
+   "name": "Kyle Robinson",
+   "pos": "sp",
+   "age": 23,
+   "war": 0.72,
+   "ip": 104.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683681,
+   "name": "Jose Gonzalez",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.7,
+   "ip": 94.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805796,
+   "name": "Arjun Nimmala",
+   "pos": "ss",
+   "age": 21,
+   "war": 0.59,
+   "pa": 565,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695065,
+   "name": "Ryan Costeiu",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.53,
+   "ip": 92,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 656412,
+   "name": "Alex Faedo",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.51,
+   "ip": 65.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691269,
+   "name": "Adrian Placencia",
+   "pos": "2b",
+   "age": 24,
+   "war": 0.31,
+   "pa": 528,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 622569,
+   "name": "Pablo Reyes",
+   "pos": "of",
+   "age": 33,
+   "war": 0.29,
+   "pa": 311,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 805871,
+   "name": "Joel Hurtado",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.28,
+   "ip": 90,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 641312,
+   "name": "Shaun Anderson",
+   "pos": "sp",
+   "age": 32,
+   "war": 0.22,
+   "ip": 92.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694359,
+   "name": "Niko Kavadas",
+   "pos": "if",
+   "age": 28,
+   "war": 0.21,
+   "pa": 493,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687799,
+   "name": "Cade Marlowe",
+   "pos": "of",
+   "age": 30,
+   "war": 0.12,
+   "pa": 374,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 806534,
+   "name": "Ben Gobbel",
+   "pos": "3b",
+   "age": 27,
+   "war": 0.11,
+   "pa": 452,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683098,
+   "name": "Bryce Osmond",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.09,
+   "ip": 67,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680451,
+   "name": "Mason Erla",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.09,
+   "ip": 51.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695229,
+   "name": "Camden Minacci",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.06,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 622253,
+   "name": "Dillon Tate",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.01,
+   "ip": 44,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683177,
+   "name": "Jared Southard",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.04,
+   "ip": 55,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 813882,
+   "name": "Brady Choban",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.07,
+   "ip": 50.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701488,
+   "name": "Dylan Phillips",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.12,
+   "ip": 58,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668719,
+   "name": "Kenyon Yovan",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.13,
+   "ip": 48.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815306,
+   "name": "Rio Foster",
+   "pos": "rf",
+   "age": 24,
+   "war": -0.13,
+   "pa": 394,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804446,
+   "name": "Eddie Micheletti Jr.",
+   "pos": "rf",
+   "age": 25,
+   "war": -0.16,
+   "pa": 468,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687272,
+   "name": "Tucker Flint",
+   "pos": "rf",
+   "age": 26,
+   "war": -0.16,
+   "pa": 492,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668876,
+   "name": "Zach Humphreys",
+   "pos": "c",
+   "age": 29,
+   "war": -0.19,
+   "pa": 272,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700081,
+   "name": "Jake Thompson",
+   "pos": "rf",
+   "age": 29,
+   "war": -0.24,
+   "pa": 292,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683079,
+   "name": "Omar Martinez",
+   "pos": "c",
+   "age": 25,
+   "war": -0.25,
+   "pa": 430,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 808129,
+   "name": "Juan Flores",
+   "pos": "c",
+   "age": 21,
+   "war": -0.26,
+   "pa": 404,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686196,
+   "name": "Peter Burns",
+   "pos": "c",
+   "age": 27,
+   "war": -0.26,
+   "pa": 123,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800194,
+   "name": "Capri Ortiz",
+   "pos": "2b",
+   "age": 22,
+   "war": -0.27,
+   "pa": 462,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 672391,
+   "name": "Kaleb Ort",
+   "pos": "rp",
+   "age": 35,
+   "war": -0.36,
+   "ip": 40.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 570560,
+   "name": "Yolmer Sánchez",
+   "pos": "3b",
+   "age": 35,
+   "war": -0.44,
+   "pa": 390,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683490,
+   "name": "J.J. D'Orazio",
+   "pos": "c",
+   "age": 25,
+   "war": -0.54,
+   "pa": 333,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694304,
+   "name": "Cole Fontenelle",
+   "pos": "3b",
+   "age": 25,
+   "war": -0.61,
+   "pa": 412,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690804,
+   "name": "Ryan Nicholson",
+   "pos": "1b",
+   "age": 26,
+   "war": -1.03,
+   "pa": 503,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702574,
+   "name": "David Mershon",
+   "pos": "ss",
+   "age": 24,
+   "war": -1.07,
+   "pa": 369,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691186,
+   "name": "Arol Vera",
+   "pos": "ss",
+   "age": 24,
+   "war": -1.11,
+   "pa": 444,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703430,
+   "name": "Anthony Scull",
+   "pos": "cf",
+   "age": 23,
+   "war": -1.26,
+   "pa": 531,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814362,
+   "name": "Alberto Rios",
+   "pos": "c",
+   "age": 25,
+   "war": -1.48,
+   "pa": 225,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703194,
+   "name": "Randy De Jesus",
+   "pos": "rf",
+   "age": 22,
+   "war": -1.93,
+   "pa": 517,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815151,
+   "name": "Mac McCroskey",
+   "pos": "2b",
+   "age": 27,
+   "war": -2.01,
+   "pa": 310,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800188,
+   "name": "Dario Laverde",
+   "pos": "c",
+   "age": 22,
+   "war": -2.33,
+   "pa": 432,
+   "salary": 780000
+  }
+ ]
 }

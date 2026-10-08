@@ -728,5 +728,403 @@
  "sheetPayroll": 84999286,
  "sheetTaxPayroll": 103946100,
  "rowsPayroll": 84999286,
- "rowsTaxPayroll": 103946100
+ "rowsTaxPayroll": 103946100,
+ "minors": [
+  {
+   "mlbamId": 820825,
+   "name": "Konner Eaton",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.44,
+   "ip": 122,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 666397,
+   "name": "Edouard Julien",
+   "pos": "2b",
+   "age": 28,
+   "war": 1.1,
+   "pa": 510,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682183,
+   "name": "Drew Avans",
+   "pos": "lf",
+   "age": 31,
+   "war": 1.03,
+   "pa": 471,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694860,
+   "name": "Jake Brooks",
+   "pos": "sp",
+   "age": 25,
+   "war": 1,
+   "ip": 102,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815456,
+   "name": "Ben Shields",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.98,
+   "ip": 82.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691792,
+   "name": "Roc Riggio",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.95,
+   "pa": 434,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690443,
+   "name": "Mike Antico",
+   "pos": "cf",
+   "age": 29,
+   "war": 0.73,
+   "pa": 436,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700164,
+   "name": "Bryant Betancourt",
+   "pos": "c",
+   "age": 23,
+   "war": 0.66,
+   "pa": 409,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694968,
+   "name": "Jack Mahoney",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.63,
+   "ip": 97.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678368,
+   "name": "Valente Bellozo",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.61,
+   "ip": 90.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 669445,
+   "name": "Adam Laskey",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.57,
+   "ip": 71.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687087,
+   "name": "Michael Prosecky",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.5,
+   "ip": 98,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 605353,
+   "name": "Vimael Machín",
+   "pos": "ss",
+   "age": 33,
+   "war": 0.5,
+   "pa": 417,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692589,
+   "name": "Victor Juarez",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.4,
+   "ip": 78.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701783,
+   "name": "Cole Messina",
+   "pos": "c",
+   "age": 24,
+   "war": 0.35,
+   "pa": 432,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695476,
+   "name": "Mason Albright",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.34,
+   "ip": 103,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668843,
+   "name": "Conner Capel",
+   "pos": "lf",
+   "age": 30,
+   "war": 0.2,
+   "pa": 394,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 624522,
+   "name": "Keegan Thompson",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.2,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 671289,
+   "name": "Tyler Freeman",
+   "pos": "rf",
+   "age": 28,
+   "war": 0.15,
+   "pa": 418,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 679057,
+   "name": "Mason Green",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.07,
+   "ip": 70.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809707,
+   "name": "Charlie Condon",
+   "pos": "1b",
+   "age": 24,
+   "war": 0.02,
+   "pa": 448,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686900,
+   "name": "Evan Shawver",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.01,
+   "ip": 47.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687900,
+   "name": "Andrew Baker",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.03,
+   "ip": 48.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687918,
+   "name": "Braylen Wimmer",
+   "pos": "ss",
+   "age": 26,
+   "war": -0.06,
+   "pa": 540,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682276,
+   "name": "Jose Cordova",
+   "pos": "c",
+   "age": 27,
+   "war": -0.07,
+   "pa": 323,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688876,
+   "name": "Carlos Torres",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.08,
+   "ip": 44.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801754,
+   "name": "Davison Palermo",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.12,
+   "ip": 54,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 622256,
+   "name": "Patrick Weigel",
+   "pos": "rp",
+   "age": 32,
+   "war": -0.12,
+   "ip": 36.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668943,
+   "name": "Ryan Miller",
+   "pos": "rp",
+   "age": 31,
+   "war": -0.13,
+   "ip": 46.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676333,
+   "name": "Sam Weatherly",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.13,
+   "ip": 43.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688422,
+   "name": "Connor Staine",
+   "pos": "sp",
+   "age": 26,
+   "war": -0.17,
+   "ip": 84,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694518,
+   "name": "Austin Smith",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.18,
+   "ip": 37.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687145,
+   "name": "Evan Justice",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.2,
+   "ip": 35.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700245,
+   "name": "Bryce McGowan",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.24,
+   "ip": 45.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 684715,
+   "name": "Nic Kent",
+   "pos": "2b",
+   "age": 27,
+   "war": -0.54,
+   "pa": 404,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809101,
+   "name": "Tommy Hopfe",
+   "pos": "of",
+   "age": 24,
+   "war": -0.63,
+   "pa": 451,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700321,
+   "name": "Andy Perez",
+   "pos": "3b",
+   "age": 23,
+   "war": -0.7,
+   "pa": 564,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694808,
+   "name": "Zach Kokoska",
+   "pos": "of",
+   "age": 28,
+   "war": -0.81,
+   "pa": 351,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815067,
+   "name": "Aidan Longwell",
+   "pos": "1b",
+   "age": 25,
+   "war": -0.95,
+   "pa": 475,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694543,
+   "name": "Blake Wright",
+   "pos": "ss",
+   "age": 25,
+   "war": -0.98,
+   "pa": 510,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 677338,
+   "name": "GJ Hill",
+   "pos": "rf",
+   "age": 26,
+   "war": -1.02,
+   "pa": 247,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686683,
+   "name": "Tevin Tucker",
+   "pos": "2b",
+   "age": 27,
+   "war": -1.2,
+   "pa": 313,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676038,
+   "name": "Skyler Messinger",
+   "pos": "3b",
+   "age": 28,
+   "war": -1.53,
+   "pa": 417,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694170,
+   "name": "Dyan Jorge",
+   "pos": "ss",
+   "age": 24,
+   "war": -1.56,
+   "pa": 486,
+   "salary": 780000
+  }
+ ]
 }

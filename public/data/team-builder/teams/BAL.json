@@ -736,5 +736,475 @@
  "sheetPayroll": 131425000,
  "sheetTaxPayroll": 157641667,
  "rowsPayroll": 131425000,
- "rowsTaxPayroll": 157641667
+ "rowsTaxPayroll": 157641667,
+ "minors": [
+  {
+   "mlbamId": 695735,
+   "name": "Creed Willems",
+   "pos": "c",
+   "age": 24,
+   "war": 1.61,
+   "pa": 445,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681371,
+   "name": "Dom Keegan",
+   "pos": "c",
+   "age": 26,
+   "war": 1.42,
+   "pa": 389,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702650,
+   "name": "Michael Forret",
+   "pos": "sp",
+   "age": 23,
+   "war": 1.36,
+   "ip": 102.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695033,
+   "name": "Juaron Watts-Brown",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.32,
+   "ip": 106.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690999,
+   "name": "Blake Money",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.25,
+   "ip": 101.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815148,
+   "name": "Nestor German",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.17,
+   "ip": 104.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688867,
+   "name": "Braxton Bragg",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.14,
+   "ip": 89.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 690961,
+   "name": "Enrique Bradfield Jr.",
+   "pos": "of",
+   "age": 25,
+   "war": 0.98,
+   "pa": 391,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 822578,
+   "name": "Brandon Butterworth",
+   "pos": "ss",
+   "age": 24,
+   "war": 0.96,
+   "pa": 521,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694370,
+   "name": "Levi Wells",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.96,
+   "ip": 96,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702129,
+   "name": "Alex Pham",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.88,
+   "ip": 82,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682983,
+   "name": "Jud Fabian",
+   "pos": "cf",
+   "age": 26,
+   "war": 0.77,
+   "pa": 489,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676679,
+   "name": "Luis Vázquez",
+   "pos": "ss",
+   "age": 27,
+   "war": 0.71,
+   "pa": 384,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 686976,
+   "name": "Silas Ardoin",
+   "pos": "c",
+   "age": 26,
+   "war": 0.55,
+   "pa": 377,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682868,
+   "name": "Bryan Ramos",
+   "pos": "3b",
+   "age": 25,
+   "war": 0.47,
+   "pa": 474,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809840,
+   "name": "Micah Ashman",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.45,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 803175,
+   "name": "Ethan Anderson",
+   "pos": "c",
+   "age": 23,
+   "war": 0.41,
+   "pa": 377,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694444,
+   "name": "Tavian Josenberger",
+   "pos": "lf",
+   "age": 25,
+   "war": 0.24,
+   "pa": 326,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 688396,
+   "name": "Zach Fruit",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.24,
+   "ip": 78,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 665625,
+   "name": "Elvis Peguero",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.23,
+   "ip": 47,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687238,
+   "name": "Trace Bright",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.23,
+   "ip": 82.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 823356,
+   "name": "Payton Eeles",
+   "pos": "2b",
+   "age": 27,
+   "war": 0.22,
+   "pa": 444,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800406,
+   "name": "Aron Estrada",
+   "pos": "2b",
+   "age": 22,
+   "war": 0.21,
+   "pa": 503,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676116,
+   "name": "Ryan Noda",
+   "pos": "1b",
+   "age": 31,
+   "war": 0.19,
+   "pa": 416,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 664744,
+   "name": "Jose Espada",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.18,
+   "ip": 52,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 825582,
+   "name": "Nate George",
+   "pos": "of",
+   "age": 21,
+   "war": 0.16,
+   "pa": 410,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687841,
+   "name": "Andrew Magno",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.06,
+   "ip": 56,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702239,
+   "name": "Colin Tuft",
+   "pos": "c",
+   "age": 24,
+   "war": 0.06,
+   "pa": 284,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695695,
+   "name": "Tyson Neighbors",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.05,
+   "ip": 54,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 803172,
+   "name": "Griff O'Ferrall",
+   "pos": "ss",
+   "age": 24,
+   "war": 0.03,
+   "pa": 517,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683014,
+   "name": "Richard Guasch",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.03,
+   "ip": 42.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 663804,
+   "name": "Jackson Kowar",
+   "pos": "rp",
+   "age": 30,
+   "war": -0.02,
+   "ip": 49,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687482,
+   "name": "Keagan Gillies",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.05,
+   "ip": 45.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 681463,
+   "name": "Daniel Lloyd",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.06,
+   "ip": 57.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 679857,
+   "name": "Carlos Tavera",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.09,
+   "ip": 57.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682144,
+   "name": "Jayvien Sandridge",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.09,
+   "ip": 44,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702465,
+   "name": "Ryan Long",
+   "pos": "sp",
+   "age": 27,
+   "war": -0.12,
+   "ip": 75.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 700072,
+   "name": "Yaqui Rivera",
+   "pos": "rp",
+   "age": 23,
+   "war": -0.13,
+   "ip": 45.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 678922,
+   "name": "Jeisson Cabrera",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.17,
+   "ip": 39.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676012,
+   "name": "Gerald Ogando",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.2,
+   "ip": 46.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 644433,
+   "name": "Chadwick Tromp",
+   "pos": "c",
+   "age": 32,
+   "war": -0.27,
+   "pa": 262,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 698935,
+   "name": "Yasmil Bucce",
+   "pos": "c",
+   "age": 22,
+   "war": -0.41,
+   "pa": 406,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800433,
+   "name": "Elis Cuevas",
+   "pos": "2b",
+   "age": 22,
+   "war": -0.49,
+   "pa": 355,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 695930,
+   "name": "Frederick Bencosme",
+   "pos": "ss",
+   "age": 24,
+   "war": -0.78,
+   "pa": 431,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800449,
+   "name": "Thomas Sosa",
+   "pos": "cf",
+   "age": 22,
+   "war": -1.02,
+   "pa": 349,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800348,
+   "name": "Edwin Amparo",
+   "pos": "2b",
+   "age": 22,
+   "war": -1.07,
+   "pa": 363,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 698945,
+   "name": "Anderson De Los Santos",
+   "pos": "3b",
+   "age": 23,
+   "war": -1.14,
+   "pa": 435,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701689,
+   "name": "Vance Honeycutt",
+   "pos": "of",
+   "age": 24,
+   "war": -1.16,
+   "pa": 455,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701696,
+   "name": "Ryan Stafford",
+   "pos": "c",
+   "age": 24,
+   "war": -1.22,
+   "pa": 338,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 703202,
+   "name": "Leandro Arias",
+   "pos": "2b",
+   "age": 22,
+   "war": -1.32,
+   "pa": 362,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 809372,
+   "name": "Victor Figueroa",
+   "pos": "1b",
+   "age": 23,
+   "war": -1.47,
+   "pa": 413,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800387,
+   "name": "Fernando Peguero",
+   "pos": "2b",
+   "age": 22,
+   "war": -1.56,
+   "pa": 354,
+   "salary": 780000
+  }
+ ]
 }

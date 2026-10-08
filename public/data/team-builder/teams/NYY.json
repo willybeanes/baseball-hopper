@@ -588,5 +588,376 @@
  "sheetPayroll": 243920833,
  "sheetTaxPayroll": 280659201,
  "rowsPayroll": 243920833,
- "rowsTaxPayroll": 280659201
+ "rowsTaxPayroll": 280659201,
+ "minors": [
+  {
+   "mlbamId": 677651,
+   "name": "Luis Garcia",
+   "pos": "sp",
+   "age": 30,
+   "war": 1.74,
+   "ip": 95,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 696292,
+   "name": "Ben Hess",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.36,
+   "ip": 103.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692657,
+   "name": "Omar Alfonzo",
+   "pos": "c",
+   "age": 23,
+   "war": 1.33,
+   "pa": 491,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801739,
+   "name": "Carlos Lagrange",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.2,
+   "ip": 106,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 680572,
+   "name": "Adam Kloffenstein",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.91,
+   "ip": 98,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815587,
+   "name": "Trent Sellers",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.74,
+   "ip": 91.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694805,
+   "name": "Kyle Carr",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.72,
+   "ip": 105,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 691795,
+   "name": "Brock Selvidge",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.7,
+   "ip": 93.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687589,
+   "name": "Dom Hamel",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.5,
+   "ip": 85.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682617,
+   "name": "Marco Luciano",
+   "pos": "ss",
+   "age": 25,
+   "war": 0.43,
+   "pa": 516,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 701778,
+   "name": "Jace Avina",
+   "pos": "lf",
+   "age": 24,
+   "war": 0.4,
+   "pa": 450,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 605242,
+   "name": "Michael Fulmer",
+   "pos": "rp",
+   "age": 34,
+   "war": 0.3,
+   "ip": 50.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 684725,
+   "name": "Zach Messinger",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.3,
+   "ip": 81.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 685744,
+   "name": "Kenedy Corona",
+   "pos": "cf",
+   "age": 27,
+   "war": 0.22,
+   "pa": 452,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 684608,
+   "name": "Will Brian",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.15,
+   "ip": 42.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 804522,
+   "name": "Wilmy Sanchez",
+   "pos": "rp",
+   "age": 23,
+   "war": 0.15,
+   "ip": 60.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 683522,
+   "name": "Michael Arias",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.09,
+   "ip": 49.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 669212,
+   "name": "Eli Morgan",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.06,
+   "ip": 46.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 668752,
+   "name": "Duke Ellis",
+   "pos": "cf",
+   "age": 29,
+   "war": 0.03,
+   "pa": 292,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 801432,
+   "name": "Eric Reyzelman",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.01,
+   "ip": 47,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 675502,
+   "name": "Kelly Austin",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.01,
+   "ip": 48.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702130,
+   "name": "Danny Watson",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.02,
+   "ip": 51.7,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694660,
+   "name": "Harrison Cohen",
+   "pos": "rp",
+   "age": 28,
+   "war": -0.02,
+   "ip": 45.3,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 672284,
+   "name": "Jarred Kelenic",
+   "pos": "rf",
+   "age": 27,
+   "war": -0.04,
+   "pa": 466,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 675296,
+   "name": "Hayden Merda",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.1,
+   "ip": 54,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 669740,
+   "name": "Travis MacGregor",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.15,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692585,
+   "name": "Yanquiel Fernández",
+   "pos": "rf",
+   "age": 24,
+   "war": -0.15,
+   "pa": 494,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682003,
+   "name": "Garrett Martin",
+   "pos": "rf",
+   "age": 27,
+   "war": -0.26,
+   "pa": 399,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 670868,
+   "name": "Abrahan Gutierrez",
+   "pos": "c",
+   "age": 27,
+   "war": -0.28,
+   "pa": 232,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 667803,
+   "name": "Ernesto Martinez Jr.",
+   "pos": "1b",
+   "age": 28,
+   "war": -0.4,
+   "pa": 382,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 702068,
+   "name": "Cole Gabrielson",
+   "pos": "cf",
+   "age": 26,
+   "war": -0.41,
+   "pa": 279,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682625,
+   "name": "Antonio Gomez",
+   "pos": "rp",
+   "age": 25,
+   "war": -0.49,
+   "pa": 274,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 814431,
+   "name": "Jackson Castillo",
+   "pos": "rf",
+   "age": 24,
+   "war": -0.5,
+   "pa": 497,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694742,
+   "name": "Josh Moylan",
+   "pos": "1b",
+   "age": 24,
+   "war": -0.58,
+   "pa": 467,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 676205,
+   "name": "Tyler Hardman",
+   "pos": "1b",
+   "age": 28,
+   "war": -0.76,
+   "pa": 421,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 694834,
+   "name": "Tyler Wilson",
+   "pos": "lf",
+   "age": 24,
+   "war": -0.88,
+   "pa": 377,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 692633,
+   "name": "Manuel Palencia",
+   "pos": "c",
+   "age": 24,
+   "war": -0.9,
+   "pa": 252,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 800246,
+   "name": "Engelth Urena",
+   "pos": "c",
+   "age": 22,
+   "war": -0.97,
+   "pa": 473,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 815089,
+   "name": "Coby Morales",
+   "pos": "if",
+   "age": 25,
+   "war": -1.04,
+   "pa": 484,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 687554,
+   "name": "DJ Gladney",
+   "pos": "lf",
+   "age": 25,
+   "war": -1.08,
+   "pa": 446,
+   "salary": 780000
+  },
+  {
+   "mlbamId": 682692,
+   "name": "Miguel Palma",
+   "pos": "c",
+   "age": 25,
+   "war": -1.33,
+   "pa": 251,
+   "salary": 780000
+  }
+ ]
 }
