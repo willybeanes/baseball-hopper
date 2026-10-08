@@ -9,14 +9,30 @@ async function statsApi<T>(path: string): Promise<T> {
   return r.json() as Promise<T>
 }
 
-// Each team's 40-man, everyone it used this season, and its whole organization.
-export async function teamPool(team: string, season: number): Promise<{ pool: RosterPerson[]; fortyMan: Set<number> }> {
+export interface OrgPlayer extends RosterPerson { pos: string }
+
+// Each team's 40-man, everyone it used this season, and its whole organization (minor
+// leaguers included, with positions).
+export async function teamPool(team: string, season: number): Promise<{ pool: RosterPerson[]; fortyMan: Set<number>; org: OrgPlayer[] }> {
   const types = ['40Man', 'fullSeason', 'fullRoster']
   const rosters = await Promise.all(
-    types.map((t) => statsApi<{ roster?: { person: RosterPerson }[] }>(`/teams/${MLB_TEAM_IDS[team]}/roster?rosterType=${t}&season=${season}`)),
+    types.map((t) =>
+      statsApi<{ roster?: { person: RosterPerson; position?: { abbreviation?: string } }[] }>(`/teams/${MLB_TEAM_IDS[team]}/roster?rosterType=${t}&season=${season}`),
+    ),
   )
   const people = rosters.map((d) => (d.roster ?? []).map((r) => ({ id: r.person.id, fullName: r.person.fullName })))
-  return { pool: people.flat(), fortyMan: new Set(people[0].map((p) => p.id)) }
+  const org = (rosters[2].roster ?? []).map((r) => ({ id: r.person.id, fullName: r.person.fullName, pos: (r.position?.abbreviation ?? '').toLowerCase() }))
+  return { pool: people.flat(), fortyMan: new Set(people[0].map((p) => p.id)), org }
+}
+
+// Birthdates for a list of players, in batches the API accepts.
+export async function birthDates(ids: number[]): Promise<Map<number, string>> {
+  const out = new Map<number, string>()
+  for (let i = 0; i < ids.length; i += 200) {
+    const d = await statsApi<{ people?: { id: number; birthDate?: string }[] }>(`/people?personIds=${ids.slice(i, i + 200).join(',')}`)
+    for (const p of d.people ?? []) if (p.birthDate) out.set(p.id, p.birthDate)
+  }
+  return out
 }
 
 // Everyone who played in the majors this season or last.

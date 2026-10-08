@@ -5,7 +5,19 @@ import type { CotsPlayer, DeadMoney, TeamSheet } from './cots'
 import type { EstimatedFields } from './estimates'
 
 export type Player = CotsPlayer & EstimatedFields
-export type TeamFile = Omit<TeamSheet, 'players'> & { players: Player[] }
+// A projected minor leaguer outside the 40-man. Adding him uses a 40-man spot at the minimum.
+export interface MinorLeaguer {
+  mlbamId: number
+  name: string
+  pos: string
+  age: number | null
+  war: number
+  pa?: number
+  ip?: number
+  salary: number // league minimum, what he'd make on the 40-man
+}
+
+export type TeamFile = Omit<TeamSheet, 'players'> & { players: Player[]; minors?: MinorLeaguer[] }
 
 export interface Meta {
   updatedAt: string

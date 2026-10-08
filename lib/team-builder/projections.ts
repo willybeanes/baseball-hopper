@@ -3,9 +3,9 @@
 
 const FG_PROXY = 'https://fg-proxy.vercel.app/api/fg-gamelog'
 
-export interface Projection { war: number; pa?: number; ip?: number }
+export interface Projection { war: number; pa?: number; ip?: number; sp?: boolean } // sp: projected mostly as a starter
 
-interface FgRow { xMLBAMID?: number | null; WAR?: number | null; PA?: number | null; IP?: number | null }
+interface FgRow { xMLBAMID?: number | null; WAR?: number | null; PA?: number | null; IP?: number | null; G?: number | null; GS?: number | null }
 
 async function fetchSide(system: string, stats: 'bat' | 'pit'): Promise<FgRow[]> {
   const url = `${FG_PROXY}?path=/api/projections&type=${encodeURIComponent(system)}&stats=${stats}&pos=all&team=0&players=0&lg=all`
@@ -27,7 +27,8 @@ export async function fetchProjections(system: string): Promise<Record<number, P
   for (const r of pit) {
     if (!r.xMLBAMID || r.WAR == null) continue
     const prev = out[r.xMLBAMID]
-    out[r.xMLBAMID] = { ...prev, war: round((prev?.war ?? 0) + r.WAR, 2), ip: round(r.IP ?? 0, 1) }
+    const sp = (r.GS ?? 0) >= (r.G ?? 0) / 2 && (r.GS ?? 0) > 0
+    out[r.xMLBAMID] = { ...prev, war: round((prev?.war ?? 0) + r.WAR, 2), ip: round(r.IP ?? 0, 1), ...(sp ? { sp } : {}) }
   }
   return out
 }

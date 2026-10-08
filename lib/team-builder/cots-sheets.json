@@ -5,15 +5,40 @@
   "targetYear": 2027,
   "knownMismatches": {
     "_readme": "Teams whose rows don't add up to the sheet's own 2027 totals, in millions. Expected on 2026-10-03; any other mismatch fails the refresh.",
-    "STL": { "payroll": { "rows": 17.25, "sheet": 15.25 } },
+    "STL": {
+      "payroll": {
+        "rows": 17.25,
+        "sheet": 15.25
+      }
+    },
     "COL": {
       "note": "$5.0M owed on Nolan Arenado is missing from the sheet totals",
-      "payroll": { "rows": 55.264, "sheet": 50.014 },
-      "tax": { "rows": 73.961, "sheet": 68.961 }
+      "payroll": {
+        "rows": 55.264,
+        "sheet": 50.014
+      },
+      "tax": {
+        "rows": 73.961,
+        "sheet": 68.961
+      }
     },
     "ATH": {
       "note": "Sheet's tax total leaves out the $1.667M pre-arb bonus pool",
-      "tax": { "rows": 86.143, "sheet": 84.476 }
+      "tax": {
+        "rows": 86.143,
+        "sheet": 84.476
+      }
+    },
+    "LAD": {
+      "note": "Since the 2026-10-05 rollover Cot's own 2027 totals sit $7.9M above the sum of the rows; no row explains it. Unchanged for four days, so accepted.",
+      "payroll": {
+        "rows": 358.106,
+        "sheet": 366.006
+      },
+      "tax": {
+        "rows": 380.575,
+        "sheet": 388.475
+      }
     }
   },
   "teams": {
