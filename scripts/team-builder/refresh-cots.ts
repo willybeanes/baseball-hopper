@@ -15,11 +15,11 @@ import arbFile from '../../lib/team-builder/mlbtr-arb-2027.json'
 import faFile from '../../lib/team-builder/mlbtr-fa-2027.json'
 import { buildPool, type PoolPlayer } from '../../lib/team-builder/pool'
 import { fetchProjections, type Projection } from '../../lib/team-builder/projections'
-import type { TeamFile } from '../../lib/team-builder/roster'
+import type { MinorLeaguer, TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
 import { matchPlayer } from '../../lib/team-builder/ids'
-import { leaguePool, teamPool } from '../../lib/team-builder/rosters'
+import { birthDates, leaguePool, teamPool, type OrgPlayer } from '../../lib/team-builder/rosters'
 
 const OUT_DIR = join(import.meta.dir, '../../public/data/team-builder')
 const TIER_STEPS = [20e6, 40e6, 60e6] // gaps above the base line used since 2022
@@ -50,15 +50,17 @@ async function download(team: string, id: string): Promise<string> {
   throw new Error(`${team}: download failed — ${lastError}`)
 }
 
-async function assignIds(sheets: TeamSheet[]): Promise<{ unmatched: string[]; fuzzy: string[]; stale: string[] }> {
+async function assignIds(sheets: TeamSheet[]): Promise<{ unmatched: string[]; fuzzy: string[]; stale: string[]; orgs: Map<string, OrgPlayer[]> }> {
   const league = await leaguePool(config.firstYear)
   const known = overrides as Record<string, number>
   const unmatched: string[] = []
   const fuzzy: string[] = []
   const fortyMen = new Map<string, Set<number>>()
+  const orgs = new Map<string, OrgPlayer[]>()
   for (const sheet of sheets) {
-    const { pool, fortyMan } = await teamPool(sheet.team, config.firstYear)
+    const { pool, fortyMan, org } = await teamPool(sheet.team, config.firstYear)
     fortyMen.set(sheet.team, fortyMan)
+    orgs.set(sheet.team, org)
     const everyone = [...pool, ...league]
     for (const p of sheet.players) {
       const m = matchPlayer(p.name, pool, league, known[`${sheet.team}|${p.sheetName}`])
@@ -86,7 +88,7 @@ async function assignIds(sheets: TeamSheet[]): Promise<{ unmatched: string[]; fu
       stale.push(`${p.name} dropped from ${t} (MLB has him on ${keep[0]}'s 40-man)`)
     }
   }
-  return { unmatched, fuzzy, stale }
+  return { unmatched, fuzzy, stale, orgs }
 }
 
 function mode(values: number[]): number | null {
@@ -152,7 +154,7 @@ async function main() {
   }
   if (teamErrors.size > MAX_STALE_TEAMS) errors.push(`${teamErrors.size} teams failed their checks at once — more likely a code or layout problem than Cot's edits`)
 
-  let ids = { unmatched: [] as string[], fuzzy: [] as string[], stale: [] as string[] }
+  let ids = { unmatched: [] as string[], fuzzy: [] as string[], stale: [] as string[], orgs: new Map<string, OrgPlayer[]>() }
   if (!errors.length) {
     try {
       ids = await assignIds(sheets)
@@ -194,6 +196,44 @@ async function main() {
     }
   }
 
+  // Minor leaguers: organization players not on the 40-man, kept only if ZiPS projects them
+  // (the rest have nothing to show). Adding one puts him on the 40-man at the league minimum.
+  // Teams showing a kept snapshot keep the minor leaguers they had.
+  // MLB's organization rosters still list players about to become free agents, so anyone on a
+  // Cot's sheet (any team) or on MLBTR's free-agent list is left out.
+  const notMinors = new Set<number>([
+    ...sheets.flatMap((s) => s.players.map((p) => p.mlbamId).filter((id): id is number => id != null)),
+    ...faFile.players.map((f) => f.mlbamId).filter((id): id is number => id != null),
+  ])
+  const minorsByTeam = new Map<string, MinorLeaguer[]>()
+  for (const s of sheets) {
+    const org = ids.orgs.get(s.team)
+    if (!org) continue
+    const list: MinorLeaguer[] = []
+    for (const o of org) {
+      const pr = projections[o.id]
+      if (notMinors.has(o.id) || !pr || list.some((m) => m.mlbamId === o.id)) continue
+      const pos = o.pos === 'p' || o.pos === 'twp' ? (pr.sp ? 'sp' : 'rp') : o.pos
+      list.push({ mlbamId: o.id, name: o.fullName, pos, age: null, war: pr.war, ...(pr.pa ? { pa: pr.pa } : {}), ...(pr.ip ? { ip: pr.ip } : {}), salary: assumptions.leagueMinimum.value })
+    }
+    minorsByTeam.set(s.team, list)
+  }
+  try {
+    const born = await birthDates([...minorsByTeam.values()].flat().map((m) => m.mlbamId))
+    for (const list of minorsByTeam.values()) {
+      for (const m of list) {
+        const b = born.get(m.mlbamId)
+        if (!b) continue
+        const [y, mo, d] = b.split('-').map(Number)
+        m.age = config.targetYear - y - (mo > 7 || (mo === 7 && d > 1) ? 1 : 0) // baseball age: on July 1
+      }
+    }
+  } catch { /* ages are a nicety; leave them blank */ }
+  for (const s of sheets) {
+    const list = minorsByTeam.get(s.team)
+    if (list) (s as unknown as TeamFile).minors = list.sort((a, b) => b.war - a.war)
+  }
+
   const base = mode(sheets.map((s) => s.threshold).filter((t): t is number => t != null))
   const sheetTiers = sheets.find((s) => s.tiers && s.tiers[0] === base)?.tiers ?? null
   const meta = {
@@ -231,7 +271,7 @@ async function main() {
   const prevPool = new Map<number, PoolPlayer>(
     existsSync(poolFile) ? (JSON.parse(readFileSync(poolFile, 'utf8')) as PoolPlayer[]).map((e) => [e.mlbamId, e]) : [],
   )
-  const pool = buildPool(sheets as unknown as TeamFile[], faFile.players).map((e) => {
+  const pool = buildPool(sheets as unknown as TeamFile[], faFile.players, assumptions.leagueMinimum.value).map((e) => {
     const prev = prevPool.get(e.mlbamId)
     const carried = e.from == null && prev?.kind === 'fa' && prev.from
       ? { from: prev.from, contract: prev.contract, salaryPrevYear: prev.salaryPrevYear, pos: prev.pos }

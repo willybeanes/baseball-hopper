@@ -17,6 +17,7 @@ export interface PoolPlayer {
   salaryPrevYear: number | null // 2026 pay, the placeholder price for a free agent
   contract: string
   note?: string
+  minors?: boolean // a minor leaguer outside his team's 40-man
   war?: number | null // projected target-year WAR
   pa?: number
   ip?: number
@@ -40,7 +41,7 @@ const fromPlayer = (p: Player, team: string, kind: PoolPlayer['kind'], note?: st
   ...(note ? { note } : {}),
 })
 
-export function buildPool(teams: TeamFile[], mlbtr: MlbtrFreeAgent[]): PoolPlayer[] {
+export function buildPool(teams: TeamFile[], mlbtr: MlbtrFreeAgent[], minimum = 0): PoolPlayer[] {
   const pool = new Map<number, PoolPlayer>()
   for (const t of teams) {
     const r = defaultRoster(t)
@@ -48,6 +49,15 @@ export function buildPool(teams: TeamFile[], mlbtr: MlbtrFreeAgent[]): PoolPlaye
     for (const p of r.freeAgents) if (p.mlbamId) pool.set(p.mlbamId, fromPlayer(p, t.team, 'fa'))
     for (const p of r.declinedOptions) {
       if (p.mlbamId) pool.set(p.mlbamId, fromPlayer(p, t.team, 'fa', `${t.team} declined his mutual option`))
+    }
+    // Other teams' projected minor leaguers can be traded for; they'd join the 40-man at the minimum.
+    for (const m of t.minors ?? []) {
+      if (pool.has(m.mlbamId)) continue
+      pool.set(m.mlbamId, {
+        mlbamId: m.mlbamId, name: m.name, pos: m.pos, age: m.age, from: t.team, kind: 'roster', status: 'prearb',
+        salary: m.salary || minimum, taxValue: m.salary || minimum, salarySource: 'minimum', salaryPrevYear: null,
+        contract: 'Minor leaguer', minors: true, war: m.war, ...(m.pa ? { pa: m.pa } : {}), ...(m.ip ? { ip: m.ip } : {}),
+      })
     }
   }
   // MLBTR fills in free agents no sheet carries. Where a sheet does list the player, the sheet
