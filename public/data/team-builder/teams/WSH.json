@@ -909,30 +909,12 @@
    "salary": 780000
   },
   {
-   "mlbamId": 664875,
-   "name": "Justin Lawrence",
-   "pos": "rp",
-   "age": 32,
-   "war": 0.21,
-   "ip": 47.3,
-   "salary": 780000
-  },
-  {
    "mlbamId": 670223,
    "name": "Matt Mervis",
    "pos": "1b",
    "age": 29,
    "war": 0.2,
    "pa": 425,
-   "salary": 780000
-  },
-  {
-   "mlbamId": 668820,
-   "name": "Max Kranick",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.2,
-   "ip": 45,
    "salary": 780000
   },
   {
