@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T16:53:42.072Z",
+  "updatedAt": "2026-10-10T15:47:43.162Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -74,7 +74,7 @@
     "label": "ZiPS 3-year projection for 2027",
     "note": "Made before the 2026 season. Switches to the fresh 2027 projection once FanGraphs publishes it (Steamer usually in November, ZiPS in January).",
     "url": "https://www.fangraphs.com/projections?type=zipsp1",
-    "fetchedAt": "2026-10-09",
+    "fetchedAt": "2026-10-10",
     "players": 3739
   },
   "staleTeams": {},

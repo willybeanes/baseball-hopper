@@ -790,6 +790,15 @@
    "salary": 780000
   },
   {
+   "mlbamId": 642520,
+   "name": "Gerson Garabito",
+   "pos": "sp",
+   "age": 31,
+   "war": 0,
+   "ip": 57,
+   "salary": 780000
+  },
+  {
    "mlbamId": 663462,
    "name": "Isaiah Campbell",
    "pos": "rp",
