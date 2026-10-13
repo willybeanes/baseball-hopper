@@ -1072,6 +1072,15 @@
    "salary": 780000
   },
   {
+   "mlbamId": 684483,
+   "name": "Daniel Juarez",
+   "pos": "rp",
+   "age": 26,
+   "war": -0.16,
+   "ip": 40.7,
+   "salary": 780000
+  },
+  {
    "mlbamId": 670871,
    "name": "Guillo Zuñiga",
    "pos": "rp",
