@@ -7,6 +7,7 @@ import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
 import type { PoolPlayer } from '@/lib/team-builder/pool'
+import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '@/lib/team-builder/share'
 
 const DATA = '/data/team-builder'
 const DEFAULT_TEAM = 'NYM'
@@ -349,6 +350,50 @@ export default function TeamBuilderApp() {
 
   const moves = movesByTeam[team] ?? []
   const setMoves = (next: Move[]) => setMovesByTeam((all) => ({ ...all, [team]: next }))
+
+  // Share links. The address always holds the team and the list of changes ("m"), so it can
+  // be copied at any point. A link also carries the day it was made ("d"), shown until the
+  // roster is changed again.
+  const [hydrated, setHydrated] = useState(false)
+  const [shared, setShared] = useState<{ team: string; m: string; date: Date | null } | null>(null)
+  const [copied, setCopied] = useState<'copied' | 'manual' | null>(null)
+  useEffect(() => {
+    const m = params.get('m')
+    const fromLink = decodeMoves(m)
+    if (fromLink.length) {
+      setMovesByTeam({ [team]: fromLink })
+      setShared({ team, m: encodeMoves(fromLink), date: decodeDate(params.get('d')) })
+    }
+    setHydrated(true)
+    // Only on first load: after that the page writes the address, it doesn't read it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const encoded = encodeMoves(moves)
+  const stillShared = shared != null && shared.team === team && shared.m === encoded
+  const shareQuery = (withDate: boolean) => {
+    const q = new URLSearchParams({ team })
+    if (encoded) q.set('m', encoded)
+    if (encoded && withDate) q.set('d', encodeDate(new Date()))
+    return q.toString()
+  }
+  useEffect(() => {
+    if (!hydrated) return
+    const q = new URLSearchParams({ team })
+    if (encoded) q.set('m', encoded)
+    if (stillShared && shared?.date) q.set('d', encodeDate(shared.date))
+    const next = `/team-builder?${q.toString()}`
+    if (next !== window.location.pathname + window.location.search) window.history.replaceState(null, '', next)
+  }, [hydrated, team, encoded, stillShared, shared])
+  const copyLink = async () => {
+    const url = `${window.location.origin}/team-builder?${shareQuery(true)}`
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied('copied')
+      setTimeout(() => setCopied(null), 2500)
+    } catch {
+      setCopied('manual') // no clipboard access: show the link to copy by hand
+    }
+  }
   const act = (m: Move) => { setMoves(addMove(moves, m)); setEditing(null) }
   const undo = (id: number) => { setMoves(undoPlayer(moves, id)); setEditing(null) }
 
@@ -382,10 +427,10 @@ export default function TeamBuilderApp() {
     return () => ro.disconnect()
   }, [totalsEl])
 
+  // Each team keeps its own list of changes; the address is rewritten for the team picked.
   const pickTeam = (t: string) => {
-    const q = new URLSearchParams(params.toString())
-    q.set('team', t)
-    router.replace(`/team-builder?${q.toString()}`, { scroll: false })
+    setCopied(null)
+    router.replace(`/team-builder?team=${t}`, { scroll: false })
   }
 
   const minimum = meta?.assumptions.leagueMinimum.value ?? 780_000
@@ -421,7 +466,9 @@ export default function TeamBuilderApp() {
   const overPlaying = addedPa > startTime.pa * 0.15 || addedIp > startTime.ip * 0.15
 
   const touched = new Set(moves.map((m) => m.id))
-  const nameOf = (id: number) => built?.slots.find((s) => s.player.mlbamId === id)?.player.name ?? 'Player'
+  const nameOf = (id: number) => built?.slots.find((s) => s.player.mlbamId === id)?.player.name ?? pool.find((e) => e.mlbamId === id)?.name ?? 'a player no longer listed'
+  // Until the market has loaded, signings and trades can't be checked, so nothing is flagged yet.
+  const skipped = built && pool.length ? built.skipped : []
   const stale = meta?.staleTeams?.[team]
   const updated = meta ? new Date(meta.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null
 
@@ -636,16 +683,43 @@ export default function TeamBuilderApp() {
                 <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
                   <div className="mb-1.5 flex items-center justify-between">
                     <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Your changes <span className="font-normal text-[var(--dimmer)]">({moves.length})</span></h2>
-                    <button type="button" onClick={() => { setMoves([]); setEditing(null) }} className="text-xs font-medium text-[var(--accent)] hover:underline">
-                      Reset to today&apos;s roster
-                    </button>
+                    <span className="flex items-center gap-3">
+                      <button type="button" onClick={copyLink} className="rounded bg-[var(--text)] px-2.5 py-1 text-[11px] font-medium text-[var(--panel)]">
+                        {copied === 'copied' ? 'Link copied' : 'Copy share link'}
+                      </button>
+                      <button type="button" onClick={() => { setMoves([]); setEditing(null); setCopied(null) }} className="text-xs font-medium text-[var(--accent)] hover:underline">
+                        Reset
+                      </button>
+                    </span>
                   </div>
+                  {copied === 'manual' && (
+                    <input
+                      readOnly
+                      autoFocus
+                      onFocus={(e) => e.currentTarget.select()}
+                      value={`${window.location.origin}/team-builder?${shareQuery(true)}`}
+                      aria-label="Share link"
+                      className="mb-2 w-full rounded border border-[var(--rule)] bg-transparent px-2 py-1 font-mono text-[11px]"
+                    />
+                  )}
+                  {stillShared && (
+                    <p className="mb-1.5 max-w-[58ch] text-[11px] text-[var(--dim)]">
+                      Opened from a shared link{shared?.date ? `, built ${shared.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}` : ''}. It&apos;s replayed on today&apos;s rosters, so numbers may differ a little from that day.
+                    </p>
+                  )}
+                  {skipped.length > 0 && (
+                    <p className="mb-1.5 max-w-[58ch] text-[11px] text-[var(--accent)]">
+                      {skipped.length === 1 ? 'One change no longer applies' : `${skipped.length} changes no longer apply`} to today&apos;s rosters (the player has since moved) and {skipped.length === 1 ? "isn't" : "aren't"} counted.{' '}
+                      <button type="button" onClick={() => setMoves(moves.filter((m) => !skipped.includes(m)))} className="font-medium underline">Drop {skipped.length === 1 ? 'it' : 'them'}</button>
+                    </p>
+                  )}
                   <ul className="space-y-1">
                     {moves.map((m) => {
                       const text = describeMove(m, nameOf(m.id), pool.some((e) => e.mlbamId === m.id && e.from === team))
+                      const gone = skipped.includes(m)
                       return (
                         <li key={`${m.type}-${m.id}`} className="flex items-center justify-between gap-2 text-xs text-[var(--dim)]">
-                          <span>{text}</span>
+                          <span className={gone ? 'line-through' : undefined}>{text}{gone && <span className="sr-only"> (no longer applies)</span>}</span>
                           <button type="button" onClick={() => setMoves(moves.filter((x) => x !== m))} className="shrink-0 text-[11px] text-[var(--dimmer)] hover:text-[var(--text)] hover:underline" aria-label={`Undo: ${text}`}>
                             Undo
                           </button>
@@ -754,7 +828,7 @@ export default function TeamBuilderApp() {
                     onChange={(e) => { setPoolQuery(e.target.value); setPoolShown(POOL_PAGE) }}
                     placeholder={poolKind === 'fa' ? 'Search free agents' : 'Search every other team, prospects included'}
                     aria-label="Search players"
-                    className="min-w-0 flex-1 rounded-lg border border-[var(--rule)] bg-transparent px-3 py-1.5 text-sm"
+                    className="min-w-0 flex-1 rounded-lg border border-[var(--rule)] bg-transparent px-3 py-1.5 text-sm placeholder:text-[var(--dimmer)]"
                   />
                   <select
                     value={poolPos}
@@ -827,7 +901,7 @@ export default function TeamBuilderApp() {
             <span><span className="text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} /></span>
           </div>
 
-          <footer className="max-w-[58ch] space-y-1 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0">
+          <footer className="max-w-[52ch] space-y-1 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0">
             <p>
               Contracts from Cot&apos;s Baseball Contracts{updated ? `, last changed ${updated}` : ''}. Checked daily through March.
               Arbitration projections from <a href={meta.sources.arbitration.url} className="underline hover:text-[var(--dim)]">MLB Trade Rumors</a> ({meta.sources.arbitration.author}); option salaries from MLB Trade Rumors&apos;{' '}
@@ -841,7 +915,7 @@ export default function TeamBuilderApp() {
             )}
             <p>
               Team WAR is a straight sum of every player&apos;s projection, and each assumes his usual playing time; this roster is projected for {hitterPa.toLocaleString()} PA and {Math.round(pitcherIp).toLocaleString()} IP against about {SEASON_PA.toLocaleString()} and {SEASON_IP.toLocaleString()} in a season, so treat it as a rough guide.
-              The tax line and tiers are placeholders until a new labor agreement. Estimates are in italics with &quot;est.&quot;; hover one to see where it comes from. Your changes aren&apos;t saved yet; share links are coming.
+              The tax line and tiers are placeholders until a new labor agreement. Estimates are in italics with &quot;est.&quot;; hover one to see where it comes from. Your roster lives in the page address: use Copy share link to save or post it.
             </p>
           </footer>
         </div>

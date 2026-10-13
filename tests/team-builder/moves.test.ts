@@ -144,3 +144,20 @@ describe('minor leaguers', () => {
   })
 })
 
+
+describe('moves that no longer apply (a stale shared link)', () => {
+  test('are reported, and the rest still count', () => {
+    const moves: Move[] = [
+      { type: 'add', id: 999999, salary: 5e6 }, // free agent no longer in the pool
+      { type: 'decline', id: 5 }, // Crochet has no option
+      { type: 'resign', id: 4, salary: 9e6 }, // Duran isn't a free agent
+      { type: 'remove', id: 5 }, // still fine
+    ]
+    const r = buildRoster(team, moves)
+    expect(r.skipped).toEqual(moves.slice(0, 3))
+    expect(base.payroll - r.payroll).toBe(slot(base, 5).salary!)
+  })
+  test('nothing is reported when every move applies', () => {
+    expect(buildRoster(team, [{ type: 'remove', id: 5 }, { type: 'decline', id: 1 }]).skipped).toEqual([])
+  })
+})

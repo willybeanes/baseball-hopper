@@ -36,6 +36,7 @@ export interface BuiltRoster {
   taxPayroll: number
   rosterCount: number
   unknownSalaries: Player[]
+  skipped: Move[] // moves that no longer apply to today's data (a shared link gone stale)
 }
 
 const idOf = (p: Player) => p.mlbamId ?? -1
@@ -69,15 +70,17 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
     slots.set(m.mlbamId, { player, onRoster: false, salary: m.salary, taxValue: m.salary, owed: 0, offReason: 'minors' })
   }
 
-  // Moves that no longer apply (the player left the sheet, or an earlier move was undone) are skipped.
+  // Moves that no longer apply (the player has signed elsewhere or left the sheet since a link
+  // was made) are skipped and reported, never guessed at.
   const poolById = new Map(pool.map((e) => [e.mlbamId, e]))
+  const skipped: Move[] = []
   for (const m of moves) {
     if (m.type === 'add') {
       const e = poolById.get(m.id)
       // The team's own former players can only come back as free agents (a re-signing).
-      if (!e || slots.has(m.id) || (e.from === team.team && e.kind !== 'fa')) continue
+      if (!e || slots.has(m.id) || (e.from === team.team && e.kind !== 'fa')) { skipped.push(m); continue }
       const salary = m.salary ?? (e.kind === 'roster' ? e.salary : null)
-      if (salary == null) continue // a free agent needs a price
+      if (salary == null) { skipped.push(m); continue } // a free agent needs a price
       slots.set(m.id, {
         player: poolToPlayer(e),
         onRoster: true,
@@ -90,35 +93,33 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
       continue
     }
     const s = slots.get(m.id)
-    if (!s) continue
+    if (!s) { skipped.push(m); continue }
     const p = s.player
+    // Each move applies only if the player is still where the move expects him.
+    const apply = (ok: boolean, change: Partial<Slot>) => { if (ok) Object.assign(s, change); else skipped.push(m) }
     switch (m.type) {
       case 'remove':
-        if (s.onRoster) Object.assign(s, { onRoster: false, owed: 0, offReason: 'removed' })
+        apply(s.onRoster, { onRoster: false, owed: 0, offReason: 'removed' })
         break
       case 'decline':
-        if (s.onRoster && p.status === 'option') Object.assign(s, { onRoster: false, owed: p.buyout ?? 0, offReason: 'declined' })
+        apply(s.onRoster && p.status === 'option', { onRoster: false, owed: p.buyout ?? 0, offReason: 'declined' })
         break
       case 'exercise': {
         const salary = m.salary ?? p.salary
-        if (!s.onRoster && p.status === 'option' && salary != null) {
-          Object.assign(s, { onRoster: true, owed: 0, offReason: undefined, salary, taxValue: salary, userSalary: m.salary != null })
-        }
+        apply(!s.onRoster && p.status === 'option' && salary != null, { onRoster: true, owed: 0, offReason: undefined, salary, taxValue: salary, userSalary: m.salary != null })
         break
       }
       case 'optOut':
-        if (s.onRoster && p.playerOption) Object.assign(s, { onRoster: false, owed: p.playerOption.buyout ?? 0, offReason: 'opted-out' })
+        apply(s.onRoster && !!p.playerOption, { onRoster: false, owed: p.playerOption?.buyout ?? 0, offReason: 'opted-out' })
         break
       case 'promote':
-        if (!s.onRoster && s.offReason === 'minors') Object.assign(s, { onRoster: true, offReason: undefined, promoted: true })
+        apply(!s.onRoster && s.offReason === 'minors', { onRoster: true, offReason: undefined, promoted: true })
         break
       case 'resign':
-        if (!s.onRoster && s.offReason === 'free-agent') {
-          Object.assign(s, { onRoster: true, offReason: undefined, salary: m.salary, taxValue: m.salary, userSalary: true })
-        }
+        apply(!s.onRoster && s.offReason === 'free-agent', { onRoster: true, offReason: undefined, salary: m.salary, taxValue: m.salary, userSalary: true })
         break
       case 'salary':
-        if (salaryEditable(s)) Object.assign(s, { salary: m.salary, taxValue: m.salary, userSalary: true })
+        apply(salaryEditable(s), { salary: m.salary, taxValue: m.salary, userSalary: true })
         break
     }
   }
@@ -133,6 +134,7 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
     taxPayroll: sum(on.map((s) => s.taxValue ?? 0)) + sum(base.deadMoney.map((d) => d.taxValue)) + (team.benefits ?? 0) + (team.bonusPool ?? 0),
     rosterCount: on.length,
     unknownSalaries: on.filter((s) => s.salary == null).map((s) => s.player),
+    skipped,
   }
 }
 
