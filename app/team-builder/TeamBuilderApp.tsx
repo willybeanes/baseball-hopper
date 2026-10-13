@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { headshotUrl } from '@/lib/player'
+import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
@@ -235,7 +236,7 @@ function TeamStrip({ wars, team, onPick }: { wars: Record<string, number>; team:
         <span className="hidden sm:inline">Yours moves as you build · click a team to switch</span>
       </div>
       <div ref={scroller} className="overflow-x-auto">
-        <ol className="relative h-10 min-w-[1080px]">
+        <ol className="relative h-[3.25rem] min-w-[1080px]">
           {ranked.map(([code, war], i) => {
             const mine = code === team
             return (
@@ -249,12 +250,14 @@ function TeamStrip({ wars, team, onPick }: { wars: Record<string, number>; team:
                   onClick={() => onPick(code)}
                   aria-label={`${TEAM_NAMES[code]}: ${war.toFixed(1)} projected WAR, ${ordinal(ranked.length - i)} of ${ranked.length}`}
                   aria-current={mine ? 'true' : undefined}
-                  className={`flex h-full w-full flex-col items-center justify-center rounded-md text-center leading-tight ${
-                    mine ? 'bg-[var(--accent)] text-white' : 'text-[var(--text)] hover:bg-[var(--bg)]'
+                  title={TEAM_NAMES[code]}
+                  className={`flex h-full w-full flex-col items-center justify-center gap-0.5 rounded-md text-center leading-tight ${
+                    mine ? 'bg-[var(--accent-dim)] ring-2 ring-inset ring-[var(--accent)]' : 'hover:bg-[var(--bg)]'
                   }`}
                 >
-                  <span className="text-[11px] font-semibold">{code}</span>
-                  <span className={`font-mono text-[11px] ${mine ? 'text-white' : 'text-[var(--dim)]'}`}>{war.toFixed(1)}</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`https://www.mlbstatic.com/team-logos/${MLB_TEAM_IDS[code]}.svg`} alt="" className="h-6 w-6 object-contain" />
+                  <span className={`font-mono text-[11px] ${mine ? 'font-semibold text-[var(--text)]' : 'text-[var(--dim)]'}`}>{war.toFixed(1)}</span>
                 </button>
               </li>
             )
@@ -265,33 +268,56 @@ function TeamStrip({ wars, team, onPick }: { wars: Record<string, number>; team:
   )
 }
 
-function TaxBar({ taxPayroll, threshold }: { taxPayroll: number; threshold: NonNullable<Meta['taxThreshold']> }) {
+// The luxury-tax payroll as a vertical gauge: filled from the bottom, with the tax line and the
+// three tiers above it marked. The tiers sit only a few pixels apart, so their labels alternate
+// sides of the bar. The fill animates with a transform.
+function TaxGauge({ taxPayroll, threshold }: { taxPayroll: number; threshold: NonNullable<Meta['taxThreshold']> }) {
   const lines = [threshold.base, ...threshold.tiers]
-  const max = Math.max(taxPayroll, lines[lines.length - 1]) * 1.08
-  const pct = (v: number) => `${Math.min(100, (v / max) * 100)}%`
+  const max = Math.max(taxPayroll, lines[lines.length - 1]) * 1.06
+  const at = (v: number) => `${Math.min(100, (v / max) * 100)}%`
+  const label = (v: number, i: number) => (i === 0 ? money(v, 0) : `+${(v - threshold.base) / 1e6}`)
+  const side = (want: 0 | 1) =>
+    lines.map((v, i) =>
+      i % 2 === want ? (
+        <span
+          key={v}
+          className={`absolute translate-y-1/2 whitespace-nowrap leading-none ${want === 0 ? 'right-0' : 'left-0'} ${i === 0 ? 'font-semibold text-[var(--text)]' : ''}`}
+          style={{ bottom: at(v) }}
+        >
+          {label(v, i)}
+        </span>
+      ) : null,
+    )
   return (
-    <div>
-      <div className="relative h-2 rounded-full bg-[var(--track)]" role="img" aria-label={`Luxury-tax payroll ${money(taxPayroll)} against a ${money(threshold.base, 0)} base line`}>
+    <div
+      className="flex min-h-[8.5rem] shrink-0 items-stretch gap-1.5 self-stretch text-[11px] text-[var(--dim)]"
+      role="img"
+      aria-label={`Luxury-tax payroll ${money(taxPayroll)} against a ${money(threshold.base, 0)} tax line, with tiers 20, 40 and 60 million above it`}
+      title={`Luxury-tax payroll ${money(taxPayroll)}. Tax line ${money(threshold.base, 0)}; tiers at ${threshold.tiers.map((t) => money(t, 0)).join(', ')}.`}
+    >
+      <div className="relative w-11">{side(0)}</div>
+      <div className="relative w-5 rounded-full bg-[var(--rule)]">
         <div className="absolute inset-0 overflow-hidden rounded-full">
           <div
-            className="h-full w-full origin-left bg-[var(--accent)] transition-transform duration-300"
-            style={{ transform: `translateX(-${100 - Math.min(100, (taxPayroll / max) * 100)}%)` }}
+            className="h-full w-full bg-[var(--accent)] transition-transform duration-300"
+            style={{ transform: `translateY(${100 - Math.min(100, (taxPayroll / max) * 100)}%)` }}
           />
         </div>
         {lines.map((v, i) => (
-          <div key={v} className={`absolute -top-1 -bottom-1 w-px ${i === 0 ? 'bg-[var(--text)]' : 'bg-[var(--dim)]'}`} style={{ left: pct(v) }} />
+          <div key={v} className={`absolute -left-1 -right-1 h-px ${i === 0 ? 'bg-[var(--text)]' : 'bg-[var(--dim)]'}`} style={{ bottom: at(v) }} />
         ))}
       </div>
-      <div className="relative mt-1 h-4 text-[11px] text-[var(--dim)]">
-        {lines.map((v, i) => (
-          // The base label sits left of its line so the closely spaced tier labels have room.
-          <span key={v} className={`absolute whitespace-nowrap ${i === 0 ? '-translate-x-full pr-1 font-medium text-[var(--text)]' : '-translate-x-1/2'}`} style={{ left: pct(v) }}>
-            {i === 0 ? <>{money(v, 0)}<span className="hidden sm:inline"> tax line</span></> : `+${(v - threshold.base) / 1e6}`}
-          </span>
-        ))}
-      </div>
+      <div className="relative w-7">{side(1)}</div>
     </div>
   )
+}
+
+// "$60.9M under the tax line" / "$12.0M over the tax line" / "$45.1M over, past the +40 tier"
+function taxStanding(taxPayroll: number, threshold: NonNullable<Meta['taxThreshold']>): React.ReactNode {
+  const over = taxPayroll - threshold.base
+  if (over <= 0) return `${money(-over)} under the tax line`
+  const passed = threshold.tiers.filter((t) => taxPayroll > t).length
+  return <span className="text-[var(--accent)]">{money(over)} over{passed ? `, past the +${(threshold.tiers[passed - 1] - threshold.base) / 1e6} tier` : ' the tax line'}</span>
 }
 
 function Delta({ now, then }: { now: number; then: number }) {
@@ -310,7 +336,7 @@ function Stat({ label, value, delta, sub }: { label: string; value: string; delt
   return (
     <div>
       <div className="text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">{label}</div>
-      <div className="text-xl font-bold tracking-tight" aria-live="polite">{value}{delta}</div>
+      <div className="text-xl font-bold tracking-tight sm:text-2xl" aria-live="polite">{value}{delta}</div>
       {sub && <div className="text-[11px] text-[var(--dim)]">{sub}</div>}
     </div>
   )
@@ -639,17 +665,24 @@ export default function TeamBuilderApp() {
           {/* The team strip and totals, pinned while scrolling on wider screens */}
           <section ref={setTotalsEl} className="z-20 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)] sm:sticky sm:top-14">
             {pool.length > 0 && <div className="mb-3 border-b border-[var(--rule)] pb-2"><TeamStrip wars={liveWars} team={team} onPick={pickTeam} /></div>}
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-4">
-              <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} />
-              <Stat label="Luxury-tax payroll" value={money(built.taxPayroll)} delta={<Delta now={built.taxPayroll} then={start.taxPayroll} />} />
-              <Stat label="Projected WAR" value={teamWar.toFixed(1)} delta={<WarDelta now={teamWar} then={startWar} />} sub={pool.length ? `${ordinal(rank)} of 30` : undefined} />
-              <Stat
-                label="40-man roster"
-                value={`${built.rosterCount} / 40`}
-                sub={built.rosterCount > 40 ? <span className="text-[var(--accent)]">Over 40: someone has to go</span> : undefined}
-              />
+            <div className="flex items-stretch gap-5 sm:gap-8">
+              {meta.taxThreshold && <TaxGauge taxPayroll={built.taxPayroll} threshold={meta.taxThreshold} />}
+              <div className="grid flex-1 grid-cols-2 content-center gap-x-6 gap-y-3 lg:grid-cols-4">
+                <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money, buyouts" />
+                <Stat
+                  label="Luxury-tax payroll"
+                  value={money(built.taxPayroll)}
+                  delta={<Delta now={built.taxPayroll} then={start.taxPayroll} />}
+                  sub={meta.taxThreshold ? taxStanding(built.taxPayroll, meta.taxThreshold) : undefined}
+                />
+                <Stat label="Projected WAR" value={teamWar.toFixed(1)} delta={<WarDelta now={teamWar} then={startWar} />} sub={pool.length ? `${ordinal(rank)} of 30` : undefined} />
+                <Stat
+                  label="40-man roster"
+                  value={`${built.rosterCount} / 40`}
+                  sub={built.rosterCount > 40 ? <span className="text-[var(--accent)]">Over 40: someone has to go</span> : `${40 - built.rosterCount} open ${40 - built.rosterCount === 1 ? 'spot' : 'spots'}`}
+                />
+              </div>
             </div>
-            {meta.taxThreshold && <div className="mt-2"><TaxBar taxPayroll={built.taxPayroll} threshold={meta.taxThreshold} /></div>}
             {overPlaying && (
               <p className="mt-1 max-w-[58ch] text-[11px] text-[var(--accent)]">
                 Your moves add {Math.max(0, addedPa).toLocaleString()} PA and {Math.max(0, Math.round(addedIp)).toLocaleString()} IP of projected playing time beyond today&apos;s roster. Not all of the extra WAR would fit.
