@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { headshotUrl } from '@/lib/player'
 import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
+import { warBySpot } from '@/lib/team-builder/field'
+import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
 import type { PoolPlayer } from '@/lib/team-builder/pool'
@@ -41,6 +43,8 @@ const POSITIONS: { key: string; label: string }[] = [
   { key: 'all', label: 'All positions' },
   ...POSITION_GROUPS.filter((g) => g.key !== 'IF').map((g) => ({ key: g.key, label: g.key })),
 ]
+// Room kept under the pinned strip for the one-line totals summary.
+const SUMMARY_LINE = 40
 const POOL_PAGE = 12
 const MINORS_PAGE = 12
 
@@ -343,8 +347,11 @@ function Stat({ label, value, delta, sub }: { label: string; value: string; delt
   return (
     <div>
       <div className="text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">{label}</div>
-      <div className="text-xl font-bold tracking-tight sm:text-2xl" aria-live="polite">{value}{delta}</div>
-      {sub && <div className="text-[11px] text-[var(--dim)]">{sub}</div>}
+      {/* The note shares the number's line, so the four totals stack compactly */}
+      <div className="flex flex-wrap items-baseline gap-x-2">
+        <span className="text-xl font-bold leading-tight tracking-tight sm:text-2xl" aria-live="polite">{value}{delta}</span>
+        {sub && <span className="text-[11px] text-[var(--dim)]">{sub}</span>}
+      </div>
     </div>
   )
 }
@@ -453,6 +460,16 @@ export default function TeamBuilderApp() {
   // A callback ref, so measuring starts whenever the bar actually mounts (it waits on the data).
   const [totalsEl, setTotalsEl] = useState<HTMLElement | null>(null)
   const [totalsHeight, setTotalsHeight] = useState(0)
+  // The totals panel scrolls with the page; a one-line summary takes over under the pinned
+  // strip once the panel is out of view (the margin discounts what the header and strip cover).
+  const [panelEl, setPanelEl] = useState<HTMLElement | null>(null)
+  const [panelInView, setPanelInView] = useState(true)
+  useEffect(() => {
+    if (!panelEl) return
+    const io = new IntersectionObserver(([e]) => setPanelInView(e.isIntersecting), { rootMargin: `-${56 + totalsHeight + 8}px 0px 0px 0px` })
+    io.observe(panelEl)
+    return () => io.disconnect()
+  }, [panelEl, totalsHeight])
   useLayoutEffect(() => {
     if (!totalsEl) return
     const ro = new ResizeObserver(() => setTotalsHeight(totalsEl.offsetHeight))
@@ -503,6 +520,7 @@ export default function TeamBuilderApp() {
   // Until the market has loaded, signings and trades can't be checked, so nothing is flagged yet.
   const skipped = built && pool.length ? built.skipped : []
   const stale = meta?.staleTeams?.[team]
+  const fieldWar = warBySpot((built?.slots ?? []).filter((s) => s.onRoster).map((s) => s.player))
   const updated = meta ? new Date(meta.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null
 
   const ownPoolFreeAgents: PoolSlot[] = built
@@ -669,12 +687,31 @@ export default function TeamBuilderApp() {
             </p>
           )}
 
-          {/* The team strip and totals, pinned while scrolling on wider screens */}
-          <section ref={setTotalsEl} className="z-20 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)] sm:sticky sm:top-14">
-            {pool.length > 0 && <div className="mb-3 border-b border-[var(--rule)] pb-2"><TeamStrip wars={liveWars} team={team} onPick={pickTeam} /></div>}
-            <div className="flex items-stretch gap-3 sm:gap-6">
+          {/* Pinned on wider screens: the team strip, and, once the totals panel below has
+              scrolled away, a one-line summary of it (overlaid, so nothing jumps). */}
+          <div ref={setTotalsEl} className="relative z-20 sm:sticky sm:top-14">
+            {pool.length > 0 && (
+              <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
+                <TeamStrip wars={liveWars} team={team} onPick={pickTeam} />
+              </section>
+            )}
+            <div
+              aria-hidden={panelInView}
+              className={`absolute inset-x-0 top-full mt-1 hidden flex-wrap items-baseline gap-x-6 gap-y-1 rounded-lg border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-1.5 text-sm shadow-[var(--elevated-shadow)] transition-opacity duration-200 sm:flex ${panelInView ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
+            >
+              <span><span className="text-[11px] text-[var(--dimmer)]">Payroll </span><span className="font-semibold">{money(built.payroll)}</span><Delta now={built.payroll} then={start.payroll} /></span>
+              <span><span className="text-[11px] text-[var(--dimmer)]">Tax payroll </span><span className="font-semibold">{money(built.taxPayroll)}</span><Delta now={built.taxPayroll} then={start.taxPayroll} /></span>
+              <span><span className="text-[11px] text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} />{pool.length > 0 && <span className="ml-1.5 text-[11px] text-[var(--dim)]">{ordinal(rank)} of 30</span>}</span>
+              <span><span className="text-[11px] text-[var(--dimmer)]">40-man </span><span className={`font-semibold ${built.rosterCount > 40 ? 'text-[var(--accent)]' : ''}`}>{built.rosterCount} / 40</span></span>
+            </div>
+          </div>
+
+          {/* Totals: the tax gauge, the four numbers, and projected WAR by position */}
+          <section ref={setPanelEl} className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
+            <div className="flex flex-wrap items-stretch justify-around gap-x-8 gap-y-4">
+              <div className="flex items-stretch gap-3 sm:gap-5">
               {meta.taxThreshold && <TaxGauge taxPayroll={built.taxPayroll} threshold={meta.taxThreshold} />}
-              <div className="grid flex-1 grid-cols-1 content-center gap-x-6 gap-y-3 min-[440px]:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-1 content-center gap-y-2">
                 <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money, buyouts" />
                 <Stat
                   label="Luxury-tax payroll"
@@ -689,6 +726,11 @@ export default function TeamBuilderApp() {
                   sub={built.rosterCount > 40 ? <span className="text-[var(--accent)]">Over 40: someone has to go</span> : `${40 - built.rosterCount} open ${40 - built.rosterCount === 1 ? 'spot' : 'spots'}`}
                 />
               </div>
+              </div>
+              <figure className="flex flex-col items-center">
+                <figcaption className="mb-1 text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">Projected WAR by position</figcaption>
+                <FieldDiagram spots={fieldWar} className="h-52 w-auto" />
+              </figure>
             </div>
             {overPlaying && (
               <p className="mt-1 max-w-[58ch] text-[11px] text-[var(--accent)]">
@@ -844,7 +886,7 @@ export default function TeamBuilderApp() {
             {/* Right: the market, pinned beside the roster on wide screens */}
             <div
               className={`lg:sticky lg:overflow-y-auto ${phonePanel === 'market' ? '' : 'hidden lg:block'}`}
-              style={{ top: 56 + totalsHeight + 16, maxHeight: `calc(100vh - ${56 + totalsHeight + 32}px)` }}
+              style={{ top: 56 + totalsHeight + SUMMARY_LINE + 16, maxHeight: `calc(100vh - ${56 + totalsHeight + SUMMARY_LINE + 32}px)` }}
             >
               <section id="add-players" className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
                 <div className="grid grid-cols-2 gap-1 p-2" role="tablist" aria-label="Market">
