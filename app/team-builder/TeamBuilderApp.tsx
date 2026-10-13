@@ -269,45 +269,52 @@ function TeamStrip({ wars, team, onPick }: { wars: Record<string, number>; team:
 }
 
 // The luxury-tax payroll as a vertical gauge: filled from the bottom, with the tax line and the
-// three tiers above it marked. The tiers sit only a few pixels apart, so their labels alternate
-// sides of the bar. The fill animates with a transform.
+// three tiers above it marked on the left. The tiers sit only a few pixels apart, so their
+// labels are staggered in two columns. The right side is kept for the current figure, which
+// rides at the top of the fill. Fill and marker animate with a transform.
 function TaxGauge({ taxPayroll, threshold }: { taxPayroll: number; threshold: NonNullable<Meta['taxThreshold']> }) {
   const lines = [threshold.base, ...threshold.tiers]
   const max = Math.max(taxPayroll, lines[lines.length - 1]) * 1.06
   const at = (v: number) => `${Math.min(100, (v / max) * 100)}%`
-  const label = (v: number, i: number) => (i === 0 ? money(v, 0) : `+${(v - threshold.base) / 1e6}`)
-  const side = (want: 0 | 1) =>
-    lines.map((v, i) =>
-      i % 2 === want ? (
-        <span
-          key={v}
-          className={`absolute translate-y-1/2 whitespace-nowrap leading-none ${want === 0 ? 'right-0' : 'left-0'} ${i === 0 ? 'font-semibold text-[var(--text)]' : ''}`}
-          style={{ bottom: at(v) }}
-        >
-          {label(v, i)}
-        </span>
-      ) : null,
-    )
+  // Slides a full-height layer down so that its top edge sits at the payroll level.
+  const level = { transform: `translateY(${100 - Math.min(100, (taxPayroll / max) * 100)}%)` }
   return (
     <div
-      className="flex min-h-[8.5rem] shrink-0 items-stretch gap-1.5 self-stretch text-[11px] text-[var(--dim)]"
+      className="flex min-h-[8.5rem] shrink-0 items-stretch self-stretch text-[11px] text-[var(--dim)]"
       role="img"
       aria-label={`Luxury-tax payroll ${money(taxPayroll)} against a ${money(threshold.base, 0)} tax line, with tiers 20, 40 and 60 million above it`}
       title={`Luxury-tax payroll ${money(taxPayroll)}. Tax line ${money(threshold.base, 0)}; tiers at ${threshold.tiers.map((t) => money(t, 0)).join(', ')}.`}
     >
-      <div className="relative w-11">{side(0)}</div>
-      <div className="relative w-5 rounded-full bg-[var(--rule)]">
-        <div className="absolute inset-0 overflow-hidden rounded-full">
-          <div
-            className="h-full w-full bg-[var(--accent)] transition-transform duration-300"
-            style={{ transform: `translateY(${100 - Math.min(100, (taxPayroll / max) * 100)}%)` }}
-          />
-        </div>
+      {/* Tier labels: the tax line and +40 in the outer column, +20 and +60 next to the bar */}
+      <div className="relative w-[4.25rem]">
         {lines.map((v, i) => (
-          <div key={v} className={`absolute -left-1 -right-1 h-px ${i === 0 ? 'bg-[var(--text)]' : 'bg-[var(--dim)]'}`} style={{ bottom: at(v) }} />
+          <span
+            key={v}
+            className={`absolute translate-y-1/2 whitespace-nowrap leading-none ${i % 2 === 0 ? 'right-9' : 'right-2'} ${i === 0 ? 'font-semibold text-[var(--text)]' : ''}`}
+            style={{ bottom: at(v) }}
+          >
+            {i === 0 ? money(v, 0) : `+${(v - threshold.base) / 1e6}`}
+          </span>
         ))}
       </div>
-      <div className="relative w-7">{side(1)}</div>
+      <div className="relative w-5 rounded-full bg-[var(--rule)]">
+        <div className="absolute inset-0 overflow-hidden rounded-full">
+          <div className="h-full w-full bg-[var(--accent)] transition-transform duration-300" style={level} />
+        </div>
+        {lines.map((v, i) => (
+          // Outer-column labels get a longer tick that reaches across the inner column.
+          <div key={v} className={`absolute -right-1 h-px ${i % 2 === 0 ? '-left-8' : '-left-1'} ${i === 0 ? 'bg-[var(--text)]' : 'bg-[var(--dim)]'}`} style={{ bottom: at(v) }} />
+        ))}
+        <div className="pointer-events-none absolute inset-0 transition-transform duration-300" style={level}>
+          <div className="absolute -left-0.5 -right-2 top-0 h-0.5 -translate-y-1/2 bg-[var(--text)]" />
+        </div>
+      </div>
+      {/* Where this roster's luxury-tax payroll sits */}
+      <div className="relative w-12">
+        <div className="pointer-events-none absolute inset-0 transition-transform duration-300" style={level}>
+          <span className="absolute left-2.5 top-0 -translate-y-1/2 whitespace-nowrap font-mono font-medium leading-none text-[var(--text)]">{money(taxPayroll, 0)}</span>
+        </div>
+      </div>
     </div>
   )
 }
@@ -665,9 +672,9 @@ export default function TeamBuilderApp() {
           {/* The team strip and totals, pinned while scrolling on wider screens */}
           <section ref={setTotalsEl} className="z-20 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)] sm:sticky sm:top-14">
             {pool.length > 0 && <div className="mb-3 border-b border-[var(--rule)] pb-2"><TeamStrip wars={liveWars} team={team} onPick={pickTeam} /></div>}
-            <div className="flex items-stretch gap-5 sm:gap-8">
+            <div className="flex items-stretch gap-3 sm:gap-6">
               {meta.taxThreshold && <TaxGauge taxPayroll={built.taxPayroll} threshold={meta.taxThreshold} />}
-              <div className="grid flex-1 grid-cols-2 content-center gap-x-6 gap-y-3 lg:grid-cols-4">
+              <div className="grid flex-1 grid-cols-1 content-center gap-x-6 gap-y-3 min-[440px]:grid-cols-2 lg:grid-cols-4">
                 <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money, buyouts" />
                 <Stat
                   label="Luxury-tax payroll"
