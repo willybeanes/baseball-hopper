@@ -47,6 +47,12 @@ const POSITIONS: { key: string; label: string }[] = [
 ]
 // Room kept under the pinned strip for the one-line totals summary.
 const SUMMARY_LINE = 40
+// How the roster card can be arranged; the choice is remembered in the viewer's browser.
+const GROUP_BY = { position: 'Position', role: 'Hitters / pitchers', none: 'No grouping' } as const
+const SORT_BY = { war: 'Projected WAR', salary: '2027 salary', name: 'Name' } as const
+type GroupBy = keyof typeof GROUP_BY
+type SortBy = keyof typeof SORT_BY
+const VIEW_KEY = 'team-builder:roster-view'
 const POOL_PAGE = 12
 const MINORS_PAGE = 12
 
@@ -207,13 +213,14 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
   )
 }
 
-function Card({ title, aside, note, children, id }: { title: string; aside?: React.ReactNode; note?: React.ReactNode; children: React.ReactNode; id?: string }) {
+function Card({ title, aside, note, controls, children, id }: { title: string; aside?: React.ReactNode; note?: React.ReactNode; controls?: React.ReactNode; children: React.ReactNode; id?: string }) {
   return (
     <section id={id} className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)]">
       <div className="flex items-baseline justify-between gap-3 px-4 pb-1 pt-3">
         <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">{title}</h2>
         {aside && <span className="text-xs text-[var(--dimmer)]">{aside}</span>}
       </div>
+      {controls && <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-2.5 pt-1">{controls}</div>}
       {note && <p className="max-w-[58ch] px-4 pb-2.5 text-[11px] text-[var(--dim)]">{note}</p>}
       <div className="divide-y divide-[var(--rule)] border-t border-[var(--rule)]">{children}</div>
     </section>
@@ -406,6 +413,20 @@ export default function TeamBuilderApp() {
   const [poolShown, setPoolShown] = useState(POOL_PAGE)
   const [minorsShown, setMinorsShown] = useState(MINORS_PAGE)
   const [phonePanel, setPhonePanel] = useState<'roster' | 'market'>('roster')
+  const [groupBy, setGroupBy] = useState<GroupBy>('position')
+  const [sortBy, setSortBy] = useState<SortBy>('war')
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(VIEW_KEY) ?? 'null') as { groupBy?: string; sortBy?: string } | null
+      if (saved?.groupBy && saved.groupBy in GROUP_BY) setGroupBy(saved.groupBy as GroupBy)
+      if (saved?.sortBy && saved.sortBy in SORT_BY) setSortBy(saved.sortBy as SortBy)
+    } catch { /* private mode or blocked storage: just use the defaults */ }
+  }, [])
+  const setView = (next: { groupBy?: GroupBy; sortBy?: SortBy }) => {
+    if (next.groupBy) setGroupBy(next.groupBy)
+    if (next.sortBy) setSortBy(next.sortBy)
+    try { localStorage.setItem(VIEW_KEY, JSON.stringify({ groupBy: next.groupBy ?? groupBy, sortBy: next.sortBy ?? sortBy })) } catch { /* not essential */ }
+  }
 
   const moves = movesByTeam[team] ?? []
   const setMoves = (next: Move[]) => setMovesByTeam((all) => ({ ...all, [team]: next }))
@@ -675,6 +696,17 @@ export default function TeamBuilderApp() {
   const offRosterSlots: PoolSlot[] = built ? [...built.slots.filter((s) => !s.onRoster && s.offReason !== 'minors'), ...ownPoolFreeAgents] : []
   const minorSlots = built ? built.slots.filter((s) => !s.onRoster && s.offReason === 'minors').sort((a, b) => (b.player.war ?? 0) - (a.player.war ?? 0)) : []
   const byWar = (a: Slot, b: Slot) => (b.player.war ?? -99) - (a.player.war ?? -99)
+  // Last name first for sorting: Cot's names are stored "Last, First"; others are "First Last".
+  const sortName = (p: Player) => (p.sheetName.includes(',') ? p.sheetName : `${p.name.split(' ').slice(1).join(' ')}, ${p.name.split(' ')[0]}`).toLowerCase()
+  const rosterSort = (a: Slot, b: Slot) =>
+    sortBy === 'salary' ? (b.salary ?? -1) - (a.salary ?? -1) || byWar(a, b)
+      : sortBy === 'name' ? sortName(a.player).localeCompare(sortName(b.player))
+        : byWar(a, b)
+  const isPitcher = (s: Slot) => ['SP', 'RP'].includes(posBucket(s.player.pos))
+  const rosterGroups: { key: string; title: string; test: (s: Slot) => boolean }[] =
+    groupBy === 'position' ? POSITION_GROUPS.map((g) => ({ ...g, test: (s: Slot) => posBucket(s.player.pos) === g.key }))
+      : groupBy === 'role' ? [{ key: 'hitters', title: 'Hitters', test: (s: Slot) => !isPitcher(s) }, { key: 'pitchers', title: 'Pitchers', test: isPitcher }]
+        : [{ key: 'all', title: 'All players', test: () => true }]
 
   return (
     // w-full: the layout centres pages in a flex column, where the wide team strip would
@@ -845,16 +877,36 @@ export default function TeamBuilderApp() {
                 </section>
               )}
 
-              <Card title="2027 roster" aside={`${built.rosterCount} players`}>
-                {POSITION_GROUPS.map((g) => {
-                  const slots = onRosterSlots.filter((s) => posBucket(s.player.pos) === g.key).sort(byWar)
+              <Card
+                title="2027 roster"
+                aside={`${built.rosterCount} players`}
+                controls={
+                  <>
+                    <label className="flex items-center gap-1.5 text-[11px] text-[var(--dim)]">
+                      Group by
+                      <select value={groupBy} onChange={(e) => setView({ groupBy: e.target.value as GroupBy })} className="rounded border border-[var(--rule)] bg-transparent px-1.5 py-0.5 text-xs text-[var(--text)]">
+                        {Object.entries(GROUP_BY).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+                      </select>
+                    </label>
+                    <label className="flex items-center gap-1.5 text-[11px] text-[var(--dim)]">
+                      Sort by
+                      <select value={sortBy} onChange={(e) => setView({ sortBy: e.target.value as SortBy })} className="rounded border border-[var(--rule)] bg-transparent px-1.5 py-0.5 text-xs text-[var(--text)]">
+                        {Object.entries(SORT_BY).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+                      </select>
+                    </label>
+                  </>
+                }
+              >
+                {rosterGroups.map((g) => {
+                  const slots = onRosterSlots.filter(g.test).sort(rosterSort)
                   if (!slots.length) return null
                   const war = slots.reduce((n, s) => n + (s.player.war ?? 0), 0)
+                  const pay = slots.reduce((n, s) => n + (s.salary ?? 0), 0)
                   return (
                     <div key={g.key}>
                       <h3 className="flex items-baseline justify-between px-4 pb-1 pt-3 text-[13px] font-semibold text-[var(--text)]">
                         {g.title}
-                        <span className="text-[11px] font-normal text-[var(--dimmer)]">{slots.length} · {war.toFixed(1)} WAR</span>
+                        <span className="text-[11px] font-normal text-[var(--dimmer)]">{slots.length} · {war.toFixed(1)} WAR · {money(pay)}</span>
                       </h3>
                       <div className="divide-y divide-[var(--rule)]">
                         {slots.map((s) => <PlayerRow key={s.player.mlbamId ?? s.player.sheetName} s={s} actions={rosterActions(s)} editor={editorFor(s)} />)}
