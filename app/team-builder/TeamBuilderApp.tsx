@@ -9,7 +9,7 @@ import { warBySpot } from '@/lib/team-builder/field'
 import { fmtRecord, projectedRecord, warScale } from '@/lib/team-builder/record'
 import assumptions from '@/lib/team-builder/assumptions.json'
 import FieldDiagram from './FieldDiagram'
-import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
+import { fmtWar, isEstimate, money, warPrice, warTier, warTint, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
 import type { PoolPlayer } from '@/lib/team-builder/pool'
 import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '@/lib/team-builder/share'
@@ -125,6 +125,20 @@ function Salary({ s }: { s: Slot }) {
   return <span className="font-mono text-xs text-[var(--text)]" title={SOURCE_LABEL[p.salarySource ?? '']}>{money(s.salary, 2)}</span>
 }
 
+// A projected WAR figure on a tint that deepens with value: the brand red from about 1 WAR up,
+// the site's cool blue below zero, nothing in between. The number stays dark, so contrast holds.
+function WarValue({ war }: { war: number | null | undefined }) {
+  const { share, tone } = warTint(war)
+  const bg = tone === 'good' ? `color-mix(in srgb, var(--accent) ${Math.round(8 + share * 37)}%, transparent)`
+    : tone === 'bad' ? `color-mix(in srgb, var(--cool) ${Math.round(15 + share * 50)}%, transparent)`
+      : undefined
+  return (
+    <span className="text-[11px] text-[var(--dim)]" title={`${fmtWar(war)} projected WAR: ${warTier(war)}`}>
+      <span className="rounded px-1 py-px font-mono text-[var(--text)]" style={{ backgroundColor: bg }}>{fmtWar(war)}</span> WAR
+    </span>
+  )
+}
+
 function ActionButton({ onClick, children, label }: { onClick: () => void; children: React.ReactNode; label: string }) {
   return (
     <button
@@ -203,9 +217,7 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
         </div>
         <div className="pt-0.5 text-right">
           {right ?? <Salary s={s} />}
-          <span className="block text-[11px] text-[var(--dim)]" title={p.war == null ? 'No projection: counts as 0' : 'Projected 2027 WAR'}>
-            <span className="font-mono text-[var(--text)]">{fmtWar(p.war)}</span> WAR
-          </span>
+          <span className="mt-0.5 block"><WarValue war={p.war} /></span>
         </div>
       </div>
       {editor}
@@ -1038,7 +1050,7 @@ export default function TeamBuilderApp() {
                                 ? priceOf(e.war) != null ? <span className="italic text-[var(--text)]">{money(priceOf(e.war)!)}<span className="not-italic text-[var(--dimmer)]">/yr est.</span></span> : '—'
                                 : e.salary != null ? <span className="text-[var(--text)]">{money(e.salary)}</span> : 'unknown'}
                             </span>
-                            <span className="block"><span className="font-mono text-[var(--text)]">{fmtWar(e.war)}</span> WAR</span>
+                            <span className="mt-0.5 block"><WarValue war={e.war} /></span>
                           </span>
                           <ActionButton
                             label={`${e.kind === 'fa' ? 'Sign' : 'Trade for'} ${e.name}`}
@@ -1078,7 +1090,7 @@ export default function TeamBuilderApp() {
             </p>
             {meta.projections && (
               <p>
-                Projected WAR from FanGraphs&apos; <a href={meta.projections.url} className="underline hover:text-[var(--dim)]">{meta.projections.label}</a>. {meta.projections.note} Players with no projection show a dash and count as 0.
+                Projected WAR from FanGraphs&apos; <a href={meta.projections.url} className="underline hover:text-[var(--dim)]">{meta.projections.label}</a>. {meta.projections.note} Players with no projection show a dash and count as 0. WAR figures are tinted red from about 1 WAR (deepest at 5+) and blue below zero; hover one for a plain-words reading.
                 Free-agent prices use {money(perWin)} per projected WAR for one season, set against what this year&apos;s free agents are paid (FanGraphs&apos; <a href={assumptions.dollarsPerWar.url} className="underline hover:text-[var(--dim)]">$11.2M figure</a> is for multi-year deals, over which WAR declines).
               </p>
             )}

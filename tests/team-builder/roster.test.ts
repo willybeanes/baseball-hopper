@@ -5,7 +5,7 @@ import { join } from 'path'
 import assumptions from '../../lib/team-builder/assumptions.json'
 import { parseTeamSheet } from '../../lib/team-builder/cots'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
-import { defaultRoster, money, warPrice, type TeamFile } from '../../lib/team-builder/roster'
+import { defaultRoster, fmtWar, money, warPrice, warTier, warTint, type TeamFile } from '../../lib/team-builder/roster'
 
 function team(code: string, ids: Record<string, number> = {}, options: OptionFact[] = []) {
   const s = parseTeamSheet(code, readFileSync(join(import.meta.dir, 'fixtures', `${code}.csv`), 'utf8'), 2026, 2027)
@@ -59,5 +59,24 @@ describe('warPrice', () => {
     expect(warPrice(0.03, 11.2e6, 780_000)).toBe(780_000)
     expect(warPrice(-0.5, 11.2e6, 780_000)).toBe(780_000)
     expect(warPrice(null, 11.2e6, 780_000)).toBeNull()
+  })
+})
+
+describe('WAR colouring', () => {
+  test('tiers in plain words', () => {
+    expect(warTier(2.8)).toBe('solid regular')
+    expect(warTier(5.9)).toBe('MVP or ace level')
+    expect(warTier(-0.4)).toBe('below replacement level')
+    expect(warTier(null)).toBe('no projection, counts as 0')
+    expect(warTier(-0.04)).toBe('bench or depth') // shows as 0.0
+    expect(fmtWar(-0.04)).toBe('0.0')
+    expect(warTint(-0.04).tone).toBe('none')
+  })
+  test('tint: none around zero, deepening with WAR, blue below zero', () => {
+    expect(warTint(0.6)).toEqual({ share: 0, tone: 'none' })
+    expect(warTint(3)).toEqual({ share: 0.5, tone: 'good' })
+    expect(warTint(7)).toEqual({ share: 1, tone: 'good' })
+    expect(warTint(-0.6).tone).toBe('bad')
+    expect(warTint(-0.6).share).toBeCloseTo(0.4, 6)
   })
 })

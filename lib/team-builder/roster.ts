@@ -88,4 +88,29 @@ export function warPrice(war: number | null | undefined, dollarsPerWar: number, 
   return Math.max(minimum, Math.round((war * dollarsPerWar) / 1e5) * 1e5)
 }
 
-export const fmtWar = (war: number | null | undefined) => (war == null ? '—' : war.toFixed(1))
+// Rounded to one place; a tiny negative shows as 0.0, not -0.0.
+export const fmtWar = (war: number | null | undefined) => (war == null ? '—' : (Math.round(war * 10) / 10 || 0).toFixed(1))
+const tenth = (war: number) => Math.round(war * 10) / 10 || 0
+
+// Plain-words reading of a single player's projected WAR (FanGraphs' rule-of-thumb tiers).
+export function warTier(raw: number | null | undefined): string {
+  if (raw == null) return 'no projection, counts as 0'
+  const war = tenth(raw) // judged on the number shown
+  if (war < 0) return 'below replacement level'
+  if (war < 1) return 'bench or depth'
+  if (war < 2) return 'role player'
+  if (war < 3) return 'solid regular'
+  if (war < 4) return 'good regular'
+  if (war < 5) return 'all-star level'
+  return 'MVP or ace level'
+}
+
+// How strongly to tint a WAR figure: 0 below 1 WAR, rising to full at 5+; negative WAR gets
+// its own (blue) scale, full at -1.5. Returns a share from 0 to 1 and which colour to use.
+export function warTint(raw: number | null | undefined): { share: number; tone: 'good' | 'bad' | 'none' } {
+  if (raw == null) return { share: 0, tone: 'none' }
+  const war = tenth(raw) // judged on the number shown
+  if (war < 0) return { share: Math.min(1, -war / 1.5), tone: 'bad' }
+  if (war < 1) return { share: 0, tone: 'none' }
+  return { share: Math.min(1, (war - 1) / 4), tone: 'good' }
+}
