@@ -18,6 +18,7 @@ export interface PoolPlayer {
   contract: string
   note?: string
   minors?: boolean // a minor leaguer outside his team's 40-man
+  debuted?: boolean // minor leaguers only: has played in the majors before
   war?: number | null // projected target-year WAR
   pa?: number
   ip?: number
@@ -56,7 +57,7 @@ export function buildPool(teams: TeamFile[], mlbtr: MlbtrFreeAgent[], minimum = 
       pool.set(m.mlbamId, {
         mlbamId: m.mlbamId, name: m.name, pos: m.pos, age: m.age, from: t.team, kind: 'roster', status: 'prearb',
         salary: m.salary || minimum, taxValue: m.salary || minimum, salarySource: 'minimum', salaryPrevYear: null,
-        contract: 'Minor leaguer', minors: true, war: m.war, ...(m.pa ? { pa: m.pa } : {}), ...(m.ip ? { ip: m.ip } : {}),
+        contract: m.debuted ? 'Off the 40-man' : 'Prospect', minors: true, ...(m.debuted ? { debuted: true } : {}), war: m.war, ...(m.pa ? { pa: m.pa } : {}), ...(m.ip ? { ip: m.ip } : {}),
       })
     }
   }

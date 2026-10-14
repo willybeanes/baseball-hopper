@@ -25,12 +25,12 @@ export async function teamPool(team: string, season: number): Promise<{ pool: Ro
   return { pool: people.flat(), fortyMan: new Set(people[0].map((p) => p.id)), org }
 }
 
-// Birthdates for a list of players, in batches the API accepts.
-export async function birthDates(ids: number[]): Promise<Map<number, string>> {
-  const out = new Map<number, string>()
+// Birthdate and major-league debut (if any) for a list of players, in batches the API accepts.
+export async function peopleInfo(ids: number[]): Promise<Map<number, { birthDate?: string; mlbDebutDate?: string }>> {
+  const out = new Map<number, { birthDate?: string; mlbDebutDate?: string }>()
   for (let i = 0; i < ids.length; i += 200) {
-    const d = await statsApi<{ people?: { id: number; birthDate?: string }[] }>(`/people?personIds=${ids.slice(i, i + 200).join(',')}`)
-    for (const p of d.people ?? []) if (p.birthDate) out.set(p.id, p.birthDate)
+    const d = await statsApi<{ people?: { id: number; birthDate?: string; mlbDebutDate?: string }[] }>(`/people?personIds=${ids.slice(i, i + 200).join(',')}`)
+    for (const p of d.people ?? []) out.set(p.id, { birthDate: p.birthDate, mlbDebutDate: p.mlbDebutDate })
   }
   return out
 }

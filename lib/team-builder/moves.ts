@@ -63,7 +63,7 @@ export function buildRoster(team: TeamFile, moves: Move[], pool: PoolPlayer[] = 
   for (const m of team.minors ?? []) {
     if (slots.has(m.mlbamId)) continue
     const player: Player = {
-      mlbamId: m.mlbamId, name: m.name, sheetName: m.name, pos: m.pos, age: m.age, mls: null, contract: 'Minor leaguer',
+      mlbamId: m.mlbamId, name: m.name, sheetName: m.name, pos: m.pos, age: m.age, mls: null, contract: m.debuted ? 'Off the 40-man' : 'Prospect',
       status: 'prearb', salary: m.salary, taxValue: m.salary, salaryPrevYear: null, salarySource: 'minimum',
       war: m.war, pa: m.pa, ip: m.ip,
     }

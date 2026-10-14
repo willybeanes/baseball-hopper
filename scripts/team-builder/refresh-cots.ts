@@ -19,7 +19,7 @@ import type { MinorLeaguer, TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
 import { matchPlayer } from '../../lib/team-builder/ids'
-import { birthDates, leaguePool, teamPool, type OrgPlayer } from '../../lib/team-builder/rosters'
+import { leaguePool, peopleInfo, teamPool, type OrgPlayer } from '../../lib/team-builder/rosters'
 
 const OUT_DIR = join(import.meta.dir, '../../public/data/team-builder')
 const TIER_STEPS = [20e6, 40e6, 60e6] // gaps above the base line used since 2022
@@ -219,16 +219,18 @@ async function main() {
     minorsByTeam.set(s.team, list)
   }
   try {
-    const born = await birthDates([...minorsByTeam.values()].flat().map((m) => m.mlbamId))
+    const info = await peopleInfo([...minorsByTeam.values()].flat().map((m) => m.mlbamId))
     for (const list of minorsByTeam.values()) {
       for (const m of list) {
-        const b = born.get(m.mlbamId)
-        if (!b) continue
-        const [y, mo, d] = b.split('-').map(Number)
+        const p = info.get(m.mlbamId)
+        // Off the 40-man but already a big-leaguer (outrighted, on a minor-league deal) vs a prospect.
+        m.debuted = !!p?.mlbDebutDate
+        if (!p?.birthDate) continue
+        const [y, mo, d] = p.birthDate.split('-').map(Number)
         m.age = config.targetYear - y - (mo > 7 || (mo === 7 && d > 1) ? 1 : 0) // baseball age: on July 1
       }
     }
-  } catch { /* ages are a nicety; leave them blank */ }
+  } catch { /* ages and debuts are a nicety; leave them blank */ }
   for (const s of sheets) {
     const list = minorsByTeam.get(s.team)
     if (list) (s as unknown as TeamFile).minors = list.sort((a, b) => b.war - a.war)

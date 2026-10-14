@@ -15,6 +15,7 @@ export interface MinorLeaguer {
   pa?: number
   ip?: number
   salary: number // league minimum, what he'd make on the 40-man
+  debuted?: boolean // has played in the majors (a veteran off the 40-man), as opposed to a prospect
 }
 
 export type TeamFile = Omit<TeamSheet, 'players'> & { players: Player[]; minors?: MinorLeaguer[] }

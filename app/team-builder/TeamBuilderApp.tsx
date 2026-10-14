@@ -85,7 +85,7 @@ function statusChips(s: Slot) {
   const p = s.player
   if (s.added) return [<Chip key="ad" tone="solid">{s.added.kind === 'fa' ? 'Free-agent signing' : s.added.kind === 'resign' ? 'Re-signed' : `Trade from ${s.added.from}`}</Chip>]
   if (s.promoted) return [<Chip key="pr" tone="solid">Called up</Chip>]
-  if (s.offReason === 'minors') return [<Chip key="mi">Minor leaguer</Chip>]
+  if (s.offReason === 'minors') return [<Chip key="mi">{p.contract === 'Off the 40-man' ? 'Off 40-man, has MLB time' : 'Prospect'}</Chip>]
   const chips: React.ReactNode[] = []
   if (p.status === 'signed') {
     chips.push(<Chip key="s" tone="solid">Signed</Chip>)
@@ -431,6 +431,9 @@ export default function TeamBuilderApp() {
   const [poolQuery, setPoolQuery] = useState('')
   const [poolShown, setPoolShown] = useState(POOL_PAGE)
   const [minorsShown, setMinorsShown] = useState(MINORS_PAGE)
+  const [minorsKind, setMinorsKind] = useState<'all' | 'prospects' | 'veterans'>('all')
+  const [minorsPos, setMinorsPos] = useState('all')
+  const [tradeScope, setTradeScope] = useState<'all' | 'majors' | 'minors'>('all')
   const [phonePanel, setPhonePanel] = useState<'roster' | 'market'>('roster')
   const [groupBy, setGroupBy] = useState<GroupBy>('position')
   const [sortBy, setSortBy] = useState<SortBy>('war')
@@ -604,9 +607,10 @@ export default function TeamBuilderApp() {
     const q = poolQuery.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     return pool
       .filter((e) => e.kind === poolKind && e.from !== team && !here.has(e.mlbamId) && (poolPos === 'all' || posBucket(e.pos) === poolPos))
+      .filter((e) => poolKind === 'fa' || tradeScope === 'all' || (tradeScope === 'minors') === !!e.minors)
       .filter((e) => !q || e.name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q))
       .sort((a, b) => (b.war ?? -99) - (a.war ?? -99) || a.name.localeCompare(b.name))
-  }, [built, pool, poolKind, poolPos, poolQuery, team])
+  }, [built, pool, poolKind, poolPos, poolQuery, team, tradeScope])
 
   const addEditor = (e: PoolPlayer) => {
     if (editing?.id !== e.mlbamId || editing.kind !== 'add') return undefined
@@ -716,7 +720,12 @@ export default function TeamBuilderApp() {
 
   const onRosterSlots = built ? built.slots.filter((s) => s.onRoster) : []
   const offRosterSlots: PoolSlot[] = built ? [...built.slots.filter((s) => !s.onRoster && s.offReason !== 'minors'), ...ownPoolFreeAgents] : []
-  const minorSlots = built ? built.slots.filter((s) => !s.onRoster && s.offReason === 'minors').sort((a, b) => (b.player.war ?? 0) - (a.player.war ?? 0)) : []
+  const allMinorSlots = built ? built.slots.filter((s) => !s.onRoster && s.offReason === 'minors').sort((a, b) => (b.player.war ?? 0) - (a.player.war ?? 0)) : []
+  const minorSlots = allMinorSlots.filter(
+    (s) =>
+      (minorsKind === 'all' || (minorsKind === 'veterans') === (s.player.contract === 'Off the 40-man')) &&
+      (minorsPos === 'all' || posBucket(s.player.pos) === minorsPos),
+  )
   const byWar = (a: Slot, b: Slot) => (b.player.war ?? -99) - (a.player.war ?? -99)
   // Last name first for sorting: Cot's names are stored "Last, First"; others are "First Last".
   const sortName = (p: Player) => (p.sheetName.includes(',') ? p.sheetName : `${p.name.split(' ').slice(1).join(' ')}, ${p.name.split(' ')[0]}`).toLowerCase()
@@ -962,12 +971,31 @@ export default function TeamBuilderApp() {
                 </Card>
               )}
 
-              {minorSlots.length > 0 && (
+              {allMinorSlots.length > 0 && (
                 <Card
                   title="Minor leaguers"
-                  aside={`${minorSlots.length} projected`}
-                  note="Prospects and depth players outside the 40-man that ZiPS projects, best first. Adding one uses a 40-man spot at the league minimum."
+                  aside={`${minorSlots.length} of ${allMinorSlots.length}`}
+                  note="Everyone outside the 40-man that ZiPS projects, best first: prospects, and veterans with big-league time (outrighted or on minor-league deals). ZiPS projects each as if he played regularly in the majors in 2027. Adding one uses a 40-man spot at the league minimum."
+                  controls={
+                    <>
+                      <label className="flex items-center gap-1.5 text-[11px] text-[var(--dim)]">
+                        Show
+                        <select value={minorsKind} onChange={(e) => { setMinorsKind(e.target.value as typeof minorsKind); setMinorsShown(MINORS_PAGE) }} className="rounded border border-[var(--rule)] bg-transparent px-1.5 py-0.5 text-xs text-[var(--text)]">
+                          <option value="all">Everyone</option>
+                          <option value="prospects">Prospects</option>
+                          <option value="veterans">With MLB time</option>
+                        </select>
+                      </label>
+                      <label className="flex items-center gap-1.5 text-[11px] text-[var(--dim)]">
+                        Position
+                        <select value={minorsPos} onChange={(e) => { setMinorsPos(e.target.value); setMinorsShown(MINORS_PAGE) }} className="rounded border border-[var(--rule)] bg-transparent px-1.5 py-0.5 text-xs text-[var(--text)]">
+                          {POSITIONS.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}
+                        </select>
+                      </label>
+                    </>
+                  }
                 >
+                  {minorSlots.length === 0 && <p className="px-4 py-3 text-center text-xs text-[var(--dimmer)]">No minor leaguers match.</p>}
                   {minorSlots.slice(0, minorsShown).map((s) => (
                     <PlayerRow
                       key={s.player.mlbamId}
@@ -1010,7 +1038,7 @@ export default function TeamBuilderApp() {
                     type="search"
                     value={poolQuery}
                     onChange={(e) => { setPoolQuery(e.target.value); setPoolShown(POOL_PAGE) }}
-                    placeholder={poolKind === 'fa' ? 'Search free agents' : 'Search every other team, prospects included'}
+                    placeholder={poolKind === 'fa' ? 'Search free agents' : 'Search other teams'}
                     aria-label="Search players"
                     className="min-w-0 flex-1 rounded-lg border border-[var(--rule)] bg-transparent px-3 py-1.5 text-sm placeholder:text-[var(--dimmer)]"
                   />
@@ -1022,6 +1050,18 @@ export default function TeamBuilderApp() {
                   >
                     {POSITIONS.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}
                   </select>
+                  {poolKind === 'roster' && (
+                    <select
+                      value={tradeScope}
+                      onChange={(e) => { setTradeScope(e.target.value as typeof tradeScope); setPoolShown(POOL_PAGE) }}
+                      aria-label="Which players"
+                      className="rounded-lg border border-[var(--rule)] bg-transparent px-2 py-1.5 text-sm"
+                    >
+                      <option value="all">Everyone</option>
+                      <option value="majors">40-man players</option>
+                      <option value="minors">Minor leaguers</option>
+                    </select>
+                  )}
                 </div>
                 <p className="max-w-[58ch] px-4 pb-2.5 text-[11px] text-[var(--dim)]">
                   {poolKind === 'fa'
@@ -1041,7 +1081,7 @@ export default function TeamBuilderApp() {
                             </div>
                             <div className="text-[11px] text-[var(--dimmer)]">
                               {[
-                                e.from ? (e.kind === 'fa' ? `last with ${e.from}` : e.minors ? `${e.from} minor leaguer` : e.from) : null,
+                                e.from ? (e.kind === 'fa' ? `last with ${e.from}` : e.minors ? `${e.from} ${e.debuted ? 'minor leaguer, has MLB time' : 'prospect'}` : e.from) : null,
                                 e.age != null ? `age ${e.age}` : null,
                                 e.note && !e.minors ? e.note : null,
                               ].filter(Boolean).join(' · ')}
