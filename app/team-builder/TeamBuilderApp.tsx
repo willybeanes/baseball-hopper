@@ -495,6 +495,11 @@ export default function TeamBuilderApp() {
     fetch(`${DATA}/pool.json`).then((r) => r.json()).then(setPool).catch(() => setPool([]))
   }, [])
 
+  // The server sets the title for the team a link opens on; keep it right when switching teams.
+  useEffect(() => {
+    document.title = `${TEAM_NAMES[team]}: 2027 Team Builder — Baseball Hopper`
+  }, [team])
+
   useEffect(() => {
     setData(null)
     setEditing(null)
