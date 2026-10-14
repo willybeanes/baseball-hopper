@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { headshotUrl } from '@/lib/player'
 import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
-import { warBySpot } from '@/lib/team-builder/field'
+import { depthChart, type Credit } from '@/lib/team-builder/depth'
 import { fmtRecord, projectedRecord, warScale } from '@/lib/team-builder/record'
 import assumptions from '@/lib/team-builder/assumptions.json'
 import FieldDiagram from './FieldDiagram'
@@ -60,9 +60,6 @@ const MINORS_PAGE = 12
 // still in the pool, shown in "Not on the 2027 roster" so he can be re-signed.
 type PoolSlot = Slot & { fromPool?: boolean }
 
-// Roughly what one team uses in a season, for the playing-time note.
-const SEASON_PA = 6200
-const SEASON_IP = 1450
 
 const SOURCE_LABEL: Record<string, string> = {
   option: 'Option salary from the contract, via MLB Trade Rumors',
@@ -191,7 +188,7 @@ function Headshot({ id }: { id: number | undefined }) {
 
 // One player, compact enough for half the page: who he is and what you can do on the left,
 // what he costs and his projected WAR on the right.
-function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.ReactNode; right?: React.ReactNode; editor?: React.ReactNode }) {
+function PlayerRow({ s, actions, right, editor, credit }: { s: Slot; actions?: React.ReactNode; right?: React.ReactNode; editor?: React.ReactNode; credit?: Credit }) {
   const p = s.player
   return (
     <div>
@@ -218,6 +215,16 @@ function PlayerRow({ s, actions, right, editor }: { s: Slot; actions?: React.Rea
         <div className="pt-0.5 text-right">
           {right ?? <Salary s={s} />}
           <span className="mt-0.5 block"><WarValue war={p.war} /></span>
+          {credit && (p.war ?? 0) > 0 && credit.share < 0.95 && (
+            <span
+              className="block text-[11px] text-[var(--dimmer)]"
+              title={credit.share > 0
+                ? `This roster has room for about ${Math.round(credit.share * 100)}% of his projected playing time, so ${credit.war.toFixed(1)} of his ${(p.war ?? 0).toFixed(1)} WAR counts toward the team.`
+                : 'Better players fill his spot and the rest of the lineup, so none of his WAR counts toward the team.'}
+            >
+              {credit.share > 0 ? `plays ~${Math.round(credit.share * 100)}%` : 'bench'}
+            </span>
+          )}
         </div>
       </div>
       {editor}
@@ -551,15 +558,22 @@ export default function TeamBuilderApp() {
       ? `${war.toFixed(1)} projected WAR × ${money(perWin)} per win: an estimated 2027 salary for one year, not a contract total. Change it freely.`
       : 'No projection for him, so this starts at his 2026 salary (or the league minimum). Change it freely.'
 
-  const sumWar = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((n, s) => n + (s.player.war ?? 0), 0)
-  const teamWar = built ? sumWar(built.slots) : 0
-  const startWar = start ? sumWar(start.slots) : 0
+  // Team WAR is counted like a depth chart (lib/team-builder/depth.ts): each spot gets a season's
+  // playing time, best players first, so a deep roster can't pile up more time than a season has.
+  const depthOf = (slots: Slot[]) =>
+    depthChart(slots.filter((s) => s.onRoster).map((s) => ({ id: s.player.mlbamId ?? s.player.sheetName, name: s.player.name, pos: s.player.pos, war: s.player.war, pa: s.player.pa, ip: s.player.ip })))
+  const depth = useMemo(() => (built ? depthOf(built.slots) : null), [built])
+  const startDepth = useMemo(() => (start ? depthOf(start.slots) : null), [start])
+  const teamWar = depth?.total ?? 0
+  const startWar = startDepth?.total ?? 0
+  const creditOf = (s: Slot): Credit | undefined => depth?.credit.get(s.player.mlbamId ?? s.player.sheetName)
 
-  // Every team's projected WAR from the pool (default rosters); the selected team's is live.
+  // Every team's projected WAR from the pool (default rosters), counted the same way; the
+  // selected team's is live.
   const teamWars = useMemo(() => {
-    const w: Record<string, number> = Object.fromEntries(Object.keys(TEAM_NAMES).map((t) => [t, 0]))
-    for (const e of pool) if (e.kind === 'roster' && !e.minors && e.from && e.from in w) w[e.from] += e.war ?? 0
-    return w
+    const rosters: Record<string, PoolPlayer[]> = Object.fromEntries(Object.keys(TEAM_NAMES).map((t) => [t, []]))
+    for (const e of pool) if (e.kind === 'roster' && !e.minors && e.from && e.from in rosters) rosters[e.from].push(e)
+    return Object.fromEntries(Object.entries(rosters).map(([t, r]) => [t, depthChart(r.map((e) => ({ ...e, id: e.mlbamId }))).total]))
   }, [pool])
   const liveWars = { ...teamWars, ...(built ? { [team]: teamWar } : {}) }
   // One scale for everyone, from today's default rosters (see lib/team-builder/record.ts).
@@ -570,21 +584,12 @@ export default function TeamBuilderApp() {
   const effects = useMemo(() => (data ? payrollEffects(data, moves, pool) : []), [data, moves, pool])
   const rank = Object.values(liveWars).filter((w) => w > teamWar).length + 1
 
-  const playingTime = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((t, s) => ({ pa: t.pa + (s.player.pa ?? 0), ip: t.ip + (s.player.ip ?? 0) }), { pa: 0, ip: 0 })
-  const { pa: hitterPa, ip: pitcherIp } = playingTime(built?.slots ?? [])
-  const startTime = playingTime(start?.slots ?? [])
-  // Every 40-man is projected for more playing time than a season has (ZiPS projects each player
-  // on his own), so only warn when the user's moves push well past today's roster.
-  const addedPa = hitterPa - startTime.pa
-  const addedIp = pitcherIp - startTime.ip
-  const overPlaying = addedPa > startTime.pa * 0.15 || addedIp > startTime.ip * 0.15
 
   const touched = new Set(moves.map((m) => m.id))
   const nameOf = (id: number) => built?.slots.find((s) => s.player.mlbamId === id)?.player.name ?? pool.find((e) => e.mlbamId === id)?.name ?? 'a player no longer listed'
   // Until the market has loaded, signings and trades can't be checked, so nothing is flagged yet.
   const skipped = built && pool.length ? built.skipped : []
   const stale = meta?.staleTeams?.[team]
-  const fieldWar = warBySpot((built?.slots ?? []).filter((s) => s.onRoster).map((s) => s.player))
   const updated = meta ? new Date(meta.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null
 
   const ownPoolFreeAgents: PoolSlot[] = built
@@ -805,14 +810,9 @@ export default function TeamBuilderApp() {
               </div>
               <figure className="flex flex-col items-center">
                 <figcaption className="mb-1 text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">Projected WAR by position</figcaption>
-                <FieldDiagram spots={fieldWar} record={pool.length ? fmtRecord(record) : undefined} className="h-52 w-auto" />
+                <FieldDiagram spots={depth?.bySpot ?? depthChart([]).bySpot} record={pool.length ? fmtRecord(record) : undefined} className="h-52 w-auto" />
               </figure>
             </div>
-            {overPlaying && (
-              <p className="mt-1 max-w-[58ch] text-[11px] text-[var(--accent)]">
-                Your moves add {Math.max(0, addedPa).toLocaleString()} PA and {Math.max(0, Math.round(addedIp)).toLocaleString()} IP of projected playing time beyond today&apos;s roster. Not all of the extra WAR would fit.
-              </p>
-            )}
             {built.unknownSalaries.length > 0 && (
               <p className="mt-1 text-[11px] text-[var(--accent)]">Left out of both totals (no salary known): {built.unknownSalaries.map((p) => p.name).join(', ')}.</p>
             )}
@@ -917,7 +917,7 @@ export default function TeamBuilderApp() {
                 {rosterGroups.map((g) => {
                   const slots = onRosterSlots.filter(g.test).sort(rosterSort)
                   if (!slots.length) return null
-                  const war = slots.reduce((n, s) => n + (s.player.war ?? 0), 0)
+                  const war = slots.reduce((n, s) => n + (creditOf(s)?.war ?? 0), 0)
                   const pay = slots.reduce((n, s) => n + (s.salary ?? 0), 0)
                   return (
                     <div key={g.key}>
@@ -926,7 +926,7 @@ export default function TeamBuilderApp() {
                         <span className="text-[11px] font-normal text-[var(--dimmer)]">{slots.length} · {war.toFixed(1)} WAR · {money(pay)}</span>
                       </h3>
                       <div className="divide-y divide-[var(--rule)]">
-                        {slots.map((s) => <PlayerRow key={s.player.mlbamId ?? s.player.sheetName} s={s} actions={rosterActions(s)} editor={editorFor(s)} />)}
+                        {slots.map((s) => <PlayerRow key={s.player.mlbamId ?? s.player.sheetName} s={s} credit={creditOf(s)} actions={rosterActions(s)} editor={editorFor(s)} />)}
                       </div>
                     </div>
                   )
@@ -1100,8 +1100,8 @@ export default function TeamBuilderApp() {
               </p>
             )}
             <p>
-              The projected record starts from a replacement-level team (about 48 wins) and adds WAR. Because summed 40-man WAR runs high, every team&apos;s is scaled down by the same factor so the league as a whole plays .500.
-              Team WAR is a straight sum of every player&apos;s projection, and each assumes his usual playing time; this roster is projected for {hitterPa.toLocaleString()} PA and {Math.round(pitcherIp).toLocaleString()} IP against about {SEASON_PA.toLocaleString()} and {SEASON_IP.toLocaleString()} in a season, so treat it as a rough guide.
+              Team WAR is counted like a depth chart: each position gets a season&apos;s playing time (about 6,200 PA and 1,450 innings in all), filled by the team&apos;s best players there first, so a deep roster can&apos;t count more playing time than a season has. A player&apos;s own WAR is his full projection; &quot;plays ~40%&quot; or &quot;bench&quot; shows how much of it this roster has room for.
+              The projected record starts from a replacement-level team (about 48 wins), adds team WAR, and scales every team by the same small factor so the league as a whole plays .500.
               The tax line and tiers are placeholders until a new labor agreement. Estimates are in italics with &quot;est.&quot;; hover one to see where it comes from. Your roster lives in the page address: use Copy share link to save or post it.
             </p>
           </footer>

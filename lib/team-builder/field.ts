@@ -1,4 +1,5 @@
-// Projected WAR by spot on the field, from each rostered player's primary position.
+// The spots on the field, and which spot a player's position text belongs to. The WAR at each
+// spot is worked out by the depth chart (depth.ts).
 
 export const FIELD_SPOTS = ['C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'DH', 'SP', 'RP'] as const
 export type FieldSpot = (typeof FIELD_SPOTS)[number]
@@ -26,17 +27,3 @@ export function spotsFor(pos: string): FieldSpot[] {
 }
 
 export interface SpotWar { war: number; players: { name: string; war: number }[] }
-
-export function warBySpot(players: { name: string; pos: string; war?: number | null }[]): Record<FieldSpot, SpotWar> {
-  const out = Object.fromEntries(FIELD_SPOTS.map((s) => [s, { war: 0, players: [] } as SpotWar])) as Record<FieldSpot, SpotWar>
-  for (const p of players) {
-    const war = p.war ?? 0
-    const spots = spotsFor(p.pos)
-    for (const s of spots) {
-      out[s].war += war / spots.length
-      out[s].players.push({ name: p.name, war: war / spots.length })
-    }
-  }
-  for (const s of FIELD_SPOTS) out[s].players.sort((a, b) => b.war - a.war)
-  return out
-}
