@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { HHPSLeaderboardRow, Season } from "@/lib/hhps";
+import type { HHPSLeaderboardRow, Season, Side } from "@/lib/hhps";
 
 const HHPSExplorer = dynamic(() => import("./HHPSExplorer"), {
   ssr: false,
@@ -13,6 +13,7 @@ const HHPSExplorer = dynamic(() => import("./HHPSExplorer"), {
 });
 
 interface Props {
+  side?: Side;
   leaderboard: HHPSLeaderboardRow[];
   season: Season;
   supabaseUrl: string;
