@@ -26,8 +26,8 @@
     "url": "https://www.fangraphs.com/projections?type=zipsp1"
   },
   "dollarsPerWar": {
-    "value": 11200000,
-    "note": "What teams paid per projected WAR in the 2025-26 free-agent market ($11.23M), from FanGraphs' 'What Are Teams Paying For A Win In Free Agency? 2026 Edition' (Ben Clemens, Feb 24, 2026). Cheaper players went for less per win and stars for more.",
+    "value": 8000000,
+    "note": "A one-year price per projected WAR, used to pre-fill free-agent signings. Calibrated against this year's pending free agents on market salaries (Grisham's $22M qualifying offer at 2.8 WAR, Torres, Suzuki, Happ: about $8-9M per projected WAR). FanGraphs' 2026 free-agent study found $11.23M, but that is the average annual value over multi-year deals, during which a player's WAR is expected to decline, so it overstates a single season. Changed from $11.2M on 2026-10-14 after Will spotted Grisham at $31.6M.",
     "url": "https://blogs.fangraphs.com/what-are-teams-paying-for-a-win-in-free-agency-2026-edition/"
   },
   "projectedRecord": {

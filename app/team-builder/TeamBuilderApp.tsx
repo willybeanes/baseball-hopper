@@ -7,6 +7,7 @@ import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { warBySpot } from '@/lib/team-builder/field'
 import { fmtRecord, projectedRecord, warScale } from '@/lib/team-builder/record'
+import assumptions from '@/lib/team-builder/assumptions.json'
 import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
@@ -502,13 +503,14 @@ export default function TeamBuilderApp() {
   }
 
   const minimum = meta?.assumptions.leagueMinimum.value ?? 780_000
-  const perWin = meta?.assumptions.dollarsPerWar?.value ?? 11_200_000
+  // Read straight from the assumptions file, so changing it doesn't wait for a data refresh.
+  const perWin = assumptions.dollarsPerWar.value
   const priceOf = (war: number | null | undefined) => warPrice(war, perWin, minimum)
   // The opening figure for signing a free agent: WAR × $/win, else his 2026 pay, else the minimum.
   const signingStart = (war: number | null | undefined, prev: number | null) => priceOf(war) ?? Math.max(prev ?? minimum, minimum)
   const signingHint = (war: number | null | undefined) =>
     war != null
-      ? `${war.toFixed(1)} projected WAR × ${money(perWin)} per win (FanGraphs' 2026 free-agent study). A one-year figure; change it freely.`
+      ? `${war.toFixed(1)} projected WAR × ${money(perWin)} per win: an estimated 2027 salary for one year, not a contract total. Change it freely.`
       : 'No projection for him, so this starts at his 2026 salary (or the league minimum). Change it freely.'
 
   const sumWar = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((n, s) => n + (s.player.war ?? 0), 0)
@@ -954,7 +956,7 @@ export default function TeamBuilderApp() {
                 </div>
                 <p className="max-w-[58ch] px-4 pb-2.5 text-[11px] text-[var(--dim)]">
                   {poolKind === 'fa'
-                    ? <>Pending free agents, best projected WAR first. The price is a one-year estimate, projected WAR × {money(perWin)} per win; you can change it when signing.</>
+                    ? <>Pending free agents, best projected WAR first. Prices are an estimated 2027 salary (one year, not a contract total): projected WAR × {money(perWin)} per win. You can change it when signing.</>
                     : <>Everyone on the other 29 teams, minor leaguers included, best projected WAR first. Trading for one brings his 2027 salary; who goes back isn&apos;t modelled, so remove players yourself.</>}
                 </p>
                 <div className="divide-y divide-[var(--rule)] border-t border-[var(--rule)]">
@@ -981,7 +983,7 @@ export default function TeamBuilderApp() {
                           <span className="whitespace-nowrap text-right text-[11px] text-[var(--dim)]">
                             <span className="font-mono">
                               {e.kind === 'fa'
-                                ? priceOf(e.war) != null ? <span className="italic text-[var(--text)]">{money(priceOf(e.war)!)} <span className="not-italic text-[var(--dimmer)]">est.</span></span> : '—'
+                                ? priceOf(e.war) != null ? <span className="italic text-[var(--text)]">{money(priceOf(e.war)!)}<span className="not-italic text-[var(--dimmer)]">/yr est.</span></span> : '—'
                                 : e.salary != null ? <span className="text-[var(--text)]">{money(e.salary)}</span> : 'unknown'}
                             </span>
                             <span className="block"><span className="font-mono text-[var(--text)]">{fmtWar(e.war)}</span> WAR</span>
@@ -1022,10 +1024,10 @@ export default function TeamBuilderApp() {
               Arbitration projections from <a href={meta.sources.arbitration.url} className="underline hover:text-[var(--dim)]">MLB Trade Rumors</a> ({meta.sources.arbitration.author}); option salaries from MLB Trade Rumors&apos;{' '}
               <a href={meta.sources.options.clubOptions} className="underline hover:text-[var(--dim)]">club</a> and <a href={meta.sources.options.playerOptions} className="underline hover:text-[var(--dim)]">player option</a> previews.
             </p>
-            {meta.projections && meta.assumptions.dollarsPerWar && (
+            {meta.projections && (
               <p>
                 Projected WAR from FanGraphs&apos; <a href={meta.projections.url} className="underline hover:text-[var(--dim)]">{meta.projections.label}</a>. {meta.projections.note} Players with no projection show a dash and count as 0.
-                Free-agent prices use {money(perWin)} per win, from FanGraphs&apos; <a href={meta.assumptions.dollarsPerWar.url} className="underline hover:text-[var(--dim)]">2026 study of what teams paid per win</a>.
+                Free-agent prices use {money(perWin)} per projected WAR for one season, set against what this year&apos;s free agents are paid (FanGraphs&apos; <a href={assumptions.dollarsPerWar.url} className="underline hover:text-[var(--dim)]">$11.2M figure</a> is for multi-year deals, over which WAR declines).
               </p>
             )}
             <p>
