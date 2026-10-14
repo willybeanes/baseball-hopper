@@ -24,7 +24,7 @@ import {
   hhpsUrl,
 } from "@/lib/hhps";
 import { fetchLeagueStance, fetchStance, pickStance, stanceMedians } from "@/lib/hhps";
-import type { PointsJson, StanceMedians, StanceRow, TrajFile } from "@/lib/hhps";
+import type { PointsJson, Side, StanceMedians, StanceRow, TrajFile } from "@/lib/hhps";
 import { pointsJsonUrl, trajJsonUrl } from "@/lib/hhps";
 import StancePanel from "./StancePanel";
 import PlayPanel from "./PlayPanel";
@@ -58,6 +58,13 @@ const SPLIT_LABEL: Record<Hand, string> = {
   RB: "breaking balls vs RHP", LB: "breaking balls vs LHP",
   RO: "offspeed vs RHP", LO: "offspeed vs LHP",
 };
+const PITCHER_SPLIT_LABEL: Record<Hand, string> = {
+  A: "all hitters", R: "vs RHH", L: "vs LHH",
+  F: "fastballs", B: "breaking balls", O: "offspeed",
+  RF: "fastballs vs RHH", LF: "fastballs vs LHH",
+  RB: "breaking balls vs RHH", LB: "breaking balls vs LHH",
+  RO: "offspeed vs RHH", LO: "offspeed vs LHH",
+};
 const splitKey = (h: HandSel, p: PitchSel): Hand => (p ? (h === "A" ? p : ((h + p) as Hand)) : h);
 function parseSplit(v: string | undefined): [HandSel, PitchSel] {
   if (v === "R" || v === "L") return [v, null];
@@ -68,6 +75,8 @@ function parseSplit(v: string | undefined): [HandSel, PitchSel] {
 type PlayerId = number | "league-R" | "league-L";
 
 interface Props {
+  /** "pitcher" regroups every map by the pitcher who threw the pitch (contact allowed, whiffs induced). */
+  side?: Side;
   leaderboard: HHPSLeaderboardRow[];
   season: Season;
   supabaseUrl: string;
@@ -122,6 +131,7 @@ function defaultCamera(sg: 1 | -1, yShift = 0) {
 // ── Main component ─────────────────────────────────────────────────────────────
 
 export default function HHPSExplorer({
+  side = "hitter",
   leaderboard,
   season: initialSeason,
   supabaseUrl,
@@ -139,6 +149,11 @@ export default function HHPSExplorer({
 }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const isP = side === "pitcher";
+  const basePath = isP ? "/hhps/pitchers" : "/hhps";
+  const splitLabel = isP ? PITCHER_SPLIT_LABEL : SPLIT_LABEL;
+  // Who the rows are about, and which hitter side an event was thrown to (pitcher files store it where hitter files store pitcher hand).
+  const who = isP ? "pitcher" : "hitter";
 
   // ── State ──────────────────────────────────────────────────────────────────
   const [season, setSeason] = useState<Season>(initialSeason);
@@ -236,6 +251,7 @@ export default function HHPSExplorer({
           mode: mode === "bip" ? "contact" : "swing",
           hand: hand === "A" ? "all" : hand,
           season: season === SEASONS[0] ? undefined : season,
+          side,
           thr: thrMap[`${mode}_${outcome}`],
           whiff: alsoWhiff && outcome !== "whiff" ? true : undefined,
           wthr: alsoWhiff && outcome !== "whiff" ? thrMap["sw_whiff"] : undefined,
@@ -248,7 +264,7 @@ export default function HHPSExplorer({
       );
     } else if (season !== initialSeason) {
       // League average has no player param; keep the season so the leaderboard matches the maps.
-      router.replace(`/hhps?season=${season}`, { scroll: false });
+      router.replace(`${basePath}?season=${season}`, { scroll: false });
     }
   }, [selectedId, outcome, mode, hand, season, thrMap, alsoWhiff, viewMode, circTypes, circRes, pitchPaths, router]);
 
@@ -258,7 +274,7 @@ export default function HHPSExplorer({
     const key = `${season}:${selectedId}`;
     if (trajRef.current?.key === key) return;
     let cancelled = false;
-    fetch(trajJsonUrl(supabaseUrl, season, selectedId))
+    fetch(trajJsonUrl(supabaseUrl, season, selectedId, side))
       .then((r) => (r.ok ? (r.json() as Promise<TrajFile>) : null))
       .catch(() => null)
       .then((data) => { if (!cancelled) setTrajData({ key, data }); });
@@ -271,7 +287,7 @@ export default function HHPSExplorer({
     const key = `${season}:${selectedId}`;
     if (pointsRef.current?.key === key) return;
     let cancelled = false;
-    fetch(pointsJsonUrl(supabaseUrl, season, selectedId))
+    fetch(pointsJsonUrl(supabaseUrl, season, selectedId, side))
       .then((r) => (r.ok ? (r.json() as Promise<PointsJson>) : null))
       .catch(() => null)
       .then((data) => { if (!cancelled) setPoints({ key, data }); });
@@ -291,7 +307,7 @@ export default function HHPSExplorer({
   useEffect(() => {
     let cancelled = false;
     setStanceRows([]);
-    if (typeof selectedId !== "number") return;
+    if (isP || typeof selectedId !== "number") return;   // batting stance is a hitter measurement
     fetchStance(supabaseUrl, anonKey, selectedId, season)
       .then((rows) => { if (!cancelled) setStanceRows(rows); })
       .catch(() => {});
@@ -305,13 +321,13 @@ export default function HHPSExplorer({
     let cancelled = false;
     // Logo follows the selected season: current season uses his team today,
     // past seasons use the team he had the most PA for that year (traded players).
-    const hydrate = `currentTeam,stats(group=[hitting],type=[season],season=${season},sportId=1)`;
+    const hydrate = `currentTeam,stats(group=[${isP ? "pitching" : "hitting"}],type=[season],season=${season},sportId=1)`;
     fetch(`https://statsapi.mlb.com/api/v1/people/${selectedId}?hydrate=${encodeURIComponent(hydrate)}`)
       .then((r) => r.json())
       .then((d) => {
         const p = d?.people?.[0];
         const splits: any[] = (p?.stats?.[0]?.splits ?? []).filter((s: any) => s.team?.id);
-        const top = splits.sort((a, b) => (b.stat?.plateAppearances ?? 0) - (a.stat?.plateAppearances ?? 0))[0];
+        const top = splits.sort((a, b) => (b.stat?.plateAppearances ?? b.stat?.battersFaced ?? 0) - (a.stat?.plateAppearances ?? a.stat?.battersFaced ?? 0))[0];
         const teamId: number | null =
           (season === SEASONS[0] ? p?.currentTeam?.id : top?.team?.id) ?? top?.team?.id ?? p?.currentTeam?.id ?? null;
         if (!cancelled) setPlayerBadge({ mlbam: selectedId, teamId });
@@ -326,8 +342,8 @@ export default function HHPSExplorer({
     async function init() {
       const [Plotly, meta, league, figure] = await Promise.all([
         import("plotly.js-dist-min"),
-        fetch(metaJsonUrl(supabaseUrl, season)).then((r) => r.json() as Promise<MetaJson>),
-        fetch(leagueJsonUrl(supabaseUrl, season)).then((r) => r.json() as Promise<LeagueJson>),
+        fetch(metaJsonUrl(supabaseUrl, season, side)).then((r) => r.json() as Promise<MetaJson>),
+        fetch(leagueJsonUrl(supabaseUrl, season, side)).then((r) => r.json() as Promise<LeagueJson>),
         fetch(figureJsonUrl(supabaseUrl, season)).then((r) => r.json() as Promise<FigureJson>),
       ]);
       if (cancelled) return;
@@ -436,8 +452,9 @@ export default function HHPSExplorer({
         const lg = leagueRef.current[id === "league-R" ? "R" : "L"];
         const lgPayload = lg.splits[hand];
         if (!lgPayload) return;
-        currentPayloadRef.current = { payload: lgPayload, stand: lg.stand };
-        draw(lgPayload, lg.stand);
+        const lgStand = lgPayload.stand ?? lg.stand;
+        currentPayloadRef.current = { payload: lgPayload, stand: lgStand };
+        draw(lgPayload, lgStand);
         return;
       }
 
@@ -445,7 +462,7 @@ export default function HHPSExplorer({
       let player = playerCache.current.get(cacheKey);
       if (!player) {
         try {
-          const fetched = await fetch(playerJsonUrl(supabaseUrl, season, id)).then(
+          const fetched = await fetch(playerJsonUrl(supabaseUrl, season, id, side)).then(
             (r) => r.json() as Promise<PlayerJson>,
           );
           playerCache.current.set(cacheKey, fetched);
@@ -470,6 +487,13 @@ export default function HHPSExplorer({
     loadAndDraw(selectedId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId, hand]);
+
+  // Which side the hitter in a play actually stood on, for placing its pitch flight. Hitter files draw one frame per map, so
+  // the drawn stand is the hitter's; pitcher files pool both sides in one frame, so the event carries its own hitter side.
+  function eventSgE(ev: EventPoint, drawnStand: "R" | "L"): 1 | -1 {
+    const s = isP ? ev[5] : drawnStand;
+    return s === "L" ? 1 : -1;
+  }
 
   // ── Build and render traces ────────────────────────────────────────────────
   function draw(payload: SplitPayload, stand: "R" | "L") {
@@ -557,7 +581,7 @@ export default function HHPSExplorer({
     const swings = row?.swings ?? undefined;
     const sampleN = isWhiff ? swings : bip;
     const statusParts: string[] = [
-      stand === "L" ? "LHH" : "RHH",
+      isP ? splitLabel[hand] : stand === "L" ? "LHH" : "RHH",
       !isCustom && !circleSets && rank !== undefined && rank !== null ? `rank #${Math.round(rank)}` : "",
       pct !== undefined && pct !== null
         ? (isWhiff ? "Whiff%" : outcome === "hard" ? "HH%" : outcome === "soft" ? "Soft%" : "Brl%") + ` ${(pct * 100).toFixed(1)}%` +
@@ -686,8 +710,8 @@ export default function HHPSExplorer({
         lighting: { ambient: 0.9, diffuse: 0.3 },
       });
 
-      // 4. Bat mesh
-      if (batTarget) {
+      // 4. Bat mesh (a hitter's swing; a pitcher's pooled contact has no single bat)
+      if (batTarget && !isP) {
         const fh = figureHands(feet);   // hands move with the upper body when it is centered over his stance
         const hands: [number, number, number] = [fh[0] * sg, fh[1], fh[2]];
         const target: [number, number, number] = [batTarget[0] * sg, batTarget[1], batTarget[2]];
@@ -760,7 +784,7 @@ export default function HHPSExplorer({
     let path: PitchPath | null = null;
     if (pathSel && zoneInfo) {
       path = buildPitchPath(pathSel.traj, pathSel.ev, {
-        plateOffBody: zoneInfo.plate_off_body, stanceDepth, sgE: stand === "L" ? 1 : -1,
+        plateOffBody: zoneInfo.plate_off_body, stanceDepth, sgE: eventSgE(pathSel.ev, stand),
       });
     }
     if (path) {
@@ -799,13 +823,14 @@ export default function HHPSExplorer({
       tj.key === `${season}:${selectedId}` && tj.data.build === circleData.build && tj.data.n === circleData.pts.length,
     );
     if (tailsOn && circleSets && zoneInfo && tj?.data) {
-      const ctx = { plateOffBody: zoneInfo.plate_off_body, stanceDepth, sgE: (stand === "L" ? 1 : -1) as 1 | -1, windowIn: 96, light: true };
       for (const g of circleSets) {
         const tx: (number | null)[] = [], ty: (number | null)[] = [], tz: (number | null)[] = [];
         g.idx.forEach((pi, k) => {
           const arr = tj.data!.t[pi];
           if (!arr) return;
-          const pp = buildPitchPath(decodeTraj(arr), g.sel[k], ctx);
+          const pp = buildPitchPath(decodeTraj(arr), g.sel[k], {
+            plateOffBody: zoneInfo!.plate_off_body, stanceDepth, sgE: eventSgE(g.sel[k], stand), windowIn: 96, light: true,
+          });
           if (!pp) return;
           for (let q = 0; q < pp.solid.x.length; q++) { tx.push(pp.solid.x[q] * sg); ty.push(pp.solid.y[q]); tz.push(pp.solid.z[q]); }
           tx.push(null); ty.push(null); tz.push(null);
@@ -909,7 +934,7 @@ export default function HHPSExplorer({
     if (typeof selectedId !== "number") return null;
     const key = `${season}:${selectedId}`;
     if (pointsRef.current?.key === key) return pointsRef.current.data;
-    const data = await fetch(pointsJsonUrl(supabaseUrl, season, selectedId))
+    const data = await fetch(pointsJsonUrl(supabaseUrl, season, selectedId, side))
       .then((r) => (r.ok ? (r.json() as Promise<PointsJson>) : null))
       .catch(() => null);
     setPoints({ key, data });
@@ -1057,7 +1082,7 @@ export default function HHPSExplorer({
   const LB_COLS: { key: string; label: string; title: string }[] =
     outcome !== "whiff" && alsoWhiff && hasWhiff
       ? [
-          { key: "name", label: "Player", title: "Player name" },
+          { key: "name", label: isP ? "Pitcher" : "Player", title: isP ? "Pitcher name" : "Player name" },
           { key: primaryCubeKey, label: `${primaryCubeLabel} cubes`, title: `${primaryCubeLabel} ${modeLabel} space (lit 3-inch cubes)` },
           { key: "sw_whiff_in3", label: "Whiff cubes", title: "Whiff space (lit 3-inch cubes): pockets where at least half of his swings miss" },
           { key: "bip", label: "BIP", title: "Balls in play" },
@@ -1065,20 +1090,20 @@ export default function HHPSExplorer({
         ]
       : outcome === "whiff"
       ? [
-          { key: "name", label: "Player", title: "Player name" },
+          { key: "name", label: isP ? "Pitcher" : "Player", title: isP ? "Pitcher name" : "Player name" },
           { key: "sw_whiff_in3", label: "Whiff cubes", title: "Whiff space (lit 3-inch cubes): pockets where at least half of his swings miss" },
           { key: "whiff_rate", label: "Whiff %", title: "Whiffs per swing" },
           { key: "swings", label: "Swings", title: "Swings" },
         ]
       : outcome === "soft"
       ? [
-          { key: "name", label: "Player", title: "Player name" },
+          { key: "name", label: isP ? "Pitcher" : "Player", title: isP ? "Pitcher name" : "Player name" },
           { key: `${mode}_soft_in3`, label: "Soft-hit cubes", title: `Soft-hit ${modeLabel} space (lit 3-inch cubes): pockets where most contact is under 95 mph` },
           { key: `${mode}_hard_in3`, label: "Hard-hit cubes", title: `Hard-hit ${modeLabel} space (lit 3-inch cubes)` },
           { key: "bip", label: "BIP", title: "Balls in play" },
         ]
       : [
-          { key: "name", label: "Player", title: "Player name" },
+          { key: "name", label: isP ? "Pitcher" : "Player", title: isP ? "Pitcher name" : "Player name" },
           { key: `${mode}_hard_in3`, label: "Hard-hit cubes", title: `Hard-hit ${modeLabel} space (lit 3-inch cubes)` },
           { key: `${mode}_brl_in3`, label: "Barrel cubes", title: `Barrel ${modeLabel} space (lit 3-inch cubes)` },
           { key: "bip", label: "BIP", title: "Balls in play" },
@@ -1222,10 +1247,12 @@ export default function HHPSExplorer({
       {/* Header */}
       <div className="flex flex-wrap items-baseline gap-3 justify-between">
         <div>
-          <h1 className="text-xl font-bold">3D Swing Explorer</h1>
+          <h1 className="text-xl font-bold">{isP ? "3D Pitch Explorer" : "3D Swing Explorer"}</h1>
           <p className="text-sm text-[var(--dim)] mt-0.5">
             {circlesActive
-              ? "Each dot is one swing, at the raw spot where it happened."
+              ? (isP ? "Each dot is one swing against him, at the raw spot where it happened." : "Each dot is one swing, at the raw spot where it happened.")
+              : isP
+              ? `3-inch pockets of space around the hitter where his pitches ${outcome === "whiff" ? "get swung through for" : "get hit for"} ${outcome === "hard" ? "a hard-hit ball (95+ mph)" : outcome === "whiff" ? "a swing-and-miss" : outcome === "soft" ? "a soft-hit ball (under 95 mph)" : "a barrel"}${alsoWhiff && outcome !== "whiff" ? " (and where hitters miss, in green)" : ""}.`
               : `3-inch pockets of space where ${outcome === "whiff" ? "swings turn into" : "contact becomes"} ${outcome === "hard" ? "a hard-hit ball (95+ mph)" : outcome === "whiff" ? "a swing-and-miss" : outcome === "soft" ? "a soft-hit ball (under 95 mph)" : "a barrel"}${alsoWhiff && outcome !== "whiff" ? " (and where swings miss, in green)" : ""}.`}
           </p>
         </div>
@@ -1249,7 +1276,7 @@ export default function HHPSExplorer({
         <div className="relative">
           <input
             type="text"
-            placeholder="Search hitters…"
+            placeholder={isP ? "Search pitchers…" : "Search hitters…"}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="text-sm border border-[var(--panel-border)] rounded-md px-3 py-1.5 bg-[var(--panel)] text-[var(--text)] w-48 placeholder:text-[var(--dimmer)]"
@@ -1260,14 +1287,16 @@ export default function HHPSExplorer({
                 onClick={() => { setSelectedId("league-R"); setSearch(""); }}
                 className="w-full text-left px-3.5 py-2 text-sm hover:bg-[var(--bg)] text-[var(--text)]"
               >
-                League average, RHH
+                {isP ? "League average" : "League average, RHH"}
               </button>
-              <button
-                onClick={() => { setSelectedId("league-L"); setSearch(""); }}
-                className="w-full text-left px-3.5 py-2 text-sm hover:bg-[var(--bg)] text-[var(--text)]"
-              >
-                League average, LHH
-              </button>
+              {!isP && (
+                <button
+                  onClick={() => { setSelectedId("league-L"); setSearch(""); }}
+                  className="w-full text-left px-3.5 py-2 text-sm hover:bg-[var(--bg)] text-[var(--text)]"
+                >
+                  League average, LHH
+                </button>
+              )}
               {searchFiltered.slice(0, 30).map((r) => (
                 <button
                   key={r.mlbam}
@@ -1286,7 +1315,7 @@ export default function HHPSExplorer({
         {!search && (
           <span className="text-sm font-medium text-[var(--text)] px-2">
             {selectedId === "league-R"
-              ? "League avg, RHH"
+              ? (isP ? "League avg" : "League avg, RHH")
               : selectedId === "league-L"
               ? "League avg, LHH"
               : (allRows.find((r) => r.mlbam === selectedId)?.name ?? "—")}
@@ -1297,9 +1326,9 @@ export default function HHPSExplorer({
 
         {/* Hand split */}
         <div className="flex gap-1">
-          <Btn on={handSel === "A"} onClick={() => pickHand("A")}>All pitchers</Btn>
-          <Btn on={handSel === "R"} onClick={() => pickHand("R")}>vs RHP</Btn>
-          <Btn on={handSel === "L"} onClick={() => pickHand("L")}>vs LHP</Btn>
+          <Btn on={handSel === "A"} onClick={() => pickHand("A")}>{isP ? "All hitters" : "All pitchers"}</Btn>
+          <Btn on={handSel === "R"} onClick={() => pickHand("R")}>{isP ? "vs RHH" : "vs RHP"}</Btn>
+          <Btn on={handSel === "L"} onClick={() => pickHand("L")}>{isP ? "vs LHH" : "vs LHP"}</Btn>
         </div>
 
         {/* Pitch type. Only when this season's files carry the pitch-group maps. */}
@@ -1335,7 +1364,7 @@ export default function HHPSExplorer({
             <span className="w-px h-4 bg-[var(--rule)] mx-1 hidden sm:block" />
             <div
               className={trajData?.data === null && pitchPaths ? "opacity-40" : ""}
-              title={trajData?.data === null && pitchPaths ? "Pitch paths are not available for this hitter and season yet" : "Faint tails behind each circle: the last 8 ft of that pitch's real flight, so you can see which way the pitches came in"}
+              title={trajData?.data === null && pitchPaths ? `Pitch paths are not available for this ${who} and season yet` : "Faint tails behind each circle: the last 8 ft of that pitch's real flight, so you can see which way the pitches came in"}
             >
               <Btn on={pitchPaths} onClick={() => setPitchPaths((v) => !v)}>Pitch paths</Btn>
             </div>
@@ -1365,7 +1394,7 @@ export default function HHPSExplorer({
         {/* View: smoothed cubes or raw event circles */}
         <div
           className={`flex gap-1 ${typeof selectedId !== "number" ? "opacity-40 pointer-events-none" : ""}`}
-          title={typeof selectedId !== "number" ? "Circles need a hitter (league averages have no individual events)" : "Cubes are smoothed rate maps; circles are each individual event at its raw location"}
+          title={typeof selectedId !== "number" ? `Circles need a ${who} (league averages have no individual events)` : "Cubes are smoothed rate maps; circles are each individual event at its raw location"}
         >
           <Btn on={viewMode === "cubes"} onClick={() => switchView("cubes")}>Cubes</Btn>
           <Btn on={viewMode === "circles"} onClick={() => switchView("circles")}>Circles</Btn>
@@ -1412,7 +1441,7 @@ export default function HHPSExplorer({
                 <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm text-right leading-snug">
                   {displayName(storedName)}
                   <span className="block text-xs font-normal text-[var(--dim)]">
-                    {season}{hand !== "A" ? ` · ${SPLIT_LABEL[hand]}` : ""}
+                    {season}{hand !== "A" ? ` · ${splitLabel[hand]}` : ""}
                   </span>
                 </span>
               )}
@@ -1453,7 +1482,7 @@ export default function HHPSExplorer({
                 className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] leading-4 font-semibold text-white"
                 style={{ background: outcomeColor(outcome) }}
               >
-                {outcome === "hard" ? "Hard-hit" : outcome === "whiff" ? "Whiffs" : outcome === "soft" ? "Soft-hit" : "Barrels"}
+                {outcome === "hard" ? (isP ? "Hard-hit allowed" : "Hard-hit") : outcome === "whiff" ? (isP ? "Whiffs induced" : "Whiffs") : outcome === "soft" ? (isP ? "Soft contact induced" : "Soft-hit") : (isP ? "Barrels allowed" : "Barrels")}
                 <span className="font-normal opacity-85">· {mode === "bip" ? "per contact" : "per swing"}</span>
               </span>
               {alsoWhiff && outcome !== "whiff" && (
@@ -1461,7 +1490,7 @@ export default function HHPSExplorer({
                   className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] leading-4 font-semibold text-white"
                   style={{ background: outcomeColor("whiff") }}
                 >
-                  Whiffs
+                  {isP ? "Whiffs induced" : "Whiffs"}
                   <span className="font-normal opacity-85">· per swing</span>
                 </span>
               )}
@@ -1513,7 +1542,7 @@ export default function HHPSExplorer({
       </div>
 
       {/* Stance at contact */}
-      {typeof selectedId === "number" && (
+      {!isP && typeof selectedId === "number" && (
         <StancePanel
           rows={stanceRows}
           league={leagueStance}
@@ -1528,7 +1557,7 @@ export default function HHPSExplorer({
         <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[var(--rule)]">
           <h2 className="font-semibold text-sm">
             Leaderboard —{" "}
-            {SPLIT_LABEL[hand]}, {modeLabel}
+            {splitLabel[hand]}, {modeLabel}
           </h2>
           <label className="flex items-center gap-1.5 text-xs text-[var(--dim)] cursor-pointer">
             <input
@@ -1537,7 +1566,7 @@ export default function HHPSExplorer({
               onChange={(e) => setLbQualOnly(e.target.checked)}
               className="rounded"
             />
-            Qualified only (150+ PA)
+            {isP ? "Qualified only (150+ batters faced)" : "Qualified only (150+ PA)"}
           </label>
         </div>
         <div className="overflow-x-auto">
@@ -1598,6 +1627,27 @@ export default function HHPSExplorer({
       {/* Explainer */}
       <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-4 space-y-3 text-sm text-[var(--dim)] leading-relaxed">
         <h2 className="font-semibold text-[var(--text)] text-base">About this tool</h2>
+{isP ? (
+<>
+        <p>
+          <strong className="text-[var(--text)]">The pitcher&rsquo;s side of the map.</strong>{" "}
+          Same space, same cubes, grouped by who threw the pitch. Every ball is located relative to the hitter&rsquo;s
+          body (inches off his body, out front, and height), so a pitcher&rsquo;s pitches to righties and lefties share
+          one frame. Each cube is a 3-inch pocket where this pitcher&rsquo;s pitches get hit hard (orange), turn into
+          barrels (purple, Baseball Savant&rsquo;s barrel flag), get hit softly (gold) or get swung through (green).
+          Cubes count contact <em>allowed</em> and whiffs <em>induced</em>, so more orange cubes is the damage map a
+          hitter would want to find.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Per contact</strong>{" "}
+          asks: of the balls hitters put in play from this pocket against him, what share were hard-hit (or barrels)?{" "}
+          <strong className="text-[var(--text)]">Per swing</strong>{" "}
+          also counts whiffs and fouls as swings that didn&rsquo;t produce the outcome, so a pitcher who gets lots of
+          swing-and-miss shows fewer damage cubes.
+        </p>
+</>
+) : (
+<>
         <p>
           <strong className="text-[var(--text)]">Hard-Hit Possibility Space (HHPS)</strong>{" "}
           maps where in the space around a hitter&rsquo;s body his contact turns into a hard-hit ball
@@ -1612,6 +1662,8 @@ export default function HHPSExplorer({
           also counts whiffs and fouls as swings that didn&rsquo;t produce the outcome, so it penalizes
           swing-and-miss.
         </p>
+</>
+)}
         <p>
           <strong className="text-[var(--text)]">Cutoffs:</strong>{" "}
           a cube lights up when the hitter&rsquo;s rate in that pocket reaches a fixed bar, the same for
@@ -1629,6 +1681,7 @@ export default function HHPSExplorer({
           grey dots mark the pockets holding 90% of all league batted balls, the contact space a hitter
           can realistically reach; cubes only light up inside it.
         </p>
+{!isP && (
         <p>
           <strong className="text-[var(--text)]">Stance at contact</strong>{" "}
           comes from Baseball Savant&rsquo;s batting-stance tracking, which records where the hitter&rsquo;s
@@ -1642,6 +1695,7 @@ export default function HHPSExplorer({
           so you can see where he stands, and the Stance labels button prints feet apart, foot angle and depth
           at contact right on the ground.
         </p>
+)}
         <p>
           <strong className="text-[var(--text)]">Pitch paths (tails):</strong>{" "}
           in Circles, the <em>Pitch paths</em> button adds a faint tail behind every circle showing the last eight
@@ -1670,6 +1724,13 @@ export default function HHPSExplorer({
           selected). Each card shows the matchup, inning, date and result from the MLB game feed, with a
           link that opens the clip on Baseball Savant. Whiff cards also show how far the bat missed the
           ball. Video links need the play&rsquo;s game id, which is filled in for every play in the data.
+        </p>
+        <p>
+          <strong className="text-[var(--text)]">Why whiff counts can differ from Baseball Savant:</strong>{" "}
+          a whiff here is a swinging strike or a blocked swinging strike. Savant also counts foul tips as
+          whiffs, but here a foul tip is a foul, since the bat touched the ball. Pitches without bat-tracking
+          data have no swing location and can&rsquo;t be placed in the 3D space, so they are left out too. That
+          is why a hitter&rsquo;s whiff count here is a bit lower than Savant&rsquo;s.
         </p>
         <p>
           <strong className="text-[var(--text)]">Soft-hit</strong>{" "}
@@ -1735,11 +1796,20 @@ export default function HHPSExplorer({
           Those samples are small, especially offspeed vs one hand (a regular has a few dozen balls in
           play), so expect sparse maps there.
         </p>
+        {isP ? (
+          <p className="text-xs text-[var(--dimmer)]">
+            Known limitations: maps are the pitcher&rsquo;s own results with no adjustment for who he faced, the park or
+            the count. The figure and strike zone are generic (league-median stance), and the All view pools his pitches to
+            both sides of the plate in one right-handed frame. Splits by hitter side and pitch group get small quickly, so
+            expect sparse maps there. A pitcher needs at least 20 balls in play to have a map.
+          </p>
+        ) : (
         <p className="text-xs text-[var(--dimmer)]">
           Known limitations: the ABS zone is drawn at each hitter&rsquo;s stance depth (from Savant&rsquo;s batting-stance data, league median about 29&Prime;); where that is missing it falls back to a 19&Prime; placeholder. The figure is
           generic, not the hitter&rsquo;s real body. vs LHP samples are small (&sim;80 BIP for a regular).
           In the All view a switch hitter&rsquo;s two sides are combined.
         </p>
+        )}
       </section>
     </main>
   );
