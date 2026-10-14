@@ -15,6 +15,7 @@ const NAV_GROUPS = [
   {
     label: "Pitchers",
     tools: [
+      { label: "3D Pitch Explorer", href: "/hhps/pitchers", external: false },
       { label: "Battery Splits", href: "/battery", external: false },
       { label: "Stuff Splits", href: "/stuff/platoon", external: false },
       { label: "Percentile Compare", href: "/compare?tab=pitcher", external: false },

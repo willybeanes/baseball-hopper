@@ -5,6 +5,18 @@
 const STORAGE_BASE = (supabaseUrl: string) =>
   `${supabaseUrl}/storage/v1/object/public/hhps-players`;
 
+/** Which side of the matchup the explorer is grouped by. Pitcher files live under pitchers/<season>/ in the same bucket. */
+export type Side = "hitter" | "pitcher";
+
+function seasonBase(supabaseUrl: string, season: number, side: Side = "hitter") {
+  if (side === "pitcher") {
+    // NEXT_PUBLIC_HHPS_PITCHER_BASE points the pitcher maps at another origin (local build output while developing).
+    const override = process.env.NEXT_PUBLIC_HHPS_PITCHER_BASE;
+    return override ? `${override}/${season}` : `${STORAGE_BASE(supabaseUrl)}/pitchers/${season}`;
+  }
+  return `${STORAGE_BASE(supabaseUrl)}/${season}`;
+}
+
 export const SEASONS = [2026, 2025, 2024] as const;
 export type Season = (typeof SEASONS)[number];
 
@@ -131,21 +143,22 @@ export interface PlotlyMesh {
 
 // ── URL helpers ───────────────────────────────────────────────────────────────
 
-export function playerJsonUrl(supabaseUrl: string, season: number, mlbam: number) {
-  return `${STORAGE_BASE(supabaseUrl)}/${season}/players/${mlbam}.json`;
+export function playerJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter") {
+  return `${seasonBase(supabaseUrl, season, side)}/players/${mlbam}.json`;
 }
-export function leagueJsonUrl(supabaseUrl: string, season: number) {
-  return `${STORAGE_BASE(supabaseUrl)}/${season}/league.json`;
+export function leagueJsonUrl(supabaseUrl: string, season: number, side: Side = "hitter") {
+  return `${seasonBase(supabaseUrl, season, side)}/league.json`;
 }
-export function metaJsonUrl(supabaseUrl: string, season: number) {
-  return `${STORAGE_BASE(supabaseUrl)}/${season}/meta.json`;
+export function metaJsonUrl(supabaseUrl: string, season: number, side: Side = "hitter") {
+  return `${seasonBase(supabaseUrl, season, side)}/meta.json`;
 }
-export function pointsJsonUrl(supabaseUrl: string, season: number, mlbam: number) {
-  return `${STORAGE_BASE(supabaseUrl)}/${season}/points/${mlbam}.json`;
+export function pointsJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter") {
+  return `${seasonBase(supabaseUrl, season, side)}/points/${mlbam}.json`;
 }
-export function trajJsonUrl(supabaseUrl: string, season: number, mlbam: number) {
-  return `${STORAGE_BASE(supabaseUrl)}/${season}/traj/${mlbam}.json`;
+export function trajJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter") {
+  return `${seasonBase(supabaseUrl, season, side)}/traj/${mlbam}.json`;
 }
+/** The hitter figure is shared: the pitcher explorer draws the same generic body. */
 export function figureJsonUrl(supabaseUrl: string, season: number) {
   return `${STORAGE_BASE(supabaseUrl)}/${season}/figure.json`;
 }
@@ -153,7 +166,7 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; paths?: boolean; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number },
+  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; paths?: boolean; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number; side?: Side },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
@@ -167,7 +180,7 @@ export function hhpsUrl(
   if (opts?.outcome) params.set("outcome", opts.outcome);
   if (opts?.mode) params.set("mode", opts.mode);
   if (opts?.hand) params.set("hand", opts.hand);
-  return `/hhps?${params}`;
+  return `${opts?.side === "pitcher" ? "/hhps/pitchers" : "/hhps"}?${params}`;
 }
 
 // ── Data transforms ───────────────────────────────────────────────────────────
