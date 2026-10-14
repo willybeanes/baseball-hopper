@@ -961,7 +961,8 @@
    "age": 26,
    "war": 1.4,
    "pa": 501,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 806401,
@@ -970,7 +971,8 @@
    "age": 27,
    "war": 1.25,
    "pa": 393,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692238,
@@ -979,7 +981,8 @@
    "age": 25,
    "war": 1.03,
    "pa": 353,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 694196,
@@ -988,7 +991,8 @@
    "age": 23,
    "war": 0.93,
    "pa": 577,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 802126,
@@ -997,7 +1001,8 @@
    "age": 25,
    "war": 0.9,
    "ip": 103.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 801639,
@@ -1006,7 +1011,8 @@
    "age": 26,
    "war": 0.83,
    "ip": 96.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692368,
@@ -1015,7 +1021,8 @@
    "age": 24,
    "war": 0.77,
    "pa": 348,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 664141,
@@ -1024,7 +1031,8 @@
    "age": 33,
    "war": 0.71,
    "ip": 73.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 686823,
@@ -1033,7 +1041,8 @@
    "age": 29,
    "war": 0.69,
    "pa": 376,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 805257,
@@ -1042,7 +1051,8 @@
    "age": 26,
    "war": 0.6,
    "ip": 93,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 687284,
@@ -1051,7 +1061,8 @@
    "age": 26,
    "war": 0.56,
    "pa": 383,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 802609,
@@ -1060,7 +1071,8 @@
    "age": 29,
    "war": 0.47,
    "ip": 112,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 686873,
@@ -1069,7 +1081,8 @@
    "age": 28,
    "war": 0.41,
    "ip": 82,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 694757,
@@ -1078,7 +1091,8 @@
    "age": 25,
    "war": 0.31,
    "pa": 278,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 694754,
@@ -1087,7 +1101,8 @@
    "age": 24,
    "war": 0.27,
    "pa": 483,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 672021,
@@ -1096,7 +1111,8 @@
    "age": 27,
    "war": 0.16,
    "ip": 53.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 806611,
@@ -1105,7 +1121,8 @@
    "age": 22,
    "war": 0.15,
    "pa": 447,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 805117,
@@ -1114,7 +1131,8 @@
    "age": 23,
    "war": 0.15,
    "pa": 514,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 671117,
@@ -1123,7 +1141,8 @@
    "age": 28,
    "war": 0.14,
    "pa": 433,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 689359,
@@ -1132,7 +1151,8 @@
    "age": 28,
    "war": 0.1,
    "ip": 50.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 815780,
@@ -1141,7 +1161,8 @@
    "age": 26,
    "war": 0.1,
    "ip": 91,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692024,
@@ -1150,7 +1171,8 @@
    "age": 30,
    "war": 0.06,
    "ip": 44.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 692366,
@@ -1159,7 +1181,8 @@
    "age": 24,
    "war": 0.03,
    "pa": 321,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 678576,
@@ -1168,7 +1191,8 @@
    "age": 26,
    "war": -0.02,
    "ip": 55.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 688730,
@@ -1177,7 +1201,8 @@
    "age": 26,
    "war": -0.06,
    "ip": 50.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 687218,
@@ -1186,7 +1211,8 @@
    "age": 27,
    "war": -0.06,
    "ip": 49,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 686846,
@@ -1195,7 +1221,8 @@
    "age": 26,
    "war": -0.1,
    "ip": 32.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 801592,
@@ -1204,7 +1231,8 @@
    "age": 24,
    "war": -0.12,
    "pa": 326,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 823185,
@@ -1213,7 +1241,8 @@
    "age": 25,
    "war": -0.12,
    "pa": 494,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692352,
@@ -1222,7 +1251,8 @@
    "age": 24,
    "war": -0.15,
    "ip": 80.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 804922,
@@ -1231,7 +1261,8 @@
    "age": 26,
    "war": -0.23,
    "ip": 52,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 805126,
@@ -1240,7 +1271,8 @@
    "age": 27,
    "war": -0.38,
    "pa": 501,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 815779,
@@ -1249,7 +1281,8 @@
    "age": 26,
    "war": -0.45,
    "ip": 55,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692374,
@@ -1258,7 +1291,8 @@
    "age": 24,
    "war": -0.45,
    "pa": 300,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 694552,
@@ -1267,7 +1301,8 @@
    "age": 25,
    "war": -0.94,
    "pa": 295,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692348,
@@ -1276,7 +1311,8 @@
    "age": 24,
    "war": -0.99,
    "pa": 498,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 814451,
@@ -1285,7 +1321,8 @@
    "age": 24,
    "war": -1.15,
    "pa": 437,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   }
  ]
 }

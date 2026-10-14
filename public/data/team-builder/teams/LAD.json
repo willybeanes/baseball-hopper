@@ -644,7 +644,8 @@
    "age": 24,
    "war": 2.05,
    "pa": 539,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 666149,
@@ -653,7 +654,8 @@
    "age": 29,
    "war": 1.46,
    "pa": 467,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 801887,
@@ -662,7 +664,8 @@
    "age": 26,
    "war": 1.27,
    "pa": 447,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 701328,
@@ -671,7 +674,8 @@
    "age": 23,
    "war": 1.11,
    "ip": 116.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 702318,
@@ -680,7 +684,8 @@
    "age": 26,
    "war": 1.01,
    "ip": 103,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 683006,
@@ -689,7 +694,8 @@
    "age": 26,
    "war": 0.96,
    "pa": 515,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 808234,
@@ -698,7 +704,8 @@
    "age": 21,
    "war": 0.92,
    "pa": 555,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 500743,
@@ -707,7 +714,8 @@
    "age": 38,
    "war": 0.89,
    "pa": 307,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 641778,
@@ -716,7 +724,8 @@
    "age": 32,
    "war": 0.88,
    "ip": 97,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 676046,
@@ -725,7 +734,8 @@
    "age": 28,
    "war": 0.88,
    "ip": 83.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 656212,
@@ -734,7 +744,8 @@
    "age": 31,
    "war": 0.73,
    "ip": 100.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 694573,
@@ -743,7 +754,8 @@
    "age": 25,
    "war": 0.71,
    "ip": 90,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 696486,
@@ -752,7 +764,8 @@
    "age": 24,
    "war": 0.68,
    "pa": 556,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 702789,
@@ -761,7 +774,8 @@
    "age": 28,
    "war": 0.66,
    "pa": 491,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 809944,
@@ -770,7 +784,8 @@
    "age": 24,
    "war": 0.58,
    "pa": 485,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 814527,
@@ -779,7 +794,8 @@
    "age": 25,
    "war": 0.58,
    "ip": 98.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 692262,
@@ -788,7 +804,8 @@
    "age": 24,
    "war": 0.58,
    "ip": 83.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 680837,
@@ -797,7 +814,8 @@
    "age": 33,
    "war": 0.57,
    "pa": 338,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 685301,
@@ -806,7 +824,8 @@
    "age": 29,
    "war": 0.53,
    "pa": 364,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 695646,
@@ -815,7 +834,8 @@
    "age": 24,
    "war": 0.5,
    "ip": 89.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 803183,
@@ -824,7 +844,8 @@
    "age": 25,
    "war": 0.39,
    "ip": 89.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 689042,
@@ -833,7 +854,8 @@
    "age": 26,
    "war": 0.32,
    "ip": 76.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 699071,
@@ -842,7 +864,8 @@
    "age": 24,
    "war": 0.31,
    "ip": 87,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 666163,
@@ -851,7 +874,8 @@
    "age": 29,
    "war": 0.26,
    "pa": 282,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 702488,
@@ -860,7 +884,8 @@
    "age": 23,
    "war": 0.23,
    "pa": 531,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 680729,
@@ -869,7 +894,8 @@
    "age": 27,
    "war": 0.18,
    "ip": 52.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 805891,
@@ -878,7 +904,8 @@
    "age": 28,
    "war": 0.18,
    "pa": 513,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 685716,
@@ -887,7 +914,8 @@
    "age": 25,
    "war": 0.17,
    "pa": 220,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 695653,
@@ -896,7 +924,8 @@
    "age": 24,
    "war": 0.16,
    "pa": 509,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 814481,
@@ -905,7 +934,8 @@
    "age": 25,
    "war": 0.14,
    "ip": 48.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 642546,
@@ -914,7 +944,8 @@
    "age": 30,
    "war": 0.12,
    "ip": 46.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 682645,
@@ -923,7 +954,8 @@
    "age": 25,
    "war": 0.04,
    "ip": 72.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 689233,
@@ -932,7 +964,8 @@
    "age": 27,
    "war": -0.09,
    "ip": 41,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 687798,
@@ -941,7 +974,8 @@
    "age": 28,
    "war": -0.09,
    "ip": 48,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 682087,
@@ -950,7 +984,8 @@
    "age": 27,
    "war": -0.1,
    "ip": 45.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 806077,
@@ -959,7 +994,8 @@
    "age": 22,
    "war": -0.12,
    "pa": 539,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 674976,
@@ -968,7 +1004,8 @@
    "age": 29,
    "war": -0.13,
    "pa": 344,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 622075,
@@ -977,7 +1014,8 @@
    "age": 33,
    "war": -0.15,
    "ip": 35.3,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 684491,
@@ -986,7 +1024,8 @@
    "age": 25,
    "war": -0.18,
    "pa": 200,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 644433,
@@ -995,7 +1034,8 @@
    "age": 32,
    "war": -0.27,
    "pa": 262,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 656924,
@@ -1004,7 +1044,8 @@
    "age": 32,
    "war": -0.28,
    "ip": 53,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 682949,
@@ -1013,7 +1054,8 @@
    "age": 26,
    "war": -0.3,
    "ip": 53.7,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 699062,
@@ -1022,7 +1064,8 @@
    "age": 26,
    "war": -0.33,
    "ip": 46,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 695372,
@@ -1031,7 +1074,8 @@
    "age": 25,
    "war": -0.51,
    "pa": 395,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 691558,
@@ -1040,7 +1084,8 @@
    "age": 24,
    "war": -0.6,
    "pa": 448,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 701527,
@@ -1049,7 +1094,8 @@
    "age": 24,
    "war": -0.62,
    "pa": 298,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 693819,
@@ -1058,7 +1104,8 @@
    "age": 25,
    "war": -0.88,
    "pa": 403,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 703153,
@@ -1067,7 +1114,8 @@
    "age": 22,
    "war": -0.96,
    "pa": 537,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 806306,
@@ -1076,7 +1124,8 @@
    "age": 23,
    "war": -0.99,
    "pa": 314,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 683169,
@@ -1085,7 +1134,8 @@
    "age": 26,
    "war": -1,
    "pa": 436,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 800370,
@@ -1094,7 +1144,8 @@
    "age": 22,
    "war": -1.34,
    "pa": 415,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 694838,
@@ -1103,7 +1154,8 @@
    "age": 25,
    "war": -1.41,
    "pa": 420,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 800302,
@@ -1112,7 +1164,8 @@
    "age": 22,
    "war": -1.6,
    "pa": 425,
-   "salary": 780000
+   "salary": 780000,
+   "debuted": false
   }
  ]
 }
