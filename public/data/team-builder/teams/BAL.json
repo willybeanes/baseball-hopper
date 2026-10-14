@@ -856,6 +856,15 @@
    "salary": 780000
   },
   {
+   "mlbamId": 670869,
+   "name": "Livan Soto",
+   "pos": "ss",
+   "age": 27,
+   "war": 0.62,
+   "pa": 433,
+   "salary": 780000
+  },
+  {
    "mlbamId": 686976,
    "name": "Silas Ardoin",
    "pos": "c",
