@@ -18,8 +18,8 @@ function tip(spot: FieldSpot, s: SpotWar): string {
 
 // Projected WAR by position, drawn on a field: the eight fielders where they stand, the
 // rotation on the mound, bullpen and DH off to the side. The red tint deepens with WAR.
-export default function FieldDiagram({ spots, className = '' }: { spots: Record<FieldSpot, SpotWar>; className?: string }) {
-  const label = `Projected WAR by position: ${FIELD_SPOTS.map((s) => `${SPOT_NAMES[s]} ${fmt(spots[s].war)}`).join(', ')}`
+export default function FieldDiagram({ spots, record, className = '' }: { spots: Record<FieldSpot, SpotWar>; record?: string; className?: string }) {
+  const label = `Projected WAR by position: ${FIELD_SPOTS.map((s) => `${SPOT_NAMES[s]} ${fmt(spots[s].war)}`).join(', ')}${record ? `. Projected record ${record}` : ''}`
   return (
     <svg viewBox="0 0 300 262" role="img" aria-label={label} className={className}>
       {/* Outfield, infield dirt, infield grass */}
@@ -54,6 +54,14 @@ export default function FieldDiagram({ spots, className = '' }: { spots: Record<
           <text x="2" y={y + 20} fontSize="17" fontWeight="700" fill="var(--text)" style={{ fontVariantNumeric: 'tabular-nums' }}>{fmt(spots[spot].war)}</text>
         </g>
       ))}
+
+      {/* Bottom right, as on a depth-chart graphic: the projected record */}
+      {record && (
+        <g>
+          <text x="298" y="228" textAnchor="end" fontSize="14" fontWeight="500" fill="var(--dimmer)">Projected record</text>
+          <text x="298" y="252" textAnchor="end" fontSize="21" fontWeight="700" fill="var(--text)" style={{ fontVariantNumeric: 'tabular-nums' }}>{record}</text>
+        </g>
+      )}
     </svg>
   )
 }

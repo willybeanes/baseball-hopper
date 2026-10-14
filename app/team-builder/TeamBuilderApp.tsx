@@ -6,6 +6,7 @@ import { headshotUrl } from '@/lib/player'
 import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { warBySpot } from '@/lib/team-builder/field'
+import { fmtRecord, projectedRecord, warScale } from '@/lib/team-builder/record'
 import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
@@ -221,7 +222,7 @@ function Card({ title, aside, note, children, id }: { title: string; aside?: Rea
 // Every team, ranked left to right by projected 2027 WAR. The selected team's WAR is live, so
 // it slides along the row as moves are made. Positions animate with transform. Lives inside the
 // pinned totals bar so it stays in view while players are added.
-function TeamStrip({ wars, team, onPick }: { wars: Record<string, number>; team: string; onPick: (t: string) => void }) {
+function TeamStrip({ wars, team, onPick, winsFor }: { wars: Record<string, number>; team: string; onPick: (t: string) => void; winsFor: (war: number) => number }) {
   const ranked = Object.entries(wars).sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]))
   const slot = 100 / Math.max(ranked.length, 1)
   const myIndex = ranked.findIndex(([code]) => code === team)
@@ -252,9 +253,9 @@ function TeamStrip({ wars, team, onPick }: { wars: Record<string, number>; team:
                 <button
                   type="button"
                   onClick={() => onPick(code)}
-                  aria-label={`${TEAM_NAMES[code]}: ${war.toFixed(1)} projected WAR, ${ordinal(ranked.length - i)} of ${ranked.length}`}
+                  aria-label={`${TEAM_NAMES[code]}: ${war.toFixed(1)} projected WAR, about ${Math.round(winsFor(war))} wins, ${ordinal(ranked.length - i)} of ${ranked.length}`}
                   aria-current={mine ? 'true' : undefined}
-                  title={TEAM_NAMES[code]}
+                  title={`${TEAM_NAMES[code]}: about ${Math.round(winsFor(war))} wins`}
                   className={`flex h-full w-full flex-col items-center justify-center gap-0.5 rounded-md text-center leading-tight ${
                     mine ? 'bg-[var(--accent-dim)] ring-2 ring-inset ring-[var(--accent)]' : 'hover:bg-[var(--bg)]'
                   }`}
@@ -341,6 +342,12 @@ function WarDelta({ now, then }: { now: number; then: number }) {
   const d = Math.round((now - then) * 10) / 10
   if (!d) return null
   return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[#1a7a3a]' : 'text-[var(--accent)]'}`}>{d > 0 ? '+' : ''}{d.toFixed(1)}</span>
+}
+
+function WinsDelta({ now, then }: { now: number; then: number }) {
+  const d = Math.round((now - then) * 10) / 10
+  if (!d) return null
+  return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[#1a7a3a]' : 'text-[var(--accent)]'}`}>{d > 0 ? '+' : ''}{d.toFixed(1)} W</span>
 }
 
 function Stat({ label, value, delta, sub }: { label: string; value: string; delta?: React.ReactNode; sub?: React.ReactNode }) {
@@ -504,6 +511,10 @@ export default function TeamBuilderApp() {
     return w
   }, [pool])
   const liveWars = { ...teamWars, ...(built ? { [team]: teamWar } : {}) }
+  // One scale for everyone, from today's default rosters (see lib/team-builder/record.ts).
+  const scale = warScale(Object.values(teamWars))
+  const record = projectedRecord(teamWar, scale)
+  const startRecord = projectedRecord(startWar, scale)
   const rank = Object.values(liveWars).filter((w) => w > teamWar).length + 1
 
   const playingTime = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((t, s) => ({ pa: t.pa + (s.player.pa ?? 0), ip: t.ip + (s.player.ip ?? 0) }), { pa: 0, ip: 0 })
@@ -692,7 +703,7 @@ export default function TeamBuilderApp() {
           <div ref={setTotalsEl} className="relative z-20 sm:sticky sm:top-14">
             {pool.length > 0 && (
               <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
-                <TeamStrip wars={liveWars} team={team} onPick={pickTeam} />
+                <TeamStrip wars={liveWars} team={team} onPick={pickTeam} winsFor={(w) => projectedRecord(w, scale).wins} />
               </section>
             )}
             <div
@@ -702,6 +713,7 @@ export default function TeamBuilderApp() {
               <span><span className="text-[11px] text-[var(--dimmer)]">Payroll </span><span className="font-semibold">{money(built.payroll)}</span><Delta now={built.payroll} then={start.payroll} /></span>
               <span><span className="text-[11px] text-[var(--dimmer)]">Tax payroll </span><span className="font-semibold">{money(built.taxPayroll)}</span><Delta now={built.taxPayroll} then={start.taxPayroll} /></span>
               <span><span className="text-[11px] text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} />{pool.length > 0 && <span className="ml-1.5 text-[11px] text-[var(--dim)]">{ordinal(rank)} of 30</span>}</span>
+              {pool.length > 0 && <span><span className="text-[11px] text-[var(--dimmer)]">Record </span><span className="font-semibold">{fmtRecord(record)}</span><WinsDelta now={record.wins} then={startRecord.wins} /></span>}
               <span><span className="text-[11px] text-[var(--dimmer)]">40-man </span><span className={`font-semibold ${built.rosterCount > 40 ? 'text-[var(--accent)]' : ''}`}>{built.rosterCount} / 40</span></span>
             </div>
           </div>
@@ -729,7 +741,7 @@ export default function TeamBuilderApp() {
               </div>
               <figure className="flex flex-col items-center">
                 <figcaption className="mb-1 text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">Projected WAR by position</figcaption>
-                <FieldDiagram spots={fieldWar} className="h-52 w-auto" />
+                <FieldDiagram spots={fieldWar} record={pool.length ? fmtRecord(record) : undefined} className="h-52 w-auto" />
               </figure>
             </div>
             {overPlaying && (
@@ -980,7 +992,9 @@ export default function TeamBuilderApp() {
           {/* Phones: the totals card scrolls away, so keep a slim bar in view instead */}
           <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-[var(--rule)] bg-[var(--panel)] px-4 py-2 text-xs shadow-[var(--elevated-shadow)] sm:hidden">
             <span><span className="text-[var(--dimmer)]">Payroll </span><span className="font-semibold">{money(built.payroll)}</span><Delta now={built.payroll} then={start.payroll} /></span>
-            <span><span className="text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} /></span>
+            {pool.length > 0
+              ? <span><span className="text-[var(--dimmer)]">Record </span><span className="font-semibold">{fmtRecord(record)}</span><WinsDelta now={record.wins} then={startRecord.wins} /></span>
+              : <span><span className="text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} /></span>}
           </div>
 
           <footer className="max-w-[52ch] space-y-1 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0">
@@ -996,6 +1010,7 @@ export default function TeamBuilderApp() {
               </p>
             )}
             <p>
+              The projected record starts from a replacement-level team (about 48 wins) and adds WAR. Because summed 40-man WAR runs high, every team&apos;s is scaled down by the same factor so the league as a whole plays .500.
               Team WAR is a straight sum of every player&apos;s projection, and each assumes his usual playing time; this roster is projected for {hitterPa.toLocaleString()} PA and {Math.round(pitcherIp).toLocaleString()} IP against about {SEASON_PA.toLocaleString()} and {SEASON_IP.toLocaleString()} in a season, so treat it as a rough guide.
               The tax line and tiers are placeholders until a new labor agreement. Estimates are in italics with &quot;est.&quot;; hover one to see where it comes from. Your roster lives in the page address: use Copy share link to save or post it.
             </p>
