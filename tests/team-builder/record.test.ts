@@ -23,5 +23,8 @@ describe('projected record', () => {
     expect(projectedRecord(-500, scale).wins).toBe(0)
     expect(projectedRecord(5000, scale).wins).toBe(162)
   })
-  test('format', () => expect(fmtRecord({ wins: 84.7, losses: 77.3 })).toBe('84.7–77.3'))
+  test('shown in whole games that add up to 162', () => {
+    expect(fmtRecord({ wins: 84.7 })).toBe('85–77')
+    expect(fmtRecord({ wins: 84.4 })).toBe('84–78')
+  })
 })

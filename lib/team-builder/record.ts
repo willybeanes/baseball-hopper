@@ -21,4 +21,6 @@ export function projectedRecord(teamWar: number, scale: number): { wins: number;
   return { wins, losses: games - wins }
 }
 
-export const fmtRecord = (r: { wins: number; losses: number }) => `${r.wins.toFixed(1)}–${r.losses.toFixed(1)}`
+// Shown in whole games ("85–77"); the losses are whatever the rounded wins leave of the season.
+export const roundedWins = (r: { wins: number }) => Math.round(r.wins)
+export const fmtRecord = (r: { wins: number }) => `${roundedWins(r)}–${games - roundedWins(r)}`

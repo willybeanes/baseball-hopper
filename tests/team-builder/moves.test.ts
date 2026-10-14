@@ -4,7 +4,7 @@ import { join } from 'path'
 import assumptions from '../../lib/team-builder/assumptions.json'
 import { parseTeamSheet } from '../../lib/team-builder/cots'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
-import { addMove, buildRoster, undoPlayer, type Move } from '../../lib/team-builder/moves'
+import { addMove, buildRoster, payrollEffects, undoPlayer, type Move } from '../../lib/team-builder/moves'
 import { defaultRoster, type TeamFile } from '../../lib/team-builder/roster'
 
 // Boston, 2026-10-03: Whitlock club option ($8.25M, $1M buyout), Gray mutual ($30M, $10M buyout),
@@ -159,5 +159,20 @@ describe('moves that no longer apply (a stale shared link)', () => {
   })
   test('nothing is reported when every move applies', () => {
     expect(buildRoster(team, [{ type: 'remove', id: 5 }, { type: 'decline', id: 1 }]).skipped).toEqual([])
+  })
+})
+
+describe('payroll effect of each move', () => {
+  test('each move in turn, adding up to the total change', () => {
+    const moves: Move[] = [{ type: 'remove', id: 5 }, { type: 'decline', id: 1 }, { type: 'exercise', id: 2 }, { type: 'resign', id: 3, salary: 9e6 }]
+    const fx = payrollEffects(team, moves)
+    expect(fx[0]).toBe(-slot(base, 5).salary!)
+    expect(fx[1]).toBe(-(8.25e6 - 1e6)) // salary saved, buyout still owed
+    expect(fx[2]).toBe(30e6 - 10e6) // option salary in, buyout out
+    expect(fx[3]).toBe(9e6)
+    expect(fx.reduce((a, b) => a + b, 0)).toBe(buildRoster(team, moves).payroll - base.payroll)
+  })
+  test('a move that no longer applies shows no effect', () => {
+    expect(payrollEffects(team, [{ type: 'decline', id: 5 }])).toEqual([0])
   })
 })

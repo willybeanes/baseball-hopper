@@ -158,3 +158,15 @@ export function addMove(moves: Move[], m: Move): Move[] {
 
 // Puts a player back where the default roster had him by dropping every move about him.
 export const undoPlayer = (moves: Move[], id: number) => moves.filter((m) => m.id !== id)
+
+// What each move did to payroll, in order: the roster replayed one move at a time. The
+// amounts add up to the total change; a move that no longer applies shows 0.
+export function payrollEffects(team: TeamFile, moves: Move[], pool: PoolPlayer[] = []): number[] {
+  let prev = buildRoster(team, [], pool).payroll
+  return moves.map((_, i) => {
+    const now = buildRoster(team, moves.slice(0, i + 1), pool).payroll
+    const d = now - prev
+    prev = now
+    return d
+  })
+}

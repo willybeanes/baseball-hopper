@@ -9,7 +9,7 @@ import { warBySpot } from '@/lib/team-builder/field'
 import { fmtRecord, projectedRecord, warScale } from '@/lib/team-builder/record'
 import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
-import { addMove, buildRoster, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
+import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
 import type { PoolPlayer } from '@/lib/team-builder/pool'
 import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '@/lib/team-builder/share'
 
@@ -344,10 +344,21 @@ function WarDelta({ now, then }: { now: number; then: number }) {
   return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[#1a7a3a]' : 'text-[var(--accent)]'}`}>{d > 0 ? '+' : ''}{d.toFixed(1)}</span>
 }
 
+// In whole games, to match the rounded record it sits beside.
 function WinsDelta({ now, then }: { now: number; then: number }) {
-  const d = Math.round((now - then) * 10) / 10
+  const d = Math.round(now) - Math.round(then)
   if (!d) return null
-  return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[#1a7a3a]' : 'text-[var(--accent)]'}`}>{d > 0 ? '+' : ''}{d.toFixed(1)} W</span>
+  return <span className={`ml-1.5 text-sm font-semibold ${d > 0 ? 'text-[#1a7a3a]' : 'text-[var(--accent)]'}`}>{d > 0 ? '+' : ''}{d} W</span>
+}
+
+// A payroll change: red when it adds money, green when it saves it, a dash when it's a wash.
+function PayrollEffect({ dollars, className = '', suffix = '' }: { dollars: number; className?: string; suffix?: string }) {
+  if (Math.abs(dollars) < 500) return <span className={`font-mono text-[var(--dimmer)] ${className}`}>—</span>
+  return (
+    <span className={`font-mono font-semibold ${dollars > 0 ? 'text-[var(--accent)]' : 'text-[#1a7a3a]'} ${className}`}>
+      {dollars > 0 ? '+' : ''}{money(dollars)}{suffix && <span className="font-sans font-normal">{suffix}</span>}
+    </span>
+  )
 }
 
 function Stat({ label, value, delta, sub }: { label: string; value: string; delta?: React.ReactNode; sub?: React.ReactNode }) {
@@ -515,6 +526,8 @@ export default function TeamBuilderApp() {
   const scale = warScale(Object.values(teamWars))
   const record = projectedRecord(teamWar, scale)
   const startRecord = projectedRecord(startWar, scale)
+  // What each change did to payroll, in order (they add up to the total change).
+  const effects = useMemo(() => (data ? payrollEffects(data, moves, pool) : []), [data, moves, pool])
   const rank = Object.values(liveWars).filter((w) => w > teamWar).length + 1
 
   const playingTime = (slots: Slot[]) => slots.filter((s) => s.onRoster).reduce((t, s) => ({ pa: t.pa + (s.player.pa ?? 0), ip: t.ip + (s.player.ip ?? 0) }), { pa: 0, ip: 0 })
@@ -776,7 +789,10 @@ export default function TeamBuilderApp() {
               {moves.length > 0 && (
                 <section className="rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--panel-shadow)]">
                   <div className="mb-1.5 flex items-center justify-between">
-                    <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Your changes <span className="font-normal text-[var(--dimmer)]">({moves.length})</span></h2>
+                    <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
+                      Your changes <span className="font-normal text-[var(--dimmer)]">({moves.length})</span>
+                      <PayrollEffect dollars={built.payroll - start.payroll} className="ml-2 text-xs" suffix=" payroll" />
+                    </h2>
                     <span className="flex items-center gap-3">
                       <button type="button" onClick={copyLink} className="rounded bg-[var(--text)] px-2.5 py-1 text-[11px] font-medium text-[var(--panel)]">
                         {copied === 'copied' ? 'Link copied' : 'Copy share link'}
@@ -808,12 +824,15 @@ export default function TeamBuilderApp() {
                     </p>
                   )}
                   <ul className="space-y-1">
-                    {moves.map((m) => {
+                    {moves.map((m, i) => {
                       const text = describeMove(m, nameOf(m.id), pool.some((e) => e.mlbamId === m.id && e.from === team))
                       const gone = skipped.includes(m)
                       return (
                         <li key={`${m.type}-${m.id}`} className="flex items-center justify-between gap-2 text-xs text-[var(--dim)]">
-                          <span className={gone ? 'line-through' : undefined}>{text}{gone && <span className="sr-only"> (no longer applies)</span>}</span>
+                          <span className="min-w-0 flex-1">
+                            <span className={gone ? 'line-through' : undefined}>{text}{gone && <span className="sr-only"> (no longer applies)</span>}</span>
+                          </span>
+                          {!gone && <PayrollEffect dollars={effects[i] ?? 0} className="shrink-0 text-[11px]" />}
                           <button type="button" onClick={() => setMoves(moves.filter((x) => x !== m))} className="shrink-0 text-[11px] text-[var(--dimmer)] hover:text-[var(--text)] hover:underline" aria-label={`Undo: ${text}`}>
                             Undo
                           </button>
