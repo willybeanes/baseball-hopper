@@ -710,11 +710,17 @@ export default function HHPSExplorer({
         lighting: { ambient: 0.9, diffuse: 0.3 },
       });
 
-      // 4. Bat mesh (a hitter's swing; a pitcher's pooled contact has no single bat)
-      if (batTarget && !isP) {
+      // 4. Bat mesh. The pitcher view always draws one: its target falls back to any contact point the split has, then the
+      // league's, so the figure never stands there empty-handed when a sparse split has no events of this outcome.
+      const lgA = leagueRef.current?.R.splits.A;
+      const batAim = isP
+        ? batTarget ?? payload.bat_target_hard ?? payload.bat_target_soft ?? payload.bat_target_brl ?? payload.bat_target_whiff ??
+          lgA?.bat_target_hard ?? null
+        : batTarget;
+      if (batAim) {
         const fh = figureHands(feet);   // hands move with the upper body when it is centered over his stance
         const hands: [number, number, number] = [fh[0] * sg, fh[1], fh[2]];
-        const target: [number, number, number] = [batTarget[0] * sg, batTarget[1], batTarget[2]];
+        const target: [number, number, number] = [batAim[0] * sg, batAim[1], batAim[2]];
         const bat = buildBatMesh(hands, target);
         traces.push({
           type: "mesh3d",
