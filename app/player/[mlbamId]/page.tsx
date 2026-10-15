@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Suspense } from "react";
 import { createClient } from "@supabase/supabase-js";
 import type { HHPSLeaderboardRow } from "@/lib/hhps";
-import {
-  fetchPlayerInfo,
-  headshotUrl,
-  hittingPlusUrl,
-  compareUrl,
-  batteryUrl,
-  stuffUrl,
-  playerUrl,
-  hhpsUrl,
-} from "@/lib/player";
+import { headshotUrl, hhpsUrl } from "@/lib/player";
+import { fetchPlayerProfile, type PlayerProfile, type SeasonLine } from "@/lib/player-profile";
+import { getPlayerHittingPlus } from "@/lib/hitting-plus/data";
+import PlayerHittingPlus from "@/components/hitting-plus/PlayerHittingPlus";
+
+// Statically cached per player; season picks happen client-side via ?season=.
+export const revalidate = 1800;
+export async function generateStaticParams() {
+  return [];
+}
 
 interface Props {
   params: Promise<{ mlbamId: string }>;
@@ -18,15 +20,13 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { mlbamId } = await params;
-  const player = await fetchPlayerInfo(Number(mlbamId));
+  const player = await fetchPlayerProfile(Number(mlbamId));
   if (!player) return { title: "Player — Baseball Hopper" };
   return {
     title: `${player.displayName} — Baseball Hopper`,
-    description: `Cross-tool stats and grades for ${player.displayName}${player.team ? ` (${player.team})` : ""} across every Balls & Sticks tool.`,
+    description: `Stats, Hitting+ grades and swing data for ${player.displayName}${player.team ? ` (${player.team})` : ""} across every Balls & Sticks tool.`,
   };
 }
-
-const CURRENT_YEAR = new Date().getFullYear();
 
 /** All-pitchers HHPS row for a hitter; latest season that has one. Null for pitchers / no data. */
 async function fetchHhpsRow(mlbam: number): Promise<HHPSLeaderboardRow | null> {
@@ -55,41 +55,136 @@ const ordinal = (n: number) => {
   return `${n}${suf}`;
 };
 
-const TOOL_LINKS = (player: Awaited<ReturnType<typeof fetchPlayerInfo>>) => {
-  if (!player) return [];
-  return [
-    {
-      label: "Hitting+",
-      description: "Decision+, Timing+, Contact+, Power+ grades for this hitter",
-      href: hittingPlusUrl(player, CURRENT_YEAR),
-      tag: "Hitters",
-    },
-    {
-      label: "Percentile Compare",
-      description: `Open ${player.displayName.split(" ")[0]} as Player A — add a second player to compare`,
-      href: compareUrl(player, CURRENT_YEAR),
-      tag: "Hitters · Pitchers",
-    },
-    {
-      label: "Battery Splits",
-      description: "Pitcher–catcher chemistry and ERA/FIP/Stuff+ splits",
-      href: batteryUrl(),
-      tag: "Pitchers",
-    },
-    {
-      label: "Stuff Splits",
-      description: "Pitch-quality grades by type and batter handedness",
-      href: stuffUrl(),
-      tag: "Pitchers",
-    },
-  ];
+// ── Stat tables ────────────────────────────────────────────────────────────────
+
+type Col = { label: string; title?: string; get: (s: Record<string, string | number | undefined>) => string };
+
+const num = (k: string) => (s: Record<string, string | number | undefined>) =>
+  s[k] == null ? "—" : String(s[k]);
+const rate = (k: string, denom: string) => (s: Record<string, string | number | undefined>) => {
+  const n = Number(s[k]);
+  const d = Number(s[denom]);
+  return d > 0 ? `${((100 * n) / d).toFixed(1)}%` : "—";
 };
 
-const TAG_BG: Record<string, string> = {
-  Hitters: "bg-[#dbeafe] text-[#1e40af]",
-  Pitchers: "bg-[#dcfce7] text-[#166534]",
-  "Hitters · Pitchers": "bg-[#f3e8ff] text-[#6b21a8]",
-};
+const HITTING_COLS: Col[] = [
+  { label: "G", title: "Games", get: num("gamesPlayed") },
+  { label: "PA", title: "Plate appearances", get: num("plateAppearances") },
+  { label: "HR", title: "Home runs", get: num("homeRuns") },
+  { label: "R", title: "Runs", get: num("runs") },
+  { label: "RBI", get: num("rbi") },
+  { label: "SB", title: "Stolen bases", get: num("stolenBases") },
+  { label: "BB%", title: "Walk rate", get: rate("baseOnBalls", "plateAppearances") },
+  { label: "K%", title: "Strikeout rate", get: rate("strikeOuts", "plateAppearances") },
+  { label: "AVG", get: num("avg") },
+  { label: "OBP", get: num("obp") },
+  { label: "SLG", get: num("slg") },
+  { label: "OPS", get: num("ops") },
+];
+
+const PITCHING_COLS: Col[] = [
+  { label: "G", title: "Games", get: num("gamesPitched") },
+  { label: "GS", title: "Games started", get: num("gamesStarted") },
+  { label: "IP", title: "Innings pitched", get: num("inningsPitched") },
+  { label: "W-L", get: (s) => `${s.wins ?? 0}-${s.losses ?? 0}` },
+  { label: "SV", title: "Saves", get: num("saves") },
+  { label: "ERA", get: num("era") },
+  { label: "WHIP", get: num("whip") },
+  { label: "K%", title: "Strikeout rate", get: rate("strikeOuts", "battersFaced") },
+  { label: "BB%", title: "Walk rate", get: rate("baseOnBalls", "battersFaced") },
+  { label: "K/9", get: num("strikeoutsPer9Inn") },
+  { label: "HR/9", get: num("homeRunsPer9") },
+  { label: "SO", title: "Strikeouts", get: num("strikeOuts") },
+];
+
+function StatTable({
+  title,
+  cols,
+  seasons,
+  career,
+}: {
+  title: string;
+  cols: Col[];
+  seasons: SeasonLine[];
+  career: Record<string, string | number | undefined> | null;
+}) {
+  const rows = [...seasons].reverse();
+  return (
+    <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7">
+      <h2 className="mb-3 text-[15px] font-semibold tracking-tight text-[var(--text)]">{title}</h2>
+      <div className="-mx-5 overflow-x-auto px-5 sm:-mx-7 sm:px-7">
+        <table className="w-full min-w-[640px] border-collapse text-[13px] tabular-nums">
+          <thead>
+            <tr className="border-b border-[var(--rule)] text-[11px] font-medium text-[var(--dim)]">
+              <th className="sticky left-0 bg-[var(--panel)] py-2 pr-3 text-left font-medium">Season</th>
+              <th className="py-2 pr-3 text-left font-medium">Team</th>
+              {cols.map((c) => (
+                <th key={c.label} title={c.title} className="px-2 py-2 text-right font-medium">
+                  {c.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--panel-border)]">
+            {rows.map((r) => (
+              <tr key={r.season}>
+                <td className="sticky left-0 bg-[var(--panel)] py-2 pr-3 font-semibold">{r.season}</td>
+                <td className="py-2 pr-3 text-[var(--dim)]">{r.team}</td>
+                {cols.map((c) => (
+                  <td key={c.label} className="px-2 py-2 text-right">
+                    {c.get(r.stat)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+          {career && seasons.length > 1 && (
+            <tfoot>
+              <tr className="border-t border-[var(--rule)] font-semibold">
+                <td className="sticky left-0 bg-[var(--panel)] py-2 pr-3">Career</td>
+                <td className="py-2 pr-3 font-normal text-[var(--dim)]">
+                  {seasons.length} {seasons.length === 1 ? "season" : "seasons"}
+                </td>
+                {cols.map((c) => (
+                  <td key={c.label} className="px-2 py-2 text-right">
+                    {c.get(career)}
+                  </td>
+                ))}
+              </tr>
+            </tfoot>
+          )}
+        </table>
+      </div>
+    </section>
+  );
+}
+
+// ── Header ─────────────────────────────────────────────────────────────────────
+
+function Facts({ player }: { player: PlayerProfile }) {
+  const facts: [string, string | null][] = [
+    ["B/T", player.bats && player.throws ? `${player.bats}/${player.throws}` : null],
+    ["Age", player.age != null ? String(player.age) : null],
+    ["Ht/Wt", player.height ? `${player.height}${player.weight ? `, ${player.weight} lb` : ""}` : null],
+    ["Born", player.born],
+    ["Debut", player.debut],
+    ["Draft", player.draft],
+  ];
+  return (
+    <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[13px]">
+      {facts
+        .filter(([, v]) => v)
+        .map(([k, v]) => (
+          <div key={k} className="flex items-baseline gap-1.5">
+            <dt className="text-[11px] font-medium text-[var(--dim)]">{k}</dt>
+            <dd className="text-[var(--text)]">{v}</dd>
+          </div>
+        ))}
+    </dl>
+  );
+}
+
+// ── Page ───────────────────────────────────────────────────────────────────────
 
 export default async function PlayerPage({ params }: Props) {
   const { mlbamId } = await params;
@@ -103,7 +198,7 @@ export default async function PlayerPage({ params }: Props) {
     );
   }
 
-  const player = await fetchPlayerInfo(id);
+  const player = await fetchPlayerProfile(id);
 
   if (!player) {
     return (
@@ -111,147 +206,135 @@ export default async function PlayerPage({ params }: Props) {
         <p className="text-[var(--dim)]">
           Player not found. Check the MLBAM id or try searching a tool directly.
         </p>
-        <a
-          href="/"
-          className="mt-4 inline-block text-sm underline text-[var(--dim)] hover:text-[var(--text)]"
-        >
+        <Link href="/" className="mt-4 inline-block text-sm underline text-[var(--dim)] hover:text-[var(--text)]">
           ← Back to Baseball Hopper
-        </a>
+        </Link>
       </main>
     );
   }
 
-  const tools = TOOL_LINKS(player);
-  const hhps = await fetchHhpsRow(id);
+  const showHitting = !player.isPitcher && player.hitting.seasons.length > 0;
+  const showPitching = (player.isPitcher || player.isTwoWay) && player.pitching.seasons.length > 0;
+  const [hp, hhps] = player.isPitcher
+    ? [null, null]
+    : await Promise.all([getPlayerHittingPlus(id), fetchHhpsRow(id)]);
+  const latestSeason = Math.max(
+    ...player.hitting.seasons.map((s) => s.season),
+    ...player.pitching.seasons.map((s) => s.season),
+    new Date().getFullYear() - 1,
+  );
+
   const hhpsStats = hhps
     ? [
-        { label: "Hard-hit · per contact", n: hhps.bip_hard_in3, rank: hhps.bip_hard_rank, color: "#DF4601", href: hhpsUrl(id, { outcome: "hard", mode: "contact" }) },
-        { label: "Barrel · per contact", n: hhps.bip_brl_in3, rank: hhps.bip_brl_rank, color: "#8E1A5E", href: hhpsUrl(id, { outcome: "barrel", mode: "contact" }) },
-        { label: "Hard-hit · per swing", n: hhps.sw_hard_in3, rank: hhps.sw_hard_rank, color: "#DF4601", href: hhpsUrl(id, { outcome: "hard", mode: "swing" }) },
-        { label: "Barrel · per swing", n: hhps.sw_brl_in3, rank: hhps.sw_brl_rank, color: "#8E1A5E", href: hhpsUrl(id, { outcome: "barrel", mode: "swing" }) },
+        { label: "Hard-hit per contact", n: hhps.bip_hard_in3, rank: hhps.bip_hard_rank, href: hhpsUrl(id, { outcome: "hard", mode: "contact" }) },
+        { label: "Barrels per contact", n: hhps.bip_brl_in3, rank: hhps.bip_brl_rank, href: hhpsUrl(id, { outcome: "barrel", mode: "contact" }) },
+        { label: "Hard-hit per swing", n: hhps.sw_hard_in3, rank: hhps.sw_hard_rank, href: hhpsUrl(id, { outcome: "hard", mode: "swing" }) },
+        { label: "Barrels per swing", n: hhps.sw_brl_in3, rank: hhps.sw_brl_rank, href: hhpsUrl(id, { outcome: "barrel", mode: "swing" }) },
       ]
     : [];
 
-  return (
-    <main className="max-w-3xl mx-auto px-6 py-10">
-      {/* Back link */}
-      <a
-        href="/"
-        className="text-xs text-[var(--dimmer)] hover:text-[var(--dim)] transition-colors"
-      >
-        ← Baseball Hopper
-      </a>
+  const compareTab = player.isPitcher ? "pitcher" : "hitter";
+  const tools = [
+    {
+      label: "Percentile Compare",
+      description: `Open ${player.displayName.split(" ")[0]} as Player A and add a second player`,
+      href: `/compare?${new URLSearchParams({ tab: compareTab, a: player.displayName, yearA: String(latestSeason) })}`,
+    },
+    ...(player.isPitcher || player.isTwoWay
+      ? [
+          { label: "Battery Splits", description: "Pitcher–catcher pairings and ERA/FIP/Stuff+ splits", href: "/battery" },
+          { label: "Stuff Splits", description: "Pitch-quality grades by pitch type and batter hand", href: "/stuff/platoon" },
+        ]
+      : []),
+    ...(!player.isPitcher
+      ? [{ label: "Hitting+ leaderboard", description: "Where this swing ranks against every qualified hitter", href: `/hitting-plus?tab=leaderboard&season=${hp?.history.at(-1)?.game_year ?? latestSeason}` }]
+      : []),
+  ];
 
-      {/* Player header */}
-      <div className="mt-6 flex items-center gap-5">
+  const subtitle = [
+    player.number ? `#${player.number}` : null,
+    player.positionName ?? player.position,
+    player.teamName ?? (player.active ? null : "Inactive"),
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
+  return (
+    <main className="mx-auto w-full max-w-[1080px] px-4 pb-20 pt-8 sm:px-5">
+      {/* Header */}
+      <header className="flex flex-wrap items-start gap-5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={headshotUrl(id)}
-          alt={player.displayName}
-          width={80}
-          height={80}
-          className="rounded-full border border-[var(--panel-border)] bg-[var(--panel)] object-cover shrink-0"
+          alt=""
+          width={96}
+          height={96}
+          className="h-24 w-24 shrink-0 rounded-full border border-[var(--panel-border)] bg-[var(--track)] object-cover"
+          style={{ objectPosition: "50% 15%" }}
         />
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{player.displayName}</h1>
-          <p className="mt-1 text-sm text-[var(--dim)]">
-            {[player.team, player.position, `MLBAM id ${id}`]
-              .filter(Boolean)
-              .join(" · ")}
-          </p>
+        <div className="min-w-0 flex-1">
+          <h1 className="text-[28px] font-bold leading-tight tracking-tight sm:text-[34px]">{player.displayName}</h1>
+          {subtitle && <p className="mt-1 text-sm text-[var(--dim)]">{subtitle}</p>}
+          <Facts player={player} />
         </div>
-      </div>
+      </header>
 
-      {/* Divider */}
-      <div className="mt-8 mb-6 h-px bg-[var(--rule)]" />
+      <div className="mt-8 space-y-6">
+        {hp && (
+          <Suspense fallback={null}>
+            <PlayerHittingPlus history={hp.history} pools={hp.pools} />
+          </Suspense>
+        )}
 
-      {/* Tool links */}
-      <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--dim)]">
-        Tools
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        {tools.map((tool) => (
-          <a
-            key={tool.label}
-            href={tool.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block bg-[var(--panel)] rounded-xl border border-[var(--panel-border)] shadow-[var(--panel-shadow)] p-4 hover:shadow-[var(--elevated-shadow)] hover:border-[var(--rule)] transition-all duration-150"
-          >
-            <div className="flex items-start justify-between gap-2 mb-1.5">
-              <span className="font-semibold text-sm group-hover:text-[var(--accent)] transition-colors">
-                {tool.label}
-              </span>
-              <span
-                className={`shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full ${TAG_BG[tool.tag] ?? "bg-[var(--bg)] text-[var(--dim)]"}`}
-              >
-                {tool.tag}
-              </span>
+        {showHitting && (
+          <StatTable title="Batting" cols={HITTING_COLS} seasons={player.hitting.seasons} career={player.hitting.career} />
+        )}
+        {showPitching && (
+          <StatTable title="Pitching" cols={PITCHING_COLS} seasons={player.pitching.seasons} career={player.pitching.career} />
+        )}
+
+        {hhps && (
+          <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Swing zones</h2>
+              <Link href={hhpsUrl(id)} className="text-xs font-medium text-[var(--accent)] hover:underline">
+                Open in 3D Swing Explorer →
+              </Link>
             </div>
-            <p className="text-xs text-[var(--dim)] leading-relaxed">{tool.description}</p>
-          </a>
-        ))}
-      </div>
-
-      {/* 3D Swing Explorer card */}
-      {hhps && (
-        <div className="mt-6 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] shadow-[var(--panel-shadow)] p-4">
-          <div className="flex items-start justify-between gap-2 mb-3">
-            <div>
-              <span className="font-semibold text-sm">3D Swing Explorer</span>
-              <p className="text-xs text-[var(--dim)] mt-0.5">
-                Lit 3-inch cubes of hard contact and barrels around the hitter&apos;s body · {hhps.season} · {hhps.bip} BIP
-              </p>
+            <p className="mt-1 text-xs text-[var(--dim)]">
+              Lit 3-inch cubes of hard contact and barrels around the hitter&apos;s body · {hhps.season} · {hhps.bip} BIP
+            </p>
+            <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden bg-[var(--rule)] sm:grid-cols-4">
+              {hhpsStats.map((s) => (
+                <Link key={s.label} href={s.href} className="group bg-[var(--panel)] px-4 py-3.5">
+                  <div className="text-[11px] font-medium text-[var(--dim)] group-hover:text-[var(--text)]">{s.label}</div>
+                  <div className="mt-1 text-xl font-bold tabular-nums">{s.n}</div>
+                  <div className="mt-0.5 text-[11px] text-[var(--dimmer)]">
+                    {hhps.qualified && s.rank ? `${ordinal(Math.round(s.rank))} in MLB` : hhps.qualified ? "—" : "not yet qualified"}
+                  </div>
+                </Link>
+              ))}
             </div>
-            <span className="shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#1e40af]">
-              Hitters
-            </span>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {hhpsStats.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="block rounded-lg border border-[var(--rule)] p-3 hover:border-[var(--dim)] transition-colors"
-              >
-                <div className="text-[11px] font-bold uppercase tracking-wider" style={{ color: s.color }}>
-                  {s.label}
-                </div>
-                <div className="mt-1 text-2xl font-bold tabular-nums">{s.n}</div>
-                <div className="text-[11px] text-[var(--dimmer)]">
-                  {hhps.qualified && s.rank ? `${ordinal(Math.round(s.rank))} in MLB` : hhps.qualified ? "—" : "not yet qualified"}
-                </div>
-              </a>
+          </section>
+        )}
+
+        <section>
+          <h2 className="mb-3 text-[15px] font-semibold tracking-tight text-[var(--text)]">More on this player</h2>
+          <ul className="divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
+            {tools.map((t) => (
+              <li key={t.label}>
+                <Link href={t.href} className="group flex items-baseline justify-between gap-4 py-3">
+                  <span>
+                    <span className="text-sm font-semibold group-hover:text-[var(--accent)]">{t.label}</span>
+                    <span className="ml-2 text-xs text-[var(--dim)]">{t.description}</span>
+                  </span>
+                  <span aria-hidden className="text-[var(--dimmer)] group-hover:text-[var(--accent)]">→</span>
+                </Link>
+              </li>
             ))}
-          </div>
-          <a
-            href={hhpsUrl(id)}
-            className="mt-3 inline-block text-xs font-medium text-[var(--accent)] hover:underline"
-          >
-            Open in the 3D viewer →
-          </a>
-        </div>
-      )}
-
-      {/* Identity footer */}
-      <div className="mt-10 rounded-xl border border-[var(--rule)] bg-[var(--panel)] px-5 py-4">
-        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--dim)] mb-3">
-          Player identity
-        </p>
-        <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-          <dt className="text-[var(--dimmer)]">MLBAM id</dt>
-          <dd className="font-mono font-medium">{id}</dd>
-          <dt className="text-[var(--dimmer)]">Display name</dt>
-          <dd>{player.displayName}</dd>
-          <dt className="text-[var(--dimmer)]">Stored name</dt>
-          <dd className="font-mono text-xs">{player.storedName}</dd>
-          <dt className="text-[var(--dimmer)]">Team</dt>
-          <dd>{player.team ?? "—"}</dd>
-          <dt className="text-[var(--dimmer)]">Position</dt>
-          <dd>{player.position ?? "—"}</dd>
-          <dt className="text-[var(--dimmer)]">Canonical URL</dt>
-          <dd className="font-mono text-xs truncate">{playerUrl(id)}</dd>
-        </dl>
+          </ul>
+          <p className="mt-4 text-[11px] text-[var(--dimmer)]">MLBAM id {id} · Stats from the MLB Stats API</p>
+        </section>
       </div>
     </main>
   );

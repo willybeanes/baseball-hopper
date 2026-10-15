@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Explorer from "@/components/hitting-plus/Explorer";
 import { SwingPlusData } from "@/lib/hitting-plus/types";
+import { getHittingPlusPlayerInfo, getSwingPlusData } from "@/lib/hitting-plus/data";
 
 export const metadata: Metadata = {
   title: "Hitting+ — Baseball Hopper",
   description:
     "Four graded inputs to a swing, in the order they happen: Decision+, Timing+, Contact+ and Power+, refit into Hitting+.",
 };
-
-const BASE = "https://hitting-plus.vercel.app/data";
 
 const FG_PROXY = "https://fg-proxy.vercel.app/api/fangraphs";
 
@@ -31,46 +30,31 @@ async function getRookieIds(season: number): Promise<Set<number> | null> {
   }
 }
 
-async function getData(): Promise<SwingPlusData | null> {
-  try {
-    const [dataRes, wrcRes, infoRes] = await Promise.all([
-      fetch(`${BASE}/swingplus_latest.json`, { next: { revalidate: 1800 } }),
-      fetch(`${BASE}/wrc_plus.json`, { next: { revalidate: 1800 } }),
-      fetch(`${BASE}/player_info.json`, { next: { revalidate: 1800 } }),
-    ]);
-    if (!dataRes.ok) return null;
-    const raw = await dataRes.text();
-    const sanitized = raw.replace(/\bNaN\b/g, "null");
-    const data = JSON.parse(sanitized) as SwingPlusData;
-    let wrcMap: Record<string, Record<string, number>> = {};
-    if (wrcRes.ok) wrcMap = await wrcRes.json();
-    for (const p of data.players) {
-      p.wrc_plus = wrcMap[p.player_name]?.[String(p.game_year)] ?? null;
-    }
+async function getData(): Promise<{ data: SwingPlusData; ids: Record<string, number> } | null> {
+  const [data, info] = await Promise.all([getSwingPlusData(), getHittingPlusPlayerInfo()]);
+  if (!data) return null;
+  const ids: Record<string, number> = {};
+  for (const [name, v] of Object.entries(info)) ids[name] = v.id;
 
-    // FanGraphs rookie flag, joined on MLBAM id. Left undefined if either side is missing,
-    // and the explorer then falls back to first-season-in-dataset.
-    if (infoRes.ok) {
-      const info: Record<string, { id: number }> = await infoRes.json();
-      const rookieIds = new Map(
-        await Promise.all(data.seasons.map(async (y) => [y, await getRookieIds(y)] as const))
-      );
-      for (const p of data.players) {
-        const ids = rookieIds.get(p.game_year);
-        const id = info[p.player_name]?.id;
-        if (ids && id != null) p.rookie = ids.has(id);
-      }
+  // FanGraphs rookie flag, joined on MLBAM id. Left undefined if either side is missing,
+  // and the explorer then falls back to first-season-in-dataset.
+  if (Object.keys(ids).length) {
+    const rookieIds = new Map(
+      await Promise.all(data.seasons.map(async (y) => [y, await getRookieIds(y)] as const))
+    );
+    for (const p of data.players) {
+      const set = rookieIds.get(p.game_year);
+      const id = ids[p.player_name];
+      if (set && id != null) p.rookie = set.has(id);
     }
-    return data;
-  } catch {
-    return null;
   }
+  return { data, ids };
 }
 
 export default async function HittingPlusPage() {
-  const data = await getData();
+  const loaded = await getData();
 
-  if (!data) {
+  if (!loaded) {
     return (
       <main className="mx-auto max-w-2xl px-5 py-16">
         <div className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] p-8 text-center shadow-[var(--panel-shadow)]">
@@ -85,7 +69,7 @@ export default async function HittingPlusPage() {
 
   return (
     <Suspense fallback={null}>
-      <Explorer data={data} />
+      <Explorer data={loaded.data} ids={loaded.ids} />
     </Suspense>
   );
 }

@@ -2,21 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { COMPONENT_KEYS, DepthKey, SwingPlusData } from "@/lib/hitting-plus/types";
-import { buildPercentiles, fieldPercentileValue, leagueMean, pairedFieldPercentileValue } from "@/lib/hitting-plus/metrics";
+import { SwingPlusData } from "@/lib/hitting-plus/types";
+import { buildPercentiles } from "@/lib/hitting-plus/metrics";
+import { PCT_KEYS } from "@/lib/hitting-plus/context";
 import { FOOTER_COPY, PA_FILTER_NOTE } from "@/lib/hitting-plus/copy";
 import SearchBox from "./SearchBox";
-import PlayerCard from "./PlayerCard";
 import Leaderboard from "./Leaderboard";
 import Compare from "./Compare";
 import HowItWorks from "./HowItWorks";
 import Teams from "./Teams";
 
-type Tab = "card" | "leaderboard" | "compare" | "teams" | "how";
-const TAB_KEYS: Tab[] = ["card", "leaderboard", "compare", "teams", "how"];
-
-const DEPTH_KEYS: DepthKey[] = ["depth_FB", "depth_BR", "depth_OS"];
-const PCT_KEYS = [...COMPONENT_KEYS, "Hitting+", "xwoba", "wrc_plus"] as const;
+type Tab = "leaderboard" | "compare" | "teams" | "how";
+const TAB_KEYS: Tab[] = ["leaderboard", "compare", "teams", "how"];
 const DEFAULT_MIN_PA = 150;
 const MAX_MIN_PA = 600;
 /** Quick-pick stops under the slider. 502 is the batting-title line (3.1 PA x 162 games). */
@@ -29,7 +26,6 @@ const PA_STOPS = [
 ];
 
 const TABS: { key: Tab; label: string }[] = [
-  { key: "card", label: "Player" },
   { key: "leaderboard", label: "Leaderboard" },
   { key: "compare", label: "Compare" },
   { key: "teams", label: "Teams" },
@@ -41,7 +37,11 @@ function parseHand(q: string | null): string {
   return q === "L" || q === "R" ? q : "";
 }
 
-export default function Explorer({ data }: { data: SwingPlusData }) {
+/**
+ * Leaderboard, compare and team views. A single hitter opens on /player/<mlbam id>, so
+ * `ids` maps stored names to MLBAM ids for every player link.
+ */
+export default function Explorer({ data, ids }: { data: SwingPlusData; ids: Record<string, number> }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -50,7 +50,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
 
   const [tab, setTab] = useState<Tab>(() => {
     const q = searchParams.get("tab");
-    return TAB_KEYS.includes(q as Tab) ? (q as Tab) : "card";
+    return TAB_KEYS.includes(q as Tab) ? (q as Tab) : "leaderboard";
   });
   const [season, setSeason] = useState<number>(() => {
     const q = Number(searchParams.get("season"));
@@ -71,13 +71,6 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   const seasonPlayers = useMemo(
     () => data.players.filter((p) => p.game_year === season),
     [data.players, season]
-  );
-
-  // The percentile baseline is always the qualified pool for the season, never the
-  // PA-filtered view. Moving the filter changes who is visible, not what 100 means.
-  const qualifiedSeasonPlayers = useMemo(
-    () => seasonPlayers.filter((p) => p.qualified),
-    [seasonPlayers]
   );
 
   const visiblePlayers = useMemo(
@@ -101,80 +94,11 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
     return result;
   }, [data.players, season]);
 
-  const [pickedName, setPickedName] = useState<string | null>(() => {
-    const q = searchParams.get("player");
-    if (q) return q;
-    const best = [...data.players]
-      .filter((p) => p.game_year === seasons[0])
-      .sort((a, b) => (b["Hitting+"] ?? -Infinity) - (a["Hitting+"] ?? -Infinity))[0];
-    return best?.player_name ?? null;
-  });
-
-  const picked = useMemo(
-    () => (pickedName ? seasonPlayers.find((p) => p.player_name === pickedName) ?? null : null),
-    [seasonPlayers, pickedName]
-  );
-
-  // Percentile functions for every season, not just the selected one, so the year-over-year
-  // table can color each season by that season's own qualified pool.
-  const pctBySeason = useMemo(() => {
-    const map: Record<number, ReturnType<typeof buildPercentiles<(typeof PCT_KEYS)[number]>>> = {};
-    for (const s of seasons) {
-      const qualified = data.players.filter((p) => p.game_year === s && p.qualified);
-      map[s] = buildPercentiles(qualified, PCT_KEYS);
-    }
-    return map;
-  }, [data.players, seasons]);
-
-  const pct = pctBySeason[season];
-
-  const playerHistory = useMemo(
-    () => (pickedName ? data.players.filter((p) => p.player_name === pickedName) : []),
-    [data.players, pickedName]
-  );
-
-  const leagueDepth = useMemo(() => {
-    const out = {} as Record<DepthKey, number>;
-    for (const k of DEPTH_KEYS) out[k] = leagueMean(qualifiedSeasonPlayers, k);
-    return out;
-  }, [qualifiedSeasonPlayers]);
-
-  // The gap between a hitter's own breaking/offspeed depth and their own fastball depth
-  // is what "fooled" and Timing+ actually grade, so the elite reference is the least-fooled
-  // hitters' gap (10th percentile of that per-player difference), not the best raw depth.
-  const eliteGap = useMemo(() => {
-    return {
-      depth_BR: pairedFieldPercentileValue(qualifiedSeasonPlayers, "depth_BR", "depth_FB", 10) ?? 0,
-      depth_OS: pairedFieldPercentileValue(qualifiedSeasonPlayers, "depth_OS", "depth_FB", 10) ?? 0,
-    };
-  }, [qualifiedSeasonPlayers]);
-
-  // Contact+ grades whiff_rate against exp_whiff (the expected whiff rate for the
-  // location, count and pitch type actually swung at), not a flat rate, so the
-  // meaningful quantity is that per-player gap. Elite is the 10th percentile of the
-  // gap (least worse than expected), matching the Timing+ pattern.
-  const leagueWhiffGap = useMemo(() => {
-    const gaps = qualifiedSeasonPlayers
-      .map((p) => (p.whiff_rate != null && p.exp_whiff != null ? p.whiff_rate - p.exp_whiff : null))
-      .filter((v): v is number => v != null);
-    return gaps.length ? gaps.reduce((a, b) => a + b, 0) / gaps.length : 0;
-  }, [qualifiedSeasonPlayers]);
-  const eliteWhiffGap = useMemo(
-    () => pairedFieldPercentileValue(qualifiedSeasonPlayers, "whiff_rate", "exp_whiff", 10) ?? 0,
-    [qualifiedSeasonPlayers]
-  );
-
-  // Bat speed and lift, both already expressed as deltas versus expected, so higher is
-  // better on both axes and "elite" is the 90th percentile of each independently.
-  const leagueBS = useMemo(() => leagueMean(qualifiedSeasonPlayers, "paBS"), [qualifiedSeasonPlayers]);
-  const leagueAA = useMemo(() => leagueMean(qualifiedSeasonPlayers, "paAA"), [qualifiedSeasonPlayers]);
-  const eliteBS = useMemo(
-    () => fieldPercentileValue(qualifiedSeasonPlayers, "paBS", 90) ?? 0,
-    [qualifiedSeasonPlayers]
-  );
-  const eliteAA = useMemo(
-    () => fieldPercentileValue(qualifiedSeasonPlayers, "paAA", 90) ?? 0,
-    [qualifiedSeasonPlayers]
+  // The percentile baseline is always the qualified pool for the season, never the
+  // PA-filtered view. Moving the filter changes who is visible, not what 100 means.
+  const pct = useMemo(
+    () => buildPercentiles(seasonPlayers.filter((p) => p.qualified), PCT_KEYS),
+    [seasonPlayers]
   );
 
   // Sync state from URL when the user navigates back/forward. The guard in the state→URL
@@ -182,13 +106,11 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   // next === searchParams.toString() and skip the navigation.
   useEffect(() => {
     const q = searchParams.get("tab");
-    setTab(TAB_KEYS.includes(q as Tab) ? (q as Tab) : "card");
+    setTab(TAB_KEYS.includes(q as Tab) ? (q as Tab) : "leaderboard");
     const s = Number(searchParams.get("season"));
     if (seasons.includes(s)) setSeason(s);
     const m = Number(searchParams.get("minPA"));
     setMinPA(Number.isFinite(m) && m > 0 ? m : DEFAULT_MIN_PA);
-    const p = searchParams.get("player");
-    if (p) setPickedName(p);
     const c = searchParams.get("compare");
     setCompareNames(c ? c.split("|").filter(Boolean) : []);
     setTeamFilter(searchParams.get("team") ?? "");
@@ -205,9 +127,8 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
   const prevTabRef = useRef(tab);
   useEffect(() => {
     const params = new URLSearchParams();
-    if (tab !== "card") params.set("tab", tab);
+    if (tab !== "leaderboard") params.set("tab", tab);
     params.set("season", String(season));
-    if (tab === "card" && pickedName) params.set("player", pickedName);
     if (minPA !== DEFAULT_MIN_PA) params.set("minPA", String(minPA));
     if (tab === "compare" && compareNames.length > 0) {
       params.set("compare", compareNames.join("|"));
@@ -228,16 +149,28 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
       prevTabRef.current = tab;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab, season, pickedName, minPA, compareNames, teamFilter, rookieOnly, hand]);
+  }, [tab, season, minPA, compareNames, teamFilter, rookieOnly, hand]);
 
-  const selectPlayer = useCallback((name: string) => {
-    setPickedName(name);
-    setTab("card");
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  const selectPlayer = useCallback(
+    (name: string) => {
+      const id = ids[name];
+      if (id) router.push(`/player/${id}?season=${season}`);
+    },
+    [ids, season, router]
+  );
 
-  const selectSeason = useCallback((year: number) => {
-    setSeason(year);
+  // Old shared links (?player=… or ?tab=card) pointed at the Player tab, which now lives
+  // on the player page.
+  useEffect(() => {
+    const legacyTab = searchParams.get("tab");
+    const name = searchParams.get("player");
+    if (legacyTab && legacyTab !== "card") return;
+    const id = name ? ids[name] : undefined;
+    if (id) {
+      const s = searchParams.get("season");
+      router.replace(`/player/${id}${s ? `?season=${s}` : ""}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -277,7 +210,7 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
             ))}
           </nav>
 
-          {tab === "card" && <SearchBox players={seasonPlayers} onSelect={selectPlayer} />}
+          {tab !== "how" && <SearchBox players={seasonPlayers} onSelect={selectPlayer} />}
 
           {tab !== "how" && (
             <label className="ml-auto flex items-center gap-2 text-xs font-medium text-[var(--dim)]">
@@ -349,30 +282,6 @@ export default function Explorer({ data }: { data: SwingPlusData }) {
           </>
         )}
       </div>
-
-      {tab === "card" &&
-        (picked ? (
-          <PlayerCard
-            player={picked}
-            pct={pct}
-            leagueDepth={leagueDepth}
-            eliteGap={eliteGap}
-            leagueWhiffGap={leagueWhiffGap}
-            eliteWhiffGap={eliteWhiffGap}
-            leagueBS={leagueBS}
-            leagueAA={leagueAA}
-            eliteBS={eliteBS}
-            eliteAA={eliteAA}
-            history={playerHistory}
-            pctBySeason={pctBySeason}
-            onSelectSeason={selectSeason}
-          />
-        ) : (
-          <div className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-7 py-11 text-center text-[var(--dim)] shadow-[var(--panel-shadow)]">
-            <p className="mb-1.5 text-base font-semibold text-[var(--text)]">No hitter selected</p>
-            <p>Search a name above, or pick one from the leaderboard.</p>
-          </div>
-        ))}
 
       {tab === "leaderboard" && (
         <Leaderboard

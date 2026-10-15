@@ -8,7 +8,6 @@ import { COMPONENT_ASK, CONFIDENCE_NOTE } from "@/lib/hitting-plus/copy";
 import ContactDiagram from "./ContactDiagram";
 import WhiffDiagram from "./WhiffDiagram";
 import PowerDiagram from "./PowerDiagram";
-import Headshot from "./Headshot";
 import YearOverYear from "./YearOverYear";
 import RollingChart from "./RollingChart";
 import SplitsTable from "./SplitsTable";
@@ -110,27 +109,39 @@ export default function PlayerCard({
   return (
     <div ref={cardRef} className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-6 shadow-[var(--panel-shadow)] sm:px-7 sm:py-6">
       <div className="flex flex-wrap items-start justify-between gap-5 border-b border-[var(--rule)] pb-5">
-        <div className="flex items-center gap-4">
-          <Headshot name={d.player_name} size={72} className="border border-[var(--panel-border)]" />
-          <div>
-            <div className="text-3xl font-bold leading-tight sm:text-[34px]">{formatName(d.player_name)}</div>
-            <div className="mt-1.5 text-xs text-[var(--dim)]">
-              {[
-                `${d.game_year}`,
-                `${d.pitches.toLocaleString()} pitches`,
-                `${d.swings.toLocaleString()} swings`,
-                `${d.pa} PA`,
-              ].join(" · ")}
-            </div>
-            <a
-              href={`/compare?tab=hitter&a=${encodeURIComponent(formatName(d.player_name))}&yearA=${d.game_year}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1 rounded-md border border-[var(--rule)] bg-[var(--panel)] px-2.5 py-1 text-[11px] font-medium text-[var(--dim)] transition-colors hover:border-[var(--dimmer)] hover:text-[var(--text)]"
-            >
-              Compare in Percentile Compare ↗
-            </a>
+        <div>
+          <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
+            Hitting<span className="text-[var(--accent)]">+</span>
+          </h2>
+          <div className="mt-1 text-xs text-[var(--dim)]">
+            {[
+              `${d.pitches.toLocaleString()} pitches`,
+              `${d.swings.toLocaleString()} swings`,
+              `${d.pa} PA`,
+            ].join(" · ")}
           </div>
+          {history.length > 1 && (
+            <div className="mt-3 flex flex-wrap gap-1" role="group" aria-label="Season">
+              {[...history]
+                .sort((a, b) => b.game_year - a.game_year)
+                .map((h) => (
+                  <button
+                    key={h.game_year}
+                    type="button"
+                    onClick={() => onSelectSeason(h.game_year)}
+                    aria-pressed={h.game_year === d.game_year}
+                    className={`rounded-md border px-2.5 py-1 text-xs font-semibold tabular-nums transition-colors ${
+                      h.game_year === d.game_year
+                        ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                        : "border-[var(--rule)] text-[var(--dim)] hover:text-[var(--text)]"
+                    }`}
+                  >
+                    {h.game_year}
+                  </button>
+                ))}
+            </div>
+          )}
+          {history.length === 1 && <div className="mt-1 text-xs text-[var(--dimmer)]">{d.game_year} season</div>}
         </div>
         <div
           className="flex-shrink-0 text-left sm:text-right"

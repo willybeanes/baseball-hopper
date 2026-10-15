@@ -74,22 +74,16 @@ export function headshotUrl(mlbamId: number): string {
 }
 
 /**
- * Hitting+ deep-link for a player.
- * hitting-plus accepts ?player=Last,+First&season=YYYY
- */
-export function hittingPlusUrl(player: PlayerInfo, season?: number): string {
-  const params = new URLSearchParams({ player: player.storedName });
-  if (season) params.set("season", String(season));
-  return `${SHELL}/hitting-plus?${params}`;
-}
-
-/**
  * Percentile Compare deep-link for a player as Player A.
  * player-compare accepts ?tab=hitter&a=First+Last&yearA=YYYY
  * Routed through the shell's /compare rewrite.
  */
-export function compareUrl(player: PlayerInfo, season?: number): string {
-  const params = new URLSearchParams({ tab: "hitter", a: player.displayName });
+export function compareUrl(
+  player: Pick<PlayerInfo, "displayName">,
+  season?: number,
+  tab: "hitter" | "pitcher" = "hitter",
+): string {
+  const params = new URLSearchParams({ tab, a: player.displayName });
   if (season) params.set("yearA", String(season));
   return `${SHELL}/compare?${params}`;
 }

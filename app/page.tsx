@@ -265,7 +265,7 @@ export default async function HomePage() {
                   return (
                     <Link
                       key={p.player_name}
-                      href={`/hitting-plus?tab=card&player=${encodeURIComponent(p.player_name)}&season=2026`}
+                      href={playerInfo[p.player_name]?.id ? `/player/${playerInfo[p.player_name].id}?season=2026` : `/hitting-plus?season=2026`}
                       className="flex items-center gap-2 py-1.5 hover:bg-[var(--track)] -mx-1 px-1 rounded-lg transition-colors group/row"
                     >
                       <span className="text-[11px] text-[var(--dimmer)] w-4 text-right shrink-0">{i + 1}</span>
