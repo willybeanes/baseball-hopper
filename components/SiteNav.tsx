@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import BallMark from "@/components/BallMark";
+import PlayerSearch from "@/components/PlayerSearch";
 
 const NAV_GROUPS = [
   {
@@ -48,13 +49,15 @@ const ALL_TOOLS = NAV_GROUPS.flatMap((g) => g.tools);
 export default function SiteNav() {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
+  const [mobileSearch, setMobileSearch] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenGroup(null);
         setMobileOpen(false);
+        setMobileSearch(false);
       }
     }
     document.addEventListener("mousedown", handleClick);
@@ -62,8 +65,8 @@ export default function SiteNav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--rule)] bg-[var(--panel)] backdrop-blur-sm">
-      <div ref={navRef} className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between gap-4">
+    <header ref={navRef} className="sticky top-0 z-50 w-full border-b border-[var(--rule)] bg-[var(--panel)] backdrop-blur-sm">
+      <div className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between gap-4">
 
         {/* Wordmark */}
         <div className="flex items-center gap-2 shrink-0">
@@ -86,6 +89,9 @@ export default function SiteNav() {
             · Balls &amp; Sticks
           </a>
         </div>
+
+        {/* Player search (phones get it from the icon below) */}
+        <PlayerSearch className="hidden sm:block w-60 ml-auto" />
 
         {/* Desktop nav groups */}
         <nav className="hidden lg:flex items-center gap-1">
@@ -128,10 +134,29 @@ export default function SiteNav() {
           ))}
         </nav>
 
+        {/* Mobile search toggle */}
+        <button
+          onClick={() => {
+            setMobileSearch((v) => !v);
+            setMobileOpen(false);
+          }}
+          className="sm:hidden ml-auto flex items-center px-2 py-1 rounded-md text-[var(--dim)] hover:text-[var(--text)] hover:bg-[var(--bg)] transition-colors"
+          aria-label="Search players"
+          aria-expanded={mobileSearch}
+        >
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden>
+            <circle cx="7" cy="7" r="4.75" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M10.5 10.5L14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </button>
+
         {/* Mobile hamburger */}
         <div className="lg:hidden relative">
           <button
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => {
+              setMobileOpen((v) => !v);
+              setMobileSearch(false);
+            }}
             className="flex items-center gap-1.5 text-sm font-medium text-[var(--dim)] hover:text-[var(--text)] transition-colors px-2 py-1 rounded-md hover:bg-[var(--bg)]"
             aria-label="Menu"
           >
@@ -166,6 +191,11 @@ export default function SiteNav() {
           )}
         </div>
       </div>
+      {mobileSearch && (
+        <div className="sm:hidden px-4 pb-2.5">
+          <PlayerSearch autoFocus onNavigate={() => setMobileSearch(false)} />
+        </div>
+      )}
     </header>
   );
 }
