@@ -751,6 +751,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 612797,
+   "name": "Erick Leal",
+   "pos": "sp",
+   "age": 32,
+   "war": 0.13,
+   "ip": 97,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 683522,
    "name": "Michael Arias",
    "pos": "rp",
