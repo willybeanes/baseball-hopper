@@ -36,7 +36,7 @@
     "games": 162
   },
   "playingTime": {
-    "note": "A season's playing time per spot, used to turn individual projections into a team total like a depth chart: each spot is filled by the best players there (by WAR per PA or per inning), leftovers fill other gaps, and below-replacement players are left out. About 6,200 PA and 1,450 innings in all. Added 2026-10-14 after Will questioned the A's leading on summed WAR.",
+    "note": "A season's playing time per spot, used to turn individual projections into a team total like a depth chart: each spot is filled by the best players there (by WAR per PA or per inning), leftovers fill other gaps, and below-replacement players are left out. About 6,200 PA and 1,450 innings in all. Added 2026-10-14 after Will questioned the A's leading on summed WAR. Rotation/bullpen split 850/600 innings, close to how starters and relievers have split them in recent seasons, and no one pitcher counts for more than 75 innings in the bullpen (starter prospects listed as plain RHP/LHP were each being counted for ~100 relief innings). Both added 2026-10-15 after Will asked how many innings the Twins' seven 1-WAR starters would throw.",
     "pa": {
       "C": 650,
       "1B": 700,
@@ -49,8 +49,9 @@
       "DH": 650
     },
     "ip": {
-      "SP": 900,
-      "RP": 550
-    }
+      "SP": 850,
+      "RP": 600
+    },
+    "relieverMaxIp": 75
   }
 }

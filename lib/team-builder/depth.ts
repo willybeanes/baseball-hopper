@@ -17,6 +17,8 @@ export interface Depth {
 }
 
 const CAPACITY: Record<FieldSpot, number> = { ...assumptions.playingTime.pa, ...assumptions.playingTime.ip } as Record<FieldSpot, number>
+// No reliever throws starter-like innings out of the bullpen, whatever his projection says.
+const RELIEVER_MAX_IP = assumptions.playingTime.relieverMaxIp
 const PITCHING: FieldSpot[] = ['SP', 'RP']
 const HITTING = FIELD_SPOTS.filter((s) => !PITCHING.includes(s))
 
@@ -34,12 +36,13 @@ export function depthChart(players: DepthPlayer[]): Depth {
     // level is left out, since a replacement call-up would play instead at no cost.
     const pool = players
       .filter((p) => PITCHING.includes(spotsFor(p.pos)[0]) === pitching && volumeOf(p) > 0 && (p.war ?? 0) > 0)
-      .map((p) => ({ p, left: volumeOf(p), rate: (p.war ?? 0) / volumeOf(p) }))
+      .map((p) => ({ p, left: volumeOf(p), rate: (p.war ?? 0) / volumeOf(p), inPen: 0 }))
       .sort((a, b) => b.rate - a.rate)
     const room = Object.fromEntries(spots.map((s) => [s, CAPACITY[s]])) as Record<FieldSpot, number>
     const use = (c: (typeof pool)[number], spot: FieldSpot) => {
-      const u = Math.min(c.left, room[spot])
+      const u = Math.min(c.left, room[spot], spot === 'RP' ? RELIEVER_MAX_IP - c.inPen : Infinity)
       if (u <= 0) return
+      if (spot === 'RP') c.inPen += u
       c.left -= u
       room[spot] -= u
       const war = c.rate * u

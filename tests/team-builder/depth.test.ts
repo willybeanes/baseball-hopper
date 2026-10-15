@@ -22,8 +22,24 @@ describe('depth chart team WAR', () => {
     expect(d.total).toBeCloseTo(2 * (6200 / 700), 6)
   })
   test('the best players by rate get the time', () => {
-    const d = depthChart([pitcher(1, 'rhp', 2, 60), pitcher(2, 'rhp', 1, 600)]) // RP room 550, then SP room 900
+    const d = depthChart([pitcher(1, 'rhp', 2, 60), pitcher(2, 'rhp', 1, 600)])
     expect(d.credit.get(1)!.share).toBe(1)
+  })
+  test('no one throws more than 75 innings out of the bullpen', () => {
+    // A starter prospect listed as plain RHP, projected for 100 innings: 75 count in the pen,
+    // and with the rotation's 850 innings free, the rest spill into the rotation.
+    const d = depthChart([pitcher(1, 'rhp', 2, 100)])
+    expect(d.bySpot.RP.players[0].war).toBeCloseTo(2 * 0.75, 6)
+    expect(d.bySpot.SP.players[0].war).toBeCloseTo(2 * 0.25, 6)
+  })
+  test('rotation 850 innings, bullpen 600', () => {
+    const starters = Array.from({ length: 10 }, (_, i) => pitcher(i, 'rhp-s', 2, 150)) // 1,500 IP of starters
+    const d = depthChart(starters)
+    const counted = [...d.credit.values()].reduce((n, c) => n + c.share * 150, 0)
+    // The rotation fills (850); leftovers give the pen at most 75 each: the sixth starter's last
+    // 50 innings plus 75 from each of the other four. The pen's remaining room goes to replacement.
+    expect(counted).toBeCloseTo(850 + 50 + 4 * 75, 6)
+    expect(d.bySpot.SP.war).toBeCloseTo(850 * (2 / 150), 6)
   })
   test('below-replacement players are left out', () => {
     const d = depthChart([hitter(1, 'c', -0.8, 400), hitter(2, 'c', 1, 300)])
