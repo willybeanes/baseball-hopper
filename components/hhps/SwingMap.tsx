@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { LeagueJson, MetaJson, PlayerJson, Side, StanceRow } from "@/lib/hhps";
+import type { HHPSLeaderboardRow, LeagueJson, MetaJson, PlayerJson, Side, StanceRow } from "@/lib/hhps";
 import {
   buildBatMesh,
   fetchStance,
@@ -30,16 +30,40 @@ const SCALE = {
 } as const;
 
 type Outcome = keyof typeof SCALE;
+type Split = "A" | "R" | "L";
+
+interface Loaded {
+  Plotly: typeof import("plotly.js-dist-min");
+  meta: MetaJson | null;
+  league: LeagueJson | null;
+  player: PlayerJson | null;
+  stanceRows: StanceRow[];
+}
+
+const pct = (v: number | null | undefined) => (v == null ? null : `${(v * 100).toFixed(1)}%`);
 
 /**
  * Read-only 3D cube map for the player page: hitters get hard-hit cubes per ball in play,
  * pitchers get the whiff cubes they induce per swing. Drag to rotate; the full controls
  * live in the 3D Swing / Pitch Explorer.
  */
-export default function SwingMap({ mlbam, season, side }: { mlbam: number; season: number; side: Side }) {
+export default function SwingMap({
+  mlbam,
+  season,
+  side,
+  rows,
+}: {
+  mlbam: number;
+  season: number;
+  side: Side;
+  /** Leaderboard rows for this season by split (A/R/L), for the caption. */
+  rows: HHPSLeaderboardRow[];
+}) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const plotRef = useRef<HTMLDivElement>(null);
+  const loadRef = useRef<Promise<Loaded> | null>(null);
   const [visible, setVisible] = useState(false);
+  const [split, setSplit] = useState<Split>("A");
   const [state, setState] = useState<"loading" | "ready" | "empty" | "error">("loading");
 
   const outcome: Outcome = side === "pitcher" ? "whiff" : "hard";
@@ -68,27 +92,42 @@ export default function SwingMap({ mlbam, season, side }: { mlbam: number; seaso
     let ro: ResizeObserver | null = null;
 
     (async () => {
-      const json = <T,>(url: string) => fetch(url).then((r) => (r.ok ? (r.json() as Promise<T>) : null));
-      const [Plotly, meta, league, player, stanceRows] = await Promise.all([
-        import("plotly.js-dist-min"),
-        json<MetaJson>(metaJsonUrl(SUPABASE_URL, season, side)),
-        json<LeagueJson>(leagueJsonUrl(SUPABASE_URL, season, side)),
-        json<PlayerJson>(playerJsonUrl(SUPABASE_URL, season, mlbam, side)),
-        // Batting stance is a hitter measurement; pitcher maps pool every hitter.
-        side === "hitter" ? fetchStance(SUPABASE_URL, SUPABASE_ANON_KEY, mlbam, season) : Promise.resolve([] as StanceRow[]),
-      ]);
+      // Fetched once; switching splits only redraws.
+      loadRef.current ??= (async () => {
+        const json = <T,>(url: string) => fetch(url).then((r) => (r.ok ? (r.json() as Promise<T>) : null));
+        const [Plotly, meta, league, player, stanceRows] = await Promise.all([
+          import("plotly.js-dist-min"),
+          json<MetaJson>(metaJsonUrl(SUPABASE_URL, season, side)),
+          json<LeagueJson>(leagueJsonUrl(SUPABASE_URL, season, side)),
+          json<PlayerJson>(playerJsonUrl(SUPABASE_URL, season, mlbam, side)),
+          // Batting stance is a hitter measurement; pitcher maps pool every hitter.
+          side === "hitter" ? fetchStance(SUPABASE_URL, SUPABASE_ANON_KEY, mlbam, season) : Promise.resolve([] as StanceRow[]),
+        ]);
+        return { Plotly, meta, league, player, stanceRows };
+      })();
+      const { Plotly, meta, league, player, stanceRows } = await loadRef.current;
       if (cancelled) return;
       const el = plotRef.current;
       if (!meta || !player || !el) return setState(player === null ? "empty" : "error");
 
-      const payload = player.splits.A;
+      // Pitcher files key vs-RHH / vs-LHH under R / L; each split carries the batter side it's drawn for.
+      const payload = player.splits[split];
+      if (!payload) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (Plotly as any).purge(el);
+        return setState("empty");
+      }
       const stand: "R" | "L" = payload.stand ?? (player.stand !== "S" ? player.stand : "L");
       const sg: 1 | -1 = stand === "L" ? -1 : 1;
       const cubes = getCubeList(payload, mode, outcome);
-      if (!cubes.x.length) return setState("empty");
+      if (!cubes.x.length) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (Plotly as any).purge(el);
+        return setState("empty");
+      }
 
       const zone = player.zone ?? league?.[stand].zone;
-      const stRow = pickStance(stanceRows, stand, "A");
+      const stRow = pickStance(stanceRows, stand, split);
       const stanceDepth = stRow?.stance_depth ?? 19;
       const feet = zone && stRow ? stanceFeet(stRow, zone.plate_off_body) : null;
 
@@ -173,7 +212,8 @@ export default function SwingMap({ mlbam, season, side }: { mlbam: number; seaso
             bgcolor: "rgba(0,0,0,0)",
             dragmode: "turntable",
           },
-          uirevision: "keep",
+          // Keep the visitor's rotation across splits unless the batter side (and so the frame) flips.
+          uirevision: stand,
         };
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (Plotly as any).react(el, traces, layout, { responsive: true, displayModeBar: false, scrollZoom: false });
@@ -195,16 +235,46 @@ export default function SwingMap({ mlbam, season, side }: { mlbam: number; seaso
       cancelled = true;
       ro?.disconnect();
     };
-  }, [visible, mlbam, season, side, mode, outcome]);
+  }, [visible, split, mlbam, season, side, mode, outcome]);
+
+  const row = rows.find((r) => r.split === split);
+  const opp = side === "pitcher" ? "H" : "P";
+  const caption = row
+    ? side === "pitcher"
+      ? [pct(row.whiff_rate) && `Whiff% ${pct(row.whiff_rate)}`, row.swings != null && `${row.swings} swings`]
+      : [pct(row.hh_rate) && `HH% ${pct(row.hh_rate)}`, `${row.bip} BIP`]
+    : [];
 
   return (
-    <div ref={wrapRef} className="relative h-[380px] sm:h-[460px]">
-      <div ref={plotRef} className="h-full w-full" />
-      {state !== "ready" && (
-        <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--dim)]">
-          {state === "loading" ? "Loading 3D map…" : state === "empty" ? "Not enough swings for a map yet" : "Couldn't load the 3D map"}
+    <div>
+      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 px-5 sm:px-7">
+        <div className="flex gap-1" role="group" aria-label="Split">
+          {(["A", "R", "L"] as const).map((k) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => setSplit(k)}
+              aria-pressed={split === k}
+              className={`rounded-md border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                split === k
+                  ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                  : "border-[var(--rule)] text-[var(--dim)] hover:text-[var(--text)]"
+              }`}
+            >
+              {k === "A" ? "All" : `vs ${k}H${opp}`}
+            </button>
+          ))}
         </div>
-      )}
+        <span className="text-xs tabular-nums text-[var(--dim)]">{caption.filter(Boolean).join(" · ")}</span>
+      </div>
+      <div ref={wrapRef} className="relative h-[380px] sm:h-[460px]">
+        <div ref={plotRef} className="h-full w-full" />
+        {state !== "ready" && (
+          <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--dim)]">
+            {state === "loading" ? "Loading 3D map…" : state === "empty" ? "Not enough data for this split yet" : "Couldn't load the 3D map"}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** All-pitchers 3D-map row (hitter or pitcher table); latest season that has one. Null when there's no map. */
-async function fetchHhpsRow(mlbam: number, side: "hitter" | "pitcher"): Promise<HHPSLeaderboardRow | null> {
+/** 3D-map rows (all / vs R / vs L) for the latest season that has a map. Empty when there's none. */
+async function fetchHhpsRows(mlbam: number, side: "hitter" | "pitcher"): Promise<HHPSLeaderboardRow[]> {
   try {
     const sb = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -40,13 +40,14 @@ async function fetchHhpsRow(mlbam: number, side: "hitter" | "pitcher"): Promise<
       .from(side === "pitcher" ? "hhps_pitcher_leaderboard" : "hhps_leaderboard")
       .select("*")
       .eq("mlbam", mlbam)
-      .eq("split", "A")
+      .in("split", ["A", "R", "L"])
       .order("season", { ascending: false })
-      .limit(1);
-    if (error || !data?.length) return null;
-    return data[0] as HHPSLeaderboardRow;
+      .limit(6);
+    if (error || !data?.length) return [];
+    const latest = data[0].season;
+    return (data as HHPSLeaderboardRow[]).filter((r) => r.season === latest);
   } catch {
-    return null;
+    return [];
   }
 }
 
@@ -210,22 +211,17 @@ export default async function PlayerPage({ params }: Props) {
   const showHitting = !player.isPitcher && player.hitting.seasons.length > 0;
   const showPitching = (player.isPitcher || player.isTwoWay) && player.pitching.seasons.length > 0;
   const mapSide = player.isPitcher ? "pitcher" : "hitter";
-  const [hp, hhps] = await Promise.all([
+  const [hp, mapRows] = await Promise.all([
     player.isPitcher ? null : getPlayerHittingPlus(id),
-    fetchHhpsRow(id, mapSide),
+    fetchHhpsRows(id, mapSide),
   ]);
+  const mapSeason = mapRows[0]?.season;
   const latestSeason = Math.max(
     ...player.hitting.seasons.map((s) => s.season),
     ...player.pitching.seasons.map((s) => s.season),
     new Date().getFullYear() - 1,
   );
 
-  const pct = (v: number | null | undefined) => (v == null ? null : `${(v * 100).toFixed(1)}%`);
-  const mapCaption = hhps
-    ? mapSide === "pitcher"
-      ? ["Where hitters swing through his pitches", `${hhps.season}`, pct(hhps.whiff_rate) && `Whiff% ${pct(hhps.whiff_rate)}`, hhps.swings != null && `${hhps.swings} swings`]
-      : ["Where he makes hard contact, per ball in play", `${hhps.season}`, pct(hhps.hh_rate) && `HH% ${pct(hhps.hh_rate)}`, `${hhps.bip} BIP`]
-    : [];
   const mapHref =
     mapSide === "pitcher"
       ? `/hhps/pitchers?player=${id}&outcome=whiff&mode=swing`
@@ -291,7 +287,7 @@ export default async function PlayerPage({ params }: Props) {
           <StatTable title="Pitching" cols={PITCHING_COLS} seasons={player.pitching.seasons} career={player.pitching.career} />
         )}
 
-        {hhps && (
+        {mapSeason && (
           <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
@@ -302,10 +298,11 @@ export default async function PlayerPage({ params }: Props) {
               </Link>
             </div>
             <p className="mt-1 text-xs text-[var(--dim)]">
-              {mapCaption.filter(Boolean).join(" · ")} · each cube is 3 inches · drag to rotate
+              {mapSide === "pitcher" ? "Where hitters swing through his pitches" : "Where he makes hard contact, per ball in play"}{" "}
+              · {mapSeason} · each cube is 3 inches · drag to rotate
             </p>
-            <div className="-mx-5 mt-2 sm:-mx-7">
-              <SwingMap mlbam={id} season={hhps.season} side={mapSide} />
+            <div className="-mx-5 sm:-mx-7">
+              <SwingMap mlbam={id} season={mapSeason} side={mapSide} rows={mapRows} />
             </div>
           </section>
         )}
