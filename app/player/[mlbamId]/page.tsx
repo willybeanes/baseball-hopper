@@ -108,7 +108,6 @@ function StatTable({
   seasons: SeasonLine[];
   career: Record<string, string | number | undefined> | null;
 }) {
-  const rows = [...seasons].reverse();
   return (
     <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7">
       <h2 className="mb-3 text-[15px] font-semibold tracking-tight text-[var(--text)]">{title}</h2>
@@ -126,7 +125,7 @@ function StatTable({
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--panel-border)]">
-            {rows.map((r) => (
+            {seasons.map((r) => (
               <tr key={r.season}>
                 <td className="sticky left-0 bg-[var(--panel)] py-2 pr-3 font-semibold">{r.season}</td>
                 <td className="py-2 pr-3 text-[var(--dim)]">{r.team}</td>
