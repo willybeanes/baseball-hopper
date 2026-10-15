@@ -7,6 +7,7 @@ import { headshotUrl, hhpsUrl } from "@/lib/player";
 import { fetchPlayerProfile, type PlayerProfile, type SeasonLine } from "@/lib/player-profile";
 import { getPlayerHittingPlus } from "@/lib/hitting-plus/data";
 import PlayerHittingPlus from "@/components/hitting-plus/PlayerHittingPlus";
+import SwingMap from "@/components/hhps/SwingMap";
 
 // Statically cached per player; season picks happen client-side via ?season=.
 export const revalidate = 1800;
@@ -28,15 +29,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** All-pitchers HHPS row for a hitter; latest season that has one. Null for pitchers / no data. */
-async function fetchHhpsRow(mlbam: number): Promise<HHPSLeaderboardRow | null> {
+/** All-pitchers 3D-map row (hitter or pitcher table); latest season that has one. Null when there's no map. */
+async function fetchHhpsRow(mlbam: number, side: "hitter" | "pitcher"): Promise<HHPSLeaderboardRow | null> {
   try {
     const sb = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     );
     const { data, error } = await sb
-      .from("hhps_leaderboard")
+      .from(side === "pitcher" ? "hhps_pitcher_leaderboard" : "hhps_leaderboard")
       .select("*")
       .eq("mlbam", mlbam)
       .eq("split", "A")
@@ -48,12 +49,6 @@ async function fetchHhpsRow(mlbam: number): Promise<HHPSLeaderboardRow | null> {
     return null;
   }
 }
-
-const ordinal = (n: number) => {
-  const v = n % 100;
-  const suf = v >= 11 && v <= 13 ? "th" : ({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] ?? "th";
-  return `${n}${suf}`;
-};
 
 // ── Stat tables ────────────────────────────────────────────────────────────────
 
@@ -214,23 +209,27 @@ export default async function PlayerPage({ params }: Props) {
 
   const showHitting = !player.isPitcher && player.hitting.seasons.length > 0;
   const showPitching = (player.isPitcher || player.isTwoWay) && player.pitching.seasons.length > 0;
-  const [hp, hhps] = player.isPitcher
-    ? [null, null]
-    : await Promise.all([getPlayerHittingPlus(id), fetchHhpsRow(id)]);
+  const mapSide = player.isPitcher ? "pitcher" : "hitter";
+  const [hp, hhps] = await Promise.all([
+    player.isPitcher ? null : getPlayerHittingPlus(id),
+    fetchHhpsRow(id, mapSide),
+  ]);
   const latestSeason = Math.max(
     ...player.hitting.seasons.map((s) => s.season),
     ...player.pitching.seasons.map((s) => s.season),
     new Date().getFullYear() - 1,
   );
 
-  const hhpsStats = hhps
-    ? [
-        { label: "Hard-hit per contact", n: hhps.bip_hard_in3, rank: hhps.bip_hard_rank, href: hhpsUrl(id, { outcome: "hard", mode: "contact" }) },
-        { label: "Barrels per contact", n: hhps.bip_brl_in3, rank: hhps.bip_brl_rank, href: hhpsUrl(id, { outcome: "barrel", mode: "contact" }) },
-        { label: "Hard-hit per swing", n: hhps.sw_hard_in3, rank: hhps.sw_hard_rank, href: hhpsUrl(id, { outcome: "hard", mode: "swing" }) },
-        { label: "Barrels per swing", n: hhps.sw_brl_in3, rank: hhps.sw_brl_rank, href: hhpsUrl(id, { outcome: "barrel", mode: "swing" }) },
-      ]
+  const pct = (v: number | null | undefined) => (v == null ? null : `${(v * 100).toFixed(1)}%`);
+  const mapCaption = hhps
+    ? mapSide === "pitcher"
+      ? ["Where hitters swing through his pitches", `${hhps.season}`, pct(hhps.whiff_rate) && `Whiff% ${pct(hhps.whiff_rate)}`, hhps.swings != null && `${hhps.swings} swings`]
+      : ["Where he makes hard contact, per ball in play", `${hhps.season}`, pct(hhps.hh_rate) && `HH% ${pct(hhps.hh_rate)}`, `${hhps.bip} BIP`]
     : [];
+  const mapHref =
+    mapSide === "pitcher"
+      ? `/hhps/pitchers?player=${id}&outcome=whiff&mode=swing`
+      : hhpsUrl(id, { outcome: "hard", mode: "contact" });
 
   const compareTab = player.isPitcher ? "pitcher" : "hitter";
   const tools = [
@@ -295,24 +294,18 @@ export default async function PlayerPage({ params }: Props) {
         {hhps && (
           <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Swing zones</h2>
-              <Link href={hhpsUrl(id)} className="text-xs font-medium text-[var(--accent)] hover:underline">
-                Open in 3D Swing Explorer →
+              <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
+                {mapSide === "pitcher" ? "Whiff map" : "Hard-hit map"}
+              </h2>
+              <Link href={mapHref} className="text-xs font-medium text-[var(--accent)] hover:underline">
+                Open in 3D {mapSide === "pitcher" ? "Pitch" : "Swing"} Explorer →
               </Link>
             </div>
             <p className="mt-1 text-xs text-[var(--dim)]">
-              Lit 3-inch cubes of hard contact and barrels around the hitter&apos;s body · {hhps.season} · {hhps.bip} BIP
+              {mapCaption.filter(Boolean).join(" · ")} · each cube is 3 inches · drag to rotate
             </p>
-            <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden bg-[var(--rule)] sm:grid-cols-4">
-              {hhpsStats.map((s) => (
-                <Link key={s.label} href={s.href} className="group bg-[var(--panel)] px-4 py-3.5">
-                  <div className="text-[11px] font-medium text-[var(--dim)] group-hover:text-[var(--text)]">{s.label}</div>
-                  <div className="mt-1 text-xl font-bold tabular-nums">{s.n}</div>
-                  <div className="mt-0.5 text-[11px] text-[var(--dimmer)]">
-                    {hhps.qualified && s.rank ? `${ordinal(Math.round(s.rank))} in MLB` : hhps.qualified ? "—" : "not yet qualified"}
-                  </div>
-                </Link>
-              ))}
+            <div className="-mx-5 mt-2 sm:-mx-7">
+              <SwingMap mlbam={id} season={hhps.season} side={mapSide} />
             </div>
           </section>
         )}
