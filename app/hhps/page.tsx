@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { createClient } from "@supabase/supabase-js";
 
-import type { HHPSLeaderboardRow, Season } from "@/lib/hhps";
-import { SEASONS } from "@/lib/hhps";
+import type { Season } from "@/lib/hhps";
+import { SEASONS, parseGames } from "@/lib/hhps";
+import { getHhpsLeaderboard } from "@/lib/hhpsLeaderboard";
 import HHPSClientShell from "@/components/hhps/HHPSClientShell";
 
 export const metadata: Metadata = {
@@ -16,28 +16,6 @@ export const revalidate = 1800;
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
-async function getLeaderboard(season: Season): Promise<HHPSLeaderboardRow[]> {
-  try {
-    const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    const PAGE = 1000;
-    const rows: HHPSLeaderboardRow[] = [];
-    for (let page = 0; ; page++) {
-      const { data, error } = await sb
-        .from("hhps_leaderboard")
-        .select("*")
-        .eq("season", season)
-        .order("bip_hard_in3", { ascending: false })
-        .range(page * PAGE, (page + 1) * PAGE - 1);
-      if (error || !data?.length) break;
-      rows.push(...(data as HHPSLeaderboardRow[]));
-      if (data.length < PAGE) break;
-    }
-    return rows;
-  } catch {
-    return [];
-  }
-}
-
 export default async function HHPSPage({
   searchParams,
 }: {
@@ -49,12 +27,14 @@ export default async function HHPSPage({
     ? (seasonParam as Season)
     : SEASONS[0];
 
-  const leaderboard = await getLeaderboard(season);
+  const games = parseGames(params.games);
+  const leaderboard = await getHhpsLeaderboard(SUPABASE_URL, SUPABASE_ANON_KEY, "hitter", season, games);
 
   return (
     <HHPSClientShell
       leaderboard={leaderboard}
       season={season}
+      games={games}
       supabaseUrl={SUPABASE_URL}
       initialWhiff={params.whiff === "1"}
       initialWthr={Number.isFinite(Number(params.wthr)) && params.wthr ? Number(params.wthr) : undefined}

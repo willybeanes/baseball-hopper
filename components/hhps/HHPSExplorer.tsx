@@ -10,9 +10,11 @@ import type {
   FigureJson,
   SplitPayload,
   Season,
+  Games,
 } from "@/lib/hhps";
 import {
   SEASONS,
+  GAMES,
   getCubeList,
   getBatTarget,
   flipX,
@@ -79,6 +81,8 @@ interface Props {
   side?: Side;
   leaderboard: HHPSLeaderboardRow[];
   season: Season;
+  /** Regular season, postseason, or both. */
+  games: Games;
   supabaseUrl: string;
   initialPlayer?: number;
   initialOutcome?: "hard" | "barrel" | "whiff" | "soft";
@@ -134,6 +138,7 @@ export default function HHPSExplorer({
   side = "hitter",
   leaderboard,
   season: initialSeason,
+  games: initialGames,
   supabaseUrl,
   initialPlayer,
   initialOutcome = "hard",
@@ -157,6 +162,12 @@ export default function HHPSExplorer({
 
   // ── State ──────────────────────────────────────────────────────────────────
   const [season, setSeason] = useState<Season>(initialSeason);
+  const [games, setGames] = useState<Games>(initialGames);
+  // Cache / fetch key for everything that comes from one season's files.
+  const dataKey = `${season}:${games}`;
+  // Set when this season has no files for the chosen games (no postseason yet, or not built for this side).
+  const [noData, setNoData] = useState(false);
+  const [qualPa, setQualPa] = useState(150);
   const [selectedId, setSelectedId] = useState<PlayerId>(initialPlayer ?? "league-R");
   const [outcome, setOutcome] = useState<Outcome>(
     initialOutcome === "barrel" ? "brl" : initialOutcome === "whiff" ? "whiff" : initialOutcome === "soft" ? "soft" : "hard",
@@ -220,7 +231,7 @@ export default function HHPSExplorer({
   pointsRef.current = points;
   // Click a cube or circle: the plays behind it (with video), shown in a card under the chart.
   const [plays, setPlays] = useState<{ title: string; subtitle?: string; items: PlayItem[] } | null>(null);
-  useEffect(() => { setPlays(null); setPathSel(null); }, [selectedId, season]);
+  useEffect(() => { setPlays(null); setPathSel(null); }, [selectedId, season, games]);
   // A pitch path drawn in the scene (from a play card's "Show pitch path").
   const [pathSel, setPathSel] = useState<{ key: string; ev: EventPoint; traj: Trajectory } | null>(null);
   const lastPathKey = useRef<string | null>(null);
@@ -251,6 +262,7 @@ export default function HHPSExplorer({
           mode: mode === "bip" ? "contact" : "swing",
           hand: hand === "A" ? "all" : hand,
           season: season === SEASONS[0] ? undefined : season,
+          games,
           side,
           thr: thrMap[`${mode}_${outcome}`],
           whiff: alsoWhiff && outcome !== "whiff" ? true : undefined,
@@ -262,37 +274,40 @@ export default function HHPSExplorer({
         }),
         { scroll: false },
       );
-    } else if (season !== initialSeason) {
-      // League average has no player param; keep the season so the leaderboard matches the maps.
-      router.replace(`${basePath}?season=${season}`, { scroll: false });
+    } else if (season !== initialSeason || games !== initialGames) {
+      // League average has no player param; keep the season and games so the leaderboard matches the maps.
+      const q = new URLSearchParams();
+      if (season !== SEASONS[0]) q.set("season", String(season));
+      if (games !== "reg") q.set("games", games);
+      router.replace(`${basePath}${q.size ? `?${q}` : ""}`, { scroll: false });
     }
-  }, [selectedId, outcome, mode, hand, season, thrMap, alsoWhiff, viewMode, circTypes, circRes, pitchPaths, router]);
+  }, [selectedId, outcome, mode, hand, season, games, thrMap, alsoWhiff, viewMode, circTypes, circRes, pitchPaths, router]);
 
   // ── Pitch-path tails: load this hitter's trajectory file when asked for ──────────────────────
   useEffect(() => {
     if (viewMode !== "circles" || !pitchPaths || typeof selectedId !== "number") return;
-    const key = `${season}:${selectedId}`;
+    const key = `${dataKey}:${selectedId}`;
     if (trajRef.current?.key === key) return;
     let cancelled = false;
-    fetch(trajJsonUrl(supabaseUrl, season, selectedId, side))
+    fetch(trajJsonUrl(supabaseUrl, season, selectedId, side, games))
       .then((r) => (r.ok ? (r.json() as Promise<TrajFile>) : null))
       .catch(() => null)
       .then((data) => { if (!cancelled) setTrajData({ key, data }); });
     return () => { cancelled = true; };
-  }, [viewMode, pitchPaths, selectedId, season, supabaseUrl]);
+  }, [viewMode, pitchPaths, selectedId, dataKey, supabaseUrl]);
 
   // ── Circles view: load this hitter's individual events when asked for ───────────────────────
   useEffect(() => {
     if (viewMode !== "circles" || typeof selectedId !== "number") return;
-    const key = `${season}:${selectedId}`;
+    const key = `${dataKey}:${selectedId}`;
     if (pointsRef.current?.key === key) return;
     let cancelled = false;
-    fetch(pointsJsonUrl(supabaseUrl, season, selectedId, side))
+    fetch(pointsJsonUrl(supabaseUrl, season, selectedId, side, games))
       .then((r) => (r.ok ? (r.json() as Promise<PointsJson>) : null))
       .catch(() => null)
       .then((data) => { if (!cancelled) setPoints({ key, data }); });
     return () => { cancelled = true; };
-  }, [viewMode, selectedId, season, supabaseUrl]);
+  }, [viewMode, selectedId, dataKey, supabaseUrl]);
 
   // ── Stance data: league medians per season, and the selected hitter's rows ─────────────────
   useEffect(() => {
@@ -340,13 +355,25 @@ export default function HHPSExplorer({
   useEffect(() => {
     let cancelled = false;
     async function init() {
-      const [Plotly, meta, league, figure] = await Promise.all([
+      const json = <T,>(r: Response) => (r.ok ? (r.json() as Promise<T>) : Promise.reject(new Error(`${r.status} ${r.url}`)));
+      const loaded = await Promise.all([
         import("plotly.js-dist-min"),
-        fetch(metaJsonUrl(supabaseUrl, season, side)).then((r) => r.json() as Promise<MetaJson>),
-        fetch(leagueJsonUrl(supabaseUrl, season, side)).then((r) => r.json() as Promise<LeagueJson>),
-        fetch(figureJsonUrl(supabaseUrl, season)).then((r) => r.json() as Promise<FigureJson>),
-      ]);
+        fetch(metaJsonUrl(supabaseUrl, season, side, games)).then(json<MetaJson>),
+        fetch(leagueJsonUrl(supabaseUrl, season, side, games)).then(json<LeagueJson>),
+        fetch(figureJsonUrl(supabaseUrl, season)).then(json<FigureJson>),
+      ]).catch(() => null);
       if (cancelled) return;
+      if (!loaded) {
+        // No files for these games (no postseason yet): clear the chart rather than leave the last one up.
+        setNoData(true);
+        setStatus("");
+        currentPayloadRef.current = null;
+        if (plotRef.current && plotlyRef.current) plotlyRef.current.purge(plotRef.current);
+        return;
+      }
+      const [Plotly, meta, league, figure] = loaded;
+      setNoData(false);
+      setQualPa(meta.qual_pa);
       plotlyRef.current = Plotly;
       metaRef.current = meta;
       leagueRef.current = league;
@@ -370,7 +397,7 @@ export default function HHPSExplorer({
     init().catch(console.error);
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [season, supabaseUrl]);
+  }, [dataKey, supabaseUrl]);
 
   // Track plot width so cube markers (sized in pixels) scale with the chart on phones
   const [plotW, setPlotW] = useState(0);
@@ -458,11 +485,11 @@ export default function HHPSExplorer({
         return;
       }
 
-      const cacheKey = `${season}:${id}`;
+      const cacheKey = `${dataKey}:${id}`;
       let player = playerCache.current.get(cacheKey);
       if (!player) {
         try {
-          const fetched = await fetch(playerJsonUrl(supabaseUrl, season, id, side)).then(
+          const fetched = await fetch(playerJsonUrl(supabaseUrl, season, id, side, games)).then(
             (r) => r.json() as Promise<PlayerJson>,
           );
           playerCache.current.set(cacheKey, fetched);
@@ -479,7 +506,7 @@ export default function HHPSExplorer({
       draw(payload, splitStand);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [season, supabaseUrl, hand, outcome, mode, showFig, showZone],
+    [dataKey, supabaseUrl, hand, outcome, mode, showFig, showZone],
   );
 
   // Re-draw when player or hand changes
@@ -538,7 +565,7 @@ export default function HHPSExplorer({
     // Circles view: individual events for this hitter, filtered to the current hand / pitch-type split.
     const pts = pointsRef.current;
     const circleData =
-      viewMode === "circles" && typeof selectedId === "number" && pts && pts.key === `${season}:${selectedId}` ? pts.data : null;
+      viewMode === "circles" && typeof selectedId === "number" && pts && pts.key === `${dataKey}:${selectedId}` ? pts.data : null;
     const hFilter = hand.match(/[RL]/)?.[0];
     const pFilter = hand.match(/[FBO]/)?.[0];
     // Each event is drawn once: in its PA-result color if that result is switched on, otherwise in the color of the
@@ -826,7 +853,7 @@ export default function HHPSExplorer({
     const tj = trajRef.current;
     const tailsOn = Boolean(
       pitchPaths && circleSets && circleData && zoneInfo && tj?.data &&
-      tj.key === `${season}:${selectedId}` && tj.data.build === circleData.build && tj.data.n === circleData.pts.length,
+      tj.key === `${dataKey}:${selectedId}` && tj.data.build === circleData.build && tj.data.n === circleData.pts.length,
     );
     if (tailsOn && circleSets && zoneInfo && tj?.data) {
       for (const g of circleSets) {
@@ -938,9 +965,9 @@ export default function HHPSExplorer({
 
   async function ensurePoints(): Promise<PointsJson | null> {
     if (typeof selectedId !== "number") return null;
-    const key = `${season}:${selectedId}`;
+    const key = `${dataKey}:${selectedId}`;
     if (pointsRef.current?.key === key) return pointsRef.current.data;
-    const data = await fetch(pointsJsonUrl(supabaseUrl, season, selectedId, side))
+    const data = await fetch(pointsJsonUrl(supabaseUrl, season, selectedId, side, games))
       .then((r) => (r.ok ? (r.json() as Promise<PointsJson>) : null))
       .catch(() => null);
     setPoints({ key, data });
@@ -1273,6 +1300,16 @@ export default function HHPSExplorer({
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
+          <select
+            aria-label="Games"
+            value={games}
+            onChange={(e) => setGames(e.target.value as Games)}
+            className="text-sm border border-[var(--panel-border)] rounded-md px-2 py-1 bg-[var(--panel)] text-[var(--text)]"
+          >
+            {GAMES.map((g) => (
+              <option key={g.value} value={g.value}>{g.label}</option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -1438,6 +1475,11 @@ export default function HHPSExplorer({
           ref={plotRef}
           className="w-full rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] overflow-hidden h-[360px] sm:h-[560px]"
         />
+        {noData && (
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-[var(--dim)]">
+            {games === "post" ? `No ${season} postseason maps yet.` : `No ${season} maps for these games yet.`}
+          </div>
+        )}
         <div className="absolute top-3 right-3 flex flex-col items-end gap-2 pointer-events-none">
         {playerBadge && (() => {
           const storedName = allRows.find((r) => r.mlbam === playerBadge.mlbam)?.name ?? "";
@@ -1447,7 +1489,7 @@ export default function HHPSExplorer({
                 <span className="text-sm font-semibold text-[var(--text)] drop-shadow-sm text-right leading-snug">
                   {displayName(storedName)}
                   <span className="block text-xs font-normal text-[var(--dim)]">
-                    {season}{hand !== "A" ? ` · ${splitLabel[hand]}` : ""}
+                    {season}{games === "post" ? " postseason" : games === "all" ? " + postseason" : ""}{hand !== "A" ? ` · ${splitLabel[hand]}` : ""}
                   </span>
                 </span>
               )}
@@ -1572,7 +1614,7 @@ export default function HHPSExplorer({
               onChange={(e) => setLbQualOnly(e.target.checked)}
               className="rounded"
             />
-            {isP ? "Qualified only (150+ batters faced)" : "Qualified only (150+ PA)"}
+            {isP ? `Qualified only (${qualPa}+ batters faced)` : `Qualified only (${qualPa}+ PA)`}
           </label>
         </div>
         <div className="overflow-x-auto">

@@ -8,13 +8,25 @@ const STORAGE_BASE = (supabaseUrl: string) =>
 /** Which side of the matchup the explorer is grouped by. Pitcher files live under pitchers/<season>/ in the same bucket. */
 export type Side = "hitter" | "pitcher";
 
-function seasonBase(supabaseUrl: string, season: number, side: Side = "hitter") {
+/** Which games the maps cover. Regular season keeps the original <season>/ paths; the others live under <season>/post|all/. */
+export type Games = "reg" | "post" | "all";
+export const GAMES: { value: Games; label: string }[] = [
+  { value: "reg", label: "Regular season" },
+  { value: "post", label: "Postseason" },
+  { value: "all", label: "Both" },
+];
+export function parseGames(v: string | undefined): Games {
+  return v === "post" || v === "all" ? v : "reg";
+}
+
+function seasonBase(supabaseUrl: string, season: number, side: Side = "hitter", games: Games = "reg") {
+  const dir = games === "reg" ? `${season}` : `${season}/${games}`;
   if (side === "pitcher") {
     // NEXT_PUBLIC_HHPS_PITCHER_BASE points the pitcher maps at another origin (local build output while developing).
     const override = process.env.NEXT_PUBLIC_HHPS_PITCHER_BASE;
-    return override ? `${override}/${season}` : `${STORAGE_BASE(supabaseUrl)}/pitchers/${season}`;
+    return override ? `${override}/${dir}` : `${STORAGE_BASE(supabaseUrl)}/pitchers/${dir}`;
   }
-  return `${STORAGE_BASE(supabaseUrl)}/${season}`;
+  return `${STORAGE_BASE(supabaseUrl)}/${dir}`;
 }
 
 export const SEASONS = [2026, 2025, 2024] as const;
@@ -143,20 +155,24 @@ export interface PlotlyMesh {
 
 // ── URL helpers ───────────────────────────────────────────────────────────────
 
-export function playerJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter") {
-  return `${seasonBase(supabaseUrl, season, side)}/players/${mlbam}.json`;
+export function playerJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter", games: Games = "reg") {
+  return `${seasonBase(supabaseUrl, season, side, games)}/players/${mlbam}.json`;
 }
-export function leagueJsonUrl(supabaseUrl: string, season: number, side: Side = "hitter") {
-  return `${seasonBase(supabaseUrl, season, side)}/league.json`;
+export function leagueJsonUrl(supabaseUrl: string, season: number, side: Side = "hitter", games: Games = "reg") {
+  return `${seasonBase(supabaseUrl, season, side, games)}/league.json`;
 }
-export function metaJsonUrl(supabaseUrl: string, season: number, side: Side = "hitter") {
-  return `${seasonBase(supabaseUrl, season, side)}/meta.json`;
+export function metaJsonUrl(supabaseUrl: string, season: number, side: Side = "hitter", games: Games = "reg") {
+  return `${seasonBase(supabaseUrl, season, side, games)}/meta.json`;
 }
-export function pointsJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter") {
-  return `${seasonBase(supabaseUrl, season, side)}/points/${mlbam}.json`;
+export function pointsJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter", games: Games = "reg") {
+  return `${seasonBase(supabaseUrl, season, side, games)}/points/${mlbam}.json`;
 }
-export function trajJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter") {
-  return `${seasonBase(supabaseUrl, season, side)}/traj/${mlbam}.json`;
+export function trajJsonUrl(supabaseUrl: string, season: number, mlbam: number, side: Side = "hitter", games: Games = "reg") {
+  return `${seasonBase(supabaseUrl, season, side, games)}/traj/${mlbam}.json`;
+}
+/** Postseason / both leaderboards are files (the hhps_*leaderboard tables hold regular-season rows). */
+export function leaderboardJsonUrl(supabaseUrl: string, season: number, side: Side, games: Exclude<Games, "reg">) {
+  return `${seasonBase(supabaseUrl, season, side, games)}/leaderboard.json`;
 }
 /** The hitter figure is shared: the pitcher explorer draws the same generic body. */
 export function figureJsonUrl(supabaseUrl: string, season: number) {
@@ -166,10 +182,11 @@ export function figureJsonUrl(supabaseUrl: string, season: number) {
 /** Deep-link into the 3D Swing Explorer. */
 export function hhpsUrl(
   mlbamId: number,
-  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; paths?: boolean; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number; side?: Side },
+  opts?: { thr?: number; wthr?: number; whiff?: boolean; view?: "circles"; paths?: boolean; types?: string; res?: string; outcome?: "hard" | "barrel" | "whiff" | "soft"; mode?: "contact" | "swing"; hand?: "all" | "R" | "L" | "F" | "B" | "O" | "RF" | "LF" | "RB" | "LB" | "RO" | "LO"; season?: number; side?: Side; games?: Games },
 ): string {
   const params = new URLSearchParams({ player: String(mlbamId) });
   if (opts?.season) params.set("season", String(opts.season));
+  if (opts?.games && opts.games !== "reg") params.set("games", opts.games);
   if (opts?.thr !== undefined) params.set("thr", String(opts.thr));
   if (opts?.whiff) params.set("whiff", "1");
   if (opts?.wthr !== undefined) params.set("wthr", String(opts.wthr));
