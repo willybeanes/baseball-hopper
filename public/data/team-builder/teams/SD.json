@@ -813,6 +813,16 @@
    "debuted": true
   },
   {
+   "mlbamId": 809109,
+   "name": "Roman Angelo",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.15,
+   "ip": 103,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 677578,
    "name": "Carlos Rodríguez",
    "pos": "rf",
