@@ -14,7 +14,22 @@ import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, und
 import type { PoolPlayer } from '@/lib/team-builder/pool'
 import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '@/lib/team-builder/share'
 
-const DATA = '/data/team-builder'
+// The daily refresh uploads the snapshot to Supabase Storage, so new data doesn't need a
+// redeploy. The copy built into the site (same files, as of the last deploy) is the fallback.
+const DATA = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/team-builder`
+const LOCAL_DATA = '/data/team-builder'
+
+async function loadJson<T>(path: string): Promise<T> {
+  try {
+    const r = await fetch(`${DATA}/${path}`)
+    if (r.ok) return (await r.json()) as T
+  } catch {
+    // fall through to the built-in copy
+  }
+  const r = await fetch(`${LOCAL_DATA}/${path}`)
+  if (!r.ok) throw new Error(`${path}: ${r.status}`)
+  return (await r.json()) as T
+}
 const DEFAULT_TEAM = 'NYM'
 
 // Roster groups, by primary position.
@@ -500,9 +515,9 @@ export default function TeamBuilderApp() {
   const undo = (id: number) => { setMoves(undoPlayer(moves, id)); setEditing(null) }
 
   useEffect(() => {
-    fetch(`${DATA}/meta.json`).then((r) => r.json()).then(setMeta).catch(() => setError('Could not load the roster data.'))
+    loadJson<Meta>('meta.json').then(setMeta).catch(() => setError('Could not load the roster data.'))
     // The market isn't needed to draw the roster, so a failure here is not fatal.
-    fetch(`${DATA}/pool.json`).then((r) => r.json()).then(setPool).catch(() => setPool([]))
+    loadJson<PoolPlayer[]>('pool.json').then(setPool).catch(() => setPool([]))
   }, [])
 
   // The server sets the title for the team a link opens on; keep it right when switching teams.
@@ -514,8 +529,7 @@ export default function TeamBuilderApp() {
     setData(null)
     setEditing(null)
     setMinorsShown(MINORS_PAGE)
-    fetch(`${DATA}/teams/${team}.json`)
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
+    loadJson<TeamFile>(`teams/${team}.json`)
       .then(setData)
       .catch(() => setError('Could not load the roster data.'))
   }, [team])

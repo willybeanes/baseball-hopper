@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { Player, SwingPlusData } from "./types";
 import type { MlbInfo } from "./headshot";
+import { parseSwingPlus } from "./merge";
 
 export const HP_DATA = "https://hitting-plus.vercel.app/data";
 
@@ -22,13 +23,8 @@ export async function getSwingPlusData(): Promise<SwingPlusData | null> {
       fetch(`${HP_DATA}/wrc_plus.json`, { next: { revalidate: HP_REVALIDATE } }),
     ]);
     if (!dataRes.ok) return null;
-    const raw = await dataRes.text();
-    const data = JSON.parse(raw.replace(/\bNaN\b/g, "null")) as SwingPlusData;
     const wrcMap: Record<string, Record<string, number>> = wrcRes.ok ? await wrcRes.json() : {};
-    for (const p of data.players) {
-      p.wrc_plus = wrcMap[p.player_name]?.[String(p.game_year)] ?? null;
-    }
-    return data;
+    return parseSwingPlus(await dataRes.text(), wrcMap);
   } catch {
     return null;
   }

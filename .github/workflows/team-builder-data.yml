@@ -1,7 +1,9 @@
 name: Team Builder data
 
-# Pulls the 30 Cot's sheets, checks them, matches players to MLBAM ids, and commits the
-# snapshot in public/data/team-builder to main (Vercel then redeploys). If any check fails
+# Pulls the 30 Cot's sheets, checks them, matches players to MLBAM ids, uploads the snapshot
+# to Supabase Storage (where the page reads it) and commits it to public/data/team-builder on
+# main as the record and fallback copy. A data-only commit doesn't redeploy the site (see
+# scripts/vercel-ignore.sh). If any check fails
 # the job fails, nothing is committed, and yesterday's data stays live. A quiet day with no
 # changes on Cot's makes no commit.
 
@@ -57,6 +59,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Team Builder data: refresh from Cot's"
           git pull --rebase --quiet && git push
+
+      - name: Upload the snapshot to Supabase Storage
+        if: github.event_name != 'pull_request'
+        env:
+          SUPABASE_URL: https://moflaqmbamyjlpototzt.supabase.co
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: bun scripts/team-builder/upload-supabase.ts
 
       - name: Keep the downloaded sheets with the run
         if: steps.refresh.outcome == 'failure'
