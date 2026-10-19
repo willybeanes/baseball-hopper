@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     "Four graded inputs to a swing, in the order they happen: Decision+, Timing+, Contact+ and Power+, refit into Hitting+.",
 };
 
+// Rebuild once a day; see HP_REVALIDATE. (Segment config has to be a literal.)
+export const revalidate = 86400;
+
 const FG_PROXY = "https://fg-proxy.vercel.app/api/fangraphs";
 
 /** MLBAM ids FanGraphs flags as rookies for a season (its `ind=2` leaderboard). Null on failure. */
@@ -20,7 +23,7 @@ async function getRookieIds(season: number): Promise<Set<number> | null> {
       season: String(season), season1: String(season), month: "0", ind: "2",
       pageitems: "2000000000", pagenum: "1",
     });
-    const res = await fetch(`${FG_PROXY}?${qs}`, { next: { revalidate: 1800 } });
+    const res = await fetch(`${FG_PROXY}?${qs}`, { next: { revalidate: 86400 } });
     if (!res.ok) return null;
     const json = await res.json();
     const rows: { xMLBAMID?: number }[] = Array.isArray(json) ? json : json.data ?? [];

@@ -5,6 +5,12 @@ import type { MlbInfo } from "./headshot";
 export const HP_DATA = "https://hitting-plus.vercel.app/data";
 
 /**
+ * Refresh the Hitting+ data once a day. The /hitting-plus and /player pages that use it are
+ * large (the leaderboard page is ~5 MB), so every refresh is a costly Vercel ISR write.
+ */
+export const HP_REVALIDATE = 86400;
+
+/**
  * The full Hitting+ dataset with wRC+ merged in. The JSON is ~2.7 MB, over Next's 2 MB
  * fetch-cache limit, so callers that only need a slice should go through a cached
  * derivation (see getPlayerHittingPlus) rather than calling this per request.
@@ -12,8 +18,8 @@ export const HP_DATA = "https://hitting-plus.vercel.app/data";
 export async function getSwingPlusData(): Promise<SwingPlusData | null> {
   try {
     const [dataRes, wrcRes] = await Promise.all([
-      fetch(`${HP_DATA}/swingplus_latest.json`, { next: { revalidate: 1800 } }),
-      fetch(`${HP_DATA}/wrc_plus.json`, { next: { revalidate: 1800 } }),
+      fetch(`${HP_DATA}/swingplus_latest.json`, { next: { revalidate: HP_REVALIDATE } }),
+      fetch(`${HP_DATA}/wrc_plus.json`, { next: { revalidate: HP_REVALIDATE } }),
     ]);
     if (!dataRes.ok) return null;
     const raw = await dataRes.text();
@@ -31,7 +37,7 @@ export async function getSwingPlusData(): Promise<SwingPlusData | null> {
 /** "Last, First" → MLBAM info, from the snapshot hitting-plus resolves offline. */
 export async function getHittingPlusPlayerInfo(): Promise<Record<string, MlbInfo>> {
   try {
-    const res = await fetch(`${HP_DATA}/player_info.json`, { next: { revalidate: 1800 } });
+    const res = await fetch(`${HP_DATA}/player_info.json`, { next: { revalidate: HP_REVALIDATE } });
     return res.ok ? await res.json() : {};
   } catch {
     return {};
@@ -71,7 +77,7 @@ const getPools = unstable_cache(
     return { generated: data.generated, source: data.source, pools };
   },
   ["hitting-plus-pools"],
-  { revalidate: 1800 },
+  { revalidate: HP_REVALIDATE },
 );
 
 const getHistory = unstable_cache(
@@ -85,7 +91,7 @@ const getHistory = unstable_cache(
       .sort((a, b) => a.game_year - b.game_year);
   },
   ["hitting-plus-history"],
-  { revalidate: 1800 },
+  { revalidate: HP_REVALIDATE },
 );
 
 /** Hitting+ rows for one hitter plus what's needed to grade them. Null if not in the data. */

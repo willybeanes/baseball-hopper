@@ -112,7 +112,7 @@ export async function fetchPlayerProfile(mlbamId: number): Promise<PlayerProfile
     const hydrate = "currentTeam,draft,stats(group=[hitting,pitching],type=[yearByYear,career])";
     const res = await fetch(
       `https://statsapi.mlb.com/api/v1/people/${mlbamId}?hydrate=${encodeURIComponent(hydrate)}`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 86400 } },
     );
     if (!res.ok) return null;
     const p = ((await res.json()) as { people?: Person[] }).people?.[0];

@@ -9,8 +9,9 @@ import { getPlayerHittingPlus } from "@/lib/hitting-plus/data";
 import PlayerHittingPlus from "@/components/hitting-plus/PlayerHittingPlus";
 import SwingMap from "@/components/hhps/SwingMap";
 
-// Statically cached per player; season picks happen client-side via ?season=.
-export const revalidate = 1800;
+// Statically cached per player, rebuilt at most once a day (each rebuild is a ~800 KB ISR
+// write); season picks happen client-side via ?season=.
+export const revalidate = 86400;
 export async function generateStaticParams() {
   return [];
 }

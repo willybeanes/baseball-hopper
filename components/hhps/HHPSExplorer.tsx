@@ -254,9 +254,17 @@ export default function HHPSExplorer({
   const resetCounterRef = useRef(0);
 
   // ── URL sync ───────────────────────────────────────────────────────────────
+  // Only season and games change the leaderboard the server sends; every other control just
+  // rewrites the address bar. A router.replace would re-render the page and re-send the whole
+  // multi-MB leaderboard on each click or slider tick.
   useEffect(() => {
+    const needsServer = season !== initialSeason || games !== initialGames;
+    const go = (url: string) => {
+      if (needsServer) router.replace(url, { scroll: false });
+      else window.history.replaceState(null, "", url);
+    };
     if (typeof selectedId === "number") {
-      router.replace(
+      go(
         hhpsUrl(selectedId, {
           outcome: outcome === "hard" ? "hard" : outcome === "whiff" ? "whiff" : outcome === "soft" ? "soft" : "barrel",
           mode: mode === "bip" ? "contact" : "swing",
@@ -272,16 +280,15 @@ export default function HHPSExplorer({
           res: viewMode === "circles" ? serializeRes(circRes) || undefined : undefined,
           paths: viewMode === "circles" && pitchPaths ? true : undefined,
         }),
-        { scroll: false },
       );
-    } else if (season !== initialSeason || games !== initialGames) {
+    } else if (needsServer) {
       // League average has no player param; keep the season and games so the leaderboard matches the maps.
       const q = new URLSearchParams();
       if (season !== SEASONS[0]) q.set("season", String(season));
       if (games !== "reg") q.set("games", games);
-      router.replace(`${basePath}${q.size ? `?${q}` : ""}`, { scroll: false });
+      go(`${basePath}${q.size ? `?${q}` : ""}`);
     }
-  }, [selectedId, outcome, mode, hand, season, games, thrMap, alsoWhiff, viewMode, circTypes, circRes, pitchPaths, router]);
+  }, [selectedId, outcome, mode, hand, season, games, initialSeason, initialGames, basePath, thrMap, alsoWhiff, viewMode, circTypes, circRes, pitchPaths, router]);
 
   // ── Pitch-path tails: load this hitter's trajectory file when asked for ──────────────────────
   useEffect(() => {
