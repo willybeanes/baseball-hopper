@@ -37,7 +37,7 @@ const GRADE_COLS: { key: keyof TeamRow; label: string; pctKey?: StatKey; decimal
   { key: "Timing+",   label: "Tim+",  pctKey: "Timing+" },
   { key: "Contact+",  label: "Con+",  pctKey: "Contact+" },
   { key: "Power+",    label: "Pow+",  pctKey: "Power+" },
-  { key: "xwoba",     label: "xwOBA", decimals: 3 },
+  { key: "xwoba",     label: "xwOBA", pctKey: "xwoba", decimals: 3 },
   { key: "wrc_plus",  label: "wRC+",  pctKey: "wrc_plus" },
 ];
 
