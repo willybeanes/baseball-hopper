@@ -179,6 +179,12 @@ export default function Teams({
     return rows;
   }, [stintsByTeam]);
 
+  // xwOBA has no plus scale, so it's colored across the 30 teams: lowest blue, highest red.
+  const xwobaRange = useMemo(() => {
+    const vals = teamRows.map((r) => r.xwoba).filter((v): v is number => v != null);
+    return vals.length ? { min: Math.min(...vals), max: Math.max(...vals) } : null;
+  }, [teamRows]);
+
   const sorted = useMemo(() => {
     return [...teamRows].sort((a, b) => {
       const av = a[sortKey] as number | null;
@@ -267,7 +273,12 @@ export default function Teams({
                     </td>
                     {GRADE_COLS.map(({ key, pctKey, decimals }) => {
                       const v = row[key] as number | null;
-                      const p = pctKey ? pct[pctKey](v) : null;
+                      const p =
+                        key === "xwoba" && v != null && xwobaRange
+                          ? xwobaRange.max > xwobaRange.min
+                            ? ((v - xwobaRange.min) / (xwobaRange.max - xwobaRange.min)) * 100
+                            : 50
+                          : pctKey ? pct[pctKey](v) : null;
                       const color = p != null ? ramp(p) : v != null ? ramp(Math.max(0, Math.min(100, ((v - 70) / 60) * 100))) : "var(--dimmer)";
                       return (
                         <td
