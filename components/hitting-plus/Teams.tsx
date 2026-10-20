@@ -1,18 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Player, StatKey } from "@/lib/hitting-plus/types";
+import type { MlbInfo } from "@/lib/hitting-plus/headshot";
 import { fmtNum, formatName } from "@/lib/hitting-plus/metrics";
 import { ramp } from "@/lib/hitting-plus/ramp";
+import { TEAM_ABBR } from "@/lib/hitting-plus/teams";
 
 type PctFn = (x: number | null | undefined) => number | null;
-
-interface PlayerInfo {
-  id: number;
-  team: string;
-  position: string;
-  teamsBySeason: Record<string, string[]>;
-}
 
 interface TeamRow {
   team: string;
@@ -27,6 +22,13 @@ interface TeamRow {
   wrc_plus: number | null;
 }
 
+/** A player's share of one team's season: `pa` is his PA credited to that team. */
+interface Stint {
+  player: Player;
+  pa: number;
+  split: boolean;
+}
+
 type SortKey = keyof Omit<TeamRow, "team">;
 
 const GRADE_COLS: { key: keyof TeamRow; label: string; pctKey?: StatKey; decimals?: number }[] = [
@@ -39,71 +41,132 @@ const GRADE_COLS: { key: keyof TeamRow; label: string; pctKey?: StatKey; decimal
   { key: "wrc_plus",  label: "wRC+",  pctKey: "wrc_plus" },
 ];
 
+const MLB_API = "https://statsapi.mlb.com/api/v1";
+
 function weightedMean(pairs: [number, number][]) {
   let num = 0, den = 0;
   for (const [v, w] of pairs) { num += v * w; den += w; }
   return den > 0 ? num / den : null;
 }
 
-function usePlayerInfo() {
-  const [info, setInfo] = useState<Record<string, PlayerInfo> | null>(null);
+/** Teams a player logged hitting stats for in `season`, per player_info. */
+function seasonTeams(pi: MlbInfo, season: number): string[] {
+  const listed = pi.teamsBySeason?.[String(season)];
+  if (listed?.length) return listed;
+  return pi.team ? [pi.team] : [];
+}
+
+/**
+ * Per-team PA for every player who played for more than one club in `season`, keyed by
+ * MLBAM id, from the MLB Stats API (one batched request per 100 players). The dataset
+ * only has season totals, so this is what lets a traded player count toward each team.
+ * Null while loading; an empty map if the API is unreachable.
+ */
+function useTeamSplits(players: Player[], info: Record<string, MlbInfo>, season: number) {
+  const ids = useMemo(() => {
+    const out: number[] = [];
+    for (const p of players) {
+      const pi = info[p.player_name];
+      if (pi && seasonTeams(pi, season).length > 1) out.push(pi.id);
+    }
+    return out.sort((a, b) => a - b);
+  }, [players, info, season]);
+  const key = `${season}:${ids.join(",")}`;
+
+  const [splits, setSplits] = useState<{ key: string; byId: Record<number, Record<string, number>> } | null>(null);
   useEffect(() => {
-    fetch("/data/player_info.json")
-      .then((r) => r.json())
-      .then(setInfo)
-      .catch(() => setInfo({}));
-  }, []);
-  return info;
+    if (!ids.length) { setSplits({ key, byId: {} }); return; }
+    let cancelled = false;
+    (async () => {
+      const byId: Record<number, Record<string, number>> = {};
+      try {
+        for (let i = 0; i < ids.length; i += 100) {
+          const url =
+            `${MLB_API}/people?personIds=${ids.slice(i, i + 100).join(",")}` +
+            `&hydrate=stats(group=[hitting],type=[season],season=${season})`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`statsapi ${res.status}`);
+          const json = await res.json();
+          for (const person of json.people ?? []) {
+            const byTeam: Record<string, number> = {};
+            for (const group of person.stats ?? []) {
+              for (const s of group.splits ?? []) {
+                const team = TEAM_ABBR[s.team?.name];
+                const pa = s.stat?.plateAppearances;
+                if (team && pa > 0) byTeam[team] = (byTeam[team] ?? 0) + pa;
+              }
+            }
+            byId[person.id] = byTeam;
+          }
+        }
+      } catch (err) {
+        console.error("Team splits:", err);
+      }
+      if (!cancelled) setSplits({ key, byId });
+    })();
+    return () => { cancelled = true; };
+  }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return splits?.key === key ? splits.byId : null;
 }
 
 export default function Teams({
   players,
+  info,
   season,
   pct,
   onSelectPlayer,
 }: {
   players: Player[];
+  info: Record<string, MlbInfo>;
   season: number;
   pct: Record<StatKey, PctFn>;
   onSelectPlayer: (name: string) => void;
 }) {
-  const info = usePlayerInfo();
+  const splits = useTeamSplits(players, info, season);
   const [sortKey, setSortKey] = useState<SortKey>("Hitting+");
   const [sortAsc, setSortAsc] = useState(false);
 
-  // Assign each player a team for this season
-  const teamRows = useMemo<TeamRow[]>(() => {
-    if (!info) return [];
-
-    const byTeam = new Map<string, Player[]>();
+  // Credit each player's PA to the teams he played for. A traded player's PA is divided
+  // by his actual per-team PA; without a split he goes to his current (or last listed) team.
+  const stintsByTeam = useMemo(() => {
+    const byTeam = new Map<string, Stint[]>();
+    if (!splits) return byTeam;
+    const add = (team: string, stint: Stint) => {
+      if (!byTeam.has(team)) byTeam.set(team, []);
+      byTeam.get(team)!.push(stint);
+    };
     for (const p of players) {
       const pi = info[p.player_name];
       if (!pi) continue;
-      const seasons = pi.teamsBySeason?.[String(season)];
-      // Use the last team listed for the season (most recent), or fall back to current
-      const team = seasons?.length ? seasons[seasons.length - 1] : pi.team;
-      if (!team) continue;
-      if (!byTeam.has(team)) byTeam.set(team, []);
-      byTeam.get(team)!.push(p);
+      const teams = seasonTeams(pi, season);
+      if (!teams.length) continue;
+      const split = teams.length > 1 ? splits[pi.id] : undefined;
+      const total = split ? Object.values(split).reduce((s, n) => s + n, 0) : 0;
+      if (split && total > 0) {
+        for (const [team, n] of Object.entries(split)) add(team, { player: p, pa: (p.pa * n) / total, split: true });
+      } else {
+        const team = pi.team && teams.includes(pi.team) ? pi.team : teams[teams.length - 1];
+        add(team, { player: p, pa: p.pa, split: false });
+      }
     }
+    return byTeam;
+  }, [splits, info, players, season]);
 
+  const teamRows = useMemo<TeamRow[]>(() => {
     const rows: TeamRow[] = [];
-    for (const [team, ps] of byTeam) {
-      if (ps.length === 0) continue;
-      const qual = ps;
-      const totalPA = qual.reduce((s, p) => s + p.pa, 0);
-
+    for (const [team, stints] of stintsByTeam) {
       function wavg(key: keyof Player) {
-        const pairs = qual
-          .map((p) => [p[key] as number | null, p.pa] as [number | null, number])
+        const pairs = stints
+          .map((s) => [s.player[key] as number | null, s.pa] as [number | null, number])
           .filter((pair): pair is [number, number] => pair[0] != null);
         return weightedMean(pairs);
       }
 
       rows.push({
         team,
-        players: qual.length,
-        pa: totalPA,
+        players: stints.length,
+        pa: Math.round(stints.reduce((s, st) => s + st.pa, 0)),
         "Hitting+": wavg("Hitting+"),
         "Decision+": wavg("Decision+"),
         "Timing+": wavg("Timing+"),
@@ -113,9 +176,8 @@ export default function Teams({
         wrc_plus: wavg("wrc_plus"),
       });
     }
-
     return rows;
-  }, [info, players, season]);
+  }, [stintsByTeam]);
 
   const sorted = useMemo(() => {
     return [...teamRows].sort((a, b) => {
@@ -136,19 +198,13 @@ export default function Teams({
   // Players on the selected team, sorted by Hitting+
   const [expandedTeam, setExpandedTeam] = useState<string | null>(null);
   const expandedPlayers = useMemo(() => {
-    if (!expandedTeam || !info) return [];
-    return players
-      .filter((p) => {
-        const pi = info[p.player_name];
-        if (!pi) return false;
-        const seasons = pi.teamsBySeason?.[String(season)];
-        const team = seasons?.length ? seasons[seasons.length - 1] : pi.team;
-        return team === expandedTeam;
-      })
-      .sort((a, b) => (b["Hitting+"] ?? -Infinity) - (a["Hitting+"] ?? -Infinity));
-  }, [expandedTeam, info, players, season]);
+    if (!expandedTeam) return [];
+    return [...(stintsByTeam.get(expandedTeam) ?? [])].sort(
+      (a, b) => (b.player["Hitting+"] ?? -Infinity) - (a.player["Hitting+"] ?? -Infinity),
+    );
+  }, [expandedTeam, stintsByTeam]);
 
-  if (!info) {
+  if (!splits) {
     return (
       <div className="flex h-48 items-center justify-center rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] text-sm text-[var(--dimmer)] shadow-[var(--panel-shadow)]">
         Loading…
@@ -195,9 +251,8 @@ export default function Teams({
             {sorted.map((row) => {
               const isExpanded = expandedTeam === row.team;
               return (
-                <>
+                <Fragment key={row.team}>
                   <tr
-                    key={row.team}
                     className="cursor-pointer border-t border-[var(--rule)] transition-colors hover:bg-[var(--track)]"
                     onClick={() => setExpandedTeam(isExpanded ? null : row.team)}
                   >
@@ -226,13 +281,13 @@ export default function Teams({
                     })}
                   </tr>
                   {isExpanded && expandedPlayers.length > 0 && (
-                    <tr key={row.team + "-expanded"} className="border-t border-[var(--rule)] bg-[var(--track)]">
+                    <tr className="border-t border-[var(--rule)] bg-[var(--track)]">
                       <td colSpan={3 + GRADE_COLS.length} className="px-5 pb-3 pt-2">
                         <div className="text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--dimmer)] mb-2">
                           {row.team} — {season} ({row.players} batters)
                         </div>
                         <div className="flex flex-wrap gap-x-4 gap-y-1">
-                          {expandedPlayers.map((p) => {
+                          {expandedPlayers.map(({ player: p, pa, split }) => {
                             const hp = pct["Hitting+"](p["Hitting+"]);
                             return (
                               <button
@@ -247,6 +302,9 @@ export default function Teams({
                                   {fmtNum(p["Hitting+"], 0)}
                                 </span>
                                 <span className="text-[var(--dim)]">{formatName(p.player_name)}</span>
+                                {split && (
+                                  <span className="text-[11px] text-[var(--dimmer)]">{Math.round(pa)} PA here</span>
+                                )}
                               </button>
                             );
                           })}
@@ -254,14 +312,16 @@ export default function Teams({
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               );
             })}
           </tbody>
         </table>
       </div>
       <p className="px-5 pb-4 pt-3 text-[11px] text-[var(--dimmer)]">
-        Grades are PA-weighted averages across all batters with data for the season. Team assigned by most recent roster entry.
+        Grades are PA-weighted averages across all batters with data for the season (10+ PA).
+        Traded players count toward each team by the PA they had there (per the MLB Stats API),
+        but their grades are full-season figures, not split by team.
       </p>
     </div>
   );

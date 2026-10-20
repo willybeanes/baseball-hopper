@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SwingPlusData } from "@/lib/hitting-plus/types";
+import type { MlbInfo } from "@/lib/hitting-plus/headshot";
 import { buildPercentiles } from "@/lib/hitting-plus/metrics";
 import { PCT_KEYS } from "@/lib/hitting-plus/context";
 import { FOOTER_COPY, PA_FILTER_NOTE } from "@/lib/hitting-plus/copy";
@@ -39,9 +40,18 @@ function parseHand(q: string | null): string {
 
 /**
  * Leaderboard, compare and team views. A single hitter opens on /player/<mlbam id>, so
- * `ids` maps stored names to MLBAM ids for every player link.
+ * `ids` maps stored names to MLBAM ids for every player link; `info` adds each player's
+ * teams by season for the Teams tab.
  */
-export default function Explorer({ data, ids }: { data: SwingPlusData; ids: Record<string, number> }) {
+export default function Explorer({
+  data,
+  ids,
+  info,
+}: {
+  data: SwingPlusData;
+  ids: Record<string, number>;
+  info: Record<string, MlbInfo>;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -313,6 +323,7 @@ export default function Explorer({ data, ids }: { data: SwingPlusData; ids: Reco
       {tab === "teams" && (
         <Teams
           players={seasonPlayers}
+          info={info}
           season={season}
           pct={pct}
           onSelectPlayer={selectPlayer}
