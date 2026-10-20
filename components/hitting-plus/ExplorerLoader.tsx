@@ -8,7 +8,7 @@ import Explorer from "./Explorer";
 
 const HP_DATA = "https://hitting-plus.vercel.app/data";
 
-type Loaded = { data: SwingPlusData; ids: Record<string, number> };
+type Loaded = { data: SwingPlusData; ids: Record<string, number>; info: Record<string, MlbInfo> };
 
 /**
  * Loads the Hitting+ dataset in the browser, straight from hitting-plus.vercel.app's static
@@ -34,7 +34,7 @@ export default function ExplorerLoader({ rookies }: { rookies: Record<string, nu
         const ids: Record<string, number> = {};
         for (const [name, v] of Object.entries(info)) ids[name] = v.id;
         if (rookies && Object.keys(ids).length) applyRookieFlags(data, ids, rookies);
-        if (!cancelled) setLoaded({ data, ids });
+        if (!cancelled) setLoaded({ data, ids, info });
       } catch (err) {
         console.error("Hitting+ data:", err);
         if (!cancelled) setLoaded("error");
@@ -64,5 +64,5 @@ export default function ExplorerLoader({ rookies }: { rookies: Record<string, nu
       </div>
     );
   }
-  return <Explorer data={loaded.data} ids={loaded.ids} />;
+  return <Explorer data={loaded.data} ids={loaded.ids} info={loaded.info} />;
 }
