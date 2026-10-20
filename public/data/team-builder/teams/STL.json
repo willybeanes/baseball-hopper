@@ -601,6 +601,21 @@
    "pa": 480
   },
   {
+   "name": "Chase Hampton",
+   "sheetName": "Hampton, Chase",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694633,
+   "salarySource": "minimum",
+   "war": null
+  },
+  {
    "name": "Cooper Hjerpe",
    "sheetName": "Hjerpe, Cooper",
    "pos": "lhp",

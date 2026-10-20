@@ -209,6 +209,23 @@
    "ip": 170
   },
   {
+   "name": "Tim Mayza",
+   "sheetName": "Mayza, Tim",
+   "pos": "lhp",
+   "age": 35,
+   "mls": 7.129,
+   "contract": "1 y/$2.75M (27)",
+   "status": "signed",
+   "salary": 2750000,
+   "taxValue": 2750000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 641835,
+   "salarySource": "cots",
+   "war": 0.17,
+   "ip": 40
+  },
+  {
    "name": "Derek Hill",
    "sheetName": "Hill, Derek",
    "pos": "cf",
@@ -597,8 +614,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 4250000,
+   "taxValue": 4250000,
    "note": ""
   },
   {
@@ -618,10 +635,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 259603618,
- "sheetTaxPayroll": 279712221,
- "rowsPayroll": 259603618,
- "rowsTaxPayroll": 279712221,
+ "sheetPayroll": 261503618,
+ "sheetTaxPayroll": 281612221,
+ "rowsPayroll": 261503618,
+ "rowsTaxPayroll": 281612221,
  "minors": [
   {
    "mlbamId": 805795,
@@ -862,16 +879,6 @@
    "ip": 55,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 641835,
-   "name": "Tim Mayza",
-   "pos": "rp",
-   "age": 35,
-   "war": 0.17,
-   "ip": 40,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 702911,

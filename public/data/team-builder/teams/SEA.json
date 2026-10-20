@@ -398,6 +398,22 @@
    "ip": 63.3
   },
   {
+   "name": "Michael Toglia",
+   "sheetName": "Toglia, Michael",
+   "pos": "1b",
+   "age": 28,
+   "mls": 2.087,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 669911,
+   "salarySource": "minimum",
+   "war": -0.16,
+   "pa": 505
+  },
+  {
    "name": "Weston Wilson",
    "sheetName": "Wilson, Weston",
    "pos": "3b-of",

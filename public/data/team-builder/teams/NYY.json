@@ -537,22 +537,6 @@
    "salarySource": "minimum",
    "war": 1.42,
    "ip": 109
-  },
-  {
-   "name": "Alexander Cornielle",
-   "sheetName": "Cornielle, Alexander",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.003,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 12513,
-   "mlbamId": 529017,
-   "salarySource": "minimum",
-   "war": 0.47,
-   "ip": 105.3
   }
  ],
  "deadMoney": [
@@ -677,6 +661,16 @@
    "age": 28,
    "war": 0.5,
    "ip": 85.7,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 529017,
+   "name": "Alexander Cornielle",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.47,
+   "ip": 105.3,
    "salary": 780000,
    "debuted": true
   },

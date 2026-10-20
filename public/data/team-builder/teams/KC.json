@@ -576,22 +576,6 @@
    "ip": 83.3
   },
   {
-   "name": "Luke Little",
-   "sheetName": "Little, Luke",
-   "pos": "lhp",
-   "age": 26,
-   "mls": 1.032,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 53029,
-   "mlbamId": 681432,
-   "salarySource": "minimum",
-   "war": 0.46,
-   "ip": 57.3
-  },
-  {
    "name": "Luinder Avila",
    "sheetName": "Avila, Luinder",
    "pos": "rhp",
@@ -860,6 +844,16 @@
    "ip": 90,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 681432,
+   "name": "Luke Little",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.46,
+   "ip": 57.3,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 647351,

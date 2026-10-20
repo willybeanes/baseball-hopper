@@ -252,6 +252,22 @@
    "ip": 144.3
   },
   {
+   "name": "Rowdy Tellez",
+   "sheetName": "Tellez, Rowdy",
+   "pos": "1b",
+   "age": 32,
+   "mls": 6.169,
+   "contract": "",
+   "status": "fa",
+   "salary": null,
+   "taxValue": null,
+   "salaryPrevYear": null,
+   "mlbamId": 642133,
+   "salarySource": "none",
+   "war": -0.42,
+   "pa": 360
+  },
+  {
    "name": "James Karinchak",
    "sheetName": "Karinchak, James",
    "pos": "rhp",
@@ -304,24 +320,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.95,
    "ip": 87
-  },
-  {
-   "name": "Luke Williams",
-   "sheetName": "Williams, Luke",
-   "pos": "2b-3b",
-   "age": 30,
-   "mls": 3.07,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 900000,
-   "taxValue": 900000,
-   "salaryPrevYear": null,
-   "arbYear": 1,
-   "cotsEstimate": 875000,
-   "mlbamId": 663897,
-   "salarySource": "mlbtr-arb",
-   "war": 0.01,
-   "pa": 316
   },
   {
    "name": "Spencer Schwellenbach",
@@ -390,6 +388,22 @@
    "pa": 509
   },
   {
+   "name": "Danny Young",
+   "sheetName": "Young, Danny",
+   "pos": "lhp",
+   "age": 33,
+   "mls": 1.16,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 664849,
+   "salarySource": "minimum",
+   "war": -0.08,
+   "ip": 40.3
+  },
+  {
    "name": "Hurston Waldrep",
    "sheetName": "Waldrep, Hurston",
    "pos": "rhp",
@@ -437,20 +451,20 @@
    "ip": 82.7
   },
   {
-   "name": "DaShawn Keirsey Jr.",
-   "sheetName": "Keirsey Jr., DaShawn",
-   "pos": "cf",
-   "age": 30,
-   "mls": 1.014,
+   "name": "Brett Wisely",
+   "sheetName": "Wisely, Brett",
+   "pos": "ss",
+   "age": 28,
+   "mls": 1.105,
    "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 240670,
-   "mlbamId": 680577,
+   "salaryPrevYear": null,
+   "mlbamId": 689172,
    "salarySource": "minimum",
-   "war": 1.03,
-   "pa": 404
+   "war": 1.49,
+   "pa": 432
   },
   {
    "name": "Victor Mederos",
@@ -533,22 +547,6 @@
    "pa": 416
   },
   {
-   "name": "Ricky Vanasco",
-   "sheetName": "Vanasco, Ricky",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.06,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 21750,
-   "mlbamId": 676568,
-   "salarySource": "minimum",
-   "war": 0.43,
-   "ip": 53.3
-  },
-  {
    "name": "Rolddy Muñoz",
    "sheetName": "Muñoz, Rolddy",
    "pos": "rhp",
@@ -615,8 +613,8 @@
  "deadMoney": [
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 7650000,
+   "taxValue": 7650000,
    "note": ""
   },
   {
@@ -636,18 +634,18 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 205025000,
- "sheetTaxPayroll": 202558334,
- "rowsPayroll": 205025000,
- "rowsTaxPayroll": 202558334,
+ "sheetPayroll": 205000000,
+ "sheetTaxPayroll": 202533334,
+ "rowsPayroll": 205000000,
+ "rowsTaxPayroll": 202533334,
  "minors": [
   {
-   "mlbamId": 689172,
-   "name": "Brett Wisely",
-   "pos": "2b",
-   "age": 28,
-   "war": 1.49,
-   "pa": 432,
+   "mlbamId": 680577,
+   "name": "DaShawn Keirsey Jr.",
+   "pos": "cf",
+   "age": 30,
+   "war": 1.03,
+   "pa": 404,
    "salary": 780000,
    "debuted": true
   },
@@ -840,16 +838,6 @@
    "pa": 513,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 664849,
-   "name": "Danny Young",
-   "pos": "rp",
-   "age": 33,
-   "war": -0.08,
-   "ip": 40.3,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 681212,
