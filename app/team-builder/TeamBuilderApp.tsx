@@ -109,8 +109,8 @@ function statusChips(s: Slot) {
   } else if (p.status === 'option') {
     chips.push(<Chip key="o">{OPTION_LABEL[p.optionType ?? 'unknown'] ?? 'Option'}</Chip>)
     if (p.decidedBy === 'player') chips.push(<Chip key="d">Player decides</Chip>)
-  } else if (p.status === 'arb') chips.push(<Chip key="a">{p.arbYear ? `Arbitration, year ${p.arbYear}` : 'Arbitration'}</Chip>)
-  else if (p.status === 'prearb') chips.push(<Chip key="p">Pre-arb</Chip>)
+  } else if (p.status === 'arb') chips.push(<Chip key="a" tone="solid">{p.arbYear ? `Arbitration, year ${p.arbYear}` : 'Arbitration'}</Chip>)
+  else if (p.status === 'prearb') chips.push(<Chip key="p" tone="solid">Pre-arb</Chip>)
   else if (p.status === 'fa') chips.push(<Chip key="f">Free agent</Chip>)
   return chips
 }
