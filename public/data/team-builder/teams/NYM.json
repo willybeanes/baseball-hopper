@@ -1097,16 +1097,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 684483,
-   "name": "Daniel Juarez",
-   "pos": "rp",
-   "age": 26,
-   "war": -0.16,
-   "ip": 40.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 670871,
    "name": "Guillo Zuñiga",
    "pos": "rp",
@@ -1229,7 +1219,7 @@
   {
    "mlbamId": 800257,
    "name": "Yonatan Henriquez",
-   "pos": "of",
+   "pos": "3b",
    "age": 22,
    "war": -1.15,
    "pa": 444,
