@@ -868,16 +868,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 666163,
-   "name": "Ben Rortvedt",
-   "pos": "c",
-   "age": 29,
-   "war": 0.26,
-   "pa": 282,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 702488,
    "name": "Logan Wagner",
    "pos": "3b",
@@ -936,16 +926,6 @@
    "ip": 48.7,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 642546,
-   "name": "Jonathan Hernández",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.12,
-   "ip": 46.3,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 682645,
@@ -1066,6 +1046,16 @@
    "ip": 46,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 669222,
+   "name": "Nick Senzel",
+   "pos": "3b",
+   "age": 32,
+   "war": -0.39,
+   "pa": 371,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 695372,
