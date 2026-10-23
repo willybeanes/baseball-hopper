@@ -129,9 +129,11 @@ export default function Explorer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  // Reflect the current view in the URL so it can be bookmarked or shared. Guarded so it
-  // only fires when the query actually differs, since useSearchParams re-suspends the
-  // Suspense boundary above on every navigation and an unguarded replace loops forever.
+  // Reflect the current view in the URL so it can be bookmarked or shared. This goes
+  // through the native History API (Next syncs useSearchParams from it) rather than
+  // router.replace: a router navigation refetches this static page from the server, and
+  // on a fresh load whose query differs (e.g. newsletter ?utm_ links) Next 16's router
+  // hit a tree mismatch and hard-reloaded the original URL, forever.
   // Tab changes push a new history entry so the back button works; filter-only changes
   // (season, minPA, team) replace so they don't spam the history stack.
   const prevTabRef = useRef(tab);
@@ -151,9 +153,9 @@ export default function Explorer({
       const tabChanged = prevTabRef.current !== tab;
       prevTabRef.current = tab;
       if (tabChanged) {
-        router.push(`${pathname}?${next}`, { scroll: false });
+        window.history.pushState(null, "", `${pathname}?${next}`);
       } else {
-        router.replace(`${pathname}?${next}`, { scroll: false });
+        window.history.replaceState(null, "", `${pathname}?${next}`);
       }
     } else {
       prevTabRef.current = tab;
