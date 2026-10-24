@@ -264,24 +264,6 @@
    "ip": 52.7
   },
   {
-   "name": "Alex Lange",
-   "sheetName": "Lange, Alex",
-   "pos": "rhp",
-   "age": 31,
-   "mls": 4.145,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1700000,
-   "taxValue": 1700000,
-   "salaryPrevYear": 900000,
-   "arbYear": 2,
-   "cotsEstimate": 1250000,
-   "mlbamId": 656638,
-   "salarySource": "mlbtr-arb",
-   "war": 0.25,
-   "ip": 43.7
-  },
-  {
    "name": "Anthony Gose",
    "sheetName": "Gose, Anthony",
    "pos": "lhp",
@@ -298,24 +280,6 @@
    "salarySource": "mlbtr-arb",
    "war": -0.27,
    "ip": 37.7
-  },
-  {
-   "name": "Alec Marsh",
-   "sheetName": "Marsh, Alec",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 3.078,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 797500,
-   "arbYear": 1,
-   "cotsEstimate": 1000000,
-   "mlbamId": 679525,
-   "salarySource": "mlbtr-arb",
-   "war": 0.87,
-   "ip": 94.3
   },
   {
    "name": "James McArthur",
@@ -480,22 +444,6 @@
    "ip": 36
   },
   {
-   "name": "Connor Seabold",
-   "sheetName": "Seabold, Connor",
-   "pos": "rhp",
-   "age": 31,
-   "mls": 2.054,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 444920,
-   "mlbamId": 657756,
-   "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 75
-  },
-  {
    "name": "Mitch Spence",
    "sheetName": "Spence, Mitch",
    "pos": "rhp",
@@ -542,22 +490,6 @@
    "salarySource": "minimum",
    "war": -0.14,
    "ip": 63.7
-  },
-  {
-   "name": "Easton McGee",
-   "sheetName": "McGee, Easton",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 1.074,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 159809,
-   "mlbamId": 668834,
-   "salarySource": "minimum",
-   "war": 0.54,
-   "ip": 60.7
   },
   {
    "name": "Connor Thomas",
@@ -622,22 +554,6 @@
    "salarySource": "minimum",
    "war": 1.08,
    "ip": 101.7
-  },
-  {
-   "name": "Mason Black",
-   "sheetName": "Black, Mason",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.112,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 333096,
-   "mlbamId": 696131,
-   "salarySource": "minimum",
-   "war": 1.08,
-   "ip": 104.7
   },
   {
    "name": "Matthew Lugo",
@@ -729,8 +645,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 7650000,
+   "taxValue": 7650000,
    "note": ""
   },
   {
@@ -750,10 +666,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 120327075,
- "sheetTaxPayroll": 149967176,
- "rowsPayroll": 120327075,
- "rowsTaxPayroll": 149967176,
+ "sheetPayroll": 120627075,
+ "sheetTaxPayroll": 150267176,
+ "rowsPayroll": 120627075,
+ "rowsTaxPayroll": 150267176,
  "minors": [
   {
    "mlbamId": 814351,
@@ -776,6 +692,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 696131,
+   "name": "Mason Black",
+   "pos": "sp",
+   "age": 27,
+   "war": 1.08,
+   "ip": 104.7,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 694818,
    "name": "Hunter Owen",
    "pos": "sp",
@@ -784,6 +710,16 @@
    "ip": 96,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 679525,
+   "name": "Alec Marsh",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.87,
+   "ip": 94.3,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 805810,
@@ -904,6 +840,16 @@
    "pa": 469,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 656638,
+   "name": "Alex Lange",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.25,
+   "ip": 43.7,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 699325,
