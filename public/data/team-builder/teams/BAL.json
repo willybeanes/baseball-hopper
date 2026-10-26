@@ -869,16 +869,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 670869,
-   "name": "Livan Soto",
-   "pos": "ss",
-   "age": 27,
-   "war": 0.62,
-   "pa": 433,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 686976,
    "name": "Silas Ardoin",
    "pos": "c",
@@ -1075,16 +1065,6 @@
    "age": 29,
    "war": -0.05,
    "ip": 45.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 681463,
-   "name": "Daniel Lloyd",
-   "pos": "rp",
-   "age": 26,
-   "war": -0.06,
-   "ip": 57.7,
    "salary": 780000,
    "debuted": false
   },

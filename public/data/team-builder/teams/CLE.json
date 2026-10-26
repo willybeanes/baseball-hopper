@@ -763,7 +763,7 @@
   {
    "mlbamId": 671655,
    "name": "George Valera",
-   "pos": "rf",
+   "pos": "of",
    "age": 26,
    "war": 0.74,
    "pa": 360,
@@ -809,16 +809,6 @@
    "pa": 521,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 672578,
-   "name": "Carlos Hernández",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.47,
-   "ip": 56,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 702126,
@@ -869,16 +859,6 @@
    "ip": 50.7,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 641401,
-   "name": "Connor Brogdon",
-   "pos": "rp",
-   "age": 32,
-   "war": 0.13,
-   "ip": 55,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 682679,
