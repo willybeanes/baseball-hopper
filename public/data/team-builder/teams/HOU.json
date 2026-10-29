@@ -338,22 +338,6 @@
    "ip": 58.3
   },
   {
-   "name": "Nelson Velázquez",
-   "sheetName": "Velázquez, Nelson",
-   "pos": "of",
-   "age": 28,
-   "mls": 2.051,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 231016,
-   "mlbamId": 676369,
-   "salarySource": "minimum",
-   "war": -0.21,
-   "pa": 402
-  },
-  {
    "name": "Brandon Walter",
    "sheetName": "Walter, Brandon",
    "pos": "lhp",

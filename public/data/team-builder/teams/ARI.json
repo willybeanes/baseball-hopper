@@ -770,6 +770,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 605244,
+   "name": "Aramis Garcia",
+   "pos": "c",
+   "age": 34,
+   "war": 0.1,
+   "pa": 249,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 702258,
    "name": "Druw Jones",
    "pos": "cf",
