@@ -283,22 +283,6 @@
    "ip": 119.7
   },
   {
-   "name": "Sebastián Rivero",
-   "sheetName": "Rivero, Sebastián",
-   "pos": "c",
-   "age": 28,
-   "mls": 1.116,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 646525,
-   "mlbamId": 665861,
-   "salarySource": "minimum",
-   "war": -0.7,
-   "pa": 288
-  },
-  {
    "name": "Jose Fermin",
    "sheetName": "Fermin, Jose",
    "pos": "rhp",
@@ -427,22 +411,6 @@
    "pa": 459
   },
   {
-   "name": "Sammy Peralta",
-   "sheetName": "Peralta, Sammy",
-   "pos": "lhp",
-   "age": 29,
-   "mls": 0.156,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 186928,
-   "mlbamId": 671111,
-   "salarySource": "minimum",
-   "war": 0.9,
-   "ip": 70.3
-  },
-  {
    "name": "Christian Moore",
    "sheetName": "Moore, Christian",
    "pos": "2b",
@@ -473,22 +441,6 @@
    "salarySource": "minimum",
    "war": 0.65,
    "pa": 431
-  },
-  {
-   "name": "Kyren Paris",
-   "sheetName": "Paris, Kyren",
-   "pos": "ss",
-   "age": 25,
-   "mls": 0.151,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 259247,
-   "mlbamId": 677347,
-   "salarySource": "minimum",
-   "war": 1.01,
-   "pa": 422
   },
   {
    "name": "Bryce Teodosio",
@@ -715,6 +667,16 @@
    "pa": 410,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 671111,
+   "name": "Sammy Peralta",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.9,
+   "ip": 70.3,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 701836,
@@ -1045,6 +1007,16 @@
    "pa": 412,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 665861,
+   "name": "Sebastián Rivero",
+   "pos": "c",
+   "age": 28,
+   "war": -0.7,
+   "pa": 288,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 690804,

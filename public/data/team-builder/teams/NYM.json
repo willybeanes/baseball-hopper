@@ -514,6 +514,22 @@
    "pa": 542
   },
   {
+   "name": "Kyren Paris",
+   "sheetName": "Paris, Kyren",
+   "pos": "ss",
+   "age": 25,
+   "mls": 0.151,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 677347,
+   "salarySource": "minimum",
+   "war": 1.01,
+   "pa": 422
+  },
+  {
    "name": "A.J. Ewing",
    "sheetName": "Ewing, A.J.",
    "pos": "of-2b",
@@ -915,6 +931,16 @@
    "ip": 55.3,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 665625,
+   "name": "Elvis Peguero",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.23,
+   "ip": 47,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 702103,

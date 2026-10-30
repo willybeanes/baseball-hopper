@@ -817,16 +817,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 664774,
-   "name": "LaMonte Wade Jr.",
-   "pos": "lf",
-   "age": 33,
-   "war": 0.22,
-   "pa": 340,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 681077,
    "name": "Michael Knorr",
    "pos": "rp",

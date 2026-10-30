@@ -712,16 +712,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 679525,
-   "name": "Alec Marsh",
-   "pos": "sp",
-   "age": 29,
-   "war": 0.87,
-   "ip": 94.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 805810,
    "name": "Blake Mitchell",
    "pos": "c",
@@ -882,16 +872,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 595751,
-   "name": "Jorge Alfaro",
-   "pos": "c",
-   "age": 34,
-   "war": 0.2,
-   "pa": 295,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 592826,
    "name": "Vince Velasquez",
    "pos": "sp",
@@ -1050,16 +1030,6 @@
    "pa": 321,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 518886,
-   "name": "Craig Kimbrel",
-   "pos": "rp",
-   "age": 39,
-   "war": -0.27,
-   "ip": 42.3,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 699489,

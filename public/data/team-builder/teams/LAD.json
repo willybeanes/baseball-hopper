@@ -708,26 +708,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 500743,
-   "name": "Miguel Rojas",
-   "pos": "2b",
-   "age": 38,
-   "war": 0.89,
-   "pa": 307,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 641778,
-   "name": "Eric Lauer",
-   "pos": "sp",
-   "age": 32,
-   "war": 0.88,
-   "ip": 97,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 676046,
    "name": "Griff McGarry",
    "pos": "sp",

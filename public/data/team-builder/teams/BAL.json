@@ -318,22 +318,6 @@
    "pa": 647
   },
   {
-   "name": "Jose Barrero",
-   "sheetName": "Barrero, Jose",
-   "pos": "ss",
-   "age": 29,
-   "mls": 2.062,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 57754,
-   "mlbamId": 676480,
-   "salarySource": "minimum",
-   "war": 0.15,
-   "pa": 375
-  },
-  {
    "name": "Blaze Alexander",
    "sheetName": "Alexander, Blaze",
    "pos": "ss",
@@ -999,6 +983,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 676480,
+   "name": "José Barrero",
+   "pos": "ss",
+   "age": 29,
+   "war": 0.15,
+   "pa": 375,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 687841,
    "name": "Andrew Magno",
    "pos": "rp",
@@ -1125,6 +1119,16 @@
    "age": 26,
    "war": -0.2,
    "ip": 46.3,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 660822,
+   "name": "Robinson Martínez",
+   "pos": "rp",
+   "age": 29,
+   "war": -0.23,
+   "ip": 36.3,
    "salary": 780000,
    "debuted": false
   },

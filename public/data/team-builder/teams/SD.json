@@ -19,27 +19,6 @@
    "pa": 576
   },
   {
-   "name": "Michael King",
-   "sheetName": "King, Michael",
-   "pos": "rhp-s",
-   "age": 32,
-   "mls": 7.004,
-   "contract": "3 y/$75M (26-28)",
-   "status": "signed",
-   "salary": 28000000,
-   "taxValue": 25000000,
-   "salaryPrevYear": 17000000,
-   "walkYear": false,
-   "mlbamId": 650633,
-   "salarySource": "cots",
-   "playerOption": {
-    "type": "opt-out",
-    "buyout": 5000000
-   },
-   "war": 1.6,
-   "ip": 109.3
-  },
-  {
    "name": "Xander Bogaerts",
    "sheetName": "Bogaerts, Xander",
    "pos": "ss",
@@ -614,6 +593,12 @@
    "note": "2027 buyout"
   },
   {
+   "name": "Michael King",
+   "salary": 5000000,
+   "taxValue": -4000000,
+   "note": "2027 buyout"
+  },
+  {
    "name": "Luis Rengifo",
    "salary": 1500000,
    "taxValue": 0,
@@ -637,10 +622,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 219806398,
- "sheetTaxPayroll": 235945180,
- "rowsPayroll": 219806398,
- "rowsTaxPayroll": 235945180,
+ "sheetPayroll": 196806398,
+ "sheetTaxPayroll": 206945180,
+ "rowsPayroll": 196806398,
+ "rowsTaxPayroll": 206945180,
  "minors": [
   {
    "mlbamId": 672696,

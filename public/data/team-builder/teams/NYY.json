@@ -695,16 +695,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 605242,
-   "name": "Michael Fulmer",
-   "pos": "rp",
-   "age": 34,
-   "war": 0.3,
-   "ip": 50.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 684725,
    "name": "Zach Messinger",
    "pos": "rp",

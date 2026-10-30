@@ -542,22 +542,6 @@
    "pa": 502
   },
   {
-   "name": "Nate Eaton",
-   "sheetName": "Eaton, Nate",
-   "pos": "of",
-   "age": 30,
-   "mls": 1.081,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 610531,
-   "mlbamId": 681987,
-   "salarySource": "minimum",
-   "war": 1.19,
-   "pa": 439
-  },
-  {
    "name": "Mickey Gasper",
    "sheetName": "Gasper, Mickey",
    "pos": "1b",

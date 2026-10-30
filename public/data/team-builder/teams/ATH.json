@@ -203,22 +203,6 @@
    "ip": 85.7
   },
   {
-   "name": "Geoff Hartlieb",
-   "sheetName": "Hartlieb, Geoff",
-   "pos": "rhp",
-   "age": 33,
-   "mls": 2.056,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 226738,
-   "mlbamId": 664129,
-   "salarySource": "minimum",
-   "war": 0.16,
-   "ip": 46.7
-  },
-  {
    "name": "J.T. Ginn",
    "sheetName": "Ginn, J.T.",
    "pos": "rhp",
@@ -315,22 +299,6 @@
    "pa": 581
   },
   {
-   "name": "Brooks Kriske",
-   "sheetName": "Kriske, Brooks",
-   "pos": "rhp",
-   "age": 33,
-   "mls": 1.164,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 612568,
-   "mlbamId": 621139,
-   "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 43.3
-  },
-  {
    "name": "Alika Williams",
    "sheetName": "Williams, Alika",
    "pos": "ss",
@@ -345,22 +313,6 @@
    "salarySource": "minimum",
    "war": 1.05,
    "pa": 396
-  },
-  {
-   "name": "Brian Serven",
-   "sheetName": "Serven, Brian",
-   "pos": "c",
-   "age": 32,
-   "mls": 1.162,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 315244,
-   "mlbamId": 661531,
-   "salarySource": "minimum",
-   "war": 0.12,
-   "pa": 252
   },
   {
    "name": "Gunnar Hoglund",
@@ -409,22 +361,6 @@
    "salarySource": "minimum",
    "war": 1.95,
    "pa": 439
-  },
-  {
-   "name": "Michael Stefanic",
-   "sheetName": "Stefanic, Michael",
-   "pos": "2b",
-   "age": 31,
-   "mls": 1.137,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 190107,
-   "mlbamId": 683021,
-   "salarySource": "minimum",
-   "war": 1.97,
-   "pa": 421
   },
   {
    "name": "Denzel Clarke",
@@ -507,6 +443,22 @@
    "ip": 91
   },
   {
+   "name": "Nate Eaton",
+   "sheetName": "Eaton, Nate",
+   "pos": "of",
+   "age": 30,
+   "mls": 1.081,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 681987,
+   "salarySource": "minimum",
+   "war": 1.19,
+   "pa": 439
+  },
+  {
    "name": "Carlos Cortes",
    "sheetName": "Cortes, Carlos",
    "pos": "of",
@@ -553,22 +505,6 @@
    "salarySource": "minimum",
    "war": 0.34,
    "ip": 61
-  },
-  {
-   "name": "Joey Estes",
-   "sheetName": "Estes, Joey",
-   "pos": "rhp-s",
-   "age": 25,
-   "mls": 1.06,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 235567,
-   "mlbamId": 683155,
-   "salarySource": "minimum",
-   "war": 1.01,
-   "ip": 102.7
   },
   {
    "name": "Seth Johnson",
@@ -633,22 +569,6 @@
    "salarySource": "minimum",
    "war": 1.47,
    "ip": 123.3
-  },
-  {
-   "name": "Johnathan Rodriguez",
-   "sheetName": "Rodriguez, Johnathan",
-   "pos": "of",
-   "age": 27,
-   "mls": 0.111,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 36991,
-   "mlbamId": 671286,
-   "salarySource": "minimum",
-   "war": 1.14,
-   "pa": 500
   },
   {
    "name": "Joshua Kuroda-Grauer",
@@ -763,22 +683,6 @@
    "ip": 131
   },
   {
-   "name": "Henry Baez",
-   "sheetName": "Baez, Henry",
-   "pos": "rhp",
-   "age": 24,
-   "mls": 0,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 127100,
-   "mlbamId": 692013,
-   "salarySource": "minimum",
-   "war": 1.16,
-   "ip": 107
-  },
-  {
    "name": "Braden Nett",
    "sheetName": "Nett, Braden",
    "pos": "rhp",
@@ -826,6 +730,16 @@
  "rowsTaxPayroll": 118967857,
  "minors": [
   {
+   "mlbamId": 683021,
+   "name": "Michael Stefanic",
+   "pos": "2b",
+   "age": 31,
+   "war": 1.97,
+   "pa": 421,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 815888,
    "name": "Leo De Vries",
    "pos": "ss",
@@ -844,6 +758,36 @@
    "ip": 117,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 692013,
+   "name": "Henry Baez",
+   "pos": "sp",
+   "age": 24,
+   "war": 1.16,
+   "ip": 107,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 671286,
+   "name": "Johnathan Rodríguez",
+   "pos": "rf",
+   "age": 27,
+   "war": 1.14,
+   "pa": 500,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 683155,
+   "name": "Joey Estes",
+   "pos": "sp",
+   "age": 25,
+   "war": 1.01,
+   "ip": 102.7,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 686857,
@@ -994,6 +938,26 @@
    "ip": 58.7,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 664129,
+   "name": "Geoff Hartlieb",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.16,
+   "ip": 46.7,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 661531,
+   "name": "Brian Serven",
+   "pos": "c",
+   "age": 32,
+   "war": 0.12,
+   "pa": 252,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 685290,

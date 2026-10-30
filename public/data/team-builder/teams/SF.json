@@ -157,24 +157,6 @@
    "pa": 434
   },
   {
-   "name": "Jason Foley",
-   "sheetName": "Foley, Jason",
-   "pos": "rhp",
-   "age": 31,
-   "mls": 4.15,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 2300000,
-   "taxValue": 2300000,
-   "salaryPrevYear": 2000000,
-   "arbYear": 3,
-   "cotsEstimate": 2400000,
-   "mlbamId": 671345,
-   "salarySource": "mlbtr-arb",
-   "war": 0.62,
-   "ip": 55.7
-  },
-  {
    "name": "Sam Hentges",
    "sheetName": "Hentges, Sam",
    "pos": "lhp",
@@ -377,22 +359,6 @@
    "ip": 102
   },
   {
-   "name": "Matt Gage",
-   "sheetName": "Gage, Matt",
-   "pos": "lhp",
-   "age": 34,
-   "mls": 1.155,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 850000,
-   "mlbamId": 657424,
-   "salarySource": "minimum",
-   "war": 0.26,
-   "ip": 49
-  },
-  {
    "name": "Christian Koss",
    "sheetName": "Koss, Christian",
    "pos": "ss",
@@ -487,22 +453,6 @@
    "salarySource": "minimum",
    "war": 1.43,
    "pa": 407
-  },
-  {
-   "name": "Grant McCray",
-   "sheetName": "McCray, Grant",
-   "pos": "cf",
-   "age": 26,
-   "mls": 0.165,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 382496,
-   "mlbamId": 687529,
-   "salarySource": "minimum",
-   "war": 1.61,
-   "pa": 547
   },
   {
    "name": "Shay Whitcomb",
@@ -631,22 +581,6 @@
    "salarySource": "minimum",
    "war": 1.47,
    "ip": 110.3
-  },
-  {
-   "name": "Osleivis Basabe",
-   "sheetName": "Basabe, Osleivis",
-   "pos": "ss",
-   "age": 26,
-   "mls": 0.112,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 258610,
-   "mlbamId": 678545,
-   "salarySource": "minimum",
-   "war": 1.06,
-   "pa": 482
   },
   {
    "name": "Jonah Cox",
@@ -806,22 +740,6 @@
    "war": null
   },
   {
-   "name": "Braxton Roxby",
-   "sheetName": "Roxby, Braxton",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.019,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 85275,
-   "mlbamId": 694820,
-   "salarySource": "minimum",
-   "war": -0.11,
-   "ip": 52.3
-  },
-  {
    "name": "Scott Bandura",
    "sheetName": "Bandura, Scott",
    "pos": "lf",
@@ -933,8 +851,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 9350000,
-   "taxValue": 9350000,
+   "salary": 10200000,
+   "taxValue": 10200000,
    "note": ""
   },
   {
@@ -949,10 +867,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 173932144,
- "sheetTaxPayroll": 175830466,
- "rowsPayroll": 173932144,
- "rowsTaxPayroll": 175830466,
+ "sheetPayroll": 172382144,
+ "sheetTaxPayroll": 174280466,
+ "rowsPayroll": 172382144,
+ "rowsTaxPayroll": 174280466,
  "minors": [
   {
    "mlbamId": 678760,
@@ -973,6 +891,16 @@
    "pa": 393,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 678545,
+   "name": "Osleivis Basabe",
+   "pos": "2b",
+   "age": 26,
+   "war": 1.06,
+   "pa": 482,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 692238,
@@ -1025,22 +953,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 664141,
-   "name": "JT Brubaker",
-   "pos": "sp",
-   "age": 33,
-   "war": 0.71,
-   "ip": 73.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 686823,
    "name": "Will Brennan",
    "pos": "lf",
    "age": 29,
    "war": 0.69,
    "pa": 376,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 671345,
+   "name": "Jason Foley",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.62,
+   "ip": 55.7,
    "salary": 780000,
    "debuted": true
   },
@@ -1103,6 +1031,16 @@
    "pa": 483,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 657424,
+   "name": "Matt Gage",
+   "pos": "rp",
+   "age": 34,
+   "war": 0.26,
+   "ip": 49,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 672021,

@@ -253,24 +253,6 @@
    "ip": 73.7
   },
   {
-   "name": "Jacob Waguespack",
-   "sheetName": "Waguespack, Jacob",
-   "pos": "rhp",
-   "age": 33,
-   "mls": 3.032,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 2000000,
-   "taxValue": 2000000,
-   "salaryPrevYear": 577540,
-   "arbYear": 1,
-   "cotsEstimate": 2000000,
-   "mlbamId": 621097,
-   "salarySource": "cots-arb",
-   "war": 0.47,
-   "ip": 60.7
-  },
-  {
    "name": "Parker Meadows",
    "sheetName": "Meadows, Parker",
    "pos": "cf",
@@ -751,8 +733,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 7650000,
+   "taxValue": 7650000,
    "note": ""
   },
   {
@@ -765,12 +747,17 @@
  "benefits": 18500000,
  "bonusPool": 1666667,
  "threshold": 247000000,
- "tiers": null,
+ "tiers": [
+  247000000,
+  267000000,
+  287000000,
+  307000000
+ ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 136585012,
- "sheetTaxPayroll": 164788571,
- "rowsPayroll": 136585012,
- "rowsTaxPayroll": 164788571,
+ "sheetPayroll": 135435012,
+ "sheetTaxPayroll": 163638571,
+ "rowsPayroll": 135435012,
+ "rowsTaxPayroll": 163638571,
  "minors": [
   {
    "mlbamId": 800522,
@@ -1161,16 +1148,6 @@
    "pa": 464,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 572143,
-   "name": "Burch Smith",
-   "pos": "rp",
-   "age": 37,
-   "war": -0.37,
-   "ip": 33.7,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 678854,

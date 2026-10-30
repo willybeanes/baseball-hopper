@@ -106,42 +106,19 @@
    "ip": 53.7
   },
   {
-   "name": "Victor Robles",
-   "sheetName": "Robles, Victor",
-   "pos": "cf",
-   "age": 30,
-   "mls": 8.033,
-   "contract": "2 yr/$9.75M (25-26)+27 cl opt  $9 / $500,000",
-   "status": "option",
-   "salary": 9000000,
-   "taxValue": 9000000,
-   "salaryPrevYear": 5125000,
-   "optionType": "club",
-   "buyout": 500000,
-   "mlbamId": 645302,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 0.82,
-   "pa": 261
-  },
-  {
    "name": "Andrés Muñoz",
    "sheetName": "Muñoz, Andrés",
    "pos": "rhp-c",
    "age": 28,
    "mls": 7.08,
    "contract": "4 yr/$7.5M (22-25)+26-28 opts",
-   "status": "option",
+   "status": "signed",
    "salary": 9000000,
    "taxValue": 9000000,
    "salaryPrevYear": 7000000,
-   "optionType": "club",
+   "walkYear": true,
    "mlbamId": 662253,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "buyout": 0,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 0.83,
    "ip": 62.3
   },
@@ -164,26 +141,6 @@
    "pa": 544
   },
   {
-   "name": "Bryce Miller",
-   "sheetName": "Miller, Bryce",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 3.153,
-   "contract": "1 y/$2,542,500 (26)+27 cl opt",
-   "status": "option",
-   "salary": 6075000,
-   "taxValue": 6075000,
-   "salaryPrevYear": 2437500,
-   "optionType": "club",
-   "buyout": 15000,
-   "mlbamId": 682243,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 1.67,
-   "ip": 118
-  },
-  {
    "name": "Bryan Woo",
    "sheetName": "Woo, Bryan",
    "pos": "rhp-s",
@@ -200,6 +157,24 @@
    "salarySource": "mlbtr-arb",
    "war": 3.22,
    "ip": 157.3
+  },
+  {
+   "name": "Bryce Miller",
+   "sheetName": "Miller, Bryce",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 3.153,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 3900000,
+   "taxValue": 3900000,
+   "salaryPrevYear": 2437500,
+   "arbYear": 1,
+   "cotsEstimate": 3750000,
+   "mlbamId": 682243,
+   "salarySource": "mlbtr-arb",
+   "war": 1.67,
+   "ip": 118
   },
   {
    "name": "Luke Raley",
@@ -542,6 +517,22 @@
    "pa": 277
   },
   {
+   "name": "Grant McCray",
+   "sheetName": "McCray, Grant",
+   "pos": "cf",
+   "age": 26,
+   "mls": 0.165,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 687529,
+   "salarySource": "minimum",
+   "war": 1.61,
+   "pa": 547
+  },
+  {
    "name": "Cole Wilcox",
    "sheetName": "Wilcox, Cole",
    "pos": "rhp",
@@ -735,9 +726,21 @@
  ],
  "deadMoney": [
   {
+   "name": "Bryce Miller",
+   "salary": 15000,
+   "taxValue": 15000,
+   "note": "2027 buyout"
+  },
+  {
+   "name": "Victor Robles",
+   "salary": 500000,
+   "taxValue": 500000,
+   "note": "2027 buyout"
+  },
+  {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 4250000,
+   "taxValue": 4250000,
    "note": ""
   },
   {
@@ -752,10 +755,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 130627381,
- "sheetTaxPayroll": 162319877,
- "rowsPayroll": 130627381,
- "rowsTaxPayroll": 162319877,
+ "sheetPayroll": 141677381,
+ "sheetTaxPayroll": 173884877,
+ "rowsPayroll": 141677381,
+ "rowsTaxPayroll": 173884877,
  "minors": [
   {
    "mlbamId": 680573,

@@ -76,16 +76,13 @@
    "age": 29,
    "mls": 8.159,
    "contract": "8 y/$100M (19-26)+27-28 opts",
-   "status": "option",
+   "status": "signed",
    "salary": 17000000,
    "taxValue": 17000000,
    "salaryPrevYear": 17000000,
-   "optionType": "club",
-   "buyout": 17000000,
+   "walkYear": false,
    "mlbamId": 660670,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 4.24,
    "pa": 538
   },
@@ -202,16 +199,13 @@
    "age": 30,
    "mls": 9.062,
    "contract": "7 y/$35M (19-25)+26-27 opts",
-   "status": "option",
+   "status": "signed",
    "salary": 7000000,
    "taxValue": 7000000,
    "salaryPrevYear": 7000000,
-   "optionType": "club",
+   "walkYear": true,
    "mlbamId": 645277,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "buyout": 0,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 1.39,
    "pa": 575
   },
@@ -250,22 +244,6 @@
    "salarySource": "mlbtr-arb",
    "war": 1.62,
    "ip": 144.3
-  },
-  {
-   "name": "Rowdy Tellez",
-   "sheetName": "Tellez, Rowdy",
-   "pos": "1b",
-   "age": 32,
-   "mls": 6.169,
-   "contract": "",
-   "status": "fa",
-   "salary": null,
-   "taxValue": null,
-   "salaryPrevYear": null,
-   "mlbamId": 642133,
-   "salarySource": "none",
-   "war": -0.42,
-   "pa": 360
   },
   {
    "name": "James Karinchak",
@@ -613,8 +591,8 @@
  "deadMoney": [
   {
    "name": "0- to 3-year players",
-   "salary": 7650000,
-   "taxValue": 7650000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -634,10 +612,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 205000000,
- "sheetTaxPayroll": 202533334,
- "rowsPayroll": 205000000,
- "rowsTaxPayroll": 202533334,
+ "sheetPayroll": 211150000,
+ "sheetTaxPayroll": 218683334,
+ "rowsPayroll": 211150000,
+ "rowsTaxPayroll": 218683334,
  "minors": [
   {
    "mlbamId": 680577,

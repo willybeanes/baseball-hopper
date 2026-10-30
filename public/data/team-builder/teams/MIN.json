@@ -195,24 +195,6 @@
    "pa": 378
   },
   {
-   "name": "Anthony Banda",
-   "sheetName": "Banda, Anthony",
-   "pos": "lhp",
-   "age": 33,
-   "mls": 5.135,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 2300000,
-   "taxValue": 2300000,
-   "salaryPrevYear": 1625000,
-   "arbYear": 3,
-   "cotsEstimate": 2125000,
-   "mlbamId": 607455,
-   "salarySource": "mlbtr-arb",
-   "war": 0.13,
-   "ip": 51.7
-  },
-  {
    "name": "Cole Sands",
    "sheetName": "Sands, Cole",
    "pos": "rhp",
@@ -391,22 +373,6 @@
    "salarySource": "minimum",
    "war": 0.89,
    "ip": 92
-  },
-  {
-   "name": "Tristan Gray",
-   "sheetName": "Gray, Tristan",
-   "pos": "3b",
-   "age": 30,
-   "mls": 1.079,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 577115,
-   "mlbamId": 656484,
-   "salarySource": "minimum",
-   "war": 0.43,
-   "pa": 408
   },
   {
    "name": "Travis Adams",
@@ -665,22 +631,6 @@
    "pa": 347
   },
   {
-   "name": "Aaron Sabato",
-   "sheetName": "Sabato, Aaron",
-   "pos": "1b",
-   "age": 28,
-   "mls": 0.007,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 29198,
-   "mlbamId": 693306,
-   "salarySource": "minimum",
-   "war": -0.76,
-   "pa": 412
-  },
-  {
    "name": "Hendry Mendez",
    "sheetName": "Mendez, Hendry",
    "pos": "of",
@@ -724,8 +674,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 10200000,
-   "taxValue": 10200000,
+   "salary": 11050000,
+   "taxValue": 11050000,
    "note": ""
   },
   {
@@ -745,10 +695,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 123926190,
- "sheetTaxPayroll": 141368359,
- "rowsPayroll": 123926190,
- "rowsTaxPayroll": 141368359,
+ "sheetPayroll": 122651190,
+ "sheetTaxPayroll": 140093359,
+ "rowsPayroll": 122651190,
+ "rowsTaxPayroll": 140093359,
  "minors": [
   {
    "mlbamId": 806953,
@@ -901,6 +851,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 656484,
+   "name": "Tristan Gray",
+   "pos": "ss",
+   "age": 31,
+   "war": 0.43,
+   "pa": 408,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 806263,
    "name": "Brandon Winokur",
    "pos": "ss",
@@ -937,6 +897,16 @@
    "age": 30,
    "war": 0.15,
    "pa": 130,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 607455,
+   "name": "Anthony Banda",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.13,
+   "ip": 51.7,
    "salary": 780000,
    "debuted": true
   },
@@ -1099,6 +1069,16 @@
    "pa": 366,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 693306,
+   "name": "Aaron Sabato",
+   "pos": "1b",
+   "age": 28,
+   "war": -0.76,
+   "pa": 412,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 691191,

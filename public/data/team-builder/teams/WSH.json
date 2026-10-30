@@ -564,22 +564,6 @@
    "ip": 102
   },
   {
-   "name": "Zak Kent",
-   "sheetName": "Kent, Zak",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 0.067,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 401600,
-   "mlbamId": 687849,
-   "salarySource": "minimum",
-   "war": 0.51,
-   "ip": 54.3
-  },
-  {
    "name": "Abimelec Ortiz",
    "sheetName": "Ortiz, Abimelec",
    "pos": "1b",
@@ -736,6 +720,22 @@
    "salarySource": "minimum",
    "war": -0.36,
    "ip": 54.3
+  },
+  {
+   "name": "Braxton Roxby",
+   "sheetName": "Roxby, Braxton",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.019,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694820,
+   "salarySource": "minimum",
+   "war": -0.11,
+   "ip": 52.3
   }
  ],
  "deadMoney": [
@@ -890,6 +890,16 @@
    "age": 31,
    "war": 0.52,
    "pa": 394,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 687849,
+   "name": "Zak Kent",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.51,
+   "ip": 54.3,
    "salary": 780000,
    "debuted": true
   },

@@ -901,16 +901,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 670950,
-   "name": "Trevor Richards",
-   "pos": "rp",
-   "age": 34,
-   "war": 0.08,
-   "ip": 48.7,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 681333,
    "name": "Dru Baker",
    "pos": "cf",
