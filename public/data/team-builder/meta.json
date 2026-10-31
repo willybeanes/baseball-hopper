@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T16:36:17.086Z",
+  "updatedAt": "2026-10-31T15:39:39.156Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -74,10 +74,15 @@
     "label": "ZiPS 3-year projection for 2027",
     "note": "Made before the 2026 season. Switches to the fresh 2027 projection once FanGraphs publishes it (Steamer usually in November, ZiPS in January).",
     "url": "https://www.fangraphs.com/projections?type=zipsp1",
-    "fetchedAt": "2026-10-30",
+    "fetchedAt": "2026-10-31",
     "players": 3739
   },
-  "staleTeams": {},
+  "staleTeams": {
+    "LAA": [
+      "LAA: payroll rows add up to $108.574M but the sheet says $106.074M",
+      "LAA: tax payroll rows add up to $127.166M but the sheet says $124.666M"
+    ]
+  },
   "sources": {
     "contracts": "Cot's Baseball Contracts",
     "arbitration": {
