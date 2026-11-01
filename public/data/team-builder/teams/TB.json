@@ -7,7 +7,7 @@
    "pos": "rhp-s",
    "age": 31,
    "mls": 6.111,
-   "contract": "2 y/$8.5M (25-26)+27 cl opt $20 / $500,000",
+   "contract": "2 y/$8.5M (25-26)+27 cl opt",
    "status": "signed",
    "salary": 20000000,
    "taxValue": 20000000,
@@ -648,6 +648,12 @@
  ],
  "deadMoney": [
   {
+   "name": "Drew Rasmussen",
+   "salary": 0,
+   "taxValue": -500000,
+   "note": "CBT credit, unpaid buyout"
+  },
+  {
    "name": "Nick Martinez",
    "salary": 4000000,
    "taxValue": 0,
@@ -695,9 +701,9 @@
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 103139545,
- "sheetTaxPayroll": 117551667,
+ "sheetTaxPayroll": 117051667,
  "rowsPayroll": 103139545,
- "rowsTaxPayroll": 117551667,
+ "rowsTaxPayroll": 117051667,
  "minors": [
   {
    "mlbamId": 669261,

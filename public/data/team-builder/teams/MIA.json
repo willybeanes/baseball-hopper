@@ -181,24 +181,6 @@
    "ip": 47.7
   },
   {
-   "name": "Tyler Zuber",
-   "sheetName": "Zuber, Tyler",
-   "pos": "rhp",
-   "age": 32,
-   "mls": 3.104,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 900000,
-   "taxValue": 900000,
-   "salaryPrevYear": 509092,
-   "arbYear": 1,
-   "cotsEstimate": 1000000,
-   "mlbamId": 676604,
-   "salarySource": "mlbtr-arb",
-   "war": -0.14,
-   "ip": 42
-  },
-  {
    "name": "Esteury Ruiz",
    "sheetName": "Ruiz, Esteury",
    "pos": "cf",
@@ -441,22 +423,6 @@
    "pa": 539
   },
   {
-   "name": "Brian Navarreto",
-   "sheetName": "Navarreto, Brian",
-   "pos": "c",
-   "age": 32,
-   "mls": 0.16,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 412942,
-   "mlbamId": 640459,
-   "salarySource": "minimum",
-   "war": 0.22,
-   "pa": 238
-  },
-  {
    "name": "Bradley Blalock",
    "sheetName": "Blalock, Bradley",
    "pos": "rhp",
@@ -503,22 +469,6 @@
    "salarySource": "minimum",
    "war": 2.03,
    "ip": 124
-  },
-  {
-   "name": "Zach Brzykcy",
-   "sheetName": "Brzykcy, Zach",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.14,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 148726,
-   "mlbamId": 694350,
-   "salarySource": "minimum",
-   "war": -0.02,
-   "ip": 47.7
   },
   {
    "name": "Josh Ekness",
@@ -585,22 +535,6 @@
    "pa": 532
   },
   {
-   "name": "Wikelman Gonzalez",
-   "sheetName": "Gonzalez, Wikelman",
-   "pos": "rhp",
-   "age": 25,
-   "mls": 0.061,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 70897,
-   "mlbamId": 682790,
-   "salarySource": "minimum",
-   "war": 0.36,
-   "ip": 80
-  },
-  {
    "name": "Brandon Bidois",
    "sheetName": "Bidois, Brandon",
    "pos": "rhp",
@@ -647,21 +581,6 @@
    "salarySource": "minimum",
    "war": -0.13,
    "ip": 48.3
-  },
-  {
-   "name": "Logan Driscoll",
-   "sheetName": "Driscoll, Logan",
-   "pos": "c",
-   "age": 29,
-   "mls": 0.031,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 29319,
-   "mlbamId": 686482,
-   "salarySource": "minimum",
-   "war": null
   },
   {
    "name": "Jared Serna",
@@ -721,8 +640,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11900000,
-   "taxValue": 11900000,
+   "salary": 12750000,
+   "taxValue": 12750000,
    "note": ""
   },
   {
@@ -742,10 +661,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 72689200,
- "sheetTaxPayroll": 85855867,
- "rowsPayroll": 72689200,
- "rowsTaxPayroll": 85855867,
+ "sheetPayroll": 72539200,
+ "sheetTaxPayroll": 85705867,
+ "rowsPayroll": 72539200,
+ "rowsTaxPayroll": 85705867,
  "minors": [
   {
    "mlbamId": 806258,
@@ -938,6 +857,16 @@
    "debuted": true
   },
   {
+   "mlbamId": 682790,
+   "name": "Wikelman González",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.36,
+   "ip": 80,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 814458,
    "name": "Fenwick Trimble",
    "pos": "of",
@@ -998,6 +927,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 640459,
+   "name": "Brian Navarreto",
+   "pos": "c",
+   "age": 32,
+   "war": 0.22,
+   "pa": 238,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 622786,
    "name": "Jesus Tinoco",
    "pos": "rp",
@@ -1056,6 +995,16 @@
    "pa": 535,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 694350,
+   "name": "Zach Brzykcy",
+   "pos": "rp",
+   "age": 27,
+   "war": -0.02,
+   "ip": 47.7,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 681315,
@@ -1136,6 +1085,16 @@
    "ip": 50.3,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 676604,
+   "name": "Tyler Zuber",
+   "pos": "rp",
+   "age": 32,
+   "war": -0.14,
+   "ip": 42,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 801522,

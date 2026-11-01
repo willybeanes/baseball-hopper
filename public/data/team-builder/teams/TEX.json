@@ -571,6 +571,21 @@
    "ip": 68.7
   },
   {
+   "name": "Aidan Curry",
+   "sheetName": "Curry, Aidan",
+   "pos": "rhp",
+   "age": 24,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 695778,
+   "salarySource": "minimum",
+   "war": null
+  },
+  {
    "name": "David Davalillo",
    "sheetName": "Davalillo, David",
    "pos": "rhp",

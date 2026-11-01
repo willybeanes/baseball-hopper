@@ -739,6 +739,12 @@
  ],
  "deadMoney": [
   {
+   "name": "Jeff McNeil",
+   "salary": 2000000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
    "name": "Luke Weaver",
    "salary": 6000000,
    "taxValue": 6000000,
@@ -767,9 +773,9 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 265995474,
+ "sheetPayroll": 267995474,
  "sheetTaxPayroll": 281280858,
- "rowsPayroll": 265995474,
+ "rowsPayroll": 267995474,
  "rowsTaxPayroll": 281280858,
  "minors": [
   {

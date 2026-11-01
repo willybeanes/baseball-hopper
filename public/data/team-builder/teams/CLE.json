@@ -254,27 +254,6 @@
    "pa": 322
   },
   {
-   "name": "Shawn Armstrong",
-   "sheetName": "Armstrong, Shawn",
-   "pos": "rhp",
-   "age": 36,
-   "mls": 8.113,
-   "contract": "1 y/$5.5M (26)+27 m opt",
-   "status": "option",
-   "salary": 8000000,
-   "taxValue": 8000000,
-   "salaryPrevYear": 4000000,
-   "mlbamId": 542888,
-   "buyout": 1500000,
-   "corrected": "Cot's salary is the option buyout",
-   "optionType": "mutual",
-   "decidedBy": "both",
-   "defaultExercised": false,
-   "salarySource": "option",
-   "war": 0.24,
-   "ip": 52.3
-  },
-  {
    "name": "Matt Festa",
    "sheetName": "Festa, Matt",
    "pos": "rhp",
@@ -645,12 +624,34 @@
    "salarySource": "minimum",
    "war": 1.07,
    "ip": 104
+  },
+  {
+   "name": "Milán Tolentino",
+   "sheetName": "Tolentino, Milán",
+   "pos": "ss",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 675455,
+   "salarySource": "minimum",
+   "war": 1.46,
+   "pa": 487
   }
  ],
  "deadMoney": [
   {
    "name": "Emmanuel Clase",
    "salary": 2000000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
+   "name": "Shawn Armstrong",
+   "salary": 1500000,
    "taxValue": 0,
    "note": "2027 buyout"
   },
@@ -674,8 +675,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 8500000,
-   "taxValue": 8500000,
+   "salary": 9350000,
+   "taxValue": 9350000,
    "note": ""
   },
   {
@@ -695,21 +696,11 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 91008140,
- "sheetTaxPayroll": 111911551,
- "rowsPayroll": 91008140,
- "rowsTaxPayroll": 111911551,
+ "sheetPayroll": 91858140,
+ "sheetTaxPayroll": 107261551,
+ "rowsPayroll": 91858140,
+ "rowsTaxPayroll": 107261551,
  "minors": [
-  {
-   "mlbamId": 675455,
-   "name": "Milan Tolentino",
-   "pos": "ss",
-   "age": 25,
-   "war": 1.46,
-   "pa": 487,
-   "salary": 780000,
-   "debuted": false
-  },
   {
    "mlbamId": 701590,
    "name": "Khal Stephen",

@@ -2,25 +2,6 @@
  "team": "CIN",
  "players": [
   {
-   "name": "Eugenio Suárez",
-   "sheetName": "Suárez, Eugenio",
-   "pos": "3b",
-   "age": 35,
-   "mls": 12.061,
-   "contract": "1 y/$15M (26)+27 m opt",
-   "status": "option",
-   "salary": 16000000,
-   "taxValue": 16000000,
-   "salaryPrevYear": 15000000,
-   "optionType": "mutual",
-   "mlbamId": 553993,
-   "decidedBy": "both",
-   "defaultExercised": false,
-   "salarySource": "option",
-   "war": 0.47,
-   "pa": 552
-  },
-  {
    "name": "Hunter Greene",
    "sheetName": "Greene, Hunter",
    "pos": "rhp-s",
@@ -36,27 +17,6 @@
    "salarySource": "cots",
    "war": 3.27,
    "ip": 143.7
-  },
-  {
-   "name": "Emilio Pagán",
-   "sheetName": "Pagán, Emilio",
-   "pos": "rhp-c",
-   "age": 36,
-   "mls": 9.091,
-   "contract": "2 y/$20M (26-27)",
-   "status": "signed",
-   "salary": 10000000,
-   "taxValue": 10000000,
-   "salaryPrevYear": 10000000,
-   "walkYear": true,
-   "mlbamId": 641941,
-   "salarySource": "cots",
-   "playerOption": {
-    "type": "player",
-    "buyout": null
-   },
-   "war": 0.16,
-   "ip": 52
   },
   {
    "name": "Ke'Bryan Hayes",
@@ -165,6 +125,42 @@
    "ip": 156.7
   },
   {
+   "name": "JJ Bleday",
+   "sheetName": "Bleday, JJ",
+   "pos": "cf",
+   "age": 29,
+   "mls": 4.013,
+   "contract": "A2",
+   "status": "arb",
+   "salary": 4800000,
+   "taxValue": 4800000,
+   "salaryPrevYear": 1400000,
+   "arbYear": 2,
+   "cotsEstimate": 3850000,
+   "mlbamId": 668709,
+   "salarySource": "mlbtr-arb",
+   "war": 1.19,
+   "pa": 511
+  },
+  {
+   "name": "Matt McLain",
+   "sheetName": "McLain, Matt",
+   "pos": "2b",
+   "age": 27,
+   "mls": 3.14,
+   "contract": "A2",
+   "status": "arb",
+   "salary": 4000000,
+   "taxValue": 4000000,
+   "salaryPrevYear": 2300000,
+   "arbYear": 2,
+   "cotsEstimate": 3250000,
+   "mlbamId": 680574,
+   "salarySource": "mlbtr-arb",
+   "war": 3.34,
+   "pa": 588
+  },
+  {
    "name": "Chase Burns",
    "sheetName": "Burns, Chase",
    "pos": "rhp-s",
@@ -218,42 +214,6 @@
    "ip": 61.3
   },
   {
-   "name": "Matt McLain",
-   "sheetName": "McLain, Matt",
-   "pos": "2b",
-   "age": 27,
-   "mls": 3.14,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 4000000,
-   "taxValue": 4000000,
-   "salaryPrevYear": 2300000,
-   "arbYear": 2,
-   "cotsEstimate": 3250000,
-   "mlbamId": 680574,
-   "salarySource": "mlbtr-arb",
-   "war": 3.34,
-   "pa": 588
-  },
-  {
-   "name": "JJ Bleday",
-   "sheetName": "Bleday, JJ",
-   "pos": "cf",
-   "age": 29,
-   "mls": 4.013,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 4800000,
-   "taxValue": 4800000,
-   "salaryPrevYear": 1400000,
-   "arbYear": 2,
-   "cotsEstimate": 3850000,
-   "mlbamId": 668709,
-   "salarySource": "mlbtr-arb",
-   "war": 1.19,
-   "pa": 511
-  },
-  {
    "name": "Tejay Antone",
    "sheetName": "Antone, Tejay",
    "pos": "rhp",
@@ -270,6 +230,24 @@
    "salarySource": "mlbtr-arb",
    "war": -0.02,
    "ip": 27.7
+  },
+  {
+   "name": "Brandon Williamson",
+   "sheetName": "Williamson, Brandon",
+   "pos": "lhp-s",
+   "age": 29,
+   "mls": 3.139,
+   "contract": "A2",
+   "status": "arb",
+   "salary": 1300000,
+   "taxValue": 1300000,
+   "salaryPrevYear": 800000,
+   "arbYear": 2,
+   "cotsEstimate": 1200000,
+   "mlbamId": 682227,
+   "salarySource": "mlbtr-arb",
+   "war": 0.64,
+   "ip": 91.7
   },
   {
    "name": "Oswaldo Cabrera",
@@ -305,24 +283,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.54,
    "pa": 373
-  },
-  {
-   "name": "Brandon Williamson",
-   "sheetName": "Williamson, Brandon",
-   "pos": "lhp-s",
-   "age": 29,
-   "mls": 3.139,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
-   "salaryPrevYear": 800000,
-   "arbYear": 2,
-   "cotsEstimate": 1200000,
-   "mlbamId": 682227,
-   "salarySource": "mlbtr-arb",
-   "war": 0.64,
-   "ip": 91.7
   },
   {
    "name": "Noelvi Marte",
@@ -660,8 +620,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -681,10 +641,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 93269047,
- "sheetTaxPayroll": 116725746,
- "rowsPayroll": 93269047,
- "rowsTaxPayroll": 116725746,
+ "sheetPayroll": 84969047,
+ "sheetTaxPayroll": 108425746,
+ "rowsPayroll": 84969047,
+ "rowsTaxPayroll": 108425746,
  "minors": [
   {
    "mlbamId": 666150,

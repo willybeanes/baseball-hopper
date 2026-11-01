@@ -613,6 +613,12 @@
    "note": "2027 buyout"
   },
   {
+   "name": "Carson Kelly",
+   "salary": 1500000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
    "name": "Caleb Thielbar",
    "salary": 500000,
    "taxValue": 0,
@@ -641,9 +647,9 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 142216863,
+ "sheetPayroll": 143716863,
  "sheetTaxPayroll": 164888249,
- "rowsPayroll": 142216863,
+ "rowsPayroll": 143716863,
  "rowsTaxPayroll": 164888249,
  "minors": [
   {

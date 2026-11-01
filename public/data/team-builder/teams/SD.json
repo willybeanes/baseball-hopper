@@ -87,26 +87,6 @@
    "ip": 89.3
   },
   {
-   "name": "Nick Pivetta",
-   "sheetName": "Pivetta, Nick",
-   "pos": "rhp-s",
-   "age": 34,
-   "mls": 8.166,
-   "contract": "4 y/$55M (25-28)",
-   "status": "option",
-   "salary": 14000000,
-   "taxValue": 14000000,
-   "salaryPrevYear": 20500000,
-   "optionType": "club",
-   "mlbamId": 601713,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "buyout": 0,
-   "salarySource": "option",
-   "war": 1.59,
-   "ip": 137
-  },
-  {
    "name": "Jake Cronenworth",
    "sheetName": "Cronenworth, Jake",
    "pos": "1b",

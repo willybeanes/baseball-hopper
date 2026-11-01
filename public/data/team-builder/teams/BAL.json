@@ -216,42 +216,6 @@
    "pa": 518
   },
   {
-   "name": "Codi Heuer",
-   "sheetName": "Heuer, Codi",
-   "pos": "rhp",
-   "age": 30,
-   "mls": 4.059,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 102688,
-   "arbYear": 2,
-   "cotsEstimate": 1300000,
-   "mlbamId": 676051,
-   "salarySource": "mlbtr-arb",
-   "war": 0.28,
-   "ip": 47.3
-  },
-  {
-   "name": "Albert Suárez",
-   "sheetName": "Suárez, Albert",
-   "pos": "rhp",
-   "age": 37,
-   "mls": 3.159,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 802139,
-   "arbYear": 1,
-   "cotsEstimate": 1250000,
-   "mlbamId": 544150,
-   "salarySource": "mlbtr-arb",
-   "war": -0.15,
-   "ip": 75.7
-  },
-  {
    "name": "Jordan Westburg",
    "sheetName": "Westburg, Jordan",
    "pos": "ss",
@@ -398,22 +362,6 @@
    "ip": 123
   },
   {
-   "name": "Colin Selby",
-   "sheetName": "Selby, Colin",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 1.161,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 785200,
-   "mlbamId": 681882,
-   "salarySource": "minimum",
-   "war": 0.25,
-   "ip": 45
-  },
-  {
    "name": "Heston Kjerstad",
    "sheetName": "Kjerstad, Heston",
    "pos": "of",
@@ -547,7 +495,7 @@
    "pos": "of",
    "age": 26,
    "mls": 0.14,
-   "contract": "",
+   "contract": "1 y (27)",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
@@ -701,8 +649,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 10200000,
-   "taxValue": 10200000,
+   "salary": 11900000,
+   "taxValue": 11900000,
    "note": ""
   },
   {
@@ -717,10 +665,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 131425000,
- "sheetTaxPayroll": 157641667,
- "rowsPayroll": 131425000,
- "rowsTaxPayroll": 157641667,
+ "sheetPayroll": 130575000,
+ "sheetTaxPayroll": 156791667,
+ "rowsPayroll": 130575000,
+ "rowsTaxPayroll": 156791667,
  "minors": [
   {
    "mlbamId": 695735,
@@ -893,6 +841,26 @@
    "debuted": false
   },
   {
+   "mlbamId": 676051,
+   "name": "Codi Heuer",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.28,
+   "ip": 47.3,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 681882,
+   "name": "Colin Selby",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.25,
+   "ip": 45,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 694444,
    "name": "Tavian Josenberger",
    "pos": "lf",
@@ -981,16 +949,6 @@
    "pa": 410,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 676480,
-   "name": "José Barrero",
-   "pos": "ss",
-   "age": 29,
-   "war": 0.15,
-   "pa": 375,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 687841,

@@ -654,22 +654,6 @@
    "ip": 43
   },
   {
-   "name": "Tsung-Che Cheng",
-   "sheetName": "Cheng, Tsung-Che",
-   "pos": "ss",
-   "age": 25,
-   "mls": 0.041,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 341448,
-   "mlbamId": 691907,
-   "salarySource": "minimum",
-   "war": 0.7,
-   "pa": 494
-  },
-  {
    "name": "Eduardo Rivera",
    "sheetName": "Rivera, Eduardo",
    "pos": "lhp",
@@ -1174,7 +1158,7 @@
   {
    "mlbamId": 821100,
    "name": "Justin Gonzales",
-   "pos": "cf",
+   "pos": "of",
    "age": 20,
    "war": -0.95,
    "pa": 415,

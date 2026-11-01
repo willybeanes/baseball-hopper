@@ -611,22 +611,6 @@
    "ip": 42.7
   },
   {
-   "name": "Rudy Martin Jr.",
-   "sheetName": "Martin Jr., Rudy",
-   "pos": "of",
-   "age": 31,
-   "mls": 0.017,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 83143,
-   "mlbamId": 657675,
-   "salarySource": "minimum",
-   "war": 0.19,
-   "pa": 331
-  },
-  {
    "name": "John Klein",
    "sheetName": "Klein, John",
    "pos": "rhp",
@@ -892,6 +876,16 @@
    "pa": 121,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 657675,
+   "name": "Rudy Martin Jr.",
+   "pos": "rf",
+   "age": 31,
+   "war": 0.19,
+   "pa": 331,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 663671,

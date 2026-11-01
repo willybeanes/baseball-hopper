@@ -175,24 +175,6 @@
    "ip": 49.3
   },
   {
-   "name": "Andrew Knizner",
-   "sheetName": "Knizner, Andrew",
-   "pos": "c",
-   "age": 32,
-   "mls": 5.139,
-   "contract": "A4",
-   "status": "arb",
-   "salary": 1000000,
-   "taxValue": 1000000,
-   "salaryPrevYear": 200214,
-   "arbYear": 4,
-   "cotsEstimate": 1150000,
-   "mlbamId": 668800,
-   "salarySource": "mlbtr-arb",
-   "war": -0.01,
-   "pa": 247
-  },
-  {
    "name": "Ryan Walker",
    "sheetName": "Walker, Ryan",
    "pos": "rhp-c",
@@ -867,10 +849,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 172382144,
- "sheetTaxPayroll": 174280466,
- "rowsPayroll": 172382144,
- "rowsTaxPayroll": 174280466,
+ "sheetPayroll": 171232144,
+ "sheetTaxPayroll": 173130466,
+ "rowsPayroll": 171232144,
+ "rowsTaxPayroll": 173130466,
  "minors": [
   {
    "mlbamId": 678760,
@@ -1121,6 +1103,16 @@
    "pa": 321,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 668800,
+   "name": "Andrew Knizner",
+   "pos": "c",
+   "age": 32,
+   "war": -0.01,
+   "pa": 247,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 678576,

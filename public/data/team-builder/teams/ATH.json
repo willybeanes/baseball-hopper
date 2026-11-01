@@ -23,46 +23,6 @@
    "ip": 125
   },
   {
-   "name": "Jeff McNeil",
-   "sheetName": "McNeil, Jeff",
-   "pos": "2b",
-   "age": 35,
-   "mls": 8.069,
-   "contract": "4 yr/$50M (23-26)+27 cl opt  $15.75 / $2",
-   "status": "option",
-   "salary": 15750000,
-   "taxValue": 15750000,
-   "salaryPrevYear": 15750000,
-   "optionType": "club",
-   "buyout": 2000000,
-   "mlbamId": 643446,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 1.7,
-   "pa": 451
-  },
-  {
-   "name": "Jeffrey Springs",
-   "sheetName": "Springs, Jeffrey",
-   "pos": "lhp-s",
-   "age": 34,
-   "mls": 8.055,
-   "contract": "4 yr/$31M (23-26)+27 cl opt",
-   "status": "option",
-   "salary": 15000000,
-   "taxValue": 15000000,
-   "salaryPrevYear": 10500000,
-   "optionType": "club",
-   "buyout": 750000,
-   "mlbamId": 605488,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 1.43,
-   "ip": 124
-  },
-  {
    "name": "Brent Rooker",
    "sheetName": "Rooker, Brent",
    "pos": "dh-lf",
@@ -701,10 +661,10 @@
  ],
  "deadMoney": [
   {
-   "name": "Jeff McNeil",
-   "salary": -2000000,
+   "name": "Jeffrey Springs",
+   "salary": 750000,
    "taxValue": 0,
-   "note": "from NY Mets, 12/22/25 trade"
+   "note": "2027 buyout"
   },
   {
    "name": "0- to 3-year players",

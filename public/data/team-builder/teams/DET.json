@@ -660,6 +660,22 @@
    "pa": 280
   },
   {
+   "name": "Tsung-Che Cheng",
+   "sheetName": "Cheng, Tsung-Che",
+   "pos": "ss",
+   "age": 25,
+   "mls": 0.041,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 691907,
+   "salarySource": "minimum",
+   "war": 0.7,
+   "pa": 494
+  },
+  {
    "name": "Andrew Sears",
    "sheetName": "Sears, Andrew",
    "pos": "lhp",
