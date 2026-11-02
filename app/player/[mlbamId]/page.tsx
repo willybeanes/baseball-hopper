@@ -8,6 +8,8 @@ import { fetchPlayerProfile, type PlayerProfile, type SeasonLine } from "@/lib/p
 import { getPlayerHittingPlus } from "@/lib/hitting-plus/data";
 import PlayerHittingPlus from "@/components/hitting-plus/PlayerHittingPlus";
 import SwingMap from "@/components/hhps/SwingMap";
+import type { SwingProfileData, SwingProfileLeague, SwingProfileRow, SwingProfileVideo } from "@/lib/swing-profile/types";
+import swingProfileVideo from "@/public/data/swing-profile-video.json";
 
 // Statically cached per player, rebuilt at most once a day (each rebuild is a ~800 KB ISR
 // write); season picks happen client-side via ?season=.
@@ -49,6 +51,35 @@ async function fetchHhpsRows(mlbam: number, side: "hitter" | "pitcher"): Promise
     return (data as HHPSLeaderboardRow[]).filter((r) => r.season === latest);
   } catch {
     return [];
+  }
+}
+
+/** Swing Profile rows for every season this hitter has, plus each season's league numbers. Null when there are none. */
+async function fetchSwingProfile(mlbam: number): Promise<SwingProfileData | null> {
+  try {
+    const sb = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    );
+    const [rows, leagues] = await Promise.all([
+      sb.from("swing_profile").select("*").eq("mlbam", mlbam),
+      sb.from("swing_profile_league").select("season, data"),
+    ]);
+    if (rows.error || leagues.error || !rows.data?.length) return null;
+    const tracked = (swingProfileVideo.hitters as Record<string, Omit<SwingProfileVideo, "season" | "waggleHitters">>)[mlbam];
+    return {
+      rows: rows.data as SwingProfileRow[],
+      leagues: Object.fromEntries((leagues.data ?? []).map((l) => [l.season, l.data as SwingProfileLeague])),
+      video: tracked && {
+        season: swingProfileVideo.season,
+        waggleHitters: swingProfileVideo.waggle_hitters,
+        waggle: tracked.waggle && { label: tracked.waggle.label },
+        clock: tracked.clock,
+        extras: tracked.extras,
+      },
+    };
+  } catch {
+    return null;
   }
 }
 
@@ -212,9 +243,10 @@ export default async function PlayerPage({ params }: Props) {
   const showHitting = !player.isPitcher && player.hitting.seasons.length > 0;
   const showPitching = (player.isPitcher || player.isTwoWay) && player.pitching.seasons.length > 0;
   const mapSide = player.isPitcher ? "pitcher" : "hitter";
-  const [hp, mapRows] = await Promise.all([
+  const [hp, mapRows, swingProfile] = await Promise.all([
     player.isPitcher ? null : getPlayerHittingPlus(id),
     fetchHhpsRows(id, mapSide),
+    player.isPitcher ? null : fetchSwingProfile(id),
   ]);
   const mapSeason = mapRows[0]?.season;
   const latestSeason = Math.max(
@@ -277,7 +309,7 @@ export default async function PlayerPage({ params }: Props) {
       <div className="mt-8 space-y-6">
         {hp && (
           <Suspense fallback={null}>
-            <PlayerHittingPlus history={hp.history} pools={hp.pools} />
+            <PlayerHittingPlus history={hp.history} pools={hp.pools} swingProfile={swingProfile} />
           </Suspense>
         )}
 

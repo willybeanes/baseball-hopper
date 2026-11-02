@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { COMPONENT_KEYS, CONF_FIELD, DepthKey, Player, StatKey } from "@/lib/hitting-plus/types";
 import { confidenceOpacity, confidenceTier, fmtNum, fmtPercentile, fmtSigned, ordinal, formatName } from "@/lib/hitting-plus/metrics";
 import { ramp } from "@/lib/hitting-plus/ramp";
@@ -29,6 +29,8 @@ interface Props {
   history: Player[];
   pctBySeason: Record<number, PctRecord>;
   onSelectSeason: (year: number) => void;
+  /** Rendered after the sub-visuals, before Year over year. */
+  swingProfile?: ReactNode;
 }
 
 const GAP_HIGH = 25;
@@ -48,6 +50,7 @@ export default function PlayerCard({
   history,
   pctBySeason,
   onSelectSeason,
+  swingProfile,
 }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [gamelog, setGamelog] = useState<Record<string, unknown> | null | "loading">("loading");
@@ -248,6 +251,8 @@ export default function PlayerCard({
           {`Bat speed and attack angle at the moment of contact, both adjusted for pitch location since hitters naturally swing slower and steeper on some locations regardless of ability. Together these are what Power+ grades. Dotted lines mark a typical hitter and the 90th-percentile hitter on each axis independently.`}
         </p>
       </div>
+
+      {swingProfile}
 
       <YearOverYear history={history} pctBySeason={pctBySeason} currentSeason={d.game_year} onSelectSeason={onSelectSeason} />
 

@@ -1,0 +1,252 @@
+{
+  "_about": "Hand-maintained Swing Profile Tier C. Keyed by MLBAM id. waggle.step 1 to 5 is still to busiest within this file; waggle.median is the raw camera-view reading, kept only to place new hitters and never shown.",
+  "season": 2026,
+  "waggle_hitters": 24,
+  "hitters": {
+    "686948": {
+      "name": "Drake Baldwin",
+      "waggle": {
+        "step": 1,
+        "label": "Stillest",
+        "median": 6.8,
+        "swings_read": 9
+      }
+    },
+    "669065": {
+      "name": "Kyle Stowers",
+      "waggle": {
+        "step": 1,
+        "label": "Stillest",
+        "median": 7.9,
+        "swings_read": 13
+      }
+    },
+    "664023": {
+      "name": "Ian Happ",
+      "waggle": {
+        "step": 1,
+        "label": "Stillest",
+        "median": 8.2,
+        "swings_read": 9
+      }
+    },
+    "680574": {
+      "name": "Matt McLain",
+      "waggle": {
+        "step": 1,
+        "label": "Stillest",
+        "median": 8.7,
+        "swings_read": 11
+      },
+      "clock": {
+        "type": "Reactor",
+        "soft_start_share": 34,
+        "note": "His start follows the speed of the pitch."
+      }
+    },
+    "660271": {
+      "name": "Shohei Ohtani",
+      "waggle": {
+        "step": 1,
+        "label": "Stillest",
+        "median": 8.8,
+        "swings_read": 7
+      }
+    },
+    "680779": {
+      "name": "Henry Davis",
+      "waggle": {
+        "step": 2,
+        "label": "Still",
+        "median": 8.9,
+        "swings_read": 14
+      }
+    },
+    "592450": {
+      "name": "Aaron Judge",
+      "waggle": {
+        "step": 2,
+        "label": "Still",
+        "median": 9.1,
+        "swings_read": 84
+      },
+      "clock": {
+        "type": "Reactor",
+        "soft_start_share": 42,
+        "note": "His start follows the speed of the pitch."
+      }
+    },
+    "808959": {
+      "name": "Munetaka Murakami",
+      "waggle": {
+        "step": 2,
+        "label": "Still",
+        "median": 12.4,
+        "swings_read": 6
+      }
+    },
+    "678882": {
+      "name": "Ceddanne Rafaela",
+      "waggle": {
+        "step": 2,
+        "label": "Still",
+        "median": 13.0,
+        "swings_read": 13
+      }
+    },
+    "671732": {
+      "name": "Lawrence Butler",
+      "waggle": {
+        "step": 2,
+        "label": "Still",
+        "median": 14.5,
+        "swings_read": 11
+      }
+    },
+    "670042": {
+      "name": "Luke Raley",
+      "waggle": {
+        "step": 3,
+        "label": "Middle",
+        "median": 18.3,
+        "swings_read": 7
+      }
+    },
+    "699013": {
+      "name": "Esmerlyn Valdez",
+      "waggle": {
+        "step": 3,
+        "label": "Middle",
+        "median": 18.5,
+        "swings_read": 13
+      },
+      "clock": {
+        "type": "Guesser",
+        "soft_start_share": 24,
+        "note": "He starts earlier in counts where a fastball is more likely, about 6 thousandths of a second for every 10 points of fastball likelihood."
+      },
+      "extras": [
+        "The top of his waggle comes about 0.15 seconds after release on every pitch type.",
+        "When his bat was furthest behind a tenth of a second before the ball arrived, he whiffed on 42% of fastball swings, against 23% when it was furthest along. Soft stuff runs the other way: 26% against 63% on breaking balls and 32% against 67% on offspeed."
+      ]
+    },
+    "607043": {
+      "name": "Brandon Nimmo",
+      "waggle": {
+        "step": 3,
+        "label": "Middle",
+        "median": 19.6,
+        "swings_read": 8
+      }
+    },
+    "666176": {
+      "name": "Jo Adell",
+      "waggle": {
+        "step": 3,
+        "label": "Middle",
+        "median": 21.1,
+        "swings_read": 11
+      }
+    },
+    "650489": {
+      "name": "Willi Castro",
+      "waggle": {
+        "step": 4,
+        "label": "Busy",
+        "median": 21.1,
+        "swings_read": 6
+      }
+    },
+    "682998": {
+      "name": "Corbin Carroll",
+      "waggle": {
+        "step": 4,
+        "label": "Busy",
+        "median": 22.4,
+        "swings_read": 8
+      }
+    },
+    "646240": {
+      "name": "Rafael Devers",
+      "waggle": {
+        "step": 4,
+        "label": "Busy",
+        "median": 25.0,
+        "swings_read": 9
+      }
+    },
+    "694192": {
+      "name": "Jackson Chourio",
+      "waggle": {
+        "step": 4,
+        "label": "Busy",
+        "median": 25.1,
+        "swings_read": 9
+      }
+    },
+    "543760": {
+      "name": "Marcus Semien",
+      "waggle": {
+        "step": 4,
+        "label": "Busy",
+        "median": 26.8,
+        "swings_read": 8
+      }
+    },
+    "683748": {
+      "name": "Victor Mesa Jr.",
+      "waggle": {
+        "step": 5,
+        "label": "Busiest",
+        "median": 29.2,
+        "swings_read": 10
+      }
+    },
+    "682997": {
+      "name": "Tyler Callihan",
+      "waggle": {
+        "step": 5,
+        "label": "Busiest",
+        "median": 29.4,
+        "swings_read": 10
+      }
+    },
+    "676724": {
+      "name": "Jared Young",
+      "waggle": {
+        "step": 5,
+        "label": "Busiest",
+        "median": 30.5,
+        "swings_read": 11
+      }
+    },
+    "666211": {
+      "name": "Taylor Trammell",
+      "waggle": {
+        "step": 5,
+        "label": "Busiest",
+        "median": 31.0,
+        "swings_read": 13
+      },
+      "clock": {
+        "type": "Metronome",
+        "soft_start_share": 7,
+        "note": "He starts at about the same moment on everything."
+      }
+    },
+    "665966": {
+      "name": "Carlos Narváez",
+      "waggle": {
+        "step": 5,
+        "label": "Busiest",
+        "median": 35.0,
+        "swings_read": 12
+      },
+      "clock": {
+        "type": "Reactor",
+        "soft_start_share": 42,
+        "note": "His start follows the speed of the pitch."
+      }
+    }
+  }
+}
