@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T16:40:52.092Z",
+  "updatedAt": "2026-11-02T20:07:49.093Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -81,6 +81,14 @@
     "LAA": [
       "LAA: payroll rows add up to $108.574M but the sheet says $106.074M",
       "LAA: tax payroll rows add up to $127.166M but the sheet says $124.666M"
+    ],
+    "SD": [
+      "SD: payroll rows add up to $201.306M but the sheet says $202.156M",
+      "SD: tax payroll rows add up to $209.445M but the sheet says $210.295M"
+    ],
+    "STL": [
+      "STL: payroll rows add up to $66.860M but the sheet says $66.865M",
+      "STL: tax payroll rows add up to $94.888M but the sheet says $94.893M"
     ]
   },
   "sources": {

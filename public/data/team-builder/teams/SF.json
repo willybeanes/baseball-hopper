@@ -645,22 +645,6 @@
    "ip": 56
   },
   {
-   "name": "Nate Furman",
-   "sheetName": "Furman, Nate",
-   "pos": "2b",
-   "age": 25,
-   "mls": 0.047,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 207011,
-   "mlbamId": 801501,
-   "salarySource": "minimum",
-   "war": 0.85,
-   "pa": 309
-  },
-  {
    "name": "Turner Hill",
    "sheetName": "Hill, Turner",
    "pos": "cf",

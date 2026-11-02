@@ -108,24 +108,6 @@
    "ip": 110.3
   },
   {
-   "name": "Richard Lovelady",
-   "sheetName": "Lovelady, Richard",
-   "pos": "lhp",
-   "age": 31,
-   "mls": 4.052,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1700000,
-   "taxValue": 1700000,
-   "salaryPrevYear": 877005,
-   "arbYear": 2,
-   "cotsEstimate": 1500000,
-   "mlbamId": 663992,
-   "salarySource": "mlbtr-arb",
-   "war": 0.19,
-   "ip": 47
-  },
-  {
    "name": "Jake Bird",
    "sheetName": "Bird, Jake",
    "pos": "rhp",
@@ -580,6 +562,22 @@
    "pa": 528
   },
   {
+   "name": "Nate Furman",
+   "sheetName": "Furman, Nate",
+   "pos": "2b",
+   "age": 25,
+   "mls": 0.047,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 801501,
+   "salarySource": "minimum",
+   "war": 0.85,
+   "pa": 309
+  },
+  {
    "name": "Jackson Kent",
    "sheetName": "Kent, Jackson",
    "pos": "lhp-s",
@@ -747,8 +745,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 13600000,
-   "taxValue": 13600000,
+   "salary": 14450000,
+   "taxValue": 14450000,
    "note": ""
   },
   {
@@ -768,10 +766,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 48285000,
- "sheetTaxPayroll": 76069167,
- "rowsPayroll": 48285000,
- "rowsTaxPayroll": 76069167,
+ "sheetPayroll": 47635000,
+ "sheetTaxPayroll": 75419167,
+ "rowsPayroll": 47635000,
+ "rowsTaxPayroll": 75419167,
  "minors": [
   {
    "mlbamId": 701603,
@@ -940,6 +938,16 @@
    "age": 29,
    "war": 0.2,
    "pa": 425,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 663992,
+   "name": "Richard Lovelady",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.19,
+   "ip": 47,
    "salary": 780000,
    "debuted": true
   },

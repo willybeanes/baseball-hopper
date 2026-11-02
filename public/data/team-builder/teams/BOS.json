@@ -720,6 +720,12 @@
  ],
  "deadMoney": [
   {
+   "name": "Garrett Whitlock",
+   "salary": 0,
+   "taxValue": -1000000,
+   "note": "CBT credit, unpaid buyout"
+  },
+  {
    "name": "Sonny Gray",
    "salary": 10000000,
    "taxValue": 0,
@@ -761,9 +767,9 @@
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 213993334,
- "sheetTaxPayroll": 254442552,
+ "sheetTaxPayroll": 253442552,
  "rowsPayroll": 213993334,
- "rowsTaxPayroll": 254442552,
+ "rowsTaxPayroll": 253442552,
  "minors": [
   {
    "mlbamId": 808265,

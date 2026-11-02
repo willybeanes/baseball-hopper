@@ -321,24 +321,6 @@
    "ip": 42
   },
   {
-   "name": "Cristian Pache",
-   "sheetName": "Pache, Cristian",
-   "pos": "of",
-   "age": 28,
-   "mls": 3.086,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": 235294,
-   "arbYear": 1,
-   "cotsEstimate": 850000,
-   "mlbamId": 665506,
-   "salarySource": "mlbtr-arb",
-   "war": 0.41,
-   "pa": 302
-  },
-  {
    "name": "Daniel Duarte",
    "sheetName": "Duarte, Daniel",
    "pos": "rhp",
@@ -432,22 +414,6 @@
    "salarySource": "minimum",
    "war": 0.75,
    "pa": 395
-  },
-  {
-   "name": "Eric Wagaman",
-   "sheetName": "Wagaman, Eric",
-   "pos": "1b",
-   "age": 29,
-   "mls": 1.102,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 536605,
-   "mlbamId": 676572,
-   "salarySource": "minimum",
-   "war": 0.19,
-   "pa": 464
   },
   {
    "name": "Nate Lavender",
@@ -594,22 +560,6 @@
    "ip": 89.3
   },
   {
-   "name": "Philip Abner",
-   "sheetName": "Abner, Philip",
-   "pos": "lhp",
-   "age": 25,
-   "mls": 0.064,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 16685,
-   "mlbamId": 691769,
-   "salarySource": "minimum",
-   "war": 0.26,
-   "ip": 55
-  },
-  {
    "name": "Jonah Tong",
    "sheetName": "Tong, Jonah",
    "pos": "rhp-s",
@@ -689,22 +639,6 @@
    "war": null
   },
   {
-   "name": "Cameron Weston",
-   "sheetName": "Weston, Cameron",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.018,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 23975,
-   "mlbamId": 687721,
-   "salarySource": "minimum",
-   "war": 0.77,
-   "ip": 110.3
-  },
-  {
    "name": "Christian Cairo",
    "sheetName": "Cairo, Christian",
    "pos": "ss",
@@ -752,8 +686,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -879,6 +813,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 687721,
+   "name": "Cameron Weston",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.77,
+   "ip": 110.3,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 694858,
    "name": "Brendan Girton",
    "pos": "sp",
@@ -909,6 +853,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 665506,
+   "name": "Cristian Pache",
+   "pos": "of",
+   "age": 28,
+   "war": 0.41,
+   "pa": 302,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 802363,
    "name": "Jordan Geber",
    "pos": "rp",
@@ -937,6 +891,16 @@
    "ip": 55.3,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 691769,
+   "name": "Philip Abner",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.26,
+   "ip": 55,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 665625,
@@ -977,6 +941,16 @@
    "ip": 53,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 676572,
+   "name": "Eric Wagaman",
+   "pos": "1b",
+   "age": 29,
+   "war": 0.19,
+   "pa": 464,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 675540,
