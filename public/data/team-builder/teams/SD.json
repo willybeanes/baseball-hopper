@@ -252,6 +252,23 @@
    "pa": 313
   },
   {
+   "name": "Kyle Hart",
+   "sheetName": "Hart, Kyle",
+   "pos": "lhp-s",
+   "age": 34,
+   "mls": 1.168,
+   "contract": "1 y/$1.2M (26)+27 cl opt",
+   "status": "signed",
+   "salary": 2500000,
+   "taxValue": 2500000,
+   "salaryPrevYear": 1000000,
+   "walkYear": false,
+   "mlbamId": 606996,
+   "salarySource": "cots",
+   "war": 0.54,
+   "ip": 92.3
+  },
+  {
    "name": "Luis Campusano",
    "sheetName": "Campusano, Luis",
    "pos": "c",
@@ -322,27 +339,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.74,
    "ip": 77
-  },
-  {
-   "name": "Kyle Hart",
-   "sheetName": "Hart, Kyle",
-   "pos": "lhp-s",
-   "age": 34,
-   "mls": 1.168,
-   "contract": "$2.5 / $200,000",
-   "status": "option",
-   "salary": 2500000,
-   "taxValue": 2500000,
-   "salaryPrevYear": 1000000,
-   "mlbamId": 606996,
-   "buyout": 200000,
-   "corrected": "Cot's salary is the option buyout",
-   "optionType": "club",
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 0.54,
-   "ip": 92.3
   },
   {
    "name": "Randy Vásquez",
@@ -556,12 +552,18 @@
  "deadMoney": [
   {
    "name": "Miguel Andujar",
-   "salary": 2500000,
+   "salary": 2900000,
    "taxValue": 0,
    "note": "2027 buyout"
   },
   {
    "name": "Griffin Canning",
+   "salary": 1800000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
+   "name": "Lucas Giolito",
    "salary": 1500000,
    "taxValue": 0,
    "note": "2027 buyout"
@@ -586,8 +588,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -602,10 +604,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 196806398,
- "sheetTaxPayroll": 206945180,
- "rowsPayroll": 196806398,
- "rowsTaxPayroll": 206945180,
+ "sheetPayroll": 202156398,
+ "sheetTaxPayroll": 210295180,
+ "rowsPayroll": 202156398,
+ "rowsTaxPayroll": 210295180,
  "minors": [
   {
    "mlbamId": 672696,

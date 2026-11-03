@@ -916,6 +916,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 621097,
+   "name": "Jacob Waguespack",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.47,
+   "ip": 60.7,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 802599,
    "name": "Jack Penney",
    "pos": "ss",
@@ -1088,7 +1098,7 @@
   {
    "mlbamId": 814307,
    "name": "Zyhir Hope",
-   "pos": "of",
+   "pos": "cf",
    "age": 22,
    "war": -0.01,
    "pa": 545,

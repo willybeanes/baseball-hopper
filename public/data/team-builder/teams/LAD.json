@@ -621,7 +621,20 @@
    "ip": 56.7
   }
  ],
- "deadMoney": [],
+ "deadMoney": [
+  {
+   "name": "0- to 3-year players",
+   "salary": 5100000,
+   "taxValue": 5100000,
+   "note": ""
+  },
+  {
+   "name": "40-man players in minors",
+   "salary": 2800000,
+   "taxValue": 2800000,
+   "note": ""
+  }
+ ],
  "benefits": 18500000,
  "bonusPool": 1666667,
  "threshold": 247000000,
@@ -634,8 +647,8 @@
  "sheetFirstYear": 2027,
  "sheetPayroll": 366005616,
  "sheetTaxPayroll": 388474886,
- "rowsPayroll": 358105616,
- "rowsTaxPayroll": 380574886,
+ "rowsPayroll": 366005616,
+ "rowsTaxPayroll": 388474886,
  "minors": [
   {
    "mlbamId": 701394,

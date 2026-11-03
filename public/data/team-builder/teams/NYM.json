@@ -813,16 +813,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 687721,
-   "name": "Cameron Weston",
-   "pos": "sp",
-   "age": 26,
-   "war": 0.77,
-   "ip": 110.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 694858,
    "name": "Brendan Girton",
    "pos": "sp",
@@ -893,16 +883,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691769,
-   "name": "Philip Abner",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.26,
-   "ip": 55,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 665625,
    "name": "Elvis Peguero",
    "pos": "rp",
@@ -941,16 +921,6 @@
    "ip": 53,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 676572,
-   "name": "Eric Wagaman",
-   "pos": "1b",
-   "age": 29,
-   "war": 0.19,
-   "pa": 464,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 675540,

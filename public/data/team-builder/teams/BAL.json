@@ -851,6 +851,16 @@
    "debuted": true
   },
   {
+   "mlbamId": 691769,
+   "name": "Philip Abner",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.26,
+   "ip": 55,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 681882,
    "name": "Colin Selby",
    "pos": "rp",

@@ -727,6 +727,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 687721,
+   "name": "Cameron Weston",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.77,
+   "ip": 110.3,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 703596,
    "name": "Karson Milbrandt",
    "pos": "sp",
@@ -995,16 +1005,6 @@
    "pa": 535,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 694350,
-   "name": "Zach Brzykcy",
-   "pos": "rp",
-   "age": 27,
-   "war": -0.02,
-   "ip": 47.7,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 681315,

@@ -670,13 +670,8 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
- "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
- ],
+ "threshold": null,
+ "tiers": null,
  "sheetFirstYear": 2027,
  "sheetPayroll": 99373396,
  "sheetTaxPayroll": 123225988,

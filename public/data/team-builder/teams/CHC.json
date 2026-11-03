@@ -164,17 +164,14 @@
    "pos": "rhp",
    "age": 33,
    "mls": 6.046,
-   "contract": "1 y/$1.5M (26)+27 cl opt",
-   "status": "option",
-   "salary": 2500000,
+   "contract": "1 y/$2.5M (27)+28 cl opt",
+   "status": "signed",
+   "salary": 2000000,
    "taxValue": 2500000,
    "salaryPrevYear": 1500000,
-   "optionType": "club",
+   "walkYear": false,
    "mlbamId": 657097,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "buyout": 0,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 0.09,
    "ip": 54
   },
@@ -319,26 +316,6 @@
    "mlbamId": 592122,
    "salarySource": "mlbtr-arb",
    "war": null
-  },
-  {
-   "name": "Colin Rea",
-   "sheetName": "Rea, Colin",
-   "pos": "rhp",
-   "age": 37,
-   "mls": 7.057,
-   "contract": "1 y/$6.5M (26)+27 opt",
-   "status": "option",
-   "salary": 7500000,
-   "taxValue": 7500000,
-   "salaryPrevYear": 5500000,
-   "optionType": "club",
-   "buyout": 1000000,
-   "mlbamId": 607067,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 0.52,
-   "ip": 112
   },
   {
    "name": "Ethan Roberts",
@@ -619,6 +596,12 @@
    "note": "2027 buyout"
   },
   {
+   "name": "Colin Rea",
+   "salary": 1000000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
    "name": "Caleb Thielbar",
    "salary": 500000,
    "taxValue": 0,
@@ -626,8 +609,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -647,10 +630,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 143716863,
- "sheetTaxPayroll": 164888249,
- "rowsPayroll": 143716863,
- "rowsTaxPayroll": 164888249,
+ "sheetPayroll": 146566863,
+ "sheetTaxPayroll": 168238249,
+ "rowsPayroll": 146566863,
+ "rowsTaxPayroll": 168238249,
  "minors": [
   {
    "mlbamId": 690939,

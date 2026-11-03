@@ -658,6 +658,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 660644,
+   "name": "Vidal Bruján",
+   "pos": "ss",
+   "age": 29,
+   "war": 0.58,
+   "pa": 311,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 680672,
    "name": "Luke Waddell",
    "pos": "ss",

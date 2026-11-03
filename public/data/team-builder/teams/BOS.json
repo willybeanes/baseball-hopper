@@ -1082,6 +1082,16 @@
    "debuted": true
   },
   {
+   "mlbamId": 656180,
+   "name": "Riley Adams",
+   "pos": "c",
+   "age": 31,
+   "war": -0.28,
+   "pa": 278,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 806983,
    "name": "Yophery Rodriguez",
    "pos": "cf",

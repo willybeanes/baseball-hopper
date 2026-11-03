@@ -847,6 +847,16 @@
    "debuted": true
   },
   {
+   "mlbamId": 682126,
+   "name": "Evan Reifert",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.1,
+   "ip": 38,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 686223,
    "name": "Joey Mancini",
    "pos": "sp",
