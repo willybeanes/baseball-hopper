@@ -211,7 +211,7 @@ export default function SwingProfile({
   const whiffPts = payoffWhiff != null ? Math.abs(payoffWhiff * 100).toFixed(1) : null;
 
   return (
-    <div className="mt-6">
+    <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7">
       <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">Swing Profile</h2>
       <p className="mb-4 mt-1 text-xs text-[var(--dim)]">
         Hitting+ grades the swing. This describes how he runs it, so these are styles, not grades.
@@ -250,6 +250,6 @@ export default function SwingProfile({
 
         {video && video.season === row.season && <VideoCards video={video} />}
       </div>
-    </div>
+    </section>
   );
 }
