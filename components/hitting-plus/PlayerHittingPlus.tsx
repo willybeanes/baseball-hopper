@@ -4,19 +4,15 @@ import { useCallback, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Player } from "@/lib/hitting-plus/types";
 import { cardReferences, percentilesBySeason } from "@/lib/hitting-plus/context";
-import type { SwingProfileData } from "@/lib/swing-profile/types";
 import PlayerCard from "./PlayerCard";
-import SwingProfile from "./SwingProfile";
 
 /** Hitting+ card for the player page. Season lives in ?season= so links can target one. */
 export default function PlayerHittingPlus({
   history,
   pools,
-  swingProfile,
 }: {
   history: Player[];
   pools: Record<number, Player[]>;
-  swingProfile?: SwingProfileData | null;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -45,8 +41,6 @@ export default function PlayerHittingPlus({
   const row = history.find((h) => h.game_year === season) ?? history[history.length - 1];
   const pct = pctBySeason[row.game_year];
   if (!pct) return null;
-  const profileRow = swingProfile?.rows.find((r) => r.season === row.game_year);
-  const profileLeague = swingProfile?.leagues[row.game_year];
 
   return (
     <PlayerCard
@@ -56,7 +50,6 @@ export default function PlayerHittingPlus({
       history={history}
       pctBySeason={pctBySeason}
       onSelectSeason={selectSeason}
-      swingProfile={profileRow && profileLeague ? <SwingProfile row={profileRow} league={profileLeague} video={swingProfile?.video} /> : null}
     />
   );
 }

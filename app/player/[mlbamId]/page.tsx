@@ -7,6 +7,7 @@ import { headshotUrl, hhpsUrl } from "@/lib/player";
 import { fetchPlayerProfile, type PlayerProfile, type SeasonLine } from "@/lib/player-profile";
 import { getPlayerHittingPlus } from "@/lib/hitting-plus/data";
 import PlayerHittingPlus from "@/components/hitting-plus/PlayerHittingPlus";
+import PlayerSwingProfile from "@/components/hitting-plus/PlayerSwingProfile";
 import SwingMap from "@/components/hhps/SwingMap";
 import type { SwingProfileData, SwingProfileLeague, SwingProfileRow, SwingProfileVideo } from "@/lib/swing-profile/types";
 import swingProfileVideo from "@/public/data/swing-profile-video.json";
@@ -309,7 +310,7 @@ export default async function PlayerPage({ params }: Props) {
       <div className="mt-8 space-y-6">
         {hp && (
           <Suspense fallback={null}>
-            <PlayerHittingPlus history={hp.history} pools={hp.pools} swingProfile={swingProfile} />
+            <PlayerHittingPlus history={hp.history} pools={hp.pools} />
           </Suspense>
         )}
 
@@ -338,6 +339,12 @@ export default async function PlayerPage({ params }: Props) {
               <SwingMap mlbam={id} season={mapSeason} side={mapSide} rows={mapRows} />
             </div>
           </section>
+        )}
+
+        {hp && swingProfile && (
+          <Suspense fallback={null}>
+            <PlayerSwingProfile data={swingProfile} seasons={hp.history.map((h) => h.game_year)} />
+          </Suspense>
         )}
 
         <section>
