@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { ordinal } from "@/lib/hitting-plus/metrics";
 import {
   SWING_PROFILE_ARTICLES,
@@ -12,6 +12,14 @@ import {
 const AXIS_MIN = 58;
 const AXIS_MAX = 88;
 
+// Fixed scales for the row strips, so a dot means the same thing on every player page. Each runs about the 1st to 99th percentile of qualified hitters in 2024-26; anything past an end sits on that end.
+const PAYOFF_EV_AXIS = { min: -1, max: 11 };
+const PAYOFF_WHIFF_AXIS = { min: -10, max: 20 };
+const CHASE_AXIS = { min: -0.2, max: 1.6 };
+const TWO_STRIKE_AXIS = { min: -1, max: 5 };
+const PERCENTILE_AXIS = { min: 1, max: 99 };
+const FIFTHS = [0.2, 0.4, 0.6, 0.8];
+
 const QUADRANT: Record<NonNullable<SwingProfileRow["quadrant"]>, string> = {
   big_picks: "Big Sandbag, picks his spots",
   big_spreads: "Big Sandbag, spreads it around",
@@ -19,7 +27,6 @@ const QUADRANT: Record<NonNullable<SwingProfileRow["quadrant"]>, string> = {
   small_spreads: "Small Sandbag, spreads it around",
 };
 
-const GROUP_NAME: Record<WhiffGroup, string> = { fastball: "fastballs", breaking: "breaking balls", offspeed: "offspeed pitches" };
 const GROUP_ADJECTIVE: Record<WhiffGroup, string> = { fastball: "fastball", breaking: "breaking-ball", offspeed: "offspeed" };
 
 const mph = (v: number) => v.toFixed(1);
@@ -27,10 +34,7 @@ const signed = (v: number, digits = 1) => `${v >= 0 ? "+" : "-"}${Math.abs(v).to
 const percentile = (p: number) => ordinal(Math.min(99, Math.max(1, Math.round(p))));
 const axisPct = (v: number) => (100 * (Math.min(AXIS_MAX, Math.max(AXIS_MIN, v)) - AXIS_MIN)) / (AXIS_MAX - AXIS_MIN);
 
-const joinList = (items: string[]) =>
-  items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
-
-function Metric({ label, value, note, children }: { label: string; value?: ReactNode; note?: string; children: ReactNode }) {
+function Metric({ label, value, note, chart, children }: { label: string; value?: ReactNode; note?: string; chart?: ReactNode; children: ReactNode }) {
   return (
     <div className="grid gap-x-6 gap-y-1.5 py-3.5 sm:grid-cols-[180px_1fr]">
       <div>
@@ -38,7 +42,59 @@ function Metric({ label, value, note, children }: { label: string; value?: React
         {value != null && <p className="mt-0.5 text-[17px] font-bold tabular-nums text-[var(--text)]">{value}</p>}
         {note && <p className="mt-0.5 text-[11px] text-[var(--dim)]">{note}</p>}
       </div>
-      <p className="text-[13px] leading-relaxed text-[var(--dim)]">{children}</p>
+      <div>
+        {chart && <div className="mb-2.5">{chart}</div>}
+        <p className="text-pretty text-[13px] leading-relaxed text-[var(--dim)]">{children}</p>
+      </div>
+    </div>
+  );
+}
+
+/** One hitter on a thin line, in the same marks as the bat speed bar: a tick for the typical hitter, a red dot for him. */
+function Strip({
+  axis,
+  value,
+  typical,
+  typicalLabel,
+  marks,
+  ends,
+  description,
+}: {
+  axis: { min: number; max: number };
+  value: number;
+  typical?: number;
+  typicalLabel?: string;
+  marks?: number[];
+  ends: [string, string];
+  description: string;
+}) {
+  const at = (v: number) => (100 * (Math.min(axis.max, Math.max(axis.min, v)) - axis.min)) / (axis.max - axis.min);
+  return (
+    <div>
+      <div className="relative h-[26px]" role="img" aria-label={description}>
+        <span className="absolute inset-x-0 top-[17px] h-[2px] bg-[var(--neutral-bar)]" />
+        {marks?.map((m) => (
+          <span key={m} className="absolute top-[14px] h-2 w-px bg-[var(--neutral-bar)]" style={{ left: `${100 * m}%` }} />
+        ))}
+        {typical != null && (
+          <>
+            <span className="absolute top-[11px] h-[14px] w-px bg-[var(--dimmer)]" style={{ left: `${at(typical)}%` }} />
+            {typicalLabel && (
+              <span
+                className="absolute top-[-3px] -translate-x-1/2 whitespace-nowrap text-[11px] tabular-nums text-[var(--dim)]"
+                style={{ left: `${Math.min(86, Math.max(14, at(typical)))}%` }}
+              >
+                {typicalLabel}
+              </span>
+            )}
+          </>
+        )}
+        <span className="absolute top-[13.5px] h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-[var(--accent)]" style={{ left: `${at(value)}%` }} />
+      </div>
+      <div className="mt-1 flex justify-between text-[11px] tabular-nums text-[var(--dim)]">
+        <span>{ends[0]}</span>
+        <span>{ends[1]}</span>
+      </div>
     </div>
   );
 }
@@ -106,8 +162,34 @@ function SandbagBlock({ row, league }: { row: SwingProfileRow; league: SwingProf
         </div>
       </div>
       <p className="mt-2 text-[11px] text-[var(--dimmer)]">
-        How much faster his hardest swings are than his normal one, on pitches in the zone. The Sandbag adjusts for pitch location, so it can differ a little from the gap between the two raw speeds. It is a style, not a skill: it has no relationship with Hitting+, Decision+ or Power+, and only a slight lean toward Contact+. The thin ticks mark a typical hitter&apos;s normal and hardest swing.
+        How much faster his hardest swings are than his normal one on pitches in the zone, adjusted for pitch location, so it can differ a little from the gap between the two raw speeds. It is a style, not a skill: it has no relationship with Hitting+, Decision+ or Power+, and only a slight lean toward Contact+. The thin ticks mark a typical hitter&apos;s normal and hardest swing.
       </p>
+    </div>
+  );
+}
+
+const WHIFF_ROW: Record<WhiffGroup, string> = { fastball: "Fastballs", breaking: "Breaking balls", offspeed: "Offspeed" };
+
+function WhiffChart({ groups, whiffs }: { groups: WhiffGroup[]; whiffs: NonNullable<SwingProfileRow["whiff_direction"]> }) {
+  const dot = <span className="block h-[9px] w-[9px] rounded-full bg-[var(--accent)]" />;
+  return (
+    <div
+      className="grid max-w-[380px] grid-cols-[96px_1fr_1px_1fr] items-center text-[11px] text-[var(--dim)]"
+      role="img"
+      aria-label={groups.map((g) => `${WHIFF_ROW[g]}: misses ${whiffs[g]!.direction}`).join(". ")}
+    >
+      <span />
+      <span className="pb-1 text-center">Late</span>
+      <span className="self-stretch bg-[var(--dimmer)]" />
+      <span className="pb-1 text-center">Early</span>
+      {groups.map((g) => (
+        <Fragment key={g}>
+          <span className="py-1">{WHIFF_ROW[g]}</span>
+          <span className="flex justify-center">{whiffs[g]!.direction === "late" && dot}</span>
+          <span className="self-stretch bg-[var(--dimmer)]" />
+          <span className="flex justify-center">{whiffs[g]!.direction === "early" && dot}</span>
+        </Fragment>
+      ))}
     </div>
   );
 }
@@ -117,24 +199,15 @@ function WhiffLine({ row }: { row: SwingProfileRow }) {
   const shown = (["fastball", "breaking", "offspeed"] as WhiffGroup[]).filter((g) => whiffs[g]);
   if (!shown.length) return null;
   const breaks = row.whiff_breaks_pattern ?? [];
-  const usual = shown.filter((g) => !breaks.includes(g));
-  const describe = (gs: WhiffGroup[]) =>
-    joinList(gs.map((g) => `${whiffs[g]!.direction} on ${GROUP_NAME[g]}`));
 
-  let text: string;
-  if (!breaks.length && shown.length === 3) {
-    text = "Like nearly every hitter, he misses late on fastballs and early on everything else.";
-  } else if (!breaks.length) {
-    text = `Like nearly every hitter, he misses ${describe(shown)}.`;
-  } else {
-    const broken = breaks
-      .map((g) => `his ${GROUP_ADJECTIVE[g]} whiffs come ${whiffs[g]!.direction === "early" ? "further out front" : "deeper"} than his normal swing, where nearly every hitter misses the other way`)
-      .join(", and ");
-    text = `He breaks the usual pattern: ${broken}.${usual.length ? ` He misses ${describe(usual)}, like most hitters.` : ""}`;
-  }
+  const text = !breaks.length
+    ? "Like nearly every hitter."
+    : `He breaks the usual pattern: ${breaks
+        .map((g) => `his ${GROUP_ADJECTIVE[g]} whiffs come ${whiffs[g]!.direction === "early" ? "further out front" : "deeper"} than his normal swing, where nearly every hitter misses the other way`)
+        .join(", and ")}.`;
   return (
-    <Metric label="Whiff direction">
-      {text} This compares where the bat meets the ball on his whiffs with where it meets the ball on all his swings.
+    <Metric label="Whiff direction" chart={<WhiffChart groups={shown} whiffs={whiffs} />}>
+      {text} This compares where the bat meets the ball on his whiffs with all his swings, and shows direction, not how far.
     </Metric>
   );
 }
@@ -145,11 +218,24 @@ function Launch({ row, league }: { row: SwingProfileRow; league: SwingProfileLea
   const trade = league.launch_trade;
   const xwoba = (v: number) => v.toFixed(3).replace(/^0/, "");
   return (
-    <Metric label="When the swing launches" value={`${mph(frames)} frames`} note={`${row.launch_tied ? "tied " : ""}${ordinal(rank)} latest of ${pool}`}>
+    <Metric
+      label="When the swing launches"
+      value={`${mph(frames)} frames`}
+      note={`${row.launch_tied ? "tied " : ""}${ordinal(rank)} latest of ${pool}`}
+      chart={
+        <Strip
+          axis={{ min: 1, max: pool }}
+          value={rank}
+          marks={FIFTHS}
+          ends={["Latest fifth", "Earliest fifth"]}
+          description={`${fifth} fifth of hitters: ${ordinal(rank)} latest launch of ${pool}.`}
+        />
+      }
+    >
       <span className="font-medium text-[var(--text)]">{fifth} fifth of hitters. </span>
-      How much of the swing is left once the bat really starts to turn, counted in frames of his average swing from Savant. It works out to about a tenth of a second, and fewer frames means a later launch. A late launch buys power and pays for it in contact, and the bill comes out about even.
+      How much of the swing is left once the bat really starts to turn, counted in frames of his average swing from Savant. Fewer frames means a later launch, which buys power and pays for it in contact, and the bill comes out about even.
       {trade &&
-        ` The latest fifth of hitters average ${trade.latest.contact} Contact+, ${trade.latest.power} Power+ and a ${xwoba(trade.latest.xwoba)} xwOBA; the earliest fifth average ${trade.earliest.contact}, ${trade.earliest.power} and ${xwoba(trade.earliest.xwoba)}.`}
+        ` Latest fifth: ${trade.latest.contact} Contact+, ${trade.latest.power} Power+, ${xwoba(trade.latest.xwoba)} xwOBA. Earliest fifth: ${trade.earliest.contact}, ${trade.earliest.power}, ${xwoba(trade.earliest.xwoba)}.`}
     </Metric>
   );
 }
@@ -162,14 +248,27 @@ function TwoStrikes({ row, league }: { row: SwingProfileRow; league: SwingProfil
   const labelUrl = label === "Swing Away Merrill" ? SWING_PROFILE_ARTICLES.swingAwayMerrills : null;
   const labelNode = label && labelUrl ? <a href={labelUrl} className="underline">{label}</a> : label;
   return (
-    <Metric label="With two strikes" value={value}>
+    <Metric
+      label="With two strikes"
+      value={value}
+      chart={
+        <Strip
+          axis={TWO_STRIKE_AXIS}
+          value={drop}
+          typical={league.two_strike_drop_mean}
+          typicalLabel={`typical ${mph(league.two_strike_drop_mean)}`}
+          ends={["Swings harder", "Eases off"]}
+          description={`Two-strike slowdown of ${mph(drop)} mph. A typical hitter eases off ${mph(league.two_strike_drop_mean)} mph.`}
+        />
+      }
+    >
       {label && (
         <>
           <span className="font-medium text-[var(--text)]">{labelNode}</span>
           {label === "Shy Away Derek" ? ": he eases off with two strikes. " : ": the same swing, or harder, with two strikes. "}
         </>
       )}
-      {`Most of the raw two-strike slowdown is pitchers throwing to slower spots, so this adjusts for location first. A typical hitter eases off about ${mph(league.two_strike_drop_mean)} mph. How much a hitter shortens up has no link to his contact, so read this as a style.`}
+      Most of the raw two-strike slowdown is pitchers throwing to slower spots, so this adjusts for location first. How much a hitter shortens up has no link to his contact, so read this as a style.
     </Metric>
   );
 }
@@ -221,15 +320,59 @@ export default function SwingProfile({
 
       <div className="mt-2 divide-y divide-[var(--rule)]">
         {payoffEv != null && payoffWhiff != null && (
-          <Metric label="Hard-swing payoff" value={`${signed(payoffEv)} mph`} note="exit velocity, fouls included">
-            {`On his hardest fifth of swings in the zone, contact comes off the bat ${mph(Math.abs(payoffEv))} mph ${payoffEv >= 0 ? "harder" : "softer"} than on the rest, and he whiffs ${whiffPts} points ${payoffWhiff >= 0 ? "more" : "less"} often. A typical hitter gains about ${mph(league.payoff_ev_median)} mph and whiffs about ${(league.payoff_whiff_median * 100).toFixed(1)} points more.`}
+          <Metric
+            label="Hard-swing payoff"
+            value={`${signed(payoffEv)} mph`}
+            note="exit velocity, fouls included"
+            chart={
+              <div className="space-y-2.5">
+                <div>
+                  <h4 className="text-[11px] font-medium text-[var(--dim)]">Exit velocity gain</h4>
+                  <Strip
+                    axis={PAYOFF_EV_AXIS}
+                    value={payoffEv}
+                    typical={league.payoff_ev_median}
+                    typicalLabel={`typical ${signed(league.payoff_ev_median)} mph`}
+                    ends={[`${PAYOFF_EV_AXIS.min} mph`, `+${PAYOFF_EV_AXIS.max} mph`]}
+                    description={`Exit velocity gain of ${signed(payoffEv)} mph on his hardest swings. A typical hitter gains ${signed(league.payoff_ev_median)} mph.`}
+                  />
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-medium text-[var(--dim)]">Change in whiffs</h4>
+                  <Strip
+                    axis={PAYOFF_WHIFF_AXIS}
+                    value={payoffWhiff * 100}
+                    typical={league.payoff_whiff_median * 100}
+                    typicalLabel={`typical ${signed(league.payoff_whiff_median * 100)} pts`}
+                    ends={[`${PAYOFF_WHIFF_AXIS.min} pts`, `+${PAYOFF_WHIFF_AXIS.max} pts`]}
+                    description={`Whiff rate change of ${signed(payoffWhiff * 100)} points on his hardest swings. A typical hitter changes ${signed(league.payoff_whiff_median * 100)} points.`}
+                  />
+                </div>
+              </div>
+            }
+          >
+            {`On his hardest fifth of swings in the zone, contact comes off the bat ${mph(Math.abs(payoffEv))} mph ${payoffEv >= 0 ? "harder" : "softer"} than on the rest, and he whiffs ${whiffPts} points ${payoffWhiff >= 0 ? "more" : "less"} often.`}
           </Metric>
         )}
 
         {chase != null &&
           (row.chase_notable ? (
-            <Metric label="Chase penalty" value={`${signed(chase)} mph`}>
-              {`How much raw bat speed undersells him because of swings at pitches off the plate. Those swings are slower for everyone, and ${Math.round((row.outside_share ?? 0) * 100)}% of his come outside the zone. A typical hitter loses about ${mph(league.chase_penalty_median)} mph this way.`}
+            <Metric
+              label="Chase penalty"
+              value={`${signed(chase)} mph`}
+              note={`${Math.round((row.outside_share ?? 0) * 100)}% of swings outside the zone`}
+              chart={
+                <Strip
+                  axis={CHASE_AXIS}
+                  value={chase}
+                  typical={league.chase_penalty_median}
+                  typicalLabel={`typical ${signed(league.chase_penalty_median)} mph`}
+                  ends={[`${CHASE_AXIS.min} mph`, `+${CHASE_AXIS.max} mph`]}
+                  description={`Chase penalty of ${signed(chase)} mph. A typical hitter loses ${mph(league.chase_penalty_median)} mph this way.`}
+                />
+              }
+            >
+              How much raw bat speed undersells him because of swings at pitches off the plate. Those swings are slower for everyone.
             </Metric>
           ) : (
             <Metric label="Chase penalty">Raw bat speed is a clean read on his swing.</Metric>
@@ -238,7 +381,21 @@ export default function SwingProfile({
         <TwoStrikes row={row} league={league} />
 
         {row.picking_pct != null && (
-          <Metric label="Picking his spots" value={percentile(row.picking_pct)} note="percentile">
+          <Metric
+            label="Picking his spots"
+            value={percentile(row.picking_pct)}
+            note="percentile"
+            chart={
+              <Strip
+                axis={PERCENTILE_AXIS}
+                value={row.picking_pct}
+                typical={50}
+                typicalLabel="typical"
+                ends={["Spreads it around", "Picks his spots"]}
+                description={`${percentile(row.picking_pct)} percentile for saving hard swings for the right spots.`}
+              />
+            }
+          >
             {row.quadrant && <span className="font-medium text-[var(--text)]">{QUADRANT[row.quadrant]}. </span>}
             How much he saves his hard swings for hitter&apos;s counts and pitches he can pull. This is a profile, not an edge: pickers trade power for contact and end up about the same overall.
           </Metric>
