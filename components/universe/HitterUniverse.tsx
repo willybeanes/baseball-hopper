@@ -307,6 +307,31 @@ export default function HitterUniverse() {
           marker: { size: 9, color: "#c0392c", line: { width: 0 } },
         },
       );
+      // The hitter being compared: a ring with his name, like his marker in the table below.
+      if (other) {
+        highlight.push(
+          {
+            type: "scatter3d",
+            mode: "lines",
+            x: [center.xyz[0], other.xyz[0]],
+            y: [center.xyz[1], other.xyz[1]],
+            z: [center.xyz[2], other.xyz[2]],
+            hoverinfo: "skip",
+            line: { color: "#c0392c", width: 5 },
+          },
+          {
+            type: "scatter3d",
+            mode: "markers+text",
+            ...xyz([other]),
+            customdata: [other.i],
+            text: [label(other)],
+            textposition: "top center",
+            textfont: { size: 13, color: "#1c1a17" },
+            hovertemplate: "%{text}<extra></extra>",
+            marker: { size: 9, color: "#ffffff", line: { width: 3, color: "#1c1a17" } },
+          },
+        );
+      }
     }
     // Whatever view the viewer or a fly-to left, so redrawing never moves the camera.
     const camera = (el as unknown as { layout?: { scene?: { camera?: unknown } } }).layout?.scene?.camera ?? { eye: HOME_EYE };
@@ -337,7 +362,7 @@ export default function HitterUniverse() {
     });
     // The list ids stand in for nearby.list, which is rebuilt on every change of its inputs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [plotReady, rows, seasons, center, listIds, select, ranges]);
+  }, [plotReady, rows, seasons, center, other, listIds, select, ranges]);
 
   // Flies to a newly centered hitter, once. Dragging afterwards stays with the viewer.
   const flownTo = useRef<number | null>(null);
