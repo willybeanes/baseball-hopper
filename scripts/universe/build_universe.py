@@ -18,7 +18,7 @@ HP_URL = 'https://hitting-plus.vercel.app/data/swingplus_latest.json'
 # show_raw is off where the raw number has no plain baseball reading, so those show as percentiles only.
 COORDS = [
     dict(key='sandbag', label='The Sandbag', unit='mph', digits=1, low='Small', high='Big', group='style', show_raw=True),
-    dict(key='payoff_ev', label='Hard-swing payoff', unit='mph', digits=1, low='Small gain', high='Big gain', group='style', show_raw=True),
+    dict(key='normal_swing', label='Normal swing', unit='mph', digits=1, low='Slower', high='Faster', group='style', show_raw=True),
     dict(key='chase_penalty', label='Chase penalty', unit='mph', digits=1, low='Small', high='Big', group='style', show_raw=True),
     dict(key='two_strike_drop', label='Two-strike slowdown', unit='mph', digits=1, low='Swings harder', high='Eases off', group='style', show_raw=True),
     dict(key='picking_score', label='Picking his spots', unit='', digits=1, low='Spreads it around', high='Picks his spots', group='style', show_raw=False),

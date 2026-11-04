@@ -505,7 +505,7 @@ export default function HitterUniverse() {
             </div>
             {noisy.length > 0 && (
               <p className="mt-3 text-[11px] leading-relaxed text-[var(--dim)]">
-                {noisy.join(" and ")} move the most from one season to the next, so try unchecking them if a match looks odd. The seven styles describe how a hitter swings and are not grades, and they count as much here as the four Hitting+ components. Swing launch is shown in the frames we read, but it is compared after lining up each season&apos;s average, because the same hitters read about 0.7 frames lower on the 2026 videos.
+                {`${noisy.join(" and ")} ${noisy.length === 1 ? "moves" : "move"} the most from one season to the next, so try unchecking ${noisy.length === 1 ? "it" : "them"} if a match looks odd. `}The seven styles describe how a hitter swings and are not grades, and they count as much here as the four Hitting+ components. Swing launch is shown in the frames we read, but it is compared after lining up each season&apos;s average, because the same hitters read about 0.7 frames lower on the 2026 videos.
               </p>
             )}
           </>
