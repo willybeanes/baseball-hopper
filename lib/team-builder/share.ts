@@ -4,6 +4,7 @@
 // typed salary, removed another. About ten characters a move, so dozens fit in a URL.
 
 import type { Move } from './moves'
+import { TEAM_NAMES } from './teams'
 
 const CODE: Record<Move['type'], string> = {
   remove: 'r', decline: 'd', exercise: 'x', optOut: 'o', resign: 's', salary: 'e', add: 'a', promote: 'p',
@@ -49,4 +50,45 @@ export function decodeDate(text: string | null | undefined): Date | null {
   if (!m) return null
   const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]))
   return Number.isNaN(d.getTime()) ? null : d
+}
+
+// The offseason simulation's link: one letter per team for its attitude (teams in TEAM_NAMES
+// order), the seed in base 36, and the user's moves per team as "NYM~<moves>_SEA~<moves>".
+const ATTITUDE_CODES: Record<string, string> = { allin: 'a', contend: 'c', buysell: 'b', rebuild: 'r', tank: 't' }
+const ATTITUDE_BY_CODE = Object.fromEntries(Object.entries(ATTITUDE_CODES).map(([a, c]) => [c, a]))
+const TEAM_ORDER = Object.keys(TEAM_NAMES)
+
+export function encodeAttitudes(attitudes: Record<string, string>): string {
+  return TEAM_ORDER.map((t) => ATTITUDE_CODES[attitudes[t]] ?? 'b').join('')
+}
+
+// Anything unreadable is left out, so those teams fall back to their default attitude.
+export function decodeAttitudes(text: string | null | undefined): Record<string, string> {
+  const out: Record<string, string> = {}
+  if (!text || text.length !== TEAM_ORDER.length) return out
+  TEAM_ORDER.forEach((t, i) => { const a = ATTITUDE_BY_CODE[text[i]]; if (a) out[t] = a })
+  return out
+}
+
+export function encodeTeamMoves(byTeam: Record<string, Move[]>): string {
+  return Object.entries(byTeam).filter(([, ms]) => ms.length).map(([t, ms]) => `${t}~${encodeMoves(ms)}`).join('_')
+}
+
+export function decodeTeamMoves(text: string | null | undefined): Record<string, Move[]> {
+  const out: Record<string, Move[]> = {}
+  if (!text) return out
+  for (const part of text.split('_')) {
+    const [team, moves] = part.split('~')
+    if (!team || !(team in TEAM_NAMES) || moves == null) continue
+    const decoded = decodeMoves(moves)
+    if (decoded.length) out[team] = decoded
+  }
+  return out
+}
+
+export const encodeSeed = (seed: number) => (seed >>> 0).toString(36)
+export function decodeSeed(text: string | null | undefined): number | null {
+  if (!text || !/^[0-9a-z]{1,7}$/.test(text)) return null
+  const n = parseInt(text, 36)
+  return Number.isFinite(n) && n <= 0xffffffff ? n : null
 }

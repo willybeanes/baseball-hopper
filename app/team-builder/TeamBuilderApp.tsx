@@ -13,23 +13,8 @@ import { fmtWar, isEstimate, money, warPrice, warTier, warTint, type Meta, type 
 import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
 import { isFgOnlyId, type PoolPlayer } from '@/lib/team-builder/pool'
 import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '@/lib/team-builder/share'
+import { loadJson } from '@/lib/team-builder/data'
 
-// The daily refresh uploads the snapshot to Supabase Storage, so new data doesn't need a
-// redeploy. The copy built into the site (same files, as of the last deploy) is the fallback.
-const DATA = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/team-builder`
-const LOCAL_DATA = '/data/team-builder'
-
-async function loadJson<T>(path: string): Promise<T> {
-  try {
-    const r = await fetch(`${DATA}/${path}`)
-    if (r.ok) return (await r.json()) as T
-  } catch {
-    // fall through to the built-in copy
-  }
-  const r = await fetch(`${LOCAL_DATA}/${path}`)
-  if (!r.ok) throw new Error(`${path}: ${r.status}`)
-  return (await r.json()) as T
-}
 const DEFAULT_TEAM = 'NYM'
 
 // Roster groups, by primary position.
@@ -767,7 +752,13 @@ export default function TeamBuilderApp() {
             Every team&apos;s 2027 roster as it stands today. Decline options, non-tender, trade, sign free agents or call up prospects, and watch payroll, the luxury tax and projected WAR move.
           </p>
         </div>
-        <div>
+        <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
+          <a
+            href={`/team-builder/simulate?from=${team}${encoded ? `&m=${encoded}` : ''}`}
+            className="rounded-lg bg-[var(--text)] px-3 py-2 text-sm font-medium text-[var(--panel)] hover:opacity-90"
+          >
+            Simulate the offseason
+          </a>
           <label htmlFor="team" className="sr-only">Team</label>
           <select
             id="team"

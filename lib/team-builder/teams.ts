@@ -9,3 +9,13 @@ export const TEAM_NAMES: Record<string, string> = {
   SF: 'San Francisco Giants', STL: 'St. Louis Cardinals', TB: 'Tampa Bay Rays', TEX: 'Texas Rangers',
   TOR: 'Toronto Blue Jays', WSH: 'Washington Nationals',
 }
+
+// Divisions, for the projected standings.
+export const DIVISIONS: { name: string; teams: string[] }[] = [
+  { name: 'AL East', teams: ['BAL', 'BOS', 'NYY', 'TB', 'TOR'] },
+  { name: 'AL Central', teams: ['CLE', 'CWS', 'DET', 'KC', 'MIN'] },
+  { name: 'AL West', teams: ['ATH', 'HOU', 'LAA', 'SEA', 'TEX'] },
+  { name: 'NL East', teams: ['ATL', 'MIA', 'NYM', 'PHI', 'WSH'] },
+  { name: 'NL Central', teams: ['CHC', 'CIN', 'MIL', 'PIT', 'STL'] },
+  { name: 'NL West', teams: ['ARI', 'COL', 'LAD', 'SD', 'SF'] },
+]

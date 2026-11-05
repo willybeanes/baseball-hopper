@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test'
 import type { Move } from '../../lib/team-builder/moves'
-import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '../../lib/team-builder/share'
+import { decodeAttitudes, decodeDate, decodeMoves, decodeSeed, decodeTeamMoves, encodeAttitudes, encodeDate, encodeMoves, encodeSeed, encodeTeamMoves } from '../../lib/team-builder/share'
+import { TEAM_NAMES } from '../../lib/team-builder/teams'
 
 const MOVES: Move[] = [
   { type: 'add', id: 669373, salary: 66_500_000 }, // signed a free agent at a typed salary
@@ -44,5 +45,27 @@ describe('share links', () => {
     expect(encodeDate(new Date(2026, 9, 12))).toBe('20261012')
     expect(decodeDate('20261012')?.getMonth()).toBe(9)
     expect(decodeDate('nope')).toBeNull()
+  })
+})
+
+describe('offseason simulation links', () => {
+  test('attitudes round trip, one letter a team', () => {
+    const a = Object.fromEntries(Object.keys(TEAM_NAMES).map((t, i) => [t, ['allin', 'contend', 'buysell', 'rebuild', 'tank'][i % 5]]))
+    const text = encodeAttitudes(a)
+    expect(text).toHaveLength(30)
+    expect(decodeAttitudes(text)).toEqual(a)
+  })
+  test('a mangled attitude string is ignored', () => {
+    expect(decodeAttitudes('abc')).toEqual({})
+    expect(Object.keys(decodeAttitudes('z'.repeat(29) + 'a'))).toEqual([Object.keys(TEAM_NAMES)[29]])
+  })
+  test('moves for several teams round trip, skipping unknown teams', () => {
+    const byTeam: Record<string, Move[]> = { NYM: [{ type: 'add', id: 903_063_811, salary: 20e6 }, { type: 'remove', id: 660271 }], SEA: [{ type: 'promote', id: 12345 }] }
+    expect(decodeTeamMoves(encodeTeamMoves(byTeam))).toEqual(byTeam)
+    expect(decodeTeamMoves('XXX~r1_NYM~r6l2z')).toEqual({ NYM: [{ type: 'remove', id: parseInt('6l2z', 36) }] })
+  })
+  test('seeds round trip; junk is rejected', () => {
+    expect(decodeSeed(encodeSeed(4_000_000_000))).toBe(4_000_000_000)
+    expect(decodeSeed('!!')).toBeNull()
   })
 })

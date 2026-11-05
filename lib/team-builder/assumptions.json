@@ -54,5 +54,78 @@
       "RP": 600
     },
     "relieverMaxIp": 75
+  },
+  "offseason": {
+    "note": "The offseason simulation (lib/team-builder/offseason.ts). Each team's attitude sets its budget (what it already owes for 2027 x the factor, plus a flat cushion), how hard it holds on to options and arbitration players (it keeps one whose salary is under WAR x $/WAR x keepFactor, and only non-tenders when he costs at least nonTenderMargin more than that), how much a free agent must add to its depth-chart WAR before it bids and how many it signs, how eager it is against other bidders, and whether it sells veterans (age floor, how many) or buys them. Added 2026-11-05; budgets anchored on 2027 commitments the same day, after 2026 pay left most teams with no room.",
+    "attitudes": {
+      "allin": {
+        "label": "All in",
+        "budget": 1.12,
+        "keepFactor": 1.4,
+        "minGain": 0.15,
+        "eagerness": 1.4,
+        "buys": 3,
+        "sells": 0,
+        "cushion": 25000000,
+        "maxSignings": 8
+      },
+      "contend": {
+        "label": "Contend",
+        "budget": 1.05,
+        "keepFactor": 1.15,
+        "minGain": 0.3,
+        "eagerness": 1.15,
+        "buys": 2,
+        "sells": 0,
+        "cushion": 15000000,
+        "maxSignings": 6
+      },
+      "buysell": {
+        "label": "Buy and sell",
+        "budget": 1.0,
+        "keepFactor": 1.0,
+        "minGain": 0.5,
+        "eagerness": 1.0,
+        "buys": 0,
+        "sells": 2,
+        "sellWalkYearOnly": true,
+        "cushion": 10000000,
+        "maxSignings": 4
+      },
+      "rebuild": {
+        "label": "Quick rebuild",
+        "budget": 0.95,
+        "keepFactor": 0.8,
+        "minGain": 0.6,
+        "eagerness": 0.85,
+        "buys": 0,
+        "sells": 3,
+        "sellAge": 30,
+        "maxAge": 31,
+        "cushion": 8000000,
+        "maxSignings": 3,
+        "maxSalary": 12000000
+      },
+      "tank": {
+        "label": "Tank",
+        "budget": 0.85,
+        "keepFactor": 0.6,
+        "minGain": 0.6,
+        "eagerness": 0.7,
+        "buys": 0,
+        "sells": 4,
+        "sellAge": 28,
+        "maxSalary": 5000000,
+        "cushion": 5000000,
+        "maxSignings": 2
+      }
+    },
+    "minTradeWar": 1,
+    "minFreeAgentWar": 0.3,
+    "bidderPremium": 0.05,
+    "maxPremium": 0.25,
+    "luck": 0.3,
+    "rosterMax": 40,
+    "nonTenderMargin": 1500000
   }
 }
