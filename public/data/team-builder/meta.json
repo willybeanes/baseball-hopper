@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T17:38:41.085Z",
+  "updatedAt": "2026-11-05T18:05:47.321Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -78,8 +78,8 @@
     "players": 3739
   },
   "staleTeams": {
-    "KC": [
-      "KC: tax payroll rows add up to $168.767M but the sheet says $150.267M"
+    "CIN": [
+      "CIN: payroll rows add up to $82.969M but the sheet says $84.969M"
     ],
     "LAA": [
       "LAA: payroll rows add up to $108.574M but the sheet says $106.074M",
@@ -89,12 +89,9 @@
       "SEA: payroll rows add up to $142.177M but the sheet says $141.677M",
       "SEA: tax payroll rows add up to $174.385M but the sheet says $173.885M"
     ],
-    "STL": [
-      "STL: payroll rows add up to $66.860M but the sheet says $66.865M",
-      "STL: tax payroll rows add up to $94.888M but the sheet says $94.893M"
-    ],
-    "TB": [
-      "TB: tax payroll rows add up to $135.552M but the sheet says $117.052M"
+    "SF": [
+      "SF: payroll rows add up to $170.432M but the sheet says $171.232M",
+      "SF: tax payroll rows add up to $172.330M but the sheet says $173.130M"
     ]
   },
   "sources": {

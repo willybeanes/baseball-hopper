@@ -423,24 +423,6 @@
    "ip": 56
   },
   {
-   "name": "Zack Kelly",
-   "sheetName": "Kelly, Zack",
-   "pos": "rhp",
-   "age": 32,
-   "mls": 3.08,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": 613989,
-   "arbYear": 1,
-   "cotsEstimate": 1075000,
-   "mlbamId": 677161,
-   "salarySource": "mlbtr-arb",
-   "war": -0.05,
-   "ip": 52.3
-  },
-  {
    "name": "Justin Slaten",
    "sheetName": "Slaten, Justin",
    "pos": "rhp",
@@ -654,22 +636,6 @@
    "ip": 43
   },
   {
-   "name": "Eduardo Rivera",
-   "sheetName": "Rivera, Eduardo",
-   "pos": "lhp",
-   "age": 24,
-   "mls": 0.04,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 324109,
-   "mlbamId": 700842,
-   "salarySource": "minimum",
-   "war": 0.84,
-   "ip": 86.7
-  },
-  {
    "name": "Wyatt Olds",
    "sheetName": "Olds, Wyatt",
    "pos": "rhp",
@@ -766,10 +732,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 213993334,
- "sheetTaxPayroll": 253442552,
- "rowsPayroll": 213993334,
- "rowsTaxPayroll": 253442552,
+ "sheetPayroll": 212918334,
+ "sheetTaxPayroll": 252367552,
+ "rowsPayroll": 212918334,
+ "rowsTaxPayroll": 252367552,
  "minors": [
   {
    "mlbamId": 808265,
@@ -1020,6 +986,16 @@
    "ip": 39,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 677161,
+   "name": "Zack Kelly",
+   "pos": "rp",
+   "age": 32,
+   "war": -0.05,
+   "ip": 52.3,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 822416,

@@ -196,24 +196,6 @@
    "ip": 128.7
   },
   {
-   "name": "Pavin Smith",
-   "sheetName": "Smith, Pavin",
-   "pos": "1b",
-   "age": 30,
-   "mls": 4.144,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 2500000,
-   "taxValue": 2500000,
-   "salaryPrevYear": 2250000,
-   "arbYear": 3,
-   "cotsEstimate": 3000000,
-   "mlbamId": 656976,
-   "salarySource": "mlbtr-arb",
-   "war": 0.3,
-   "pa": 374
-  },
-  {
    "name": "Justin Martinez",
    "sheetName": "Martinez, Justin",
    "pos": "rhp-c",
@@ -588,8 +570,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11050000,
-   "taxValue": 11050000,
+   "salary": 11900000,
+   "taxValue": 11900000,
    "note": ""
   },
   {
@@ -604,10 +586,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 160679905,
- "sheetTaxPayroll": 193218377,
- "rowsPayroll": 160679905,
- "rowsTaxPayroll": 193218377,
+ "sheetPayroll": 158529905,
+ "sheetTaxPayroll": 191068377,
+ "rowsPayroll": 158529905,
+ "rowsTaxPayroll": 191068377,
  "minors": [
   {
    "mlbamId": 660821,
@@ -708,6 +690,16 @@
    "pa": 532,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 656976,
+   "name": "Pavin Smith",
+   "pos": "1b",
+   "age": 31,
+   "war": 0.3,
+   "pa": 374,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 683008,

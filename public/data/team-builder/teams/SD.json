@@ -533,6 +533,21 @@
    "pa": 435
   },
   {
+   "name": "Luis Gutierrez",
+   "sheetName": "Gutierrez, Luis",
+   "pos": "lhp",
+   "age": 23,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 692294,
+   "salarySource": "minimum",
+   "war": null
+  },
+  {
    "name": "Garrett Hawkins",
    "sheetName": "Hawkins, Garrett",
    "pos": "rhp",

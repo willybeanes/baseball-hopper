@@ -711,16 +711,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691627,
-   "name": "Ricardo Olivar",
-   "pos": "c",
-   "age": 25,
-   "war": 1.15,
-   "pa": 424,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 681433,
    "name": "Noah Cardenas",
    "pos": "c",
@@ -741,32 +731,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 656577,
-   "name": "Alex Jackson",
-   "pos": "c",
-   "age": 31,
-   "war": 0.96,
-   "pa": 280,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 690217,
    "name": "C.J. Culpepper",
    "pos": "sp",
    "age": 25,
    "war": 0.93,
    "ip": 91.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 693850,
-   "name": "Kala'i Rosario",
-   "pos": "rf",
-   "age": 24,
-   "war": 0.92,
-   "pa": 557,
    "salary": 780000,
    "debuted": false
   },
@@ -831,16 +801,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 689520,
-   "name": "Cody Laweryson",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.48,
-   "ip": 51,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 694536,
    "name": "Trent Baker",
    "pos": "sp",
@@ -849,16 +809,6 @@
    "ip": 84.3,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 656484,
-   "name": "Tristan Gray",
-   "pos": "ss",
-   "age": 31,
-   "war": 0.43,
-   "pa": 408,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 806263,
@@ -879,26 +829,6 @@
    "pa": 247,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 702065,
-   "name": "Aaron Rozek",
-   "pos": "rp",
-   "age": 31,
-   "war": 0.16,
-   "ip": 85.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 675915,
-   "name": "David Bañuelos",
-   "pos": "c",
-   "age": 30,
-   "war": 0.15,
-   "pa": 130,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 607455,
@@ -951,16 +881,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 695347,
-   "name": "Hunter Gregory",
-   "pos": "rp",
-   "age": 28,
-   "war": -0.05,
-   "ip": 52.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 695000,
    "name": "Poncho Ruiz",
    "pos": "c",
@@ -1001,16 +921,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 657240,
-   "name": "Julian Merryweather",
-   "pos": "rp",
-   "age": 35,
-   "war": -0.14,
-   "ip": 38.7,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 696521,
    "name": "Garrett Spain",
    "pos": "rf",
@@ -1041,16 +951,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 814194,
-   "name": "Quinn McDaniel",
-   "pos": "2b",
-   "age": 24,
-   "war": -0.27,
-   "pa": 472,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 814522,
    "name": "Caden Kendle",
    "pos": "of",
@@ -1067,26 +967,6 @@
    "age": 23,
    "war": -0.54,
    "pa": 366,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 693306,
-   "name": "Aaron Sabato",
-   "pos": "1b",
-   "age": 28,
-   "war": -0.76,
-   "pa": 412,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 691191,
-   "name": "Jose Salas",
-   "pos": "2b",
-   "age": 24,
-   "war": -0.79,
-   "pa": 352,
    "salary": 780000,
    "debuted": false
   },

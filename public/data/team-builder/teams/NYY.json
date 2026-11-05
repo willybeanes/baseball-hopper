@@ -475,6 +475,22 @@
    "pa": 541
   },
   {
+   "name": "Marco Luciano",
+   "sheetName": "Luciano, Marco",
+   "pos": "ss",
+   "age": 25,
+   "mls": 0.092,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 682617,
+   "salarySource": "minimum",
+   "war": 0.43,
+   "pa": 516
+  },
+  {
    "name": "George Lombard Jr.",
    "sheetName": "Lombard Jr., George",
    "pos": "ss-3b",
@@ -615,16 +631,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 680572,
-   "name": "Adam Kloffenstein",
-   "pos": "sp",
-   "age": 26,
-   "war": 0.91,
-   "ip": 98,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 815587,
    "name": "Trent Sellers",
    "pos": "sp",
@@ -671,16 +677,6 @@
    "age": 25,
    "war": 0.47,
    "ip": 105.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 682617,
-   "name": "Marco Luciano",
-   "pos": "ss",
-   "age": 25,
-   "war": 0.43,
-   "pa": 516,
    "salary": 780000,
    "debuted": true
   },
@@ -745,26 +741,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 669212,
-   "name": "Eli Morgan",
-   "pos": "rp",
-   "age": 31,
-   "war": 0.06,
-   "ip": 46.7,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 668752,
-   "name": "Duke Ellis",
-   "pos": "cf",
-   "age": 29,
-   "war": 0.03,
-   "pa": 292,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 801432,
    "name": "Eric Reyzelman",
    "pos": "rp",
@@ -805,16 +781,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 672284,
-   "name": "Jarred Kelenic",
-   "pos": "rf",
-   "age": 27,
-   "war": -0.04,
-   "pa": 466,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 675296,
    "name": "Hayden Merda",
    "pos": "rp",
@@ -825,52 +791,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 669740,
-   "name": "Travis MacGregor",
-   "pos": "rp",
-   "age": 29,
-   "war": -0.15,
-   "ip": 57,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 692585,
-   "name": "Yanquiel Fernández",
-   "pos": "rf",
-   "age": 24,
-   "war": -0.15,
-   "pa": 494,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 682003,
    "name": "Garrett Martin",
    "pos": "rf",
    "age": 27,
    "war": -0.26,
    "pa": 399,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 670868,
-   "name": "Abrahan Gutierrez",
-   "pos": "c",
-   "age": 27,
-   "war": -0.28,
-   "pa": 232,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 667803,
-   "name": "Ernesto Martinez Jr.",
-   "pos": "1b",
-   "age": 28,
-   "war": -0.4,
-   "pa": 382,
    "salary": 780000,
    "debuted": false
   },
@@ -961,16 +887,6 @@
    "age": 25,
    "war": -1.04,
    "pa": 484,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687554,
-   "name": "DJ Gladney",
-   "pos": "lf",
-   "age": 25,
-   "war": -1.08,
-   "pa": 446,
    "salary": 780000,
    "debuted": false
   },

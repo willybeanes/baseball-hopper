@@ -148,15 +148,13 @@
    "age": 28,
    "mls": 5.16,
    "contract": "1 y/$9.35M (26)+27 cl opt",
-   "status": "option",
+   "status": "signed",
    "salary": 13350000,
    "taxValue": 13350000,
    "salaryPrevYear": 9350000,
-   "optionType": "club",
+   "walkYear": true,
    "mlbamId": 670623,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 2.71,
    "pa": 547
   },
@@ -212,24 +210,6 @@
    "mlbamId": 663567,
    "salarySource": "mlbtr-arb",
    "war": null
-  },
-  {
-   "name": "Jake Meyers",
-   "sheetName": "Meyers, Jake",
-   "pos": "cf",
-   "age": 31,
-   "mls": 4.161,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 3600000,
-   "taxValue": 3600000,
-   "salaryPrevYear": 3550000,
-   "arbYear": 3,
-   "cotsEstimate": 3750000,
-   "mlbamId": 676694,
-   "salarySource": "mlbtr-arb",
-   "war": 1.82,
-   "pa": 389
   },
   {
    "name": "Nick Allen",
@@ -418,6 +398,22 @@
    "pa": 472
   },
   {
+   "name": "César Salazar",
+   "sheetName": "Salazar, César",
+   "pos": "c-1b",
+   "age": 31,
+   "mls": 1.114,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 663967,
+   "salarySource": "minimum",
+   "war": 0.87,
+   "pa": 281
+  },
+  {
    "name": "Jorge Barrosa",
    "sheetName": "Barrosa, Jorge",
    "pos": "lf",
@@ -480,6 +476,22 @@
    "salarySource": "minimum",
    "war": 2.37,
    "pa": 517
+  },
+  {
+   "name": "Roddery Muñoz",
+   "sheetName": "Muñoz, Roddery",
+   "pos": "rhp",
+   "age": 27,
+   "mls": 0.139,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 682610,
+   "salarySource": "minimum",
+   "war": 0.41,
+   "ip": 82.3
   },
   {
    "name": "Logan VanWey",
@@ -661,10 +673,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 215218333,
- "sheetTaxPayroll": 211294995,
- "rowsPayroll": 215218333,
- "rowsTaxPayroll": 211294995,
+ "sheetPayroll": 224818333,
+ "sheetTaxPayroll": 220894995,
+ "rowsPayroll": 224818333,
+ "rowsTaxPayroll": 220894995,
  "minors": [
   {
    "mlbamId": 813896,
@@ -705,16 +717,6 @@
    "ip": 81.3,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 663967,
-   "name": "César Salazar",
-   "pos": "c",
-   "age": 31,
-   "war": 0.87,
-   "pa": 281,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 690667,
@@ -765,26 +767,6 @@
    "pa": 319,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 680890,
-   "name": "Jax Biggers",
-   "pos": "2b",
-   "age": 30,
-   "war": 0.42,
-   "pa": 370,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682610,
-   "name": "Roddery Muñoz",
-   "pos": "rp",
-   "age": 27,
-   "war": 0.41,
-   "ip": 82.3,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 702462,

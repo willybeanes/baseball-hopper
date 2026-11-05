@@ -24,38 +24,16 @@
    "pos": "c",
    "age": 29,
    "mls": 5.112,
-   "contract": "1 y/$9.4M (26)+27 cl opt $15.5 / $0",
-   "status": "option",
-   "salary": 14500000,
-   "taxValue": 14500000,
+   "contract": "1 y/$9.4M (26)+27 cl opt",
+   "status": "signed",
+   "salary": 15500000,
+   "taxValue": 15500000,
    "salaryPrevYear": 9400000,
-   "optionType": "club",
+   "walkYear": true,
    "mlbamId": 661388,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 4.69,
    "pa": 647
-  },
-  {
-   "name": "Antonio Senzatela",
-   "sheetName": "Senzatela, Antonio",
-   "pos": "rhp-s",
-   "age": 32,
-   "mls": 9.106,
-   "contract": "5 y/$50.5M (22-26)+27 cl opt",
-   "status": "option",
-   "salary": 14000000,
-   "taxValue": 14000000,
-   "salaryPrevYear": 3529412,
-   "optionType": "club",
-   "mlbamId": 622608,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "buyout": 0,
-   "salarySource": "option",
-   "war": 0.27,
-   "ip": 92.3
   },
   {
    "name": "Brice Turang",
@@ -306,42 +284,6 @@
    "ip": 66.7
   },
   {
-   "name": "Akil Baddoo",
-   "sheetName": "Baddoo, Akil",
-   "pos": "of",
-   "age": 28,
-   "mls": 3.082,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
-   "salaryPrevYear": 974947,
-   "arbYear": 1,
-   "cotsEstimate": 1200000,
-   "mlbamId": 668731,
-   "salarySource": "mlbtr-arb",
-   "war": 0.92,
-   "pa": 462
-  },
-  {
-   "name": "Bryse Wilson",
-   "sheetName": "Wilson, Bryse",
-   "pos": "rhp-s",
-   "age": 29,
-   "mls": 5.049,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 449198,
-   "arbYear": 3,
-   "cotsEstimate": 1000000,
-   "mlbamId": 669060,
-   "salarySource": "mlbtr-arb",
-   "war": 0.4,
-   "ip": 89
-  },
-  {
    "name": "Grant Anderson",
    "sheetName": "Anderson, Grant",
    "pos": "rhp",
@@ -376,24 +318,6 @@
    "salarySource": "mlbtr-arb",
    "war": 1.71,
    "ip": 137.7
-  },
-  {
-   "name": "Jared Koenig",
-   "sheetName": "Koenig, Jared",
-   "pos": "lhp",
-   "age": 33,
-   "mls": 2.158,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 900000,
-   "taxValue": 900000,
-   "salaryPrevYear": 636542,
-   "arbYear": 1,
-   "cotsEstimate": 955000,
-   "mlbamId": 657649,
-   "salarySource": "mlbtr-arb",
-   "war": 0.68,
-   "ip": 66
   },
   {
    "name": "Abner Uribe",
@@ -657,8 +581,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 4250000,
-   "taxValue": 4250000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -673,10 +597,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 99373396,
- "sheetTaxPayroll": 123225988,
- "rowsPayroll": 99373396,
- "rowsTaxPayroll": 123225988,
+ "sheetPayroll": 114268396,
+ "sheetTaxPayroll": 138120988,
+ "rowsPayroll": 114268396,
+ "rowsTaxPayroll": 138120988,
  "minors": [
   {
    "mlbamId": 702518,
@@ -779,6 +703,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 657649,
+   "name": "Jared Koenig",
+   "pos": "rp",
+   "age": 33,
+   "war": 0.68,
+   "ip": 66,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 682633,
    "name": "Eduardo Garcia",
    "pos": "of",
@@ -807,6 +741,16 @@
    "pa": 307,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 669060,
+   "name": "Bryse Wilson",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.4,
+   "ip": 89,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 682641,

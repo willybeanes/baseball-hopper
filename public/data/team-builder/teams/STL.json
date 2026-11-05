@@ -181,26 +181,6 @@
    "pa": 372
   },
   {
-   "name": "Ryne Stanek",
-   "sheetName": "Stanek, Ryne",
-   "pos": "rhp",
-   "age": 35,
-   "mls": 9.038,
-   "contract": "1 y/$3.5M (26)+27 cl opt ($3.5/$1)",
-   "status": "option",
-   "salary": 6000000,
-   "taxValue": 6000000,
-   "salaryPrevYear": 2500000,
-   "optionType": "club",
-   "buyout": 1000000,
-   "mlbamId": 592773,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 0.11,
-   "ip": 45.7
-  },
-  {
    "name": "Riley O'Brien",
    "sheetName": "O'Brien, Riley",
    "pos": "rhp-c",
@@ -569,6 +549,22 @@
    "ip": 102.3
   },
   {
+   "name": "Eduardo Rivera",
+   "sheetName": "Rivera, Eduardo",
+   "pos": "lhp",
+   "age": 24,
+   "mls": 0.04,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 700842,
+   "salarySource": "minimum",
+   "war": 0.84,
+   "ip": 86.7
+  },
+  {
    "name": "Brycen Mautz",
    "sheetName": "Mautz, Brycen",
    "pos": "lhp",
@@ -599,21 +595,6 @@
    "salarySource": "minimum",
    "war": 2.11,
    "pa": 480
-  },
-  {
-   "name": "Chase Hampton",
-   "sheetName": "Hampton, Chase",
-   "pos": "rhp",
-   "age": 25,
-   "mls": 0,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 694633,
-   "salarySource": "minimum",
-   "war": null
   },
   {
    "name": "Cooper Hjerpe",
@@ -665,6 +646,12 @@
  ],
  "deadMoney": [
   {
+   "name": "Ryne Stanek",
+   "salary": 1000000,
+   "taxValue": 1000000,
+   "note": "2027 buyout"
+  },
+  {
    "name": "Ramón Urías",
    "salary": 500000,
    "taxValue": 0,
@@ -684,8 +671,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 12750000,
-   "taxValue": 12750000,
+   "salary": 13600000,
+   "taxValue": 13600000,
    "note": ""
   },
   {
@@ -705,10 +692,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 66010000,
- "sheetTaxPayroll": 93037780,
- "rowsPayroll": 66010000,
- "rowsTaxPayroll": 93037780,
+ "sheetPayroll": 66860000,
+ "sheetTaxPayroll": 94887780,
+ "rowsPayroll": 66860000,
+ "rowsTaxPayroll": 94887780,
  "minors": [
   {
    "mlbamId": 811666,
@@ -717,26 +704,6 @@
    "age": 24,
    "war": 1.28,
    "ip": 109.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 693311,
-   "name": "Tink Hence",
-   "pos": "sp",
-   "age": 24,
-   "war": 1.23,
-   "ip": 91.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691828,
-   "name": "Sem Robberse",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.12,
-   "ip": 99,
    "salary": 780000,
    "debuted": false
   },
@@ -811,16 +778,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 668868,
-   "name": "Zack Thompson",
-   "pos": "sp",
-   "age": 29,
-   "war": 0.51,
-   "ip": 75,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 822501,
    "name": "Jon Jon Gazdar",
    "pos": "ss",
@@ -879,26 +836,6 @@
    "pa": 199,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 694885,
-   "name": "Ryan Murphy",
-   "pos": "sp",
-   "age": 27,
-   "war": 0.11,
-   "ip": 68,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 676632,
-   "name": "Bligh Madris",
-   "pos": "of",
-   "age": 31,
-   "war": 0.1,
-   "pa": 379,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 690971,
@@ -1047,16 +984,6 @@
    "age": 26,
    "war": -0.62,
    "pa": 397,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 647378,
-   "name": "Andy Yerzy",
-   "pos": "c",
-   "age": 28,
-   "war": -0.72,
-   "pa": 225,
    "salary": 780000,
    "debuted": false
   },

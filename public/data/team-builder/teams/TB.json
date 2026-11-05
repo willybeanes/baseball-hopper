@@ -184,7 +184,7 @@
    "pos": "ss",
    "age": 30,
    "mls": 5.092,
-   "contract": "1 y/$2.45M (26)+27 cl opt $3.1/$0",
+   "contract": "1 y/$2.45M (26)+27 cl opt",
    "status": "signed",
    "salary": 3100000,
    "taxValue": 3100000,
@@ -304,24 +304,6 @@
    "ip": 68.7
   },
   {
-   "name": "Nick Madrigal",
-   "sheetName": "Madrigal, Nick",
-   "pos": "2b",
-   "age": 30,
-   "mls": 5.137,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 104679,
-   "arbYear": 3,
-   "cotsEstimate": 1250000,
-   "mlbamId": 663611,
-   "salarySource": "mlbtr-arb",
-   "war": 0.72,
-   "pa": 252
-  },
-  {
    "name": "Jesse Scholtens",
    "sheetName": "Scholtens, Jesse",
    "pos": "rhp",
@@ -356,6 +338,22 @@
    "salarySource": "mlbtr-arb",
    "war": 0.27,
    "ip": 46.3
+  },
+  {
+   "name": "Jack Suwinski",
+   "sheetName": "Suwinski, Jack",
+   "pos": "cf",
+   "age": 28,
+   "mls": 2.17,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 669261,
+   "salarySource": "minimum",
+   "war": 2.38,
+   "pa": 475
   },
   {
    "name": "Casey Legumina",
@@ -630,6 +628,22 @@
    "ip": 104.7
   },
   {
+   "name": "Alexander Alberto",
+   "sheetName": "Alberto, Alexander",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 693739,
+   "salarySource": "minimum",
+   "war": -0.08,
+   "ip": 42.7
+  },
+  {
    "name": "Jadher Areinamo",
    "sheetName": "Areinamo, Jadher",
    "pos": "2b",
@@ -679,8 +693,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -700,21 +714,11 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 103139545,
- "sheetTaxPayroll": 117051667,
- "rowsPayroll": 103139545,
- "rowsTaxPayroll": 117051667,
+ "sheetPayroll": 102739545,
+ "sheetTaxPayroll": 116651667,
+ "rowsPayroll": 102739545,
+ "rowsTaxPayroll": 116651667,
  "minors": [
-  {
-   "mlbamId": 669261,
-   "name": "Jack Suwinski",
-   "pos": "rf",
-   "age": 28,
-   "war": 2.38,
-   "pa": 475,
-   "salary": 780000,
-   "debuted": true
-  },
   {
    "mlbamId": 694375,
    "name": "TJ Nichols",
@@ -788,7 +792,7 @@
   {
    "mlbamId": 666931,
    "name": "Jared Oliva",
-   "pos": "cf",
+   "pos": "of",
    "age": 31,
    "war": 1.12,
    "pa": 354,
@@ -1062,16 +1066,6 @@
    "age": 28,
    "war": -0.06,
    "ip": 50,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 693739,
-   "name": "Alexander Alberto",
-   "pos": "rp",
-   "age": 25,
-   "war": -0.08,
-   "ip": 42.7,
    "salary": 780000,
    "debuted": false
   },

@@ -109,25 +109,6 @@
    "ip": 135.3
   },
   {
-   "name": "Ryan Mountcastle",
-   "sheetName": "Mountcastle, Ryan",
-   "pos": "1b",
-   "age": 30,
-   "mls": 6.105,
-   "contract": "1 y/$6.787M (26)+27 cl opt",
-   "status": "option",
-   "salary": 7500000,
-   "taxValue": 7500000,
-   "salaryPrevYear": 6870000,
-   "optionType": "club",
-   "mlbamId": 663624,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": 0.52,
-   "pa": 436
-  },
-  {
    "name": "Leody Taveras",
    "sheetName": "Taveras, Leody",
    "pos": "cf",
@@ -618,6 +599,37 @@
    "ip": 56.3
   },
   {
+   "name": "Zach Morgan",
+   "sheetName": "Morgan, Zach",
+   "pos": "c",
+   "age": 27,
+   "mls": 0.01,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 681439,
+   "salarySource": "minimum",
+   "war": -0.2,
+   "pa": 289
+  },
+  {
+   "name": "Chase Hampton",
+   "sheetName": "Hampton, Chase",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694633,
+   "salarySource": "minimum",
+   "war": null
+  },
+  {
    "name": "Reed Trimble",
    "sheetName": "Trimble, Reed",
    "pos": "lf",
@@ -638,6 +650,12 @@
   {
    "name": "Zach Eflin",
    "salary": 2000000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
+   "name": "Dietrich Enns",
+   "salary": 125000,
    "taxValue": 0,
    "note": "2027 buyout"
   },
@@ -665,9 +683,9 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 130575000,
+ "sheetPayroll": 130700000,
  "sheetTaxPayroll": 156791667,
- "rowsPayroll": 130575000,
+ "rowsPayroll": 130700000,
  "rowsTaxPayroll": 156791667,
  "minors": [
   {

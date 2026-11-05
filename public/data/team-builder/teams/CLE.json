@@ -752,16 +752,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 671655,
-   "name": "George Valera",
-   "pos": "of",
-   "age": 26,
-   "war": 0.74,
-   "pa": 360,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 669067,
    "name": "Ryan Webb",
    "pos": "sp",
@@ -812,16 +802,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691416,
-   "name": "Esteban González",
-   "pos": "lf",
-   "age": 24,
-   "war": 0.37,
-   "pa": 458,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 594902,
    "name": "Ben Lively",
    "pos": "sp",
@@ -830,16 +810,6 @@
    "ip": 86,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 691410,
-   "name": "Jose Devers",
-   "pos": "ss",
-   "age": 24,
-   "war": 0.16,
-   "pa": 517,
-   "salary": 780000,
-   "debuted": false
   },
   {
    "mlbamId": 801367,
@@ -902,16 +872,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 682897,
-   "name": "Steven Pérez",
-   "pos": "rp",
-   "age": 26,
-   "war": -0.07,
-   "ip": 52.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 806303,
    "name": "Zach Jacobs",
    "pos": "rp",
@@ -930,16 +890,6 @@
    "pa": 418,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 624513,
-   "name": "Dom Nuñez",
-   "pos": "c",
-   "age": 32,
-   "war": -0.18,
-   "pa": 268,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 702693,
@@ -1002,16 +952,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691405,
-   "name": "Juan Benjamin",
-   "pos": "3b",
-   "age": 24,
-   "war": -0.38,
-   "pa": 410,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 701750,
    "name": "Bennett Thompson",
    "pos": "c",
@@ -1048,26 +988,6 @@
    "age": 24,
    "war": -1.04,
    "pa": 389,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691422,
-   "name": "Kevin Rivas",
-   "pos": "c",
-   "age": 24,
-   "war": -1.1,
-   "pa": 154,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691408,
-   "name": "Maick Collado",
-   "pos": "2b",
-   "age": 24,
-   "war": -1.19,
-   "pa": 368,
    "salary": 780000,
    "debuted": false
   }

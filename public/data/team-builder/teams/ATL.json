@@ -264,6 +264,24 @@
    "ip": 45.3
   },
   {
+   "name": "Mitchell Parker",
+   "sheetName": "Parker, Mitchell",
+   "pos": "lhp-s",
+   "age": 27,
+   "mls": 2.167,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 1100000,
+   "taxValue": 1100000,
+   "salaryPrevYear": null,
+   "arbYear": 1,
+   "cotsEstimate": 985000,
+   "mlbamId": 680730,
+   "salarySource": "mlbtr-arb",
+   "war": 1.67,
+   "ip": 134.7
+  },
+  {
    "name": "Michael Grove",
    "sheetName": "Grove, Michael",
    "pos": "rhp",
@@ -591,8 +609,8 @@
  "deadMoney": [
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -612,10 +630,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 211150000,
- "sheetTaxPayroll": 218683334,
- "rowsPayroll": 211150000,
- "rowsTaxPayroll": 218683334,
+ "sheetPayroll": 211285000,
+ "sheetTaxPayroll": 218818334,
+ "rowsPayroll": 211285000,
+ "rowsTaxPayroll": 218818334,
  "minors": [
   {
    "mlbamId": 680577,

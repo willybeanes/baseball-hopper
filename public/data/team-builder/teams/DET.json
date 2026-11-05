@@ -36,42 +36,19 @@
    "pa": 383
   },
   {
-   "name": "Kenley Jansen",
-   "sheetName": "Jansen, Kenley",
-   "pos": "rhp-c",
-   "age": 39,
-   "mls": 16.073,
-   "contract": "1 y/$11M (26)+27 cl opt",
-   "status": "option",
-   "salary": 12000000,
-   "taxValue": 12000000,
-   "salaryPrevYear": 9000000,
-   "optionType": "club",
-   "buyout": 2000000,
-   "mlbamId": 445276,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "salarySource": "option",
-   "war": -0.06,
-   "ip": 45
-  },
-  {
    "name": "Drew Anderson",
    "sheetName": "Anderson, Drew",
    "pos": "rhp",
    "age": 33,
    "mls": 1.114,
    "contract": "1 y/$7M (26)+27 cl opt",
-   "status": "option",
+   "status": "signed",
    "salary": 10000000,
    "taxValue": 10000000,
    "salaryPrevYear": 7000000,
-   "optionType": "club",
+   "walkYear": true,
    "mlbamId": 623454,
-   "decidedBy": "club",
-   "defaultExercised": true,
-   "buyout": 0,
-   "salarySource": "option",
+   "salarySource": "cots",
    "war": 1.64,
    "ip": 122.3
   },
@@ -253,24 +230,6 @@
    "ip": 73.7
   },
   {
-   "name": "Parker Meadows",
-   "sheetName": "Meadows, Parker",
-   "pos": "cf",
-   "age": 27,
-   "mls": 2.169,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1000000,
-   "taxValue": 1000000,
-   "salaryPrevYear": 805300,
-   "arbYear": 1,
-   "cotsEstimate": 1250000,
-   "mlbamId": 678009,
-   "salarySource": "mlbtr-arb",
-   "war": 2.02,
-   "pa": 481
-  },
-  {
    "name": "Beau Brieske",
    "sheetName": "Brieske, Beau",
    "pos": "rhp",
@@ -289,22 +248,39 @@
    "ip": 57.3
   },
   {
-   "name": "Wenceel Pérez",
-   "sheetName": "Pérez, Wenceel",
+   "name": "Jacob Waguespack",
+   "sheetName": "Waguespack, Jacob",
+   "pos": "rhp",
+   "age": 33,
+   "mls": 3.032,
+   "contract": "1 y/$1.3M (27)",
+   "status": "signed",
+   "salary": 1300000,
+   "taxValue": 1300000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 621097,
+   "salarySource": "cots",
+   "war": 0.47,
+   "ip": 60.7
+  },
+  {
+   "name": "Parker Meadows",
+   "sheetName": "Meadows, Parker",
    "pos": "cf",
    "age": 27,
-   "mls": 2.171,
+   "mls": 2.169,
    "contract": "A1",
    "status": "arb",
-   "salary": 1400000,
-   "taxValue": 1400000,
-   "salaryPrevYear": 764523,
+   "salary": 1000000,
+   "taxValue": 1000000,
+   "salaryPrevYear": 805300,
    "arbYear": 1,
-   "cotsEstimate": 1100000,
-   "mlbamId": 672761,
+   "cotsEstimate": 1250000,
+   "mlbamId": 678009,
    "salarySource": "mlbtr-arb",
-   "war": 0.42,
-   "pa": 454
+   "war": 2.02,
+   "pa": 481
   },
   {
    "name": "Reese Olson",
@@ -323,6 +299,24 @@
    "salarySource": "mlbtr-arb",
    "war": 1.86,
    "ip": 114
+  },
+  {
+   "name": "Wenceel Pérez",
+   "sheetName": "Pérez, Wenceel",
+   "pos": "cf",
+   "age": 27,
+   "mls": 2.171,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 1400000,
+   "taxValue": 1400000,
+   "salaryPrevYear": 764523,
+   "arbYear": 1,
+   "cotsEstimate": 1100000,
+   "mlbamId": 672761,
+   "salarySource": "mlbtr-arb",
+   "war": 0.42,
+   "pa": 454
   },
   {
    "name": "Dillon Dingler",
@@ -742,6 +736,12 @@
  ],
  "deadMoney": [
   {
+   "name": "Kenley Jansen",
+   "salary": 2000000,
+   "taxValue": 0,
+   "note": "2027 buyout"
+  },
+  {
    "name": "Eduardo Rodriguez",
    "salary": 0,
    "taxValue": -933333,
@@ -749,8 +749,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 7650000,
-   "taxValue": 7650000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -770,10 +770,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 135435012,
- "sheetTaxPayroll": 163638571,
- "rowsPayroll": 135435012,
- "rowsTaxPayroll": 163638571,
+ "sheetPayroll": 145885012,
+ "sheetTaxPayroll": 174088571,
+ "rowsPayroll": 145885012,
+ "rowsTaxPayroll": 174088571,
  "minors": [
   {
    "mlbamId": 800522,
@@ -914,16 +914,6 @@
    "ip": 93.3,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 621097,
-   "name": "Jacob Waguespack",
-   "pos": "rp",
-   "age": 33,
-   "war": 0.47,
-   "ip": 60.7,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 802599,

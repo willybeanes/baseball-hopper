@@ -772,32 +772,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 681432,
-   "name": "Luke Little",
-   "pos": "rp",
-   "age": 26,
-   "war": 0.46,
-   "ip": 57.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 647351,
    "name": "Abraham Toro",
    "pos": "3b",
    "age": 30,
    "war": 0.45,
    "pa": 431,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 664670,
-   "name": "Alejo Lopez",
-   "pos": "2b",
-   "age": 31,
-   "war": 0.38,
-   "pa": 438,
    "salary": 780000,
    "debuted": true
   },
@@ -812,16 +792,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 663503,
-   "name": "Elih Marrero",
-   "pos": "c",
-   "age": 30,
-   "war": 0.33,
-   "pa": 161,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 686523,
    "name": "Peyton Wilson",
    "pos": "2b",
@@ -830,16 +800,6 @@
    "pa": 469,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 656638,
-   "name": "Alex Lange",
-   "pos": "rp",
-   "age": 31,
-   "war": 0.25,
-   "ip": 43.7,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 699325,
@@ -852,16 +812,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 663731,
-   "name": "Connor Kaiser",
-   "pos": "ss",
-   "age": 30,
-   "war": 0.21,
-   "pa": 342,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 701401,
    "name": "Canyon Brown",
    "pos": "c",
@@ -870,16 +820,6 @@
    "pa": 280,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 592826,
-   "name": "Vince Velasquez",
-   "pos": "sp",
-   "age": 35,
-   "war": 0.19,
-   "ip": 77.7,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 672021,
@@ -932,16 +872,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 806004,
-   "name": "Nate Ackenhausen",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.02,
-   "ip": 43.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 688457,
    "name": "Gavin Cross",
    "pos": "rf",
@@ -970,16 +900,6 @@
    "ip": 82.7,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 518397,
-   "name": "Scott Alexander",
-   "pos": "rp",
-   "age": 37,
-   "war": -0.09,
-   "ip": 36.7,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 813386,
@@ -1048,16 +968,6 @@
    "age": 27,
    "war": -0.34,
    "pa": 263,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 685125,
-   "name": "Christian Chamberlain",
-   "pos": "rp",
-   "age": 27,
-   "war": -0.35,
-   "ip": 42.7,
    "salary": 780000,
    "debuted": false
   },

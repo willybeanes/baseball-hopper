@@ -267,6 +267,24 @@
    "ip": 88.7
   },
   {
+   "name": "José Buttó",
+   "sheetName": "Buttó, José",
+   "pos": "rhp",
+   "age": 29,
+   "mls": 2.168,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 800000,
+   "taxValue": 800000,
+   "salaryPrevYear": null,
+   "arbYear": 1,
+   "cotsEstimate": 800000,
+   "mlbamId": 676130,
+   "salarySource": "mlbtr-arb",
+   "war": 0.22,
+   "ip": 66
+  },
+  {
    "name": "Chase Silseth",
    "sheetName": "Silseth, Chase",
    "pos": "rhp-s",
@@ -639,8 +657,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 9350000,
-   "taxValue": 9350000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -660,10 +678,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 172135000,
- "sheetTaxPayroll": 190051667,
- "rowsPayroll": 172135000,
- "rowsTaxPayroll": 190051667,
+ "sheetPayroll": 172085000,
+ "sheetTaxPayroll": 190001667,
+ "rowsPayroll": 172085000,
+ "rowsTaxPayroll": 190001667,
  "minors": [
   {
    "mlbamId": 666194,
@@ -764,16 +782,6 @@
    "pa": 405,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 686769,
-   "name": "Dane Acker",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.29,
-   "ip": 61,
-   "salary": 780000,
-   "debuted": false
   },
   {
    "mlbamId": 685107,

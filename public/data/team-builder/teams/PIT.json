@@ -249,6 +249,24 @@
    "pa": 408
   },
   {
+   "name": "Akil Baddoo",
+   "sheetName": "Baddoo, Akil",
+   "pos": "of",
+   "age": 28,
+   "mls": 3.082,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 1300000,
+   "taxValue": 1300000,
+   "salaryPrevYear": null,
+   "arbYear": 1,
+   "cotsEstimate": 1200000,
+   "mlbamId": 668731,
+   "salarySource": "mlbtr-arb",
+   "war": 0.92,
+   "pa": 462
+  },
+  {
    "name": "Henry Davis",
    "sheetName": "Davis, Henry",
    "pos": "c",
@@ -649,8 +667,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 9350000,
-   "taxValue": 9350000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -665,10 +683,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 100108433,
- "sheetTaxPayroll": 124397761,
- "rowsPayroll": 100108433,
- "rowsTaxPayroll": 124397761,
+ "sheetPayroll": 100458433,
+ "sheetTaxPayroll": 124747761,
+ "rowsPayroll": 100458433,
+ "rowsTaxPayroll": 124747761,
  "minors": [
   {
    "mlbamId": 701546,
