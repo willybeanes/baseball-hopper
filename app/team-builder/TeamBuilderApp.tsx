@@ -989,7 +989,7 @@ export default function TeamBuilderApp() {
                 <Card
                   title="Minor leaguers"
                   aside={`${minorSlots.length} of ${allMinorSlots.length}`}
-                  note="Everyone outside the 40-man that ZiPS projects, best first: prospects, and veterans with big-league time (outrighted or on minor-league deals). ZiPS projects each as if he played regularly in the majors in 2027. Adding one uses a 40-man spot at the league minimum."
+                  note="Everyone outside the 40-man that Steamer projects at replacement level or better, best first: prospects, and veterans with big-league time (outrighted or on minor-league deals). Each is projected as if he played regularly in the majors in 2027. Adding one uses a 40-man spot at the league minimum."
                   controls={
                     <>
                       <label className="flex items-center gap-1.5 text-[11px] text-[var(--dim)]">

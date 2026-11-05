@@ -20,10 +20,11 @@
     "mutual": "declined"
   },
   "projections": {
-    "system": "zipsp1",
-    "label": "ZiPS 3-year projection for 2027",
-    "note": "Made before the 2026 season. Switches to the fresh 2027 projection once FanGraphs publishes it (Steamer usually in November, ZiPS in January).",
-    "url": "https://www.fangraphs.com/projections?type=zipsp1"
+    "system": "steamer",
+    "minorsSystem": "steamer600",
+    "label": "Steamer projection for 2027",
+    "note": "Switched from ZiPS 2026-11-05, when FanGraphs emptied its ZiPS projections ahead of the 2027 set (usually January). Minor leaguers use Steamer's full-time version (600 PA, 200 IP as a starter or 65 in relief), because plain Steamer gives most of them almost no big-league time.",
+    "url": "https://www.fangraphs.com/projections?type=steamer"
   },
   "dollarsPerWar": {
     "value": 8000000,

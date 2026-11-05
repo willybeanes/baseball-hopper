@@ -1,5 +1,5 @@
 // Team WAR the way a depth chart counts it. Summing every projection on a 40-man overstates a
-// team, because ZiPS projects each player as if he plays his usual role; a deep roster of
+// team, because a projection has each player in his usual role; a deep roster of
 // decent players piles up far more playing time than a season has. Instead each spot gets a
 // season's worth of PA or innings (assumptions.json), filled by the best players there first.
 

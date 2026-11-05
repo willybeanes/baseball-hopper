@@ -177,12 +177,15 @@ async function main() {
   // Projected WAR. If FanGraphs (or fg-proxy's cookie) fails, keep the last good projections,
   // still publish the contract changes, and fail the run afterwards so someone hears about it.
   const projFile = join(OUT_DIR, 'projections.json')
-  const prevProj = existsSync(projFile) ? (JSON.parse(readFileSync(projFile, 'utf8')) as { fetchedAt: string; players: Record<number, Projection> }) : null
+  const prevProj = existsSync(projFile) ? (JSON.parse(readFileSync(projFile, 'utf8')) as { fetchedAt: string; players: Record<number, Projection>; minors?: Record<number, Projection> }) : null
   let projections: Record<number, Projection> = prevProj?.players ?? {}
+  let minorsProjections: Record<number, Projection> = prevProj?.minors ?? {}
   let projFetchedAt = prevProj?.fetchedAt ?? null
   let projError: string | null = null
   try {
-    projections = await fetchProjections(assumptions.projections.system)
+    const [regular, fullTime] = await Promise.all([fetchProjections(assumptions.projections.system), fetchProjections(assumptions.projections.minorsSystem)])
+    projections = regular
+    minorsProjections = Object.fromEntries(Object.entries(fullTime).filter(([, pr]) => pr.war >= 0)) // below replacement has nothing to show
     projFetchedAt = new Date().toISOString().slice(0, 10)
   } catch (e) {
     projError = (e as Error).message
@@ -196,8 +199,8 @@ async function main() {
     }
   }
 
-  // Minor leaguers: organization players not on the 40-man, kept only if ZiPS projects them
-  // (the rest have nothing to show). Adding one puts him on the 40-man at the league minimum.
+  // Minor leaguers: organization players not on the 40-man, kept only if Steamer's full-time
+  // projection has them at replacement level or better. Adding one puts him on the 40-man at the league minimum.
   // Teams showing a kept snapshot keep the minor leaguers they had.
   // MLB's organization rosters still list players about to become free agents, so anyone on a
   // Cot's sheet (any team) or on MLBTR's free-agent list is left out.
@@ -211,7 +214,7 @@ async function main() {
     if (!org) continue
     const list: MinorLeaguer[] = []
     for (const o of org) {
-      const pr = projections[o.id]
+      const pr = minorsProjections[o.id]
       if (notMinors.has(o.id) || !pr || list.some((m) => m.mlbamId === o.id)) continue
       const pos = o.pos === 'p' || o.pos === 'twp' ? (pr.sp ? 'sp' : 'rp') : o.pos
       list.push({ mlbamId: o.id, name: o.fullName, pos, age: null, war: pr.war, ...(pr.pa ? { pa: pr.pa } : {}), ...(pr.ip ? { ip: pr.ip } : {}), salary: assumptions.leagueMinimum.value })
@@ -282,7 +285,7 @@ async function main() {
     return { ...e, ...carried, war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
   })
   files.set(join(OUT_DIR, 'pool.json'), JSON.stringify(pool) + '\n')
-  if (projFetchedAt) files.set(projFile, JSON.stringify({ system: assumptions.projections.system, fetchedAt: projFetchedAt, players: projections }) + '\n')
+  if (projFetchedAt) files.set(projFile, JSON.stringify({ system: assumptions.projections.system, fetchedAt: projFetchedAt, players: projections, minors: minorsProjections }) + '\n')
   const metaFile = join(OUT_DIR, 'meta.json')
   const prevMeta = existsSync(metaFile) ? JSON.parse(readFileSync(metaFile, 'utf8')) : null
   const changed = [...files].filter(([f, text]) => !existsSync(f) || readFileSync(f, 'utf8') !== text)
