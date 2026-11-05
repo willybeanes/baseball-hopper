@@ -1,8 +1,8 @@
 """
 Builds public/data/hitter-universe.json: an 11-coordinate address for every qualified hitter-season, plus a 3D map.
 
-Reads swing_profile from Supabase, Hitting+ from hitting-plus.vercel.app, launch_readings.csv (from read_launch.py) and the
-published 2026 launch numbers. Rerun by hand when a season is added. Needs numpy, pandas, requests and scikit-learn.
+Reads swing_profile from Supabase, Hitting+ and wRC+ from hitting-plus.vercel.app, batting side from the MLB Stats API,
+launch_readings.csv (from read_launch.py) and the published 2026 launch numbers. Rerun by hand when a season is added. Needs numpy, pandas, requests and scikit-learn.
 
 Usage (from the repo root, with NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY set):
   python3 scripts/universe/build_universe.py --published ~/swingplus/swing_profile/launch_2026.csv
@@ -14,6 +14,8 @@ from sklearn.manifold import TSNE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 HP_URL = 'https://hitting-plus.vercel.app/data/swingplus_latest.json'
+WRC_URL = 'https://hitting-plus.vercel.app/data/wrc_plus.json'
+PEOPLE_URL = 'https://statsapi.mlb.com/api/v1/people'
 
 # show_raw is off where the raw number has no plain baseball reading, so those show as percentiles only.
 COORDS = [
@@ -48,6 +50,21 @@ def fetch_hitting_plus():
     players = json.loads(requests.get(HP_URL, timeout=120).text.replace('NaN', 'null'))['players']
     cols = ['mlbamid', 'game_year', 'Decision+', 'Timing+', 'Contact+', 'Power+', 'Hitting+']
     return pd.DataFrame(players)[cols].rename(columns={'mlbamid': 'mlbam', 'game_year': 'season'})
+
+
+def fetch_wrc():
+    wrc = requests.get(WRC_URL, timeout=120).json()
+    return lambda name, season: wrc.get(name, {}).get(str(season), np.nan)
+
+
+def fetch_bats(ids):
+    """Which side each hitter bats from: L, R or S."""
+    ids, bats = sorted(ids), {}
+    for start in range(0, len(ids), 100):
+        r = requests.get(PEOPLE_URL, params={'personIds': ','.join(map(str, ids[start:start + 100]))}, timeout=60)
+        r.raise_for_status()
+        bats.update({p['id']: p['batSide']['code'] for p in r.json()['people'] if 'batSide' in p})
+    return bats
 
 
 def load_launch(readings_path, published_path):
@@ -115,9 +132,16 @@ def main():
     mean, sd = lined_up.mean(), lined_up.std()
     z = (lined_up - mean) / sd
     pct = (lined_up.rank(pct=True) * 100).round(0)
-    xyz = TSNE(3, perplexity=30, init='pca', random_state=1).fit_transform(z.fillna(0).values)
+    # Real production counts in closeness and the map as one more coordinate, but only this standardized value
+    # reaches the page: wRC+ itself is never shown or written to the file.
+    wrc = fetch_wrc()
+    q['wrc'] = [wrc(r['name'], r.season) for _, r in q.iterrows()]
+    results = (q.wrc - q.wrc.mean()) / q.wrc.std()
+    bats = fetch_bats(q.mlbam.unique().tolist())
+    print('Results blanks:', int(q.wrc.isna().sum()), '| results steadiness', steadiness(q, 'wrc'), '| bats', pd.Series(q.mlbam.map(bats)).value_counts(dropna=False).to_dict())
+    a = z.assign(results=results).fillna(0).values
+    xyz = TSNE(3, perplexity=30, init='pca', random_state=1).fit_transform(a)
 
-    a = z.fillna(0).values
     d_all, d_map = ((a[:, None] - a[None]) ** 2).sum(2), ((xyz[:, None] - xyz[None]) ** 2).sum(2)
     np.fill_diagonal(d_all, np.inf), np.fill_diagonal(d_map, np.inf)
     top_all, top_map = np.argsort(d_all, 1)[:, :10], np.argsort(d_map, 1)[:, :10]
@@ -134,7 +158,7 @@ def main():
     rows = []
     for i, r in q.iterrows():
         rows.append([int(r.mlbam), r['name'], int(r.season), clean(r['Hitting+'], 0), [round(float(x), 1) for x in xyz[i]],
-                     [clean(r[k], 3) for k in keys], [clean(pct.loc[i, k], 0) for k in keys]])
+                     [clean(r[k], 3) for k in keys], [clean(pct.loc[i, k], 0) for k in keys], bats.get(int(r.mlbam)), clean(results[i], 2)])
     with open(args.out, 'w') as f:
         json.dump({'generated': date.today().isoformat(), 'map_kept': round(kept, 2), 'launch_shift': {str(k): float(v) for k, v in launch_shift.items()},
                    'coords': coords, 'rows': rows}, f, separators=(',', ':'))
