@@ -15,8 +15,8 @@
    "walkYear": false,
    "mlbamId": 607625,
    "salarySource": "cots",
-   "war": 0.61,
-   "ip": 112.3
+   "war": 1.52,
+   "ip": 175.8
   },
   {
    "name": "Bobby Witt Jr.",
@@ -33,7 +33,7 @@
    "mlbamId": 677951,
    "salarySource": "cots",
    "war": 6.11,
-   "pa": 656
+   "pa": 599
   },
   {
    "name": "Michael Wacha",
@@ -49,8 +49,8 @@
    "walkYear": false,
    "mlbamId": 608379,
    "salarySource": "cots",
-   "war": 1.58,
-   "ip": 127.3
+   "war": 2.17,
+   "ip": 188.6
   },
   {
    "name": "Salvador Perez",
@@ -66,8 +66,8 @@
    "walkYear": true,
    "mlbamId": 521692,
    "salarySource": "cots",
-   "war": 1.11,
-   "pa": 524
+   "war": 0.54,
+   "pa": 479
   },
   {
    "name": "Cole Ragans",
@@ -83,8 +83,8 @@
    "walkYear": false,
    "mlbamId": 666142,
    "salarySource": "cots",
-   "war": 2.88,
-   "ip": 122.3
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Maikel Garcia",
@@ -100,8 +100,8 @@
    "walkYear": false,
    "mlbamId": 672580,
    "salarySource": "cots",
-   "war": 3.18,
-   "pa": 632
+   "war": 3.07,
+   "pa": 548
   },
   {
    "name": "Vinnie Pasquantino",
@@ -117,8 +117,8 @@
    "walkYear": false,
    "mlbamId": 686469,
    "salarySource": "cots",
-   "war": 1.24,
-   "pa": 607
+   "war": 1.73,
+   "pa": 553
   },
   {
    "name": "Kyle Isbel",
@@ -135,8 +135,8 @@
    "cotsEstimate": 3200000,
    "mlbamId": 664728,
    "salarySource": "mlbtr-arb",
-   "war": 1.21,
-   "pa": 387
+   "war": 0.65,
+   "pa": 349
   },
   {
    "name": "Michael Massey",
@@ -153,8 +153,8 @@
    "cotsEstimate": 3000000,
    "mlbamId": 686681,
    "salarySource": "mlbtr-arb",
-   "war": 0.92,
-   "pa": 419
+   "war": 1.39,
+   "pa": 410
   },
   {
    "name": "Tony Gonsolin",
@@ -170,8 +170,8 @@
    "walkYear": true,
    "mlbamId": 664062,
    "salarySource": "cots",
-   "war": 0.53,
-   "ip": 86.7
+   "war": 0.98,
+   "ip": 130.8
   },
   {
    "name": "Daniel Lynch IV",
@@ -188,8 +188,8 @@
    "cotsEstimate": 2025000,
    "mlbamId": 663738,
    "salarySource": "mlbtr-arb",
-   "war": 0.85,
-   "ip": 91.3
+   "war": 0.5,
+   "ip": 126.8
   },
   {
    "name": "Randy Dobnak",
@@ -206,8 +206,8 @@
    "cotsEstimate": 2000000,
    "mlbamId": 677976,
    "salarySource": "mlbtr-arb",
-   "war": 0.52,
-   "ip": 91.7
+   "war": 0.66,
+   "ip": 116.3
   },
   {
    "name": "Lucas Erceg",
@@ -224,8 +224,8 @@
    "cotsEstimate": 2000000,
    "mlbamId": 668674,
    "salarySource": "mlbtr-arb",
-   "war": 0.36,
-   "ip": 52.7
+   "war": 0.29,
+   "ip": 63
   },
   {
    "name": "Nick Mears",
@@ -242,8 +242,8 @@
    "cotsEstimate": 1900000,
    "mlbamId": 683232,
    "salarySource": "mlbtr-arb",
-   "war": 0.27,
-   "ip": 50.3
+   "war": 0.04,
+   "ip": 34
   },
   {
    "name": "Nate Pearson",
@@ -260,8 +260,8 @@
    "cotsEstimate": 1775000,
    "mlbamId": 663878,
    "salarySource": "mlbtr-arb",
-   "war": 0.15,
-   "ip": 52.7
+   "war": -0.07,
+   "ip": 62
   },
   {
    "name": "Anthony Gose",
@@ -278,8 +278,8 @@
    "cotsEstimate": 1200000,
    "mlbamId": 543238,
    "salarySource": "mlbtr-arb",
-   "war": -0.27,
-   "ip": 37.7
+   "war": 0.31,
+   "ip": 55
   },
   {
    "name": "James McArthur",
@@ -296,8 +296,8 @@
    "cotsEstimate": 810000,
    "mlbamId": 663704,
    "salarySource": "mlbtr-arb",
-   "war": 0.41,
-   "ip": 47.7
+   "war": 0.08,
+   "ip": 20
   },
   {
    "name": "Noah Cameron",
@@ -312,8 +312,8 @@
    "salaryPrevYear": 802000,
    "mlbamId": 702070,
    "salarySource": "minimum",
-   "war": 1.76,
-   "ip": 136
+   "war": 2.19,
+   "ip": 181.5
   },
   {
    "name": "Jac Caglianone",
@@ -328,8 +328,8 @@
    "salaryPrevYear": 784000,
    "mlbamId": 695506,
    "salarySource": "minimum",
-   "war": 2,
-   "pa": 557
+   "war": 3.2,
+   "pa": 596
   },
   {
    "name": "Carter Jensen",
@@ -344,8 +344,8 @@
    "salaryPrevYear": 781150,
    "mlbamId": 695600,
    "salarySource": "minimum",
-   "war": 3.7,
-   "pa": 614
+   "war": 3.45,
+   "pa": 535
   },
   {
    "name": "Nick Loftin",
@@ -360,8 +360,8 @@
    "salaryPrevYear": 747734,
    "mlbamId": 679845,
    "salarySource": "minimum",
-   "war": 0.76,
-   "pa": 424
+   "war": 0.69,
+   "pa": 253
   },
   {
    "name": "Steven Cruz",
@@ -376,8 +376,8 @@
    "salaryPrevYear": 705988,
    "mlbamId": 674444,
    "salarySource": "minimum",
-   "war": 0.31,
-   "ip": 53
+   "war": 0.53,
+   "ip": 64
   },
   {
    "name": "Isaac Collins",
@@ -392,8 +392,8 @@
    "salaryPrevYear": 799750,
    "mlbamId": 686555,
    "salarySource": "minimum",
-   "war": 1.4,
-   "pa": 434
+   "war": 0.74,
+   "pa": 382
   },
   {
    "name": "John Rave",
@@ -408,8 +408,8 @@
    "salaryPrevYear": 453819,
    "mlbamId": 670231,
    "salarySource": "minimum",
-   "war": 0.93,
-   "pa": 469
+   "war": 0.33,
+   "pa": 310
   },
   {
    "name": "Stephen Kolek",
@@ -424,8 +424,8 @@
    "salaryPrevYear": 786806,
    "mlbamId": 663568,
    "salarySource": "minimum",
-   "war": 1.37,
-   "ip": 121.7
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Jose Cuas",
@@ -440,8 +440,8 @@
    "salaryPrevYear": 290285,
    "mlbamId": 621016,
    "salarySource": "minimum",
-   "war": -0.39,
-   "ip": 36
+   "war": -0.2,
+   "ip": 50
   },
   {
    "name": "Mitch Spence",
@@ -456,8 +456,8 @@
    "salaryPrevYear": 316911,
    "mlbamId": 687765,
    "salarySource": "minimum",
-   "war": 1.01,
-   "ip": 109.3
+   "war": 0.05,
+   "ip": 10
   },
   {
    "name": "Tyler Tolbert",
@@ -472,8 +472,8 @@
    "salaryPrevYear": 698384,
    "mlbamId": 686475,
    "salarySource": "minimum",
-   "war": 0.91,
-   "pa": 429
+   "war": 0.15,
+   "pa": 189
   },
   {
    "name": "Spencer Bivens",
@@ -488,8 +488,8 @@
    "salaryPrevYear": 43757,
    "mlbamId": 702352,
    "salarySource": "minimum",
-   "war": -0.14,
-   "ip": 63.7
+   "war": 0,
+   "ip": 14
   },
   {
    "name": "Connor Thomas",
@@ -504,8 +504,8 @@
    "salaryPrevYear": 191917,
    "mlbamId": 671162,
    "salarySource": "minimum",
-   "war": 0.92,
-   "ip": 83.3
+   "war": 0.03,
+   "ip": 44
   },
   {
    "name": "Luinder Avila",
@@ -520,8 +520,8 @@
    "salaryPrevYear": 682240,
    "mlbamId": 679883,
    "salarySource": "minimum",
-   "war": 0.82,
-   "ip": 85.3
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Beck Way",
@@ -536,8 +536,8 @@
    "salaryPrevYear": 492193,
    "mlbamId": 694360,
    "salarySource": "minimum",
-   "war": -0.32,
-   "ip": 62
+   "war": -0.07,
+   "ip": 32
   },
   {
    "name": "Ryan Bergert",
@@ -552,8 +552,8 @@
    "salaryPrevYear": 127100,
    "mlbamId": 686701,
    "salarySource": "minimum",
-   "war": 1.08,
-   "ip": 101.7
+   "war": 0.09,
+   "ip": 22
   },
   {
    "name": "Matthew Lugo",
@@ -568,8 +568,8 @@
    "salaryPrevYear": 173792,
    "mlbamId": 683090,
    "salarySource": "minimum",
-   "war": -0.5,
-   "pa": 483
+   "war": 0.01,
+   "pa": 69
   },
   {
    "name": "Nolan Hoffman",
@@ -584,8 +584,8 @@
    "salaryPrevYear": 131651,
    "mlbamId": 676510,
    "salarySource": "minimum",
-   "war": -0.14,
-   "ip": 54.3
+   "war": 0.01,
+   "ip": 40
   },
   {
    "name": "Carlos Duran",
@@ -600,8 +600,8 @@
    "salaryPrevYear": 48178,
    "mlbamId": 679922,
    "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 55.7
+   "war": -0.14,
+   "ip": 37
   },
   {
    "name": "Ben Kudrna",
@@ -616,8 +616,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 695667,
    "salarySource": "minimum",
-   "war": 1,
-   "ip": 101
+   "war": 0.04,
+   "ip": 17.2
   },
   {
    "name": "Steven Zobac",
@@ -632,8 +632,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 686632,
    "salarySource": "minimum",
-   "war": 1.02,
-   "ip": 91.7
+   "war": 0,
+   "ip": 1
   }
  ],
  "deadMoney": [
@@ -672,302 +672,12 @@
  "rowsTaxPayroll": 150267176,
  "minors": [
   {
-   "mlbamId": 814351,
-   "name": "Lucas Braun",
+   "mlbamId": 703610,
+   "name": "Justin Lamkin",
    "pos": "sp",
-   "age": 25,
-   "war": 1.71,
-   "ip": 126.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 811287,
-   "name": "Carson Roccaforte",
-   "pos": "cf",
-   "age": 25,
-   "war": 1.66,
-   "pa": 532,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 696131,
-   "name": "Mason Black",
-   "pos": "sp",
-   "age": 27,
-   "war": 1.08,
-   "ip": 104.7,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 694818,
-   "name": "Hunter Owen",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.93,
-   "ip": 96,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 805810,
-   "name": "Blake Mitchell",
-   "pos": "c",
-   "age": 22,
-   "war": 0.78,
-   "pa": 390,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 689275,
-   "name": "Henry Williams",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.63,
-   "ip": 96.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687593,
-   "name": "Hunter Patteson",
-   "pos": "sp",
-   "age": 27,
-   "war": 0.57,
-   "ip": 94,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694553,
-   "name": "Tyson Guerrero",
-   "pos": "sp",
-   "age": 28,
-   "war": 0.55,
-   "ip": 89,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 695556,
-   "name": "Shane Panzini",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.49,
-   "ip": 85.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687547,
-   "name": "Ryan Ramsey",
-   "pos": "sp",
-   "age": 26,
-   "war": 0.48,
-   "ip": 90,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 647351,
-   "name": "Abraham Toro",
-   "pos": "3b",
-   "age": 30,
-   "war": 0.45,
-   "pa": 431,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 814528,
-   "name": "Sam Kulasingam",
-   "pos": "1b",
-   "age": 25,
-   "war": 0.36,
-   "pa": 526,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 686523,
-   "name": "Peyton Wilson",
-   "pos": "2b",
-   "age": 27,
-   "war": 0.33,
-   "pa": 469,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 699325,
-   "name": "Oscar Rayo",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.23,
-   "ip": 70.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 701401,
-   "name": "Canyon Brown",
-   "pos": "c",
    "age": 23,
-   "war": 0.2,
-   "pa": 280,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 672021,
-   "name": "Eric Cerantola",
-   "pos": "rp",
-   "age": 27,
-   "war": 0.16,
-   "ip": 53.7,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 681123,
-   "name": "Luca Tresh",
-   "pos": "c",
-   "age": 27,
-   "war": 0.09,
-   "pa": 350,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 805834,
-   "name": "Javier Vaz",
-   "pos": "2b",
-   "age": 26,
-   "war": 0.08,
-   "pa": 491,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 690206,
-   "name": "Anthony Simonelli",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.04,
-   "ip": 47.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 700924,
-   "name": "Frank Mozzicato",
-   "pos": "sp",
-   "age": 24,
-   "war": 0.02,
-   "ip": 86.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 688457,
-   "name": "Gavin Cross",
-   "pos": "rf",
-   "age": 26,
-   "war": -0.01,
-   "pa": 478,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 800051,
-   "name": "Austin Charles",
-   "pos": "3b",
-   "age": 23,
-   "war": -0.05,
-   "pa": 383,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 815073,
-   "name": "Ethan Bosacker",
-   "pos": "sp",
-   "age": 26,
-   "war": -0.09,
-   "ip": 82.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 813386,
-   "name": "Justin Johnson",
-   "pos": "2b",
-   "age": 27,
-   "war": -0.1,
-   "pa": 362,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 681387,
-   "name": "Caden Monke",
-   "pos": "rp",
-   "age": 27,
-   "war": -0.15,
-   "ip": 51.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 681324,
-   "name": "Chazz Martinez",
-   "pos": "rp",
-   "age": 27,
-   "war": -0.18,
-   "ip": 60,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 700786,
-   "name": "Ben Sears",
-   "pos": "rp",
-   "age": 27,
-   "war": -0.19,
-   "ip": 54,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 695586,
-   "name": "Sam Ruta",
-   "pos": "3b",
-   "age": 25,
-   "war": -0.26,
-   "pa": 321,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 699489,
-   "name": "Brandon Johnson",
-   "pos": "rp",
-   "age": 28,
-   "war": -0.28,
-   "ip": 56.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 701594,
-   "name": "Chris Brito",
-   "pos": "c",
-   "age": 27,
-   "war": -0.34,
-   "pa": 263,
+   "war": 1.59,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -976,58 +686,38 @@
    "name": "Jack Pineda",
    "pos": "ss",
    "age": 27,
-   "war": -0.35,
-   "pa": 287,
+   "war": 1.56,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 689531,
-   "name": "Brett Squires",
-   "pos": "1b",
-   "age": 27,
-   "war": -0.41,
-   "pa": 464,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 813851,
-   "name": "Colton Becker",
-   "pos": "1b",
-   "age": 26,
-   "war": -0.48,
-   "pa": 387,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 811289,
-   "name": "Spencer Nivens",
-   "pos": "lf",
+   "mlbamId": 814351,
+   "name": "Lucas Braun",
+   "pos": "sp",
    "age": 25,
-   "war": -0.65,
-   "pa": 489,
+   "war": 1.47,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 815150,
-   "name": "Carter Frederick",
+   "mlbamId": 804114,
+   "name": "Luke Pelzer",
    "pos": "of",
    "age": 24,
-   "war": -0.74,
-   "pa": 422,
+   "war": 1.34,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 700283,
-   "name": "Derlin Figueroa",
-   "pos": "1b",
-   "age": 23,
-   "war": -0.85,
-   "pa": 524,
+   "mlbamId": 815789,
+   "name": "David Shields",
+   "pos": "sp",
+   "age": 20,
+   "war": 1.18,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -1036,18 +726,148 @@
    "name": "Jacob Berry",
    "pos": "1b",
    "age": 26,
-   "war": -0.92,
-   "pa": 486,
+   "war": 1.11,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 694187,
-   "name": "Daniel Vazquez",
-   "pos": "ss",
-   "age": 23,
-   "war": -1.01,
-   "pa": 516,
+   "mlbamId": 681123,
+   "name": "Luca Tresh",
+   "pos": "c",
+   "age": 27,
+   "war": 1,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 814528,
+   "name": "Sam Kulasingam",
+   "pos": "1b",
+   "age": 25,
+   "war": 0.74,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 808675,
+   "name": "Ramon Ramirez",
+   "pos": "c",
+   "age": 22,
+   "war": 0.66,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 686523,
+   "name": "Peyton Wilson",
+   "pos": "2b",
+   "age": 27,
+   "war": 0.64,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 811287,
+   "name": "Carson Roccaforte",
+   "pos": "cf",
+   "age": 25,
+   "war": 0.54,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 701795,
+   "name": "Drew Beam",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.51,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 694818,
+   "name": "Hunter Owen",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.51,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 702373,
+   "name": "Felix Arronde",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.35,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 811289,
+   "name": "Spencer Nivens",
+   "pos": "lf",
+   "age": 25,
+   "war": 0.35,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 805810,
+   "name": "Blake Mitchell",
+   "pos": "c",
+   "age": 22,
+   "war": 0.33,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 689275,
+   "name": "Henry Williams",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.31,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 687547,
+   "name": "Ryan Ramsey",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.25,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 830402,
+   "name": "Kendry Chourio",
+   "pos": "sp",
+   "age": 19,
+   "war": 0.24,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 808665,
+   "name": "Angel Acosta",
+   "pos": "2b",
+   "age": 24,
+   "war": 0.23,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -1056,28 +876,38 @@
    "name": "Omar Hernandez",
    "pos": "c",
    "age": 25,
-   "war": -1.04,
-   "pa": 322,
+   "war": 0.15,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 805075,
-   "name": "Erick Torres",
-   "pos": "cf",
-   "age": 22,
-   "war": -1.34,
-   "pa": 511,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687731,
-   "name": "Trevor Werner",
+   "mlbamId": 695586,
+   "name": "Sam Ruta",
    "pos": "3b",
-   "age": 26,
-   "war": -1.46,
-   "pa": 414,
+   "age": 25,
+   "war": 0.11,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 701401,
+   "name": "Canyon Brown",
+   "pos": "c",
+   "age": 23,
+   "war": 0.06,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 689531,
+   "name": "Brett Squires",
+   "pos": "1b",
+   "age": 27,
+   "war": 0.04,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   }
