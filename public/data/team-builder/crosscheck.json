@@ -58,17 +58,17 @@
    "move": "2026-11-02: Claimed off waivers from Mets"
   },
   {
-   "team": "PHI",
-   "name": "Johan Rojas",
-   "mlbamId": 679032,
-   "change": "added to the roster at the minimum"
-  },
-  {
    "team": "SEA",
    "name": "Isaac Mattson",
    "mlbamId": 676755,
    "change": "moved from PIT with his contract",
    "move": "2026-11-02: Lost off waivers to Mariners"
+  },
+  {
+   "team": "PHI",
+   "name": "Johan Rojas",
+   "mlbamId": 679032,
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "BAL",

@@ -653,7 +653,7 @@
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 565304,
+   "salaryPrevYear": null,
    "mlbamId": 676755,
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from PIT",

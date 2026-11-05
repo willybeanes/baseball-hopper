@@ -702,16 +702,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 656976,
-   "name": "Pavin Smith",
-   "pos": "1b",
-   "age": 31,
-   "war": 0.23,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 813409,
    "name": "Joe Ariola",
    "pos": "rp",

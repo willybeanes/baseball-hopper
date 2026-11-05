@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T20:41:30.608Z",
+  "updatedAt": "2026-11-05T22:19:17.027Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -76,7 +76,7 @@
     "note": "Switched from ZiPS 2026-11-05, when FanGraphs emptied its ZiPS projections ahead of the 2027 set (usually January). Minor leaguers use Steamer's full-time version (600 PA, 200 IP as a starter or 65 in relief), because plain Steamer gives most of them almost no big-league time.",
     "url": "https://www.fangraphs.com/projections?type=steamer",
     "fetchedAt": "2026-11-05",
-    "players": 9328
+    "players": 9332
   },
   "staleTeams": {},
   "sources": {

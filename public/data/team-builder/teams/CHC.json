@@ -568,7 +568,7 @@
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 544295,
+   "salaryPrevYear": null,
    "mlbamId": 679358,
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from MIN",
