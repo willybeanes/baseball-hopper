@@ -365,6 +365,22 @@
    "pa": 562
   },
   {
+   "name": "Paxton Schultz",
+   "sheetName": "Schultz, Paxton",
+   "pos": "rhp",
+   "age": 29,
+   "mls": 0.165,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 687606,
+   "salarySource": "minimum",
+   "war": 0.77,
+   "ip": 74.3
+  },
+  {
    "name": "Connor Phillips",
    "sheetName": "Phillips, Connor",
    "pos": "rhp",
@@ -573,6 +589,22 @@
    "pa": 498
   },
   {
+   "name": "Duncan Davitt",
+   "sheetName": "Davitt, Duncan",
+   "pos": "rhp",
+   "age": 27,
+   "mls": 0.014,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 701474,
+   "salarySource": "minimum",
+   "war": 1.37,
+   "ip": 119.7
+  },
+  {
    "name": "Chase Solesky",
    "sheetName": "Solesky, Chase",
    "pos": "rhp",
@@ -614,9 +646,9 @@
   },
   {
    "name": "Jeimer Candelario",
-   "salary": 3000000,
+   "salary": 1000000,
    "taxValue": 0,
-   "note": "released 6/29/25 less LAA portion"
+   "note": "2027 buyout"
   },
   {
    "name": "0- to 3-year players",
@@ -643,19 +675,9 @@
  "sheetFirstYear": 2027,
  "sheetPayroll": 84969047,
  "sheetTaxPayroll": 108425746,
- "rowsPayroll": 84969047,
+ "rowsPayroll": 82969047,
  "rowsTaxPayroll": 108425746,
  "minors": [
-  {
-   "mlbamId": 666150,
-   "name": "Dominic Fletcher",
-   "pos": "rf",
-   "age": 29,
-   "war": 1.12,
-   "pa": 440,
-   "salary": 780000,
-   "debuted": true
-  },
   {
    "mlbamId": 691641,
    "name": "Jose Acuna",
@@ -697,26 +719,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 688005,
-   "name": "Francisco Urbaez",
-   "pos": "2b",
-   "age": 29,
-   "war": 0.35,
-   "pa": 394,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 805321,
-   "name": "Trevor Kuncl",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.28,
-   "ip": 48.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 680397,
    "name": "Sam Benschoter",
    "pos": "rp",
@@ -747,16 +749,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 664948,
-   "name": "Anthony Misiewicz",
-   "pos": "rp",
-   "age": 32,
-   "war": 0.05,
-   "ip": 42.7,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 685396,
    "name": "Nate Peterson",
    "pos": "rp",
@@ -767,42 +759,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 674114,
-   "name": "Ryan Garcia",
-   "pos": "sp",
-   "age": 29,
-   "war": 0.03,
-   "ip": 66.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 701734,
    "name": "Ryan McCrystal",
    "pos": "c",
    "age": 24,
    "war": 0.01,
    "pa": 357,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694650,
-   "name": "Cameron Cotter",
-   "pos": "rp",
-   "age": 28,
-   "war": -0.02,
-   "ip": 42.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687071,
-   "name": "Shane Sasaki",
-   "pos": "cf",
-   "age": 27,
-   "war": -0.03,
-   "pa": 370,
    "salary": 780000,
    "debuted": false
   },
@@ -827,16 +789,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 641658,
-   "name": "Garrett Hampson",
-   "pos": "2b",
-   "age": 32,
-   "war": -0.11,
-   "pa": 264,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 702253,
    "name": "Cam Collier",
    "pos": "3b",
@@ -847,52 +799,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 679734,
-   "name": "Julio Carreras",
-   "pos": "3b",
-   "age": 27,
-   "war": -0.21,
-   "pa": 383,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 688609,
    "name": "Hunter Parks",
    "pos": "rp",
    "age": 26,
    "war": -0.23,
    "ip": 53.3,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 680846,
-   "name": "Pablo Aliendo",
-   "pos": "c",
-   "age": 26,
-   "war": -0.23,
-   "pa": 366,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 702300,
-   "name": "Johnathan Lavallee",
-   "pos": "rp",
-   "age": 27,
-   "war": -0.27,
-   "ip": 36.7,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687905,
-   "name": "Taylor Floyd",
-   "pos": "rp",
-   "age": 29,
-   "war": -0.28,
-   "ip": 51.7,
    "salary": 780000,
    "debuted": false
   },
@@ -1023,16 +935,6 @@
    "age": 27,
    "war": -1.27,
    "pa": 365,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 690988,
-   "name": "Austin Hendrick",
-   "pos": "rf",
-   "age": 26,
-   "war": -1.29,
-   "pa": 441,
    "salary": 780000,
    "debuted": false
   },

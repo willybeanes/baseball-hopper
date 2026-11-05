@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T18:05:47.321Z",
+  "updatedAt": "2026-11-05T18:16:34.401Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -77,23 +77,7 @@
     "fetchedAt": "2026-10-31",
     "players": 3739
   },
-  "staleTeams": {
-    "CIN": [
-      "CIN: payroll rows add up to $82.969M but the sheet says $84.969M"
-    ],
-    "LAA": [
-      "LAA: payroll rows add up to $108.574M but the sheet says $106.074M",
-      "LAA: tax payroll rows add up to $127.166M but the sheet says $124.666M"
-    ],
-    "SEA": [
-      "SEA: payroll rows add up to $142.177M but the sheet says $141.677M",
-      "SEA: tax payroll rows add up to $174.385M but the sheet says $173.885M"
-    ],
-    "SF": [
-      "SF: payroll rows add up to $170.432M but the sheet says $171.232M",
-      "SF: tax payroll rows add up to $172.330M but the sheet says $173.130M"
-    ]
-  },
+  "staleTeams": {},
   "sources": {
     "contracts": "Cot's Baseball Contracts",
     "arbitration": {

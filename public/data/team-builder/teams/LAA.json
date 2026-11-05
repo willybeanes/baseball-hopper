@@ -617,13 +617,28 @@
    "salarySource": "minimum",
    "war": 0.36,
    "ip": 102.3
+  },
+  {
+   "name": "Nicolò Pinazzi",
+   "sheetName": "Pinazzi, Nicolò",
+   "pos": "lhp",
+   "age": 27,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 695950,
+   "salarySource": "minimum",
+   "war": null
   }
  ],
  "deadMoney": [
   {
    "name": "0- to 3-year players",
-   "salary": 10200000,
-   "taxValue": 10200000,
+   "salary": 11050000,
+   "taxValue": 11050000,
    "note": ""
   },
   {
@@ -643,10 +658,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 107724167,
- "sheetTaxPayroll": 126315834,
- "rowsPayroll": 107724167,
- "rowsTaxPayroll": 126315834,
+ "sheetPayroll": 106074167,
+ "sheetTaxPayroll": 124665834,
+ "rowsPayroll": 108574167,
+ "rowsTaxPayroll": 127165834,
  "minors": [
   {
    "mlbamId": 703185,
@@ -667,16 +682,6 @@
    "pa": 410,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 671111,
-   "name": "Sammy Peralta",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.9,
-   "ip": 70.3,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 701836,
@@ -719,26 +724,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 656412,
-   "name": "Alex Faedo",
-   "pos": "rp",
-   "age": 31,
-   "war": 0.51,
-   "ip": 65.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 691269,
-   "name": "Adrian Placencia",
-   "pos": "2b",
-   "age": 24,
-   "war": 0.31,
-   "pa": 528,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 622569,
    "name": "Pablo Reyes",
    "pos": "of",
@@ -759,32 +744,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 641312,
-   "name": "Shaun Anderson",
-   "pos": "sp",
-   "age": 32,
-   "war": 0.22,
-   "ip": 92.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 694359,
    "name": "Niko Kavadas",
    "pos": "if",
    "age": 28,
    "war": 0.21,
    "pa": 493,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 687799,
-   "name": "Cade Marlowe",
-   "pos": "of",
-   "age": 30,
-   "war": 0.12,
-   "pa": 374,
    "salary": 780000,
    "debuted": true
   },
@@ -969,26 +934,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 672391,
-   "name": "Kaleb Ort",
-   "pos": "rp",
-   "age": 35,
-   "war": -0.36,
-   "ip": 40.3,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 570560,
-   "name": "Yolmer Sánchez",
-   "pos": "3b",
-   "age": 35,
-   "war": -0.44,
-   "pa": 390,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 683490,
    "name": "J.J. D'Orazio",
    "pos": "c",
@@ -1035,16 +980,6 @@
    "age": 24,
    "war": -1.07,
    "pa": 369,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691186,
-   "name": "Arol Vera",
-   "pos": "ss",
-   "age": 24,
-   "war": -1.11,
-   "pa": 444,
    "salary": 780000,
    "debuted": false
   },
