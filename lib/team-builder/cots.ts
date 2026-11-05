@@ -122,6 +122,13 @@ export function parseTeamSheet(team: string, csv: string, lastSeason: number, ta
       return ranges.some(([a, b]) => a <= yy && yy <= b)
     })
 
+  // Some sheets repeat the benefits figure in the tax block of the last departed-player row, just
+  // above the footer's year row (Estévez, KC, 2026-11-05). It isn't that player's money.
+  const benefitsRow = rows.find((r) => /^Estimated Player Benefits/.test(label(r)))
+  const benefitsCell = benefitsRow ? cell(benefitsRow, taxCol) : ''
+  const isStrayBenefits = (r: string[], next: string[] | undefined) =>
+    !cell(r, COL.pos) && benefitsCell !== '' && cell(r, taxCol) === benefitsCell && cell(next ?? [], taxCol) === String(targetYear)
+
   const players: CotsPlayer[] = []
   const dead = new Map<string, DeadMoney>()
   let rowsPayroll = 0
@@ -136,7 +143,7 @@ export function parseTeamSheet(team: string, csv: string, lastSeason: number, ta
     const salCell = cell(r, salCol)
     const taxCell = cell(r, taxCol)
     const sal = parseMoney(salCell, millions)
-    const tax = parseMoney(taxCell, millions)
+    const tax = isStrayBenefits(r, rows[i + 1]) ? null : parseMoney(taxCell, millions)
     rowsPayroll += sal ?? 0
     rowsTax += tax ?? 0
 

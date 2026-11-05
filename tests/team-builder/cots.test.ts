@@ -3,7 +3,7 @@
 import { describe, expect, test } from 'bun:test'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { parseMoney, parseTeamSheet } from '../../lib/team-builder/cots'
+import { checkTeamSheet, parseMoney, parseTeamSheet } from '../../lib/team-builder/cots'
 
 const load = (team: string) =>
   parseTeamSheet(team, readFileSync(join(import.meta.dir, 'fixtures', `${team}.csv`), 'utf8'), 2026, 2027)
@@ -121,5 +121,21 @@ describe('sheet still on last season', () => {
     expect(s.sheetFirstYear).toBe(2026)
     expect(s.players.find((p) => p.name === 'Juan Soto')!.age).toBe(28)
     expect(s.tiers).toBeNull()
+  })
+})
+
+describe('benefits figure repeated on the last departed-player row', () => {
+  const csv = readFileSync(join(import.meta.dir, 'fixtures', 'rolled-KC-2026-11-05.csv'), 'utf8')
+  const estevez = (s: ReturnType<typeof parseTeamSheet>) => s.deadMoney.find((d) => d.name === 'Carlos Estévez')
+
+  test("isn't counted as that player's tax money", () => {
+    const s = parseTeamSheet('KC', csv, 2026, 2027)
+    expect(estevez(s)).toMatchObject({ salary: 2_000_000, taxValue: 0 })
+    expect(checkTeamSheet(s)).toEqual([])
+  })
+  test('the same amount on an earlier row is real money', () => {
+    const row = '"Traded, Someone",,,,,,,,,,to Boston,,"$18,500,000",,,,,,"$18,500,000",,,,\n'
+    const s = parseTeamSheet('KC', csv.replace('"Estévez, Carlos"', `${row}"Estévez, Carlos"`), 2026, 2027)
+    expect(s.deadMoney.find((d) => d.name === 'Someone Traded')?.taxValue).toBe(18_500_000)
   })
 })
