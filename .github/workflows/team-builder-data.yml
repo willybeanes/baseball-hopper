@@ -47,6 +47,12 @@ jobs:
         continue-on-error: true
         run: bun scripts/team-builder/refresh-cots.ts --save-raw raw-sheets
 
+      # Report only: lists 40-man differences from FanGraphs' RosterResource in the run summary
+      # and crosscheck.json. It never changes the roster data or fails the run.
+      - name: Cross-check rosters against RosterResource
+        continue-on-error: true
+        run: bun scripts/team-builder/crosscheck-rosterresource.ts
+
       - name: Commit the snapshot if it changed
         if: github.event_name != 'pull_request'
         run: |
