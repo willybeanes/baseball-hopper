@@ -1,5 +1,5 @@
 {
- "_readme": "2027 option facts, mostly from MLB Trade Rumors, keyed by MLBAM id. Cot's wins whenever it shows a real 2027 figure; the daily refresh applies these only while an option is still pending (lib/team-builder/estimates.ts). salary null = unknown: the player is left out of payroll with a warning. decidedBy: club, player, or both (mutual). type opt-out: the player can leave a signed deal (salary comes from Cot's).",
+ "_readme": "2027 option facts, mostly from MLB Trade Rumors, keyed by MLBAM id. Cot's wins whenever it shows a real 2027 figure; the daily refresh applies these only while an option is still pending (lib/team-builder/estimates.ts). salary null = unknown: the player is left out of payroll with a warning. decidedBy: club, player, or both (mutual). type opt-out: the player can leave a signed deal (salary comes from Cot's). declined: the date an option was turned down, set only while Cot's still lists the player.",
  "compiled": "2026-10-03",
  "sources": {
   "clubOptions": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html",
@@ -393,6 +393,7 @@
    "type": "club",
    "salary": 2500000,
    "buyout": 0,
+   "declined": "2026-10-30",
    "source": "https://www.mlbtraderumors.com/2026/10/2026-27-club-option-preview-october-edition.html"
   },
   {

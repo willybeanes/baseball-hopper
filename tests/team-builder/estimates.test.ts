@@ -49,4 +49,13 @@ describe('options', () => {
     const find = load('STL', { 'Andre Pallante': 1 }, [opt(1, { type: 'unknown' })], [{ mlbamId: 1, salary: 7.5e6 }])
     expect(find('Andre Pallante')).toMatchObject({ status: 'arb', salary: 7.5e6, salarySource: 'mlbtr-arb' })
   })
+  test("declined option Cot's still lists comes off the roster", () => {
+    const find = load('NYM', { 'Juan Soto': 1 }, [opt(1, { salary: 57.5e6, buyout: 0, declined: '2026-10-30' })])
+    expect(find('Juan Soto')).toMatchObject({ status: 'fa', salary: null, taxValue: null, salarySource: 'none' })
+    expect(find('Juan Soto').corrected).toBeTruthy()
+  })
+  test('declined option with a buyout starts declined', () => {
+    const find = load('NYM', { 'Juan Soto': 1 }, [opt(1, { salary: 57.5e6, buyout: 5e6, declined: '2026-10-30' })])
+    expect(find('Juan Soto')).toMatchObject({ status: 'option', buyout: 5e6, defaultExercised: false })
+  })
 })

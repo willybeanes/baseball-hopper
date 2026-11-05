@@ -59,7 +59,7 @@
       }
     },
     "LAA": {
-      "note": "Since 2026-10-31 Cot's totals are $2.5M below the rows with no row removed. Probably Robert Stephenson's conditional option or Jose Siri, both $2.5M; unconfirmed.",
+      "note": "Since 2026-10-31 Cot's totals are $2.5M below the rows: Robert Stephenson's $2.5M option was declined on 2026-10-30 but his row is still on the sheet. The refresh drops him (options-2027.json declined).",
       "payroll": {
         "rows": 108.574,
         "sheet": 106.074

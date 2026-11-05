@@ -12,6 +12,7 @@ export interface OptionFact {
   type: string
   salary: number | null
   buyout: number | null
+  declined?: string // date the option was turned down, for when Cot's still carries the player
 }
 
 export interface ArbEstimate { mlbamId: number | null; salary: number }
@@ -48,6 +49,19 @@ export function applyEstimates(
     const opt = p.mlbamId ? optionById.get(p.mlbamId) : undefined
     const arbSalary = p.mlbamId ? arbById.get(p.mlbamId) : undefined
     const clubOrMutual = opt && opt.decidedBy !== 'player'
+
+    // A decision Cot's hasn't caught up with (Robert Stephenson, 2026-10-30): off the roster,
+    // or, with a buyout, an option that starts declined so the buyout still counts.
+    if (opt?.declined && (p.status === 'signed' || p.status === 'option')) {
+      p.corrected = `Option declined ${opt.declined}; Cot's still lists him`
+      if (opt.buyout) {
+        Object.assign(p, { status: 'option', salary: opt.salary, taxValue: opt.salary, buyout: opt.buyout, walkYear: undefined })
+        Object.assign(p, { decidedBy: opt.decidedBy, defaultExercised: false, salarySource: 'option' })
+      } else {
+        Object.assign(p, { status: 'fa', salary: null, taxValue: null, walkYear: undefined, salarySource: 'none' })
+      }
+      continue
+    }
 
     // Cot's slips that MLBTR catches: an option buyout sitting in the salary column
     // (Carson Kelly), or a pending option marked FA (Garrett Whitlock).
