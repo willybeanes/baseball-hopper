@@ -1148,11 +1148,12 @@ export default function TeamBuilderApp() {
               : <span><span className="text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} /></span>}
           </div>
 
-          <footer className="max-w-[52ch] space-y-1 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0">
+          <footer className="gap-8 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0 md:columns-2 lg:columns-3 [&>p]:mb-1 [&>p]:break-inside-avoid">
             <p>
               Contracts from Cot&apos;s Baseball Contracts{updated ? `, last changed ${updated}` : ''}. Checked daily through March.
               Arbitration projections from <a href={meta.sources.arbitration.url} className="underline hover:text-[var(--dim)]">MLB Trade Rumors</a> ({meta.sources.arbitration.author}); option salaries from MLB Trade Rumors&apos;{' '}
               <a href={meta.sources.options.clubOptions} className="underline hover:text-[var(--dim)]">club</a> and <a href={meta.sources.options.playerOptions} className="underline hover:text-[var(--dim)]">player option</a> previews.
+              Roster moves Cot&apos;s hasn&apos;t recorded yet, and free agents from outside MLB, from FanGraphs&apos; <a href="https://www.fangraphs.com/roster-resource/depth-charts" className="underline hover:text-[var(--dim)]">RosterResource</a>.
             </p>
             {meta.projections && (
               <p>
