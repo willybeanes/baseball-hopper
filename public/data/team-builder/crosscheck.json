@@ -1,0 +1,368 @@
+{
+ "checkedAt": "2026-11-05T20:24:49.610Z",
+ "source": "https://www.fangraphs.com/roster-resource/depth-charts",
+ "teams": {
+  "BAL": {
+   "leftRoster": [
+    {
+     "mlbamId": 665750,
+     "name": "Leody Taveras",
+     "where": "not with the team",
+     "move": "2026-11-02: Cleared waivers; outrighted to minors"
+    },
+    {
+     "mlbamId": 650968,
+     "name": "Yohel Pozo",
+     "where": "not with the team"
+    },
+    {
+     "mlbamId": 677008,
+     "name": "Heston Kjerstad",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 691172,
+     "name": "Yosver Zulueta",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    }
+   ],
+   "joinedRoster": [
+    {
+     "mlbamId": 687985,
+     "name": "Josh White",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Marlins"
+    },
+    {
+     "mlbamId": 691769,
+     "name": "Philip Abner",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Mets"
+    }
+   ]
+  },
+  "CHC": {
+   "leftRoster": [
+    {
+     "mlbamId": 592122,
+     "name": "Tyler Austin",
+     "where": "not with the team"
+    }
+   ],
+   "joinedRoster": [
+    {
+     "mlbamId": 679358,
+     "name": "Eric Orze",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Twins"
+    }
+   ]
+  },
+  "CIN": {
+   "leftRoster": [
+    {
+     "mlbamId": 671155,
+     "name": "Ivan Johnson",
+     "where": "not with the team"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "CLE": {
+   "leftRoster": [
+    {
+     "mlbamId": 661403,
+     "name": "Emmanuel Clase",
+     "where": "listed as il-rl, off the 40-man"
+    },
+    {
+     "mlbamId": 682847,
+     "name": "Luis L. Ortiz",
+     "where": "listed as il-rl, off the 40-man"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "COL": {
+   "leftRoster": [
+    {
+     "mlbamId": 701487,
+     "name": "Pierson Ohl",
+     "where": "not with the team",
+     "move": "2026-11-02: Lost off waivers to Mets"
+    },
+    {
+     "mlbamId": 696275,
+     "name": "RJ Petit",
+     "where": "not with the team",
+     "move": "2026-11-02: Returned to Tigers (Rule 5)"
+    },
+    {
+     "mlbamId": 677060,
+     "name": "Chad Stevens",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 669298,
+     "name": "T.J. Shook",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 682769,
+     "name": "Eiberson Castellano",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 687060,
+     "name": "Blake Adams",
+     "where": "in the minors, off the 40-man",
+     "move": "2026-11-02: Outrighted to minors"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "CWS": {
+   "leftRoster": [
+    {
+     "mlbamId": 681066,
+     "name": "Ky Bush",
+     "where": "in the minors, off the 40-man",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 678577,
+     "name": "Junior Perez",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    }
+   ],
+   "joinedRoster": [
+    {
+     "mlbamId": 688363,
+     "name": "Graham Pauley",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Marlins"
+    },
+    {
+     "mlbamId": 688363,
+     "name": "Graham Pauley",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Marlins"
+    }
+   ]
+  },
+  "DET": {
+   "leftRoster": [
+    {
+     "mlbamId": 687830,
+     "name": "Sawyer Gipson-Long",
+     "where": "not with the team",
+     "move": "2026-11-02: Released"
+    },
+    {
+     "mlbamId": 667452,
+     "name": "Corey Julks",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 690544,
+     "name": "Bailey Horn",
+     "where": "not with the team",
+     "move": "2026-11-02: Released"
+    },
+    {
+     "mlbamId": 700270,
+     "name": "Yilber Diaz",
+     "where": "in the minors, off the 40-man",
+     "move": "2026-11-02: Designated for assignment (pending)"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "HOU": {
+   "leftRoster": [],
+   "joinedRoster": [
+    {
+     "mlbamId": 682126,
+     "name": "Evan Reifert (mil)",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Contract selected from minors"
+    }
+   ]
+  },
+  "MIA": {
+   "leftRoster": [
+    {
+     "mlbamId": 688363,
+     "name": "Graham Pauley",
+     "where": "not with the team",
+     "move": "2026-11-02: Lost off waivers to White Sox"
+    },
+    {
+     "mlbamId": 687134,
+     "name": "Bradley Blalock",
+     "where": "not with the team",
+     "move": "2026-11-03: Released"
+    },
+    {
+     "mlbamId": 687287,
+     "name": "Patrick Monteverde",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 687985,
+     "name": "Josh White",
+     "where": "not with the team",
+     "move": "2026-11-02: Lost off waivers to Orioles"
+    }
+   ],
+   "joinedRoster": [
+    {
+     "mlbamId": 687721,
+     "name": "Cameron Weston",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Mets"
+    }
+   ]
+  },
+  "MIN": {
+   "leftRoster": [
+    {
+     "mlbamId": 679358,
+     "name": "Eric Orze",
+     "where": "not with the team",
+     "move": "2026-11-02: Lost off waivers to Cubs"
+    },
+    {
+     "mlbamId": 681252,
+     "name": "Jack Anderson",
+     "where": "not with the team",
+     "move": "2026-11-02: Lost off waivers to Mets"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "NYM": {
+   "leftRoster": [
+    {
+     "mlbamId": 677347,
+     "name": "Kyren Paris",
+     "where": "in the minors, off the 40-man",
+     "move": "2026-11-02: Designated for assignment (pending)"
+    },
+    {
+     "mlbamId": 686551,
+     "name": "Christian Cairo",
+     "where": "in the minors, off the 40-man",
+     "move": "2026-11-02: Designated for assignment (pending)"
+    }
+   ],
+   "joinedRoster": [
+    {
+     "mlbamId": 701487,
+     "name": "Pierson Ohl",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Rockies"
+    },
+    {
+     "mlbamId": 681252,
+     "name": "Jack T. Anderson",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Twins"
+    }
+   ]
+  },
+  "PHI": {
+   "leftRoster": [],
+   "joinedRoster": [
+    {
+     "mlbamId": 679032,
+     "name": "Johan Rojas",
+     "where": "not on Cot's sheet"
+    }
+   ]
+  },
+  "PIT": {
+   "leftRoster": [
+    {
+     "mlbamId": 676755,
+     "name": "Isaac Mattson",
+     "where": "not with the team",
+     "move": "2026-11-02: Lost off waivers to Mariners"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "SD": {
+   "leftRoster": [
+    {
+     "mlbamId": 506433,
+     "name": "Yu Darvish",
+     "where": "listed as il-rl, off the 40-man"
+    }
+   ],
+   "joinedRoster": []
+  },
+  "SEA": {
+   "leftRoster": [
+    {
+     "mlbamId": 621550,
+     "name": "Patrick Wisdom",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 642215,
+     "name": "Weston Wilson",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 681006,
+     "name": "Josh Simpson",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 669717,
+     "name": "Will Wilson",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    },
+    {
+     "mlbamId": 681890,
+     "name": "Troy Watson",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    }
+   ],
+   "joinedRoster": [
+    {
+     "mlbamId": 676755,
+     "name": "Isaac Mattson",
+     "where": "not on Cot's sheet",
+     "move": "2026-11-02: Claimed off waivers from Pirates"
+    }
+   ]
+  },
+  "TEX": {
+   "leftRoster": [
+    {
+     "mlbamId": 680737,
+     "name": "Michael Helman",
+     "where": "not with the team",
+     "move": "2026-11-02: Outrighted to minors"
+    }
+   ],
+   "joinedRoster": []
+  }
+ },
+ "failed": []
+}
