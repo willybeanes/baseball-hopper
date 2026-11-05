@@ -20,7 +20,8 @@ interface Coord {
   steady: number | null;
 }
 
-type RawRow = [number, string, number, number | null, number[], (number | null)[], (number | null)[]];
+type Bats = "L" | "R" | "S";
+type RawRow = [number, string, number, number | null, number[], (number | null)[], (number | null)[], Bats | null, number | null];
 
 interface UniverseJson {
   generated: string;
@@ -41,11 +42,23 @@ interface Row {
   raw: (number | null)[];
   pct: (number | null)[];
   z: (number | null)[];
+  bats: Bats | null;
+  /** Real production, standardized. Counts in closeness but is never shown. */
+  results: number | null;
 }
 
 const SEASONS = [2026, 2025, 2024];
 const SEASON_COLOR: Record<number, string> = { 2026: "#3f6495", 2025: "#7f9abd", 2024: "#b9c5d4" };
 const NEIGHBORS = 10;
+const SIDES = [
+  { key: "all", label: "Both" },
+  { key: "L", label: "Lefties" },
+  { key: "R", label: "Righties" },
+] as const;
+type Side = (typeof SIDES)[number]["key"];
+const BATS_LABEL: Record<Bats, string> = { L: "Bats left", R: "Bats right", S: "Switch hitter" };
+// Switch hitters bat from both sides, so they stay in either view.
+const onSide = (r: Row, side: Side) => side === "all" || r.bats === side || r.bats === "S";
 // Below this, a coordinate moves too much from one season to the next to lean on by itself.
 const NOISY_BELOW = 0.4;
 
@@ -69,6 +82,11 @@ function distance(a: Row, b: Row, active: boolean[]): number {
     sum += (x - y) ** 2;
     used++;
   }
+  if (a.results != null && b.results != null) {
+    sum += (a.results - b.results) ** 2;
+    used++;
+  }
+  on++;
   return used ? Math.sqrt((sum * on) / used) : Infinity;
 }
 
@@ -138,6 +156,7 @@ function AddressRow({
 export default function HitterUniverse() {
   const [data, setData] = useState<{ coords: Coord[]; rows: Row[]; mapKept: number } | "error" | null>(null);
   const [seasons, setSeasons] = useState<number[]>(SEASONS);
+  const [side, setSide] = useState<Side>("all");
   const [selected, setSelected] = useState<number | null>(null);
   const [compare, setCompare] = useState<number | null>(null);
   const [active, setActive] = useState<boolean[]>([]);
@@ -153,7 +172,7 @@ export default function HitterUniverse() {
         return r.json() as Promise<UniverseJson>;
       })
       .then((j) => {
-        const rows = j.rows.map(([mlbam, name, season, hitting, xyz, raw, pct], i): Row => ({
+        const rows = j.rows.map(([mlbam, name, season, hitting, xyz, raw, pct, bats, results], i): Row => ({
           i,
           mlbam,
           name,
@@ -162,6 +181,8 @@ export default function HitterUniverse() {
           xyz,
           raw,
           pct,
+          bats,
+          results,
           z: raw.map((v, k) => {
             if (v == null) return null;
             const shift = j.coords[k].key === "launch" ? j.launch_shift[season] : 0;
@@ -171,6 +192,8 @@ export default function HitterUniverse() {
         setData({ coords: j.coords, rows, mapKept: j.map_kept });
         setActive(j.coords.map(() => true));
         const params = new URLSearchParams(window.location.search);
+        const wantedSide = params.get("bats");
+        if (wantedSide === "L" || wantedSide === "R") setSide(wantedSide);
         const wanted = rows.filter((r) => r.mlbam === Number(params.get("player")));
         const pick = wanted.find((r) => r.season === Number(params.get("season"))) ?? wanted.at(-1);
         if (pick) setSelected(pick.i);
@@ -204,19 +227,26 @@ export default function HitterUniverse() {
     window.history.replaceState(null, "", url);
   }, [center]);
 
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (side === "all") url.searchParams.delete("bats");
+    else url.searchParams.set("bats", side);
+    window.history.replaceState(null, "", url);
+  }, [side]);
+
   const nearby = useMemo(() => {
     if (!center) return { list: [], own: [], typical: 0 };
     const scored = rows
       .filter((r) => r.i !== center.i)
       .map((r) => ({ r, d: distance(center, r, active) }))
       .sort((a, b) => a.d - b.d);
-    const visible = scored.filter((x) => x.r.mlbam !== center.mlbam && seasons.includes(x.r.season));
+    const visible = scored.filter((x) => x.r.mlbam !== center.mlbam && seasons.includes(x.r.season) && onSide(x.r, side));
     return {
       list: visible.slice(0, NEIGHBORS),
       own: scored.filter((x) => x.r.mlbam === center.mlbam),
       typical: visible[Math.floor(visible.length / 2)]?.d ?? 0,
     };
-  }, [center, rows, active, seasons]);
+  }, [center, rows, active, seasons, side]);
 
   const search = useCallback(
     (name: string) => {
@@ -263,7 +293,7 @@ export default function HitterUniverse() {
     const xyz = (list: Row[]) => ({ x: list.map((r) => r.xyz[0]), y: list.map((r) => r.xyz[1]), z: list.map((r) => r.xyz[2]) });
     const label = (r: Row) => `${formatName(r.name)} ${r.season}`;
     const dots = [...seasons].sort().map((s) => {
-      const list = rows.filter((r) => r.season === s);
+      const list = rows.filter((r) => r.season === s && onSide(r, side));
       return {
         type: "scatter3d",
         mode: "markers",
@@ -362,7 +392,7 @@ export default function HitterUniverse() {
     });
     // The list ids stand in for nearby.list, which is rebuilt on every change of its inputs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [plotReady, rows, seasons, center, other, listIds, select, ranges]);
+  }, [plotReady, rows, seasons, side, center, other, listIds, select, ranges]);
 
   // Flies to a newly centered hitter, once. Dragging afterwards stays with the viewer.
   const flownTo = useRef<number | null>(null);
@@ -407,6 +437,24 @@ export default function HitterUniverse() {
               );
             })}
           </div>
+          <div className="flex gap-1.5" role="group" aria-label="Batting side shown">
+            {SIDES.map(({ key, label }) => (
+              <button
+                key={key}
+                type="button"
+                aria-pressed={side === key}
+                onClick={() => {
+                  setSide(key);
+                  setCompare(null);
+                }}
+                className={`rounded-lg border px-3 py-2 text-[13px] font-medium ${
+                  side === key ? "border-[var(--dimmer)] text-[var(--text)]" : "border-[var(--panel-border)] text-[var(--dim)]"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
         <div ref={plotEl} className="mt-2 h-[420px] w-full sm:h-[620px]" role="img" aria-label="3D map of hitter-seasons. Dots that sit close together tend to have similar addresses." />
         {loaded && (
@@ -431,7 +479,7 @@ export default function HitterUniverse() {
                 <h2 className="text-[15px] font-semibold tracking-tight text-[var(--text)]">
                   <Link href={`/player/${center.mlbam}`} className="hover:underline">{formatName(center.name)}</Link> {center.season}
                 </h2>
-                <p className="mt-0.5 text-[11px] text-[var(--dim)]">Hitting+ {center.hitting ?? "n/a"}</p>
+                <p className="mt-0.5 text-[11px] text-[var(--dim)]">Hitting+ {center.hitting ?? "n/a"}{center.bats ? ` · ${BATS_LABEL[center.bats]}` : ""}</p>
               </div>
               {nearby.own.length > 0 && (
                 <div className="flex shrink-0 gap-1">
@@ -530,7 +578,7 @@ export default function HitterUniverse() {
             </div>
             {noisy.length > 0 && (
               <p className="mt-3 text-[11px] leading-relaxed text-[var(--dim)]">
-                {`${noisy.join(" and ")} ${noisy.length === 1 ? "moves" : "move"} the most from one season to the next, so try unchecking ${noisy.length === 1 ? "it" : "them"} if a match looks odd. `}The seven styles describe how a hitter swings and are not grades, and they count as much here as the four Hitting+ components. Swing launch is shown in the frames we read, but it is compared after lining up each season&apos;s average, because the same hitters read about 0.7 frames lower on the 2026 videos.
+                {`${noisy.join(" and ")} ${noisy.length === 1 ? "moves" : "move"} the most from one season to the next, so try unchecking ${noisy.length === 1 ? "it" : "them"} if a match looks odd. `}Closeness and the map also count how much each hitter actually produced, which is not shown here and cannot be unchecked. The seven styles describe how a hitter swings and are not grades, and they count as much here as the four Hitting+ components. Swing launch is shown in the frames we read, but it is compared after lining up each season&apos;s average, because the same hitters read about 0.7 frames lower on the 2026 videos.
               </p>
             )}
           </>
