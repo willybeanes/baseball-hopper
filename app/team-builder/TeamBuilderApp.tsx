@@ -1148,23 +1148,18 @@ export default function TeamBuilderApp() {
               : <span><span className="text-[var(--dimmer)]">WAR </span><span className="font-semibold">{teamWar.toFixed(1)}</span><WarDelta now={teamWar} then={startWar} /></span>}
           </div>
 
-          <footer className="gap-8 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0 md:columns-2 lg:columns-3 [&>p]:mb-1 [&>p]:break-inside-avoid">
+          <footer className="gap-8 pb-12 pt-2 text-[11px] text-[var(--dimmer)] sm:pb-0 md:columns-3 [&>p]:mb-1 [&>p]:break-inside-avoid">
             <p>
-              Contracts from Cot&apos;s Baseball Contracts{updated ? `, last changed ${updated}` : ''}. Checked daily through March.
-              Arbitration projections from <a href={meta.sources.arbitration.url} className="underline hover:text-[var(--dim)]">MLB Trade Rumors</a> ({meta.sources.arbitration.author}); option salaries from MLB Trade Rumors&apos;{' '}
-              <a href={meta.sources.options.clubOptions} className="underline hover:text-[var(--dim)]">club</a> and <a href={meta.sources.options.playerOptions} className="underline hover:text-[var(--dim)]">player option</a> previews.
-              Roster moves Cot&apos;s hasn&apos;t recorded yet, and free agents from outside MLB, from FanGraphs&apos; <a href="https://www.fangraphs.com/roster-resource/depth-charts" className="underline hover:text-[var(--dim)]">RosterResource</a>.
+              Contracts from Cot&apos;s Baseball Contracts{updated ? ` (updated ${updated})` : ''}, with the latest roster moves and international free agents from FanGraphs&apos;{' '}
+              <a href="https://www.fangraphs.com/roster-resource/depth-charts" className="underline hover:text-[var(--dim)]">RosterResource</a>. Arbitration and option salaries from{' '}
+              <a href={meta.sources.arbitration.url} className="underline hover:text-[var(--dim)]">MLB Trade Rumors</a>.
             </p>
-            {meta.projections && (
-              <p>
-                Projected WAR from FanGraphs&apos; <a href={meta.projections.url} className="underline hover:text-[var(--dim)]">{meta.projections.label}</a>. {meta.projections.note} Players with no projection show a dash and count as 0. WAR figures are tinted red from about 1 WAR (deepest at 5+) and blue below zero; hover one for a plain-words reading.
-                Free-agent prices use {money(perWin)} per projected WAR for one season, set against what this year&apos;s free agents are paid (FanGraphs&apos; <a href={assumptions.dollarsPerWar.url} className="underline hover:text-[var(--dim)]">$11.2M figure</a> is for multi-year deals, over which WAR declines).
-              </p>
-            )}
             <p>
-              Team WAR is counted like a depth chart: each position gets a season&apos;s playing time (about 6,200 PA and 1,450 innings in all), filled by the team&apos;s best players there first, so a deep roster can&apos;t count more playing time than a season has. A player&apos;s own WAR is his full projection; &quot;plays ~40%&quot; or &quot;bench&quot; shows how much of it this roster has room for.
-              The projected record starts from a replacement-level team (about 48 wins), adds team WAR, and scales every team by the same small factor so the league as a whole plays .500.
-              The tax line and tiers are placeholders until a new labor agreement. Estimates are in italics with &quot;est.&quot;; hover one to see where it comes from. Your roster lives in the page address: use Copy share link to save or post it.
+              {meta.projections ? <>Projected WAR from FanGraphs&apos; <a href={meta.projections.url} className="underline hover:text-[var(--dim)]">{meta.projections.label}</a>. </> : null}
+              Free agents are priced at {money(perWin)} per projected WAR for one season. Estimated figures are marked &quot;est.&quot;; hover one for its source.
+            </p>
+            <p>
+              Team WAR fills one season of playing time with each roster&apos;s best players, so extra depth only counts when it would play. The record adds team WAR to a replacement-level team. Tax tiers are placeholders until the next labor deal. Copy share link to save your roster.
             </p>
           </footer>
         </div>
