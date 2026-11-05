@@ -7,7 +7,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { defaultRoster, type TeamFile } from '../../lib/team-builder/roster'
-import { compareRoster, fetchTeam, FG_TEAM_IDS, type TeamCheck } from '../../lib/team-builder/rosterresource'
+import { compareRoster, fetchTeam, FG_TEAM_IDS, type TeamCheck } from './rosterresource'
 
 const DIR = join(import.meta.dir, '../../public/data/team-builder')
 const OUT = join(DIR, 'crosscheck.json')

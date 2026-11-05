@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-05T20:24:49.610Z",
+ "checkedAt": "2026-11-05T20:25:34.785Z",
  "source": "https://www.fangraphs.com/roster-resource/depth-charts",
  "teams": {
   "BAL": {
@@ -75,12 +75,12 @@
     {
      "mlbamId": 661403,
      "name": "Emmanuel Clase",
-     "where": "listed as il-rl, off the 40-man"
+     "where": "on the restricted list, off the 40-man"
     },
     {
      "mlbamId": 682847,
      "name": "Luis L. Ortiz",
-     "where": "listed as il-rl, off the 40-man"
+     "where": "on the restricted list, off the 40-man"
     }
    ],
    "joinedRoster": []
@@ -142,12 +142,6 @@
     }
    ],
    "joinedRoster": [
-    {
-     "mlbamId": 688363,
-     "name": "Graham Pauley",
-     "where": "not on Cot's sheet",
-     "move": "2026-11-02: Claimed off waivers from Marlins"
-    },
     {
      "mlbamId": 688363,
      "name": "Graham Pauley",
@@ -305,7 +299,7 @@
     {
      "mlbamId": 506433,
      "name": "Yu Darvish",
-     "where": "listed as il-rl, off the 40-man"
+     "where": "on the restricted list, off the 40-man"
     }
    ],
    "joinedRoster": []

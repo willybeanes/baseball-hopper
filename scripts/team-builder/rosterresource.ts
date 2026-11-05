@@ -46,8 +46,9 @@ export async function fetchTeam(team: string): Promise<{ roster: RrPlayer[]; tra
   return { roster, transactions }
 }
 
+const RR_LISTS: Record<string, string> = { 'il-rl': 'on the restricted list', 'il-60': 'on the 60-day IL' }
 const describeRr = (p: RrPlayer | undefined) =>
-  !p ? 'not with the team' : p.type.startsWith('off-') ? 'in the minors, off the 40-man' : `listed as ${p.type}, off the 40-man`
+  !p ? 'not with the team' : p.type.startsWith('off-') ? 'in the minors, off the 40-man' : `${RR_LISTS[p.type] ?? `listed as ${p.type}`}, off the 40-man`
 const describeOurs = (p: OurPlayer | undefined) =>
   !p ? "not on Cot's sheet" : p.status === 'fa' ? "a free agent on Cot's" : p.status === 'option' ? 'a declined option by default' : `on Cot's as ${p.status}`
 
@@ -64,8 +65,10 @@ export function compareRoster(ourRoster: OurPlayer[], ourPlayers: OurPlayer[], r
   const leftRoster = ourRoster
     .filter((p) => p.mlbamId != null && !on40.has(p.mlbamId))
     .map((p) => ({ mlbamId: p.mlbamId!, name: p.name, where: describeRr(rrById.get(p.mlbamId!)), ...move(p.mlbamId!) }))
+  const seen = new Set<string>() // RosterResource can list a player twice (Graham Pauley, 2026-11-05)
   const joinedRoster = rr
     .filter((p) => p.roster40 === 'Y' && (p.mlbamid == null || !ourIds.has(p.mlbamid)))
+    .filter((p) => { const k = String(p.mlbamid ?? p.player); return !seen.has(k) && !!seen.add(k) })
     .map((p) => ({ mlbamId: p.mlbamid, name: p.player, where: describeOurs(p.mlbamid == null ? undefined : ourById.get(p.mlbamid)), ...move(p.mlbamid) }))
   return { leftRoster, joinedRoster }
 }
