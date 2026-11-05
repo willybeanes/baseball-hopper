@@ -243,22 +243,6 @@
    "ip": 66
   },
   {
-   "name": "Ky Bush",
-   "sheetName": "Bush, Ky",
-   "pos": "lhp",
-   "age": 27,
-   "mls": 2.056,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 785200,
-   "mlbamId": 681066,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
-  },
-  {
    "name": "Brooks Baldwin",
    "sheetName": "Baldwin, Brooks",
    "pos": "2b-3b",
@@ -595,22 +579,6 @@
    "ip": 130.1
   },
   {
-   "name": "Junior Perez",
-   "sheetName": "Perez, Junior",
-   "pos": "cf",
-   "age": 25,
-   "mls": 0.039,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 263943,
-   "mlbamId": 678577,
-   "salarySource": "minimum",
-   "war": 0,
-   "pa": 14
-  },
-  {
    "name": "David Sandlin",
    "sheetName": "Sandlin, David",
    "pos": "rhp-s",
@@ -657,6 +625,23 @@
    "salarySource": "minimum",
    "war": 0.1,
    "ip": 32.5
+  },
+  {
+   "name": "Graham Pauley",
+   "sheetName": "Pauley, Graham",
+   "pos": "3b",
+   "age": 26,
+   "mls": 1.112,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": 575128,
+   "mlbamId": 688363,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from MIA",
+   "war": 0.16,
+   "pa": 140
   }
  ],
  "deadMoney": [
@@ -759,6 +744,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 681066,
+   "name": "Ky Bush",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.76,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 694478,

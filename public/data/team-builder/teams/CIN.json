@@ -525,22 +525,6 @@
    "pa": 276
   },
   {
-   "name": "Ivan Johnson",
-   "sheetName": "Johnson, Ivan",
-   "pos": "2b",
-   "age": 28,
-   "mls": 0.045,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 195344,
-   "mlbamId": 671155,
-   "salarySource": "minimum",
-   "war": 0,
-   "pa": 6
-  },
-  {
    "name": "Jose Franco",
    "sheetName": "Franco, Jose",
    "pos": "rhp",

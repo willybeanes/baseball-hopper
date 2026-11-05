@@ -302,24 +302,6 @@
    "ip": 64
   },
   {
-   "name": "Patrick Wisdom",
-   "sheetName": "Wisdom, Patrick",
-   "pos": "3b-1b",
-   "age": 35,
-   "mls": 4.135,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 564706,
-   "arbYear": 3,
-   "cotsEstimate": 1050000,
-   "mlbamId": 621550,
-   "salarySource": "mlbtr-arb",
-   "war": 0.02,
-   "pa": 10
-  },
-  {
    "name": "Cooper Criswell",
    "sheetName": "Criswell, Cooper",
    "pos": "rhp",
@@ -390,22 +372,6 @@
    "pa": 60
   },
   {
-   "name": "Weston Wilson",
-   "sheetName": "Wilson, Weston",
-   "pos": "3b-of",
-   "age": 32,
-   "mls": 2.085,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 426685,
-   "mlbamId": 642215,
-   "salarySource": "minimum",
-   "war": 0.02,
-   "pa": 13
-  },
-  {
    "name": "Emerson Hancock",
    "sheetName": "Hancock, Emerson",
    "pos": "rhp-s",
@@ -420,22 +386,6 @@
    "salarySource": "minimum",
    "war": 1.33,
    "ip": 154.1
-  },
-  {
-   "name": "Josh Simpson",
-   "sheetName": "Simpson, Josh",
-   "pos": "lhp",
-   "age": 29,
-   "mls": 1.143,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 294662,
-   "mlbamId": 681006,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
   },
   {
    "name": "Logan Evans",
@@ -548,22 +498,6 @@
    "salarySource": "minimum",
    "war": 0.04,
    "ip": 24
-  },
-  {
-   "name": "Will Wilson",
-   "sheetName": "Wilson, Will",
-   "pos": "ss",
-   "age": 28,
-   "mls": 0.141,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 671552,
-   "mlbamId": 669717,
-   "salarySource": "minimum",
-   "war": 0,
-   "pa": 3
   },
   {
    "name": "Nick Davila",
@@ -710,20 +644,21 @@
    "ip": 18
   },
   {
-   "name": "Troy Watson",
-   "sheetName": "Watson, Troy",
+   "name": "Isaac Mattson",
+   "sheetName": "Mattson, Isaac",
    "pos": "rhp",
-   "age": 30,
-   "mls": 0,
+   "age": 31,
+   "mls": 1.123,
    "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 14625,
-   "mlbamId": 681890,
+   "salaryPrevYear": 565304,
+   "mlbamId": 676755,
    "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
+   "corrected": "RosterResource: moved from PIT",
+   "war": 0.02,
+   "ip": 30
   }
  ],
  "deadMoney": [
@@ -853,6 +788,26 @@
    "debuted": true
   },
   {
+   "mlbamId": 642215,
+   "name": "Weston Wilson",
+   "pos": "3b",
+   "age": 32,
+   "war": 1.04,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 621550,
+   "name": "Patrick Wisdom",
+   "pos": "3b",
+   "age": 35,
+   "war": 0.94,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 701805,
    "name": "Josh Caron",
    "pos": "c",
@@ -938,6 +893,16 @@
    "pos": "sp",
    "age": 28,
    "war": 0.48,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 681890,
+   "name": "Troy Watson",
+   "pos": "sp",
+   "age": 30,
+   "war": 0.41,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -1031,6 +996,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 681006,
+   "name": "Josh Simpson",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.1,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 686638,

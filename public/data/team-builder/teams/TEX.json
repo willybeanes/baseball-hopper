@@ -365,22 +365,6 @@
    "pa": 275
   },
   {
-   "name": "Michael Helman",
-   "sheetName": "Helman, Michael",
-   "pos": "2b",
-   "age": 31,
-   "mls": 1.056,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 599721,
-   "mlbamId": 680737,
-   "salarySource": "minimum",
-   "war": 0,
-   "pa": 14
-  },
-  {
    "name": "Alejandro Osuna",
    "sheetName": "Osuna, Alejandro",
    "pos": "of",

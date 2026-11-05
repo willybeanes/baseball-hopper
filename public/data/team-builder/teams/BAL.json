@@ -109,24 +109,6 @@
    "ip": 170.6
   },
   {
-   "name": "Leody Taveras",
-   "sheetName": "Taveras, Leody",
-   "pos": "cf",
-   "age": 28,
-   "mls": 5.031,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 3700000,
-   "taxValue": 3700000,
-   "salaryPrevYear": 2000000,
-   "arbYear": 3,
-   "cotsEstimate": 3500000,
-   "mlbamId": 665750,
-   "salarySource": "mlbtr-arb",
-   "war": 0.29,
-   "pa": 216
-  },
-  {
    "name": "Colton Cowser",
    "sheetName": "Cowser, Colton",
    "pos": "of",
@@ -295,22 +277,6 @@
    "pa": 203
   },
   {
-   "name": "Yohel Pozo",
-   "sheetName": "Pozo, Yohel",
-   "pos": "c-1b",
-   "age": 30,
-   "mls": 2.009,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 275254,
-   "mlbamId": 650968,
-   "salarySource": "minimum",
-   "war": 0.06,
-   "pa": 20
-  },
-  {
    "name": "Coby Mayo",
    "sheetName": "Mayo, Coby",
    "pos": "3b",
@@ -341,22 +307,6 @@
    "salarySource": "minimum",
    "war": 1.42,
    "ip": 131.9
-  },
-  {
-   "name": "Heston Kjerstad",
-   "sheetName": "Kjerstad, Heston",
-   "pos": "of",
-   "age": 27,
-   "mls": 1.133,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 474709,
-   "mlbamId": 677008,
-   "salarySource": "minimum",
-   "war": -0.09,
-   "pa": 139
   },
   {
    "name": "Grant Wolfram",
@@ -519,22 +469,6 @@
    "ip": 38
   },
   {
-   "name": "Yosver Zulueta",
-   "sheetName": "Zulueta, Yosver",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 0.071,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 61851,
-   "mlbamId": 691172,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
-  },
-  {
    "name": "Christian Franklin",
    "sheetName": "Franklin, Christian",
    "pos": "lf",
@@ -645,6 +579,40 @@
    "salarySource": "minimum",
    "war": 0.02,
    "pa": 6
+  },
+  {
+   "name": "Josh White",
+   "sheetName": "White, Josh",
+   "pos": "rhp",
+   "age": 26,
+   "mls": 0.001,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": 67431,
+   "mlbamId": 687985,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from MIA",
+   "war": -0.03,
+   "ip": 30
+  },
+  {
+   "name": "Philip Abner",
+   "sheetName": "",
+   "pos": "lhp",
+   "age": 25,
+   "mls": 0.011,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 691769,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": -0.06,
+   "ip": 18
   }
  ],
  "deadMoney": [
@@ -798,6 +766,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 650968,
+   "name": "Yohel Pozo",
+   "pos": "c",
+   "age": 30,
+   "war": 1.39,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 815148,
@@ -1018,6 +996,16 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 691172,
+   "name": "Yosver Zulueta",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.22,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 821150,

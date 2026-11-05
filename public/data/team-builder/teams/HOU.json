@@ -638,6 +638,23 @@
    "salarySource": "minimum",
    "war": 0.09,
    "ip": 30
+  },
+  {
+   "name": "Evan Reifert",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 682126,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.08,
+   "ip": 25
   }
  ],
  "deadMoney": [
@@ -858,16 +875,6 @@
    "age": 27,
    "war": 0.23,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682126,
-   "name": "Evan Reifert",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.2,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   },

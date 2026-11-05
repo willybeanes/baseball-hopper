@@ -391,22 +391,6 @@
    "ip": 52
   },
   {
-   "name": "Eric Orze",
-   "sheetName": "Orze, Eric",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 1.052,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 544295,
-   "mlbamId": 679358,
-   "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 38
-  },
-  {
    "name": "Mick Abel",
    "sheetName": "Abel, Mick",
    "pos": "rhp-s",
@@ -581,22 +565,6 @@
    "salarySource": "minimum",
    "war": 0.21,
    "pa": 114
-  },
-  {
-   "name": "Jack Anderson",
-   "sheetName": "Anderson, Jack",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.02,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 87929,
-   "mlbamId": 681252,
-   "salarySource": "minimum",
-   "war": 0.06,
-   "ip": 18
   },
   {
    "name": "Gabriel Gonzalez",

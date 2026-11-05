@@ -322,22 +322,6 @@
    "pa": 226
   },
   {
-   "name": "Pierson Ohl",
-   "sheetName": "Ohl, Pierson",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 1.062,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 782000,
-   "mlbamId": 701487,
-   "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 6
-  },
-  {
    "name": "Kyle Karros",
    "sheetName": "Karros, Kyle",
    "pos": "3b",
@@ -384,22 +368,6 @@
    "salarySource": "minimum",
    "war": 0.01,
    "pa": 71
-  },
-  {
-   "name": "RJ Petit",
-   "sheetName": "Petit, RJ",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 1,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 780000,
-   "mlbamId": 696275,
-   "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 10
   },
   {
    "name": "T.J. Rumfield",
@@ -624,70 +592,6 @@
    "salarySource": "minimum",
    "war": -0.01,
    "ip": 36
-  },
-  {
-   "name": "Chad Stevens",
-   "sheetName": "Stevens, Chad",
-   "pos": "ss",
-   "age": 28,
-   "mls": 0.029,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 172153,
-   "mlbamId": 677060,
-   "salarySource": "minimum",
-   "war": 0,
-   "pa": 14
-  },
-  {
-   "name": "T.J. Shook",
-   "sheetName": "Shook, T.J.",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 0.015,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 444822,
-   "mlbamId": 669298,
-   "salarySource": "minimum",
-   "war": -0.01,
-   "ip": 1
-  },
-  {
-   "name": "Eiberson Castellano",
-   "sheetName": "Castellano, Eiberson",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.003,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 79709,
-   "mlbamId": 682769,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
-  },
-  {
-   "name": "Blake Adams",
-   "sheetName": "Adams, Blake",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.001,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 27280,
-   "mlbamId": 687060,
-   "salarySource": "minimum",
-   "war": -0.07,
-   "ip": 14
   }
  ],
  "deadMoney": [
@@ -977,6 +881,16 @@
    "pos": "rp",
    "age": 32,
    "war": 0.01,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 682769,
+   "name": "Eiberson Castellano",
+   "pos": "rp",
+   "age": 26,
+   "war": 0,
    "ip": 65,
    "salary": 780000,
    "debuted": true

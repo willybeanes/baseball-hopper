@@ -373,12 +373,13 @@
    "age": 29,
    "mls": 2.035,
    "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
+   "status": "fa",
+   "salary": null,
+   "taxValue": null,
    "salaryPrevYear": 388857,
    "mlbamId": 687830,
-   "salarySource": "minimum",
+   "salarySource": "none",
+   "corrected": "RosterResource: released",
    "war": 0,
    "ip": 1
   },
@@ -413,22 +414,6 @@
    "salarySource": "minimum",
    "war": 1.39,
    "ip": 134.3
-  },
-  {
-   "name": "Corey Julks",
-   "sheetName": "Julks, Corey",
-   "pos": "3b-of",
-   "age": 31,
-   "mls": 1.142,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 108821,
-   "mlbamId": 667452,
-   "salarySource": "minimum",
-   "war": 0,
-   "pa": 6
   },
   {
    "name": "Brenan Hanifee",
@@ -469,12 +454,13 @@
    "age": 29,
    "mls": 1.102,
    "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
+   "status": "fa",
+   "salary": null,
+   "taxValue": null,
    "salaryPrevYear": 784100,
    "mlbamId": 690544,
-   "salarySource": "minimum",
+   "salarySource": "none",
+   "corrected": "RosterResource: released",
    "war": 0,
    "ip": 1
   },
@@ -589,22 +575,6 @@
    "salarySource": "minimum",
    "war": 0.23,
    "pa": 89
-  },
-  {
-   "name": "Yilber Diaz",
-   "sheetName": "Diaz, Yilber",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.086,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 140022,
-   "mlbamId": 700270,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
   },
   {
    "name": "Eduardo Valencia",
@@ -1145,6 +1115,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 700270,
+   "name": "Yilber Díaz",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.07,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 698982,

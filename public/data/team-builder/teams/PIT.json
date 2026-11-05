@@ -365,22 +365,6 @@
    "ip": 172.5
   },
   {
-   "name": "Isaac Mattson",
-   "sheetName": "Mattson, Isaac",
-   "pos": "rhp",
-   "age": 31,
-   "mls": 1.123,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 565304,
-   "mlbamId": 676755,
-   "salarySource": "minimum",
-   "war": 0.02,
-   "ip": 30
-  },
-  {
    "name": "Tyler Callihan",
    "sheetName": "Callihan, Tyler",
    "pos": "2b",

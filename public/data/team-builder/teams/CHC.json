@@ -301,24 +301,6 @@
    "pa": 139
   },
   {
-   "name": "Tyler Austin",
-   "sheetName": "Austin, Tyler",
-   "pos": "1b-of",
-   "age": 35,
-   "mls": 3.151,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
-   "salaryPrevYear": 1200000,
-   "arbYear": 2,
-   "cotsEstimate": 1200000,
-   "mlbamId": 592122,
-   "salarySource": "mlbtr-arb",
-   "war": 0.06,
-   "pa": 65
-  },
-  {
    "name": "Ethan Roberts",
    "sheetName": "Roberts, Ethan",
    "pos": "rhp",
@@ -575,6 +557,23 @@
    "salarySource": "minimum",
    "war": 0.11,
    "pa": 110
+  },
+  {
+   "name": "Eric Orze",
+   "sheetName": "Orze, Eric",
+   "pos": "rhp",
+   "age": 29,
+   "mls": 1.052,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": 544295,
+   "mlbamId": 679358,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from MIN",
+   "war": 0.04,
+   "ip": 38
   }
  ],
  "deadMoney": [
@@ -813,6 +812,16 @@
    "age": 36,
    "war": 0.66,
    "pa": 450,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 592122,
+   "name": "Tyler Austin",
+   "pos": "1b",
+   "age": 35,
+   "war": 0.57,
+   "pa": 600,
    "salary": 780000,
    "debuted": true
   },
