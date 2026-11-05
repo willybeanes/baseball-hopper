@@ -17,6 +17,7 @@ import { buildPool, type PoolPlayer } from '../../lib/team-builder/pool'
 import { fetchProjections, type Projection } from '../../lib/team-builder/projections'
 import type { MinorLeaguer, TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
+import { applyRosterMoves, fetchAll } from './rosterresource'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
 import { matchPlayer } from '../../lib/team-builder/ids'
 import { leaguePool, peopleInfo, teamPool, type OrgPlayer } from '../../lib/team-builder/rosters'
@@ -174,6 +175,18 @@ async function main() {
   // Kept teams already carry their estimates; from here on they're handled like the others.
   sheets.push(...(kept as unknown as TeamSheet[]))
 
+  // 40-man moves Cot's hasn't caught up with yet, from RosterResource. If it can't be reached,
+  // the rosters stay as Cot's has them and the run summary says so.
+  const rr = await fetchAll(sheets.map((s) => s.team).sort())
+  const rrMoves = rr.data.size >= 20
+    ? applyRosterMoves(sheets as unknown as TeamFile[], rr.data, {
+      targetYear: config.targetYear, today: new Date(), minimum: assumptions.leagueMinimum.value, roughArb: assumptions.roughArbitration.byYear,
+      arb: new Map(arbFile.players.filter((a) => a.mlbamId != null).map((a) => [a.mlbamId!, a.salary])),
+      freeAgents: new Set(faFile.players.map((f) => f.mlbamId).filter((id): id is number => id != null)),
+    })
+    : { applied: [], reported: [] }
+  if (rr.data.size < 20) rr.failed.unshift(`only ${rr.data.size} teams came back from RosterResource; no moves applied`)
+
   // Projected WAR. If FanGraphs (or fg-proxy's cookie) fails, keep the last good projections,
   // still publish the contract changes, and fail the run afterwards so someone hears about it.
   const projFile = join(OUT_DIR, 'projections.json')
@@ -285,6 +298,8 @@ async function main() {
     return { ...e, ...carried, war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
   })
   files.set(join(OUT_DIR, 'pool.json'), JSON.stringify(pool) + '\n')
+  // What RosterResource changed (and what it flagged but we left alone); rewritten only when that changes.
+  files.set(join(OUT_DIR, 'crosscheck.json'), JSON.stringify({ source: 'https://www.fangraphs.com/roster-resource/depth-charts', ...rrMoves, failed: rr.failed }, null, 1) + '\n')
   if (projFetchedAt) files.set(projFile, JSON.stringify({ system: assumptions.projections.system, fetchedAt: projFetchedAt, players: projections, minors: minorsProjections }) + '\n')
   const metaFile = join(OUT_DIR, 'meta.json')
   const prevMeta = existsSync(metaFile) ? JSON.parse(readFileSync(metaFile, 'utf8')) : null
@@ -317,6 +332,16 @@ async function main() {
       const lines = ['### Team Builder: players without an MLBAM id', '', ...ids.unmatched.map((u) => `- \`${u}\``)]
       writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n', { flag: 'a' })
     }
+  }
+  {
+    const line = (c: { team: string; name: string; change: string; move?: string }) => `- ${c.team} ${c.name ? `${c.name}: ` : ''}${c.change}${c.move ? ` (${c.move})` : ''}`
+    const lines = [
+      `### Team Builder: ${rrMoves.applied.length} roster moves applied from RosterResource`, '', ...rrMoves.applied.map(line), '',
+      ...(rrMoves.reported.length ? ['**Left as Cot\'s has it**', '', ...rrMoves.reported.map(line), ''] : []),
+      ...(rr.failed.length ? [`Couldn't check: ${rr.failed.join('; ')}`, ''] : []),
+    ]
+    console.log(lines.join('\n'))
+    if (process.env.GITHUB_STEP_SUMMARY) writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n', { flag: 'a' })
   }
   const projected = sheets.reduce((n, s) => n + s.players.filter((p) => (p as { war?: number | null }).war != null).length, 0)
   console.log(`Projections (${assumptions.projections.system}): ${projected} of ${sheets.reduce((n, s) => n + s.players.length, 0)} sheet players have a projected WAR.`)

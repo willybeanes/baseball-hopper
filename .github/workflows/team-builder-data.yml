@@ -1,6 +1,7 @@
 name: Team Builder data
 
-# Pulls the 30 Cot's sheets, checks them, matches players to MLBAM ids, uploads the snapshot
+# Pulls the 30 Cot's sheets, checks them, matches players to MLBAM ids, applies 40-man moves
+# Cot's hasn't caught up with from FanGraphs' RosterResource, uploads the snapshot
 # to Supabase Storage (where the page reads it) and commits it to public/data/team-builder on
 # main as the record and fallback copy. A data-only commit doesn't redeploy the site (see
 # scripts/vercel-ignore.sh). If any check fails
@@ -46,12 +47,6 @@ jobs:
         id: refresh
         continue-on-error: true
         run: bun scripts/team-builder/refresh-cots.ts --save-raw raw-sheets
-
-      # Report only: lists 40-man differences from FanGraphs' RosterResource in the run summary
-      # and crosscheck.json. It never changes the roster data or fails the run.
-      - name: Cross-check rosters against RosterResource
-        continue-on-error: true
-        run: bun scripts/team-builder/crosscheck-rosterresource.ts
 
       - name: Commit the snapshot if it changed
         if: github.event_name != 'pull_request'
