@@ -518,7 +518,7 @@ export default function HitterUniverse() {
                     className={`flex w-full items-baseline justify-between gap-3 py-1.5 text-left text-[13px] ${compare === r.i ? "font-semibold" : ""} text-[var(--text)] hover:underline`}
                   >
                     <span className="min-w-0 truncate">
-                      {formatName(r.name)} <span className="text-[var(--dim)]">{shortYear(r.season)}</span>
+                      {formatName(r.name)} <span className="text-[var(--dim)]">{shortYear(r.season)}{r.hitting != null ? ` · Hitting+ ${r.hitting}` : ""}</span>
                     </span>
                     <span className="shrink-0 tabular-nums text-[var(--dim)]">{d.toFixed(1)}</span>
                   </button>
