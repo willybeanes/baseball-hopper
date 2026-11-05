@@ -68,6 +68,10 @@ export interface Change {
   move?: string // RosterResource's latest transaction for him
 }
 
+// Lower case, no accents or suffix tags, for matching names across sources.
+export const plainName = (name: string) =>
+  name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s*\([a-z]+\)$/i, '').toLowerCase().replace(/[^a-z ]/g, '').trim()
+
 const LISTS: Record<string, string> = { 'il-rl': 'the restricted list', 'il-60': 'the 60-day IL' }
 const onDefaultRoster = (p: Player) => p.status !== 'fa' && (p.status !== 'option' || p.defaultExercised !== false)
 
@@ -86,6 +90,7 @@ export interface Context {
   roughArb: Record<string, number> // rough arbitration salary by arbitration year
   arb: Map<number, number> // MLBTR arbitration estimates by MLBAM id
   freeAgents: Set<number> // on MLBTR's free-agent list (a signing, terms unknown)
+  freeAgentNames?: Set<string> // on RosterResource's free-agent tracker, by plain name (postings have no MLBAM id there)
 }
 
 export function applyRosterMoves(teams: TeamFile[], rr: Map<string, RrTeam>, ctx: Context): { applied: Change[]; reported: Change[] } {
@@ -144,7 +149,7 @@ export function applyRosterMoves(teams: TeamFile[], rr: Map<string, RrTeam>, ctx
         from.players = from.players.filter((p) => p !== found.p)
         t.players.push({ ...found.p, corrected: `RosterResource: moved from ${from.team}` })
         note(applied, team, found.p.name, id, `moved from ${from.team} with his contract`, from.team)
-      } else if (found || ctx.freeAgents.has(id)) {
+      } else if (found || ctx.freeAgents.has(id) || ctx.freeAgentNames?.has(plainName(r.player))) {
         note(reported, team, found?.p.name ?? r.player, id, 'signed as a free agent; contract unknown until Cot\'s adds it')
       } else {
         // MLBTR's estimate, or the rough rule for a player with 3+ years MLBTR doesn't list.

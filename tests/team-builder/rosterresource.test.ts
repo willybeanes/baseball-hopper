@@ -66,6 +66,12 @@ describe('applyRosterMoves', () => {
     expect(find(nym, 8)).toBeUndefined()
     expect(out.reported.some((c) => c.mlbamId === 8)).toBe(true)
   })
+  test("a posted player's signing is only reported, not added at the minimum", () => {
+    const t = team('SEA', filler(3000))
+    const r = applyRosterMoves([t], new Map([['SEA', { roster: [...rrFiller(3000), rr(12, 'Teruaki Satō')], transactions: [] }]]), { ...ctx, freeAgentNames: new Set(['teruaki sato']) })
+    expect(t.players).toHaveLength(30)
+    expect(r.reported.map((c) => c.mlbamId)).toEqual([12])
+  })
   test('a declined-by-default option on the 40-man was exercised', () => expect(find(nym, 9)).toMatchObject({ defaultExercised: true }))
   test('running it again changes nothing', () => {
     const before = JSON.stringify([nym, col])

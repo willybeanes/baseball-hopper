@@ -3,9 +3,12 @@
 
 const FG_PROXY = 'https://fg-proxy.vercel.app/api/fg-gamelog'
 
-export interface Projection { war: number; pa?: number; ip?: number; sp?: boolean } // sp: projected mostly as a starter
+import { fgOnlyId } from './pool'
 
-interface FgRow { xMLBAMID?: number | null; WAR?: number | null; PA?: number | null; IP?: number | null; G?: number | null; GS?: number | null }
+// sp: projected mostly as a starter. fgId: FanGraphs' id, to match lists that only carry it.
+export interface Projection { war: number; pa?: number; ip?: number; sp?: boolean; fgId?: string }
+
+interface FgRow { playerid?: string | null; xMLBAMID?: number | null; WAR?: number | null; PA?: number | null; IP?: number | null; G?: number | null; GS?: number | null }
 
 async function fetchSide(system: string, stats: 'bat' | 'pit'): Promise<FgRow[]> {
   const url = `${FG_PROXY}?path=/api/projections&type=${encodeURIComponent(system)}&stats=${stats}&pos=all&team=0&players=0&lg=all`
@@ -20,15 +23,20 @@ export async function fetchProjections(system: string): Promise<Record<number, P
   const [bat, pit] = await Promise.all([fetchSide(system, 'bat'), fetchSide(system, 'pit')])
   const out: Record<number, Projection> = {}
   const round = (n: number, d: number) => Math.round(n * 10 ** d) / 10 ** d
+  // Players MLB hasn't given an id yet (NPB and KBO signings) go under a stand-in id.
+  const idOf = (r: FgRow) => r.xMLBAMID || (r.playerid ? fgOnlyId(r.playerid) : null)
+  const fg = (r: FgRow) => (r.playerid ? { fgId: String(r.playerid) } : {})
   for (const r of bat) {
-    if (!r.xMLBAMID || r.WAR == null) continue
-    out[r.xMLBAMID] = { war: round(r.WAR, 2), pa: Math.round(r.PA ?? 0) }
+    const id = idOf(r)
+    if (!id || r.WAR == null) continue
+    out[id] = { war: round(r.WAR, 2), pa: Math.round(r.PA ?? 0), ...fg(r) }
   }
   for (const r of pit) {
-    if (!r.xMLBAMID || r.WAR == null) continue
-    const prev = out[r.xMLBAMID]
+    const id = idOf(r)
+    if (!id || r.WAR == null) continue
+    const prev = out[id]
     const sp = (r.GS ?? 0) >= (r.G ?? 0) / 2 && (r.GS ?? 0) > 0
-    out[r.xMLBAMID] = { ...prev, war: round((prev?.war ?? 0) + r.WAR, 2), ip: round(r.IP ?? 0, 1), ...(sp ? { sp } : {}) }
+    out[id] = { ...prev, war: round((prev?.war ?? 0) + r.WAR, 2), ip: round(r.IP ?? 0, 1), ...(sp ? { sp } : {}), ...fg(r) }
   }
   return out
 }

@@ -17,7 +17,8 @@ import { buildPool, type PoolPlayer } from '../../lib/team-builder/pool'
 import { fetchProjections, type Projection } from '../../lib/team-builder/projections'
 import type { MinorLeaguer, TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
-import { applyRosterMoves, fetchAll } from './rosterresource'
+import { applyRosterMoves, fetchAll, plainName } from './rosterresource'
+import { fetchTracker, trackerFreeAgents, type TrackerRow } from './fa-tracker'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
 import { matchPlayer } from '../../lib/team-builder/ids'
 import { leaguePool, peopleInfo, teamPool, type OrgPlayer } from '../../lib/team-builder/rosters'
@@ -178,11 +179,15 @@ async function main() {
   // 40-man moves Cot's hasn't caught up with yet, from RosterResource. If it can't be reached,
   // the rosters stay as Cot's has them and the run summary says so.
   const rr = await fetchAll(sheets.map((s) => s.team).sort())
+  // RosterResource's free-agent tracker: free agents from outside MLB, added to the pool below.
+  let tracker: TrackerRow[] = []
+  try { tracker = await fetchTracker(config.targetYear) } catch (e) { rr.failed.push((e as Error).message) }
   const rrMoves = rr.data.size >= 20
     ? applyRosterMoves(sheets as unknown as TeamFile[], rr.data, {
       targetYear: config.targetYear, today: new Date(), minimum: assumptions.leagueMinimum.value, roughArb: assumptions.roughArbitration.byYear,
       arb: new Map(arbFile.players.filter((a) => a.mlbamId != null).map((a) => [a.mlbamId!, a.salary])),
       freeAgents: new Set(faFile.players.map((f) => f.mlbamId).filter((id): id is number => id != null)),
+      freeAgentNames: new Set(tracker.map((t) => plainName(t.playerName))),
     })
     : { applied: [], reported: [] }
   if (rr.data.size < 20) rr.failed.unshift(`only ${rr.data.size} teams came back from RosterResource; no moves applied`)
@@ -217,10 +222,12 @@ async function main() {
   // Teams showing a kept snapshot keep the minor leaguers they had.
   // MLB's organization rosters still list players about to become free agents, so anyone on a
   // Cot's sheet (any team) or on MLBTR's free-agent list is left out.
-  const notMinors = new Set<number>([
-    ...sheets.flatMap((s) => s.players.map((p) => p.mlbamId).filter((id): id is number => id != null)),
-    ...faFile.players.map((f) => f.mlbamId).filter((id): id is number => id != null),
-  ])
+  const sheetIds = sheets.flatMap((s) => s.players.map((p) => p.mlbamId).filter((id): id is number => id != null))
+  const mlbtrIds = faFile.players.map((f) => f.mlbamId).filter((id): id is number => id != null)
+  // Free agents only RosterResource's tracker lists (NPB postings, anyone MLBTR missed).
+  const fgToMlbam = new Map(Object.entries(projections).filter(([, pr]) => pr.fgId).map(([id, pr]) => [pr.fgId!, Number(id)]))
+  const extraFreeAgents = trackerFreeAgents(tracker, fgToMlbam, new Set([...sheetIds, ...mlbtrIds]))
+  const notMinors = new Set<number>([...sheetIds, ...mlbtrIds, ...extraFreeAgents.map((f) => f.mlbamId!)])
   const minorsByTeam = new Map<string, MinorLeaguer[]>()
   for (const s of sheets) {
     const org = ids.orgs.get(s.team)
@@ -289,7 +296,7 @@ async function main() {
   const prevPool = new Map<number, PoolPlayer>(
     existsSync(poolFile) ? (JSON.parse(readFileSync(poolFile, 'utf8')) as PoolPlayer[]).map((e) => [e.mlbamId, e]) : [],
   )
-  const pool = buildPool(sheets as unknown as TeamFile[], faFile.players, assumptions.leagueMinimum.value).map((e) => {
+  const pool = buildPool(sheets as unknown as TeamFile[], [...faFile.players, ...extraFreeAgents], assumptions.leagueMinimum.value).map((e) => {
     const prev = prevPool.get(e.mlbamId)
     const carried = e.from == null && prev?.kind === 'fa' && prev.from
       ? { from: prev.from, contract: prev.contract, salaryPrevYear: prev.salaryPrevYear, pos: prev.pos }
@@ -337,6 +344,7 @@ async function main() {
     const line = (c: { team: string; name: string; change: string; move?: string }) => `- ${c.team} ${c.name ? `${c.name}: ` : ''}${c.change}${c.move ? ` (${c.move})` : ''}`
     const lines = [
       `### Team Builder: ${rrMoves.applied.length} roster moves applied from RosterResource`, '', ...rrMoves.applied.map(line), '',
+      ...(extraFreeAgents.length ? [`**${extraFreeAgents.length} free agents added from RosterResource's tracker**`, '', ...extraFreeAgents.map((f) => `- ${f.name}${f.note ? ` (${f.note})` : ''}`), ''] : []),
       ...(rrMoves.reported.length ? ['**Left as Cot\'s has it**', '', ...rrMoves.reported.map(line), ''] : []),
       ...(rr.failed.length ? [`Couldn't check: ${rr.failed.join('; ')}`, ''] : []),
     ]

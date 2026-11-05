@@ -26,6 +26,16 @@ export interface PoolPlayer {
 
 export interface MlbtrFreeAgent { name: string; age: number; positions: string[]; note?: string; mlbamId: number | null }
 
+// Players from outside MLB (NPB and KBO postings) have no MLBAM id until they sign. They get a
+// stand-in from FanGraphs' id ("sa3063811" -> 903063811), far above any real MLBAM id, so moves
+// and share links work the same. Once MLB assigns an id, the real one takes over.
+const FG_ONLY_BASE = 900_000_000
+export function fgOnlyId(fgId: string): number | null {
+  const m = /^sa(\d{1,8})$/.exec(fgId)
+  return m && Number(m[1]) < 99_999_999 ? FG_ONLY_BASE + Number(m[1]) : null
+}
+export const isFgOnlyId = (id: number | null | undefined) => id != null && id >= FG_ONLY_BASE
+
 const fromPlayer = (p: Player, team: string, kind: PoolPlayer['kind'], note?: string): PoolPlayer => ({
   mlbamId: p.mlbamId!,
   name: p.name,

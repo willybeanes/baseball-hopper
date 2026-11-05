@@ -11,7 +11,7 @@ import assumptions from '@/lib/team-builder/assumptions.json'
 import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, warTier, warTint, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
-import type { PoolPlayer } from '@/lib/team-builder/pool'
+import { isFgOnlyId, type PoolPlayer } from '@/lib/team-builder/pool'
 import { decodeDate, decodeMoves, encodeDate, encodeMoves } from '@/lib/team-builder/share'
 
 // The daily refresh uploads the snapshot to Supabase Storage, so new data doesn't need a
@@ -196,9 +196,12 @@ function SalaryForm({ initial, hint, onSave, onCancel }: { initial: number | nul
   )
 }
 
+// Players from outside MLB carry a stand-in id (lib/team-builder/pool.ts): no headshot or player page yet.
+const hasMlbPage = (id: number | undefined): id is number => !!id && !isFgOnlyId(id)
+
 function Headshot({ id }: { id: number | undefined }) {
   // eslint-disable-next-line @next/next/no-img-element
-  return id ? <img src={headshotUrl(id)} alt="" loading="lazy" className="h-8 w-8 shrink-0 rounded-full bg-[var(--track)] object-cover" /> : <span className="h-8 w-8 shrink-0 rounded-full bg-[var(--track)]" />
+  return hasMlbPage(id) ? <img src={headshotUrl(id)} alt="" loading="lazy" className="h-8 w-8 shrink-0 rounded-full bg-[var(--track)] object-cover" /> : <span className="h-8 w-8 shrink-0 rounded-full bg-[var(--track)]" />
 }
 
 // One player, compact enough for half the page: who he is and what you can do on the left,
@@ -212,7 +215,7 @@ function PlayerRow({ s, actions, right, editor, credit }: { s: Slot; actions?: R
           <Headshot id={p.mlbamId} />
           <div className="min-w-0">
             <div className="flex flex-wrap items-baseline gap-x-1.5">
-              {p.mlbamId ? (
+              {hasMlbPage(p.mlbamId) ? (
                 <a href={`/player/${p.mlbamId}`} className="text-sm font-medium text-[var(--text)] hover:underline">{p.name}</a>
               ) : (
                 <span className="text-sm font-medium">{p.name}</span>
@@ -1090,7 +1093,11 @@ export default function TeamBuilderApp() {
                           <Headshot id={e.mlbamId} />
                           <div className="min-w-0">
                             <div className="flex flex-wrap items-baseline gap-x-1.5">
-                              <a href={`/player/${e.mlbamId}`} className="text-sm font-medium hover:underline">{e.name}</a>
+                              {hasMlbPage(e.mlbamId) ? (
+                                <a href={`/player/${e.mlbamId}`} className="text-sm font-medium hover:underline">{e.name}</a>
+                              ) : (
+                                <span className="text-sm font-medium">{e.name}</span>
+                              )}
                               <span className="text-[11px] uppercase text-[var(--dimmer)]">{e.pos}</span>
                             </div>
                             <div className="text-[11px] text-[var(--dimmer)]">
