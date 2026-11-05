@@ -39,6 +39,35 @@
         "rows": 380.575,
         "sheet": 388.475
       }
+    },
+    "SF": {
+      "note": "Since 2026-11-05 Cot's has removed Jose Butto ($800K) but its totals still include him.",
+      "payroll": {
+        "rows": 170.432,
+        "sheet": 171.232
+      },
+      "tax": {
+        "rows": 172.33,
+        "sheet": 173.13
+      }
+    },
+    "CIN": {
+      "note": "Since 2026-11-04 Jeimer Candelario's row is a $1M buyout but Cot's payroll total still uses the old $3M.",
+      "payroll": {
+        "rows": 82.969,
+        "sheet": 84.969
+      }
+    },
+    "LAA": {
+      "note": "Since 2026-10-31 Cot's totals are $2.5M below the rows with no row removed. Probably Robert Stephenson's conditional option or Jose Siri, both $2.5M; unconfirmed.",
+      "payroll": {
+        "rows": 108.574,
+        "sheet": 106.074
+      },
+      "tax": {
+        "rows": 127.166,
+        "sheet": 124.666
+      }
     }
   },
   "teams": {

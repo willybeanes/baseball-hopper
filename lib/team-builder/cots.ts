@@ -131,6 +131,7 @@ export function parseTeamSheet(team: string, csv: string, lastSeason: number, ta
 
   const players: CotsPlayer[] = []
   const dead = new Map<string, DeadMoney>()
+  const departedRows = new Set<string>()
   let rowsPayroll = 0
   let rowsTax = 0
   let end = -1
@@ -139,6 +140,14 @@ export function parseTeamSheet(team: string, csv: string, lastSeason: number, ta
     const r = rows[i]
     if (label(r).startsWith('Pre-arbitration bonus pool')) { end = i; break }
     if (!label(r)) continue
+
+    // A departed-player row repeated word for word is a Cot's slip (Robles, SEA, 2026-11-03);
+    // its totals only count it once.
+    if (!cell(r, COL.pos)) {
+      const key = r.join('|')
+      if (departedRows.has(key)) continue
+      departedRows.add(key)
+    }
 
     const salCell = cell(r, salCol)
     const taxCell = cell(r, taxCol)

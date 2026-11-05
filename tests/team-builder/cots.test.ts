@@ -139,3 +139,12 @@ describe('benefits figure repeated on the last departed-player row', () => {
     expect(s.deadMoney.find((d) => d.name === 'Someone Traded')?.taxValue).toBe(18_500_000)
   })
 })
+
+test('a departed-player row repeated word for word counts once', () => {
+  const csv = readFileSync(join(import.meta.dir, 'fixtures', 'rolled-KC-2026-11-05.csv'), 'utf8')
+  const row = '"Traded, Someone",,,,,,,,,,2027 buyout,,"$500,000",,,,,,"$500,000",,,,\n'
+  const once = parseTeamSheet('KC', csv.replace('"Estévez, Carlos"', `${row}"Estévez, Carlos"`), 2026, 2027)
+  const twice = parseTeamSheet('KC', csv.replace('"Estévez, Carlos"', `${row}${row}"Estévez, Carlos"`), 2026, 2027)
+  expect(twice.rowsPayroll).toBe(once.rowsPayroll)
+  expect(twice.deadMoney.find((d) => d.name === 'Someone Traded')?.salary).toBe(500_000)
+})
