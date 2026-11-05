@@ -58,17 +58,17 @@
    "move": "2026-11-02: Claimed off waivers from Mets"
   },
   {
+   "team": "PHI",
+   "name": "Johan Rojas",
+   "mlbamId": 679032,
+   "change": "added to the roster at the minimum"
+  },
+  {
    "team": "SEA",
    "name": "Isaac Mattson",
    "mlbamId": 676755,
    "change": "moved from PIT with his contract",
    "move": "2026-11-02: Lost off waivers to Mariners"
-  },
-  {
-   "team": "PHI",
-   "name": "Johan Rojas",
-   "mlbamId": 679032,
-   "change": "added to the roster at the minimum"
   },
   {
    "team": "BAL",
@@ -94,6 +94,32 @@
    "team": "BAL",
    "name": "Yosver Zulueta",
    "mlbamId": 691172,
+   "change": "off the 40-man",
+   "move": "2026-11-02: Outrighted to minors"
+  },
+  {
+   "team": "CHC",
+   "name": "Tyler Austin",
+   "mlbamId": 592122,
+   "change": "off the 40-man"
+  },
+  {
+   "team": "CIN",
+   "name": "Ivan Johnson",
+   "mlbamId": 671155,
+   "change": "off the 40-man"
+  },
+  {
+   "team": "CWS",
+   "name": "Ky Bush",
+   "mlbamId": 681066,
+   "change": "off the 40-man",
+   "move": "2026-11-02: Outrighted to minors"
+  },
+  {
+   "team": "CWS",
+   "name": "Junior Perez",
+   "mlbamId": 678577,
    "change": "off the 40-man",
    "move": "2026-11-02: Outrighted to minors"
   },
@@ -129,32 +155,6 @@
    "team": "COL",
    "name": "Blake Adams",
    "mlbamId": 687060,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "CIN",
-   "name": "Ivan Johnson",
-   "mlbamId": 671155,
-   "change": "off the 40-man"
-  },
-  {
-   "team": "CHC",
-   "name": "Tyler Austin",
-   "mlbamId": 592122,
-   "change": "off the 40-man"
-  },
-  {
-   "team": "CWS",
-   "name": "Ky Bush",
-   "mlbamId": 681066,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "CWS",
-   "name": "Junior Perez",
-   "mlbamId": 678577,
    "change": "off the 40-man",
    "move": "2026-11-02: Outrighted to minors"
   },
