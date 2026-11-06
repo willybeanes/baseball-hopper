@@ -1,6 +1,6 @@
 """
 Builds public/data/hitter-universe.json: a 14-coordinate swing address (how he swings, the swing's shape, his stance) for every
-qualified hitter-season, plus a 3D map. The four Hitting+ components ride along for reference and do not count.
+qualified hitter-season, plus a 3D map. The four Hitting+ components and wOBA ride along for reference and do not count.
 
 Reads swing_profile from Supabase, Hitting+ from hitting-plus.vercel.app, swing shape and stance from Baseball Savant, batting side from the MLB Stats API,
 launch_readings.csv (from read_launch.py) and the published 2026 launch numbers. Rerun by hand when a season is added. Needs numpy, pandas, requests and scikit-learn.
@@ -39,6 +39,7 @@ COORDS = [
     dict(key='Timing+', label='Timing+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
     dict(key='Contact+', label='Contact+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
     dict(key='Power+', label='Power+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
+    dict(key='woba', label='wOBA', unit='', digits=3, low='Lower', high='Higher', group='grade', source='hitting_plus'),
 ]
 
 
@@ -57,7 +58,7 @@ def fetch_swing_profile():
 
 def fetch_hitting_plus():
     players = json.loads(requests.get(HP_URL, timeout=120).text.replace('NaN', 'null'))['players']
-    cols = ['mlbamid', 'game_year', 'Decision+', 'Timing+', 'Contact+', 'Power+', 'Hitting+']
+    cols = ['mlbamid', 'game_year', 'Decision+', 'Timing+', 'Contact+', 'Power+', 'Hitting+', 'woba']
     return pd.DataFrame(players)[cols].rename(columns={'mlbamid': 'mlbam', 'game_year': 'season'})
 
 
