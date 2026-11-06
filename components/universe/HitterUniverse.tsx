@@ -13,15 +13,16 @@ interface Coord {
   digits: number;
   low: string;
   high: string;
-  group: "style" | "grade";
-  show_raw: boolean;
+  /** swing, shape and stance count toward closeness. grade is shown for reference and never counts. */
+  group: Group;
   mean: number;
   sd: number;
   steady: number | null;
 }
 
+type Group = "swing" | "shape" | "stance" | "grade";
 type Bats = "L" | "R" | "S";
-type RawRow = [number, string, number, number | null, number[], (number | null)[], (number | null)[], Bats | null, number | null];
+type RawRow = [number, string, number, number | null, number[], (number | null)[], (number | null)[], Bats | null];
 
 interface UniverseJson {
   generated: string;
@@ -43,8 +44,6 @@ interface Row {
   pct: (number | null)[];
   z: (number | null)[];
   bats: Bats | null;
-  /** Real production, standardized. Counts in closeness but is never shown. */
-  results: number | null;
 }
 
 const SEASONS = [2026, 2025, 2024];
@@ -61,6 +60,12 @@ const BATS_LABEL: Record<Bats, string> = { L: "Bats left", R: "Bats right", S: "
 const onSide = (r: Row, side: Side) => side === "all" || r.bats === side || r.bats === "S";
 // Below this, a coordinate moves too much from one season to the next to lean on by itself.
 const NOISY_BELOW = 0.4;
+const GROUPS: { key: Group; label: string; note?: string }[] = [
+  { key: "swing", label: "How he swings" },
+  { key: "shape", label: "Shape of the swing" },
+  { key: "stance", label: "Stance" },
+  { key: "grade", label: "Results", note: "Shown for reference. These do not count toward closeness." },
+];
 
 const HOME_EYE = { x: 1, y: 1, z: 0.8 };
 // How far the camera sits from a hitter it has flown to, in map widths.
@@ -68,7 +73,7 @@ const FLY_EYE = { x: 0.45, y: 0.45, z: 0.3 };
 
 const shortYear = (s: number) => `'${String(s).slice(2)}`;
 
-/** Gap between two hitters across the coordinates in play, each in standard deviations. A coordinate blank for either hitter is left out and the rest scaled up. */
+/** Gap between two hitters across the checked coordinates, each in standard deviations. A coordinate blank for either hitter is left out and the rest scaled up. */
 function distance(a: Row, b: Row, active: boolean[]): number {
   let sum = 0;
   let used = 0;
@@ -82,17 +87,12 @@ function distance(a: Row, b: Row, active: boolean[]): number {
     sum += (x - y) ** 2;
     used++;
   }
-  if (a.results != null && b.results != null) {
-    sum += (a.results - b.results) ** 2;
-    used++;
-  }
-  on++;
   return used ? Math.sqrt((sum * on) / used) : Infinity;
 }
 
 function readout(coord: Coord, value: number | null, pct: number | null) {
   if (pct == null) return <span className="text-[var(--dim)]">No reading</span>;
-  const shown = !coord.show_raw || value == null ? null : `${value.toFixed(coord.digits)}${coord.unit ? ` ${coord.unit}` : ""}`;
+  const shown = value == null ? null : `${value.toFixed(coord.digits)}${coord.unit === "°" ? "°" : coord.unit ? ` ${coord.unit}` : ""}`;
   return (
     <>
       {shown && <span className="text-[var(--dim)]">{shown} · </span>}
@@ -116,16 +116,21 @@ function AddressRow({
   value: number | null;
   pct: number | null;
   other?: { value: number | null; pct: number | null };
-  active: boolean;
-  onToggle: () => void;
+  /** Undefined for a reference row, which has no checkbox. */
+  active?: boolean;
+  onToggle?: () => void;
 }) {
   return (
-    <div className={`py-2 ${active ? "" : "opacity-50"}`}>
+    <div className={`py-2 ${active === false ? "opacity-50" : ""}`}>
       <div className="flex items-baseline justify-between gap-3">
-        <label className="flex min-w-0 cursor-pointer items-center gap-2 text-[13px] font-medium text-[var(--text)]">
-          <input type="checkbox" checked={active} onChange={onToggle} className="accent-[var(--accent)]" />
-          {coord.label}
-        </label>
+        {onToggle ? (
+          <label className="flex min-w-0 cursor-pointer items-center gap-2 text-[13px] font-medium text-[var(--text)]">
+            <input type="checkbox" checked={active} onChange={onToggle} className="accent-[var(--accent)]" />
+            {coord.label}
+          </label>
+        ) : (
+          <span className="min-w-0 text-[13px] font-medium text-[var(--text)]">{coord.label}</span>
+        )}
         <div className="shrink-0 text-right text-[13px] tabular-nums text-[var(--text)]">
           <div className="flex items-center justify-end gap-1.5">
             {other && <span className={CENTER_DOT} aria-hidden />}
@@ -172,7 +177,7 @@ export default function HitterUniverse() {
         return r.json() as Promise<UniverseJson>;
       })
       .then((j) => {
-        const rows = j.rows.map(([mlbam, name, season, hitting, xyz, raw, pct, bats, results], i): Row => ({
+        const rows = j.rows.map(([mlbam, name, season, hitting, xyz, raw, pct, bats], i): Row => ({
           i,
           mlbam,
           name,
@@ -182,7 +187,6 @@ export default function HitterUniverse() {
           raw,
           pct,
           bats,
-          results,
           z: raw.map((v, k) => {
             if (v == null) return null;
             const shift = j.coords[k].key === "launch" ? j.launch_shift[season] : 0;
@@ -190,7 +194,7 @@ export default function HitterUniverse() {
           }),
         }));
         setData({ coords: j.coords, rows, mapKept: j.map_kept });
-        setActive(j.coords.map(() => true));
+        setActive(j.coords.map((c) => c.group !== "grade"));
         const params = new URLSearchParams(window.location.search);
         const wantedSide = params.get("bats");
         if (wantedSide === "L" || wantedSide === "R") setSide(wantedSide);
@@ -411,6 +415,7 @@ export default function HitterUniverse() {
   if (data === "error") return <p className="text-[13px] text-[var(--dim)]">The universe did not load. Try refreshing the page.</p>;
 
   const onCount = active.filter(Boolean).length;
+  const counted = coords.filter((c) => c.group !== "grade").length;
   const noisy = coords.filter((c) => c.steady != null && c.steady < NOISY_BELOW).map((c) => c.label);
 
   return (
@@ -459,7 +464,7 @@ export default function HitterUniverse() {
         <div ref={plotEl} className="mt-2 h-[420px] w-full sm:h-[620px]" role="img" aria-label="3D map of hitter-seasons. Dots that sit close together tend to have similar addresses." />
         {loaded && (
           <p className="mt-2 text-[11px] leading-relaxed text-[var(--dim)]">
-            Drag to turn the map, scroll or pinch to zoom, click a dot to center on that hitter. Eleven coordinates cannot fit in three dimensions, so the map is a guide: about {Math.round(loaded.mapKept * 100)}% of a hitter&apos;s true 10 closest hitters sit next to him here. The lines and the list use the full address. The map&apos;s directions have no meaning of their own.
+            Drag to turn the map, scroll or pinch to zoom, click a dot to center on that hitter. {counted} coordinates cannot fit in three dimensions, so the map is a guide: about {Math.round(loaded.mapKept * 100)}% of a hitter&apos;s true 10 closest hitters sit next to him here. The lines and the list use the full address. The map&apos;s directions have no meaning of their own.
           </p>
         )}
       </section>
@@ -549,7 +554,7 @@ export default function HitterUniverse() {
             </div>
             <p className="mt-0.5 text-[11px] leading-relaxed text-[var(--dim)]">
               Percentile among all three seasons, with a tick at the middle.{" "}
-              Uncheck a coordinate to leave it out of closeness.
+              Closeness compares how hitters swing and stand, not how well it worked. Uncheck a coordinate to leave it out.
             </p>
             {other && (
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[13px] font-medium text-[var(--text)]">
@@ -563,24 +568,31 @@ export default function HitterUniverse() {
                 </span>
               </div>
             )}
-            <div className="mt-1 divide-y divide-[var(--rule)]">
-              {coords.map((c, k) => (
-                <AddressRow
-                  key={c.key}
-                  coord={c}
-                  value={center.raw[k]}
-                  pct={center.pct[k]}
-                  other={other ? { value: other.raw[k], pct: other.pct[k] } : undefined}
-                  active={active[k]}
-                  onToggle={() => setActive((cur) => (onCount === 1 && cur[k] ? cur : cur.map((v, x) => (x === k ? !v : v))))}
-                />
-              ))}
-            </div>
-            {noisy.length > 0 && (
-              <p className="mt-3 text-[11px] leading-relaxed text-[var(--dim)]">
-                {`${noisy.join(" and ")} ${noisy.length === 1 ? "moves" : "move"} the most from one season to the next, so try unchecking ${noisy.length === 1 ? "it" : "them"} if a match looks odd. `}Closeness and the map also count how much each hitter actually produced, which is not shown here and cannot be unchecked. The seven styles describe how a hitter swings and are not grades, and they count as much here as the four Hitting+ components. Swing launch is shown in the frames we read, but it is compared after lining up each season&apos;s average, because the same hitters read about 0.7 frames lower on the 2026 videos.
-              </p>
-            )}
+            {GROUPS.map((g) => (
+              <div key={g.key} className="mt-3">
+                <h4 className="text-[11px] font-semibold uppercase tracking-wide text-[var(--dim)]">{g.label}</h4>
+                {g.note && <p className="mt-0.5 text-[11px] leading-relaxed text-[var(--dim)]">{g.note}</p>}
+                <div className="divide-y divide-[var(--rule)]">
+                  {coords.map((c, k) =>
+                    c.group !== g.key ? null : (
+                      <AddressRow
+                        key={c.key}
+                        coord={c}
+                        value={center.raw[k]}
+                        pct={center.pct[k]}
+                        other={other ? { value: other.raw[k], pct: other.pct[k] } : undefined}
+                        active={c.group === "grade" ? undefined : active[k]}
+                        onToggle={c.group === "grade" ? undefined : () => setActive((cur) => (onCount === 1 && cur[k] ? cur : cur.map((v, x) => (x === k ? !v : v))))}
+                      />
+                    ),
+                  )}
+                </div>
+              </div>
+            ))}
+            <p className="mt-3 text-[11px] leading-relaxed text-[var(--dim)]">
+              {noisy.length > 0 && `${noisy.join(" and ")} ${noisy.length === 1 ? "moves" : "move"} the most from one season to the next, so try unchecking ${noisy.length === 1 ? "it" : "them"} if a match looks odd. `}
+              {`The shape of the swing and the stance come from Baseball Savant's bat tracking. Swing launch is shown in the frames we read, but it is compared after lining up each season's average, because the same hitters read about 0.7 frames lower on the 2026 videos.`}
+            </p>
           </>
         )}
       </aside>
