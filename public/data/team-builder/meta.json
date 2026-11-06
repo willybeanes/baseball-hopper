@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T17:16:48.971Z",
+  "updatedAt": "2026-11-06T17:23:25.762Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -78,12 +78,7 @@
     "fetchedAt": "2026-11-06",
     "players": 9331
   },
-  "staleTeams": {
-    "BAL": [
-      "BAL: payroll rows add up to $127.200M but the sheet says $130.700M",
-      "BAL: tax payroll rows add up to $153.292M but the sheet says $156.792M"
-    ]
-  },
+  "staleTeams": {},
   "sources": {
     "contracts": "Cot's Baseball Contracts",
     "arbitration": {

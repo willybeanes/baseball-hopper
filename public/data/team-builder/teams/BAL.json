@@ -469,6 +469,22 @@
    "ip": 38
   },
   {
+   "name": "Philip Abner",
+   "sheetName": "Abner, Philip",
+   "pos": "lhp",
+   "age": 25,
+   "mls": 0.064,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 691769,
+   "salarySource": "minimum",
+   "war": -0.06,
+   "ip": 18
+  },
+  {
    "name": "Christian Franklin",
    "sheetName": "Franklin, Christian",
    "pos": "lf",
@@ -549,6 +565,22 @@
    "pa": 42
   },
   {
+   "name": "Josh White",
+   "sheetName": "White, Josh",
+   "pos": "rhp",
+   "age": 26,
+   "mls": 0.001,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 687985,
+   "salarySource": "minimum",
+   "war": -0.03,
+   "ip": 30
+  },
+  {
    "name": "Chase Hampton",
    "sheetName": "Hampton, Chase",
    "pos": "rhp",
@@ -579,40 +611,6 @@
    "salarySource": "minimum",
    "war": 0.02,
    "pa": 6
-  },
-  {
-   "name": "Josh White",
-   "sheetName": "White, Josh",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.001,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 687985,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from MIA",
-   "war": -0.03,
-   "ip": 30
-  },
-  {
-   "name": "Philip Abner",
-   "sheetName": "",
-   "pos": "lhp",
-   "age": 25,
-   "mls": 0.011,
-   "contract": "Added to the 40-man",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 691769,
-   "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": -0.06,
-   "ip": 18
   }
  ],
  "deadMoney": [
@@ -636,8 +634,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11900000,
-   "taxValue": 11900000,
+   "salary": 12750000,
+   "taxValue": 12750000,
    "note": ""
   },
   {
@@ -652,10 +650,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 130700000,
- "sheetTaxPayroll": 156791667,
- "rowsPayroll": 130700000,
- "rowsTaxPayroll": 156791667,
+ "sheetPayroll": 128050000,
+ "sheetTaxPayroll": 154141667,
+ "rowsPayroll": 128050000,
+ "rowsTaxPayroll": 154141667,
  "minors": [
   {
    "mlbamId": 809254,
@@ -768,16 +766,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 650968,
-   "name": "Yohel Pozo",
-   "pos": "c",
-   "age": 30,
-   "war": 1.39,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 815148,
    "name": "Nestor German",
    "pos": "sp",
@@ -802,7 +790,7 @@
    "name": "Sebastian Gongora",
    "pos": "sp",
    "age": 25,
-   "war": 1.19,
+   "war": 1.2,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -842,7 +830,7 @@
    "name": "Levi Wells",
    "pos": "sp",
    "age": 25,
-   "war": 0.92,
+   "war": 0.93,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -902,27 +890,7 @@
    "name": "Juaron Watts-Brown",
    "pos": "sp",
    "age": 25,
-   "war": 0.46,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682868,
-   "name": "Bryan Ramos",
-   "pos": "3b",
-   "age": 25,
-   "war": 0.43,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 815348,
-   "name": "Boston Bateman",
-   "pos": "sp",
-   "age": 21,
-   "war": 0.42,
+   "war": 0.47,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -932,10 +900,20 @@
    "name": "Chadwick Tromp",
    "pos": "c",
    "age": 32,
-   "war": 0.41,
+   "war": 0.44,
    "pa": 450,
    "salary": 780000,
    "debuted": true
+  },
+  {
+   "mlbamId": 815348,
+   "name": "Boston Bateman",
+   "pos": "sp",
+   "age": 21,
+   "war": 0.43,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 682983,
@@ -978,16 +956,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 681882,
-   "name": "Colin Selby",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.27,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 698935,
    "name": "Yasmil Bucce",
    "pos": "c",
@@ -996,16 +964,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 691172,
-   "name": "Yosver Zulueta",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.22,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 821150,
@@ -1058,16 +1016,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 676051,
-   "name": "Codi Heuer",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.08,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 688396,
    "name": "Zach Fruit",
    "pos": "sp",
@@ -1104,16 +1052,6 @@
    "age": 27,
    "war": 0.02,
    "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 663804,
-   "name": "Jackson Kowar",
-   "pos": "rp",
-   "age": 30,
-   "war": 0,
-   "ip": 65,
    "salary": 780000,
    "debuted": true
   }
