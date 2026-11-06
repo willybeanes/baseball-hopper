@@ -68,6 +68,17 @@
         "rows": 127.166,
         "sheet": 124.666
       }
+    },
+    "BAL": {
+      "note": "Since 2026-11-06 Cot's totals are $3.5M above the rows: Leody Taveras's row ($3.5M arbitration estimate) was taken off the sheet when he became a free agent, but the totals still include him.",
+      "payroll": {
+        "rows": 127.2,
+        "sheet": 130.7
+      },
+      "tax": {
+        "rows": 153.292,
+        "sheet": 156.792
+      }
     }
   },
   "teams": {
