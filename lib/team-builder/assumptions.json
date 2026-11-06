@@ -128,6 +128,11 @@
       0.5,
       0.35
     ],
+    "bargain": {
+      "note": "In the last price round a team will go this far over its budget, and sign this many more than its plan's limit, for a bargain. Added 2026-11-06 so solid veterans don't go unsigned just because every budget was spent by the time their price fell.",
+      "stretch": 10000000,
+      "extraSignings": 1
+    },
     "bidderPremium": 0.05,
     "maxPremium": 0.25,
     "luck": 0.3,

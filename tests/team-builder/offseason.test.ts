@@ -3,6 +3,7 @@
 import { describe, expect, test } from 'bun:test'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import assumptions from '../../lib/team-builder/assumptions.json'
 import { buildRoster, type Move } from '../../lib/team-builder/moves'
 import { ATTITUDES, defaultAttitudes, simulateOffseason, type Attitude, type SimInput } from '../../lib/team-builder/offseason'
 import type { PoolPlayer } from '../../lib/team-builder/pool'
@@ -60,7 +61,7 @@ describe('simulateOffseason', () => {
     for (const t of teams) {
       const r = sim.teams[t.team]
       const b = buildRoster(t, r.moves, pool)
-      expect(r.payrollAfter).toBeLessThanOrEqual(r.budget + 1)
+      expect(r.payrollAfter).toBeLessThanOrEqual(r.budget + assumptions.offseason.bargain.stretch + 1) // a bargain can stretch it
       expect(b.rosterCount).toBeLessThanOrEqual(Math.max(40, buildRoster(t, [], pool).rosterCount))
     }
   })
@@ -90,6 +91,12 @@ describe('simulateOffseason', () => {
       for (const b of x.bids!) expect(b.interest).toBeLessThanOrEqual(1)
       expect(x.salary!).toBeGreaterThanOrEqual(x.ask!)
     }
+  })
+
+  test('the best free agents all find a team, even if late and cheap', () => {
+    const top = pool.filter((e) => e.kind === 'fa').sort((a, b) => (b.war ?? 0) - (a.war ?? 0)).slice(0, 30)
+    const signedIds = new Set(sim.log.filter((x) => x.kind === 'signed').map((x) => x.id))
+    expect(top.filter((e) => signedIds.has(e.mlbamId)).length).toBeGreaterThanOrEqual(27)
   })
 
   test('a team set to tank spends less than it would contending', () => {

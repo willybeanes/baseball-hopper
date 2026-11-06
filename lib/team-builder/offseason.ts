@@ -271,22 +271,25 @@ export function simulateOffseason(input: SimInput): Simulation {
   // 3. Free agency, best players first. Every team that would gain enough and can afford him
   // bids; the keenest (gain x eagerness x luck) wins, and a crowded market pushes the price up.
   // Whoever is still unsigned goes round again at a lower price (S.priceRounds), the way an
-  // unsold free agent's price falls through the winter.
+  // unsold free agent's price falls through the winter. In the last, cheapest round a team will
+  // stretch past its budget (S.bargain.stretch) and its signing limit for a bargain.
   const freeAgents = [...market.values()]
     .filter(({ e }) => (e.war ?? 0) >= S.minFreeAgentWar)
     .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
-  for (const discount of S.priceRounds) for (const { e, from } of freeAgents) {
+  S.priceRounds.forEach((discount, round) => { for (const { e, from } of freeAgents) {
     if (!market.has(e.mlbamId)) continue
+    const last = round === S.priceRounds.length - 1
+    const stretch = last ? S.bargain.stretch : 0
     const ask = Math.max(minimum, Math.round((price(e.war) * discount) / 1e5) * 1e5)
     const bids: { team: string; gain: number; score: number }[] = []
     for (const t of teams) {
       const team = t.team
       const st = settings(team)
       if (team === from && log.some((x) => x.id === e.mlbamId && x.team === team)) continue // just let him go
-      if ((signed.get(team) ?? 0) >= st.maxSignings) continue
+      if ((signed.get(team) ?? 0) >= st.maxSignings + (last ? S.bargain.extraSignings : 0)) continue
       if (st.maxSalary && ask > st.maxSalary) continue
       if (st.maxAge && (e.age ?? 0) > st.maxAge) continue
-      if (room(team) < ask) continue
+      if (room(team) + stretch < ask) continue
       const gain = gainFrom(team, e)
       if (gain < st.minGain) continue
       bids.push({ team, gain, score: gain * st.eagerness * luck() })
@@ -295,7 +298,7 @@ export function simulateOffseason(input: SimInput): Simulation {
     bids.sort((a, b) => b.score - a.score)
     const winner = bids[0].team
     const premium = Math.min(S.maxPremium, S.bidderPremium * (bids.length - 1))
-    const cap = Math.min(room(winner), settings(winner).maxSalary ?? Infinity)
+    const cap = Math.min(room(winner) + stretch, settings(winner).maxSalary ?? Infinity)
     const salary = Math.max(ask, Math.min(Math.round((ask * (1 + premium)) / 1e5) * 1e5, cap))
     // His old team re-signs him; anyone else adds him.
     const slot = built.get(winner)!.slots.find((s) => s.player.mlbamId === e.mlbamId)
@@ -310,7 +313,7 @@ export function simulateOffseason(input: SimInput): Simulation {
       bids: bids.map((b) => ({ team: b.team, gain: Math.round(b.gain * 100) / 100, interest: Math.round((b.score / bids[0].score) * 100) / 100 })),
     })
     trim(winner, e.mlbamId, 'free-agency')
-  }
+  } })
 
   // 4. Standings: both before and after scaled so the league plays .500.
   const scaleBefore = warScale([...before.values()].map((b) => b.war))
