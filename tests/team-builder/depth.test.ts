@@ -17,9 +17,22 @@ describe('depth chart team WAR', () => {
     expect(d.bySpot.SS.war).toBeCloseTo(4 + 3 * (50 / 650), 6) // 700 PA of room: the best takes 650, the next 50
   })
   test('more playing time than a season has: the excess is cut', () => {
-    // 12 full-time first basemen, 700 PA each = 8,400 PA against 6,200 of room.
+    // 12 full-time first basemen, 700 PA each = 8,400 PA against 5,550 of room (6,200 less the
+    // 650 at catcher, which only catchers fill).
     const d = depthChart(Array.from({ length: 12 }, (_, i) => hitter(i, '1b', 2, 700)))
-    expect(d.total).toBeCloseTo(2 * (6200 / 700), 6)
+    expect(d.total).toBeCloseTo(2 * (5550 / 700), 6)
+    expect(d.bySpot.C.war).toBe(0)
+  })
+  test('a displaced regular moves to the other position he is listed at', () => {
+    // Two second basemen; the weaker is also listed in left, so he plays left, not DH or third.
+    const d = depthChart([hitter(1, '2b', 3, 700), hitter(2, '2b-lf', 2, 600), hitter(3, 'dh', 1, 650), hitter(4, '3b', 1, 700)])
+    expect(d.bySpot.LF.players.map((p) => p.name)).toEqual(['H2'])
+    expect(d.bySpot.LF.war).toBeCloseTo(2, 6)
+  })
+  test('leftover time goes to DH first and never behind the plate', () => {
+    const d = depthChart([hitter(1, 'ss', 4, 650), hitter(2, 'ss', 3, 650)])
+    expect(d.bySpot.DH.players.map((p) => p.name)).toEqual(['H2'])
+    expect(d.bySpot.C.players).toEqual([])
   })
   test('the best players by rate get the time', () => {
     const d = depthChart([pitcher(1, 'rhp', 2, 60), pitcher(2, 'rhp', 1, 600)])

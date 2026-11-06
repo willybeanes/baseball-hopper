@@ -1,5 +1,19 @@
 import { describe, expect, test } from 'bun:test'
-import { spotsFor } from '../../lib/team-builder/field'
+import { listedSpotsFor, spotsFor } from '../../lib/team-builder/field'
+
+describe('listedSpotsFor', () => {
+  test('every listed position, primary first', () => {
+    expect(listedSpotsFor('2b-lf')).toEqual(['2B', 'LF'])
+    expect(listedSpotsFor('1b-of')).toEqual(['1B', 'LF', 'CF', 'RF'])
+    expect(listedSpotsFor('cf-inf')).toEqual(['CF', '1B', '2B', '3B', 'SS'])
+    expect(listedSpotsFor('1b-lf-rf')).toEqual(['1B', 'LF', 'RF'])
+    expect(listedSpotsFor('ss')).toEqual(['SS'])
+  })
+  test('pitchers stay pitchers', () => {
+    expect(listedSpotsFor('rhp-c')).toEqual(['RP'])
+    expect(listedSpotsFor('lhp-s')).toEqual(['SP'])
+  })
+})
 
 describe('spotsFor', () => {
   test('pitchers: starters, closers and relievers', () => {

@@ -26,4 +26,24 @@ export function spotsFor(pos: string): FieldSpot[] {
   return INFIELD // "inf", "if", "ut" and anything unrecognised
 }
 
+// Every spot a hitter is listed at, primary first: "2b-lf" is 2B and LF, "1b-of" is 1B and the
+// three outfield spots. The depth chart fills primary spots first and these second, so a
+// second baseman displaced by a better one moves to the outfield he's listed at.
+export function listedSpotsFor(pos: string): FieldSpot[] {
+  const primary = spotsFor(pos)
+  if (primary[0] === 'SP' || primary[0] === 'RP') return primary
+  const out = new Set<FieldSpot>(primary)
+  for (const part of pos.toLowerCase().split('-').slice(1)) {
+    const up = part.toUpperCase()
+    if ((FIELD_SPOTS as readonly string[]).includes(up) && up !== 'SP' && up !== 'RP') out.add(up as FieldSpot)
+    else if (part === 'of') OUTFIELD.forEach((s) => out.add(s))
+    else if (part === 'inf' || part === 'if' || part === 'ut') INFIELD.forEach((s) => out.add(s))
+  }
+  return [...out]
+}
+
+// Where a hitter's leftover time goes once every listed spot is full: DH and the easier spots
+// first. Never catcher: nobody who isn't listed there catches.
+export const SPILLOVER: FieldSpot[] = ['DH', '1B', 'LF', 'RF', '3B', '2B', 'CF', 'SS']
+
 export interface SpotWar { war: number; players: { name: string; war: number }[] }

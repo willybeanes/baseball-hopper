@@ -4,7 +4,7 @@
 // season's worth of PA or innings (assumptions.json), filled by the best players there first.
 
 import assumptions from './assumptions.json'
-import { FIELD_SPOTS, spotsFor, type FieldSpot, type SpotWar } from './field'
+import { FIELD_SPOTS, SPILLOVER, listedSpotsFor, spotsFor, type FieldSpot, type SpotWar } from './field'
 
 export interface DepthPlayer { id: string | number; name: string; pos: string; war?: number | null; pa?: number; ip?: number }
 
@@ -54,10 +54,11 @@ export function depthChart(players: DepthPlayer[]): Depth {
       cr.war += war
       cr.share = 1 - c.left / volumeOf(c.p)
     }
-    // First each player at his own position(s), best first; then whatever room is left
-    // anywhere (bench bats at DH, swingmen in the rotation).
-    for (const spot of spots) for (const c of pool) if (spotsFor(c.p.pos).includes(spot)) use(c, spot)
-    for (const c of pool) for (const spot of spots) use(c, spot)
+    // Best player first, each at the positions he's listed at, primary first, so a good
+    // utility man plays ahead of a weak regular. Then whatever room is left (bench bats at DH
+    // and the corners, never catcher; swingmen in the rotation).
+    for (const c of pool) for (const spot of listedSpotsFor(c.p.pos)) use(c, spot)
+    for (const c of pool) for (const spot of pitching ? spots : SPILLOVER) use(c, spot)
   }
 
   for (const s of FIELD_SPOTS) bySpot[s].players.sort((a, b) => b.war - a.war)
