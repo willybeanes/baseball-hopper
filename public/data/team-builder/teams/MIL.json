@@ -137,7 +137,7 @@
    "walkYear": false,
    "mlbamId": 806198,
    "salarySource": "cots",
-   "war": 2.28,
+   "war": 2.29,
    "pa": 486
   },
   {
@@ -663,6 +663,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 687152,
+   "name": "Darrien Miller",
+   "pos": "c",
+   "age": 26,
+   "war": 1.29,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 823182,
    "name": "Braylon Owens",
    "pos": "sp",
@@ -703,16 +713,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 687152,
-   "name": "Darrien Miller",
-   "pos": "c",
-   "age": 26,
-   "war": 1.15,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 805807,
    "name": "Josh Knoth",
    "pos": "sp",
@@ -727,7 +727,17 @@
    "name": "Ramón Rodríguez",
    "pos": "c",
    "age": 28,
-   "war": 0.96,
+   "war": 1.06,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 682774,
+   "name": "Andrick Nava",
+   "pos": "c",
+   "age": 25,
+   "war": 1.03,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -743,22 +753,22 @@
    "debuted": true
   },
   {
+   "mlbamId": 682641,
+   "name": "Luis Matos",
+   "pos": "rf",
+   "age": 25,
+   "war": 0.94,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 811309,
    "name": "Bishop Letson",
    "pos": "sp",
    "age": 22,
    "war": 0.93,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682774,
-   "name": "Andrick Nava",
-   "pos": "c",
-   "age": 25,
-   "war": 0.91,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -793,16 +803,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 682641,
-   "name": "Luis Matos",
-   "pos": "rf",
-   "age": 25,
-   "war": 0.85,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 809229,
    "name": "Jaron DeBerry",
    "pos": "sp",
@@ -817,7 +817,7 @@
    "name": "Josh Adamczewski",
    "pos": "of",
    "age": 22,
-   "war": 0.62,
+   "war": 0.63,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -873,6 +873,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 682633,
+   "name": "Eduardo Garcia",
+   "pos": "of",
+   "age": 24,
+   "war": 0.2,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 695501,
    "name": "Blake Burke",
    "pos": "1b",
@@ -907,10 +917,20 @@
    "name": "Gerson Garabito",
    "pos": "rp",
    "age": 31,
-   "war": 0.09,
+   "war": 0.06,
    "ip": 65,
    "salary": 780000,
    "debuted": true
+  },
+  {
+   "mlbamId": 671272,
+   "name": "David García",
+   "pos": "c",
+   "age": 27,
+   "war": 0.05,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 656266,
@@ -918,26 +938,6 @@
    "pos": "rp",
    "age": 30,
    "war": 0.04,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 669060,
-   "name": "Bryse Wilson",
-   "pos": "rp",
-   "age": 29,
-   "war": 0,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 663753,
-   "name": "Reiss Knehr",
-   "pos": "rp",
-   "age": 30,
-   "war": 0,
    "ip": 65,
    "salary": 780000,
    "debuted": true

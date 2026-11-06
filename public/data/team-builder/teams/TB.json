@@ -157,7 +157,7 @@
    "cotsEstimate": 3535000,
    "mlbamId": 663743,
    "salarySource": "mlbtr-arb",
-   "war": 0.83,
+   "war": 0.84,
    "pa": 237
   },
   {
@@ -780,16 +780,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 666931,
-   "name": "Jared Oliva",
-   "pos": "of",
-   "age": 31,
-   "war": 1.15,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 694375,
    "name": "TJ Nichols",
    "pos": "sp",
@@ -848,6 +838,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 666931,
+   "name": "Jared Oliva",
+   "pos": "of",
+   "age": 31,
+   "war": 0.98,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 823116,
@@ -934,7 +934,7 @@
    "name": "J.T. Arruda",
    "pos": "2b",
    "age": 29,
-   "war": 0.38,
+   "war": 0.32,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -954,7 +954,7 @@
    "name": "Blake Sabol",
    "pos": "c",
    "age": 29,
-   "war": 0.25,
+   "war": 0.26,
    "pa": 450,
    "salary": 780000,
    "debuted": true
@@ -1014,7 +1014,7 @@
    "name": "Daniel Vellojin",
    "pos": "c",
    "age": 27,
-   "war": 0.14,
+   "war": 0.11,
    "pa": 450,
    "salary": 780000,
    "debuted": false

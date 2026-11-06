@@ -15,7 +15,7 @@
    "walkYear": true,
    "mlbamId": 641154,
    "salarySource": "cots",
-   "war": 1.81,
+   "war": 1.8,
    "ip": 110.3
   },
   {
@@ -102,7 +102,7 @@
    "cotsEstimate": 7250000,
    "mlbamId": 641927,
    "salarySource": "mlbtr-arb",
-   "war": 0.83,
+   "war": 0.82,
    "ip": 137.3
   },
   {
@@ -191,7 +191,7 @@
    "cotsEstimate": 3750000,
    "mlbamId": 665019,
    "salarySource": "mlbtr-arb",
-   "war": 1.87,
+   "war": 1.88,
    "pa": 515
   },
   {
@@ -323,7 +323,7 @@
    "salaryPrevYear": 788200,
    "mlbamId": 807712,
    "salarySource": "minimum",
-   "war": 3.3,
+   "war": 3.31,
    "pa": 558
   },
   {
@@ -783,7 +783,7 @@
    "name": "Jay Thomason",
    "pos": "3b",
    "age": 25,
-   "war": 0.4,
+   "war": 0.41,
    "pa": 600,
    "salary": 780000,
    "debuted": false

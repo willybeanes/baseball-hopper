@@ -729,7 +729,7 @@
    "name": "Omar Martinez",
    "pos": "c",
    "age": 25,
-   "war": 0.76,
+   "war": 0.67,
    "pa": 450,
    "salary": 780000,
    "debuted": true
@@ -785,16 +785,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 683490,
-   "name": "J.J. D'Orazio",
-   "pos": "c",
-   "age": 25,
-   "war": 0.49,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 808129,
    "name": "Juan Flores",
    "pos": "c",
@@ -825,14 +815,14 @@
    "debuted": false
   },
   {
-   "mlbamId": 622569,
-   "name": "Pablo Reyes",
-   "pos": "of",
-   "age": 33,
-   "war": 0.35,
-   "pa": 600,
+   "mlbamId": 683490,
+   "name": "J.J. D'Orazio",
+   "pos": "c",
+   "age": 25,
+   "war": 0.34,
+   "pa": 450,
    "salary": 780000,
-   "debuted": true
+   "debuted": false
   },
   {
    "mlbamId": 804446,
@@ -845,12 +835,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 665861,
-   "name": "Sebastián Rivero",
-   "pos": "c",
-   "age": 28,
-   "war": 0.08,
-   "pa": 450,
+   "mlbamId": 622569,
+   "name": "Pablo Reyes",
+   "pos": "of",
+   "age": 33,
+   "war": 0.15,
+   "pa": 600,
    "salary": 780000,
    "debuted": true
   },

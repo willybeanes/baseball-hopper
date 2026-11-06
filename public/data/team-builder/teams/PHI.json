@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 656941,
    "salarySource": "cots",
-   "war": 2.05,
+   "war": 2.08,
    "pa": 613
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 547180,
    "salarySource": "cots",
-   "war": 2.7,
+   "war": 2.67,
    "pa": 595
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 607208,
    "salarySource": "cots",
-   "war": 2.4,
+   "war": 2.37,
    "pa": 605
   },
   {
@@ -100,7 +100,7 @@
    "walkYear": false,
    "mlbamId": 605400,
    "salarySource": "cots",
-   "war": 2.53,
+   "war": 2.52,
    "ip": 174.3
   },
   {
@@ -441,7 +441,7 @@
    "mlbamId": 694376,
    "salarySource": "minimum",
    "war": 0.13,
-   "pa": 181
+   "pa": 185
   },
   {
    "name": "Kameron Misner",
@@ -488,8 +488,8 @@
    "salaryPrevYear": null,
    "mlbamId": 695391,
    "salarySource": "minimum",
-   "war": -0.05,
-   "pa": 77
+   "war": -0.04,
+   "pa": 66
   },
   {
    "name": "Kyle Backhus",
@@ -536,8 +536,8 @@
    "salaryPrevYear": 170368,
    "mlbamId": 694025,
    "salarySource": "minimum",
-   "war": 0.08,
-   "pa": 146
+   "war": 0.09,
+   "pa": 144
   },
   {
    "name": "Andrew Hoffmann",
@@ -601,7 +601,7 @@
    "mlbamId": 687282,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 95
+   "pa": 96
   },
   {
    "name": "Moises Chace",
@@ -677,7 +677,7 @@
    "name": "Adam Seminaris",
    "pos": "sp",
    "age": 28,
-   "war": 2.53,
+   "war": 2.41,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -757,7 +757,7 @@
    "name": "Jose Colmenares",
    "pos": "2b",
    "age": 25,
-   "war": 0.77,
+   "war": 0.74,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -823,6 +823,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 656627,
+   "name": "Mark Kolozsvary",
+   "pos": "c",
+   "age": 31,
+   "war": 0.22,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 800607,
    "name": "Kehden Hettiger",
    "pos": "c",
@@ -873,16 +883,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 666148,
-   "name": "Drake Fellows",
-   "pos": "sp",
-   "age": 29,
-   "war": 0.06,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 666155,
    "name": "Chuck King",
    "pos": "rp",
@@ -901,6 +901,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
+  },
+  {
+   "mlbamId": 666148,
+   "name": "Drake Fellows",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.01,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
   }
  ]
 }

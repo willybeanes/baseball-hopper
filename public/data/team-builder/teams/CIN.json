@@ -121,7 +121,7 @@
    "cotsEstimate": 4000000,
    "mlbamId": 671096,
    "salarySource": "mlbtr-arb",
-   "war": 1.55,
+   "war": 1.54,
    "ip": 175.1
   },
   {
@@ -799,6 +799,16 @@
    "age": 34,
    "war": 0.09,
    "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 671155,
+   "name": "Ivan Johnson",
+   "pos": "2b",
+   "age": 28,
+   "war": 0.08,
+   "pa": 600,
    "salary": 780000,
    "debuted": true
   },

@@ -689,16 +689,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 660636,
-   "name": "Diego Castillo",
-   "pos": "ss",
-   "age": 29,
-   "war": 1.42,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 702270,
    "name": "Malcolm Moore",
    "pos": "c",
@@ -717,6 +707,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 660636,
+   "name": "Diego Castillo",
+   "pos": "ss",
+   "age": 29,
+   "war": 1.14,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 699213,
@@ -759,16 +759,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 678636,
-   "name": "Orlando Martinez",
-   "pos": "of",
-   "age": 29,
-   "war": 0.71,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 701717,
    "name": "Dalton Pence",
    "pos": "sp",
@@ -779,12 +769,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 669413,
-   "name": "Frainyer Chavez",
-   "pos": "2b",
-   "age": 28,
-   "war": 0.59,
-   "pa": 600,
+   "mlbamId": 657022,
+   "name": "Trey Supak",
+   "pos": "sp",
+   "age": 31,
+   "war": 0.68,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 694395,
+   "name": "Dylan MacLean",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.61,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -794,16 +794,6 @@
    "pos": "sp",
    "age": 23,
    "war": 0.59,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 657022,
-   "name": "Trey Supak",
-   "pos": "sp",
-   "age": 31,
-   "war": 0.54,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -819,42 +809,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 694395,
-   "name": "Dylan MacLean",
-   "pos": "sp",
-   "age": 24,
-   "war": 0.5,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687144,
-   "name": "Corey Joyce",
-   "pos": "ss",
-   "age": 28,
-   "war": 0.49,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 666123,
    "name": "Austin Bergner",
    "pos": "sp",
    "age": 30,
    "war": 0.47,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 666194,
-   "name": "Cooper Johnson",
-   "pos": "c",
-   "age": 29,
-   "war": 0.45,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -869,10 +829,20 @@
    "debuted": false
   },
   {
-   "mlbamId": 686984,
-   "name": "Marcus Lee Sang",
-   "pos": "cf",
-   "age": 26,
+   "mlbamId": 678636,
+   "name": "Orlando Martinez",
+   "pos": "of",
+   "age": 29,
+   "war": 0.38,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 669413,
+   "name": "Frainyer Chavez",
+   "pos": "2b",
+   "age": 28,
    "war": 0.3,
    "pa": 600,
    "salary": 780000,
@@ -909,12 +879,32 @@
    "debuted": false
   },
   {
+   "mlbamId": 666194,
+   "name": "Cooper Johnson",
+   "pos": "c",
+   "age": 29,
+   "war": 0.23,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 822476,
    "name": "Connor O'Hara",
    "pos": "sp",
    "age": 26,
    "war": 0.22,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 687144,
+   "name": "Corey Joyce",
+   "pos": "ss",
+   "age": 28,
+   "war": 0.22,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -969,32 +959,22 @@
    "debuted": true
   },
   {
+   "mlbamId": 678620,
+   "name": "Blake Townsend",
+   "pos": "sp",
+   "age": 26,
+   "war": 0.1,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 665878,
    "name": "Janser Lara",
    "pos": "rp",
    "age": 30,
    "war": 0.05,
    "ip": 65,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694484,
-   "name": "Max Wagner",
-   "pos": "3b",
-   "age": 25,
-   "war": 0.04,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 678620,
-   "name": "Blake Townsend",
-   "pos": "sp",
-   "age": 26,
-   "war": 0,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   }

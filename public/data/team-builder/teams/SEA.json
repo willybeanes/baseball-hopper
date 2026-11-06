@@ -155,7 +155,7 @@
    "cotsEstimate": 5000000,
    "mlbamId": 693433,
    "salarySource": "mlbtr-arb",
-   "war": 3.1,
+   "war": 3.09,
    "ip": 162.1
   },
   {
@@ -645,18 +645,18 @@
   },
   {
    "name": "Isaac Mattson",
-   "sheetName": "Mattson, Isaac",
+   "sheetName": "",
    "pos": "rhp",
    "age": 31,
-   "mls": 1.123,
-   "contract": "",
+   "mls": 0.161,
+   "contract": "Added to the 40-man",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": null,
    "mlbamId": 676755,
    "salarySource": "minimum",
-   "corrected": "RosterResource: moved from PIT",
+   "corrected": "Added from RosterResource",
    "war": 0.02,
    "ip": 30
   }
@@ -676,8 +676,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 4250000,
-   "taxValue": 4250000,
+   "salary": 5100000,
+   "taxValue": 5100000,
    "note": ""
   },
   {
@@ -692,10 +692,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 141677381,
- "sheetTaxPayroll": 173884877,
- "rowsPayroll": 141677381,
- "rowsTaxPayroll": 173884877,
+ "sheetPayroll": 141477381,
+ "sheetTaxPayroll": 173684877,
+ "rowsPayroll": 141477381,
+ "rowsTaxPayroll": 173684877,
  "minors": [
   {
    "mlbamId": 815549,
@@ -726,16 +726,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 656883,
-   "name": "Jakson Reetz",
-   "pos": "c",
-   "age": 31,
-   "war": 1.24,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 813860,
@@ -778,14 +768,14 @@
    "debuted": false
   },
   {
-   "mlbamId": 656413,
-   "name": "Stuart Fairchild",
-   "pos": "cf",
-   "age": 31,
+   "mlbamId": 679712,
+   "name": "Lael Lockhart",
+   "pos": "sp",
+   "age": 29,
    "war": 1.06,
-   "pa": 600,
+   "ip": 200,
    "salary": 780000,
-   "debuted": true
+   "debuted": false
   },
   {
    "mlbamId": 642215,
@@ -798,12 +788,12 @@
    "debuted": true
   },
   {
-   "mlbamId": 621550,
-   "name": "Patrick Wisdom",
-   "pos": "3b",
-   "age": 35,
-   "war": 0.94,
-   "pa": 600,
+   "mlbamId": 656883,
+   "name": "Jakson Reetz",
+   "pos": "c",
+   "age": 31,
+   "war": 1.02,
+   "pa": 450,
    "salary": 780000,
    "debuted": true
   },
@@ -848,6 +838,26 @@
    "debuted": false
   },
   {
+   "mlbamId": 687190,
+   "name": "Adam Leverett",
+   "pos": "sp",
+   "age": 28,
+   "war": 0.82,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 656413,
+   "name": "Stuart Fairchild",
+   "pos": "cf",
+   "age": 31,
+   "war": 0.81,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 695596,
    "name": "Nick Raposo",
    "pos": "c",
@@ -858,14 +868,24 @@
    "debuted": false
   },
   {
-   "mlbamId": 679712,
-   "name": "Lael Lockhart",
+   "mlbamId": 681890,
+   "name": "Troy Watson",
    "pos": "sp",
-   "age": 29,
+   "age": 30,
    "war": 0.74,
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 621550,
+   "name": "Patrick Wisdom",
+   "pos": "3b",
+   "age": 35,
+   "war": 0.68,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 830336,
@@ -888,34 +908,14 @@
    "debuted": false
   },
   {
-   "mlbamId": 687190,
-   "name": "Adam Leverett",
+   "mlbamId": 682077,
+   "name": "Gabe Mosser",
    "pos": "sp",
-   "age": 28,
-   "war": 0.48,
+   "age": 31,
+   "war": 0.44,
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 681890,
-   "name": "Troy Watson",
-   "pos": "sp",
-   "age": 30,
-   "war": 0.41,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 628451,
-   "name": "Andy Ibáñez",
-   "pos": "2b",
-   "age": 34,
-   "war": 0.36,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 806233,
@@ -924,6 +924,16 @@
    "age": 22,
    "war": 0.34,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 701314,
+   "name": "Nick Hull",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.34,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -938,6 +948,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 646242,
+   "name": "Jhonathan Díaz",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.26,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 683264,
    "name": "Adam Maier",
    "pos": "sp",
@@ -946,16 +966,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 641924,
-   "name": "Jacob Nottingham",
-   "pos": "c",
-   "age": 32,
-   "war": 0.21,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 681098,
@@ -968,6 +978,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 681006,
+   "name": "Josh Simpson",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.18,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 687730,
    "name": "Caleb Cali",
    "pos": "3b",
@@ -978,11 +998,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 646242,
-   "name": "Jhonathan Díaz",
+   "mlbamId": 663884,
+   "name": "Nolan Kingham",
    "pos": "rp",
    "age": 30,
-   "war": 0.16,
+   "war": 0.13,
    "ip": 65,
    "salary": 780000,
    "debuted": true
@@ -998,16 +1018,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 681006,
-   "name": "Josh Simpson",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.1,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 686638,
    "name": "Hunter Fitz-Gerald",
    "pos": "1b",
@@ -1018,14 +1028,14 @@
    "debuted": false
   },
   {
-   "mlbamId": 682077,
-   "name": "Gabe Mosser",
-   "pos": "sp",
-   "age": 31,
+   "mlbamId": 641540,
+   "name": "Dane Dunning",
+   "pos": "rp",
+   "age": 32,
    "war": 0.08,
-   "ip": 200,
+   "ip": 65,
    "salary": 780000,
-   "debuted": false
+   "debuted": true
   },
   {
    "mlbamId": 804577,
@@ -1038,34 +1048,24 @@
    "debuted": false
   },
   {
-   "mlbamId": 663884,
-   "name": "Nolan Kingham",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.06,
-   "ip": 65,
+   "mlbamId": 628451,
+   "name": "Andy Ibáñez",
+   "pos": "2b",
+   "age": 34,
+   "war": 0.04,
+   "pa": 600,
    "salary": 780000,
    "debuted": true
   },
   {
-   "mlbamId": 641540,
-   "name": "Dane Dunning",
-   "pos": "rp",
+   "mlbamId": 641924,
+   "name": "Jacob Nottingham",
+   "pos": "c",
    "age": 32,
-   "war": 0,
-   "ip": 65,
+   "war": 0.04,
+   "pa": 450,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 701314,
-   "name": "Nick Hull",
-   "pos": "sp",
-   "age": 27,
-   "war": 0,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
   }
  ]
 }

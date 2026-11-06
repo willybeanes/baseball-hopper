@@ -699,16 +699,6 @@
  "rowsTaxPayroll": 220894995,
  "minors": [
   {
-   "mlbamId": 673945,
-   "name": "Freuddy Batista",
-   "pos": "c",
-   "age": 27,
-   "war": 1.23,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 814299,
    "name": "Pascanel Ferreras",
    "pos": "2b",
@@ -725,6 +715,16 @@
    "age": 25,
    "war": 1.13,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 673945,
+   "name": "Freuddy Batista",
+   "pos": "c",
+   "age": 27,
+   "war": 0.97,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -769,16 +769,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 669699,
-   "name": "Braden Shewmake",
-   "pos": "ss",
-   "age": 29,
-   "war": 0.77,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 826315,
    "name": "Cole Hertzler",
    "pos": "sp",
@@ -807,6 +797,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 669699,
+   "name": "Braden Shewmake",
+   "pos": "ss",
+   "age": 29,
+   "war": 0.47,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 694545,
@@ -879,6 +879,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 685005,
+   "name": "Christian Roa",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.12,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 690667,
    "name": "Trey Dombroski",
    "pos": "sp",
@@ -899,22 +909,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 685005,
-   "name": "Christian Roa",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.04,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 823649,
    "name": "Javier Perez",
    "pos": "sp",
    "age": 23,
    "war": 0.03,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 680588,
+   "name": "Julio Rodriguez",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.03,
+   "ip": 65,
    "salary": 780000,
    "debuted": false
   }

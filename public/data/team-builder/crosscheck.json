@@ -2,60 +2,11 @@
  "source": "https://www.fangraphs.com/roster-resource/depth-charts",
  "applied": [
   {
-   "team": "BAL",
-   "name": "Josh White",
-   "mlbamId": 687985,
-   "change": "moved from MIA with his contract",
-   "move": "2026-11-02: Lost off waivers to Orioles"
-  },
-  {
-   "team": "BAL",
-   "name": "Philip Abner",
-   "mlbamId": 691769,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-02: Claimed off waivers from Mets"
-  },
-  {
-   "team": "CHC",
-   "name": "Eric Orze",
-   "mlbamId": 679358,
-   "change": "moved from MIN with his contract",
-   "move": "2026-11-02: Lost off waivers to Cubs"
-  },
-  {
-   "team": "CWS",
-   "name": "Graham Pauley",
-   "mlbamId": 688363,
-   "change": "moved from MIA with his contract",
-   "move": "2026-11-02: Lost off waivers to White Sox"
-  },
-  {
    "team": "HOU",
    "name": "Evan Reifert",
    "mlbamId": 682126,
    "change": "added to the roster at the minimum",
    "move": "2026-11-02: Contract selected from minors"
-  },
-  {
-   "team": "NYM",
-   "name": "Pierson Ohl",
-   "mlbamId": 701487,
-   "change": "moved from COL with his contract",
-   "move": "2026-11-02: Lost off waivers to Mets"
-  },
-  {
-   "team": "NYM",
-   "name": "Jack Anderson",
-   "mlbamId": 681252,
-   "change": "moved from MIN with his contract",
-   "move": "2026-11-02: Lost off waivers to Mets"
-  },
-  {
-   "team": "MIA",
-   "name": "Cameron Weston",
-   "mlbamId": 687721,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-02: Claimed off waivers from Mets"
   },
   {
    "team": "PHI",
@@ -67,41 +18,8 @@
    "team": "SEA",
    "name": "Isaac Mattson",
    "mlbamId": 676755,
-   "change": "moved from PIT with his contract",
-   "move": "2026-11-02: Lost off waivers to Mariners"
-  },
-  {
-   "team": "BAL",
-   "name": "Leody Taveras",
-   "mlbamId": 665750,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Cleared waivers; outrighted to minors"
-  },
-  {
-   "team": "BAL",
-   "name": "Yohel Pozo",
-   "mlbamId": 650968,
-   "change": "off the 40-man"
-  },
-  {
-   "team": "BAL",
-   "name": "Heston Kjerstad",
-   "mlbamId": 677008,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "BAL",
-   "name": "Yosver Zulueta",
-   "mlbamId": 691172,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "CHC",
-   "name": "Tyler Austin",
-   "mlbamId": 592122,
-   "change": "off the 40-man"
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-02: Claimed off waivers from Pirates"
   },
   {
    "team": "CIN",
@@ -110,144 +28,11 @@
    "change": "off the 40-man"
   },
   {
-   "team": "CWS",
-   "name": "Ky Bush",
-   "mlbamId": 681066,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "CWS",
-   "name": "Junior Perez",
-   "mlbamId": 678577,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "COL",
-   "name": "RJ Petit",
-   "mlbamId": 696275,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Returned to Tigers (Rule 5)"
-  },
-  {
-   "team": "COL",
-   "name": "Chad Stevens",
-   "mlbamId": 677060,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "COL",
-   "name": "T.J. Shook",
-   "mlbamId": 669298,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "COL",
-   "name": "Eiberson Castellano",
-   "mlbamId": 682769,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "COL",
-   "name": "Blake Adams",
-   "mlbamId": 687060,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "DET",
-   "name": "Sawyer Gipson-Long",
-   "mlbamId": 687830,
-   "change": "released, now a free agent",
-   "move": "2026-11-02: Released"
-  },
-  {
-   "team": "DET",
-   "name": "Corey Julks",
-   "mlbamId": 667452,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "DET",
-   "name": "Bailey Horn",
-   "mlbamId": 690544,
-   "change": "released, now a free agent",
-   "move": "2026-11-02: Released"
-  },
-  {
-   "team": "DET",
-   "name": "Yilber Diaz",
-   "mlbamId": 700270,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Designated for assignment (pending)"
-  },
-  {
-   "team": "NYM",
-   "name": "Kyren Paris",
-   "mlbamId": 677347,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Designated for assignment (pending)"
-  },
-  {
-   "team": "NYM",
-   "name": "Christian Cairo",
-   "mlbamId": 686551,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Designated for assignment (pending)"
-  },
-  {
    "team": "MIA",
-   "name": "Bradley Blalock",
-   "mlbamId": 687134,
-   "change": "released, now a free agent",
-   "move": "2026-11-03: Released"
-  },
-  {
-   "team": "MIA",
-   "name": "Patrick Monteverde",
-   "mlbamId": 687287,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "SEA",
-   "name": "Patrick Wisdom",
-   "mlbamId": 621550,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "SEA",
-   "name": "Weston Wilson",
-   "mlbamId": 642215,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "SEA",
-   "name": "Josh Simpson",
-   "mlbamId": 681006,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "SEA",
-   "name": "Will Wilson",
-   "mlbamId": 669717,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
-  },
-  {
-   "team": "SEA",
-   "name": "Troy Watson",
-   "mlbamId": 681890,
-   "change": "off the 40-man",
-   "move": "2026-11-02: Outrighted to minors"
+   "name": "Josh White",
+   "mlbamId": 687985,
+   "change": "moved to BAL",
+   "move": "2026-11-02: Claimed off waivers from Marlins"
   },
   {
    "team": "TEX",

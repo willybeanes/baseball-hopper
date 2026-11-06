@@ -106,7 +106,7 @@
    "cotsEstimate": 5000000,
    "mlbamId": 671922,
    "salarySource": "mlbtr-arb",
-   "war": 1.38,
+   "war": 1.37,
    "ip": 72
   },
   {
@@ -948,16 +948,6 @@
    "age": 25,
    "war": 0.06,
    "ip": 65,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682679,
-   "name": "Dayan Frias",
-   "pos": "3b",
-   "age": 25,
-   "war": 0.04,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

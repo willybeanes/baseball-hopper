@@ -87,7 +87,7 @@
    "walkYear": false,
    "mlbamId": 682998,
    "salarySource": "cots",
-   "war": 3.66,
+   "war": 3.67,
    "pa": 618
   },
   {
@@ -386,7 +386,7 @@
    "mlbamId": 694371,
    "salarySource": "minimum",
    "war": 0.22,
-   "pa": 168
+   "pa": 165
   },
   {
    "name": "Ryan Waldschmidt",
@@ -612,6 +612,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 660821,
+   "name": "Jesús Sánchez",
+   "pos": "dh",
+   "age": 29,
+   "war": 1.18,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 702679,
    "name": "Demetrio Crisantes",
    "pos": "ss",
@@ -632,21 +642,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 660821,
-   "name": "Jesús Sánchez",
-   "pos": "dh",
-   "age": 29,
-   "war": 1.05,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 692416,
    "name": "Christian Cerda",
    "pos": "c",
    "age": 24,
-   "war": 0.97,
+   "war": 1,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -742,6 +742,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 663462,
+   "name": "Isaiah Campbell",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.13,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 681400,
    "name": "Danny Serretti",
    "pos": "3b",
@@ -758,26 +768,6 @@
    "age": 27,
    "war": 0.12,
    "ip": 65,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 663462,
-   "name": "Isaiah Campbell",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.11,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 690841,
-   "name": "Matt O'Neill",
-   "pos": "c",
-   "age": 29,
-   "war": 0.03,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

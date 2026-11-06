@@ -383,7 +383,7 @@
    "cotsEstimate": 1575000,
    "mlbamId": 669062,
    "salarySource": "mlbtr-arb",
-   "war": 0.41,
+   "war": 0.4,
    "ip": 58
   },
   {
@@ -839,22 +839,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 691385,
-   "name": "Ronald Rosario",
-   "pos": "c",
-   "age": 24,
-   "war": 1.31,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 685274,
    "name": "Braiden Ward",
    "pos": "cf",
    "age": 28,
    "war": 1.23,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 691385,
+   "name": "Ronald Rosario",
+   "pos": "c",
+   "age": 24,
+   "war": 1.13,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -919,16 +919,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691369,
-   "name": "Allan Castro",
-   "pos": "of",
-   "age": 24,
-   "war": 0.48,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 702517,
    "name": "Mason White",
    "pos": "ss",
@@ -949,16 +939,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 681962,
-   "name": "Vinny Capra",
-   "pos": "3b",
-   "age": 30,
-   "war": 0.41,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 806985,
    "name": "Yoeilin Cespedes",
    "pos": "ss",
@@ -977,16 +957,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 641511,
-   "name": "Jason Delay",
-   "pos": "c",
-   "age": 32,
-   "war": 0.36,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 656180,
@@ -1019,6 +989,36 @@
    "debuted": false
   },
   {
+   "mlbamId": 691369,
+   "name": "Allan Castro",
+   "pos": "of",
+   "age": 24,
+   "war": 0.2,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 641511,
+   "name": "Jason Delay",
+   "pos": "c",
+   "age": 32,
+   "war": 0.19,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 681962,
+   "name": "Vinny Capra",
+   "pos": "3b",
+   "age": 30,
+   "war": 0.18,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 694812,
    "name": "Tyler McDonough",
    "pos": "if",
@@ -1027,16 +1027,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 621512,
-   "name": "Tomás Nido",
-   "pos": "c",
-   "age": 33,
-   "war": 0.07,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 682785,
@@ -1065,6 +1055,16 @@
    "age": 23,
    "war": 0,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 656726,
+   "name": "Sam McWilliams",
+   "pos": "rp",
+   "age": 31,
+   "war": 0,
+   "ip": 65,
    "salary": 780000,
    "debuted": false
   }

@@ -208,7 +208,7 @@
    "walkYear": false,
    "mlbamId": 805808,
    "salarySource": "cots",
-   "war": 5.53,
+   "war": 5.54,
    "pa": 662
   },
   {
@@ -297,7 +297,7 @@
    "cotsEstimate": 1250000,
    "mlbamId": 681857,
    "salarySource": "mlbtr-arb",
-   "war": 0.77,
+   "war": 0.78,
    "ip": 57.2
   },
   {
@@ -367,23 +367,6 @@
    "ip": 30
   },
   {
-   "name": "Sawyer Gipson-Long",
-   "sheetName": "Gipson-Long, Sawyer",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 2.035,
-   "contract": "",
-   "status": "fa",
-   "salary": null,
-   "taxValue": null,
-   "salaryPrevYear": 388857,
-   "mlbamId": 687830,
-   "salarySource": "none",
-   "corrected": "RosterResource: released",
-   "war": 0,
-   "ip": 1
-  },
-  {
    "name": "Keider Montero",
    "sheetName": "Montero, Keider",
    "pos": "rhp",
@@ -446,23 +429,6 @@
    "salarySource": "minimum",
    "war": 0.05,
    "ip": 50
-  },
-  {
-   "name": "Bailey Horn",
-   "sheetName": "Horn, Bailey",
-   "pos": "lhp",
-   "age": 29,
-   "mls": 1.102,
-   "contract": "",
-   "status": "fa",
-   "salary": null,
-   "taxValue": null,
-   "salaryPrevYear": 784100,
-   "mlbamId": 690544,
-   "salarySource": "none",
-   "corrected": "RosterResource: released",
-   "war": 0,
-   "ip": 1
   },
   {
    "name": "River Ryan",
@@ -767,16 +733,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 685329,
-   "name": "Carlos Peña",
-   "pos": "sp",
-   "age": 28,
-   "war": 1.55,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 827640,
    "name": "Lucas Elissalt",
    "pos": "sp",
@@ -857,16 +813,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 670276,
-   "name": "Cal Stevenson",
-   "pos": "of",
-   "age": 30,
-   "war": 0.93,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 701464,
    "name": "Joe Miller",
    "pos": "sp",
@@ -883,16 +829,6 @@
    "age": 24,
    "war": 0.91,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 685382,
-   "name": "Andrew Navigato",
-   "pos": "ss",
-   "age": 29,
-   "war": 0.86,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -927,16 +863,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 668766,
-   "name": "Dylan File",
-   "pos": "sp",
-   "age": 31,
-   "war": 0.63,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 800624,
    "name": "Ben Jacobs",
    "pos": "sp",
@@ -945,16 +871,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 681546,
-   "name": "James Outman",
-   "pos": "cf",
-   "age": 30,
-   "war": 0.61,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 700931,
@@ -1057,26 +973,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 605218,
-   "name": "Carl Edwards Jr.",
-   "pos": "rp",
-   "age": 35,
-   "war": 0.3,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 664874,
-   "name": "Seby Zavala",
-   "pos": "c",
-   "age": 33,
-   "war": 0.25,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 680273,
    "name": "Chris Meyers",
    "pos": "of",
@@ -1113,6 +1009,16 @@
    "age": 22,
    "war": 0.1,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 696275,
+   "name": "RJ Petit",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.09,
+   "ip": 65,
    "salary": 780000,
    "debuted": false
   },

@@ -824,31 +824,21 @@
    "debuted": false
   },
   {
-   "mlbamId": 693459,
-   "name": "Kyler Fedko",
-   "pos": "lf",
-   "age": 27,
-   "war": 0.59,
+   "mlbamId": 665839,
+   "name": "Enmanuel Valdez",
+   "pos": "1b",
+   "age": 28,
+   "war": 0.6,
    "pa": 600,
    "salary": 780000,
    "debuted": true
   },
   {
-   "mlbamId": 669421,
-   "name": "Dominic Pipkin",
-   "pos": "sp",
+   "mlbamId": 693459,
+   "name": "Kyler Fedko",
+   "pos": "lf",
    "age": 27,
-   "war": 0.54,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 665839,
-   "name": "Enmanuel Valdez",
-   "pos": "1b",
-   "age": 28,
-   "war": 0.4,
+   "war": 0.59,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -862,6 +852,26 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 669421,
+   "name": "Dominic Pipkin",
+   "pos": "sp",
+   "age": 27,
+   "war": 0.39,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 690987,
+   "name": "Robert Hassell III",
+   "pos": "cf",
+   "age": 25,
+   "war": 0.37,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 800208,
@@ -894,12 +904,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 690987,
-   "name": "Robert Hassell III",
-   "pos": "cf",
-   "age": 25,
-   "war": 0.22,
-   "pa": 600,
+   "mlbamId": 542194,
+   "name": "Christian Bethancourt",
+   "pos": "c",
+   "age": 35,
+   "war": 0.23,
+   "pa": 450,
    "salary": 780000,
    "debuted": true
   },
@@ -960,6 +970,16 @@
    "age": 24,
    "war": 0.04,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 677319,
+   "name": "Cameron Barstad",
+   "pos": "c",
+   "age": 26,
+   "war": 0.02,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

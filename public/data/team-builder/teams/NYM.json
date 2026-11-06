@@ -417,6 +417,22 @@
    "pa": 380
   },
   {
+   "name": "Pierson Ohl",
+   "sheetName": "Ohl, Pierson",
+   "pos": "rhp",
+   "age": 27,
+   "mls": 1.062,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 701487,
+   "salarySource": "minimum",
+   "war": 0.01,
+   "ip": 6
+  },
+  {
    "name": "Nate Lavender",
    "sheetName": "Lavender, Nate",
    "pos": "lhp",
@@ -625,6 +641,22 @@
    "ip": 10
   },
   {
+   "name": "Jack Anderson",
+   "sheetName": "Anderson, Jack",
+   "pos": "rhp",
+   "age": 27,
+   "mls": 0.02,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 681252,
+   "salarySource": "minimum",
+   "war": 0.06,
+   "ip": 18
+  },
+  {
    "name": "Dylan Ross",
    "sheetName": "Ross, Dylan",
    "pos": "rhp",
@@ -639,40 +671,6 @@
    "salarySource": "minimum",
    "war": 0.11,
    "ip": 16
-  },
-  {
-   "name": "Pierson Ohl",
-   "sheetName": "Ohl, Pierson",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 1.062,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 701487,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from COL",
-   "war": 0.01,
-   "ip": 6
-  },
-  {
-   "name": "Jack Anderson",
-   "sheetName": "Anderson, Jack",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.02,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 681252,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from MIN",
-   "war": 0.06,
-   "ip": 18
   }
  ],
  "deadMoney": [
@@ -787,16 +785,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 680933,
-   "name": "Joander Suarez",
-   "pos": "sp",
-   "age": 27,
-   "war": 1.34,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 805031,
    "name": "Gabe Davis",
    "pos": "sp",
@@ -812,6 +800,16 @@
    "pos": "sp",
    "age": 31,
    "war": 1.29,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 680933,
+   "name": "Joander Suarez",
+   "pos": "sp",
+   "age": 27,
+   "war": 1.27,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -971,7 +969,7 @@
    "name": "Bryce Conley",
    "pos": "sp",
    "age": 32,
-   "war": 0.44,
+   "war": 0.39,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -991,7 +989,7 @@
    "name": "Brian Metoyer",
    "pos": "rp",
    "age": 30,
-   "war": 0.25,
+   "war": 0.23,
    "ip": 65,
    "salary": 780000,
    "debuted": false
@@ -1037,6 +1035,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 692024,
+   "name": "Alex Carrillo",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.11,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 682796,
    "name": "Eddinson Paulino",
    "pos": "3b",
@@ -1055,16 +1063,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 692024,
-   "name": "Alex Carrillo",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.09,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 702103,
@@ -1101,7 +1099,7 @@
    "name": "Guillo Zuñiga",
    "pos": "rp",
    "age": 28,
-   "war": 0.05,
+   "war": 0.03,
    "ip": 65,
    "salary": 780000,
    "debuted": true
