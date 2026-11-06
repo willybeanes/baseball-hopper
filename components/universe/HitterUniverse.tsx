@@ -92,7 +92,8 @@ function distance(a: Row, b: Row, active: boolean[]): number {
 
 function readout(coord: Coord, value: number | null, pct: number | null) {
   if (pct == null) return <span className="text-[var(--dim)]">No reading</span>;
-  const shown = value == null ? null : `${value.toFixed(coord.digits)}${coord.unit === "°" ? "°" : coord.unit ? ` ${coord.unit}` : ""}`;
+  // Rate stats like wOBA read the baseball way, without the leading zero.
+  const shown = value == null ? null : `${(coord.digits === 3 ? value.toFixed(3).replace(/^(-?)0\./, "$1.") : value.toFixed(coord.digits))}${coord.unit === "°" ? "°" : coord.unit ? ` ${coord.unit}` : ""}`;
   return (
     <>
       {shown && <span className="text-[var(--dim)]">{shown} · </span>}
