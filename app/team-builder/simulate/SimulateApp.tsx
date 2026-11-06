@@ -33,6 +33,20 @@ const ATTITUDE_HINTS: Record<Attitude, string> = {
   tank: 'Sells anyone 28 and up for prospects, spends little.',
 }
 const newSeed = () => Math.floor(Math.random() * 2 ** 32)
+const LAST_RESULT_KEY = 'team-builder-last-offseason' // this browser's most recent result link
+
+// The plans, moves and seed behind a result: enough to rebuild it exactly.
+type Run = { attitudes: Record<string, Attitude>; manual: Record<string, Move[]>; seed: number }
+
+function simulateLink(fromTeam: string | null, attitudes: Record<string, Attitude>, manual: Record<string, Move[]>, seed?: number) {
+  const q = new URLSearchParams()
+  if (fromTeam) q.set('from', fromTeam)
+  q.set('a', encodeAttitudes(attitudes))
+  const mm = encodeTeamMoves(manual)
+  if (mm) q.set('mm', mm)
+  if (seed != null) q.set('s', encodeSeed(seed))
+  return `/team-builder/simulate?${q.toString()}`
+}
 
 function Logo({ code, size = 'h-5 w-5' }: { code: string; size?: string }) {
   // eslint-disable-next-line @next/next/no-img-element
@@ -67,7 +81,12 @@ export default function SimulateApp() {
   const [stage, setStage] = useState<Stage>('setup')
   const [attitudes, setAttitudes] = useState<Record<string, Attitude>>({})
   const [manual, setManual] = useState<Record<string, Move[]>>({})
-  const [seed, setSeed] = useState<number>(0)
+  const [ran, setRan] = useState<Run | null>(null)
+  // The last result this browser saw, offered on the setup screen after a reload.
+  const [lastLink, setLastLink] = useState<string | null>(null)
+  useEffect(() => {
+    try { setLastLink(window.localStorage.getItem(LAST_RESULT_KEY)) } catch { /* storage blocked */ }
+  }, [])
   const [sim, setSim] = useState<Simulation | null>(null)
 
   useEffect(() => {
@@ -96,7 +115,7 @@ export default function SimulateApp() {
     setManual(moves)
     const s = decodeSeed(params.get('s'))
     if (s != null) {
-      setSeed(s)
+      setRan({ attitudes: { ...suggested, ...linked }, manual: moves, seed: s })
       setSim(simulateOffseason({ teams, pool, attitudes: { ...suggested, ...linked }, manual: moves, seed: s, perWin, minimum }))
       setStage('results')
     }
@@ -104,22 +123,29 @@ export default function SimulateApp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [suggested])
 
-  // Keep the address in step, so it can be copied at any point.
+  const resultLink = ran ? simulateLink(fromTeam, ran.attitudes, ran.manual, ran.seed) : null
+  // Plans and moves still match the last run, so its result is what "Simulate" would rebuild.
+  const unchanged = ran != null
+    && encodeAttitudes(ran.attitudes) === encodeAttitudes(attitudes)
+    && encodeTeamMoves(ran.manual) === encodeTeamMoves(manual)
+
+  // Keep the address in step, so it can be copied at any point. Going back to change plans
+  // keeps the result's link until a plan or move actually changes.
   useEffect(() => {
     if (!suggested) return
-    const q = new URLSearchParams()
-    if (fromTeam) q.set('from', fromTeam)
-    q.set('a', encodeAttitudes(attitudes))
-    const mm = encodeTeamMoves(manual)
-    if (mm) q.set('mm', mm)
-    if (stage === 'results') q.set('s', encodeSeed(seed))
-    const next = `/team-builder/simulate?${q.toString()}`
-    if (next !== window.location.pathname + window.location.search) window.history.replaceState(null, '', next)
-  }, [suggested, attitudes, manual, stage, seed, fromTeam])
+    const next = stage !== 'setup' || unchanged ? resultLink : simulateLink(fromTeam, attitudes, manual)
+    if (next && next !== window.location.pathname + window.location.search) window.history.replaceState(null, '', next)
+  }, [suggested, attitudes, manual, stage, fromTeam, unchanged, resultLink])
+
+  useEffect(() => {
+    if (!resultLink) return
+    setLastLink(resultLink)
+    try { window.localStorage.setItem(LAST_RESULT_KEY, resultLink) } catch { /* storage blocked */ }
+  }, [resultLink])
 
   const run = (s: number) => {
     if (!teams || !pool) return
-    setSeed(s)
+    setRan({ attitudes, manual, seed: s })
     setSim(simulateOffseason({ teams, pool, attitudes, manual, seed: s, perWin, minimum }))
     setStage('running')
     window.scrollTo({ top: 0 })
@@ -142,6 +168,18 @@ export default function SimulateApp() {
 
       {teams && pool && suggested && Object.keys(attitudes).length > 0 && (
         <>
+          {stage === 'setup' && (sim || lastLink) && (
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[var(--rule)] bg-[var(--panel)] px-4 py-3">
+              <p className="text-sm text-[var(--dim)]">
+                {sim
+                  ? unchanged ? 'Your last result is still here.' : 'Your last result is still here, from the plans before your changes.'
+                  : 'You have a saved result from an earlier visit.'}
+              </p>
+              {sim
+                ? <button type="button" className={buttonQuiet} onClick={() => { setStage('results'); window.scrollTo({ top: 0 }) }}>Back to results</button>
+                : <a href={lastLink!} className={buttonQuiet}>Open last result</a>}
+            </div>
+          )}
           {stage === 'setup' && (
             <Setup
               teams={teams} pool={pool} attitudes={attitudes} setAttitudes={setAttitudes} suggested={suggested}
