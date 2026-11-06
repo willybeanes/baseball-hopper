@@ -1,35 +1,44 @@
 """
-Builds public/data/hitter-universe.json: an 11-coordinate address for every qualified hitter-season, plus a 3D map.
+Builds public/data/hitter-universe.json: a 14-coordinate swing address (how he swings, the swing's shape, his stance) for every
+qualified hitter-season, plus a 3D map. The four Hitting+ components ride along for reference and do not count.
 
-Reads swing_profile from Supabase, Hitting+ and wRC+ from hitting-plus.vercel.app, batting side from the MLB Stats API,
+Reads swing_profile from Supabase, Hitting+ from hitting-plus.vercel.app, swing shape and stance from Baseball Savant, batting side from the MLB Stats API,
 launch_readings.csv (from read_launch.py) and the published 2026 launch numbers. Rerun by hand when a season is added. Needs numpy, pandas, requests and scikit-learn.
 
 Usage (from the repo root, with NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY set):
   python3 scripts/universe/build_universe.py --published ~/swingplus/swing_profile/launch_2026.csv
 """
-import argparse, json, os
+import argparse, io, json, os
 from datetime import date
 import numpy as np, pandas as pd, requests
 from sklearn.manifold import TSNE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 HP_URL = 'https://hitting-plus.vercel.app/data/swingplus_latest.json'
-WRC_URL = 'https://hitting-plus.vercel.app/data/wrc_plus.json'
 PEOPLE_URL = 'https://statsapi.mlb.com/api/v1/people'
 
-# show_raw is off where the raw number has no plain baseball reading, so those show as percentiles only.
+# group: swing, shape and stance count toward closeness and the map. grade is shown for reference only and never counts,
+# so hitters who swing alike but got different results still sit together.
+# source: swing_profile (our engine), savant_path, savant_bat or savant_stance (Baseball Savant leaderboards), hitting_plus.
 COORDS = [
-    dict(key='sandbag', label='The Sandbag', unit='mph', digits=1, low='Small', high='Big', group='style', show_raw=True),
-    dict(key='normal_swing', label='Normal swing', unit='mph', digits=1, low='Slower', high='Faster', group='style', show_raw=True),
-    dict(key='chase_penalty', label='Chase penalty', unit='mph', digits=1, low='Small', high='Big', group='style', show_raw=True),
-    dict(key='two_strike_drop', label='Two-strike slowdown', unit='mph', digits=1, low='Swings harder', high='Eases off', group='style', show_raw=True),
-    dict(key='picking_score', label='Picking his spots', unit='', digits=1, low='Spreads it around', high='Picks his spots', group='style', show_raw=False),
-    dict(key='launch', label='Swing launch', unit='frames', digits=1, low='Later', high='Earlier', group='style', show_raw=True),
-    dict(key='whiff_spread', label='Whiff direction', unit='', digits=1, low='Narrow split', high='Wide split', group='style', show_raw=False),
-    dict(key='Decision+', label='Decision+', unit='', digits=0, low='Lower', high='Higher', group='grade', show_raw=True),
-    dict(key='Timing+', label='Timing+', unit='', digits=0, low='Lower', high='Higher', group='grade', show_raw=True),
-    dict(key='Contact+', label='Contact+', unit='', digits=0, low='Lower', high='Higher', group='grade', show_raw=True),
-    dict(key='Power+', label='Power+', unit='', digits=0, low='Lower', high='Higher', group='grade', show_raw=True),
+    dict(key='normal_swing', label='Normal swing', unit='mph', digits=1, low='Slower', high='Faster', group='swing', source='swing_profile'),
+    dict(key='sandbag', label='The Sandbag', unit='mph', digits=1, low='Small', high='Big', group='swing', source='swing_profile'),
+    dict(key='chase_penalty', label='Chase penalty', unit='mph', digits=1, low='Small', high='Big', group='swing', source='swing_profile'),
+    dict(key='two_strike_drop', label='Two-strike slowdown', unit='mph', digits=1, low='Swings harder', high='Eases off', group='swing', source='swing_profile'),
+    dict(key='launch', label='Swing launch', unit='frames', digits=1, low='Later', high='Earlier', group='swing', source='swing_profile'),
+    dict(key='swing_length', label='Swing length', unit='ft', digits=1, low='Compact', high='Long', group='shape', source='savant_bat'),
+    dict(key='attack_angle', label='Attack angle', unit='°', digits=1, low='Level', high='Uphill', group='shape', source='savant_path'),
+    dict(key='swing_tilt', label='Swing tilt', unit='°', digits=1, low='Flat', high='Steep', group='shape', source='savant_path'),
+    dict(key='attack_direction', label='Bat direction at contact', unit='°', digits=1, low='Pull side', high='Other way', group='shape', source='savant_path'),
+    dict(key='contact_point', label='Contact point', unit='in', digits=1, low='Lets it travel', high='Out in front', group='shape', source='savant_path'),
+    dict(key='foot_sep', label='Stance width', unit='in', digits=1, low='Narrow', high='Wide', group='stance', source='savant_stance'),
+    dict(key='stance_angle', label='Open or closed', unit='°', digits=1, low='Open', high='Closed', group='stance', source='savant_stance'),
+    dict(key='off_plate', label='Distance off the plate', unit='in', digits=1, low='Crowds the plate', high='Off the plate', group='stance', source='savant_stance'),
+    dict(key='box_depth', label='Depth in the box', unit='in', digits=1, low='Up in the box', high='Back in the box', group='stance', source='savant_stance'),
+    dict(key='Decision+', label='Decision+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
+    dict(key='Timing+', label='Timing+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
+    dict(key='Contact+', label='Contact+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
+    dict(key='Power+', label='Power+', unit='', digits=0, low='Lower', high='Higher', group='grade', source='hitting_plus'),
 ]
 
 
@@ -52,9 +61,31 @@ def fetch_hitting_plus():
     return pd.DataFrame(players)[cols].rename(columns={'mlbamid': 'mlbam', 'game_year': 'season'})
 
 
-def fetch_wrc():
-    wrc = requests.get(WRC_URL, timeout=120).json()
-    return lambda name, season: wrc.get(name, {}).get(str(season), np.nan)
+SAVANT = 'https://baseballsavant.mlb.com'
+SAVANT_FILES = {
+    # minSwings=1 so every qualified hitter-season in the universe is covered, not just Savant's own qualifiers.
+    'savant_path': ('/leaderboard/bat-tracking/swing-path-attack-angle?gameType=Regular&minSwings=1&type=batter&csv=true',
+                    {'attack_angle': 'attack_angle', 'swing_tilt': 'swing_tilt', 'attack_direction': 'attack_direction', 'avg_intercept_y_vs_batter': 'contact_point'}),
+    'savant_bat': ('/leaderboard/bat-tracking?gameType=Regular&minSwings=1&minGroupSwings=1&type=batter&csv=true', {'swing_length': 'swing_length'}),
+    'savant_stance': ('/visuals/batting-stance?minSwings=1&minGroupSwings=1&csv=true',
+                      {'avg_foot_sep': 'foot_sep', 'avg_stance_angle': 'stance_angle', 'avg_batter_x_position': 'off_plate', 'avg_batter_y_position': 'box_depth'}),
+}
+
+
+def fetch_savant(seasons):
+    """Swing shape and stance from Baseball Savant, one row per hitter-season. Switch hitters' two stances are averaged."""
+    out = None
+    for path, cols in SAVANT_FILES.values():
+        parts = []
+        for y in seasons:
+            r = requests.get(f'{SAVANT}{path}&seasonStart={y}&seasonEnd={y}', timeout=120)
+            r.raise_for_status()
+            d = pd.read_csv(io.StringIO(r.content.decode('utf-8-sig')))
+            d = d.rename(columns={'id': 'mlbam', **cols}).groupby('mlbam', as_index=False)[list(cols.values())].mean()
+            parts.append(d.assign(season=y))
+        d = pd.concat(parts)
+        out = d if out is None else out.merge(d, on=['mlbam', 'season'], how='outer')
+    return out
 
 
 def fetch_bats(ids):
@@ -90,14 +121,6 @@ def load_launch(readings_path, published_path):
     return m[['mlbam', 'season', 'launch']]
 
 
-def whiff_spread(direction):
-    """How far apart his breaking-ball and fastball whiffs sit, against where he meets the ball on all swings."""
-    d = direction or {}
-    if 'fastball' not in d or 'breaking' not in d:
-        return None
-    return d['breaking']['gap'] - d['fastball']['gap']
-
-
 def steadiness(q, key):
     """Season-to-season correlation for the same hitter, averaged over the season pairs."""
     seasons = sorted(q.season.unique())
@@ -117,9 +140,9 @@ def main():
     args = ap.parse_args()
 
     sp = fetch_swing_profile()
-    sp['whiff_spread'] = [whiff_spread(r) for r in sp.whiff_direction]
     q = sp[sp.qualified].merge(fetch_hitting_plus(), on=['mlbam', 'season'], how='inner')
-    q = q.merge(load_launch(args.readings, args.published), on=['mlbam', 'season'], how='left').sort_values(['season', 'mlbam']).reset_index(drop=True)
+    q = q.merge(load_launch(args.readings, args.published), on=['mlbam', 'season'], how='left')
+    q = q.merge(fetch_savant(sorted(q.season.unique())), on=['mlbam', 'season'], how='left').sort_values(['season', 'mlbam']).reset_index(drop=True)
 
     keys = [c['key'] for c in COORDS]
     # The same hitters read 0.7 frames lower on the 2026 videos, and no other coordinate shifts like that. The videos were
@@ -132,14 +155,10 @@ def main():
     mean, sd = lined_up.mean(), lined_up.std()
     z = (lined_up - mean) / sd
     pct = (lined_up.rank(pct=True) * 100).round(0)
-    # Real production counts in closeness and the map as one more coordinate, but only this standardized value
-    # reaches the page: wRC+ itself is never shown or written to the file.
-    wrc = fetch_wrc()
-    q['wrc'] = [wrc(r['name'], r.season) for _, r in q.iterrows()]
-    results = (q.wrc - q.wrc.mean()) / q.wrc.std()
     bats = fetch_bats(q.mlbam.unique().tolist())
-    print('Results blanks:', int(q.wrc.isna().sum()), '| results steadiness', steadiness(q, 'wrc'), '| bats', pd.Series(q.mlbam.map(bats)).value_counts(dropna=False).to_dict())
-    a = z.assign(results=results).fillna(0).values
+    print('Bats', pd.Series(q.mlbam.map(bats)).value_counts(dropna=False).to_dict())
+    counted = [i for i, c in enumerate(COORDS) if c['group'] != 'grade']
+    a = z.iloc[:, counted].fillna(0).values
     xyz = TSNE(3, perplexity=30, init='pca', random_state=1).fit_transform(a)
 
     d_all, d_map = ((a[:, None] - a[None]) ** 2).sum(2), ((xyz[:, None] - xyz[None]) ** 2).sum(2)
@@ -158,7 +177,7 @@ def main():
     rows = []
     for i, r in q.iterrows():
         rows.append([int(r.mlbam), r['name'], int(r.season), clean(r['Hitting+'], 0), [round(float(x), 1) for x in xyz[i]],
-                     [clean(r[k], 3) for k in keys], [clean(pct.loc[i, k], 0) for k in keys], bats.get(int(r.mlbam)), clean(results[i], 2)])
+                     [clean(r[k], 3) for k in keys], [clean(pct.loc[i, k], 0) for k in keys], bats.get(int(r.mlbam))])
     with open(args.out, 'w') as f:
         json.dump({'generated': date.today().isoformat(), 'map_kept': round(kept, 2), 'launch_shift': {str(k): float(v) for k, v in launch_shift.items()},
                    'coords': coords, 'rows': rows}, f, separators=(',', ':'))
