@@ -306,7 +306,8 @@ export default function HitterUniverse() {
         customdata: list.map((r) => r.i),
         text: list.map(label),
         hovertemplate: "%{text}<extra></extra>",
-        marker: { size: 3.5, color: SEASON_COLOR[s], opacity: 0.85, line: { width: 0 } },
+        // Faded while a hitter is centered, so a dot that only looks near him on the map is not mistaken for a match.
+        marker: { size: 3.5, color: SEASON_COLOR[s], opacity: center ? 0.2 : 0.85, line: { width: 0 } },
       };
     });
     const highlight: unknown[] = [];
@@ -464,7 +465,7 @@ export default function HitterUniverse() {
         <div ref={plotEl} className="mt-2 h-[420px] w-full sm:h-[620px]" role="img" aria-label="3D map of hitter-seasons. Dots that sit close together tend to have similar addresses." />
         {loaded && (
           <p className="mt-2 text-[11px] leading-relaxed text-[var(--dim)]">
-            Drag to turn the map, scroll or pinch to zoom, click a dot to center on that hitter. {counted} coordinates cannot fit in three dimensions, so the map is a guide: about {Math.round(loaded.mapKept * 100)}% of a hitter&apos;s true 10 closest hitters sit next to him here. The lines and the list use the full address. The map&apos;s directions have no meaning of their own.
+            Drag to turn the map, scroll or pinch to zoom, click a dot to center on that hitter. {counted} coordinates cannot fit in three dimensions, so the map is a guide: about {Math.round(loaded.mapKept * 100)}% of a hitter&apos;s true 10 closest hitters sit next to him here. The lines and the list use the full address. The map&apos;s directions have no meaning of their own. Once you pick a hitter, everyone else fades, so a faint dot sitting next to him is not one of his closest.
           </p>
         )}
       </section>
