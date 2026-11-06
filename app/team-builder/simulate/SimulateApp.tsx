@@ -485,7 +485,7 @@ function sentence(x: Transaction): string {
   const war = x.war != null ? ` (${fmtWar(x.war)} WAR)` : ''
   const pay = x.salary != null ? `, ${money(x.salary)}` : ''
   switch (x.kind) {
-    case 'signed': return `${x.team} signed ${x.name}${war}${pay}${x.other && x.other !== x.team ? `, from ${x.other}` : x.other === x.team ? ', re-signed' : ''}`
+    case 'signed': return `${x.team} signed ${x.name}${war}${pay}${x.other === x.team ? ', re-signed' : ''}`
     case 'traded': {
       const back = x.prospects?.length ? x.prospects.map((p) => p.name).join(' and ') : 'a minor leaguer'
       return `${x.team} acquired ${x.name}${war} from ${x.other} for ${back}`
