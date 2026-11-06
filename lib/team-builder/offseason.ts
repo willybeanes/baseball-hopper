@@ -8,6 +8,7 @@
 // team's result opens in the Team Builder through an ordinary share link.
 
 import assumptions from './assumptions.json'
+import payrolls2026 from './payrolls-2026.json'
 import { depthChart, type DepthPlayer } from './depth'
 import { buildRoster, type BuiltRoster, type Move } from './moves'
 import type { PoolPlayer } from './pool'
@@ -100,8 +101,12 @@ const depthPlayers = (b: BuiltRoster): DepthPlayer[] =>
   b.slots.filter((s) => s.onRoster).map((s) => ({ id: s.player.mlbamId ?? s.player.sheetName, name: s.player.name, pos: s.player.pos, war: s.player.war, pa: s.player.pa, ip: s.player.ip }))
 export const teamWar = (b: BuiltRoster) => depthChart(depthPlayers(b)).total
 
-// What a team paid its players in 2026, departed free agents included: how big a spender it is.
-export const payroll2026 = (t: TeamFile) => t.players.reduce((n, p) => n + (p.salaryPrevYear ?? 0), 0)
+// What a team spent in 2026 (Cot's year-end payroll, payrolls-2026.json): how big a spender it
+// is, and the payroll it builds back toward this winter. Summing salaryPrevYear on today's sheet
+// misses everyone who has left, so it's only a fallback.
+const PAYROLLS_2026 = payrolls2026 as unknown as Record<string, { payroll: number; tax: number } | undefined>
+export const payroll2026 = (t: TeamFile) =>
+  PAYROLLS_2026[t.team]?.payroll ?? t.players.reduce((n, p) => n + (p.salaryPrevYear ?? 0), 0)
 
 // Starting attitudes from today's projected records: the best few with big payrolls go all in,
 // the rest of the top ten contend, the bottom eight rebuild and the bottom three tank.
@@ -157,10 +162,12 @@ export function simulateOffseason(input: SimInput): Simulation {
     const b = buildRoster(t, [], pool)
     return [t.team, { war: teamWar(b), payroll: b.payroll }]
   }))
-  // Budgets start from what each team already owes for 2027 (never below what the user's moves cost).
+  // Budgets: last year's payroll scaled by the plan (all in spends past it, tanking well under),
+  // but always enough for a little more than what's already owed for 2027, and never below what
+  // the user's moves cost.
   const budget = new Map(teams.map((t) => {
     const st = ATTITUDES[attitudes[t.team] ?? 'buysell']
-    return [t.team, Math.max(built.get(t.team)!.payroll, before.get(t.team)!.payroll * st.budget + st.cushion)]
+    return [t.team, Math.max(built.get(t.team)!.payroll, payroll2026(t) * st.budget, before.get(t.team)!.payroll + st.cushion)]
   }))
   const signed = new Map<string, number>()
   const settings = (team: string) => ATTITUDES[attitudes[team] ?? 'buysell']
@@ -263,11 +270,14 @@ export function simulateOffseason(input: SimInput): Simulation {
 
   // 3. Free agency, best players first. Every team that would gain enough and can afford him
   // bids; the keenest (gain x eagerness x luck) wins, and a crowded market pushes the price up.
+  // Whoever is still unsigned goes round again at a lower price (S.priceRounds), the way an
+  // unsold free agent's price falls through the winter.
   const freeAgents = [...market.values()]
     .filter(({ e }) => (e.war ?? 0) >= S.minFreeAgentWar)
     .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
-  for (const { e, from } of freeAgents) {
-    const ask = price(e.war)
+  for (const discount of S.priceRounds) for (const { e, from } of freeAgents) {
+    if (!market.has(e.mlbamId)) continue
+    const ask = Math.max(minimum, Math.round((price(e.war) * discount) / 1e5) * 1e5)
     const bids: { team: string; gain: number; score: number }[] = []
     for (const t of teams) {
       const team = t.team

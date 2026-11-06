@@ -56,11 +56,11 @@
     "relieverMaxIp": 75
   },
   "offseason": {
-    "note": "The offseason simulation (lib/team-builder/offseason.ts). Each team's attitude sets its budget (what it already owes for 2027 x the factor, plus a flat cushion), how hard it holds on to options and arbitration players (it keeps one whose salary is under WAR x $/WAR x keepFactor, and only non-tenders when he costs at least nonTenderMargin more than that), how much a free agent must add to its depth-chart WAR before it bids and how many it signs, how eager it is against other bidders, and whether it sells veterans (age floor, how many) or buys them. Added 2026-11-05; budgets anchored on 2027 commitments the same day, after 2026 pay left most teams with no room.",
+    "note": "The offseason simulation (lib/team-builder/offseason.ts). Each team's attitude sets its budget (its real 2026 payroll from payrolls-2026.json x the factor, but at least what it already owes for 2027 plus the cushion), how hard it holds on to options and arbitration players (it keeps one whose salary is under WAR x $/WAR x keepFactor, and only non-tenders when he costs at least nonTenderMargin more than that), how much a free agent must add to its depth-chart WAR before it bids and how many it signs, how eager it is against other bidders, and whether it sells veterans (age floor, how many) or buys them. Free agents nobody signs go round again at lower prices (priceRounds, fractions of WAR x $/WAR). Added 2026-11-05. Reworked 2026-11-06 after Will noticed teams made few moves: budgets had been 2027 commitments plus a small cushion (the 2026 payroll summed from today's sheets misses everyone who left), which left 20 of 30 teams $10M or less and only ~9 of the top 40 free agents signing. With real 2026 payrolls, falling prices and higher signing caps for rebuilding and tanking teams, ~28 of the top 40 sign and league payroll ends ~6% above 2026.",
     "attitudes": {
       "allin": {
         "label": "All in",
-        "budget": 1.12,
+        "budget": 1.15,
         "keepFactor": 1.4,
         "minGain": 0.15,
         "eagerness": 1.4,
@@ -82,19 +82,19 @@
       },
       "buysell": {
         "label": "Buy and sell",
-        "budget": 1.0,
-        "keepFactor": 1.0,
+        "budget": 1,
+        "keepFactor": 1,
         "minGain": 0.5,
-        "eagerness": 1.0,
+        "eagerness": 1,
         "buys": 0,
         "sells": 2,
         "sellWalkYearOnly": true,
-        "cushion": 10000000,
+        "cushion": 12000000,
         "maxSignings": 4
       },
       "rebuild": {
         "label": "Quick rebuild",
-        "budget": 0.95,
+        "budget": 0.85,
         "keepFactor": 0.8,
         "minGain": 0.6,
         "eagerness": 0.85,
@@ -102,26 +102,32 @@
         "sells": 3,
         "sellAge": 30,
         "maxAge": 31,
-        "cushion": 8000000,
-        "maxSignings": 3,
-        "maxSalary": 12000000
+        "cushion": 5000000,
+        "maxSignings": 5,
+        "maxSalary": 18000000
       },
       "tank": {
         "label": "Tank",
-        "budget": 0.85,
+        "budget": 0.7,
         "keepFactor": 0.6,
         "minGain": 0.6,
         "eagerness": 0.7,
         "buys": 0,
         "sells": 4,
         "sellAge": 28,
-        "maxSalary": 5000000,
-        "cushion": 5000000,
-        "maxSignings": 2
+        "maxSalary": 8000000,
+        "cushion": 3000000,
+        "maxSignings": 4
       }
     },
     "minTradeWar": 1,
     "minFreeAgentWar": 0.3,
+    "priceRounds": [
+      1,
+      0.75,
+      0.5,
+      0.35
+    ],
     "bidderPremium": 0.05,
     "maxPremium": 0.25,
     "luck": 0.3,

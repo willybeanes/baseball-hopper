@@ -1,0 +1,123 @@
+{
+  "_readme": "Each team's 2026 payroll from Cot's, before the sheets rolled over to 2027 (tests/team-builder/fixtures, collected 2026-10-03): year-end Labor Relations payroll and Competitive Balance (tax) payroll, in dollars. The offseason simulation sizes budgets from these.",
+  "ARI": {
+    "payroll": 188431305,
+    "tax": 230261446
+  },
+  "ATH": {
+    "payroll": 98112154,
+    "tax": 144927631
+  },
+  "ATL": {
+    "payroll": 263667858,
+    "tax": 257467859
+  },
+  "BAL": {
+    "payroll": 166740634,
+    "tax": 218374505
+  },
+  "BOS": {
+    "payroll": 206936252,
+    "tax": 273606321
+  },
+  "CHC": {
+    "payroll": 248801022,
+    "tax": 268015214
+  },
+  "CWS": {
+    "payroll": 102103195,
+    "tax": 117903468
+  },
+  "CIN": {
+    "payroll": 129002302,
+    "tax": 151394289
+  },
+  "CLE": {
+    "payroll": 74892606,
+    "tax": 93139835
+  },
+  "COL": {
+    "payroll": 121624349,
+    "tax": 139296163
+  },
+  "DET": {
+    "payroll": 202087087,
+    "tax": 234194503
+  },
+  "HOU": {
+    "payroll": 239835347,
+    "tax": 234712009
+  },
+  "KC": {
+    "payroll": 150025388,
+    "tax": 188188743
+  },
+  "LAA": {
+    "payroll": 181410557,
+    "tax": 193689582
+  },
+  "LAD": {
+    "payroll": 339626592,
+    "tax": 432832665
+  },
+  "MIA": {
+    "payroll": 83206516,
+    "tax": 84173183
+  },
+  "MIL": {
+    "payroll": 144549342,
+    "tax": 154715011
+  },
+  "MIN": {
+    "payroll": 116078811,
+    "tax": 137995980
+  },
+  "NYM": {
+    "payroll": 346087385,
+    "tax": 359481768
+  },
+  "NYY": {
+    "payroll": 308249295,
+    "tax": 341887663
+  },
+  "PHI": {
+    "payroll": 292078943,
+    "tax": 322216763
+  },
+  "PIT": {
+    "payroll": 106643104,
+    "tax": 139796064
+  },
+  "SD": {
+    "payroll": 226248622,
+    "tax": 265337404
+  },
+  "SEA": {
+    "payroll": 168866447,
+    "tax": 205270433
+  },
+  "SF": {
+    "payroll": 189757397,
+    "tax": 224191167
+  },
+  "STL": {
+    "payroll": 94253516,
+    "tax": 109182260
+  },
+  "TB": {
+    "payroll": 96019093,
+    "tax": 112963567
+  },
+  "TEX": {
+    "payroll": 191761624,
+    "tax": 215428291
+  },
+  "TOR": {
+    "payroll": 276081622,
+    "tax": 317220060
+  },
+  "WSH": {
+    "payroll": 99377069,
+    "tax": 121276236
+  }
+}
