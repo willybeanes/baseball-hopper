@@ -53,6 +53,10 @@ export interface Transaction {
   salary: number | null
   prospects?: { id: number; name: string; war: number }[] // what a seller got back
   bidders?: number // free agency: how many teams bid
+  ask?: number // free agency: his asking price, before a crowded market pushed it up
+  // free agency: every team that bid, keenest first. gain is the WAR he'd add to that team's
+  // depth chart; interest is gain x eagerness x luck, relative to the winner's (1).
+  bids?: { team: string; gain: number; interest: number }[]
 }
 
 export interface TeamResult {
@@ -264,7 +268,7 @@ export function simulateOffseason(input: SimInput): Simulation {
     .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
   for (const { e, from } of freeAgents) {
     const ask = price(e.war)
-    const bids: { team: string; score: number }[] = []
+    const bids: { team: string; gain: number; score: number }[] = []
     for (const t of teams) {
       const team = t.team
       const st = settings(team)
@@ -275,7 +279,7 @@ export function simulateOffseason(input: SimInput): Simulation {
       if (room(team) < ask) continue
       const gain = gainFrom(team, e)
       if (gain < st.minGain) continue
-      bids.push({ team, score: gain * st.eagerness * luck() })
+      bids.push({ team, gain, score: gain * st.eagerness * luck() })
     }
     if (!bids.length) continue
     bids.sort((a, b) => b.score - a.score)
@@ -291,7 +295,10 @@ export function simulateOffseason(input: SimInput): Simulation {
     if (!apply(winner, move)) continue
     market.delete(e.mlbamId)
     signed.set(winner, (signed.get(winner) ?? 0) + 1)
-    log.push({ phase: 'free-agency', kind: 'signed', team: winner, other: from ?? undefined, id: e.mlbamId, name: e.name, war: e.war ?? null, salary, bidders: bids.length })
+    log.push({ phase: 'free-agency', kind: 'signed', team: winner, other: from ?? undefined, id: e.mlbamId, name: e.name, war: e.war ?? null, salary, bidders: bids.length,
+      ask,
+      bids: bids.map((b) => ({ team: b.team, gain: Math.round(b.gain * 100) / 100, interest: Math.round((b.score / bids[0].score) * 100) / 100 })),
+    })
     trim(winner, e.mlbamId, 'free-agency')
   }
 

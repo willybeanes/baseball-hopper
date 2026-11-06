@@ -82,6 +82,16 @@ describe('simulateOffseason', () => {
     expect(r.log.some((x) => x.id === fa.mlbamId || x.id === star)).toBe(false)
   })
 
+  test('each signing lists its bids, keenest first, with the winner on top', () => {
+    for (const x of sim.log.filter((t) => t.kind === 'signed')) {
+      expect(x.bids!.length).toBe(x.bidders!)
+      expect(x.bids![0].team).toBe(x.team)
+      expect(x.bids![0].interest).toBe(1)
+      for (const b of x.bids!) expect(b.interest).toBeLessThanOrEqual(1)
+      expect(x.salary!).toBeGreaterThanOrEqual(x.ask!)
+    }
+  })
+
   test('a team set to tank spends less than it would contending', () => {
     const code = 'NYM'
     const as = (a: Attitude) => simulateOffseason({ ...base, attitudes: { ...attitudes, [code]: a } }).teams[code].payrollAfter

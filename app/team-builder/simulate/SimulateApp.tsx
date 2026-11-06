@@ -504,6 +504,7 @@ function Results({ sim, onAgain, onChange }: {
   onChange: () => void
 }) {
   const [filter, setFilter] = useState('all')
+  const [openBids, setOpenBids] = useState<string | null>(null)
   const [copied, setCopied] = useState<'copied' | 'manual' | null>(null)
   const copy = async () => {
     try {
@@ -599,21 +600,82 @@ function Results({ sim, onAgain, onChange }: {
             <div key={p.key} className="border-t border-[var(--rule)]">
               <h3 className="px-4 pb-1 pt-3 text-[11px] font-medium uppercase text-[var(--dimmer)]">{p.label}</h3>
               <ul className="divide-y divide-[var(--rule)]">
-                {rows.map((x) => (
-                  <li key={`${x.id}-${x.kind}-${x.team}`} className="flex items-start gap-2 px-4 py-1.5 text-sm">
-                    <Logo code={x.team} />
-                    <span className="min-w-0 flex-1">{sentence(x)}</span>
-                    {x.kind === 'signed' && x.bidders != null && x.bidders > 1 && (
-                      <span className="shrink-0 text-[11px] text-[var(--dimmer)]">{x.bidders} teams bid</span>
-                    )}
-                  </li>
-                ))}
+                {rows.map((x) => {
+                  const key = `${x.id}-${x.kind}-${x.team}`
+                  const hasBids = x.kind === 'signed' && x.bids != null && x.bids.length > 1
+                  return (
+                    <li key={key} className="px-4 py-1.5 text-sm">
+                      <div className="flex items-start gap-2">
+                        <Logo code={x.team} />
+                        <span className="min-w-0 flex-1">{sentence(x)}</span>
+                        {hasBids && (
+                          <button
+                            type="button"
+                            aria-expanded={openBids === key}
+                            onClick={() => setOpenBids(openBids === key ? null : key)}
+                            className="shrink-0 text-[11px] text-[var(--dim)] underline decoration-[var(--rule)] underline-offset-2 hover:text-[var(--text)]"
+                          >
+                            {x.bids!.length} teams bid
+                          </button>
+                        )}
+                      </div>
+                      {hasBids && openBids === key && <Bids x={x} attitudes={sim.teams} />}
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           )
         })}
         {!log.length && <p className="border-t border-[var(--rule)] px-4 py-3 text-sm text-[var(--dim)]">No moves for this team.</p>}
       </Panel>
+    </div>
+  )
+}
+
+// Who else wanted a free agent: each bidding team, how much he'd have added to its depth
+// chart, and how keen it was next to the team that signed him.
+function Bids({ x, attitudes }: { x: Transaction; attitudes: Simulation['teams'] }) {
+  const bids = x.bids ?? []
+  const pushed = x.ask && x.salary && x.salary > x.ask ? Math.round((x.salary / x.ask - 1) * 100) : 0
+  return (
+    <div className="mb-1.5 ml-7 mt-1.5 rounded-lg border border-[var(--rule)] px-3 py-2">
+      <p className="mb-1.5 text-[12px] text-[var(--dim)]">
+        Asking price {money(x.ask ?? 0, 1)}.{' '}
+        {pushed > 0
+          ? `${bids.length} bidders pushed it up ${pushed}%, to ${money(x.salary ?? 0, 1)}.`
+          : `He signed for ${money(x.salary ?? 0, 1)}, as high as ${TEAM_NAMES[x.team]} could go.`}
+        {' '}The keenest team wins: how much he adds to its roster, times how eager its plan is, with a little luck.
+      </p>
+      <table className="w-full text-[13px]">
+        <thead>
+          <tr className="text-left text-[11px] text-[var(--dimmer)]">
+            <th className="py-1 font-normal">Team</th>
+            <th className="py-1 text-right font-normal">WAR added</th>
+            <th className="w-1/3 py-1 pl-3 font-normal">Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {bids.map((b, i) => (
+            <tr key={b.team} className="border-t border-[var(--rule)]">
+              <td className="py-1">
+                <span className="flex items-center gap-2">
+                  <Logo code={b.team} size="h-4 w-4" />
+                  <span className={i === 0 ? 'font-medium' : ''}>{TEAM_NAMES[b.team]}</span>
+                  <span className="hidden text-[11px] text-[var(--dimmer)] sm:inline">{ATTITUDES[attitudes[b.team].attitude].label}</span>
+                  {i === 0 && <span className="text-[11px] text-[var(--dim)]">signed him</span>}
+                </span>
+              </td>
+              <td className="py-1 text-right font-mono">{fmtWar(b.gain)}</td>
+              <td className="py-1 pl-3">
+                <span className="block h-1.5 rounded-full bg-[var(--rule)]">
+                  <span className={`block h-1.5 rounded-full ${i === 0 ? 'bg-[var(--text)]' : 'bg-[var(--dim)]'}`} style={{ width: `${Math.max(4, b.interest * 100)}%` }} />
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
