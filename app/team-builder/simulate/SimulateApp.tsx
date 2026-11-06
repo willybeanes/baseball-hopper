@@ -498,6 +498,12 @@ function sentence(x: Transaction): string {
   }
 }
 
+// A payroll change, to the nearest million: +$12M, −$4M, or 0.
+function payDelta(d: number) {
+  const m = Math.round(d / 1e6)
+  return m > 0 ? `+$${m}M` : m < 0 ? `−$${-m}M` : '0'
+}
+
 function Results({ sim, onAgain, onChange }: {
   sim: Simulation
   onAgain: () => void
@@ -515,7 +521,7 @@ function Results({ sim, onAgain, onChange }: {
       setCopied('manual')
     }
   }
-  const log = filter === 'all' ? sim.log : sim.log.filter((x) => x.team === filter || x.other === filter)
+  const log = filter === 'all' ? sim.log : sim.log.filter((x) => x.team === filter || (x.other === filter && x.kind !== 'signed')) // not where its departed free agents signed
   const r = sim.teams
   const builderLink = (t: string) => {
     const m = encodeMoves(r[t].moves)
@@ -548,6 +554,7 @@ function Results({ sim, onAgain, onChange }: {
                       <th scope="col" className="pb-1 text-right font-medium">GB</th>
                       <th scope="col" className="pb-1 text-right font-medium" title="Change in projected wins over the offseason">+/−</th>
                       <th scope="col" className="pb-1 text-right font-medium">Payroll</th>
+                      <th scope="col" className="pb-1 pl-2 text-right font-medium" title="Change in 2027 payroll over the offseason">+/−</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--rule)]">
@@ -567,6 +574,7 @@ function Results({ sim, onAgain, onChange }: {
                           <td className="py-1.5 text-right font-mono text-[13px] text-[var(--dim)]">{gb === 0 ? '—' : gb}</td>
                           <td className={`py-1.5 text-right font-mono text-[13px] ${d > 0 ? 'text-[var(--text)]' : 'text-[var(--dim)]'}`}>{d > 0 ? `+${d}` : d < 0 ? `−${-d}` : '0'}</td>
                           <td className="py-1.5 text-right font-mono text-[13px] text-[var(--dim)]">{money(r[t].payrollAfter, 0)}</td>
+                          <td className="py-1.5 pl-2 text-right font-mono text-[13px] text-[var(--dim)]">{payDelta(r[t].payrollAfter - r[t].payrollBefore)}</td>
                         </tr>
                       )
                     })}
@@ -577,7 +585,7 @@ function Results({ sim, onAgain, onChange }: {
           })}
         </div>
         <p className="border-t border-[var(--rule)] px-4 py-2 text-[11px] text-[var(--dimmer)]">
-          +/− is the change in projected wins from before the offseason. Click a team to open its new roster in the Team Builder.
+          The first +/− is the change in projected wins over the offseason, the second the change in payroll. Click a team to open its new roster in the Team Builder.
         </p>
       </Panel>
 
