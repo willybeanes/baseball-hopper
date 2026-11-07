@@ -12,17 +12,24 @@
 //   --m TEXT      that team's moves (the Team Builder's m= parameter)
 //   --mm TEXT     moves for any teams (the simulate page's mm= parameter)
 //   --a TEXT      every team's plan (the simulate page's a= parameter); default: suggested plans
+//   --talent-sd N how far off a projection can be, in wins (default season.talentSd, 5)
 //   --out DIR     where to write (default sim-results/<date-time>)
 //
 // Uses the data in public/data/team-builder, the copy the daily job commits; pull first for
 // today's. The same plans, moves and seed give exactly what the page shows: each run's link
 // is in runs.csv.
 //
+// After each offseason the 2027 season and postseason are played out (lib/team-builder/season.ts)
+// from the projected records, which is what gives division, playoff and title odds. The page
+// shows only the projections; the played season is here only.
+//
 // Writes:
-//   runs.csv          one row per run: seed and the page link that reproduces it
-//   teams.csv         one row per team per run: plan, wins, payroll, budget, moves
+//   runs.csv          one row per run: seed, the page link that reproduces it, the champion
+//   teams.csv         one row per team per run: plan, projected wins, payroll, budget, moves,
+//                     then the played season: record, division title, playoff seed, how far
 //   transactions.csv  every move of every run
-//   summary.txt       per team: average wins, spread, division titles; where free agents sign
+//   summary.txt       per team: projected and played wins, odds of the division, playoffs,
+//                     pennant and title; where free agents sign; who gets traded
 
 import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
@@ -31,6 +38,7 @@ import type { Move } from '../../lib/team-builder/moves'
 import { ATTITUDES, defaultAttitudes, simulateOffseason, type Attitude, type Simulation } from '../../lib/team-builder/offseason'
 import type { PoolPlayer } from '../../lib/team-builder/pool'
 import type { Meta, TeamFile } from '../../lib/team-builder/roster'
+import { ROUNDS, SEASON, simulateSeason } from '../../lib/team-builder/season'
 import { decodeAttitudes, decodeMoves, decodeTeamMoves, encodeAttitudes, encodeSeed, encodeTeamMoves } from '../../lib/team-builder/share'
 import { DIVISIONS, TEAM_NAMES } from '../../lib/team-builder/teams'
 
@@ -41,6 +49,7 @@ export interface BatchOptions {
   manual: Record<string, Move[]>
   from: string | null
   out: string | null
+  talentSd: number
 }
 
 // Reads the command line. Plans and moves can come from a page link, flags, or both (flags win).
@@ -54,7 +63,7 @@ export function parseArgs(argv: string[]): BatchOptions {
     flags[k.slice(2)] = v
     i++
   }
-  const known = new Set(['runs', 'seed', 'link', 'from', 'm', 'mm', 'a', 'out'])
+  const known = new Set(['runs', 'seed', 'link', 'from', 'm', 'mm', 'a', 'out', 'talent-sd'])
   for (const k of Object.keys(flags)) if (!known.has(k)) throw new Error(`Unknown option --${k}`)
   const link = flags.link ? new URL(flags.link, 'https://baseballhopper.com').searchParams : new URLSearchParams()
   const get = (k: string) => flags[k] ?? link.get(k)
@@ -63,6 +72,8 @@ export function parseArgs(argv: string[]): BatchOptions {
   const seed = Number(flags.seed ?? 1)
   if (!Number.isInteger(runs) || runs < 1) throw new Error('--runs must be a whole number of 1 or more')
   if (!Number.isInteger(seed) || seed < 0 || seed > 0xffffffff) throw new Error('--seed must be a whole number from 0 to 4294967295')
+  const talentSd = Number(flags['talent-sd'] ?? SEASON.talentSd)
+  if (!Number.isFinite(talentSd) || talentSd < 0) throw new Error('--talent-sd must be 0 or more')
   const fromRaw = get('from')?.toUpperCase() ?? null
   if (fromRaw && !TEAM_NAMES[fromRaw]) throw new Error(`Unknown team: ${fromRaw}`)
 
@@ -70,7 +81,7 @@ export function parseArgs(argv: string[]): BatchOptions {
   const manual = decodeTeamMoves(get('mm'))
   const carried = decodeMoves(get('m'))
   if (fromRaw && carried.length && !manual[fromRaw]) manual[fromRaw] = carried
-  return { runs, seed, attitudes: decodeAttitudes(get('a')), manual, from: fromRaw, out: flags.out ?? null }
+  return { runs, seed, attitudes: decodeAttitudes(get('a')), manual, from: fromRaw, out: flags.out ?? null, talentSd }
 }
 
 const csvCell = (v: unknown) => {
@@ -97,7 +108,7 @@ async function main() {
   try {
     opts = parseArgs(process.argv.slice(2))
   } catch (e) {
-    console.error(`${(e as Error).message}\nUsage: bun scripts/team-builder/simulate-many.ts [--runs 500] [--seed 1] [--link URL] [--from TEAM --m MOVES] [--mm MOVES] [--a PLANS] [--out DIR]`)
+    console.error(`${(e as Error).message}\nUsage: bun scripts/team-builder/simulate-many.ts [--runs 500] [--seed 1] [--link URL] [--from TEAM --m MOVES] [--mm MOVES] [--a PLANS] [--talent-sd 5] [--out DIR]`)
     process.exit(1)
   }
   const root = join(import.meta.dir, '../..')
@@ -109,7 +120,7 @@ async function main() {
   mkdirSync(out, { recursive: true })
 
   const moveCount = Object.values(opts.manual).reduce((n, m) => n + m.length, 0)
-  console.log(`Data from ${meta.updatedAt}; ${opts.runs} runs from seed ${opts.seed}; ${moveCount} move${moveCount === 1 ? '' : 's'} of yours.`)
+  console.log(`Data from ${meta.updatedAt}; ${opts.runs} runs from seed ${opts.seed}; ${moveCount} move${moveCount === 1 ? '' : 's'} of yours; projections off by up to ±${opts.talentSd} wins (1 SD).`)
 
   // The page link for a run, so any run can be opened and looked at.
   const linkBase = new URLSearchParams()
@@ -123,13 +134,14 @@ async function main() {
     return `https://baseballhopper.com/team-builder/simulate?${q.toString()}`
   }
 
-  const runsCsv = [csvRow(['run', 'seed', 'link'])]
-  const teamsCsv = [csvRow(['run', 'seed', 'team', 'division', 'plan', 'wins_before', 'wins_after', 'win_change', 'war_before', 'war_after', 'payroll_before', 'payroll_after', 'budget', 'moves', 'division_rank'])]
+  const runsCsv = [csvRow(['run', 'seed', 'link', 'champion'])]
+  const teamsCsv = [csvRow(['run', 'seed', 'team', 'division', 'plan', 'wins_before', 'wins_after', 'win_change', 'war_before', 'war_after', 'payroll_before', 'payroll_after', 'budget', 'moves', 'projected_division_rank', 'season_wins', 'season_losses', 'won_division', 'playoff_seed', 'postseason'])]
   const txCsv = [csvRow(['run', 'seed', 'phase', 'kind', 'team', 'other_team', 'player_id', 'player', 'war', 'salary', 'asking_price', 'bidders', 'prospects'])]
 
   // Running totals for the summary.
   const wins = new Map<string, number[]>()
-  const titles = new Map<string, number>()
+  const played = new Map<string, number[]>()
+  const odds = new Map<string, { division: number; playoffs: number; pennant: number; title: number }>()
   const moves = new Map<string, number>()
   const payroll = new Map<string, number>()
   const signings = new Map<number, { name: string; war: number; teams: Map<string, number>; salary: number; count: number }>()
@@ -140,13 +152,14 @@ async function main() {
   for (let i = 0; i < opts.runs; i++) {
     const seed = (opts.seed + i) >>> 0
     const sim: Simulation = simulateOffseason({ teams, pool, attitudes, manual: opts.manual, seed, perWin, minimum })
-    runsCsv.push(csvRow([i + 1, seed, linkFor(seed)]))
+    // The season gets its own random numbers, so the offseason still matches the page's link.
+    const season = new Map(simulateSeason(Object.fromEntries(Object.entries(sim.teams).map(([t, r]) => [t, r.winsAfter])), (Math.imul(seed, 2654435761) ^ 0x5eed) >>> 0, opts.talentSd).map((r) => [r.team, r]))
+    runsCsv.push(csvRow([i + 1, seed, linkFor(seed), [...season.values()].find((r) => r.round === 'champion')!.team]))
 
     const ranks = new Map<string, number>()
     for (const d of DIVISIONS) {
       const order = [...d.teams].sort((a, b) => sim.teams[b].winsAfter - sim.teams[a].winsAfter)
       order.forEach((t, k) => ranks.set(t, k + 1))
-      titles.set(order[0], (titles.get(order[0]) ?? 0) + 1)
     }
     const moveTally = new Map<string, number>()
     for (const x of sim.log) moveTally.set(x.team, (moveTally.get(x.team) ?? 0) + 1)
@@ -154,8 +167,17 @@ async function main() {
       ;(wins.get(code) ?? wins.set(code, []).get(code)!).push(r.winsAfter)
       moves.set(code, (moves.get(code) ?? 0) + (moveTally.get(code) ?? 0))
       payroll.set(code, (payroll.get(code) ?? 0) + r.payrollAfter)
+      const p = season.get(code)!
+      ;(played.get(code) ?? played.set(code, []).get(code)!).push(p.wins)
+      const o = odds.get(code) ?? odds.set(code, { division: 0, playoffs: 0, pennant: 0, title: 0 }).get(code)!
+      const reached = ROUNDS.indexOf(p.round)
+      o.division += p.divisionWinner ? 1 : 0
+      o.playoffs += reached > 0 ? 1 : 0
+      o.pennant += reached >= ROUNDS.indexOf('worldseries') ? 1 : 0
+      o.title += p.round === 'champion' ? 1 : 0
       teamsCsv.push(csvRow([i + 1, seed, code, division.get(code), ATTITUDES[r.attitude].label, round(r.winsBefore, 1), round(r.winsAfter, 1), round(r.winsAfter - r.winsBefore, 1),
-        round(r.warBefore, 1), round(r.warAfter, 1), r.payrollBefore, r.payrollAfter, r.budget, moveTally.get(code) ?? 0, ranks.get(code)]))
+        round(r.warBefore, 1), round(r.warAfter, 1), r.payrollBefore, r.payrollAfter, r.budget, moveTally.get(code) ?? 0, ranks.get(code),
+        p.wins, p.losses, p.divisionWinner ? 1 : 0, p.seed ?? '', p.round]))
     }
     for (const x of sim.log) {
       txCsv.push(csvRow([i + 1, seed, x.phase, x.kind, x.team, x.other ?? '', x.id, x.name, x.war, x.salary, x.ask ?? '', x.bidders ?? '',
@@ -181,19 +203,21 @@ async function main() {
   // Summary.
   const N = opts.runs
   const lines: string[] = []
-  lines.push(`${N} offseason simulations, seeds ${opts.seed}–${opts.seed + N - 1}`)
+  lines.push(`${N} offseasons and 2027 seasons, seeds ${opts.seed}–${opts.seed + N - 1}`)
+  lines.push(`proj = projected wins after the offseason; wins = played seasons (projections off by ±${opts.talentSd} wins, 1 SD, plus game luck)`)
   lines.push(`Moves of yours: ${moveCount ? Object.entries(opts.manual).map(([t, m]) => `${t} ${m.length}`).join(', ') : 'none'}`)
   lines.push('')
   for (const d of DIVISIONS) {
     lines.push(d.name)
-    lines.push(`  ${'team'.padEnd(5)}${'plan'.padEnd(15)}${'wins'.padStart(6)}${'10th-90th'.padStart(11)}${'titles'.padStart(8)}${'payroll'.padStart(10)}${'moves'.padStart(7)}`)
+    lines.push(`  ${'team'.padEnd(5)}${'plan'.padEnd(15)}${'proj'.padStart(6)}${'wins'.padStart(6)}${'10th-90th'.padStart(11)}${'div'.padStart(6)}${'playoffs'.padStart(10)}${'pennant'.padStart(9)}${'title'.padStart(7)}${'payroll'.padStart(10)}${'moves'.padStart(7)}`)
+    const avg = (xs: number[]) => xs.reduce((n, x) => n + x, 0) / xs.length
     const rows = d.teams.map((t) => {
-      const w = [...wins.get(t)!].sort((a, b) => a - b)
+      const w = [...played.get(t)!].sort((a, b) => a - b)
       const q = (p: number) => w[Math.min(w.length - 1, Math.floor(p * w.length))]
-      return { t, avg: w.reduce((n, x) => n + x, 0) / N, lo: q(0.1), hi: q(0.9) }
-    }).sort((a, b) => b.avg - a.avg)
+      return { t, proj: avg(wins.get(t)!), avg: avg(w), lo: q(0.1), hi: q(0.9), o: odds.get(t)! }
+    }).sort((a, b) => b.proj - a.proj)
     for (const r of rows) {
-      lines.push(`  ${r.t.padEnd(5)}${ATTITUDES[attitudes[r.t]].label.padEnd(15)}${r.avg.toFixed(1).padStart(6)}${`${r.lo.toFixed(0)}-${r.hi.toFixed(0)}`.padStart(11)}${pct(titles.get(r.t) ?? 0, N).padStart(8)}${M((payroll.get(r.t) ?? 0) / N).padStart(10)}${((moves.get(r.t) ?? 0) / N).toFixed(1).padStart(7)}`)
+      lines.push(`  ${r.t.padEnd(5)}${ATTITUDES[attitudes[r.t]].label.padEnd(15)}${r.proj.toFixed(1).padStart(6)}${r.avg.toFixed(1).padStart(6)}${`${r.lo}-${r.hi}`.padStart(11)}${pct(r.o.division, N).padStart(6)}${pct(r.o.playoffs, N).padStart(10)}${pct(r.o.pennant, N).padStart(9)}${pct(r.o.title, N).padStart(7)}${M((payroll.get(r.t) ?? 0) / N).padStart(10)}${((moves.get(r.t) ?? 0) / N).toFixed(1).padStart(7)}`)
     }
     lines.push('')
   }

@@ -3,7 +3,7 @@ import { parseArgs } from '../../scripts/team-builder/simulate-many'
 
 describe('simulate-many options', () => {
   test('defaults: 500 runs from seed 1, suggested plans, no moves', () => {
-    expect(parseArgs([])).toEqual({ runs: 500, seed: 1, attitudes: {}, manual: {}, from: null, out: null })
+    expect(parseArgs([])).toEqual({ runs: 500, seed: 1, attitudes: {}, manual: {}, from: null, out: null, talentSd: 5 })
   })
 
   test('a page link supplies plans and moves; its seed is ignored', () => {
@@ -29,5 +29,6 @@ describe('simulate-many options', () => {
     expect(() => parseArgs(['--from', 'XXX'])).toThrow('Unknown team')
     expect(() => parseArgs(['--nope', '1'])).toThrow('Unknown option')
     expect(() => parseArgs(['--runs'])).toThrow('needs a value')
+    expect(() => parseArgs(['--talent-sd', '-1'])).toThrow('--talent-sd')
   })
 })

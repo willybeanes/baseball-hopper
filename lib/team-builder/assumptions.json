@@ -138,5 +138,9 @@
     "luck": 0.3,
     "rosterMax": 40,
     "nonTenderMargin": 1500000
+  },
+  "season": {
+    "note": "Playing out the 2027 season in the batch simulation script (lib/team-builder/season.ts). A team's true strength is its projection plus a normal error with this standard deviation in wins, for what projections can't see (injuries, breakouts, collapses); then every game of a 162-game balanced schedule is played (log5), which adds the usual game-to-game luck of about 6 wins. Preseason projections typically miss final records by 8-9 wins, so 5 wins of talent error plus game luck lands in that range. Added 2026-11-06 so a batch gives playoff and title odds.",
+    "talentSd": 5
   }
 }
