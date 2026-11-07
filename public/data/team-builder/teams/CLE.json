@@ -350,8 +350,8 @@
    "salaryPrevYear": 713586,
    "mlbamId": 682177,
    "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 130
+   "war": 0.13,
+   "pa": 113
   },
   {
    "name": "Kyle Manzardo",
@@ -384,6 +384,22 @@
    "salarySource": "minimum",
    "war": 0.46,
    "ip": 63
+  },
+  {
+   "name": "José Tena",
+   "sheetName": "Tena, José",
+   "pos": "ss",
+   "age": 26,
+   "mls": 2.031,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 677588,
+   "salarySource": "minimum",
+   "war": 0.24,
+   "pa": 102
   },
   {
    "name": "Joey Cantillo",
@@ -478,8 +494,8 @@
    "salaryPrevYear": 638183,
    "mlbamId": 683953,
    "salarySource": "minimum",
-   "war": 2.76,
-   "pa": 509
+   "war": 2.72,
+   "pa": 503
   },
   {
    "name": "Petey Halpin",
@@ -510,8 +526,8 @@
    "salaryPrevYear": 193783,
    "mlbamId": 692216,
    "salarySource": "minimum",
-   "war": 0.21,
-   "pa": 103
+   "war": 0.18,
+   "pa": 92
   },
   {
    "name": "Franco Aleman",
@@ -542,8 +558,8 @@
    "salaryPrevYear": 270475,
    "mlbamId": 694197,
    "salarySource": "minimum",
-   "war": 1.13,
-   "pa": 231
+   "war": 1.09,
+   "pa": 225
   },
   {
    "name": "Daniel Espino",
@@ -574,8 +590,8 @@
    "salaryPrevYear": 197686,
    "mlbamId": 696135,
    "salarySource": "minimum",
-   "war": 0.14,
-   "pa": 85
+   "war": 0.11,
+   "pa": 70
   },
   {
    "name": "Cooper Ingle",
@@ -638,8 +654,8 @@
    "salaryPrevYear": null,
    "mlbamId": 675455,
    "salarySource": "minimum",
-   "war": 0.09,
-   "pa": 66
+   "war": 0.08,
+   "pa": 58
   }
  ],
  "deadMoney": [

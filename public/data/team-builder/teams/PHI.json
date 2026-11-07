@@ -757,7 +757,7 @@
    "name": "Jose Colmenares",
    "pos": "2b",
    "age": 25,
-   "war": 0.74,
+   "war": 0.77,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -793,6 +793,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 656627,
+   "name": "Mark Kolozsvary",
+   "pos": "c",
+   "age": 31,
+   "war": 0.24,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 700848,
    "name": "Reese Dutton",
    "pos": "sp",
@@ -823,16 +833,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 656627,
-   "name": "Mark Kolozsvary",
-   "pos": "c",
-   "age": 31,
-   "war": 0.22,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 800607,
    "name": "Kehden Hettiger",
    "pos": "c",
@@ -847,7 +847,7 @@
    "name": "Daniel Robert",
    "pos": "rp",
    "age": 32,
-   "war": 0.17,
+   "war": 0.15,
    "ip": 65,
    "salary": 780000,
    "debuted": true

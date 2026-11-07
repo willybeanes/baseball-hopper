@@ -417,7 +417,7 @@
    "salaryPrevYear": 557802,
    "mlbamId": 663494,
    "salarySource": "minimum",
-   "war": 0.23,
+   "war": 0.22,
    "pa": 131
   },
   {
@@ -883,7 +883,7 @@
    "name": "Tai Peete",
    "pos": "of",
    "age": 21,
-   "war": 0.85,
+   "war": 0.86,
    "pa": 600,
    "salary": 780000,
    "debuted": false

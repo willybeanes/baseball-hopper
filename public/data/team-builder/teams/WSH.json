@@ -77,17 +77,16 @@
    "pos": "cf",
    "age": 27,
    "mls": 3.037,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 2300000,
-   "taxValue": 2300000,
+   "contract": "4 y/$23M (27-30)+31 cl opt",
+   "status": "signed",
+   "salary": 3000000,
+   "taxValue": 5750000,
    "salaryPrevYear": 794200,
-   "arbYear": 1,
-   "cotsEstimate": 2250000,
+   "walkYear": false,
    "mlbamId": 696285,
-   "salarySource": "mlbtr-arb",
-   "war": 1.61,
-   "pa": 456
+   "salarySource": "cots",
+   "war": 1.64,
+   "pa": 464
   },
   {
    "name": "Josiah Gray",
@@ -124,6 +123,22 @@
    "salarySource": "mlbtr-arb",
    "war": 0.32,
    "ip": 52
+  },
+  {
+   "name": "Reiver Sanmartin",
+   "sheetName": "Sanmartin, Reiver",
+   "pos": "lhp",
+   "age": 31,
+   "mls": 2.116,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 665665,
+   "salarySource": "minimum",
+   "war": 0.17,
+   "ip": 35
   },
   {
    "name": "Matt Waldron",
@@ -234,7 +249,7 @@
    "salaryPrevYear": 669677,
    "mlbamId": 686611,
    "salarySource": "minimum",
-   "war": 0.9,
+   "war": 0.89,
    "pa": 512
   },
   {
@@ -298,24 +313,8 @@
    "salaryPrevYear": 732434,
    "mlbamId": 690925,
    "salarySource": "minimum",
-   "war": 0.12,
-   "ip": 48
-  },
-  {
-   "name": "Kyle Nicolas",
-   "sheetName": "Nicolas, Kyle",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 1.105,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 125597,
-   "mlbamId": 693312,
-   "salarySource": "minimum",
-   "war": 0.02,
-   "ip": 14
+   "war": 0.1,
+   "ip": 40
   },
   {
    "name": "Gus Varland",
@@ -330,8 +329,8 @@
    "salaryPrevYear": 475638,
    "mlbamId": 681402,
    "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 34
+   "war": 0.03,
+   "ip": 24
   },
   {
    "name": "Jorbit Vivas",
@@ -443,7 +442,7 @@
    "mlbamId": 687223,
    "salarySource": "minimum",
    "war": -0.01,
-   "ip": 12
+   "ip": 14
   },
   {
    "name": "Riley Cornelio",
@@ -523,7 +522,7 @@
    "mlbamId": 687605,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 93
+   "pa": 74
   },
   {
    "name": "Yovanny Cruz",
@@ -571,7 +570,7 @@
    "mlbamId": 678868,
    "salarySource": "minimum",
    "war": 0.06,
-   "ip": 18
+   "ip": 16
   },
   {
    "name": "Luis Perales",
@@ -586,8 +585,8 @@
    "salaryPrevYear": 288392,
    "mlbamId": 691384,
    "salarySource": "minimum",
-   "war": 0.28,
-   "ip": 42
+   "war": 0.31,
+   "ip": 46
   },
   {
    "name": "Yohandy Morales",
@@ -684,10 +683,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 47425000,
- "sheetTaxPayroll": 75209167,
- "rowsPayroll": 47425000,
- "rowsTaxPayroll": 75209167,
+ "sheetPayroll": 48175000,
+ "sheetTaxPayroll": 78709167,
+ "rowsPayroll": 48175000,
+ "rowsTaxPayroll": 78709167,
  "minors": [
   {
    "mlbamId": 703186,
@@ -938,6 +937,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 693312,
+   "name": "Kyle Nicolas",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.1,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 807715,

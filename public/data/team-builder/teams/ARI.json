@@ -87,7 +87,7 @@
    "walkYear": false,
    "mlbamId": 682998,
    "salarySource": "cots",
-   "war": 3.67,
+   "war": 3.66,
    "pa": 618
   },
   {
@@ -646,7 +646,7 @@
    "name": "Christian Cerda",
    "pos": "c",
    "age": 24,
-   "war": 1,
+   "war": 0.99,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -768,6 +768,16 @@
    "age": 27,
    "war": 0.12,
    "ip": 65,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 690841,
+   "name": "Matt O'Neill",
+   "pos": "c",
+   "age": 29,
+   "war": 0.02,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

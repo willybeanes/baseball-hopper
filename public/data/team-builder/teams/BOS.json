@@ -841,20 +841,10 @@
   {
    "mlbamId": 685274,
    "name": "Braiden Ward",
-   "pos": "cf",
+   "pos": "of",
    "age": 28,
    "war": 1.23,
    "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691385,
-   "name": "Ronald Rosario",
-   "pos": "c",
-   "age": 24,
-   "war": 1.13,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -989,36 +979,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691369,
-   "name": "Allan Castro",
-   "pos": "of",
-   "age": 24,
-   "war": 0.2,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 641511,
-   "name": "Jason Delay",
-   "pos": "c",
-   "age": 32,
-   "war": 0.19,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 681962,
-   "name": "Vinny Capra",
-   "pos": "3b",
-   "age": 30,
-   "war": 0.18,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 694812,
    "name": "Tyler McDonough",
    "pos": "if",
@@ -1055,16 +1015,6 @@
    "age": 23,
    "war": 0,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 656726,
-   "name": "Sam McWilliams",
-   "pos": "rp",
-   "age": 31,
-   "war": 0,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   }

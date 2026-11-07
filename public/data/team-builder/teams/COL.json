@@ -120,7 +120,7 @@
    "cotsEstimate": 3825000,
    "mlbamId": 664983,
    "salarySource": "mlbtr-arb",
-   "war": 1.1,
+   "war": 1.09,
    "pa": 537
   },
   {
@@ -650,7 +650,7 @@
    "name": "Edouard Julien",
    "pos": "2b",
    "age": 28,
-   "war": 1.48,
+   "war": 1.47,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -796,6 +796,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 605353,
+   "name": "Vimael Machín",
+   "pos": "ss",
+   "age": 33,
+   "war": 0.26,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 687918,
    "name": "Braylen Wimmer",
    "pos": "ss",
@@ -804,16 +814,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 605353,
-   "name": "Vimael Machín",
-   "pos": "ss",
-   "age": 33,
-   "war": 0.25,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 687616,

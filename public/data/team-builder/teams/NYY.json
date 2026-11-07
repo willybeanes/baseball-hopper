@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 592450,
    "salarySource": "cots",
-   "war": 4.96,
+   "war": 4.95,
    "pa": 550
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 519317,
    "salarySource": "cots",
-   "war": 0.1,
+   "war": 0.09,
    "pa": 119
   },
   {
@@ -691,22 +691,22 @@
    "debuted": false
   },
   {
+   "mlbamId": 682692,
+   "name": "Miguel Palma",
+   "pos": "c",
+   "age": 25,
+   "war": 0.65,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 691795,
    "name": "Brock Selvidge",
    "pos": "sp",
    "age": 24,
    "war": 0.64,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682692,
-   "name": "Miguel Palma",
-   "pos": "c",
-   "age": 25,
-   "war": 0.64,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

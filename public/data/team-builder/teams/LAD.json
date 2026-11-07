@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 808967,
    "salarySource": "cots",
-   "war": 4.64,
+   "war": 4.63,
    "ip": 192.2
   },
   {
@@ -885,7 +885,7 @@
    "name": "Ryan Fitzgerald",
    "pos": "3b",
    "age": 33,
-   "war": 0.65,
+   "war": 0.68,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -965,7 +965,17 @@
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.32,
+   "war": 0.33,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 691558,
+   "name": "Yeiner Fernandez",
+   "pos": "1b",
+   "age": 24,
+   "war": 0.26,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -987,16 +997,6 @@
    "age": 26,
    "war": 0.23,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691558,
-   "name": "Yeiner Fernandez",
-   "pos": "1b",
-   "age": 24,
-   "war": 0.23,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -1081,16 +1081,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 622075,
-   "name": "Yency Almonte",
-   "pos": "rp",
-   "age": 33,
-   "war": 0.02,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 695771,
    "name": "Jacob Kmatz",
    "pos": "rp",
@@ -1099,6 +1089,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 622075,
+   "name": "Yency Almonte",
+   "pos": "rp",
+   "age": 33,
+   "war": 0,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   }
  ]
 }

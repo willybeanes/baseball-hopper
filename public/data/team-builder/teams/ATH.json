@@ -19,7 +19,7 @@
     "type": "player",
     "buyout": null
    },
-   "war": 1.9,
+   "war": 1.89,
    "ip": 163.8
   },
   {
@@ -71,7 +71,7 @@
    "walkYear": false,
    "mlbamId": 691016,
    "salarySource": "cots",
-   "war": 2.33,
+   "war": 2.32,
    "pa": 499
   },
   {
@@ -319,7 +319,7 @@
    "salaryPrevYear": 721969,
    "mlbamId": 691777,
    "salarySource": "minimum",
-   "war": 0.25,
+   "war": 0.24,
    "pa": 120
   },
   {

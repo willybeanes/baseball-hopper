@@ -680,7 +680,7 @@
    "name": "Justin DeCriscio",
    "pos": "ss",
    "age": 24,
-   "war": 0.69,
+   "war": 0.7,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -746,16 +746,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 678316,
-   "name": "Omar Cruz",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.17,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 676203,
    "name": "Marcos Castañon",
    "pos": "2b",
@@ -764,6 +754,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 678316,
+   "name": "Omar Cruz",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.16,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 692021,

@@ -793,6 +793,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 693312,
+   "name": "Kyle Nicolas",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.1,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 605335,
    "name": "Brandon Leibrandt",
    "pos": "rp",
