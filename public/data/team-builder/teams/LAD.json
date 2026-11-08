@@ -273,7 +273,7 @@
    "cotsEstimate": 2425000,
    "mlbamId": 686218,
    "salarySource": "mlbtr-arb",
-   "war": 2.27,
+   "war": 2.26,
    "ip": 127.7
   },
   {
@@ -965,7 +965,7 @@
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.33,
+   "war": 0.32,
    "pa": 450,
    "salary": 780000,
    "debuted": false

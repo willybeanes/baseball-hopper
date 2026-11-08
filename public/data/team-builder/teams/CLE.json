@@ -124,7 +124,7 @@
    "cotsEstimate": 4100000,
    "mlbamId": 668909,
    "salarySource": "mlbtr-arb",
-   "war": 3.82,
+   "war": 3.81,
    "ip": 181.4
   },
   {
@@ -335,7 +335,7 @@
    "mlbamId": 671106,
    "salarySource": "minimum",
    "war": 0.74,
-   "ip": 129
+   "ip": 131
   },
   {
    "name": "Daniel Schneemann",
@@ -398,8 +398,8 @@
    "salaryPrevYear": null,
    "mlbamId": 677588,
    "salarySource": "minimum",
-   "war": 0.24,
-   "pa": 102
+   "war": 0.3,
+   "pa": 125
   },
   {
    "name": "Joey Cantillo",
@@ -527,7 +527,7 @@
    "mlbamId": 692216,
    "salarySource": "minimum",
    "war": 0.18,
-   "pa": 92
+   "pa": 91
   },
   {
    "name": "Franco Aleman",
@@ -622,8 +622,8 @@
    "salaryPrevYear": 82224,
    "mlbamId": 804926,
    "salarySource": "minimum",
-   "war": 0.26,
-   "ip": 66.2
+   "war": 0.21,
+   "ip": 56.9
   },
   {
    "name": "Yorman Gómez",
@@ -878,16 +878,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 594902,
-   "name": "Ben Lively",
-   "pos": "sp",
-   "age": 35,
-   "war": 0.26,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 702593,
    "name": "Jace LaViolette",
    "pos": "of",
@@ -934,6 +924,16 @@
    "age": 21,
    "war": 0.15,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 801129,
+   "name": "Caden Favors",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.14,
+   "ip": 65,
    "salary": 780000,
    "debuted": false
   },

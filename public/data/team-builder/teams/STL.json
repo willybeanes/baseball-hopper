@@ -666,7 +666,7 @@
   },
   {
    "name": "Willson Contreras",
-   "salary": 2000000,
+   "salary": 6000000,
    "taxValue": 750000,
    "note": "to Boston, 12/21/25 trade"
   },
@@ -693,9 +693,9 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 66860000,
+ "sheetPayroll": 70860000,
  "sheetTaxPayroll": 94887780,
- "rowsPayroll": 66860000,
+ "rowsPayroll": 70860000,
  "rowsTaxPayroll": 94887780,
  "minors": [
   {
@@ -883,7 +883,7 @@
    "name": "Tai Peete",
    "pos": "of",
    "age": 21,
-   "war": 0.86,
+   "war": 0.85,
    "pa": 600,
    "salary": 780000,
    "debuted": false

@@ -757,7 +757,7 @@
    "name": "Jose Colmenares",
    "pos": "2b",
    "age": 25,
-   "war": 0.77,
+   "war": 0.74,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -847,7 +847,7 @@
    "name": "Daniel Robert",
    "pos": "rp",
    "age": 32,
-   "war": 0.15,
+   "war": 0.17,
    "ip": 65,
    "salary": 780000,
    "debuted": true

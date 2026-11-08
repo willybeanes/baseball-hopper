@@ -1029,7 +1029,7 @@
    "name": "Channing Austin",
    "pos": "sp",
    "age": 25,
-   "war": 0.13,
+   "war": 0.14,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -1089,7 +1089,7 @@
    "name": "José Marte",
    "pos": "rp",
    "age": 31,
-   "war": 0.06,
+   "war": 0.05,
    "ip": 65,
    "salary": 780000,
    "debuted": true

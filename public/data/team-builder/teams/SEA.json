@@ -85,7 +85,7 @@
    "cotsEstimate": 10550000,
    "mlbamId": 669923,
    "salarySource": "mlbtr-arb",
-   "war": 2.81,
+   "war": 2.8,
    "ip": 172
   },
   {
@@ -624,7 +624,7 @@
    "salaryPrevYear": 91765,
    "mlbamId": 703197,
    "salarySource": "minimum",
-   "war": 1.09,
+   "war": 1.1,
    "pa": 381
   },
   {
@@ -852,7 +852,7 @@
    "name": "Stuart Fairchild",
    "pos": "cf",
    "age": 31,
-   "war": 0.81,
+   "war": 0.82,
    "pa": 600,
    "salary": 780000,
    "debuted": true

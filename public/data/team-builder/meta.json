@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T16:12:19.534Z",
+  "updatedAt": "2026-11-08T16:34:02.085Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -75,8 +75,8 @@
     "label": "Steamer projection for 2027",
     "note": "Minor leaguers use Steamer's full-time version (600 PA, 200 IP as a starter or 65 in relief), because plain Steamer gives most of them almost no big-league time.",
     "url": "https://www.fangraphs.com/projections?type=steamer",
-    "fetchedAt": "2026-11-07",
-    "players": 9331
+    "fetchedAt": "2026-11-08",
+    "players": 9333
   },
   "staleTeams": {},
   "sources": {
