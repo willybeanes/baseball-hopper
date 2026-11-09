@@ -479,7 +479,7 @@
    "salaryPrevYear": 780350,
    "mlbamId": 671976,
    "salarySource": "minimum",
-   "war": 1.34,
+   "war": 1.35,
    "pa": 382
   },
   {
@@ -543,7 +543,7 @@
    "salaryPrevYear": 462995,
    "mlbamId": 695731,
    "salarySource": "minimum",
-   "war": 1.49,
+   "war": 1.5,
    "pa": 474
   },
   {
@@ -735,6 +735,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 683569,
+   "name": "Jose Colmenares",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.77,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 681066,
    "name": "Ky Bush",
    "pos": "sp",
@@ -751,26 +761,6 @@
    "age": 28,
    "war": 0.76,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 683569,
-   "name": "Jose Colmenares",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.74,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 804706,
-   "name": "Dylan Cumming",
-   "pos": "sp",
-   "age": 28,
-   "war": 0.73,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -797,7 +787,7 @@
   {
    "mlbamId": 701333,
    "name": "Colby Shelton",
-   "pos": "2b",
+   "pos": "ss",
    "age": 24,
    "war": 0.61,
    "pa": 600,
@@ -845,16 +835,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 681581,
-   "name": "Andy Weber",
-   "pos": "2b",
-   "age": 29,
-   "war": 0.3,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 681410,
    "name": "Connor McCullough",
    "pos": "rp",
@@ -871,16 +851,6 @@
    "age": 25,
    "war": 0.25,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 624523,
-   "name": "Riley Unroe",
-   "pos": "2b",
-   "age": 31,
-   "war": 0.25,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

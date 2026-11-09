@@ -191,7 +191,7 @@
    "cotsEstimate": 3500000,
    "mlbamId": 663837,
    "salarySource": "mlbtr-arb",
-   "war": 0.2,
+   "war": 0.21,
    "pa": 142
   },
   {
@@ -208,7 +208,7 @@
    "walkYear": false,
    "mlbamId": 805808,
    "salarySource": "cots",
-   "war": 5.53,
+   "war": 5.54,
    "pa": 662
   },
   {

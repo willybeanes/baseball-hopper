@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 607208,
    "salarySource": "cots",
-   "war": 2.37,
+   "war": 2.38,
    "pa": 605
   },
   {
@@ -188,7 +188,7 @@
    "cotsEstimate": 7750000,
    "mlbamId": 669016,
    "salarySource": "mlbtr-arb",
-   "war": 1.01,
+   "war": 1.02,
    "pa": 473
   },
   {
@@ -424,7 +424,7 @@
    "salaryPrevYear": 780000,
    "mlbamId": 702222,
    "salarySource": "minimum",
-   "war": 1.4,
+   "war": 1.41,
    "pa": 400
   },
   {
@@ -457,7 +457,7 @@
    "mlbamId": 670224,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 58
+   "pa": 57
   },
   {
    "name": "Andrew Painter",
@@ -673,16 +673,6 @@
  "rowsTaxPayroll": 281487221,
  "minors": [
   {
-   "mlbamId": 694372,
-   "name": "Adam Seminaris",
-   "pos": "sp",
-   "age": 28,
-   "war": 2.41,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 805795,
    "name": "Aidan Miller",
    "pos": "ss",
@@ -753,16 +743,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 683569,
-   "name": "Jose Colmenares",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.74,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 805906,
    "name": "Gage Wood",
    "pos": "rp",
@@ -791,16 +771,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 656627,
-   "name": "Mark Kolozsvary",
-   "pos": "c",
-   "age": 31,
-   "war": 0.24,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 700848,
@@ -841,16 +811,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 642016,
-   "name": "Daniel Robert",
-   "pos": "rp",
-   "age": 32,
-   "war": 0.17,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 681080,
@@ -901,16 +861,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 666148,
-   "name": "Drake Fellows",
-   "pos": "sp",
-   "age": 29,
-   "war": 0.01,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
   }
  ]
 }

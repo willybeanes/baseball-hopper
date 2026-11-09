@@ -120,7 +120,7 @@
    "cotsEstimate": 3825000,
    "mlbamId": 664983,
    "salarySource": "mlbtr-arb",
-   "war": 1.09,
+   "war": 1.1,
    "pa": 537
   },
   {
@@ -430,7 +430,7 @@
    "salaryPrevYear": 281905,
    "mlbamId": 691182,
    "salarySource": "minimum",
-   "war": 0.38,
+   "war": 0.39,
    "pa": 302
   },
   {
@@ -650,7 +650,7 @@
    "name": "Edouard Julien",
    "pos": "2b",
    "age": 28,
-   "war": 1.47,
+   "war": 1.48,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -866,16 +866,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 624522,
-   "name": "Keegan Thompson",
-   "pos": "rp",
-   "age": 32,
-   "war": 0.05,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 687900,
    "name": "Andrew Baker",
    "pos": "rp",
@@ -884,6 +874,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 624522,
+   "name": "Keegan Thompson",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.04,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 642758,

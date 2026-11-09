@@ -798,32 +798,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 606992,
-   "name": "Eric Haase",
-   "pos": "c",
-   "age": 34,
-   "war": 0.36,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 677954,
    "name": "Jordan Groshans",
    "pos": "3b",
    "age": 27,
    "war": 0.29,
    "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 665856,
-   "name": "Jair Camargo",
-   "pos": "c",
-   "age": 28,
-   "war": 0.26,
-   "pa": 450,
    "salary": 780000,
    "debuted": true
   },
@@ -926,16 +906,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 669416,
-   "name": "Blayne Enlow",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.03,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
   },
   {
    "mlbamId": 811319,

@@ -805,16 +805,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 680933,
-   "name": "Joander Suarez",
-   "pos": "sp",
-   "age": 27,
-   "war": 1.27,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 800473,
    "name": "Jefferson Rojas",
    "pos": "ss",
@@ -965,31 +955,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 676785,
-   "name": "Bryce Conley",
-   "pos": "sp",
-   "age": 32,
-   "war": 0.39,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 809784,
    "name": "Garrett Stratton",
    "pos": "rp",
    "age": 23,
    "war": 0.29,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682260,
-   "name": "Brian Metoyer",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.23,
    "ip": 65,
    "salary": 780000,
    "debuted": false
@@ -1029,7 +999,7 @@
    "name": "Channing Austin",
    "pos": "sp",
    "age": 25,
-   "war": 0.14,
+   "war": 0.13,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -1083,16 +1053,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 665896,
-   "name": "José Marte",
-   "pos": "rp",
-   "age": 31,
-   "war": 0.05,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 670871,

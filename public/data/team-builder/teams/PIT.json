@@ -457,7 +457,7 @@
    "salaryPrevYear": 325348,
    "mlbamId": 694378,
    "salarySource": "minimum",
-   "war": 0.72,
+   "war": 0.73,
    "pa": 294
   },
   {
@@ -754,21 +754,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 689877,
-   "name": "Ryan Harbin",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.79,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 700731,
    "name": "Keiner Delgado",
    "pos": "2b",
    "age": 23,
-   "war": 0.74,
+   "war": 0.73,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -824,16 +814,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 665839,
-   "name": "Enmanuel Valdez",
-   "pos": "1b",
-   "age": 28,
-   "war": 0.6,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 693459,
    "name": "Kyler Fedko",
    "pos": "lf",
@@ -852,26 +832,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 669421,
-   "name": "Dominic Pipkin",
-   "pos": "sp",
-   "age": 27,
-   "war": 0.39,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 690987,
-   "name": "Robert Hassell III",
-   "pos": "cf",
-   "age": 25,
-   "war": 0.37,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 800208,
@@ -959,16 +919,6 @@
    "pos": "c",
    "age": 25,
    "war": 0.05,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 677319,
-   "name": "Cameron Barstad",
-   "pos": "c",
-   "age": 26,
-   "war": 0.04,
    "pa": 450,
    "salary": 780000,
    "debuted": false

@@ -100,7 +100,7 @@
    "walkYear": false,
    "mlbamId": 630105,
    "salarySource": "cots",
-   "war": 0.89,
+   "war": 0.9,
    "pa": 474
   },
   {
@@ -626,32 +626,12 @@
  "rowsTaxPayroll": 210295180,
  "minors": [
   {
-   "mlbamId": 682044,
-   "name": "Sean Boyle",
-   "pos": "sp",
-   "age": 30,
-   "war": 1.3,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 699546,
    "name": "Jamie Hitt",
    "pos": "sp",
    "age": 24,
    "war": 1.05,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 677578,
-   "name": "Carlos Rodríguez",
-   "pos": "rf",
-   "age": 26,
-   "war": 0.81,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -666,21 +646,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 683157,
-   "name": "Evan Fitterer",
-   "pos": "sp",
-   "age": 27,
-   "war": 0.71,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 813664,
    "name": "Justin DeCriscio",
    "pos": "ss",
    "age": 24,
-   "war": 0.69,
+   "war": 0.7,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -691,26 +661,6 @@
    "pos": "sp",
    "age": 26,
    "war": 0.62,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 672696,
-   "name": "Francisco Acuna",
-   "pos": "3b",
-   "age": 27,
-   "war": 0.56,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 695247,
-   "name": "Jagger Haynes",
-   "pos": "sp",
-   "age": 24,
-   "war": 0.47,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -744,16 +694,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 678316,
-   "name": "Omar Cruz",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.17,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 676203,
@@ -804,26 +744,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 691020,
-   "name": "Carson Tucker",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.08,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 686654,
-   "name": "Ty Adcock",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.02,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   }
  ]
 }

@@ -291,8 +291,8 @@
    "cotsEstimate": 2100000,
    "mlbamId": 669743,
    "salarySource": "mlbtr-arb",
-   "war": 0.15,
-   "pa": 98
+   "war": 0.14,
+   "pa": 92
   },
   {
    "name": "Brock Stewart",
@@ -665,7 +665,7 @@
    "name": "Mike Sirota",
    "pos": "cf",
    "age": 24,
-   "war": 2.29,
+   "war": 2.28,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -701,16 +701,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 685716,
-   "name": "Nelson Quiroz",
-   "pos": "c",
-   "age": 25,
-   "war": 1.57,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 695372,
    "name": "Jake Gelof",
    "pos": "3b",
@@ -735,7 +725,7 @@
    "name": "James Tibbs III",
    "pos": "rf",
    "age": 24,
-   "war": 1.24,
+   "war": 1.19,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -881,16 +871,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 680837,
-   "name": "Ryan Fitzgerald",
-   "pos": "3b",
-   "age": 33,
-   "war": 0.68,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 804942,
    "name": "Cam Leiter",
    "pos": "sp",
@@ -909,16 +889,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 644433,
-   "name": "Chadwick Tromp",
-   "pos": "c",
-   "age": 32,
-   "war": 0.44,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 806293,
@@ -965,17 +935,7 @@
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.32,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691558,
-   "name": "Yeiner Fernandez",
-   "pos": "1b",
-   "age": 24,
-   "war": 0.26,
+   "war": 0.33,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -1021,16 +981,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 656212,
-   "name": "Charlie Barnes",
-   "pos": "rp",
-   "age": 31,
-   "war": 0.15,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 805841,
    "name": "Logan Tabeling",
    "pos": "sp",
@@ -1039,16 +989,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 687798,
-   "name": "Nick Robertson",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.08,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 809915,
@@ -1089,16 +1029,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 622075,
-   "name": "Yency Almonte",
-   "pos": "rp",
-   "age": 33,
-   "war": 0,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   }
  ]
 }

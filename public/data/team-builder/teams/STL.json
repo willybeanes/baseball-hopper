@@ -353,7 +353,7 @@
    "salaryPrevYear": 553293,
    "mlbamId": 695336,
    "salarySource": "minimum",
-   "war": 1.01,
+   "war": 1.02,
    "pa": 301
   },
   {
@@ -417,7 +417,7 @@
    "salaryPrevYear": 557802,
    "mlbamId": 663494,
    "salarySource": "minimum",
-   "war": 0.22,
+   "war": 0.23,
    "pa": 131
   },
   {
@@ -561,8 +561,8 @@
    "salaryPrevYear": null,
    "mlbamId": 700842,
    "salarySource": "minimum",
-   "war": 0.71,
-   "ip": 57.4
+   "war": 0.61,
+   "ip": 48.5
   },
   {
    "name": "Brycen Mautz",
@@ -779,16 +779,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 701388,
-   "name": "Jurrangelo Cijntje",
-   "pos": "sp",
-   "age": 24,
-   "war": 1.41,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 815119,
    "name": "Tanner Franklin",
    "pos": "sp",
@@ -883,7 +873,7 @@
    "name": "Tai Peete",
    "pos": "of",
    "age": 21,
-   "war": 0.85,
+   "war": 0.86,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -1034,6 +1024,16 @@
    "pos": "rp",
    "age": 22,
    "war": 0.07,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 701388,
+   "name": "Jurrangelo Cijntje",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.06,
    "ip": 65,
    "salary": 780000,
    "debuted": false

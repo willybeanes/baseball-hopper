@@ -293,7 +293,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 657136,
    "salarySource": "mlbtr-arb",
-   "war": 0.2,
+   "war": 0.21,
    "pa": 155
   },
   {
@@ -311,8 +311,8 @@
    "cotsEstimate": 1900000,
    "mlbamId": 663853,
    "salarySource": "mlbtr-arb",
-   "war": 0.14,
-   "pa": 70
+   "war": 0.13,
+   "pa": 68
   },
   {
    "name": "Johan Oviedo",
@@ -553,8 +553,8 @@
    "salaryPrevYear": 549390,
    "mlbamId": 686765,
    "salarySource": "minimum",
-   "war": 0.47,
-   "pa": 231
+   "war": 0.46,
+   "pa": 227
   },
   {
    "name": "Anthony Seigler",
@@ -743,7 +743,7 @@
    "name": "Franklin Arias",
    "pos": "ss",
    "age": 21,
-   "war": 3.02,
+   "war": 2.9,
    "pa": 600,
    "salary": 780000,
    "debuted": false

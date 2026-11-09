@@ -9,17 +9,17 @@
    "move": "2026-11-02: Contract selected from minors"
   },
   {
+   "team": "PHI",
+   "name": "Johan Rojas",
+   "mlbamId": 679032,
+   "change": "added to the roster at the minimum"
+  },
+  {
    "team": "SEA",
    "name": "Isaac Mattson",
    "mlbamId": 676755,
    "change": "added to the roster at the minimum",
    "move": "2026-11-02: Claimed off waivers from Pirates"
-  },
-  {
-   "team": "PHI",
-   "name": "Johan Rojas",
-   "mlbamId": 679032,
-   "change": "added to the roster at the minimum"
   },
   {
    "team": "CIN",
