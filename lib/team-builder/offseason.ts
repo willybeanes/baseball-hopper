@@ -99,7 +99,8 @@ export function mulberry32(seed: number) {
 
 const depthPlayers = (b: BuiltRoster): DepthPlayer[] =>
   b.slots.filter((s) => s.onRoster).map((s) => ({ id: s.player.mlbamId ?? s.player.sheetName, name: s.player.name, pos: s.player.pos, war: s.player.war, pa: s.player.pa, ip: s.player.ip }))
-export const teamWar = (b: BuiltRoster) => depthChart(depthPlayers(b)).total
+export const teamDepth = (b: BuiltRoster) => depthChart(depthPlayers(b))
+export const teamWar = (b: BuiltRoster) => teamDepth(b).total
 
 // What a team spent in 2026 (Cot's year-end payroll, payrolls-2026.json): how big a spender it
 // is, and the payroll it builds back toward this winter. Summing salaryPrevYear on today's sheet

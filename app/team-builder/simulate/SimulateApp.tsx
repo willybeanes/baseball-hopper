@@ -11,7 +11,7 @@ import { loadJson } from '@/lib/team-builder/data'
 import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { buildRoster, type Move } from '@/lib/team-builder/moves'
 import {
-  ATTITUDE_ORDER, ATTITUDES, PHASES, defaultAttitudes, simulateOffseason, teamWar,
+  ATTITUDE_ORDER, ATTITUDES, PHASES, defaultAttitudes, simulateOffseason, teamDepth, teamWar,
   type Attitude, type Simulation, type Transaction,
 } from '@/lib/team-builder/offseason'
 import type { PoolPlayer } from '@/lib/team-builder/pool'
@@ -21,6 +21,7 @@ import {
   decodeAttitudes, decodeMoves, decodeSeed, decodeTeamMoves, encodeAttitudes, encodeMoves, encodeSeed, encodeTeamMoves,
 } from '@/lib/team-builder/share'
 import { DIVISIONS, TEAM_NAMES } from '@/lib/team-builder/teams'
+import { FIELD_SPOTS, SPOT_NAMES, type FieldSpot } from '@/lib/team-builder/field'
 
 type Stage = 'setup' | 'running' | 'results'
 
@@ -191,6 +192,9 @@ export default function SimulateApp() {
           {stage === 'results' && sim && (
             <Results
               sim={sim}
+              teams={teams!}
+              pool={pool!}
+              manual={ran?.manual ?? {}}
               onAgain={() => run(newSeed())}
               onChange={() => { setStage('setup'); window.scrollTo({ top: 0 }) }}
             />
@@ -504,8 +508,11 @@ function payDelta(d: number) {
   return m > 0 ? `+$${m}M` : m < 0 ? `−$${-m}M` : '0'
 }
 
-function Results({ sim, onAgain, onChange }: {
+function Results({ sim, teams, pool, manual, onAgain, onChange }: {
   sim: Simulation
+  teams: TeamFile[]
+  pool: PoolPlayer[]
+  manual: Record<string, Move[]>
   onAgain: () => void
   onChange: () => void
 }) {
@@ -587,9 +594,11 @@ function Results({ sim, onAgain, onChange }: {
           })}
         </div>
         <p className="border-t border-[var(--rule)] px-4 py-2 text-[11px] text-[var(--dimmer)]">
-          The first +/− is the change in projected wins over the offseason, the second the change in payroll, both counted from where each team started, your moves included. A team can lose wins without losing a player: records are scaled so the league plays .500, and once free agents sign, the league has more WAR to share, so each win takes more of it. Click a team to open its new roster in the Team Builder.
+          <span className="block max-w-[75ch]">The first +/− is the change in projected wins over the offseason, the second the change in payroll, both counted from where each team started, your moves included. A team can lose wins without losing a player: records are scaled so the league plays .500, and once free agents sign, the league has more WAR to share, so each win takes more of it. Click a team to open its new roster in the Team Builder.</span>
         </p>
       </Panel>
+
+      <PositionRanks sim={sim} teams={teams} pool={pool} manual={manual} highlight={filter === 'all' ? null : filter} builderLink={builderLink} />
 
       <Panel
         title={`Transactions (${log.length})`}
@@ -645,6 +654,111 @@ function Results({ sim, onAgain, onChange }: {
 
 // Who else wanted a free agent: each bidding team, how much he'd have added to its depth
 // chart, and how keen it was next to the team that signed him.
+// Where every team ranks at each position after the offseason, by depth-chart WAR (the same
+// WAR the Team Builder's field diagram shows), with the rank it started from in each tooltip.
+type RankColumn = FieldSpot | 'total'
+const MOVED = 5 // places a rank must move to get an arrow, so small shuffles don't crowd the table
+const ordinal = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`
+
+function PositionRanks({ sim, teams, pool, manual, highlight, builderLink }: {
+  sim: Simulation
+  teams: TeamFile[]
+  pool: PoolPlayer[]
+  manual: Record<string, Move[]>
+  highlight: string | null
+  builderLink: (t: string) => string
+}) {
+  const [show, setShow] = useState<'rank' | 'war'>('rank')
+  const [sortBy, setSortBy] = useState<RankColumn>('total')
+  const columns: RankColumn[] = [...FIELD_SPOTS, 'total']
+  const table = useMemo(() => {
+    const wars = (which: 'before' | 'after') => Object.fromEntries(teams.map((t) => {
+      // Before: today's roster with the user's moves; after: with the simulation's too.
+      const d = teamDepth(buildRoster(t, which === 'after' ? sim.teams[t.team].moves : manual[t.team] ?? [], pool))
+      return [t.team, { ...Object.fromEntries(FIELD_SPOTS.map((s) => [s, d.bySpot[s].war])), total: d.total } as Record<RankColumn, number>]
+    }))
+    const ranks = (w: Record<string, Record<RankColumn, number>>) => Object.fromEntries(columns.map((c) => {
+      const order = Object.keys(w).sort((a, b) => w[b][c] - w[a][c])
+      return [c, Object.fromEntries(order.map((t, i) => [t, i + 1]))]
+    })) as Record<RankColumn, Record<string, number>>
+    const after = wars('after')
+    const before = wars('before')
+    return { after, rankAfter: ranks(after), rankBefore: ranks(before), before }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sim, teams, pool, manual])
+  const rows = Object.keys(table.after).sort((a, b) => table.rankAfter[sortBy][a] - table.rankAfter[sortBy][b])
+  const label = (c: RankColumn) => (c === 'total' ? 'Total' : c)
+  const name = (c: RankColumn) => (c === 'total' ? 'Total' : SPOT_NAMES[c])
+
+  return (
+    <Panel
+      title="Position rankings"
+      aside={
+        <span className="flex items-center gap-1 text-[13px]" role="group" aria-label="Show">
+          {(['rank', 'war'] as const).map((v) => (
+            <button key={v} type="button" aria-pressed={show === v} onClick={() => setShow(v)}
+              className={`rounded-md px-2 py-0.5 ${show === v ? 'bg-[var(--text)] text-[var(--panel)]' : 'text-[var(--dim)] hover:text-[var(--text)]'}`}>
+              {v === 'rank' ? 'Rank' : 'WAR'}
+            </button>
+          ))}
+        </span>
+      }
+    >
+      <div className="overflow-x-auto border-t border-[var(--rule)]">
+        <table className="w-full min-w-[640px] text-sm">
+          <thead>
+            <tr className="text-[11px] text-[var(--dimmer)]">
+              <th scope="col" className="px-4 py-1.5 text-left font-medium">Team</th>
+              {columns.map((c) => (
+                <th key={c} scope="col" className="px-1 py-1.5 text-center font-medium" aria-sort={sortBy === c ? 'ascending' : undefined}>
+                  <button type="button" onClick={() => setSortBy(c)} title={`Sort by ${name(c).toLowerCase()}`}
+                    className={`rounded px-1 ${sortBy === c ? 'font-semibold text-[var(--text)] underline underline-offset-2' : 'hover:text-[var(--text)]'}`}>
+                    {label(c)}
+                  </button>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--rule)]">
+            {rows.map((t) => (
+              <tr key={t} className={highlight === t ? 'bg-[var(--accent-dim)]' : undefined}>
+                <td className="px-4 py-1">
+                  <a href={builderLink(t)} className="flex items-center gap-2 hover:underline" title={`Open the ${TEAM_NAMES[t]} roster in the Team Builder`}>
+                    <Logo code={t} />
+                    <span>{t}</span>
+                  </a>
+                </td>
+                {columns.map((c) => {
+                  const rank = table.rankAfter[c][t]
+                  const was = table.rankBefore[c][t]
+                  const war = table.after[t][c]
+                  // Stronger is redder, like the Team Builder's field diagram; the bottom half stays plain.
+                  const tint = Math.max(0, (16 - rank) / 15)
+                  return (
+                    <td key={c} className="px-0.5 py-0.5 text-center">
+                      <span
+                        className={`block rounded px-1 py-0.5 font-mono text-[13px] ${c === 'total' ? 'font-semibold' : ''}`}
+                        style={{ backgroundColor: tint > 0 ? `color-mix(in srgb, var(--accent) ${Math.round(tint * 30)}%, transparent)` : undefined }}
+                        title={`${TEAM_NAMES[t]}, ${name(c).toLowerCase()}: ${fmtWar(war)} WAR, ${ordinal(rank)}${was !== rank ? ` (was ${ordinal(was)} with ${fmtWar(table.before[t][c])})` : ''}`}
+                      >
+                        {show === 'rank' ? rank : fmtWar(war)}
+                        {show === 'rank' && Math.abs(was - rank) >= MOVED && <span className="ml-0.5 text-[11px] text-[var(--dim)]" aria-hidden>{was > rank ? '↑' : '↓'}</span>}
+                      </span>
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="border-t border-[var(--rule)] px-4 py-2 text-[11px] text-[var(--dimmer)]">
+        <span className="block max-w-[75ch]">Each team&apos;s rank among the 30 by projected WAR at each spot, counted like a depth chart (the same WAR as the Team Builder&apos;s field diagram, before scaling). An arrow marks a rank that moved five or more places over the offseason; hover for the WAR and where the team started, your moves included. Click a column to sort, a team to open its roster.</span>
+      </p>
+    </Panel>
+  )
+}
+
 function Bids({ x, attitudes }: { x: Transaction; attitudes: Simulation['teams'] }) {
   const bids = x.bids ?? []
   const pushed = x.ask && x.salary && x.salary > x.ask ? Math.round((x.salary / x.ask - 1) * 100) : 0
