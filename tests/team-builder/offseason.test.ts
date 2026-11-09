@@ -5,7 +5,7 @@ import { readFileSync } from 'fs'
 import { join } from 'path'
 import assumptions from '../../lib/team-builder/assumptions.json'
 import { buildRoster, type Move } from '../../lib/team-builder/moves'
-import { ATTITUDES, defaultAttitudes, simulateOffseason, type Attitude, type SimInput } from '../../lib/team-builder/offseason'
+import { ATTITUDES, defaultAttitudes, simulateOffseason, teamWar, type Attitude, type SimInput } from '../../lib/team-builder/offseason'
 import type { PoolPlayer } from '../../lib/team-builder/pool'
 import type { TeamFile } from '../../lib/team-builder/roster'
 import { TEAM_NAMES } from '../../lib/team-builder/teams'
@@ -81,6 +81,9 @@ describe('simulateOffseason', () => {
     const r = simulateOffseason({ ...base, manual })
     expect(r.teams[worst].moves.slice(0, 2)).toEqual(manual[worst])
     expect(r.log.some((x) => x.id === fa.mlbamId || x.id === star)).toBe(false)
+    // +/− counts from the roster with the user's moves, as the Team Builder shows it.
+    expect(r.teams[worst].warBefore).toBeCloseTo(teamWar(buildRoster(team(worst), manual[worst], pool)), 6)
+    expect(r.teams[worst].payrollBefore).toBe(buildRoster(team(worst), manual[worst], pool).payroll)
   })
 
   test('each signing lists its bids, keenest first, with the winner on top', () => {

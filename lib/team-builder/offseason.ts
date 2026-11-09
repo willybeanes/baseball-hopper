@@ -64,7 +64,7 @@ export interface TeamResult {
   team: string
   attitude: Attitude
   moves: Move[] // manual moves first, then the simulation's
-  warBefore: number
+  warBefore: number // with the user's moves, before the simulation's
   warAfter: number
   winsBefore: number
   winsAfter: number
@@ -158,10 +158,14 @@ export function simulateOffseason(input: SimInput): Simulation {
   }
   for (const t of teams) rebuild(t.team)
 
+  // Rosters as they stand today, for budgets.
   const before = new Map(teams.map((t) => {
     const b = buildRoster(t, [], pool)
     return [t.team, { war: teamWar(b), payroll: b.payroll }]
   }))
+  // Where each team starts the simulation: today's roster plus the user's moves, which is what
+  // the Team Builder and the setup screen show. The standings' +/− measure from here.
+  const start = new Map(teams.map((t) => [t.team, { war: war.get(t.team)!, payroll: built.get(t.team)!.payroll }]))
   // Budgets: last year's payroll scaled by the plan (all in spends past it, tanking well under),
   // but always enough for a little more than what's already owed for 2027, and never below what
   // the user's moves cost.
@@ -316,11 +320,11 @@ export function simulateOffseason(input: SimInput): Simulation {
   } })
 
   // 4. Standings: both before and after scaled so the league plays .500.
-  const scaleBefore = warScale([...before.values()].map((b) => b.war))
+  const scaleBefore = warScale([...start.values()].map((b) => b.war))
   const scaleAfter = warScale([...war.values()])
   const out: Record<string, TeamResult> = {}
   for (const t of teams) {
-    const b = before.get(t.team)!
+    const b = start.get(t.team)!
     out[t.team] = {
       team: t.team,
       attitude: attitudes[t.team] ?? 'buysell',

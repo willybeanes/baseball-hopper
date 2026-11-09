@@ -585,7 +585,7 @@ function Results({ sim, onAgain, onChange }: {
           })}
         </div>
         <p className="border-t border-[var(--rule)] px-4 py-2 text-[11px] text-[var(--dimmer)]">
-          The first +/− is the change in projected wins over the offseason, the second the change in payroll. Click a team to open its new roster in the Team Builder.
+          The first +/− is the change in projected wins over the offseason, the second the change in payroll, both counted from where each team started, your moves included. A team can lose wins without losing a player: records are scaled so the league plays .500, and once free agents sign, the league has more WAR to share, so each win takes more of it. Click a team to open its new roster in the Team Builder.
         </p>
       </Panel>
 
