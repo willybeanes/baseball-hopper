@@ -525,7 +525,9 @@ function Results({ sim, onAgain, onChange }: {
   const r = sim.teams
   const builderLink = (t: string) => {
     const m = encodeMoves(r[t].moves)
-    return `/team-builder?team=${t}${m ? `&m=${m}` : ''}`
+    // The rest of the league's WAR after this offseason, so the Team Builder projects the same record.
+    const others = Object.values(r).reduce((n, x) => n + (x.team === t ? 0 : x.warAfter), 0)
+    return `/team-builder?team=${t}${m ? `&m=${m}` : ''}&lw=${Math.round(others * 10) / 10}`
   }
 
   return (

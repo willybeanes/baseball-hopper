@@ -6,7 +6,7 @@ import { headshotUrl } from '@/lib/player'
 import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { depthChart, type Credit } from '@/lib/team-builder/depth'
-import { fmtRecord, projectedRecord, warScale } from '@/lib/team-builder/record'
+import { fmtRecord, projectedRecord, warScale, warScaleFromTotal } from '@/lib/team-builder/record'
 import assumptions from '@/lib/team-builder/assumptions.json'
 import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, warTier, warTint, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
@@ -462,7 +462,12 @@ export default function TeamBuilderApp() {
   const [hydrated, setHydrated] = useState(false)
   const [shared, setShared] = useState<{ team: string; m: string; date: Date | null } | null>(null)
   const [copied, setCopied] = useState<'copied' | 'manual' | null>(null)
+  // Opened from a simulated offseason's results: "lw" is the other 29 teams' WAR after that
+  // offseason, so this team's record is projected against that league, as the results were.
+  const [simLeague, setSimLeague] = useState<{ team: string; others: number } | null>(null)
   useEffect(() => {
+    const lw = Number(params.get('lw'))
+    if (params.get('lw') && Number.isFinite(lw) && lw > 0) setSimLeague({ team, others: lw })
     const m = params.get('m')
     const fromLink = decodeMoves(m)
     if (fromLink.length) {
@@ -486,9 +491,10 @@ export default function TeamBuilderApp() {
     const q = new URLSearchParams({ team })
     if (encoded) q.set('m', encoded)
     if (stillShared && shared?.date) q.set('d', encodeDate(shared.date))
+    if (simLeague && simLeague.team === team) q.set('lw', String(simLeague.others))
     const next = `/team-builder?${q.toString()}`
     if (next !== window.location.pathname + window.location.search) window.history.replaceState(null, '', next)
-  }, [hydrated, team, encoded, stillShared, shared])
+  }, [hydrated, team, encoded, stillShared, shared, simLeague])
   const copyLink = async () => {
     const url = `${window.location.origin}/team-builder?${shareQuery(true)}`
     try {
@@ -581,8 +587,10 @@ export default function TeamBuilderApp() {
     return Object.fromEntries(Object.entries(rosters).map(([t, r]) => [t, depthChart(r.map((e) => ({ ...e, id: e.mlbamId }))).total]))
   }, [pool])
   const liveWars = { ...teamWars, ...(built ? { [team]: teamWar } : {}) }
-  // One scale for everyone, from today's default rosters (see lib/team-builder/record.ts).
-  const scale = warScale(Object.values(teamWars))
+  // One scale for everyone, from today's default rosters (see lib/team-builder/record.ts), or
+  // from the simulated league when opened from a simulation's results.
+  const vsSim = simLeague != null && simLeague.team === team
+  const scale = vsSim ? warScaleFromTotal(simLeague.others + teamWar) : warScale(Object.values(teamWars))
   const record = projectedRecord(teamWar, scale)
   const startRecord = projectedRecord(startWar, scale)
   // What each change did to payroll, in order (they add up to the total change).
@@ -879,6 +887,12 @@ export default function TeamBuilderApp() {
                       aria-label="Share link"
                       className="mb-2 w-full rounded border border-[var(--rule)] bg-transparent px-2 py-1 font-mono text-[11px]"
                     />
+                  )}
+                  {vsSim && (
+                    <p className="mb-1.5 max-w-[58ch] text-[11px] text-[var(--dim)]">
+                      Opened from a simulated offseason, so the record is projected against the league after it, where other teams have signed free agents too, as on the results page.{' '}
+                      <button type="button" onClick={() => setSimLeague(null)} className="font-medium underline">Use today&apos;s league</button>
+                    </p>
                   )}
                   {stillShared && (
                     <p className="mb-1.5 max-w-[58ch] text-[11px] text-[var(--dim)]">

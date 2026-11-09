@@ -16,6 +16,12 @@ export function warScale(teamWars: number[]): number {
   return total > 0 ? leagueWar / total : 1
 }
 
+// The same, from the league's total WAR: used when the rest of the league isn't today's, as
+// when a team is opened from a simulated offseason.
+export function warScaleFromTotal(total: number, teams = 30): number {
+  return total > 0 ? ((games / 2 - REPLACEMENT_WINS) * teams) / total : 1
+}
+
 export function projectedRecord(teamWar: number, scale: number): { wins: number; losses: number } {
   const wins = Math.min(games, Math.max(0, REPLACEMENT_WINS + teamWar * scale))
   return { wins, losses: games - wins }
