@@ -223,9 +223,30 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
+    .compare-charts > * { min-width: 0; }
+    @media (min-width: 1000px) {
+      .compare-charts[data-n="3"] { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .cmp-slot { display: flex; align-items: flex-end; gap: 10px; }
+    .cmp-add, .cmp-remove {
+      font-family: inherit;
+      background: #fff;
+      border: 1px solid #d8d5d0;
+      border-radius: 8px;
+      color: #1a1a1a;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .cmp-add { font-size: 0.85rem; padding: 7px 12px; align-self: flex-end; }
+    .cmp-remove { width: 32px; height: 32px; font-size: 1rem; line-height: 1; color: #67625b; }
+    .cmp-add:hover, .cmp-remove:hover { border-color: #999; }
+    .cmp-lead { color: #2a7a3b; font-weight: 600; }
 
     @media (max-width: 720px) {
-      .compare-charts { grid-template-columns: 1fr; }
+      .compare-charts, .compare-charts[data-n="3"] { grid-template-columns: 1fr; }
+      .cmp-slot .select-wrap { width: auto; flex: 1; }
+      .cmp-slot { width: 100%; }
+      .cmp-slot > div:first-child { flex: 1; }
       .select-wrap { width: 100%; }
 
       /* Tighten spacing */
@@ -645,56 +666,15 @@
     </div>
     <div id="cmp-content" style="display:none">
       <div class="card">
-        <div class="compare-selectors">
-          <div style="display:flex; align-items:flex-end; gap:10px">
-            <div>
-              <div class="field-label">Player A</div>
-              <div class="select-wrap">
-                <input type="text" id="cmp-a-search" placeholder="Search player…" autocomplete="off">
-                <div class="dropdown-list" id="cmp-a-dropdown"></div>
-              </div>
-            </div>
-            <div>
-              <div class="field-label">Season</div>
-              <select id="cmp-a-year-select" class="year-select"></select>
-            </div>
-          </div>
-          <div style="display:flex; align-items:flex-end; gap:10px">
-            <div>
-              <div class="field-label">Player B</div>
-              <div class="select-wrap">
-                <input type="text" id="cmp-b-search" placeholder="Search player…" autocomplete="off">
-                <div class="dropdown-list" id="cmp-b-dropdown"></div>
-              </div>
-            </div>
-            <div>
-              <div class="field-label">Season</div>
-              <select id="cmp-b-year-select" class="year-select"></select>
-            </div>
-          </div>
+        <div class="compare-selectors" id="cmp-selectors">
+          <button type="button" class="cmp-add" id="cmp-add">+ Add player</button>
         </div>
       </div>
-      <div class="compare-charts">
-        <div class="card">
-          <div class="chart-container" style="height:300px">
-            <canvas id="cmp-a-chart"></canvas>
-          </div>
-        </div>
-        <div class="card">
-          <div class="chart-container" style="height:300px">
-            <canvas id="cmp-b-chart"></canvas>
-          </div>
-        </div>
-      </div>
+      <div class="compare-charts" id="cmp-charts"></div>
       <div class="card">
         <table id="cmp-table">
           <thead>
-            <tr>
-              <th>Component</th>
-              <th id="cmp-th-a" style="text-align:right">Player A</th>
-              <th id="cmp-th-b" style="text-align:right">Player B</th>
-              <th style="text-align:right">Difference</th>
-            </tr>
+            <tr></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -888,14 +868,12 @@ let pitchingWAR = new Map(); // playerid → pitching WAR for two-way players
 // rw is now per-year via getRwForYear(year) — no global needed
 let playerChart = null;
 let lbChart = null;
-let cmpAChart = null;
-let cmpBChart = null;
+let cmpCharts = [];
 
 // Explicitly resize compare charts on window resize — Chart.js ResizeObserver
 // doesn't always fire when CSS grid column widths change.
 window.addEventListener('resize', () => {
-  if (cmpAChart) cmpAChart.resize();
-  if (cmpBChart) cmpBChart.resize();
+  cmpCharts.forEach(c => c.resize());
 });
 
 // ─── Mock data (?mock=1 for local dev without Vercel proxy) ───────────────────
@@ -2168,67 +2146,72 @@ function renderComponentLeaderboards(players, year, filters = {}) {
 }
 
 // ─── Compare ──────────────────────────────────────────────────────────────────
-function renderCompare(playerA, playerB, { pitMapA = pitchingWAR, pitMapB = pitchingWAR, yearA = CURRENT_YEAR, yearB = CURRENT_YEAR } = {}) {
-  const pitA = pitMapA.get(playerA.playerid);
-  const pitB = pitMapB.get(playerB.playerid);
-  const combinedA = playerA.WAR + (pitA ?? 0);
-  const combinedB = playerB.WAR + (pitB ?? 0);
-  const allWins = [
-    ...computeWins(playerA, yearA).map(c => c.wins),
-    ...computeWins(playerB, yearB).map(c => c.wins),
-  ];
-  const yMin = Math.min(...allWins, combinedA, combinedB, 0) * 1.15;
-  const yMax = Math.max(...allWins, combinedA, combinedB, 0) * 1.15;
+// slots: [{ player, pitMap, year }] — two to CMP_MAX players
+function renderCompare(slots) {
+  const n = slots.length;
+  const pits = slots.map(s => s.pitMap.get(s.player.playerid));
+  const totals = slots.map((s, i) => s.player.WAR + (pits[i] ?? 0));
+  const winsList = slots.map(s => computeWins(s.player, s.year));
+  const allVals = [...winsList.flatMap(w => w.map(c => c.wins)), ...pits.filter(v => v != null), ...totals, 0];
+  const yMin = Math.min(...allVals) * 1.15;
+  const yMax = Math.max(...allVals) * 1.15;
 
-  if (cmpAChart) cmpAChart.destroy();
-  if (cmpBChart) cmpBChart.destroy();
+  cmpCharts.forEach(c => c.destroy());
+  const chartsEl = document.getElementById('cmp-charts');
+  chartsEl.dataset.n = n;
+  chartsEl.innerHTML = slots.map(() =>
+    `<div class="card"><div class="chart-container" style="height:300px"><canvas></canvas></div></div>`
+  ).join('');
+  const canvases = chartsEl.querySelectorAll('canvas');
+  cmpCharts = slots.map((s, i) => createWaterfallChart(canvases[i], s.player,
+    { compact: true, yMin, yMax, season: s.year, pitMap: s.pitMap, signColors: true }));
 
-  cmpAChart = createWaterfallChart(document.getElementById('cmp-a-chart'), playerA, { compact: true, yMin, yMax, season: yearA, pitMap: pitMapA, signColors: true });
-  cmpBChart = createWaterfallChart(document.getElementById('cmp-b-chart'), playerB, { compact: true, yMin, yMax, season: yearB, pitMap: pitMapB, signColors: true });
+  const fmt = v => `${v >= 0 ? '+' : ''}${v.toFixed(2)}`;
+  const diffCls = d => d > 0.005 ? 'diff-pos' : d < -0.005 ? 'diff-neg' : 'diff-zero';
+  const dash = '<span style="color:#aaa">—</span>';
 
-  const winsA = computeWins(playerA, yearA);
-  const winsB = computeWins(playerB, yearB);
+  document.querySelector('#cmp-table thead tr').innerHTML =
+    `<th>Component</th>` +
+    slots.map(s => `<th style="text-align:right">${s.player.PlayerName} (${s.year})</th>`).join('') +
+    (n === 2 ? `<th style="text-align:right">Difference</th>` : '');
 
-  document.getElementById('cmp-th-a').textContent = `${playerA.PlayerName} (${yearA})`;
-  document.getElementById('cmp-th-b').textContent = `${playerB.PlayerName} (${yearB})`;
-  const totalA = playerA.WAR + (pitA ?? 0);
-  const totalB = playerB.WAR + (pitB ?? 0);
-  const hasPitching = pitA != null || pitB != null;
+  // vals: numbers or null (missing). show: formatter for present values.
+  // Two players: Difference column. Three or more: leader in each row is highlighted.
+  function cells(vals, show, strong = false) {
+    const present = vals.filter(v => v != null);
+    const max = Math.max(...present);
+    const tie = present.every(v => Math.abs(v - max) < 0.005);
+    const wrap = t => strong ? `<strong>${t}</strong>` : t;
+    let out = vals.map(v => {
+      if (v == null) return `<td style="text-align:right">${dash}</td>`;
+      const lead = n > 2 && !tie && Math.abs(v - max) < 0.005;
+      return `<td style="text-align:right"${lead ? ' class="cmp-lead"' : ''}>${wrap(show(v))}</td>`;
+    }).join('');
+    if (n === 2) {
+      const d = (vals[0] ?? 0) - (vals[1] ?? 0);
+      out += `<td style="text-align:right" class="${diffCls(d)}">${wrap(fmt(d))}</td>`;
+    }
+    return out;
+  }
 
-  const tbody = document.querySelector('#cmp-table tbody');
-  const rows = COMPONENTS.map((c, i) => {
-    const a = winsA[i].wins, b = winsB[i].wins;
-    const diff = a - b;
-    const cls = diff > 0.005 ? 'diff-pos' : diff < -0.005 ? 'diff-neg' : 'diff-zero';
-    return `<tr>
+  const rows = COMPONENTS.map((c, i) => `<tr>
       <td><span class="dot" style="background:${c.color}"></span>${c.label}${c.desc ? `<span style="color:#aaa;font-size:0.72rem;font-weight:400;margin-left:6px">${c.desc}</span>` : ''}</td>
-      <td style="text-align:right">${a >= 0 ? '+' : ''}${a.toFixed(2)}</td>
-      <td style="text-align:right">${b >= 0 ? '+' : ''}${b.toFixed(2)}</td>
-      <td style="text-align:right" class="${cls}">${diff >= 0 ? '+' : ''}${diff.toFixed(2)}</td>
-    </tr>`;
-  });
+      ${cells(winsList.map(w => w[i].wins), fmt)}
+    </tr>`);
 
-  if (hasPitching) {
-    const pa = pitA ?? 0, pb = pitB ?? 0, pd = pa - pb;
-    const pc = pd > 0.005 ? 'diff-pos' : pd < -0.005 ? 'diff-neg' : 'diff-zero';
+  if (pits.some(v => v != null)) {
     rows.push(`<tr>
       <td><span class="dot" style="background:#E91E63"></span>Pitching fWAR<span style="color:#aaa;font-size:0.72rem;font-weight:400;margin-left:6px">runs prevented on the mound</span></td>
-      <td style="text-align:right">${pitA != null ? '+' + pa.toFixed(2) : '<span style="color:#aaa">—</span>'}</td>
-      <td style="text-align:right">${pitB != null ? '+' + pb.toFixed(2) : '<span style="color:#aaa">—</span>'}</td>
-      <td style="text-align:right" class="${pc}">${pd >= 0 ? '+' : ''}${pd.toFixed(2)}</td>
+      ${cells(pits, v => '+' + v.toFixed(2))}
     </tr>`);
   }
 
-  const td = totalA - totalB;
-  const tc = td > 0.005 ? 'diff-pos' : td < -0.005 ? 'diff-neg' : 'diff-zero';
   rows.push(`<tr class="total-row">
-    <td><strong>${hasPitching ? 'Combined fWAR' : 'fWAR Total'}</strong></td>
-    <td style="text-align:right"><strong>${totalA.toFixed(2)}</strong></td>
-    <td style="text-align:right"><strong>${totalB.toFixed(2)}</strong></td>
-    <td style="text-align:right" class="${tc}"><strong>${td >= 0 ? '+' : ''}${td.toFixed(2)}</strong></td>
+    <td><strong>${pits.some(v => v != null) ? 'Combined fWAR' : 'fWAR Total'}</strong></td>
+    ${cells(totals, v => v.toFixed(2), true)}
   </tr>`);
 
-  tbody.innerHTML = rows.join('');
+  document.querySelector('#cmp-table tbody').innerHTML = rows.join('');
 }
 
 // ─── Searchable dropdown ───────────────────────────────────────────────────────
@@ -2343,6 +2326,8 @@ function populateYearSelect(el, selected = CURRENT_YEAR) {
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
 async function init() {
+  // Read before any picker writes defaults back to the URL
+  const initialSearch = location.search;
   let initData;
   try {
     initData = await loadData(CURRENT_YEAR);
@@ -2359,7 +2344,7 @@ async function init() {
   pitchingWAR = initData.pitMap;
 
   // Populate all year selects
-  ['player-year-select','lb-year-select','cmp-a-year-select','cmp-b-year-select'].forEach(id =>
+  ['player-year-select','lb-year-select'].forEach(id =>
     populateYearSelect(document.getElementById(id))
   );
 
@@ -2607,59 +2592,120 @@ async function init() {
   });
 
   // ── Compare tab ─────────────────────────────────────────────────────────────
-  let cmpA = allPlayers[0], cmpB = allPlayers[1];
-  let cmpPlayersA = allPlayers, cmpPlayersB = allPlayers;
-  let cmpPitMapA = pitchingWAR, cmpPitMapB = pitchingWAR;
-  let cmpYearA = CURRENT_YEAR, cmpYearB = CURRENT_YEAR;
+  // Up to CMP_MAX slots; URL keys c{a,b,c,d} (player id) and c{a,b,c,d}y (season).
+  const CMP_KEYS = ['a', 'b', 'c', 'd'];
+  const CMP_MAX = CMP_KEYS.length;
+  const cmpSlots = [];
   let cmpRendered = false;
+  const cmpSelectorsEl = document.getElementById('cmp-selectors');
+  const cmpAddBtn = document.getElementById('cmp-add');
 
   function doRenderCompare() {
-    if (cmpA && cmpB) renderCompare(cmpA, cmpB, { pitMapA: cmpPitMapA, pitMapB: cmpPitMapB, yearA: cmpYearA, yearB: cmpYearB });
+    const ready = cmpSlots.filter(s => s.player);
+    if (ready.length >= 2) renderCompare(ready);
   }
 
-  const { pick: pickA } = buildDropdown(
-    document.getElementById('cmp-a-search'),
-    document.getElementById('cmp-a-dropdown'),
-    p => { cmpA = p; pushState({ ca: p.playerid }); if (cmpRendered) doRenderCompare(); },
-    () => cmpPlayersA
-  );
-  const { pick: pickB } = buildDropdown(
-    document.getElementById('cmp-b-search'),
-    document.getElementById('cmp-b-dropdown'),
-    p => { cmpB = p; pushState({ cb: p.playerid }); if (cmpRendered) doRenderCompare(); },
-    () => cmpPlayersB
-  );
+  function syncCmpUrl() {
+    const upd = {};
+    CMP_KEYS.forEach((k, i) => {
+      const s = cmpSlots[i];
+      upd['c' + k] = s?.player?.playerid ?? null;
+      upd['c' + k + 'y'] = s && s.year !== CURRENT_YEAR ? s.year : null;
+    });
+    pushState(upd);
+  }
 
-  document.getElementById('cmp-a-year-select').addEventListener('change', async function () {
-    cmpYearA = +this.value;
-    pushState({ cay: cmpYearA !== CURRENT_YEAR ? cmpYearA : null });
-    this.disabled = true;
-    try {
-      const data = await loadData(cmpYearA);
-      cmpPlayersA = data.players;
-      cmpPitMapA = data.pitMap;
-      const kept = cmpPlayersA.find(p => p.playerid === cmpA?.playerid);
-      cmpA = kept || cmpPlayersA[0];
-      pickA(cmpA);
-    } finally { this.disabled = false; }
+  function refreshCmpSlots() {
+    cmpSlots.forEach((s, i) => {
+      s.labelEl.textContent = `Player ${CMP_KEYS[i].toUpperCase()}`;
+      s.removeBtn.style.display = cmpSlots.length > 2 ? '' : 'none';
+      s.removeBtn.setAttribute('aria-label', `Remove ${s.player?.PlayerName ?? 'player'}`);
+    });
+    cmpAddBtn.style.display = cmpSlots.length < CMP_MAX ? '' : 'none';
+  }
+
+  function addCmpSlot(player = null) {
+    const el = document.createElement('div');
+    el.className = 'cmp-slot';
+    el.innerHTML = `
+      <div>
+        <div class="field-label"></div>
+        <div class="select-wrap">
+          <input type="text" placeholder="Search player…" autocomplete="off">
+          <div class="dropdown-list"></div>
+        </div>
+      </div>
+      <div>
+        <div class="field-label">Season</div>
+        <select class="year-select"></select>
+      </div>
+      <button type="button" class="cmp-remove" title="Remove player">×</button>`;
+    cmpSelectorsEl.insertBefore(el, cmpAddBtn);
+    const yearSel = el.querySelector('select');
+    populateYearSelect(yearSel);
+
+    const slot = {
+      el, yearSel,
+      labelEl: el.querySelector('.field-label'),
+      removeBtn: el.querySelector('.cmp-remove'),
+      player: null, players: allPlayers, pitMap: pitchingWAR, year: CURRENT_YEAR,
+    };
+    slot.pick = buildDropdown(
+      el.querySelector('input'),
+      el.querySelector('.dropdown-list'),
+      p => { slot.player = p; refreshCmpSlots(); syncCmpUrl(); if (cmpRendered) doRenderCompare(); },
+      () => slot.players
+    ).pick;
+
+    yearSel.addEventListener('change', async () => {
+      slot.year = +yearSel.value;
+      yearSel.disabled = true;
+      try {
+        await setCmpSlotYear(slot, slot.year);
+        slot.pick(slot.players.find(p => p.playerid === slot.player?.playerid) || slot.players[0]);
+      } finally { yearSel.disabled = false; }
+    });
+
+    slot.removeBtn.addEventListener('click', () => {
+      if (cmpSlots.length <= 2) return;
+      cmpSlots.splice(cmpSlots.indexOf(slot), 1);
+      el.remove();
+      refreshCmpSlots();
+      syncCmpUrl();
+      if (cmpRendered) doRenderCompare();
+    });
+
+    cmpSlots.push(slot);
+    refreshCmpSlots();
+    if (player) slot.pick(player);
+    return slot;
+  }
+
+  async function setCmpSlotYear(slot, year) {
+    slot.year = year;
+    slot.yearSel.value = year;
+    if (year === CURRENT_YEAR) { slot.players = allPlayers; slot.pitMap = pitchingWAR; return; }
+    const data = await loadData(year);
+    slot.players = data.players;
+    slot.pitMap = data.pitMap;
+  }
+
+  // Next best player not already being compared
+  function nextCmpDefault(players = allPlayers) {
+    const used = new Set(cmpSlots.map(s => s.player?.playerid));
+    return players.find(p => !used.has(p.playerid)) || players[0];
+  }
+
+  cmpAddBtn.addEventListener('click', () => {
+    if (cmpSlots.length >= CMP_MAX) return;
+    const slot = addCmpSlot(nextCmpDefault());
+    const input = slot.el.querySelector('input');
+    input.focus();
+    input.select();
   });
 
-  document.getElementById('cmp-b-year-select').addEventListener('change', async function () {
-    cmpYearB = +this.value;
-    pushState({ cby: cmpYearB !== CURRENT_YEAR ? cmpYearB : null });
-    this.disabled = true;
-    try {
-      const data = await loadData(cmpYearB);
-      cmpPlayersB = data.players;
-      cmpPitMapB = data.pitMap;
-      const kept = cmpPlayersB.find(p => p.playerid === cmpB?.playerid);
-      cmpB = kept || cmpPlayersB[1] || cmpPlayersB[0];
-      pickB(cmpB);
-    } finally { this.disabled = false; }
-  });
-
-  pickA(cmpA);
-  pickB(cmpB);
+  addCmpSlot(allPlayers[0]);
+  addCmpSlot(allPlayers[1]);
 
   // ── Lazy tab rendering ───────────────────────────────────────────────────────
   // Render leaderboard/compare only when the tab first becomes visible so
@@ -2682,7 +2728,7 @@ async function init() {
   );
 
   // ── Restore state from URL ────────────────────────────────────────────────
-  const usp = new URLSearchParams(location.search);
+  const usp = new URLSearchParams(initialSearch);
   const savedTab  = usp.get('tab');
   const savedPId  = usp.get('p')   ? +usp.get('p')   : null;
   const savedPY   = usp.get('y')   ? +usp.get('y')   : CURRENT_YEAR;
@@ -2692,10 +2738,6 @@ async function init() {
   const savedLbN  = usp.get('lbn') ? +usp.get('lbn') : 25;
   const savedLbR  = usp.get('lbr') === '1';
   const savedLbS  = usp.get('lbs') || '0';
-  const savedCaId = usp.get('ca')  ? +usp.get('ca')  : null;
-  const savedCaY  = usp.get('cay') ? +usp.get('cay') : CURRENT_YEAR;
-  const savedCbId = usp.get('cb')  ? +usp.get('cb')  : null;
-  const savedCbY  = usp.get('cby') ? +usp.get('cby') : CURRENT_YEAR;
 
   // Player tab: load year if different, then find player
   if (savedPY !== CURRENT_YEAR) {
@@ -2732,28 +2774,16 @@ async function init() {
   if (savedLbP) pendingLbPos = savedLbP;
   if (savedLbR) document.getElementById('lb-rookie-filter').checked = true;
 
-  // Compare A
-  if (savedCaY !== CURRENT_YEAR) {
-    document.getElementById('cmp-a-year-select').value = savedCaY;
-    cmpYearA = savedCaY;
-    const data = await loadData(savedCaY).catch(() => null);
-    if (data) { cmpPlayersA = data.players; cmpPitMapA = data.pitMap; }
-  }
-  if (savedCaId) {
-    const found = cmpPlayersA.find(p => p.playerid === savedCaId);
-    if (found) pickA(found);
-  }
-
-  // Compare B
-  if (savedCbY !== CURRENT_YEAR) {
-    document.getElementById('cmp-b-year-select').value = savedCbY;
-    cmpYearB = savedCbY;
-    const data = await loadData(savedCbY).catch(() => null);
-    if (data) { cmpPlayersB = data.players; cmpPitMapB = data.pitMap; }
-  }
-  if (savedCbId) {
-    const found = cmpPlayersB.find(p => p.playerid === savedCbId);
-    if (found) pickB(found);
+  // Compare slots (ca/cay … cd/cdy); A and B always exist
+  for (let i = 0; i < CMP_MAX; i++) {
+    const k = CMP_KEYS[i];
+    const id = usp.get('c' + k) ? +usp.get('c' + k) : null;
+    const y = usp.get('c' + k + 'y') ? +usp.get('c' + k + 'y') : CURRENT_YEAR;
+    if (i >= 2 && !id) continue;
+    const slot = cmpSlots[i] ?? addCmpSlot();
+    if (y !== CURRENT_YEAR) await setCmpSlotYear(slot, y).catch(() => setCmpSlotYear(slot, CURRENT_YEAR));
+    const found = id != null ? slot.players.find(p => p.playerid === id) : null;
+    slot.pick(found || slot.player && slot.players.find(p => p.playerid === slot.player.playerid) || nextCmpDefault(slot.players));
   }
 
   // Switch to saved tab last — triggers lazy render for leaderboard/compare
