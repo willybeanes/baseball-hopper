@@ -14,7 +14,7 @@ import optionsFile from '../../lib/team-builder/options-2027.json'
 import arbFile from '../../lib/team-builder/mlbtr-arb-2027.json'
 import faFile from '../../lib/team-builder/mlbtr-fa-2027.json'
 import { buildPool, type PoolPlayer } from '../../lib/team-builder/pool'
-import { fetchProjections, type Projection } from '../../lib/team-builder/projections'
+import { fetchProjections, withFallback, type Projection } from '../../lib/team-builder/projections'
 import type { MinorLeaguer, TeamFile } from '../../lib/team-builder/roster'
 import { applyEstimates, type OptionFact } from '../../lib/team-builder/estimates'
 import { applyRosterMoves, fetchAll, plainName } from './rosterresource'
@@ -202,7 +202,13 @@ async function main() {
   let projError: string | null = null
   try {
     const [regular, fullTime] = await Promise.all([fetchProjections(assumptions.projections.system), fetchProjections(assumptions.projections.minorsSystem)])
-    projections = regular
+    // Players the main system skips, from the fallback system; optional, so a failure there
+    // doesn't hold up the rest.
+    const fallback = await fetchProjections(assumptions.projections.fallbackSystem, 300).catch((e) => {
+      console.warn(`Fallback projections (${assumptions.projections.fallbackSystem}) failed: ${(e as Error).message}`)
+      return {}
+    })
+    projections = withFallback(regular, fallback, assumptions.projections.fallbackLabel)
     minorsProjections = Object.fromEntries(Object.entries(fullTime).filter(([, pr]) => pr.war >= 0)) // below replacement has nothing to show
     projFetchedAt = new Date().toISOString().slice(0, 10)
   } catch (e) {
@@ -302,7 +308,8 @@ async function main() {
       ? { from: prev.from, contract: prev.contract, salaryPrevYear: prev.salaryPrevYear, pos: prev.pos }
       : {}
     const pr = projections[e.mlbamId]
-    return { ...e, ...carried, war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
+    const note = pr?.from ? [e.note, `Projection from ${pr.from} (Steamer has none)`].filter(Boolean).join('. ') : e.note
+    return { ...e, ...carried, ...(note ? { note } : {}), war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
   })
   files.set(join(OUT_DIR, 'pool.json'), JSON.stringify(pool) + '\n')
   // What RosterResource changed (and what it flagged but we left alone); rewritten only when that changes.

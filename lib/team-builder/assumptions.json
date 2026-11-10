@@ -22,6 +22,9 @@
   "projections": {
     "system": "steamer",
     "minorsSystem": "steamer600",
+    "fallbackSystem": "fangraphsdc",
+    "fallbackLabel": "FanGraphs Depth Charts",
+    "fallbackNote": "Players Steamer doesn't project (some NPB and KBO postings, like Hiromi Itoh in 2026-11) use FanGraphs' Depth Charts projection instead, and say so. Added 2026-11-10.",
     "label": "Steamer projection for 2027",
     "note": "Minor leaguers use Steamer's full-time version (600 PA, 200 IP as a starter or 65 in relief), because plain Steamer gives most of them almost no big-league time.",
     "url": "https://www.fangraphs.com/projections?type=steamer"
