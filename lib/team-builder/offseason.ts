@@ -73,7 +73,10 @@ export interface TeamResult {
   budget: number
 }
 
-export interface Simulation { log: Transaction[]; teams: Record<string, TeamResult> }
+// A buyer's top free-agent target, picked before trades, and the money it set aside for him.
+export interface Earmark { team: string; id: number; name: string; amount: number }
+
+export interface Simulation { log: Transaction[]; teams: Record<string, TeamResult>; earmarks: Earmark[] }
 
 export interface SimInput {
   teams: TeamFile[]
@@ -83,6 +86,7 @@ export interface SimInput {
   seed: number
   perWin: number
   minimum: number
+  earmark?: boolean // set money aside for a top free agent before trades; default offseason.earmark.enabled
 }
 
 // Small, seedable random numbers, so a result can be reproduced from its link.
@@ -222,6 +226,50 @@ export function simulateOffseason(input: SimInput): Simulation {
     }
   }
 
+  // Free agents in the order they come up, and the first-round asking price.
+  const freeAgents = [...market.values()]
+    .filter(({ e }) => (e.war ?? 0) >= S.minFreeAgentWar)
+    .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
+  const askFor = (e: PoolPlayer, discount: number) => Math.max(minimum, Math.round((price(e.war) * discount) / 1e5) * 1e5)
+  const justLetGo = (team: string, id: number, from: string | null) => team === from && log.some((x) => x.id === id && x.team === team)
+
+  // 1b. Earmarks: before trading, each buyer picks its top free-agent target (gain x eagerness x
+  // luck, the way free agency picks a winner, among the best few it could afford at his
+  // first-round price) and sets that money aside, so trades can't spend it. It's released once
+  // the target signs anywhere, or goes unsigned through every price round.
+  const E = S.earmark
+  const held = new Map<string, Earmark>()
+  if (input.earmark ?? E.enabled) {
+    const top = freeAgents.slice(0, E.topN)
+    for (const t of teams) {
+      const team = t.team
+      const st = settings(team)
+      if (!st.buys) continue
+      let best: { e: PoolPlayer; ask: number; score: number } | null = null
+      for (const { e, from } of top) {
+        if (justLetGo(team, e.mlbamId, from)) continue
+        const ask = askFor(e, S.priceRounds[0])
+        if (st.maxSalary && ask > st.maxSalary) continue
+        if (st.maxAge && (e.age ?? 0) > st.maxAge) continue
+        if (room(team) < ask) continue
+        const gain = gainFrom(team, e)
+        if (gain < st.minGain) continue
+        const score = gain * st.eagerness * luck()
+        if (!best || score > best.score) best = { e, ask, score }
+      }
+      if (!best) continue
+      const amount = Math.min(room(team), E.includePremium ? Math.round((best.ask * (1 + S.bidderPremium)) / 1e5) * 1e5 : best.ask)
+      held.set(team, { team, id: best.e.mlbamId, name: best.e.name, amount })
+    }
+  }
+  const earmarks = [...held.values()]
+  // Room a team can use on anything but its target while the earmark stands.
+  const roomFor = (team: string, id?: number) => {
+    const h = held.get(team)
+    return room(team) - (h && h.id !== id ? h.amount : 0)
+  }
+  const release = (id: number) => { for (const [team, h] of held) if (h.id === id) held.delete(team) }
+
   // 2. Trades: sellers shop veterans, buyers with room and a need take them for prospects.
   const traded = new Set<number>()
   const bought = new Map<string, number>()
@@ -247,7 +295,7 @@ export function simulateOffseason(input: SimInput): Simulation {
     for (const t of teams) {
       const buyer = t.team
       const st = settings(buyer)
-      if (buyer === seller || !st.buys || (bought.get(buyer) ?? 0) >= st.buys || room(buyer) < salary) continue
+      if (buyer === seller || !st.buys || (bought.get(buyer) ?? 0) >= st.buys || roomFor(buyer) < salary) continue
       const gain = gainFrom(buyer, e)
       if (gain < st.minGain) continue
       const score = gain * st.eagerness * luck()
@@ -277,41 +325,40 @@ export function simulateOffseason(input: SimInput): Simulation {
   // bids; the keenest (gain x eagerness x luck) wins, and a crowded market pushes the price up.
   // Whoever is still unsigned goes round again at a lower price (S.priceRounds), the way an
   // unsold free agent's price falls through the winter. In the last, cheapest round a team will
-  // stretch past its budget (S.bargain.stretch) and its signing limit for a bargain.
-  const freeAgents = [...market.values()]
-    .filter(({ e }) => (e.war ?? 0) >= S.minFreeAgentWar)
-    .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
+  // stretch past its budget (S.bargain.stretch) and its signing limit for a bargain. A team with
+  // an earmark keeps it out of reach for everyone but its target (roomFor).
   S.priceRounds.forEach((discount, round) => { for (const { e, from } of freeAgents) {
     if (!market.has(e.mlbamId)) continue
     const last = round === S.priceRounds.length - 1
     const stretch = last ? S.bargain.stretch : 0
-    const ask = Math.max(minimum, Math.round((price(e.war) * discount) / 1e5) * 1e5)
+    const ask = askFor(e, discount)
     const bids: { team: string; gain: number; score: number }[] = []
     for (const t of teams) {
       const team = t.team
       const st = settings(team)
-      if (team === from && log.some((x) => x.id === e.mlbamId && x.team === team)) continue // just let him go
+      if (justLetGo(team, e.mlbamId, from)) continue // just let him go
       if ((signed.get(team) ?? 0) >= st.maxSignings + (last ? S.bargain.extraSignings : 0)) continue
       if (st.maxSalary && ask > st.maxSalary) continue
       if (st.maxAge && (e.age ?? 0) > st.maxAge) continue
-      if (room(team) + stretch < ask) continue
+      if (roomFor(team, e.mlbamId) + stretch < ask) continue
       const gain = gainFrom(team, e)
       if (gain < st.minGain) continue
       bids.push({ team, gain, score: gain * st.eagerness * luck() })
     }
-    if (!bids.length) continue
+    if (!bids.length) { if (last) release(e.mlbamId); continue }
     bids.sort((a, b) => b.score - a.score)
     const winner = bids[0].team
     const premium = Math.min(S.maxPremium, S.bidderPremium * (bids.length - 1))
-    const cap = Math.min(room(winner) + stretch, settings(winner).maxSalary ?? Infinity)
+    const cap = Math.min(roomFor(winner, e.mlbamId) + stretch, settings(winner).maxSalary ?? Infinity)
     const salary = Math.max(ask, Math.min(Math.round((ask * (1 + premium)) / 1e5) * 1e5, cap))
     // His old team re-signs him; anyone else adds him.
     const slot = built.get(winner)!.slots.find((s) => s.player.mlbamId === e.mlbamId)
     const move: Move = slot?.offReason === 'free-agent' ? { type: 'resign', id: e.mlbamId, salary }
       : slot?.offReason === 'declined' ? { type: 'exercise', id: e.mlbamId, salary }
         : { type: 'add', id: e.mlbamId, salary }
-    if (!apply(winner, move)) continue
+    if (!apply(winner, move)) { if (last) release(e.mlbamId); continue }
     market.delete(e.mlbamId)
+    release(e.mlbamId)
     signed.set(winner, (signed.get(winner) ?? 0) + 1)
     log.push({ phase: 'free-agency', kind: 'signed', team: winner, other: from ?? undefined, id: e.mlbamId, name: e.name, war: e.war ?? null, salary, bidders: bids.length,
       ask,
@@ -339,5 +386,5 @@ export function simulateOffseason(input: SimInput): Simulation {
       budget: budget.get(t.team)!,
     }
   }
-  return { log, teams: out }
+  return { log, teams: out, earmarks }
 }

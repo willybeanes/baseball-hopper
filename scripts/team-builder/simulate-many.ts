@@ -13,6 +13,9 @@
 //   --mm TEXT     moves for any teams (the simulate page's mm= parameter)
 //   --a TEXT      every team's plan (the simulate page's a= parameter); default: suggested plans
 //   --talent-sd N how far off a projection can be, in wins (default season.talentSd, 5)
+//   --no-earmark  turn off the free-agent earmark (offseason.earmark), to compare the old
+//                 logic on the same seeds. The page always uses the setting in assumptions.json,
+//                 so with this flag runs.csv's links won't reproduce the runs.
 //   --out DIR     where to write (default sim-results/<date-time>)
 //
 // Uses the data in public/data/team-builder, the copy the daily job commits; pull first for
@@ -50,14 +53,17 @@ export interface BatchOptions {
   from: string | null
   out: string | null
   talentSd: number
+  earmark: boolean
 }
 
 // Reads the command line. Plans and moves can come from a page link, flags, or both (flags win).
 export function parseArgs(argv: string[]): BatchOptions {
   const flags: Record<string, string> = {}
+  const switches = new Set<string>()
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i]
     if (!k.startsWith('--')) throw new Error(`Unexpected argument: ${k}`)
+    if (k === '--no-earmark') { switches.add(k.slice(2)); continue }
     const v = argv[i + 1]
     if (v == null || v.startsWith('--')) throw new Error(`${k} needs a value`)
     flags[k.slice(2)] = v
@@ -81,7 +87,7 @@ export function parseArgs(argv: string[]): BatchOptions {
   const manual = decodeTeamMoves(get('mm'))
   const carried = decodeMoves(get('m'))
   if (fromRaw && carried.length && !manual[fromRaw]) manual[fromRaw] = carried
-  return { runs, seed, attitudes: decodeAttitudes(get('a')), manual, from: fromRaw, out: flags.out ?? null, talentSd }
+  return { runs, seed, attitudes: decodeAttitudes(get('a')), manual, from: fromRaw, out: flags.out ?? null, talentSd, earmark: !switches.has('no-earmark') }
 }
 
 const csvCell = (v: unknown) => {
@@ -108,7 +114,7 @@ async function main() {
   try {
     opts = parseArgs(process.argv.slice(2))
   } catch (e) {
-    console.error(`${(e as Error).message}\nUsage: bun scripts/team-builder/simulate-many.ts [--runs 500] [--seed 1] [--link URL] [--from TEAM --m MOVES] [--mm MOVES] [--a PLANS] [--talent-sd 5] [--out DIR]`)
+    console.error(`${(e as Error).message}\nUsage: bun scripts/team-builder/simulate-many.ts [--runs 500] [--seed 1] [--link URL] [--from TEAM --m MOVES] [--mm MOVES] [--a PLANS] [--talent-sd 5] [--no-earmark] [--out DIR]`)
     process.exit(1)
   }
   const root = join(import.meta.dir, '../..')
@@ -120,7 +126,7 @@ async function main() {
   mkdirSync(out, { recursive: true })
 
   const moveCount = Object.values(opts.manual).reduce((n, m) => n + m.length, 0)
-  console.log(`Data from ${meta.updatedAt}; ${opts.runs} runs from seed ${opts.seed}; ${moveCount} move${moveCount === 1 ? '' : 's'} of yours; projections off by up to ±${opts.talentSd} wins (1 SD).`)
+  console.log(`Data from ${meta.updatedAt}; ${opts.runs} runs from seed ${opts.seed}; ${moveCount} move${moveCount === 1 ? '' : 's'} of yours; projections off by up to ±${opts.talentSd} wins (1 SD); earmark ${opts.earmark ? 'on' : 'off'}.`)
 
   // The page link for a run, so any run can be opened and looked at.
   const linkBase = new URLSearchParams()
@@ -146,12 +152,17 @@ async function main() {
   const payroll = new Map<string, number>()
   const signings = new Map<number, { name: string; war: number; teams: Map<string, number>; salary: number; count: number }>()
   const trades = new Map<number, { name: string; count: number; buyers: Map<string, number> }>()
+  const earmarkTally = new Map<string, number>()
   const division = new Map(DIVISIONS.flatMap((d) => d.teams.map((t) => [t, d.name] as const)))
 
   const t0 = performance.now()
   for (let i = 0; i < opts.runs; i++) {
     const seed = (opts.seed + i) >>> 0
-    const sim: Simulation = simulateOffseason({ teams, pool, attitudes, manual: opts.manual, seed, perWin, minimum })
+    const sim: Simulation = simulateOffseason({ teams, pool, attitudes, manual: opts.manual, seed, perWin, minimum, earmark: opts.earmark })
+    for (const m of sim.earmarks) {
+      const k = `${m.team}\t${m.name}`
+      earmarkTally.set(k, (earmarkTally.get(k) ?? 0) + 1)
+    }
     // The season gets its own random numbers, so the offseason still matches the page's link.
     const season = new Map(simulateSeason(Object.fromEntries(Object.entries(sim.teams).map(([t, r]) => [t, r.winsAfter])), (Math.imul(seed, 2654435761) ^ 0x5eed) >>> 0, opts.talentSd).map((r) => [r.team, r]))
     runsCsv.push(csvRow([i + 1, seed, linkFor(seed), [...season.values()].find((r) => r.round === 'champion')!.team]))
@@ -205,6 +216,7 @@ async function main() {
   const lines: string[] = []
   lines.push(`${N} offseasons and 2027 seasons, seeds ${opts.seed}–${opts.seed + N - 1}`)
   lines.push(`proj = projected wins after the offseason; wins = played seasons (projections off by ±${opts.talentSd} wins, 1 SD, plus game luck)`)
+  lines.push(`Free-agent earmark: ${opts.earmark ? 'on' : 'off (--no-earmark; runs.csv links use the page, which has it on)'}`)
   lines.push(`Moves of yours: ${moveCount ? Object.entries(opts.manual).map(([t, m]) => `${t} ${m.length}`).join(', ') : 'none'}`)
   lines.push('')
   for (const d of DIVISIONS) {
@@ -228,6 +240,15 @@ async function main() {
     const s = signings.get(e.mlbamId)
     const where = s ? [...s.teams].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([t, n]) => `${t} ${pct(n, N)}`).join(', ') : 'never signs'
     lines.push(`  ${`${e.name} (${(e.war ?? 0).toFixed(1)})`.padEnd(30)}${s ? `${pct(s.count, N).padStart(5)} signed, ${M(s.salary / s.count).padStart(7)}` : ''.padStart(22)}  ${where}`)
+  }
+  if (opts.earmark) {
+    lines.push('')
+    lines.push('Earmark targets (team: player, share of runs)')
+    const byTeam = new Map<string, [string, number][]>()
+    for (const [k, n] of earmarkTally) { const [t, name] = k.split('\t'); (byTeam.get(t) ?? byTeam.set(t, []).get(t)!).push([name, n]) }
+    for (const [t, list] of [...byTeam].sort((a, b) => a[0].localeCompare(b[0]))) {
+      lines.push(`  ${t.padEnd(5)}${list.sort((a, b) => b[1] - a[1]).slice(0, 4).map(([name, n]) => `${name} ${pct(n, N)}`).join(', ')}`)
+    }
   }
   lines.push('')
   lines.push('Most often traded')

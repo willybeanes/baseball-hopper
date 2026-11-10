@@ -136,6 +136,12 @@
       "stretch": 10000000,
       "extraSignings": 1
     },
+    "earmark": {
+      "note": "Before trades, each buying team (buys > 0) picks its top free-agent target among the topN by WAR, the way free agency picks a winner (gain x eagerness x luck), counting only players whose first-round price fits its room and its plan's maxSalary, maxAge and minGain. It sets that price aside (plus one bidderPremium if includePremium), so trades can only spend the rest. The money is released once the target signs anywhere, or goes unsigned through every price round. Added 2026-11-10 after the Mets kept spending ~$51M of ~$76M room on early trades and couldn't afford Skubal. simulate-many.ts --no-earmark turns it off for comparison.",
+      "enabled": true,
+      "topN": 10,
+      "includePremium": false
+    },
     "bidderPremium": 0.05,
     "maxPremium": 0.25,
     "luck": 0.3,
