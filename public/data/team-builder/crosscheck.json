@@ -2,6 +2,13 @@
  "source": "https://www.fangraphs.com/roster-resource/depth-charts",
  "applied": [
   {
+   "team": "LAD",
+   "name": "Christian Cairo",
+   "mlbamId": 686551,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-09: Claimed off waivers from Mets"
+  },
+  {
    "team": "HOU",
    "name": "Evan Reifert",
    "mlbamId": 682126,
@@ -9,17 +16,17 @@
    "move": "2026-11-02: Contract selected from minors"
   },
   {
-   "team": "PHI",
-   "name": "Johan Rojas",
-   "mlbamId": 679032,
-   "change": "added to the roster at the minimum"
-  },
-  {
    "team": "SEA",
    "name": "Isaac Mattson",
    "mlbamId": 676755,
    "change": "added to the roster at the minimum",
    "move": "2026-11-02: Claimed off waivers from Pirates"
+  },
+  {
+   "team": "PHI",
+   "name": "Johan Rojas",
+   "mlbamId": 679032,
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "CIN",

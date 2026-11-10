@@ -619,6 +619,23 @@
    "salarySource": "minimum",
    "war": -0.02,
    "ip": 6
+  },
+  {
+   "name": "Christian Cairo",
+   "sheetName": "",
+   "pos": "ss-3b-lf",
+   "age": 26,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 686551,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.02,
+   "pa": 15
   }
  ],
  "deadMoney": [

@@ -768,36 +768,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 679712,
-   "name": "Lael Lockhart",
-   "pos": "sp",
-   "age": 29,
-   "war": 1.07,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 642215,
-   "name": "Weston Wilson",
-   "pos": "3b",
-   "age": 32,
-   "war": 1.04,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 656883,
-   "name": "Jakson Reetz",
-   "pos": "c",
-   "age": 31,
-   "war": 1.02,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 701805,
    "name": "Josh Caron",
    "pos": "c",
@@ -838,16 +808,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 687190,
-   "name": "Adam Leverett",
-   "pos": "sp",
-   "age": 28,
-   "war": 0.82,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 656413,
    "name": "Stuart Fairchild",
    "pos": "cf",
@@ -866,16 +826,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 621550,
-   "name": "Patrick Wisdom",
-   "pos": "3b",
-   "age": 35,
-   "war": 0.68,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 830336,
@@ -898,42 +848,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 682077,
-   "name": "Gabe Mosser",
-   "pos": "sp",
-   "age": 31,
-   "war": 0.44,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 681890,
-   "name": "Troy Watson",
-   "pos": "sp",
-   "age": 30,
-   "war": 0.41,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 806233,
    "name": "Luke Stevenson",
    "pos": "c",
    "age": 22,
    "war": 0.34,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 701314,
-   "name": "Nick Hull",
-   "pos": "sp",
-   "age": 27,
-   "war": 0.34,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -988,26 +908,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 681006,
-   "name": "Josh Simpson",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.17,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 663884,
-   "name": "Nolan Kingham",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.13,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 822817,
    "name": "Jack Bowery",
    "pos": "sp",
@@ -1046,26 +946,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 628451,
-   "name": "Andy Ibáñez",
-   "pos": "2b",
-   "age": 34,
-   "war": 0.04,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 641924,
-   "name": "Jacob Nottingham",
-   "pos": "c",
-   "age": 32,
-   "war": 0.04,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
   }
  ]
 }
