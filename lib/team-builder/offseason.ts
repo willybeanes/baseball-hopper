@@ -232,10 +232,13 @@ export function simulateOffseason(input: SimInput): Simulation {
     .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
   const askFor = (e: PoolPlayer, discount: number) => Math.max(minimum, Math.round((price(e.war) * discount) / 1e5) * 1e5)
   const justLetGo = (team: string, id: number, from: string | null) => team === from && log.some((x) => x.id === id && x.team === team)
+  // Teams reported out of the running for a player (S.ruledOut) never bid on or earmark him.
+  const ruledOut = new Map(S.ruledOut.players.map((p) => [p.id, new Set(p.teams)]))
+  const isOut = (team: string, id: number) => ruledOut.get(id)?.has(team) ?? false
 
   // 1b. Earmarks: before trading, each buyer picks its top free-agent target (gain x eagerness x
   // luck, the way free agency picks a winner, among the best few it could afford at his
-  // first-round price) and sets that money aside, so trades can't spend it. It's released once
+  // first-round price, if that's at least E.minAsk) and sets that money aside, so trades can't spend it. It's released once
   // the target signs anywhere, or goes unsigned through every price round.
   const E = S.earmark
   const held = new Map<string, Earmark>()
@@ -247,8 +250,9 @@ export function simulateOffseason(input: SimInput): Simulation {
       if (!st.buys) continue
       let best: { e: PoolPlayer; ask: number; score: number } | null = null
       for (const { e, from } of top) {
-        if (justLetGo(team, e.mlbamId, from)) continue
+        if (justLetGo(team, e.mlbamId, from) || isOut(team, e.mlbamId)) continue
         const ask = askFor(e, S.priceRounds[0])
+        if (ask < E.minAsk) continue
         if (st.maxSalary && ask > st.maxSalary) continue
         if (st.maxAge && (e.age ?? 0) > st.maxAge) continue
         if (room(team) < ask) continue
@@ -337,6 +341,7 @@ export function simulateOffseason(input: SimInput): Simulation {
       const team = t.team
       const st = settings(team)
       if (justLetGo(team, e.mlbamId, from)) continue // just let him go
+      if (isOut(team, e.mlbamId)) continue
       if ((signed.get(team) ?? 0) >= st.maxSignings + (last ? S.bargain.extraSignings : 0)) continue
       if (st.maxSalary && ask > st.maxSalary) continue
       if (st.maxAge && (e.age ?? 0) > st.maxAge) continue

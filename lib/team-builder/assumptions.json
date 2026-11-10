@@ -137,10 +137,17 @@
       "extraSignings": 1
     },
     "earmark": {
-      "note": "Before trades, each buying team (buys > 0) picks its top free-agent target among the topN by WAR, the way free agency picks a winner (gain x eagerness x luck), counting only players whose first-round price fits its room and its plan's maxSalary, maxAge and minGain. It sets that price aside (plus one bidderPremium if includePremium), so trades can only spend the rest. The money is released once the target signs anywhere, or goes unsigned through every price round. Added 2026-11-10 after the Mets kept spending ~$51M of ~$76M room on early trades and couldn't afford Skubal. simulate-many.ts --no-earmark turns it off for comparison.",
+      "note": "Before trades, each buying team (buys > 0) picks its top free-agent target among the topN by WAR, the way free agency picks a winner (gain x eagerness x luck), counting only players whose first-round price is at least minAsk (a star worth saving for), fits its room and its plan's maxSalary, maxAge and minGain. It sets that price aside (plus one bidderPremium if includePremium), so trades can only spend the rest. The money is released once the target signs anywhere, or goes unsigned through every price round. Added 2026-11-10 after the Mets kept spending ~$51M of ~$76M room on early trades and couldn't afford Skubal. minAsk added the same day: without it most buyers earmarked a ~$22M player (Arraez, Suzuki, Lowe) and league trades fell from 18 to 11 per offseason. simulate-many.ts --no-earmark turns it off for comparison.",
       "enabled": true,
       "topN": 10,
+      "minAsk": 30000000,
       "includePremium": false
+    },
+    "ruledOut": {
+      "note": "Teams that won't sign a particular free agent, whatever the simulation thinks: reported out of the running. They never bid on or earmark him. Kept by MLBAM id; name is for reading. CHC on Skubal added 2026-11-10 (Will: the Cubs have been ruled out).",
+      "players": [
+        { "id": 669373, "name": "Tarik Skubal", "teams": ["CHC"] }
+      ]
     },
     "bidderPremium": 0.05,
     "maxPremium": 0.25,
