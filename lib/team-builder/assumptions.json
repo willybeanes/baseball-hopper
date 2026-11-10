@@ -127,9 +127,9 @@
     "minFreeAgentWar": 0.3,
     "priceRounds": [
       1,
-      0.75,
-      0.5,
-      0.35
+      0.9,
+      0.8,
+      0.65
     ],
     "bargain": {
       "note": "In the last price round a team will go this far over its budget, and sign this many more than its plan's limit, for a bargain. Added 2026-11-06 so solid veterans don't go unsigned just because every budget was spent by the time their price fell.",
@@ -149,8 +149,13 @@
         { "id": 669373, "name": "Tarik Skubal", "teams": ["CHC"] }
       ]
     },
-    "bidderPremium": 0.05,
-    "maxPremium": 0.25,
+    "marketPrice": {
+      "note": "A free agent's first-round asking price in the simulation: base + factor x WAR x $/WAR, so about $2M + $7.2M per WAR. Fitted 2026-11-10 to the FanGraphs crowd's median AAV for this winter's 88 free agents at 0.3+ WAR (their fit: $2.2M + $7.1M per WAR). The plain $8M per WAR matched the crowd for 2+ WAR players but underpriced cheaper ones, which the crowd pays $9-11M per WAR. At the same time the bidder premium went from 5% a bidder (max 25%) to 0, because it pushed the top free agents ~20% past the crowd (Skubal $51M vs $42M), and priceRounds went from 1/0.75/0.5/0.35 to 1/0.9/0.8/0.65, because cheaper free agents were signing for under half the crowd's figure. Median miss against the crowd fell from 51% to 28%. The Team Builder's own pre-filled prices still use plain WAR x $/WAR.",
+      "base": 2000000,
+      "factor": 0.9
+    },
+    "bidderPremium": 0,
+    "maxPremium": 0,
     "luck": 0.3,
     "rosterMax": 40,
     "nonTenderMargin": 1500000

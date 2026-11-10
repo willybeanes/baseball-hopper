@@ -230,7 +230,11 @@ export function simulateOffseason(input: SimInput): Simulation {
   const freeAgents = [...market.values()]
     .filter(({ e }) => (e.war ?? 0) >= S.minFreeAgentWar)
     .sort((a, b) => (b.e.war ?? 0) - (a.e.war ?? 0))
-  const askFor = (e: PoolPlayer, discount: number) => Math.max(minimum, Math.round((price(e.war) * discount) / 1e5) * 1e5)
+  // A free agent's first-round asking price: S.marketPrice.base + factor x WAR x $/WAR (the plain
+  // WAR x $/WAR price when base is 0 and factor 1), then each round's discount.
+  const marketPrice = (war: number | null | undefined) =>
+    (war ?? 0) <= 0 ? minimum : S.marketPrice.base + S.marketPrice.factor * price(war)
+  const askFor = (e: PoolPlayer, discount: number) => Math.max(minimum, Math.round((marketPrice(e.war) * discount) / 1e5) * 1e5)
   const justLetGo = (team: string, id: number, from: string | null) => team === from && log.some((x) => x.id === id && x.team === team)
   // Teams reported out of the running for a player (S.ruledOut) never bid on or earmark him.
   const ruledOut = new Map(S.ruledOut.players.map((p) => [p.id, new Set(p.teams)]))
