@@ -1,0 +1,325 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import HofGrid, { type HofGridRow } from "@/components/voters/HofGrid";
+import {
+  allVoterSlugs,
+  getVoter,
+  hofYear,
+  mvpAward,
+  type HofBallot,
+  type MvpBallot,
+  type VoterProfile,
+} from "@/lib/voters";
+
+// Every voter page is built at deploy time from static JSON: no ISR writes, no runtime fetches.
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return allVoterSlugs().map((slug) => ({ slug }));
+}
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const v = getVoter((await params).slug);
+  if (!v) return { title: "Voter — Baseball Hopper" };
+  return {
+    title: `${v.name} — Voter Profile — Baseball Hopper`,
+    description: `Every public Hall of Fame and MVP ballot from BBWAA voter ${v.name}${v.outlet ? ` (${v.outlet})` : ""}.`,
+  };
+}
+
+const TRACKER_URL = "https://1drv.ms/x/c/f2e5d8fc5199dfaf/EdbgAklsFj9NofGNQYqyGHkBwQRlbI_-6kBfDDfmGjR0eQ";
+const PANEL =
+  "rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7";
+const H2 = "text-[15px] font-semibold tracking-tight text-[var(--text)]";
+const pct = (x: number | null | undefined) => (x == null ? "—" : `${Math.round(x * 100)}%`);
+
+function PlayerName({ id, name }: { id: number | null; name: string }) {
+  return id ? (
+    <Link href={`/player/${id}`} className="hover:underline">
+      {name}
+    </Link>
+  ) : (
+    <>{name}</>
+  );
+}
+
+function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
+  return (
+    <div>
+      <dt className="text-[11px] font-medium text-[var(--dim)]">{label}</dt>
+      <dd className="mt-0.5 text-[20px] font-semibold tabular-nums tracking-tight text-[var(--text)]">{value}</dd>
+      {sub && <dd className="text-[11px] text-[var(--dim)]">{sub}</dd>}
+    </div>
+  );
+}
+
+function yearSpan(years: number[]) {
+  if (!years.length) return "";
+  const s = [...new Set(years)].sort();
+  return s.length === 1 ? `${s[0]}` : `${s[0]}–${s[s.length - 1]}`;
+}
+
+// ── Hall of Fame ──────────────────────────────────────────────────────────────
+
+function HofGridSection({ ballots }: { ballots: HofBallot[] }) {
+  const years = ballots.map((b) => b.year).sort((a, b) => a - b);
+  const byYear = new Map(ballots.map((b) => [b.year, b]));
+  // Every candidate on a ballot this voter made public, in order of first appearance.
+  const cands = new Map<string, { id: number | null; first: number; inducted: HofGridRow["inducted"]; yes: number; on: number; peak: number }>();
+  for (const y of years) {
+    for (const c of hofYear(y)?.candidates ?? []) {
+      const e = cands.get(c.name) ?? { id: c.id, first: y, inducted: c.inducted, yes: 0, on: 0, peak: 0 };
+      e.on += 1;
+      e.peak = Math.max(e.peak, c.publicShare ?? 0);
+      if (byYear.get(y)?.votes.includes(c.name)) e.yes += 1;
+      cands.set(c.name, e);
+    }
+  }
+  // Rows: anyone this voter backed, plus serious candidates (inducted, or 20%+ of public ballots) they passed on.
+  const rows: HofGridRow[] = [...cands.entries()]
+    .filter(([, c]) => c.yes > 0 || (c.on > 1 && (c.inducted || c.peak >= 0.2)))
+    .sort((a, b) => b[1].yes - a[1].yes || a[1].first - b[1].first || a[0].localeCompare(b[0]))
+    .map(([name, c]) => ({
+      name,
+      id: c.id,
+      inducted: c.inducted,
+      marks: years
+        .map((y) => {
+          const b = byYear.get(y)!;
+          if (!hofYear(y)?.candidates.some((x) => x.name === name)) return ".";
+          if (b.blank) return "B";
+          return b.votes.includes(name) ? "Y" : "N";
+        })
+        .join(""),
+    }));
+  const counts = years.map((y) => byYear.get(y)!.count);
+  return <HofGrid years={years} counts={counts} rows={rows} />;
+}
+
+function HofYearList({ ballots }: { ballots: HofBallot[] }) {
+  return (
+    <ul className="mt-4 divide-y divide-[var(--panel-border)] text-[13px]">
+      {[...ballots].reverse().map((b) => {
+        const y = hofYear(b.year);
+        return (
+          <li key={b.year} className="grid grid-cols-[52px_1fr] gap-3 py-2.5">
+            <span className="font-semibold tabular-nums">{b.year}</span>
+            <div>
+              <p className="text-[var(--text)]">
+                {b.blank ? (
+                  <span className="text-[var(--dim)]">Blank ballot</span>
+                ) : (
+                  b.votes.map((n, i) => {
+                    const c = y?.candidates.find((x) => x.name === n);
+                    const rare = b.rare.includes(n);
+                    return (
+                      <span key={n}>
+                        {i > 0 && ", "}
+                        <span className={rare ? "font-semibold text-[var(--accent)]" : undefined} title={rare ? "Under 5% of public ballots" : undefined}>
+                          <PlayerName id={c?.id ?? null} name={n} />
+                        </span>
+                      </span>
+                    );
+                  })
+                )}
+              </p>
+              <p className="mt-0.5 text-[11px] text-[var(--dim)]">
+                {b.blank ? "0 names" : `${b.count} ${b.count === 1 ? "name" : "names"}`}
+                {b.electees > 0 && ` · backed ${b.electeesBacked} of ${b.electees} elected`}
+                {b.released && ` · made public ${new Date(b.released + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`}
+                {b.source && ` · via ${b.source}`}
+                {b.url && (
+                  <>
+                    {" · "}
+                    <a href={b.url} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
+                      source
+                    </a>
+                  </>
+                )}
+                {b.note && ` · ${b.note}`}
+              </p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+// ── MVP ───────────────────────────────────────────────────────────────────────
+
+function MvpTable({ ballots }: { ballots: MvpBallot[] }) {
+  return (
+    <div className="-mx-1 overflow-x-auto px-1">
+      <table className="w-full min-w-[860px] border-collapse text-[13px]">
+        <thead>
+          <tr className="border-b border-[var(--rule)] text-[11px] font-medium text-[var(--dim)]">
+            <th className="sticky left-0 z-10 bg-[var(--panel)] py-2 pr-3 text-left font-medium">Award</th>
+            {Array.from({ length: 10 }, (_, i) => (
+              <th key={i} className="px-1.5 py-2 text-left font-medium">
+                {i + 1}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-[var(--panel-border)]">
+          {[...ballots].reverse().map((b) => {
+            const award = mvpAward(b.year, b.league);
+            return (
+              <tr key={`${b.year}${b.league}`} className="align-top">
+                <td className="sticky left-0 z-10 whitespace-nowrap bg-[var(--panel)] py-2 pr-3">
+                  <a href={award?.url} target="_blank" rel="noreferrer" className="font-semibold hover:underline">
+                    {b.year} {b.league}
+                  </a>
+                  <div className="text-[11px] text-[var(--dim)]">{b.outlet}</div>
+                </td>
+                {Array.from({ length: 10 }, (_, i) => {
+                  const p = b.picks.find((x) => x.rank === i + 1);
+                  if (!p) return <td key={i} className="px-1.5 py-2 text-[var(--dim)]">—</td>;
+                  const solo = p.mentions === 1;
+                  return (
+                    <td key={i} className="px-1.5 py-2">
+                      <div className={`leading-tight ${solo ? "font-semibold text-[var(--accent)]" : ""}`}>
+                        <PlayerName id={p.id} name={p.name} />
+                      </div>
+                      <div className="text-[11px] tabular-nums text-[var(--dim)]" title={`Finished ${p.finalRank} in the final vote`}>
+                        {solo ? "only voter · " : ""}
+                        <span className={Math.abs(p.finalRank - p.rank) >= 3 ? "font-semibold text-[var(--text)]" : undefined}>
+                          finished {p.finalRank}
+                        </span>
+                      </div>
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+
+function Header({ v }: { v: VoterProfile }) {
+  const hofYears = v.hof.map((b) => b.year);
+  const leagues = [...new Set(v.mvp.map((b) => b.league))].sort().join(" & ");
+  const mvpLabel = v.mvp.length
+    ? v.mvp.length <= 3
+      ? v.mvp.map((b) => `${b.year} ${b.league}`).join(", ")
+      : `${v.mvp.length} (${yearSpan(v.mvp.map((b) => b.year))}, ${leagues})`
+    : "";
+  const facts: [string, string | null][] = [
+    ["Outlet", v.outlet && (v.outletYear && v.outletYear < 2025 ? `${v.outlet} (as of ${v.outletYear})` : v.outlet)],
+    ["Chapter", v.chapter],
+    ["Public HOF ballots", hofYears.length ? `${hofYears.length} (${yearSpan(hofYears)})` : null],
+    ["MVP ballots", mvpLabel || null],
+  ];
+  return (
+    <header>
+      <Link href="/voters" className="text-[12px] text-[var(--dim)] hover:text-[var(--text)]">
+        ← All voters
+      </Link>
+      <h1 className="mt-2 text-[26px] font-bold tracking-tight text-[var(--text)]">{v.name}</h1>
+      {v.aliases.length > 0 && <p className="text-[12px] text-[var(--dim)]">Also listed as {v.aliases.join(", ")}</p>}
+      <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[13px]">
+        {facts
+          .filter(([, val]) => val)
+          .map(([k, val]) => (
+            <div key={k} className="flex items-baseline gap-1.5">
+              <dt className="text-[11px] font-medium text-[var(--dim)]">{k}</dt>
+              <dd className="text-[var(--text)]">{val}</dd>
+            </div>
+          ))}
+      </dl>
+    </header>
+  );
+}
+
+export default async function VoterPage({ params }: Props) {
+  const v = getVoter((await params).slug);
+  if (!v) notFound();
+  const h = v.summary.hof;
+  const m = v.summary.mvp;
+
+  return (
+    <main className="mx-auto w-full max-w-[1200px] space-y-5 px-4 pb-20 pt-8 sm:px-5">
+      <Header v={v} />
+
+      {(h || m) && (
+        <section className={PANEL}>
+          <h2 className={H2}>Tendencies</h2>
+          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
+            {h && (
+              <>
+                <Stat label="Names per HOF ballot" value={h.avgNames.toFixed(1)} sub={h.peerAvgNames ? `public ballots avg ${h.peerAvgNames.toFixed(1)}` : undefined} />
+                <Stat label="Full 10-name ballots" value={`${h.fullBallots} of ${h.ballots - h.blank}`} sub={h.blank ? `${h.blank} blank` : undefined} />
+                <Stat label="Backed that year’s electees" value={pct(h.electeeRate)} sub="share of BBWAA electees on ballot" />
+                <Stat label="PED-linked candidates" value={pct(h.pedRate)} sub={h.pedPublicRate != null ? `public ballots ${pct(h.pedPublicRate)}` : "never on ballot"} />
+              </>
+            )}
+            {m && (
+              <>
+                <Stat label="MVP 1st place = winner" value={`${m.firstMatches} of ${m.ballots}`} />
+                <Stat label="MVP picks off consensus" value={m.avgDeviation.toFixed(1)} sub="avg spots per ballot" />
+              </>
+            )}
+          </dl>
+        </section>
+      )}
+
+      {v.hof.length > 0 && (
+        <section className={PANEL}>
+          <h2 className={H2}>Hall of Fame ballots</h2>
+          <p className="mb-4 mt-1 max-w-[72ch] text-[12px] leading-relaxed text-[var(--dim)]">
+            Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from Ryan Thibodaux&rsquo;s{" "}
+            <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
+              BBHOF Tracker
+            </a>
+            . Names in red got under 5% of public ballots.
+          </p>
+          <HofGridSection ballots={v.hof} />
+          <HofYearList ballots={v.hof} />
+        </section>
+      )}
+
+      {v.mvp.length > 0 && (
+        <section className={PANEL}>
+          <h2 className={H2}>MVP ballots</h2>
+          <p className="mb-4 mt-1 max-w-[72ch] text-[12px] leading-relaxed text-[var(--dim)]">
+            Each pick shows where the player finished in the final vote, in bold when that&rsquo;s three or more spots from where this voter put him. Red: no other voter listed him. Ballots from{" "}
+            <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
+              bbwaa.com
+            </a>
+            .
+          </p>
+          <MvpTable ballots={v.mvp} />
+        </section>
+      )}
+
+      {v.similar.length > 0 && (
+        <section className={PANEL}>
+          <h2 className={H2}>Votes most like {v.name.split(" ")[0]}&rsquo;s</h2>
+          <p className="mt-1 text-[12px] text-[var(--dim)]">Share of Hall of Fame yes/no calls that match, on candidates both voters had on the same ballot.</p>
+          <ul className="mt-3 divide-y divide-[var(--panel-border)] text-[13px]">
+            {v.similar.map((s) => (
+              <li key={s.slug} className="flex items-baseline justify-between py-2">
+                <Link href={`/voter/${s.slug}`} className="hover:underline">
+                  {s.name}
+                </Link>
+                <span className="tabular-nums text-[var(--dim)]">
+                  <span className="font-semibold text-[var(--text)]">{pct(s.agree)}</span> of {s.shared}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </main>
+  );
+}

@@ -39,6 +39,7 @@ const NAV_GROUPS = [
       { label: "Scatter Plot", href: "/scatter", external: false },
       { label: "WAR Breakdown", href: "/war", external: false },
       { label: "All-Star Ballot", href: "/ballot", external: false },
+      { label: "Voter Profiles", href: "/voters", external: false },
       { label: "The Dingy", href: "/dingy", external: false },
       { label: "Hook Efficiency", href: "/manager-hook", external: false },
     ],

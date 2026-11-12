@@ -1,0 +1,59 @@
+/* Short class names for the dense ballot grids: a voter's HOF grid can run to ~1,500 cells,
+   and long utility strings on every cell tripled the page weight. */
+.grid {
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.grid th {
+  padding: 8px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dim);
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+  width: 44px;
+}
+.grid td {
+  padding: 6px 4px;
+  text-align: center;
+  border-top: 1px solid var(--panel-border);
+}
+.grid th:first-child,
+.grid td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--panel);
+  text-align: left;
+  padding-left: 0;
+  padding-right: 16px;
+  white-space: nowrap;
+  width: auto;
+}
+.grid tfoot td {
+  border-top: 1px solid var(--rule);
+  font-weight: 600;
+}
+.y,
+.n {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  vertical-align: middle;
+}
+.y {
+  background: var(--accent);
+}
+.n {
+  border: 1px solid var(--neutral-bar);
+}
+.off {
+  color: var(--rule);
+}
+.tag {
+  margin-left: 6px;
+  font-size: 11px;
+  color: var(--dim);
+}

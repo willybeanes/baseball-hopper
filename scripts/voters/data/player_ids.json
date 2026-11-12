@@ -1,0 +1,3698 @@
+{
+"mvp": {
+"2012|AL|Beltre": {
+"id": 134181,
+"name": "Adrian Beltré"
+},
+"2012|AL|Cabrera": {
+"id": 408234,
+"name": "Miguel Cabrera"
+},
+"2012|AL|Cano": {
+"id": 429664,
+"name": "Robinson Canó"
+},
+"2012|AL|Cespedes": {
+"id": 493316,
+"name": "Yoenis Cespedes"
+},
+"2012|AL|Encarnacion": {
+"id": 429665,
+"name": "Edwin Encarnación"
+},
+"2012|AL|Fielder": {
+"id": 425902,
+"name": "Prince Fielder"
+},
+"2012|AL|Hamilton": {
+"id": 285078,
+"name": "Josh Hamilton"
+},
+"2012|AL|Hernandez": {
+"id": 433587,
+"name": "Félix Hernández"
+},
+"2012|AL|Ibanez": {
+"id": 116380,
+"name": "Raul Ibanez"
+},
+"2012|AL|Jeter": {
+"id": 116539,
+"name": "Derek Jeter"
+},
+"2012|AL|Johnson": {
+"id": 462382,
+"name": "Jim Johnson"
+},
+"2012|AL|Jones": {
+"id": 430945,
+"name": "Adam Jones"
+},
+"2012|AL|Mauer": {
+"id": 408045,
+"name": "Joe Mauer"
+},
+"2012|AL|Price": {
+"id": 456034,
+"name": "David Price"
+},
+"2012|AL|Pujols": {
+"id": 405395,
+"name": "Albert Pujols"
+},
+"2012|AL|Reddick": {
+"id": 502210,
+"name": "Josh Reddick"
+},
+"2012|AL|Rios": {
+"id": 425567,
+"name": "Alex Rios"
+},
+"2012|AL|Rodney": {
+"id": 407845,
+"name": "Fernando Rodney"
+},
+"2012|AL|Soriano": {
+"id": 400089,
+"name": "Rafael Soriano"
+},
+"2012|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2012|AL|Verlander": {
+"id": 434378,
+"name": "Justin Verlander"
+},
+"2012|AL|Weaver": {
+"id": 450308,
+"name": "Jered Weaver"
+},
+"2012|AL|Wieters": {
+"id": 446308,
+"name": "Matt Wieters"
+},
+"2012|AL|Zobrist": {
+"id": 450314,
+"name": "Ben Zobrist"
+},
+"2012|NL|Beltran": {
+"id": 136860,
+"name": "Carlos Beltrán"
+},
+"2012|NL|Bourn": {
+"id": 456422,
+"name": "Michael Bourn"
+},
+"2012|NL|Braun": {
+"id": 460075,
+"name": "Ryan Braun"
+},
+"2012|NL|Bruce": {
+"id": 457803,
+"name": "Jay Bruce"
+},
+"2012|NL|C Jones": {
+"id": 116706,
+"name": "Chipper Jones"
+},
+"2012|NL|Chapman": {
+"id": 547973,
+"name": "Aroldis Chapman"
+},
+"2012|NL|Craig": {
+"id": 501800,
+"name": "Allen Craig"
+},
+"2012|NL|Cueto": {
+"id": 456501,
+"name": "Johnny Cueto"
+},
+"2012|NL|Desmond": {
+"id": 435622,
+"name": "Ian Desmond"
+},
+"2012|NL|Dickey": {
+"id": 285079,
+"name": "R.A. Dickey"
+},
+"2012|NL|Gonzalez": {
+"id": 461829,
+"name": "Gio Gonzalez"
+},
+"2012|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper"
+},
+"2012|NL|Headley": {
+"id": 452104,
+"name": "Chase Headley"
+},
+"2012|NL|Heyward": {
+"id": 518792,
+"name": "Jason Heyward"
+},
+"2012|NL|Hill": {
+"id": 431094,
+"name": "Aaron Hill"
+},
+"2012|NL|Holliday": {
+"id": 407812,
+"name": "Matt Holliday"
+},
+"2012|NL|Kershaw": {
+"id": 477132,
+"name": "Clayton Kershaw"
+},
+"2012|NL|Kimbrel": {
+"id": 518886,
+"name": "Craig Kimbrel"
+},
+"2012|NL|La Roche": {
+"id": 425560,
+"name": "Adam LaRoche"
+},
+"2012|NL|LaRoche": {
+"id": 425560,
+"name": "Adam LaRoche"
+},
+"2012|NL|McCutchen": {
+"id": 457705,
+"name": "Andrew McCutchen"
+},
+"2012|NL|Medlen": {
+"id": 450665,
+"name": "Kris Medlen"
+},
+"2012|NL|Molina": {
+"id": 425877,
+"name": "Yadier Molina"
+},
+"2012|NL|Montero": {
+"id": 471083,
+"name": "Miguel Montero"
+},
+"2012|NL|Pagan": {
+"id": 434636,
+"name": "Ángel Pagán"
+},
+"2012|NL|Pence": {
+"id": 452254,
+"name": "Hunter Pence"
+},
+"2012|NL|Phillips": {
+"id": 408252,
+"name": "Brandon Phillips"
+},
+"2012|NL|Posey": {
+"id": 457763,
+"name": "Buster Posey"
+},
+"2012|NL|Prado": {
+"id": 445988,
+"name": "Martín Prado"
+},
+"2012|NL|Ramirez": {
+"id": 133380,
+"name": "Aramis Ramirez"
+},
+"2012|NL|Ruiz": {
+"id": 434563,
+"name": "Carlos Ruiz"
+},
+"2012|NL|Soriano": {
+"id": 150093,
+"name": "Alfonso Soriano"
+},
+"2012|NL|Stanton": {
+"id": 519317,
+"name": "Giancarlo Stanton"
+},
+"2012|NL|Votto": {
+"id": 458015,
+"name": "Joey Votto"
+},
+"2012|NL|Wright": {
+"id": 431151,
+"name": "David Wright"
+},
+"2012|NL|Zimmerman": {
+"id": 475582,
+"name": "Ryan Zimmerman"
+},
+"2013|AL|Beltre": {
+"id": 134181,
+"name": "Adrian Beltré"
+},
+"2013|AL|Cabrera": {
+"id": 408234,
+"name": "Miguel Cabrera"
+},
+"2013|AL|Cano": {
+"id": 429664,
+"name": "Robinson Canó"
+},
+"2013|AL|Crisp": {
+"id": 424825,
+"name": "Coco Crisp"
+},
+"2013|AL|Darvish": {
+"id": 506433,
+"name": "Yu Darvish"
+},
+"2013|AL|Davis": {
+"id": 448801,
+"name": "Chris Davis"
+},
+"2013|AL|Donaldson": {
+"id": 518626,
+"name": "Josh Donaldson"
+},
+"2013|AL|Ellsbury": {
+"id": 453056,
+"name": "Jacoby Ellsbury"
+},
+"2013|AL|Encarnacion": {
+"id": 429665,
+"name": "Edwin Encarnación"
+},
+"2013|AL|Hernandez": {
+"id": 433587,
+"name": "Félix Hernández"
+},
+"2013|AL|Holland": {
+"id": 518813,
+"name": "Greg Holland"
+},
+"2013|AL|Hunter": {
+"id": 116338,
+"name": "Torii Hunter"
+},
+"2013|AL|Iwakuma": {
+"id": 547874,
+"name": "Hisashi Iwakuma"
+},
+"2013|AL|Jones": {
+"id": 430945,
+"name": "Adam Jones"
+},
+"2013|AL|Kipnis": {
+"id": 543401,
+"name": "Jason Kipnis"
+},
+"2013|AL|Longoria": {
+"id": 446334,
+"name": "Evan Longoria"
+},
+"2013|AL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2013|AL|Oritz": {
+"id": 120074,
+"name": "David Ortiz"
+},
+"2013|AL|Ortiz": {
+"id": 120074,
+"name": "David Ortiz"
+},
+"2013|AL|Pedroia": {
+"id": 456030,
+"name": "Dustin Pedroia"
+},
+"2013|AL|Perez": {
+"id": 521692,
+"name": "Salvador Perez"
+},
+"2013|AL|Santana": {
+"id": 467793,
+"name": "Carlos Santana"
+},
+"2013|AL|Scherzer": {
+"id": 453286,
+"name": "Max Scherzer"
+},
+"2013|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2013|AL|Uehara": {
+"id": 493157,
+"name": "Koji Uehara"
+},
+"2013|AL|Victorino": {
+"id": 425664,
+"name": "Shane Victorino"
+},
+"2013|NL|A.Gonzalez": {
+"id": 408236,
+"name": "Adrián González"
+},
+"2013|NL|Bruce": {
+"id": 457803,
+"name": "Jay Bruce"
+},
+"2013|NL|Carpenter": {
+"id": 572761,
+"name": "Matt Carpenter"
+},
+"2013|NL|Choo": {
+"id": 425783,
+"name": "Shin-Soo Choo"
+},
+"2013|NL|Craig": {
+"id": 501800,
+"name": "Allen Craig"
+},
+"2013|NL|Cuddyer": {
+"id": 150212,
+"name": "Michael Cuddyer"
+},
+"2013|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2013|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2013|NL|Gomez": {
+"id": 460576,
+"name": "Carlos Gómez"
+},
+"2013|NL|Gonzalez": {
+"id": 408236,
+"name": "Adrián González"
+},
+"2013|NL|Holliday": {
+"id": 407812,
+"name": "Matt Holliday"
+},
+"2013|NL|Kershaw": {
+"id": 477132,
+"name": "Clayton Kershaw"
+},
+"2013|NL|Kimbrel": {
+"id": 518886,
+"name": "Craig Kimbrel"
+},
+"2013|NL|Martin": {
+"id": 431145,
+"name": "Russell Martin"
+},
+"2013|NL|McCutchen": {
+"id": 457705,
+"name": "Andrew McCutchen"
+},
+"2013|NL|Molina": {
+"id": 425877,
+"name": "Yadier Molina"
+},
+"2013|NL|Pence": {
+"id": 452254,
+"name": "Hunter Pence"
+},
+"2013|NL|Posey": {
+"id": 457763,
+"name": "Buster Posey"
+},
+"2013|NL|Puig": {
+"id": 624577,
+"name": "Yasiel Puig"
+},
+"2013|NL|Ramirez": {
+"id": 434670,
+"name": "Hanley Ramirez"
+},
+"2013|NL|Simmons": {
+"id": 592743,
+"name": "Andrelton Simmons"
+},
+"2013|NL|Tulowitzki": {
+"id": 453064,
+"name": "Troy Tulowitzki"
+},
+"2013|NL|Votto": {
+"id": 458015,
+"name": "Joey Votto"
+},
+"2013|NL|Wainwright": {
+"id": 425794,
+"name": "Adam Wainwright"
+},
+"2013|NL|Werth": {
+"id": 150029,
+"name": "Jayson Werth"
+},
+"2014|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2014|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2014|AL|Bautista": {
+"id": 430832,
+"name": "José Bautista"
+},
+"2014|AL|Beltre": {
+"id": 134181,
+"name": "Adrian Beltré"
+},
+"2014|AL|Brantley": {
+"id": 488726,
+"name": "Michael Brantley"
+},
+"2014|AL|Cabrera": {
+"id": 408234,
+"name": "Miguel Cabrera"
+},
+"2014|AL|Cano": {
+"id": 429664,
+"name": "Robinson Canó"
+},
+"2014|AL|Cruz": {
+"id": 443558,
+"name": "Nelson Cruz"
+},
+"2014|AL|Donaldson": {
+"id": 518626,
+"name": "Josh Donaldson"
+},
+"2014|AL|Gordon": {
+"id": 460086,
+"name": "Alex Gordon"
+},
+"2014|AL|Hernandez": {
+"id": 433587,
+"name": "Félix Hernández"
+},
+"2014|AL|Holland": {
+"id": 518813,
+"name": "Greg Holland"
+},
+"2014|AL|Jones": {
+"id": 430945,
+"name": "Adam Jones"
+},
+"2014|AL|Kendrick": {
+"id": 435062,
+"name": "Howie Kendrick"
+},
+"2014|AL|Kluber": {
+"id": 446372,
+"name": "Corey Kluber"
+},
+"2014|AL|Martinez": {
+"id": 400121,
+"name": "Victor Martinez"
+},
+"2014|AL|Pujols": {
+"id": 405395,
+"name": "Albert Pujols"
+},
+"2014|AL|Seager": {
+"id": 572122,
+"name": "Kyle Seager"
+},
+"2014|AL|Shields": {
+"id": 448306,
+"name": "James Shields"
+},
+"2014|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2014|NL|Cueto": {
+"id": 456501,
+"name": "Johnny Cueto"
+},
+"2014|NL|Duda": {
+"id": 446263,
+"name": "Lucas Duda"
+},
+"2014|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2014|NL|Gomez": {
+"id": 460576,
+"name": "Carlos Gómez"
+},
+"2014|NL|Gonzalez": {
+"id": 408236,
+"name": "Adrián González"
+},
+"2014|NL|Gordon": {
+"id": 543829,
+"name": "Dee Strange-Gordon"
+},
+"2014|NL|Harrison": {
+"id": 543281,
+"name": "Josh Harrison"
+},
+"2014|NL|Holliday": {
+"id": 407812,
+"name": "Matt Holliday"
+},
+"2014|NL|J. Upton": {
+"id": 457708,
+"name": "Justin Upton"
+},
+"2014|NL|Kershaw": {
+"id": 477132,
+"name": "Clayton Kershaw"
+},
+"2014|NL|Lucroy": {
+"id": 518960,
+"name": "Jonathan Lucroy"
+},
+"2014|NL|Martin": {
+"id": 431145,
+"name": "Russell Martin"
+},
+"2014|NL|McCutchen": {
+"id": 457705,
+"name": "Andrew McCutchen"
+},
+"2014|NL|Mesoraco": {
+"id": 519023,
+"name": "Devin Mesoraco"
+},
+"2014|NL|Morneau": {
+"id": 408047,
+"name": "Justin Morneau"
+},
+"2014|NL|Pence": {
+"id": 452254,
+"name": "Hunter Pence"
+},
+"2014|NL|Peralta": {
+"id": 425509,
+"name": "Jhonny Peralta"
+},
+"2014|NL|Posey": {
+"id": 457763,
+"name": "Buster Posey"
+},
+"2014|NL|Puig": {
+"id": 624577,
+"name": "Yasiel Puig"
+},
+"2014|NL|Rendon": {
+"id": 543685,
+"name": "Anthony Rendon"
+},
+"2014|NL|Rizzo": {
+"id": 519203,
+"name": "Anthony Rizzo"
+},
+"2014|NL|Span": {
+"id": 452655,
+"name": "Denard Span"
+},
+"2014|NL|Stanton": {
+"id": 519317,
+"name": "Giancarlo Stanton"
+},
+"2014|NL|Tulowitzki": {
+"id": 453064,
+"name": "Troy Tulowitzki"
+},
+"2014|NL|Upton": {
+"id": 457708,
+"name": "Justin Upton"
+},
+"2014|NL|Wainwright": {
+"id": 425794,
+"name": "Adam Wainwright"
+},
+"2014|NL|Werth": {
+"id": 150029,
+"name": "Jayson Werth"
+},
+"2015|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2015|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2015|AL|Bautista": {
+"id": 430832,
+"name": "José Bautista"
+},
+"2015|AL|Beltre": {
+"id": 134181,
+"name": "Adrian Beltré"
+},
+"2015|AL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2015|AL|Brantley": {
+"id": 488726,
+"name": "Michael Brantley"
+},
+"2015|AL|C.Davis": {
+"id": 448801,
+"name": "Chris Davis"
+},
+"2015|AL|Cabrera": {
+"id": 408234,
+"name": "Miguel Cabrera"
+},
+"2015|AL|Cain": {
+"id": 456715,
+"name": "Lorenzo Cain"
+},
+"2015|AL|Correa": {
+"id": 621043,
+"name": "Carlos Correa"
+},
+"2015|AL|Cruz": {
+"id": 443558,
+"name": "Nelson Cruz"
+},
+"2015|AL|Davis": {
+"id": 448801,
+"name": "Chris Davis"
+},
+"2015|AL|Donaldson": {
+"id": 518626,
+"name": "Josh Donaldson"
+},
+"2015|AL|Dozier": {
+"id": 572821,
+"name": "Brian Dozier"
+},
+"2015|AL|Encarnacion": {
+"id": 429665,
+"name": "Edwin Encarnación"
+},
+"2015|AL|Fielder": {
+"id": 425902,
+"name": "Prince Fielder"
+},
+"2015|AL|Hosmer": {
+"id": 543333,
+"name": "Eric Hosmer"
+},
+"2015|AL|Keuchel": {
+"id": 572971,
+"name": "Dallas Keuchel"
+},
+"2015|AL|Kiermaier": {
+"id": 595281,
+"name": "Kevin Kiermaier"
+},
+"2015|AL|Kinsler": {
+"id": 435079,
+"name": "Ian Kinsler"
+},
+"2015|AL|Kipnis": {
+"id": 543401,
+"name": "Jason Kipnis"
+},
+"2015|AL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2015|AL|Martin": {
+"id": 431145,
+"name": "Russell Martin"
+},
+"2015|AL|Martinez": {
+"id": 502110,
+"name": "J.D. Martinez"
+},
+"2015|AL|McCann": {
+"id": 435263,
+"name": "Brian McCann"
+},
+"2015|AL|Morales": {
+"id": 434778,
+"name": "Kendrys Morales"
+},
+"2015|AL|Moustakas": {
+"id": 519058,
+"name": "Mike Moustakas"
+},
+"2015|AL|Ortiz": {
+"id": 120074,
+"name": "David Ortiz"
+},
+"2015|AL|Price": {
+"id": 456034,
+"name": "David Price"
+},
+"2015|AL|Rodriguez": {
+"id": 121347,
+"name": "Alex Rodriguez"
+},
+"2015|AL|Sale": {
+"id": 519242,
+"name": "Chris Sale"
+},
+"2015|AL|Teixeira": {
+"id": 407893,
+"name": "Mark Teixeira"
+},
+"2015|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2015|AL|W.Davis": {
+"id": 451584,
+"name": "Wade Davis"
+},
+"2015|NL|Arenado": {
+"id": 571448,
+"name": "Nolan Arenado"
+},
+"2015|NL|Arrieta": {
+"id": 453562,
+"name": "Jake Arrieta"
+},
+"2015|NL|Bryant": {
+"id": 592178,
+"name": "Kris Bryant"
+},
+"2015|NL|Carpenter": {
+"id": 572761,
+"name": "Matt Carpenter"
+},
+"2015|NL|Cespedes": {
+"id": 493316,
+"name": "Yoenis Cespedes"
+},
+"2015|NL|Cole": {
+"id": 543037,
+"name": "Gerrit Cole"
+},
+"2015|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2015|NL|Gonzalez": {
+"id": 408236,
+"name": "Adrián González"
+},
+"2015|NL|Gordon": {
+"id": 543829,
+"name": "Dee Strange-Gordon"
+},
+"2015|NL|Granderson": {
+"id": 434158,
+"name": "Curtis Granderson"
+},
+"2015|NL|Greinke": {
+"id": 425844,
+"name": "Zack Greinke"
+},
+"2015|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper"
+},
+"2015|NL|Heyward": {
+"id": 518792,
+"name": "Jason Heyward"
+},
+"2015|NL|Kershaw": {
+"id": 477132,
+"name": "Clayton Kershaw"
+},
+"2015|NL|McCutchen": {
+"id": 457705,
+"name": "Andrew McCutchen"
+},
+"2015|NL|McCutcheon": {
+"id": 457705,
+"name": "Andrew McCutchen"
+},
+"2015|NL|Pollock": {
+"id": 572041,
+"name": "AJ Pollock"
+},
+"2015|NL|Posey": {
+"id": 457763,
+"name": "Buster Posey"
+},
+"2015|NL|Rizzo": {
+"id": 519203,
+"name": "Anthony Rizzo"
+},
+"2015|NL|Rosenthal": {
+"id": 572096,
+"name": "Trevor Rosenthal"
+},
+"2015|NL|Votto": {
+"id": 458015,
+"name": "Joey Votto"
+},
+"2016|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2016|AL|Beltre": {
+"id": 134181,
+"name": "Adrian Beltré"
+},
+"2016|AL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2016|AL|Britton": {
+"id": 502154,
+"name": "Zack Britton"
+},
+"2016|AL|Cabrera": {
+"id": 408234,
+"name": "Miguel Cabrera"
+},
+"2016|AL|Cano": {
+"id": 429664,
+"name": "Robinson Canó"
+},
+"2016|AL|Cruz": {
+"id": 443558,
+"name": "Nelson Cruz"
+},
+"2016|AL|Donaldson": {
+"id": 518626,
+"name": "Josh Donaldson"
+},
+"2016|AL|Dozier": {
+"id": 572821,
+"name": "Brian Dozier"
+},
+"2016|AL|Eaton": {
+"id": 594809,
+"name": "Adam Eaton"
+},
+"2016|AL|Encarnacion": {
+"id": 429665,
+"name": "Edwin Encarnación"
+},
+"2016|AL|Kluber": {
+"id": 446372,
+"name": "Corey Kluber"
+},
+"2016|AL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2016|AL|Longoria": {
+"id": 446334,
+"name": "Evan Longoria"
+},
+"2016|AL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2016|AL|Ortiz": {
+"id": 120074,
+"name": "David Ortiz"
+},
+"2016|AL|Ramirez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2016|AL|Sale": {
+"id": 519242,
+"name": "Chris Sale"
+},
+"2016|AL|Seager": {
+"id": 572122,
+"name": "Kyle Seager"
+},
+"2016|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2016|AL|Verlander": {
+"id": 434378,
+"name": "Justin Verlander"
+},
+"2016|NL|Arenado": {
+"id": 571448,
+"name": "Nolan Arenado"
+},
+"2016|NL|Blackmon": {
+"id": 453568,
+"name": "Charlie Blackmon"
+},
+"2016|NL|Braun": {
+"id": 460075,
+"name": "Ryan Braun"
+},
+"2016|NL|Bryant": {
+"id": 592178,
+"name": "Kris Bryant"
+},
+"2016|NL|Bumgarner": {
+"id": 518516,
+"name": "Madison Bumgarner"
+},
+"2016|NL|Cespedes": {
+"id": 493316,
+"name": "Yoenis Cespedes"
+},
+"2016|NL|Crawford": {
+"id": 543063,
+"name": "Brandon Crawford"
+},
+"2016|NL|Cueto": {
+"id": 456501,
+"name": "Johnny Cueto"
+},
+"2016|NL|Familia": {
+"id": 544727,
+"name": "Jeurys Familia"
+},
+"2016|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2016|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2016|NL|Grandal": {
+"id": 518735,
+"name": "Yasmani Grandal"
+},
+"2016|NL|Hendricks": {
+"id": 543294,
+"name": "Kyle Hendricks"
+},
+"2016|NL|LeMahieu": {
+"id": 518934,
+"name": "DJ LeMahieu"
+},
+"2016|NL|Molina": {
+"id": 425877,
+"name": "Yadier Molina"
+},
+"2016|NL|Murphy": {
+"id": 502517,
+"name": "Daniel Murphy"
+},
+"2016|NL|Posey": {
+"id": 457763,
+"name": "Buster Posey"
+},
+"2016|NL|Ramos": {
+"id": 467092,
+"name": "Wilson Ramos"
+},
+"2016|NL|Rizzo": {
+"id": 519203,
+"name": "Anthony Rizzo"
+},
+"2016|NL|Russell": {
+"id": 608365,
+"name": "Addison Russell"
+},
+"2016|NL|Scherzer": {
+"id": 453286,
+"name": "Max Scherzer"
+},
+"2016|NL|Seager": {
+"id": 608369,
+"name": "Corey Seager"
+},
+"2016|NL|Segura": {
+"id": 516416,
+"name": "Jean Segura"
+},
+"2016|NL|Syndergaard": {
+"id": 592789,
+"name": "Noah Syndergaard"
+},
+"2016|NL|Turner": {
+"id": 457759,
+"name": "Justin Turner"
+},
+"2016|NL|Votto": {
+"id": 458015,
+"name": "Joey Votto"
+},
+"2016|NL|Yelich": {
+"id": 592885,
+"name": "Christian Yelich"
+},
+"2017|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2017|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2017|AL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2017|AL|Buxton": {
+"id": 621439,
+"name": "Byron Buxton"
+},
+"2017|AL|Correa": {
+"id": 621043,
+"name": "Carlos Correa"
+},
+"2017|AL|Cruz": {
+"id": 443558,
+"name": "Nelson Cruz"
+},
+"2017|AL|Davis": {
+"id": 501981,
+"name": "Khris Davis"
+},
+"2017|AL|Donaldson": {
+"id": 518626,
+"name": "Josh Donaldson"
+},
+"2017|AL|Dozier": {
+"id": 572821,
+"name": "Brian Dozier"
+},
+"2017|AL|Encarnacion": {
+"id": 429665,
+"name": "Edwin Encarnación"
+},
+"2017|AL|Gonzalez": {
+"id": 503556,
+"name": "Marwin Gonzalez"
+},
+"2017|AL|Gregorius": {
+"id": 544369,
+"name": "Didi Gregorius"
+},
+"2017|AL|Hosmer": {
+"id": 543333,
+"name": "Eric Hosmer"
+},
+"2017|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2017|AL|Kluber": {
+"id": 446372,
+"name": "Corey Kluber"
+},
+"2017|AL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2017|AL|Ramirez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2017|AL|Sale": {
+"id": 519242,
+"name": "Chris Sale"
+},
+"2017|AL|Sanchez": {
+"id": 596142,
+"name": "Gary Sánchez"
+},
+"2017|AL|Schoop": {
+"id": 570731,
+"name": "Jonathan Schoop"
+},
+"2017|AL|Simmons": {
+"id": 592743,
+"name": "Andrelton Simmons"
+},
+"2017|AL|Springer": {
+"id": 543807,
+"name": "George Springer"
+},
+"2017|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2017|AL|Upton": {
+"id": 457708,
+"name": "Justin Upton"
+},
+"2017|NL|Arenado": {
+"id": 571448,
+"name": "Nolan Arenado"
+},
+"2017|NL|Bellinger": {
+"id": 641355,
+"name": "Cody Bellinger"
+},
+"2017|NL|Blackmon": {
+"id": 453568,
+"name": "Charlie Blackmon"
+},
+"2017|NL|Bradley": {
+"id": 605151,
+"name": "Archie Bradley"
+},
+"2017|NL|Bryant": {
+"id": 592178,
+"name": "Kris Bryant"
+},
+"2017|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2017|NL|Goldschmiidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2017|NL|Greinke": {
+"id": 425844,
+"name": "Zack Greinke"
+},
+"2017|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper"
+},
+"2017|NL|Jansen": {
+"id": 445276,
+"name": "Kenley Jansen"
+},
+"2017|NL|Kershaw": {
+"id": 477132,
+"name": "Clayton Kershaw"
+},
+"2017|NL|Martinez": {
+"id": 502110,
+"name": "J.D. Martinez"
+},
+"2017|NL|Murphy": {
+"id": 502517,
+"name": "Daniel Murphy"
+},
+"2017|NL|Ozuna": {
+"id": 542303,
+"name": "Marcell Ozuna"
+},
+"2017|NL|Pham": {
+"id": 502054,
+"name": "Tommy Pham"
+},
+"2017|NL|Rendon": {
+"id": 543685,
+"name": "Anthony Rendon"
+},
+"2017|NL|Rizzo": {
+"id": 519203,
+"name": "Anthony Rizzo"
+},
+"2017|NL|Scherzer": {
+"id": 453286,
+"name": "Max Scherzer"
+},
+"2017|NL|Seager": {
+"id": 608369,
+"name": "Corey Seager"
+},
+"2017|NL|Stanton": {
+"id": 519317,
+"name": "Giancarlo Stanton"
+},
+"2017|NL|Turner": {
+"id": 457759,
+"name": "Justin Turner"
+},
+"2017|NL|Votto": {
+"id": 458015,
+"name": "Joey Votto"
+},
+"2017|NL|Zimmerman": {
+"id": 475582,
+"name": "Ryan Zimmerman"
+},
+"2018|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2018|AL|Bauer": {
+"id": 545333,
+"name": "Trevor Bauer"
+},
+"2018|AL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2018|AL|Bogaerts": {
+"id": 593428,
+"name": "Xander Bogaerts"
+},
+"2018|AL|Bregman": {
+"id": 608324,
+"name": "Alex Bregman"
+},
+"2018|AL|Chapman": {
+"id": 656305,
+"name": "Matt Chapman"
+},
+"2018|AL|Davis": {
+"id": 501981,
+"name": "Khris Davis"
+},
+"2018|AL|Diaz": {
+"id": 621242,
+"name": "Edwin Díaz"
+},
+"2018|AL|Gregorius": {
+"id": 544369,
+"name": "Didi Gregorius"
+},
+"2018|AL|Haniger": {
+"id": 571745,
+"name": "Mitch Haniger"
+},
+"2018|AL|Hicks": {
+"id": 543305,
+"name": "Aaron Hicks"
+},
+"2018|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2018|AL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2018|AL|Lowrie": {
+"id": 476704,
+"name": "Jed Lowrie"
+},
+"2018|AL|Martinez": {
+"id": 502110,
+"name": "J.D. Martinez"
+},
+"2018|AL|Merrifield": {
+"id": 593160,
+"name": "Whit Merrifield"
+},
+"2018|AL|Ramirez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2018|AL|Sale": {
+"id": 519242,
+"name": "Chris Sale"
+},
+"2018|AL|Simmons": {
+"id": 592743,
+"name": "Andrelton Simmons"
+},
+"2018|AL|Snell": {
+"id": 605483,
+"name": "Blake Snell"
+},
+"2018|AL|Stanton": {
+"id": 519317,
+"name": "Giancarlo Stanton"
+},
+"2018|AL|Treinen": {
+"id": 595014,
+"name": "Blake Treinen"
+},
+"2018|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2018|AL|Verlander": {
+"id": 434378,
+"name": "Justin Verlander"
+},
+"2018|NL|Acuña": {
+"id": 660670,
+"name": "Ronald Acuña Jr."
+},
+"2018|NL|Aguilar": {
+"id": 542583,
+"name": "Jesús Aguilar"
+},
+"2018|NL|Arenado": {
+"id": 571448,
+"name": "Nolan Arenado"
+},
+"2018|NL|Baez": {
+"id": 595879,
+"name": "Javier Báez"
+},
+"2018|NL|Cain": {
+"id": 456715,
+"name": "Lorenzo Cain"
+},
+"2018|NL|Carpenter": {
+"id": 572761,
+"name": "Matt Carpenter"
+},
+"2018|NL|DeGrom": {
+"id": 594798,
+"name": "Jacob deGrom"
+},
+"2018|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2018|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2018|NL|Markakis": {
+"id": 455976,
+"name": "Nick Markakis"
+},
+"2018|NL|Muncy": {
+"id": 571970,
+"name": "Max Muncy"
+},
+"2018|NL|Nola": {
+"id": 605400,
+"name": "Aaron Nola"
+},
+"2018|NL|Rendon": {
+"id": 543685,
+"name": "Anthony Rendon"
+},
+"2018|NL|Rizzo": {
+"id": 519203,
+"name": "Anthony Rizzo"
+},
+"2018|NL|Scherzer": {
+"id": 453286,
+"name": "Max Scherzer"
+},
+"2018|NL|Story": {
+"id": 596115,
+"name": "Trevor Story"
+},
+"2018|NL|Suarez": {
+"id": 553993,
+"name": "Eugenio Suárez"
+},
+"2018|NL|Turner": {
+"id": 457759,
+"name": "Justin Turner"
+},
+"2018|NL|Yelich": {
+"id": 592885,
+"name": "Christian Yelich"
+},
+"2019|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2019|AL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2019|AL|Bogaerts": {
+"id": 593428,
+"name": "Xander Bogaerts"
+},
+"2019|AL|Bregman": {
+"id": 608324,
+"name": "Alex Bregman"
+},
+"2019|AL|Chapman": {
+"id": 656305,
+"name": "Matt Chapman"
+},
+"2019|AL|Cole": {
+"id": 543037,
+"name": "Gerrit Cole"
+},
+"2019|AL|Cruz": {
+"id": 443558,
+"name": "Nelson Cruz"
+},
+"2019|AL|Devers": {
+"id": 646240,
+"name": "Rafael Devers"
+},
+"2019|AL|Kepler": {
+"id": 596146,
+"name": "Max Kepler"
+},
+"2019|AL|LeMahieu": {
+"id": 518934,
+"name": "DJ LeMahieu"
+},
+"2019|AL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2019|AL|Martinez": {
+"id": 502110,
+"name": "J.D. Martinez"
+},
+"2019|AL|Meadows": {
+"id": 640457,
+"name": "Austin Meadows"
+},
+"2019|AL|Moncada": {
+"id": 660162,
+"name": "Yoán Moncada"
+},
+"2019|AL|Morton": {
+"id": 450203,
+"name": "Charlie Morton"
+},
+"2019|AL|Olson": {
+"id": 621566,
+"name": "Matt Olson"
+},
+"2019|AL|Polanco": {
+"id": 593871,
+"name": "Jorge Polanco"
+},
+"2019|AL|Rosario": {
+"id": 592696,
+"name": "Eddie Rosario"
+},
+"2019|AL|Santana": {
+"id": 467793,
+"name": "Carlos Santana"
+},
+"2019|AL|Semien": {
+"id": 543760,
+"name": "Marcus Semien"
+},
+"2019|AL|Soler": {
+"id": 624585,
+"name": "Jorge Soler"
+},
+"2019|AL|Springer": {
+"id": 543807,
+"name": "George Springer"
+},
+"2019|AL|Torres": {
+"id": 650402,
+"name": "Gleyber Torres"
+},
+"2019|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2019|AL|Verlander": {
+"id": 434378,
+"name": "Justin Verlander"
+},
+"2019|NL|Acuña": {
+"id": 660670,
+"name": "Ronald Acuña Jr."
+},
+"2019|NL|Alonso": {
+"id": 624413,
+"name": "Pete Alonso"
+},
+"2019|NL|Arenado": {
+"id": 571448,
+"name": "Nolan Arenado"
+},
+"2019|NL|Bellinger": {
+"id": 641355,
+"name": "Cody Bellinger"
+},
+"2019|NL|DeGrom": {
+"id": 594798,
+"name": "Jacob deGrom"
+},
+"2019|NL|Donaldson": {
+"id": 518626,
+"name": "Josh Donaldson"
+},
+"2019|NL|Flaherty": {
+"id": 656427,
+"name": "Jack Flaherty"
+},
+"2019|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2019|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2019|NL|Grandal": {
+"id": 518735,
+"name": "Yasmani Grandal"
+},
+"2019|NL|Marte": {
+"id": 606466,
+"name": "Ketel Marte"
+},
+"2019|NL|Muncy": {
+"id": 571970,
+"name": "Max Muncy"
+},
+"2019|NL|Pillar": {
+"id": 607680,
+"name": "Kevin Pillar"
+},
+"2019|NL|Realmuto": {
+"id": 592663,
+"name": "J.T. Realmuto"
+},
+"2019|NL|Rendon": {
+"id": 543685,
+"name": "Anthony Rendon"
+},
+"2019|NL|Ryu": {
+"id": 547943,
+"name": "Hyun Jin Ryu"
+},
+"2019|NL|Scherzer": {
+"id": 453286,
+"name": "Max Scherzer"
+},
+"2019|NL|Soto": {
+"id": 665742,
+"name": "Juan Soto"
+},
+"2019|NL|Story": {
+"id": 596115,
+"name": "Trevor Story"
+},
+"2019|NL|Strasburg": {
+"id": 544931,
+"name": "Stephen Strasburg"
+},
+"2019|NL|Suarez": {
+"id": 553993,
+"name": "Eugenio Suárez"
+},
+"2019|NL|Wong": {
+"id": 543939,
+"name": "Kolten Wong"
+},
+"2019|NL|Yelich": {
+"id": 592885,
+"name": "Christian Yelich"
+},
+"2020|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2020|AL|Anderson": {
+"id": 641313,
+"name": "Tim Anderson"
+},
+"2020|AL|Bieber": {
+"id": 669456,
+"name": "Shane Bieber"
+},
+"2020|AL|Bogaerts": {
+"id": 593428,
+"name": "Xander Bogaerts"
+},
+"2020|AL|Buxton": {
+"id": 621439,
+"name": "Byron Buxton"
+},
+"2020|AL|Cruz": {
+"id": 443558,
+"name": "Nelson Cruz"
+},
+"2020|AL|Fletcher": {
+"id": 664058,
+"name": "David Fletcher"
+},
+"2020|AL|Hendriks": {
+"id": 521230,
+"name": "Liam Hendriks"
+},
+"2020|AL|Hernandez": {
+"id": 606192,
+"name": "Teoscar Hernández"
+},
+"2020|AL|Keuchel": {
+"id": 572971,
+"name": "Dallas Keuchel"
+},
+"2020|AL|LeMahieu": {
+"id": 518934,
+"name": "DJ LeMahieu"
+},
+"2020|AL|Lewis": {
+"id": 641786,
+"name": "Kyle Lewis"
+},
+"2020|AL|Lowe": {
+"id": 664040,
+"name": "Brandon Lowe"
+},
+"2020|AL|Perez": {
+"id": 521692,
+"name": "Salvador Perez"
+},
+"2020|AL|Ramirez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2020|AL|Rendon": {
+"id": 543685,
+"name": "Anthony Rendon"
+},
+"2020|AL|Rosario": {
+"id": 592696,
+"name": "Eddie Rosario"
+},
+"2020|AL|Ryu": {
+"id": 547943,
+"name": "Hyun Jin Ryu"
+},
+"2020|AL|Springer": {
+"id": 543807,
+"name": "George Springer"
+},
+"2020|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2020|AL|Verdugo": {
+"id": 657077,
+"name": "Alex Verdugo"
+},
+"2020|AL|Voit": {
+"id": 572228,
+"name": "Luke Voit"
+},
+"2020|NL|Acuña": {
+"id": 660670,
+"name": "Ronald Acuña Jr."
+},
+"2020|NL|Bauer": {
+"id": 545333,
+"name": "Trevor Bauer"
+},
+"2020|NL|Belt": {
+"id": 474832,
+"name": "Brandon Belt"
+},
+"2020|NL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2020|NL|Darvish": {
+"id": 506433,
+"name": "Yu Darvish"
+},
+"2020|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2020|NL|Fried": {
+"id": 608331,
+"name": "Max Fried"
+},
+"2020|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2020|NL|Happ": {
+"id": 664023,
+"name": "Ian Happ"
+},
+"2020|NL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2020|NL|Myers": {
+"id": 571976,
+"name": "Wil Myers"
+},
+"2020|NL|Ozuna": {
+"id": 542303,
+"name": "Marcell Ozuna"
+},
+"2020|NL|Seager": {
+"id": 608369,
+"name": "Corey Seager"
+},
+"2020|NL|Smith": {
+"id": 642086,
+"name": "Dominic Smith"
+},
+"2020|NL|Soto": {
+"id": 665742,
+"name": "Juan Soto"
+},
+"2020|NL|Story": {
+"id": 596115,
+"name": "Trevor Story"
+},
+"2020|NL|Swanson": {
+"id": 621020,
+"name": "Dansby Swanson"
+},
+"2020|NL|Tatis": {
+"id": 665487,
+"name": "Fernando Tatis Jr."
+},
+"2020|NL|Tepera": {
+"id": 572193,
+"name": "Ryan Tepera"
+},
+"2020|NL|Turner": {
+"id": 607208,
+"name": "Trea Turner"
+},
+"2020|NL|Williams": {
+"id": 642207,
+"name": "Devin Williams"
+},
+"2020|NL|Yastrzemski": {
+"id": 573262,
+"name": "Mike Yastrzemski"
+},
+"2021|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2021|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2021|AL|Bichette": {
+"id": 666182,
+"name": "Bo Bichette"
+},
+"2021|AL|Bogaerts": {
+"id": 593428,
+"name": "Xander Bogaerts"
+},
+"2021|AL|Cole": {
+"id": 543037,
+"name": "Gerrit Cole"
+},
+"2021|AL|Correa": {
+"id": 621043,
+"name": "Carlos Correa"
+},
+"2021|AL|Devers": {
+"id": 646240,
+"name": "Rafael Devers"
+},
+"2021|AL|Eovaldi": {
+"id": 543135,
+"name": "Nathan Eovaldi"
+},
+"2021|AL|Guerrero Jr.": {
+"id": 665489,
+"name": "Vladimir Guerrero Jr."
+},
+"2021|AL|Haniger": {
+"id": 571745,
+"name": "Mitch Haniger"
+},
+"2021|AL|Hernandez": {
+"id": 606192,
+"name": "Teoscar Hernández"
+},
+"2021|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2021|AL|Lowe": {
+"id": 664040,
+"name": "Brandon Lowe"
+},
+"2021|AL|Meadows": {
+"id": 640457,
+"name": "Austin Meadows"
+},
+"2021|AL|Mullins": {
+"id": 656775,
+"name": "Cedric Mullins"
+},
+"2021|AL|Ohtani": {
+"id": 660271,
+"name": "Shohei Ohtani"
+},
+"2021|AL|Olson": {
+"id": 621566,
+"name": "Matt Olson"
+},
+"2021|AL|Perez": {
+"id": 521692,
+"name": "Salvador Perez"
+},
+"2021|AL|Ramirez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2021|AL|Ray": {
+"id": 592662,
+"name": "Robbie Ray"
+},
+"2021|AL|Semien": {
+"id": 543760,
+"name": "Marcus Semien"
+},
+"2021|AL|Tucker": {
+"id": 663656,
+"name": "Kyle Tucker"
+},
+"2021|AL|Zunino": {
+"id": 572287,
+"name": "Mike Zunino"
+},
+"2021|NL|Adames": {
+"id": 642715,
+"name": "Willy Adames"
+},
+"2021|NL|Albies": {
+"id": 645277,
+"name": "Ozzie Albies"
+},
+"2021|NL|Burnes": {
+"id": 669203,
+"name": "Corbin Burnes"
+},
+"2021|NL|Castellanos": {
+"id": 592206,
+"name": "Nick Castellanos"
+},
+"2021|NL|Crawford": {
+"id": 543063,
+"name": "Brandon Crawford"
+},
+"2021|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2021|NL|Gausman": {
+"id": 592332,
+"name": "Kevin Gausman"
+},
+"2021|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2021|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper"
+},
+"2021|NL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2021|NL|Muncy": {
+"id": 571970,
+"name": "Max Muncy"
+},
+"2021|NL|O'Neill": {
+"id": 641933,
+"name": "Tyler O'Neill"
+},
+"2021|NL|Posey": {
+"id": 457763,
+"name": "Buster Posey"
+},
+"2021|NL|Reynolds": {
+"id": 668804,
+"name": "Bryan Reynolds"
+},
+"2021|NL|Riley": {
+"id": 663586,
+"name": "Austin Riley"
+},
+"2021|NL|Scherzer": {
+"id": 453286,
+"name": "Max Scherzer"
+},
+"2021|NL|Soto": {
+"id": 665742,
+"name": "Juan Soto"
+},
+"2021|NL|Tatis Jr.": {
+"id": 665487,
+"name": "Fernando Tatis Jr."
+},
+"2021|NL|Turner": {
+"id": 607208,
+"name": "Trea Turner"
+},
+"2021|NL|Votto": {
+"id": 458015,
+"name": "Joey Votto"
+},
+"2021|NL|Wade Jr.": {
+"id": 664774,
+"name": "LaMonte Wade Jr."
+},
+"2021|NL|Wainwright": {
+"id": 425794,
+"name": "Adam Wainwright"
+},
+"2021|NL|Wheeler": {
+"id": 554430,
+"name": "Zack Wheeler"
+},
+"2022|AL|Abreu": {
+"id": 547989,
+"name": "José Abreu"
+},
+"2022|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2022|AL|Alvarez": {
+"id": 670541,
+"name": "Yordan Alvarez"
+},
+"2022|AL|Arraez": {
+"id": 650333,
+"name": "Luis Arraez"
+},
+"2022|AL|Bichette": {
+"id": 666182,
+"name": "Bo Bichette"
+},
+"2022|AL|Bogaerts": {
+"id": 593428,
+"name": "Xander Bogaerts"
+},
+"2022|AL|Bregman": {
+"id": 608324,
+"name": "Alex Bregman"
+},
+"2022|AL|Cease": {
+"id": 656302,
+"name": "Dylan Cease"
+},
+"2022|AL|Devers": {
+"id": 646240,
+"name": "Rafael Devers"
+},
+"2022|AL|Díaz": {
+"id": 650490,
+"name": "Yandy Díaz"
+},
+"2022|AL|Giménez": {
+"id": 665926,
+"name": "Andrés Giménez"
+},
+"2022|AL|Guerrero Jr.": {
+"id": 665489,
+"name": "Vladimir Guerrero Jr."
+},
+"2022|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2022|AL|Manoah": {
+"id": 666201,
+"name": "Alek Manoah"
+},
+"2022|AL|Murphy": {
+"id": 669221,
+"name": "Sean Murphy"
+},
+"2022|AL|Ohtani": {
+"id": 660271,
+"name": "Shohei Ohtani"
+},
+"2022|AL|Ramírez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2022|AL|Rodríguez": {
+"id": 677594,
+"name": "Julio Rodríguez"
+},
+"2022|AL|Rutschman": {
+"id": 668939,
+"name": "Adley Rutschman"
+},
+"2022|AL|Trout": {
+"id": 545361,
+"name": "Mike Trout"
+},
+"2022|AL|Tucker": {
+"id": 663656,
+"name": "Kyle Tucker"
+},
+"2022|AL|Valdez": {
+"id": 664285,
+"name": "Framber Valdez"
+},
+"2022|AL|Verlander": {
+"id": 434378,
+"name": "Justin Verlander"
+},
+"2022|NL|Alcantara": {
+"id": 645261,
+"name": "Sandy Alcantara"
+},
+"2022|NL|Alonso": {
+"id": 624413,
+"name": "Pete Alonso"
+},
+"2022|NL|Arenado": {
+"id": 571448,
+"name": "Nolan Arenado"
+},
+"2022|NL|Bard": {
+"id": 453268,
+"name": "Daniel Bard"
+},
+"2022|NL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2022|NL|Díaz": {
+"id": 621242,
+"name": "Edwin Díaz"
+},
+"2022|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2022|NL|Goldschmidt": {
+"id": 502671,
+"name": "Paul Goldschmidt"
+},
+"2022|NL|Harris II": {
+"id": 671739,
+"name": "Michael Harris II"
+},
+"2022|NL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2022|NL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2022|NL|Marte": {
+"id": 516782,
+"name": "Starling Marte"
+},
+"2022|NL|McNeil": {
+"id": 643446,
+"name": "Jeff McNeil"
+},
+"2022|NL|Realmuto": {
+"id": 592663,
+"name": "J.T. Realmuto"
+},
+"2022|NL|Riley": {
+"id": 663586,
+"name": "Austin Riley"
+},
+"2022|NL|Schwarber": {
+"id": 656941,
+"name": "Kyle Schwarber"
+},
+"2022|NL|Swanson": {
+"id": 621020,
+"name": "Dansby Swanson"
+},
+"2022|NL|Turner": {
+"id": 607208,
+"name": "Trea Turner"
+},
+"2022|NL|Urías": {
+"id": 628711,
+"name": "Julio Urías"
+},
+"2023|AL|Alvarez": {
+"id": 670541,
+"name": "Yordan Alvarez"
+},
+"2023|AL|Bichette": {
+"id": 666182,
+"name": "Bo Bichette"
+},
+"2023|AL|Bregman": {
+"id": 608324,
+"name": "Alex Bregman"
+},
+"2023|AL|Cole": {
+"id": 543037,
+"name": "Gerrit Cole"
+},
+"2023|AL|Crawford": {
+"id": 641487,
+"name": "J.P. Crawford"
+},
+"2023|AL|Devers": {
+"id": 646240,
+"name": "Rafael Devers"
+},
+"2023|AL|Díaz": {
+"id": 650490,
+"name": "Yandy Díaz"
+},
+"2023|AL|García": {
+"id": 666969,
+"name": "Adolis García"
+},
+"2023|AL|Gray": {
+"id": 543243,
+"name": "Sonny Gray"
+},
+"2023|AL|Henderson": {
+"id": 683002,
+"name": "Gunnar Henderson"
+},
+"2023|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2023|AL|Naylor": {
+"id": 647304,
+"name": "Josh Naylor"
+},
+"2023|AL|Ohtani": {
+"id": 660271,
+"name": "Shohei Ohtani"
+},
+"2023|AL|Paredes": {
+"id": 670623,
+"name": "Isaac Paredes"
+},
+"2023|AL|Raleigh": {
+"id": 663728,
+"name": "Cal Raleigh"
+},
+"2023|AL|Ramírez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2023|AL|Robert Jr.": {
+"id": 673357,
+"name": "Luis Robert Jr."
+},
+"2023|AL|Rodríguez": {
+"id": 677594,
+"name": "Julio Rodríguez"
+},
+"2023|AL|Rutschman": {
+"id": 668939,
+"name": "Adley Rutschman"
+},
+"2023|AL|Seager": {
+"id": 608369,
+"name": "Corey Seager"
+},
+"2023|AL|Semien": {
+"id": 543760,
+"name": "Marcus Semien"
+},
+"2023|AL|Tucker": {
+"id": 663656,
+"name": "Kyle Tucker"
+},
+"2023|AL|Witt": {
+"id": 677951,
+"name": "Bobby Witt Jr."
+},
+"2023|NL|Acuna Jr.": {
+"id": 660670,
+"name": "Ronald Acuña Jr."
+},
+"2023|NL|Albies": {
+"id": 645277,
+"name": "Ozzie Albies"
+},
+"2023|NL|Alonso": {
+"id": 624413,
+"name": "Pete Alonso"
+},
+"2023|NL|Arraez": {
+"id": 650333,
+"name": "Luis Arraez"
+},
+"2023|NL|Bellinger": {
+"id": 641355,
+"name": "Cody Bellinger"
+},
+"2023|NL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2023|NL|Carroll": {
+"id": 682998,
+"name": "Corbin Carroll"
+},
+"2023|NL|Castellanos": {
+"id": 592206,
+"name": "Nick Castellanos"
+},
+"2023|NL|Contreras": {
+"id": 661388,
+"name": "William Contreras"
+},
+"2023|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2023|NL|Friedl": {
+"id": 670770,
+"name": "TJ Friedl"
+},
+"2023|NL|Gallen": {
+"id": 668678,
+"name": "Zac Gallen"
+},
+"2023|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper"
+},
+"2023|NL|Kim": {
+"id": 673490,
+"name": "Ha-Seong Kim"
+},
+"2023|NL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2023|NL|Olson": {
+"id": 621566,
+"name": "Matt Olson"
+},
+"2023|NL|Ozuna": {
+"id": 542303,
+"name": "Marcell Ozuna"
+},
+"2023|NL|Riley": {
+"id": 663586,
+"name": "Austin Riley"
+},
+"2023|NL|Schwarber": {
+"id": 656941,
+"name": "Kyle Schwarber"
+},
+"2023|NL|Snell": {
+"id": 605483,
+"name": "Blake Snell"
+},
+"2023|NL|Soto": {
+"id": 665742,
+"name": "Juan Soto"
+},
+"2023|NL|Swanson": {
+"id": 621020,
+"name": "Dansby Swanson"
+},
+"2023|NL|Tatis Jr.": {
+"id": 665487,
+"name": "Fernando Tatis Jr."
+},
+"2023|NL|Walker": {
+"id": 572233,
+"name": "Christian Walker"
+},
+"2023|NL|Webb": {
+"id": 657277,
+"name": "Logan Webb"
+},
+"2023|NL|Williams": {
+"id": 642207,
+"name": "Devin Williams"
+},
+"2024|AL|Altuve": {
+"id": 514888,
+"name": "Jose Altuve"
+},
+"2024|AL|Alvarez": {
+"id": 670541,
+"name": "Yordan Alvarez"
+},
+"2024|AL|Clase": {
+"id": 661403,
+"name": "Emmanuel Clase"
+},
+"2024|AL|Devers": {
+"id": 646240,
+"name": "Rafael Devers"
+},
+"2024|AL|Duran": {
+"id": 680776,
+"name": "Jarren Duran"
+},
+"2024|AL|Guerrero": {
+"id": 665489,
+"name": "Vladimir Guerrero Jr."
+},
+"2024|AL|Henderson": {
+"id": 683002,
+"name": "Gunnar Henderson"
+},
+"2024|AL|Holton": {
+"id": 663947,
+"name": "Tyler Holton"
+},
+"2024|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2024|AL|Lugo": {
+"id": 607625,
+"name": "Seth Lugo"
+},
+"2024|AL|Raleigh": {
+"id": 663728,
+"name": "Cal Raleigh"
+},
+"2024|AL|Ramírez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2024|AL|Rooker": {
+"id": 667670,
+"name": "Brent Rooker"
+},
+"2024|AL|Santander": {
+"id": 623993,
+"name": "Anthony Santander"
+},
+"2024|AL|Seager": {
+"id": 608369,
+"name": "Corey Seager"
+},
+"2024|AL|Skubal": {
+"id": 669373,
+"name": "Tarik Skubal"
+},
+"2024|AL|Soto": {
+"id": 665742,
+"name": "Juan Soto"
+},
+"2024|AL|Valdez": {
+"id": 664285,
+"name": "Framber Valdez"
+},
+"2024|AL|Witt": {
+"id": 677951,
+"name": "Bobby Witt Jr."
+},
+"2024|NL|Adames": {
+"id": 642715,
+"name": "Willy Adames"
+},
+"2024|NL|Arraez": {
+"id": 650333,
+"name": "Luis Arraez"
+},
+"2024|NL|Betts": {
+"id": 605141,
+"name": "Mookie Betts"
+},
+"2024|NL|Cease": {
+"id": 656302,
+"name": "Dylan Cease"
+},
+"2024|NL|Chapman": {
+"id": 656305,
+"name": "Matt Chapman"
+},
+"2024|NL|Chourio": {
+"id": 694192,
+"name": "Jackson Chourio"
+},
+"2024|NL|Contreras": {
+"id": 661388,
+"name": "William Contreras"
+},
+"2024|NL|De La Cruz": {
+"id": 682829,
+"name": "Elly De La Cruz"
+},
+"2024|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2024|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper"
+},
+"2024|NL|Hernández": {
+"id": 606192,
+"name": "Teoscar Hernández"
+},
+"2024|NL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2024|NL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2024|NL|Marte": {
+"id": 606466,
+"name": "Ketel Marte"
+},
+"2024|NL|Merrill": {
+"id": 701538,
+"name": "Jackson Merrill"
+},
+"2024|NL|Ohtani": {
+"id": 660271,
+"name": "Shohei Ohtani"
+},
+"2024|NL|Ozuna": {
+"id": 542303,
+"name": "Marcell Ozuna"
+},
+"2024|NL|Profar": {
+"id": 595777,
+"name": "Jurickson Profar"
+},
+"2024|NL|Sale": {
+"id": 519242,
+"name": "Chris Sale"
+},
+"2024|NL|Schwarber": {
+"id": 656941,
+"name": "Kyle Schwarber"
+},
+"2024|NL|Skenes": {
+"id": 694973,
+"name": "Paul Skenes"
+},
+"2024|NL|Tovar": {
+"id": 678662,
+"name": "Ezequiel Tovar"
+},
+"2024|NL|Wheeler": {
+"id": 554430,
+"name": "Zack Wheeler"
+},
+"2025|AL|Bellinger": {
+"id": 641355,
+"name": "Cody Bellinger"
+},
+"2025|AL|Bichette": {
+"id": 666182,
+"name": "Bo Bichette"
+},
+"2025|AL|Buxton": {
+"id": 621439,
+"name": "Byron Buxton"
+},
+"2025|AL|Caminero": {
+"id": 691406,
+"name": "Junior Caminero"
+},
+"2025|AL|Chapman": {
+"id": 547973,
+"name": "Aroldis Chapman"
+},
+"2025|AL|Crochet": {
+"id": 676979,
+"name": "Garrett Crochet"
+},
+"2025|AL|Díaz": {
+"id": 650490,
+"name": "Yandy Díaz"
+},
+"2025|AL|Garcia": {
+"id": 672580,
+"name": "Maikel Garcia"
+},
+"2025|AL|Greene": {
+"id": 682985,
+"name": "Riley Greene"
+},
+"2025|AL|Guerrero Jr.": {
+"id": 665489,
+"name": "Vladimir Guerrero Jr."
+},
+"2025|AL|Judge": {
+"id": 592450,
+"name": "Aaron Judge"
+},
+"2025|AL|Kurtz": {
+"id": 701762,
+"name": "Nick Kurtz"
+},
+"2025|AL|Peña": {
+"id": 665161,
+"name": "Jeremy Peña"
+},
+"2025|AL|Raleigh": {
+"id": 663728,
+"name": "Cal Raleigh"
+},
+"2025|AL|Ramírez": {
+"id": 608070,
+"name": "José Ramírez"
+},
+"2025|AL|Rodríguez": {
+"id": 677594,
+"name": "Julio Rodríguez"
+},
+"2025|AL|Skubal": {
+"id": 669373,
+"name": "Tarik Skubal"
+},
+"2025|AL|Springer": {
+"id": 543807,
+"name": "George Springer"
+},
+"2025|AL|Wilson": {
+"id": 805779,
+"name": "Jacob Wilson"
+},
+"2025|AL|Witt Jr.": {
+"id": 677951,
+"name": "Bobby Witt Jr."
+},
+"2025|NL|Alonso": {
+"id": 624413,
+"name": "Pete Alonso"
+},
+"2025|NL|Busch": {
+"id": 683737,
+"name": "Michael Busch"
+},
+"2025|NL|Carroll": {
+"id": 682998,
+"name": "Corbin Carroll"
+},
+"2025|NL|De La Cruz": {
+"id": 682829,
+"name": "Elly De La Cruz"
+},
+"2025|NL|Freeman": {
+"id": 518692,
+"name": "Freddie Freeman"
+},
+"2025|NL|Lindor": {
+"id": 596019,
+"name": "Francisco Lindor"
+},
+"2025|NL|Machado": {
+"id": 592518,
+"name": "Manny Machado"
+},
+"2025|NL|Marte": {
+"id": 606466,
+"name": "Ketel Marte"
+},
+"2025|NL|Nico Hoerner": {
+"id": 663538,
+"name": "Nico Hoerner"
+},
+"2025|NL|Ohtani": {
+"id": 660271,
+"name": "Shohei Ohtani"
+},
+"2025|NL|Olson": {
+"id": 621566,
+"name": "Matt Olson"
+},
+"2025|NL|PCA": {
+"id": 691718,
+"name": "Pete Crow-Armstrong"
+},
+"2025|NL|Perdomo": {
+"id": 672695,
+"name": "Geraldo Perdomo"
+},
+"2025|NL|Schwarber": {
+"id": 656941,
+"name": "Kyle Schwarber"
+},
+"2025|NL|Skenes": {
+"id": 694973,
+"name": "Paul Skenes"
+},
+"2025|NL|Smith": {
+"id": 669257,
+"name": "Will Smith"
+},
+"2025|NL|Soto": {
+"id": 665742,
+"name": "Juan Soto"
+},
+"2025|NL|Suzuki": {
+"id": 673548,
+"name": "Seiya Suzuki"
+},
+"2025|NL|Sánchez": {
+"id": 650911,
+"name": "Cristopher Sánchez"
+},
+"2025|NL|Tatis Jr.": {
+"id": 665487,
+"name": "Fernando Tatis Jr."
+},
+"2025|NL|Turang": {
+"id": 668930,
+"name": "Brice Turang"
+},
+"2025|NL|Turner": {
+"id": 607208,
+"name": "Trea Turner"
+},
+"2025|NL|Yelich": {
+"id": 592885,
+"name": "Christian Yelich"
+}
+},
+"hof": {
+"Harold Baines": {
+"id": 110456,
+"name": "Harold Baines"
+},
+"Bert Blyleven": {
+"id": 111126,
+"name": "Bert Blyleven"
+},
+"Andre Dawson": {
+"id": 113151,
+"name": "Andre Dawson"
+},
+"Rickey Henderson": {
+"id": 115749,
+"name": "Rickey Henderson"
+},
+"Tommy John": {
+"id": 116550,
+"name": "Tommy John"
+},
+"Don Mattingly": {
+"id": 118443,
+"name": "Don Mattingly"
+},
+"Mark McGwire": {
+"id": 118743,
+"name": "Mark McGwire"
+},
+"Jack Morris": {
+"id": 119399,
+"name": "Jack Morris"
+},
+"Dale Murphy": {
+"id": 119545,
+"name": "Dale Murphy"
+},
+"Dave Parker": {
+"id": 120225,
+"name": "Dave Parker"
+},
+"Tim Raines": {
+"id": 120891,
+"name": "Tim Raines Sr."
+},
+"Jim Rice": {
+"id": 121140,
+"name": "Jim Rice"
+},
+"Lee Smith": {
+"id": 122426,
+"name": "Lee Smith"
+},
+"Alan Trammell": {
+"id": 123437,
+"name": "Alan Trammell"
+},
+"Roberto Alomar": {
+"id": 110183,
+"name": "Roberto Alomar"
+},
+"Barry Larkin": {
+"id": 117501,
+"name": "Barry Larkin"
+},
+"Edgar Martinez": {
+"id": 118365,
+"name": "Edgar Martinez"
+},
+"Fred McGriff": {
+"id": 118730,
+"name": "Fred McGriff"
+},
+"Robin Ventura": {
+"id": 123697,
+"name": "Robin Ventura"
+},
+"Carlos Baerga": {
+"id": 110427,
+"name": "Carlos Baerga"
+},
+"Jeff Bagwell": {
+"id": 110432,
+"name": "Jeff Bagwell"
+},
+"Kevin Brown": {
+"id": 111554,
+"name": "Kevin Brown"
+},
+"John Franco": {
+"id": 114374,
+"name": "John Franco"
+},
+"Juan Gonzalez": {
+"id": 114932,
+"name": "Juan Gonzalez"
+},
+"Tino Martinez": {
+"id": 118362,
+"name": "Tino Martinez"
+},
+"John Olerud": {
+"id": 119976,
+"name": "John Olerud"
+},
+"Rafael Palmeiro": {
+"id": 120191,
+"name": "Rafael Palmeiro"
+},
+"BJ Surhoff": {
+"id": 122989,
+"name": "B.J. Surhoff"
+},
+"Larry Walker": {
+"id": 123833,
+"name": "Larry Walker"
+},
+"Vinny Castilla": {
+"id": 112106,
+"name": "Vinny Castilla"
+},
+"Bill Mueller": {
+"id": 119482,
+"name": "Bill Mueller"
+},
+"Bernie Williams": {
+"id": 124288,
+"name": "Bernie Williams"
+},
+"Sandy Alomar Jr": {
+"id": 110184,
+"name": "Sandy Alomar Jr."
+},
+"Craig Biggio": {
+"id": 110987,
+"name": "Craig Biggio"
+},
+"Barry Bonds": {
+"id": 111188,
+"name": "Barry Bonds"
+},
+"Jeff Cirillo": {
+"id": 112297,
+"name": "Jeff Cirillo"
+},
+"Royce Clayton": {
+"id": 112381,
+"name": "Royce Clayton"
+},
+"Roger Clemens": {
+"id": 112388,
+"name": "Roger Clemens"
+},
+"Jeff Conine": {
+"id": 112559,
+"name": "Jeff Conine"
+},
+"Steve Finley": {
+"id": 114135,
+"name": "Steve Finley"
+},
+"Julio Franco": {
+"id": 212297,
+"name": "Julio Franco"
+},
+"Shawn Green": {
+"id": 115094,
+"name": "Shawn Green"
+},
+"Roberto Hernandez": {
+"id": 115832,
+"name": "Roberto Hernandez"
+},
+"Ryan Klesko": {
+"id": 117148,
+"name": "Ryan Klesko"
+},
+"Kenny Lofton": {
+"id": 117863,
+"name": "Kenny Lofton"
+},
+"Jose Mesa": {
+"id": 118986,
+"name": "Jose Mesa"
+},
+"Mike Piazza": {
+"id": 120536,
+"name": "Mike Piazza"
+},
+"Reggie Sanders": {
+"id": 121673,
+"name": "Reggie Sanders"
+},
+"Curt Schilling": {
+"id": 121811,
+"name": "Curt Schilling"
+},
+"Aaron Sele": {
+"id": 121986,
+"name": "Aaron Sele"
+},
+"Sammy Sosa": {
+"id": 122544,
+"name": "Sammy Sosa"
+},
+"Mike Stanton": {
+"id": 122681,
+"name": "Mike Stanton"
+},
+"Todd Walker": {
+"id": 123842,
+"name": "Todd Walker"
+},
+"David Wells": {
+"id": 124071,
+"name": "David Wells"
+},
+"Rondell White": {
+"id": 124185,
+"name": "Rondell White"
+},
+"Moises Alou": {
+"id": 110189,
+"name": "Moises Alou"
+},
+"Sean Casey": {
+"id": 112087,
+"name": "Sean Casey"
+},
+"Ray Durham": {
+"id": 113660,
+"name": "Ray Durham"
+},
+"Eric Gagne": {
+"id": 150378,
+"name": "Eric Gagne"
+},
+"Tom Glavine": {
+"id": 114849,
+"name": "Tom Glavine"
+},
+"Luis Gonzalez": {
+"id": 114935,
+"name": "Luis Gonzalez"
+},
+"Jacque Jones": {
+"id": 150218,
+"name": "Jacque Jones"
+},
+"Todd Jones": {
+"id": 116734,
+"name": "Todd Jones"
+},
+"Jeff Kent": {
+"id": 116999,
+"name": "Jeff Kent"
+},
+"Paul Lo Duca": {
+"id": 134001,
+"name": "Paul Lo Duca"
+},
+"Greg Maddux": {
+"id": 118120,
+"name": "Greg Maddux"
+},
+"Mike Mussina": {
+"id": 119608,
+"name": "Mike Mussina"
+},
+"Hideo Nomo": {
+"id": 119827,
+"name": "Hideo Nomo"
+},
+"Kenny Rogers": {
+"id": 121386,
+"name": "Kenny Rogers"
+},
+"Richie Sexson": {
+"id": 122027,
+"name": "Richie Sexson"
+},
+"JT Snow": {
+"id": 122497,
+"name": "J.T. Snow"
+},
+"Frank Thomas": {
+"id": 123245,
+"name": "Frank Thomas"
+},
+"Mike Timlin": {
+"id": 123348,
+"name": "Mike Timlin"
+},
+"Rich Aurilia": {
+"id": 110383,
+"name": "Rich Aurilia"
+},
+"Aaron Boone": {
+"id": 111213,
+"name": "Aaron Boone"
+},
+"Tony Clark": {
+"id": 112316,
+"name": "Tony Clark"
+},
+"Carlos Delgado": {
+"id": 113232,
+"name": "Carlos Delgado"
+},
+"Jermaine Dye": {
+"id": 113679,
+"name": "Jermaine Dye"
+},
+"Darin Erstad": {
+"id": 113889,
+"name": "Darin Erstad"
+},
+"Cliff Floyd": {
+"id": 114260,
+"name": "Cliff Floyd"
+},
+"Nomar Garciaparra": {
+"id": 114596,
+"name": "Nomar Garciaparra"
+},
+"Brian Giles": {
+"id": 114789,
+"name": "Brian Giles"
+},
+"Tom Gordon": {
+"id": 114971,
+"name": "Tom Gordon"
+},
+"Eddie Guardado": {
+"id": 115216,
+"name": "Eddie Guardado"
+},
+"Randy Johnson": {
+"id": 116615,
+"name": "Randy Johnson"
+},
+"Pedro Martinez": {
+"id": 118377,
+"name": "Pedro Martínez"
+},
+"Troy Percival": {
+"id": 120401,
+"name": "Troy Percival"
+},
+"Jason Schmidt": {
+"id": 121834,
+"name": "Jason Schmidt"
+},
+"Gary Sheffield": {
+"id": 122111,
+"name": "Gary Sheffield"
+},
+"John Smoltz": {
+"id": 122477,
+"name": "John Smoltz"
+},
+"Garret Anderson": {
+"id": 110236,
+"name": "Garret Anderson"
+},
+"Brad Ausmus": {
+"id": 110385,
+"name": "Brad Ausmus"
+},
+"Luis Castollo": {
+"id": 112116,
+"name": "Luis Castillo"
+},
+"David Eckstein": {
+"id": 275930,
+"name": "David Eckstein"
+},
+"Jim Edmonds": {
+"id": 113744,
+"name": "Jim Edmonds"
+},
+"Troy Glaus": {
+"id": 136267,
+"name": "Troy Glaus"
+},
+"Ken Griffey Jr.": {
+"id": 115135,
+"name": "Ken Griffey Jr."
+},
+"Mark Gruzielanek": {
+"id": 115210,
+"name": "Mark Grudzielanek"
+},
+"Mike Hampton": {
+"id": 115399,
+"name": "Mike Hampton"
+},
+"Trevor Hoffman": {
+"id": 116034,
+"name": "Trevor Hoffman"
+},
+"Jason Kendall": {
+"id": 116974,
+"name": "Jason Kendall"
+},
+"Mike Lowell": {
+"id": 136780,
+"name": "Mike Lowell"
+},
+"Mike Sweeney": {
+"id": 123041,
+"name": "Mike Sweeney"
+},
+"Billy Wagner": {
+"id": 123790,
+"name": "Billy Wagner"
+},
+"Randy Winn": {
+"id": 133160,
+"name": "Randy Winn"
+},
+"Vlad Guerrero": {
+"id": 115223,
+"name": "Vladimir Guerrero"
+},
+"Jorge Posada": {
+"id": 120691,
+"name": "Jorge Posada"
+},
+"Manny Ramirez": {
+"id": 120903,
+"name": "Manny Ramirez"
+},
+"Ivan Rodriguez": {
+"id": 121358,
+"name": "Ivan Rodriguez"
+},
+"Casey Blake": {
+"id": 232694,
+"name": "Casey Blake"
+},
+"Pat Burrell": {
+"id": 150100,
+"name": "Pat Burrell"
+},
+"Orlando Cabrera": {
+"id": 111851,
+"name": "Orlando Cabrera"
+},
+"Mike Cameron": {
+"id": 111904,
+"name": "Mike Cameron"
+},
+"J.D. Drew": {
+"id": 136770,
+"name": "J.D. Drew"
+},
+"Carlos Guillen": {
+"id": 136722,
+"name": "Carlos Guillén"
+},
+"Derrek Lee": {
+"id": 117601,
+"name": "Derrek Lee"
+},
+"Melvin Mora": {
+"id": 206551,
+"name": "Melvin Mora"
+},
+"Magglio Ordonez": {
+"id": 120044,
+"name": "Magglio Ordonez"
+},
+"Edgar Renteria": {
+"id": 121074,
+"name": "Edgar Renteria"
+},
+"Arthur Rhodes": {
+"id": 121125,
+"name": "Arthur Rhodes"
+},
+"Freddy Sanchez": {
+"id": 408108,
+"name": "Freddy Sanchez"
+},
+"Matt Stairs": {
+"id": 122644,
+"name": "Matt Stairs"
+},
+"Jason Varitek": {
+"id": 123660,
+"name": "Jason Varitek"
+},
+"Tim Wakefield": {
+"id": 123801,
+"name": "Tim Wakefield"
+},
+"Johnny Damon": {
+"id": 113028,
+"name": "Johnny Damon"
+},
+"Andruw Jones": {
+"id": 116662,
+"name": "Andruw Jones"
+},
+"Chipper Jones": {
+"id": 116706,
+"name": "Chipper Jones"
+},
+"Scott Rolen": {
+"id": 121409,
+"name": "Scott Rolen"
+},
+"Johan Santana": {
+"id": 276371,
+"name": "Johan Santana"
+},
+"Jim Thome": {
+"id": 123272,
+"name": "Jim Thome"
+},
+"Omar Vizquel": {
+"id": 123744,
+"name": "Omar Vizquel"
+},
+"Chris Carpenter": {
+"id": 112020,
+"name": "Chris Carpenter"
+},
+"Livan Hernandez": {
+"id": 115817,
+"name": "Livan Hernandez"
+},
+"Orlando Hudson": {
+"id": 407861,
+"name": "Orlando Hudson"
+},
+"Aubrey Huff": {
+"id": 333492,
+"name": "Aubrey Huff"
+},
+"Jason Isringhausen": {
+"id": 116414,
+"name": "Jason Isringhausen"
+},
+"Carlos Lee": {
+"id": 150324,
+"name": "Carlos Lee"
+},
+"Brad Lidge": {
+"id": 400058,
+"name": "Brad Lidge"
+},
+"Hideki Matsui": {
+"id": 425686,
+"name": "Hideki Matsui"
+},
+"Kevin Millwood": {
+"id": 119154,
+"name": "Kevin Millwood"
+},
+"Jamie Moyer": {
+"id": 119469,
+"name": "Jamie Moyer"
+},
+"Kerry Wood": {
+"id": 134268,
+"name": "Kerry Wood"
+},
+"Carlos Zambrano": {
+"id": 407296,
+"name": "Carlos Zambrano"
+},
+"Lance Berkman": {
+"id": 204020,
+"name": "Lance Berkman"
+},
+"Roy Halladay": {
+"id": 136880,
+"name": "Roy Halladay"
+},
+"Todd Helton": {
+"id": 115732,
+"name": "Todd Helton"
+},
+"Roy Oswalt": {
+"id": 400061,
+"name": "Roy Oswalt"
+},
+"Andy Pettitte": {
+"id": 120485,
+"name": "Andy Pettitte"
+},
+"Mariano Rivera": {
+"id": 121250,
+"name": "Mariano Rivera"
+},
+"Michael Young": {
+"id": 276545,
+"name": "Michael Young"
+},
+"Rick Ankiel": {
+"id": 150449,
+"name": "Rick Ankiel"
+},
+"Jason Bay": {
+"id": 424726,
+"name": "Jason Bay"
+},
+"Freddy Garcia": {
+"id": 150119,
+"name": "Freddy Garcia"
+},
+"Jon Garland": {
+"id": 279782,
+"name": "Jon Garland"
+},
+"Travis Hafner": {
+"id": 400098,
+"name": "Travis Hafner"
+},
+"Ted Lilly": {
+"id": 150404,
+"name": "Ted Lilly"
+},
+"Derek Lowe": {
+"id": 117955,
+"name": "Derek Lowe"
+},
+"Darren Oliver": {
+"id": 119984,
+"name": "Darren Oliver"
+},
+"Juan Pierre": {
+"id": 334393,
+"name": "Juan Pierre"
+},
+"Placido Polanco": {
+"id": 135784,
+"name": "Placido Polanco"
+},
+"Miguel Tejada": {
+"id": 123173,
+"name": "Miguel Tejada"
+},
+"Vernon Wells": {
+"id": 150484,
+"name": "Vernon Wells"
+},
+"Kevin Youkilis": {
+"id": 425903,
+"name": "Kevin Youkilis"
+},
+"Bobby Abreu": {
+"id": 110029,
+"name": "Bobby Abreu"
+},
+"Eric Chávez": {
+"id": 136767,
+"name": "Eric Chavez"
+},
+"Adam Dunn": {
+"id": 276055,
+"name": "Adam Dunn"
+},
+"Jason Giambi": {
+"id": 114739,
+"name": "Jason Giambi"
+},
+"Derek Jeter": {
+"id": 116539,
+"name": "Derek Jeter"
+},
+"Paul Konerko": {
+"id": 117244,
+"name": "Paul Konerko"
+},
+"Cliff Lee": {
+"id": 424324,
+"name": "Cliff Lee"
+},
+"Alfonso Soriano": {
+"id": 150093,
+"name": "Alfonso Soriano"
+},
+"Josh Beckett": {
+"id": 277417,
+"name": "Josh Beckett"
+},
+"Heath Bell": {
+"id": 425514,
+"name": "Heath Bell"
+},
+"Chone Figgins": {
+"id": 408210,
+"name": "Chone Figgins"
+},
+"Rafael Furcal": {
+"id": 279577,
+"name": "Rafael Furcal"
+},
+"Raúl Ibañez": {
+"id": 116380,
+"name": "Raul Ibanez"
+},
+"Carlos Peña": {
+"id": 150289,
+"name": "Carlos Pena"
+},
+"Brad Penny": {
+"id": 207267,
+"name": "Brad Penny"
+},
+"JJ Putz": {
+"id": 407816,
+"name": "J.J. Putz"
+},
+"Brian Roberts": {
+"id": 406878,
+"name": "Brian Roberts"
+},
+"José Valverde": {
+"id": 407878,
+"name": "Jose Valverde"
+},
+"Mark Buehrle": {
+"id": 279824,
+"name": "Mark Buehrle"
+},
+"A.J. Burnett": {
+"id": 150359,
+"name": "A.J. Burnett"
+},
+"Michael Cuddyer": {
+"id": 150212,
+"name": "Michael Cuddyer"
+},
+"Dan Haren": {
+"id": 429717,
+"name": "Dan Haren"
+},
+"LaTroy Hawkins": {
+"id": 115629,
+"name": "LaTroy Hawkins"
+},
+"Tim Hudson": {
+"id": 218596,
+"name": "Tim Hudson"
+},
+"Torii Hunter": {
+"id": 116338,
+"name": "Torii Hunter"
+},
+"Aramis Ramirez": {
+"id": 133380,
+"name": "Aramis Ramirez"
+},
+"Nick Swisher": {
+"id": 430897,
+"name": "Nick Swisher"
+},
+"Shane Victorino": {
+"id": 425664,
+"name": "Shane Victorino"
+},
+"Barry Zito": {
+"id": 217096,
+"name": "Barry Zito"
+},
+"Ryan Howard": {
+"id": 429667,
+"name": "Ryan Howard"
+},
+"Tim Lincecum": {
+"id": 453311,
+"name": "Tim Lincecum"
+},
+"Joe Nathan": {
+"id": 150274,
+"name": "Joe Nathan"
+},
+"David Ortiz": {
+"id": 120074,
+"name": "David Ortiz"
+},
+"Jonathan Papelbon": {
+"id": 449097,
+"name": "Jonathan Papelbon"
+},
+"Manny Ramírez": {
+"id": 120903,
+"name": "Manny Ramirez"
+},
+"Álex Rodríguez": {
+"id": 121347,
+"name": "Alex Rodriguez"
+},
+"Jimmy Rollins": {
+"id": 276519,
+"name": "Jimmy Rollins"
+},
+"Mark Teixeira": {
+"id": 407893,
+"name": "Mark Teixeira"
+},
+"Carl Crawford": {
+"id": 408307,
+"name": "Carl Crawford"
+},
+"Prince Fielder": {
+"id": 425902,
+"name": "Prince Fielder"
+},
+"Justin Morneau": {
+"id": 408047,
+"name": "Justin Morneau"
+},
+"Jake Peavy": {
+"id": 408241,
+"name": "Jake Peavy"
+},
+"A.J. Pierzynski": {
+"id": 150229,
+"name": "A.J. Pierzynski"
+},
+"Carlos Beltrán": {
+"id": 136860,
+"name": "Carlos Beltrán"
+},
+"Matt Cain": {
+"id": 430912,
+"name": "Matt Cain"
+},
+"R.A. Dickey": {
+"id": 285079,
+"name": "R.A. Dickey"
+},
+"Jacoby Ellsbury": {
+"id": 453056,
+"name": "Jacoby Ellsbury"
+},
+"John Lackey": {
+"id": 407793,
+"name": "John Lackey"
+},
+"Mike Napoli": {
+"id": 435063,
+"name": "Mike Napoli"
+},
+"Jhonny Peralta": {
+"id": 425509,
+"name": "Jhonny Peralta"
+},
+"Francisco Rodríguez": {
+"id": 408061,
+"name": "Francisco Rodríguez"
+},
+"Huston Street": {
+"id": 434718,
+"name": "Huston Street"
+},
+"Bronson Arroyo": {
+"id": 276520,
+"name": "Bronson Arroyo"
+},
+"Andre Ethier": {
+"id": 444843,
+"name": "Andre Ethier"
+},
+"J.J. Hardy": {
+"id": 429666,
+"name": "J.J. Hardy"
+},
+"Jered Weaver": {
+"id": 450308,
+"name": "Jered Weaver"
+},
+"Jayson Werth": {
+"id": 150029,
+"name": "Jayson Werth"
+},
+"José Bautista": {
+"id": 430832,
+"name": "José Bautista"
+},
+"Adrián Beltré": {
+"id": 134181,
+"name": "Adrian Beltré"
+},
+"Bartolo Colón": {
+"id": 112526,
+"name": "Bartolo Colon"
+},
+"Adrián González": {
+"id": 408236,
+"name": "Adrián González"
+},
+"Matt Holliday": {
+"id": 407812,
+"name": "Matt Holliday"
+},
+"Víctor Martínez": {
+"id": 400121,
+"name": "Victor Martinez"
+},
+"Joe Mauer": {
+"id": 408045,
+"name": "Joe Mauer"
+},
+"Brandon Phillips": {
+"id": 408252,
+"name": "Brandon Phillips"
+},
+"José Reyes": {
+"id": 408314,
+"name": "José Reyes"
+},
+"James Shields": {
+"id": 448306,
+"name": "James Shields"
+},
+"Chase Utley": {
+"id": 400284,
+"name": "Chase Utley"
+},
+"David Wright": {
+"id": 431151,
+"name": "David Wright"
+},
+"Carlos González": {
+"id": 471865,
+"name": "Carlos González"
+},
+"Curtis Granderson": {
+"id": 434158,
+"name": "Curtis Granderson"
+},
+"Félix Hernández": {
+"id": 433587,
+"name": "Félix Hernández"
+},
+"Adam Jones": {
+"id": 430945,
+"name": "Adam Jones"
+},
+"Ian Kinsler": {
+"id": 435079,
+"name": "Ian Kinsler"
+},
+"Russell Martin": {
+"id": 431145,
+"name": "Russell Martin"
+},
+"Brian McCann": {
+"id": 435263,
+"name": "Brian McCann"
+},
+"Dustin Pedroia": {
+"id": 456030,
+"name": "Dustin Pedroia"
+},
+"Hanley Ramírez": {
+"id": 434670,
+"name": "Hanley Ramirez"
+},
+"Fernando Rodney": {
+"id": 407845,
+"name": "Fernando Rodney"
+},
+"CC Sabathia": {
+"id": 282332,
+"name": "CC Sabathia"
+},
+"Ichiro Suzuki": {
+"id": 400085,
+"name": "Ichiro Suzuki"
+},
+"Troy Tulowitzki": {
+"id": 453064,
+"name": "Troy Tulowitzki"
+},
+"Ben Zobrist": {
+"id": 450314,
+"name": "Ben Zobrist"
+},
+"Ryan Braun": {
+"id": 460075,
+"name": "Ryan Braun"
+},
+"Shin-Soo Choo": {
+"id": 425783,
+"name": "Shin-Soo Choo"
+},
+"Edwin Encarnación": {
+"id": 429665,
+"name": "Edwin Encarnación"
+},
+"Gio González": {
+"id": 461829,
+"name": "Gio Gonzalez"
+},
+"Alex Gordon": {
+"id": 460086,
+"name": "Alex Gordon"
+},
+"Cole Hamels": {
+"id": 430935,
+"name": "Cole Hamels"
+},
+"Matt Kemp": {
+"id": 461314,
+"name": "Matt Kemp"
+},
+"Howard Kendrick": {
+"id": 435062,
+"name": "Howie Kendrick"
+},
+"Nick Markakis": {
+"id": 455976,
+"name": "Nick Markakis"
+},
+"Daniel Murphy": {
+"id": 502517,
+"name": "Daniel Murphy"
+},
+"Hunter Pence": {
+"id": 452254,
+"name": "Hunter Pence"
+},
+"Rick Porcello": {
+"id": 519144,
+"name": "Rick Porcello"
+}
+}
+}
