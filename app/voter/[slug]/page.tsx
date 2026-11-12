@@ -181,6 +181,42 @@ function HofYearList({ ballots }: { ballots: HofBallot[] }) {
 
 const AWARD_ORDER: AwardCode[] = ["mvp", "cy", "roy", "reliever", "mgr"];
 
+/** How to read the award tables, laid out across the panel instead of one long paragraph. */
+function AwardLegend({ mgr }: { mgr: boolean }) {
+  const items: [string, ReactNode][] = [
+    [
+      "Each pick",
+      <>
+        {`Where ${mgr ? "the manager" : "the player"} finished in the final vote, in bold when well off this voter’s spot. “Only voter” marks a pick no one else made.`}
+      </>,
+    ],
+    ...(mgr
+      ? []
+      : ([
+          ["fWAR · #rank", <>His FanGraphs WAR and rank among eligible players: red when he&rsquo;s on the WAR ballot, blue when he&rsquo;s well outside it.</>],
+          ["WAR ballot", <>The top players by fWAR among those eligible: everyone for MVP, pitchers for Cy Young, rookies for Rookie of the Year, relievers for Reliever.</>],
+          ["WAR match", <>The ballot&rsquo;s fWAR, weighted by award points, as a share of the WAR ballot&rsquo;s.</>],
+        ] as [string, ReactNode][])),
+  ];
+  return (
+    <dl className="mt-3 grid gap-x-8 gap-y-3 text-[12px] leading-relaxed sm:grid-cols-2 lg:grid-cols-4">
+      {items.map(([k, v]) => (
+        <div key={k}>
+          <dt className="text-[11px] font-medium text-[var(--text)]">{k}</dt>
+          <dd className="text-[var(--dim)]">{v}</dd>
+        </div>
+      ))}
+      <div className="text-[11px] text-[var(--dim)] sm:col-span-2 lg:col-span-4">
+        Ballots from{" "}
+        <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
+          bbwaa.com
+        </a>
+        {!mgr && <>, WAR from FanGraphs</>}.
+      </div>
+    </dl>
+  );
+}
+
 // WAR-alignment shading, same convention as Team Builder's WAR figures: brand red for good,
 // the cool blue for poor, deepening with strength; the text stays dark so contrast holds.
 const tint = (tone: "good" | "bad", strength: number) =>
@@ -362,7 +398,7 @@ export default async function VoterPage({ params }: Props) {
 
       {v.hof.length > 0 && (
         <Panel title={<>Hall of Fame ballots</>}>
-          <p className="mb-4 mt-1 max-w-[56ch] text-[12px] leading-relaxed text-[var(--dim)]">
+          <p className="mb-4 mt-1 max-w-[110ch] text-[12px] leading-relaxed text-[var(--dim)]">
             Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from Ryan Thibodaux&rsquo;s{" "}
             <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
               BBHOF Tracker
@@ -378,23 +414,14 @@ export default async function VoterPage({ params }: Props) {
         const st = m?.byAward[code];
         return (
           <Panel key={code} title={<>{AWARD_NAMES[code]} ballots</>}>
-            <p className="mb-4 mt-1 max-w-[56ch] text-[12px] leading-relaxed text-[var(--dim)]">
-              {st && (
-                <>
-                  Picked the winner first on {st.firstMatches} of {st.ballots} {st.ballots === 1 ? "ballot" : "ballots"}.{" "}
-                  {st.warMatch != null && <>Average WAR match {pct(st.warMatch)}.{" "}</>}
-                </>
-              )}
-              {i === 0 && (
-                <>
-                  Each pick shows where {code === "mgr" ? "that manager" : "the player"} finished in the final vote, in bold when well off this voter&rsquo;s spot; &ldquo;only voter&rdquo; marks picks no one else made. Under each pick: his fWAR and fWAR rank among eligible players, shaded when he&rsquo;s on the WAR ballot and blue when he&rsquo;s well outside it. Ballots from{" "}
-                  <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
-                    bbwaa.com
-                  </a>
-                  . WAR ballot: the top players in FanGraphs WAR among those eligible (all players for MVP, pitchers for Cy Young, FanGraphs-flagged rookies for Rookie of the Year, relievers for Reliever of the Year). WAR match: the ballot&rsquo;s fWAR, weighted by award points, as a share of the WAR ballot&rsquo;s.
-                </>
-              )}
-            </p>
+            {st && (
+              <p className="mt-1 text-[12px] leading-relaxed text-[var(--dim)]">
+                Picked the winner first on {st.firstMatches} of {st.ballots} {st.ballots === 1 ? "ballot" : "ballots"}.
+                {st.warMatch != null && <> Average WAR match {pct(st.warMatch)}.</>}
+              </p>
+            )}
+            {i === 0 && <AwardLegend mgr={code === "mgr"} />}
+            <div className="mt-4" />
             <AwardTable ballots={bs} />
           </Panel>
         );
