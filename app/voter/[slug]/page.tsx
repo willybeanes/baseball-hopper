@@ -198,12 +198,6 @@ function pickTint(warRank: number | null | undefined, places: number): string | 
   return tint("bad", Math.min(1, (ratio - 2) / 3));
 }
 
-/** A ballot's WAR match shade: red above the median voter that year, blue below; full at 10 points. */
-function matchTint(gap: number | null | undefined): string | undefined {
-  if (gap == null || Math.abs(gap) < 0.005) return undefined;
-  return gap > 0 ? tint("good", Math.min(1, gap / 0.1)) : tint("bad", Math.min(1, -gap / 0.1));
-}
-
 function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
   const places = Math.max(...ballots.map((b) => b.places));
   const isMgr = ballots[0]?.award === "mgr";
@@ -238,12 +232,7 @@ function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
                         result?.medianWarMatch != null ? ` (median voter ${pct(result.medianWarMatch)})` : ""
                       }`}
                     >
-                      <span
-                        className="-mx-0.5 rounded px-1 py-px font-semibold text-[var(--text)]"
-                        style={{ backgroundColor: matchTint(result?.medianWarMatch != null ? b.warMatch - result.medianWarMatch : null) }}
-                      >
-                        {pct(b.warMatch)}
-                      </span>{" "}
+                      <span className="font-semibold text-[var(--text)]">{pct(b.warMatch)}</span>{" "}
                       WAR match
                     </div>
                   )}
@@ -398,7 +387,7 @@ export default async function VoterPage({ params }: Props) {
               )}
               {i === 0 && (
                 <>
-                  Each pick shows where {code === "mgr" ? "that manager" : "the player"} finished in the final vote, in bold when well off this voter&rsquo;s spot; &ldquo;only voter&rdquo; marks picks no one else made. Under each pick: his fWAR and fWAR rank among eligible players, shaded when he&rsquo;s on the WAR ballot and blue when he&rsquo;s well outside it; a ballot&rsquo;s WAR match is red above that year&rsquo;s median voter and blue below. Ballots from{" "}
+                  Each pick shows where {code === "mgr" ? "that manager" : "the player"} finished in the final vote, in bold when well off this voter&rsquo;s spot; &ldquo;only voter&rdquo; marks picks no one else made. Under each pick: his fWAR and fWAR rank among eligible players, shaded when he&rsquo;s on the WAR ballot and blue when he&rsquo;s well outside it. Ballots from{" "}
                   <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
                     bbwaa.com
                   </a>
