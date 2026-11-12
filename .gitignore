@@ -17,3 +17,6 @@ node_modules/
 
 # Batch offseason simulations (scripts/team-builder/simulate-many.ts)
 sim-results/
+
+# Python
+__pycache__/
