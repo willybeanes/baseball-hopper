@@ -68,6 +68,7 @@ export interface VoterSummary {
     peerAvgNames: number | null;
     fullBallots: number;
     electeeRate: number | null;
+    /** Kept in the data on purpose but not shown anywhere (Will's call, 2026-11-12). */
     pedRate: number | null;
     pedPublicRate: number | null;
     rareVotes: number;

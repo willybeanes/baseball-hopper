@@ -283,13 +283,12 @@ export default async function VoterPage({ params }: Props) {
       {(h || m) && (
         <section className={PANEL}>
           <h2 className={H2}>Tendencies</h2>
-          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-4">
+          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
             {h && (
               <>
                 <Stat label="Names per HOF ballot" value={h.avgNames.toFixed(1)} sub={h.peerAvgNames ? `public ballots avg ${h.peerAvgNames.toFixed(1)}` : undefined} />
                 <Stat label="Full 10-name ballots" value={`${h.fullBallots} of ${h.ballots - h.blank}`} sub={h.blank ? `${h.blank} blank` : undefined} />
                 <Stat label="Backed that year’s electees" value={pct(h.electeeRate)} sub="share of BBWAA electees on ballot" />
-                <Stat label="PED-linked candidates" value={pct(h.pedRate)} sub={h.pedPublicRate != null ? `public ballots ${pct(h.pedPublicRate)}` : "never on ballot"} />
               </>
             )}
             {m && (
