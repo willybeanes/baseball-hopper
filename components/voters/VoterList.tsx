@@ -9,6 +9,10 @@ type SortKey = "name" | "outlet" | "hof" | "names" | "awards" | "war";
 
 const lastName = (n: string) => n.split(" ").slice(-1)[0];
 
+/** WAR match on one or two ballots is mostly noise; same cutoff as the voter-page percentile. */
+const MIN_WAR_BALLOTS = 3;
+const warShown = (r: VoterIndexRow) => (r.warBallots >= MIN_WAR_BALLOTS ? r.warMatch : null);
+
 /** Value to sort on; null always sorts last. */
 const sortValue: Record<SortKey, (r: VoterIndexRow) => string | number | null> = {
   name: (r) => fold(`${lastName(r.name)} ${r.name}`),
@@ -16,7 +20,7 @@ const sortValue: Record<SortKey, (r: VoterIndexRow) => string | number | null> =
   hof: (r) => (r.hofYears.length ? r.hofYears.length : null),
   names: (r) => r.avgNames,
   awards: (r) => (r.awardBallots ? r.awardBallots : null),
-  war: (r) => r.warMatch,
+  war: warShown,
 };
 const TEXT_KEYS: SortKey[] = ["name", "outlet"];
 
@@ -105,7 +109,7 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
               <SortHeader k="hof" label="Public HOF ballots" sort={sort} onSort={onSort} />
               <SortHeader k="names" label="Names / ballot" sort={sort} onSort={onSort} right />
               <SortHeader k="awards" label="Award ballots" sort={sort} onSort={onSort} />
-              <SortHeader k="war" label="WAR match" sort={sort} onSort={onSort} right last title="Points-weighted fWAR of their award ballots vs. the WAR ballot" />
+              <SortHeader k="war" label="WAR match" sort={sort} onSort={onSort} right last title="Points-weighted fWAR of their award ballots vs. the WAR ballot (voters with 3+ comparable ballots)" />
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--panel-border)]">
@@ -140,12 +144,17 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
                   )}
                 </td>
                 <td className="py-2 text-right">
-                  {r.warMatch != null ? (
+                  {warShown(r) != null ? (
                     <span title={r.warVsField != null ? `${r.warVsField >= 0 ? "+" : "−"}${Math.abs(Math.round(r.warVsField * 100))} pts vs. median voter` : undefined}>
-                      {Math.round(r.warMatch * 100)}%
+                      {Math.round(warShown(r)! * 100)}%
                     </span>
                   ) : (
-                    <span className="text-[var(--dim)]">—</span>
+                    <span
+                      className="text-[var(--dim)]"
+                      title={r.warBallots ? `Only ${r.warBallots} WAR-comparable award ${r.warBallots === 1 ? "ballot" : "ballots"} (needs ${MIN_WAR_BALLOTS})` : undefined}
+                    >
+                      —
+                    </span>
                   )}
                 </td>
               </tr>
