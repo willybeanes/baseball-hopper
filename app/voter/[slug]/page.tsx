@@ -181,6 +181,29 @@ function HofYearList({ ballots }: { ballots: HofBallot[] }) {
 
 const AWARD_ORDER: AwardCode[] = ["mvp", "cy", "roy", "reliever", "mgr"];
 
+// WAR-alignment shading, same convention as Team Builder's WAR figures: brand red for good,
+// the cool blue for poor, deepening with strength; the text stays dark so contrast holds.
+const tint = (tone: "good" | "bad", strength: number) =>
+  tone === "good"
+    ? `color-mix(in srgb, var(--accent) ${Math.round(10 + strength * 30)}%, transparent)`
+    : `color-mix(in srgb, var(--cool) ${Math.round(18 + strength * 42)}%, transparent)`;
+
+/** A pick's shade: red when on the WAR ballot (deeper the higher his WAR rank), none just outside it,
+ *  blue when well outside (past twice the ballot length, or not in the eligible pool at all). */
+function pickTint(warRank: number | null | undefined, places: number): string | undefined {
+  if (!warRank) return tint("bad", 1);
+  if (warRank <= places) return tint("good", 1 - (warRank - 1) / places);
+  const ratio = warRank / places;
+  if (ratio <= 2) return undefined;
+  return tint("bad", Math.min(1, (ratio - 2) / 3));
+}
+
+/** A ballot's WAR match shade: red above the median voter that year, blue below; full at 10 points. */
+function matchTint(gap: number | null | undefined): string | undefined {
+  if (gap == null || Math.abs(gap) < 0.005) return undefined;
+  return gap > 0 ? tint("good", Math.min(1, gap / 0.1)) : tint("bad", Math.min(1, -gap / 0.1));
+}
+
 function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
   const places = Math.max(...ballots.map((b) => b.places));
   const isMgr = ballots[0]?.award === "mgr";
@@ -209,8 +232,19 @@ function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
                   </a>
                   <div className="text-[11px] text-[var(--dim)]">{b.outlet}</div>
                   {b.warMatch != null && (
-                    <div className="mt-1 text-[11px] tabular-nums text-[var(--dim)]" title="Points-weighted fWAR of this ballot compared with the WAR ballot">
-                      <span className="font-semibold text-[var(--text)]">{pct(b.warMatch)}</span> WAR match
+                    <div
+                      className="mt-1 text-[11px] tabular-nums text-[var(--dim)]"
+                      title={`Points-weighted fWAR of this ballot compared with the WAR ballot${
+                        result?.medianWarMatch != null ? ` (median voter ${pct(result.medianWarMatch)})` : ""
+                      }`}
+                    >
+                      <span
+                        className="-mx-0.5 rounded px-1 py-px font-semibold text-[var(--text)]"
+                        style={{ backgroundColor: matchTint(result?.medianWarMatch != null ? b.warMatch - result.medianWarMatch : null) }}
+                      >
+                        {pct(b.warMatch)}
+                      </span>{" "}
+                      WAR match
                     </div>
                   )}
                 </td>
@@ -220,18 +254,20 @@ function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
                   const solo = p.mentions === 1;
                   return (
                     <td key={i} className="px-1.5 py-2">
-                      <div className={`leading-tight ${solo ? "font-semibold text-[var(--accent)]" : ""}`}>
+                      <div className={`leading-tight ${solo ? "font-semibold" : ""}`}>
                         {isMgr ? p.name : <PlayerName id={p.id} name={p.name} />}
                       </div>
                       <div className="text-[11px] tabular-nums text-[var(--dim)]" title={`Finished ${p.finalRank} in the final vote`}>
-                        {solo ? "only voter · " : ""}
+                        {solo ? <span className="font-semibold text-[var(--text)]">only voter · </span> : ""}
                         <span className={Math.abs(p.finalRank - p.rank) >= Math.max(2, Math.round(b.places / 3)) ? "font-semibold text-[var(--text)]" : undefined}>
                           finished {p.finalRank}
                         </span>
                       </div>
                       {p.war != null && (
-                        <div className="text-[11px] tabular-nums text-[var(--dim)]" title={p.warRank ? `#${p.warRank} in fWAR among eligible players` : "Not in the eligible fWAR pool"}>
-                          {p.war.toFixed(1)} fWAR{p.warRank ? ` · #${p.warRank}` : ""}
+                        <div className="mt-0.5 text-[11px] tabular-nums" title={`${p.war.toFixed(1)} fWAR${p.warRank ? `, #${p.warRank} among eligible players` : ", not in the eligible pool"}`}>
+                          <span className="-mx-0.5 whitespace-nowrap rounded px-1 py-px text-[var(--text)]" style={{ backgroundColor: pickTint(p.warRank, b.places) }}>
+                            {p.war.toFixed(1)}{p.warRank ? ` · #${p.warRank}` : ""}
+                          </span>
                         </div>
                       )}
                     </td>
@@ -362,7 +398,7 @@ export default async function VoterPage({ params }: Props) {
               )}
               {i === 0 && (
                 <>
-                  Each pick shows where {code === "mgr" ? "that manager" : "the player"} finished in the final vote, in bold when well off this voter&rsquo;s spot. Red: no other voter listed {code === "mgr" ? "that manager" : "him"}. Ballots from{" "}
+                  Each pick shows where {code === "mgr" ? "that manager" : "the player"} finished in the final vote, in bold when well off this voter&rsquo;s spot; &ldquo;only voter&rdquo; marks picks no one else made. Under each pick: his fWAR and fWAR rank among eligible players, shaded when he&rsquo;s on the WAR ballot and blue when he&rsquo;s well outside it; a ballot&rsquo;s WAR match is red above that year&rsquo;s median voter and blue below. Ballots from{" "}
                   <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
                     bbwaa.com
                   </a>
