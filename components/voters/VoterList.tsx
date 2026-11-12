@@ -5,7 +5,20 @@ import { useMemo, useState } from "react";
 import type { VoterIndexRow } from "@/lib/voters";
 
 type Filter = "all" | "hof" | "awards" | "both";
-type Sort = "name" | "hof" | "names" | "war";
+type SortKey = "name" | "outlet" | "hof" | "names" | "awards" | "war";
+
+const lastName = (n: string) => n.split(" ").slice(-1)[0];
+
+/** Value to sort on; null always sorts last. */
+const sortValue: Record<SortKey, (r: VoterIndexRow) => string | number | null> = {
+  name: (r) => fold(`${lastName(r.name)} ${r.name}`),
+  outlet: (r) => (r.outlet ? fold(r.outlet) : null),
+  hof: (r) => (r.hofYears.length ? r.hofYears.length : null),
+  names: (r) => r.avgNames,
+  awards: (r) => (r.awardBallots ? r.awardBallots : null),
+  war: (r) => r.warMatch,
+};
+const TEXT_KEYS: SortKey[] = ["name", "outlet"];
 
 const fold = (s: string) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
@@ -17,7 +30,10 @@ function span(years: number[]) {
 export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
-  const [sort, setSort] = useState<Sort>("name");
+  const [sort, setSort] = useState<{ key: SortKey; dir: 1 | -1 }>({ key: "name", dir: 1 });
+
+  const onSort = (key: SortKey) =>
+    setSort((cur) => (cur.key === key ? { key, dir: cur.dir === 1 ? -1 : 1 } : { key, dir: TEXT_KEYS.includes(key) ? 1 : -1 }));
 
   const shown = useMemo(() => {
     const needle = fold(q.trim());
@@ -28,11 +44,17 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
       if (!needle) return true;
       return fold(`${r.name} ${r.outlet ?? ""} ${r.chapter ?? ""}`).includes(needle);
     });
-    if (sort === "hof") out.sort((a, b) => b.hofYears.length - a.hofYears.length || a.name.localeCompare(b.name));
-    if (sort === "names") out.sort((a, b) => (b.avgNames ?? -1) - (a.avgNames ?? -1));
-    // WAR-minded: average gap to the median voter, among voters with 3+ comparable award ballots
-    if (sort === "war")
-      out.sort((a, b) => (b.warBallots >= 3 ? b.warVsField ?? -9 : -9) - (a.warBallots >= 3 ? a.warVsField ?? -9 : -9));
+    const get = sortValue[sort.key];
+    const byName = sortValue.name;
+    out.sort((a, b) => {
+      const va = get(a);
+      const vb = get(b);
+      if (va == null && vb == null) return 0;
+      if (va == null) return 1;
+      if (vb == null) return -1;
+      const c = typeof va === "number" && typeof vb === "number" ? va - vb : String(va).localeCompare(String(vb));
+      return c * sort.dir || String(byName(a)).localeCompare(String(byName(b)));
+    });
     return out;
   }, [rows, q, filter, sort]);
 
@@ -68,19 +90,6 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
             </button>
           ))}
         </div>
-        <label className="ml-auto flex items-center gap-2 text-[12px] text-[var(--dim)]">
-          Sort
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value as Sort)}
-            className="rounded-md border border-[var(--panel-border)] bg-[var(--panel)] px-2 py-1 text-[13px] text-[var(--text)]"
-          >
-            <option value="name">Last name</option>
-            <option value="hof">Most HOF ballots</option>
-            <option value="names">Most names per HOF ballot</option>
-            <option value="war">Most WAR-aligned award ballots</option>
-          </select>
-        </label>
       </div>
 
       <p className="mt-3 text-[12px] text-[var(--dim)]">
@@ -91,12 +100,12 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
         <table className="w-full min-w-[640px] border-collapse text-[13px] tabular-nums">
           <thead>
             <tr className="border-b border-[var(--rule)] text-[11px] font-medium text-[var(--dim)]">
-              <th className="py-2 pr-3 text-left font-medium">Voter</th>
-              <th className="py-2 pr-3 text-left font-medium">Outlet</th>
-              <th className="py-2 pr-3 text-left font-medium">Public HOF ballots</th>
-              <th className="py-2 pr-3 text-right font-medium">Names / ballot</th>
-              <th className="py-2 pr-3 text-left font-medium">Award ballots</th>
-              <th className="py-2 text-right font-medium" title="Points-weighted fWAR of their award ballots vs. the WAR ballot">WAR match</th>
+              <SortHeader k="name" label="Voter" sort={sort} onSort={onSort} />
+              <SortHeader k="outlet" label="Outlet" sort={sort} onSort={onSort} />
+              <SortHeader k="hof" label="Public HOF ballots" sort={sort} onSort={onSort} />
+              <SortHeader k="names" label="Names / ballot" sort={sort} onSort={onSort} right />
+              <SortHeader k="awards" label="Award ballots" sort={sort} onSort={onSort} />
+              <SortHeader k="war" label="WAR match" sort={sort} onSort={onSort} right last title="Points-weighted fWAR of their award ballots vs. the WAR ballot" />
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--panel-border)]">
@@ -148,5 +157,43 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
         )}
       </div>
     </section>
+  );
+}
+
+function SortHeader({
+  k,
+  label,
+  sort,
+  onSort,
+  right,
+  last,
+  title,
+}: {
+  k: SortKey;
+  label: string;
+  sort: { key: SortKey; dir: 1 | -1 };
+  onSort: (k: SortKey) => void;
+  right?: boolean;
+  last?: boolean;
+  title?: string;
+}) {
+  const active = sort.key === k;
+  return (
+    <th
+      className={`py-2 font-medium ${last ? "" : "pr-3"} ${right ? "text-right" : "text-left"}`}
+      aria-sort={active ? (sort.dir === 1 ? "ascending" : "descending") : "none"}
+      title={title}
+    >
+      <button
+        type="button"
+        onClick={() => onSort(k)}
+        className={`inline-flex items-center gap-1 transition-colors hover:text-[var(--text)] ${active ? "text-[var(--text)]" : ""}`}
+      >
+        {label}
+        <span aria-hidden className={`text-[10px] ${active ? "" : "opacity-0"}`}>
+          {active && sort.dir === -1 ? "▼" : "▲"}
+        </span>
+      </button>
+    </th>
   );
 }
