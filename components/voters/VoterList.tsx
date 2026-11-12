@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import type { VoterIndexRow } from "@/lib/voters";
 
 type Filter = "all" | "hof" | "awards" | "both";
-type Sort = "name" | "hof" | "names";
+type Sort = "name" | "hof" | "names" | "war";
 
 const fold = (s: string) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
@@ -30,6 +30,9 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
     });
     if (sort === "hof") out.sort((a, b) => b.hofYears.length - a.hofYears.length || a.name.localeCompare(b.name));
     if (sort === "names") out.sort((a, b) => (b.avgNames ?? -1) - (a.avgNames ?? -1));
+    // WAR-minded: average gap to the median voter, among voters with 3+ comparable award ballots
+    if (sort === "war")
+      out.sort((a, b) => (b.warBallots >= 3 ? b.warVsField ?? -9 : -9) - (a.warBallots >= 3 ? a.warVsField ?? -9 : -9));
     return out;
   }, [rows, q, filter, sort]);
 
@@ -75,6 +78,7 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
             <option value="name">Last name</option>
             <option value="hof">Most HOF ballots</option>
             <option value="names">Most names per HOF ballot</option>
+            <option value="war">Most WAR-aligned award ballots</option>
           </select>
         </label>
       </div>
@@ -91,7 +95,8 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
               <th className="py-2 pr-3 text-left font-medium">Outlet</th>
               <th className="py-2 pr-3 text-left font-medium">Public HOF ballots</th>
               <th className="py-2 pr-3 text-right font-medium">Names / ballot</th>
-              <th className="py-2 text-left font-medium">Award ballots</th>
+              <th className="py-2 pr-3 text-left font-medium">Award ballots</th>
+              <th className="py-2 text-right font-medium" title="Points-weighted fWAR of their award ballots vs. the WAR ballot">WAR match</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--panel-border)]">
@@ -116,11 +121,20 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
                   )}
                 </td>
                 <td className="py-2 pr-3 text-right">{r.avgNames != null ? r.avgNames.toFixed(1) : <span className="text-[var(--dim)]">—</span>}</td>
-                <td className="whitespace-nowrap py-2">
+                <td className="whitespace-nowrap py-2 pr-3">
                   {r.awardBallots ? (
                     <>
                       {r.awardBallots} <span className="text-[var(--dim)]">({span(r.awardYears)})</span>
                     </>
+                  ) : (
+                    <span className="text-[var(--dim)]">—</span>
+                  )}
+                </td>
+                <td className="py-2 text-right">
+                  {r.warMatch != null ? (
+                    <span title={r.warVsField != null ? `${r.warVsField >= 0 ? "+" : "−"}${Math.abs(Math.round(r.warVsField * 100))} pts vs. median voter` : undefined}>
+                      {Math.round(r.warMatch * 100)}%
+                    </span>
                   ) : (
                     <span className="text-[var(--dim)]">—</span>
                   )}

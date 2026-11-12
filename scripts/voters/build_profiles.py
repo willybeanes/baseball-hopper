@@ -49,6 +49,30 @@ def main():
 
     # ---------- BBWAA awards (MVP, Cy Young, ROY, Manager, Reliever) ----------
     award_list = []
+    fwar = json.loads((D / "fwar.json").read_text()) if (D / "fwar.json").exists() else {}
+
+    def war_pools(y, lg):
+        """(eligible pool for this award's WAR ballot, every player's fWAR) as {mlbam: (name, war)}."""
+        f = fwar.get(f"{y}|{lg}")
+        if not f:
+            return None, None
+        def merge(*keys):
+            out = {}
+            for k in keys:
+                for pid, (name, war) in f.get(k, {}).items():
+                    n, w = out.get(int(pid), (name, 0.0))
+                    out[int(pid)] = (n, round(w + war, 2))
+            return out
+        return merge, merge("bat", "pit")
+
+    def war_scale(code, places):
+        if code == "mvp":
+            return MVP_POINTS[:places]
+        if places == 5:
+            return [7, 4, 3, 2, 1]
+        if places == 3:
+            return [5, 3, 1]
+        return list(range(places, 0, -1))
 
     def add_award(code, y, lg, url, ballots, lookup, results=None):
         places = max(max((i + 1 for i, x in enumerate(b["picks"]) if x), default=0) for b in ballots)
@@ -85,6 +109,32 @@ def main():
         final = {p: i + 1 for i, p in enumerate(order)}
         standings = [{"id": p if isinstance(p, int) else None, "name": names[p], "points": pts[p],
                       "firsts": firsts[p], "rank": final[p]} for p in order]
+        # WAR ballot: top `places` by fWAR among eligible players (no WAR for managers)
+        merge, every = war_pools(y, lg)
+        war_ballot, scale, best, elig = None, war_scale(code, places), None, {}
+        if merge and code != "mgr":
+            pool = {"mvp": ("bat", "pit"), "cy": ("pit",), "roy": ("rbat", "rpit"), "reliever": ("rel",)}[code]
+            elig = merge(*pool)
+            ranked = sorted(elig.items(), key=lambda kv: -kv[1][1])
+            war_rank = {pid: i + 1 for i, (pid, _) in enumerate(ranked)}
+            war_ballot = [{"id": pid, "name": n, "war": w} for pid, (n, w) in ranked[:places]]
+            best = sum(sc * wb["war"] for sc, wb in zip(scale, war_ballot))
+
+        def war_of(pid):
+            # Same pool as the WAR ballot (pitching WAR for Cy Young, etc.); picks outside it (a non-rookie
+            # on a ROY ballot, a starter on a reliever ballot) fall back to their total fWAR.
+            if not isinstance(pid, int):
+                return 0.0
+            if war_ballot is not None and pid in elig:
+                return elig[pid][1]
+            return every.get(pid, ("", 0.0))[1]
+
+        def war_match(ids_in_order):
+            if not best or best <= 0:
+                return None
+            return round(sum(sc * war_of(pid) for sc, pid in zip(scale, ids_in_order)) / best, 3)
+
+        matches = []
         devs = []
         for b, picks in resolved:
             k = voter_key(b["voter"], aliases)
@@ -100,14 +150,32 @@ def main():
                 p["finalRank"] = final[pid]
                 p["mentions"] = mentions[pid]
                 dev += abs(p["rank"] - min(final[pid], places + 1))
+                if war_ballot is not None:
+                    p["war"] = war_of(p["id"]) if p["id"] else None
+                    p["warRank"] = war_rank.get(p["id"]) if p["id"] else None
             devs.append(dev)
+            wm = wo = None
+            if war_ballot is not None:
+                slots = [None] * places
+                for p in picks:
+                    slots[p["rank"] - 1] = p["id"]
+                wm = war_match(slots)
+                wb_ids = {x["id"] for x in war_ballot}
+                wo = sum(1 for p in picks if p["id"] in wb_ids)
+                if wm is not None:
+                    matches.append(wm)
             v["awards"].append({"award": code, "year": y, "league": lg, "places": places, "outlet": b["outlet"],
                                 "chapter": b["chapter"], "picks": picks, "winner": standings[0]["name"],
                                 "firstMatchesWinner": bool(picks) and picks[0]["finalRank"] == 1,
-                                "deviation": dev, "solo": [p["name"] for p in picks if p["mentions"] == 1]})
+                                "deviation": dev, "solo": [p["name"] for p in picks if p["mentions"] == 1],
+                                "warMatch": wm, "warOverlap": wo})
         devs.sort()
+        matches.sort()
+        med = matches[len(matches) // 2] if matches else None
+        consensus = war_match([p for p in order[:places]]) if war_ballot is not None else None
         award_list.append({"award": code, "year": y, "league": lg, "url": url, "voters": len(ballots),
-                           "places": places, "medianDeviation": devs[len(devs) // 2], "standings": standings[:15]})
+                           "places": places, "medianDeviation": devs[len(devs) // 2], "standings": standings[:15],
+                           "warBallot": war_ballot, "medianWarMatch": med, "consensusWarMatch": consensus})
 
     for a in mvp["awards"]:
         y, lg = a["year"], a["league"]
@@ -179,6 +247,7 @@ def main():
     keys = list(voters)
     dec = {k: hof_decisions(voters[k]) for k in keys}
 
+    med_war = {(a["award"], a["year"], a["league"]): a["medianWarMatch"] for a in award_list}
     profiles, index = {}, []
     for k in keys:
         v = voters[k]
@@ -215,6 +284,9 @@ def main():
                 cnt += 1
             summary["hof"]["peerAvgNames"] = round(tot / cnt, 2) if cnt else None
         if v["awards"]:
+            wb = [b for b in v["awards"] if b.get("warMatch") is not None]
+            for b in wb:
+                b["warVsField"] = round(b["warMatch"] - med_war[(b["award"], b["year"], b["league"])], 3)
             by = defaultdict(list)
             for b in v["awards"]:
                 by[b["award"]].append(b)
@@ -222,8 +294,15 @@ def main():
                 "ballots": len(v["awards"]),
                 "firstMatches": sum(1 for b in v["awards"] if b["firstMatchesWinner"]),
                 "soloPicks": sum(len(b["solo"]) for b in v["awards"]),
+                "warBallots": len(wb),
+                "warMatch": round(sum(b["warMatch"] for b in wb) / len(wb), 3) if wb else None,
+                "warVsField": round(sum(b["warVsField"] for b in wb) / len(wb), 3) if wb else None,
+                "warOverlap": round(sum(b["warOverlap"] / b["places"] for b in wb) / len(wb), 3) if wb else None,
                 "byAward": {c: {"ballots": len(bs), "firstMatches": sum(1 for b in bs if b["firstMatchesWinner"]),
-                                "avgDeviation": round(sum(b["deviation"] for b in bs) / len(bs), 1)}
+                                "avgDeviation": round(sum(b["deviation"] for b in bs) / len(bs), 1),
+                                "warMatch": (round(sum(b["warMatch"] for b in bs if b.get("warMatch") is not None)
+                                                   / max(1, sum(1 for b in bs if b.get("warMatch") is not None)), 3)
+                                             if any(b.get("warMatch") is not None for b in bs) else None)}
                             for c, bs in by.items()},
             }
 
@@ -250,7 +329,20 @@ def main():
                       "hofYears": [b["year"] for b in v["hof"]], "awardBallots": len(v["awards"]),
                       "awardYears": sorted({b["year"] for b in v["awards"]}),
                       "awardCodes": sorted({b["award"] for b in v["awards"]}),
-                      "avgNames": summary.get("hof", {}).get("avgNames")})
+                      "avgNames": summary.get("hof", {}).get("avgNames"),
+                      "warMatch": summary.get("awards", {}).get("warMatch"),
+                      "warVsField": summary.get("awards", {}).get("warVsField"),
+                      "warBallots": summary.get("awards", {}).get("warBallots", 0)})
+
+    # WAR alignment percentile among voters with 3+ WAR-comparable award ballots (by average gap to the field)
+    ranked = sorted((p for p in profiles.values() if p["summary"].get("awards", {}).get("warBallots", 0) >= 3),
+                    key=lambda p: p["summary"]["awards"]["warVsField"])
+    for i, p in enumerate(ranked):
+        p["summary"]["awards"]["warPercentile"] = round(100 * i / max(1, len(ranked) - 1))
+        p["summary"]["awards"]["warPool"] = len(ranked)
+    for r in index:
+        a = profiles[r["slug"]]["summary"].get("awards", {})
+        r["warPercentile"] = a.get("warPercentile")
 
     for p in profiles.values():
         for s in p["similar"]:

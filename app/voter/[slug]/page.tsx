@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import HofGrid, { type HofGridRow } from "@/components/voters/HofGrid";
 import {
@@ -176,12 +177,18 @@ function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
           {[...ballots].reverse().map((b) => {
             const result = awardResult(b.award, b.year, b.league);
             return (
-              <tr key={`${b.year}${b.league}`} className="align-top">
+              <Fragment key={`${b.year}${b.league}`}>
+              <tr className="align-top" style={result?.warBallot ? { borderBottomWidth: 0 } : undefined}>
                 <td className="sticky left-0 z-10 whitespace-nowrap bg-[var(--panel)] py-2 pr-3">
                   <a href={result?.url} target="_blank" rel="noreferrer" className="font-semibold hover:underline">
                     {b.year} {b.league}
                   </a>
                   <div className="text-[11px] text-[var(--dim)]">{b.outlet}</div>
+                  {b.warMatch != null && (
+                    <div className="mt-1 text-[11px] tabular-nums text-[var(--dim)]" title="Points-weighted fWAR of this ballot compared with the WAR ballot">
+                      <span className="font-semibold text-[var(--text)]">{pct(b.warMatch)}</span> WAR match
+                    </div>
+                  )}
                 </td>
                 {Array.from({ length: places }, (_, i) => {
                   const p = b.picks.find((x) => x.rank === i + 1);
@@ -198,10 +205,30 @@ function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
                           finished {p.finalRank}
                         </span>
                       </div>
+                      {p.war != null && (
+                        <div className="text-[11px] tabular-nums text-[var(--dim)]" title={p.warRank ? `#${p.warRank} in fWAR among eligible players` : "Not in the eligible fWAR pool"}>
+                          {p.war.toFixed(1)} fWAR{p.warRank ? ` · #${p.warRank}` : ""}
+                        </div>
+                      )}
                     </td>
                   );
                 })}
               </tr>
+              {result?.warBallot && (
+                <tr>
+                  <td className="sticky left-0 z-10 bg-[var(--panel)] pb-2.5 pr-3 align-top text-[11px] font-medium text-[var(--dim)]">WAR ballot</td>
+                  {result.warBallot.map((w) => {
+                    const picked = b.picks.some((p) => p.id === w.id);
+                    return (
+                      <td key={w.id} className="px-1.5 pb-2.5 align-top text-[11px] leading-tight text-[var(--dim)]">
+                        <span className={picked ? "text-[var(--text)]" : undefined}>{w.name}</span>
+                        <span className="tabular-nums"> {w.war.toFixed(1)}</span>
+                      </td>
+                    );
+                  })}
+                </tr>
+              )}
+              </Fragment>
             );
           })}
         </tbody>
@@ -256,7 +283,7 @@ export default async function VoterPage({ params }: Props) {
       {(h || m) && (
         <section className={PANEL}>
           <h2 className={H2}>Tendencies</h2>
-          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
+          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-4">
             {h && (
               <>
                 <Stat label="Names per HOF ballot" value={h.avgNames.toFixed(1)} sub={h.peerAvgNames ? `public ballots avg ${h.peerAvgNames.toFixed(1)}` : undefined} />
@@ -269,6 +296,17 @@ export default async function VoterPage({ params }: Props) {
               <>
                 <Stat label="1st-place vote won the award" value={`${m.firstMatches} of ${m.ballots}`} sub="all BBWAA awards" />
                 <Stat label="Picks no one else made" value={`${m.soloPicks}`} sub={`across ${m.ballots} award ${m.ballots === 1 ? "ballot" : "ballots"}`} />
+                {m.warMatch != null && (
+                  <Stat
+                    label="WAR match"
+                    value={pct(m.warMatch)}
+                    sub={
+                      m.warVsField != null
+                        ? `${m.warVsField >= 0 ? "+" : "−"}${Math.abs(Math.round(m.warVsField * 100))} pts vs. median voter${m.warPercentile != null ? ` · ahead of ${m.warPercentile}% of voters` : ""}`
+                        : undefined
+                    }
+                  />
+                )}
               </>
             )}
           </dl>
@@ -278,7 +316,7 @@ export default async function VoterPage({ params }: Props) {
       {v.hof.length > 0 && (
         <section className={PANEL}>
           <h2 className={H2}>Hall of Fame ballots</h2>
-          <p className="mb-4 mt-1 max-w-[62ch] text-[12px] leading-relaxed text-[var(--dim)]">
+          <p className="mb-4 mt-1 max-w-[56ch] text-[12px] leading-relaxed text-[var(--dim)]">
             Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from Ryan Thibodaux&rsquo;s{" "}
             <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
               BBHOF Tracker
@@ -295,10 +333,11 @@ export default async function VoterPage({ params }: Props) {
         return (
           <section key={code} className={PANEL}>
             <h2 className={H2}>{AWARD_NAMES[code]} ballots</h2>
-            <p className="mb-4 mt-1 max-w-[62ch] text-[12px] leading-relaxed text-[var(--dim)]">
+            <p className="mb-4 mt-1 max-w-[56ch] text-[12px] leading-relaxed text-[var(--dim)]">
               {st && (
                 <>
                   Picked the winner first on {st.firstMatches} of {st.ballots} {st.ballots === 1 ? "ballot" : "ballots"}.{" "}
+                  {st.warMatch != null && <>Average WAR match {pct(st.warMatch)}.{" "}</>}
                 </>
               )}
               {i === 0 && (
@@ -307,7 +346,7 @@ export default async function VoterPage({ params }: Props) {
                   <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
                     bbwaa.com
                   </a>
-                  .
+                  . WAR ballot: the top players in FanGraphs WAR among those eligible (all players for MVP, pitchers for Cy Young, FanGraphs-flagged rookies for Rookie of the Year, relievers for Reliever of the Year). WAR match: the ballot&rsquo;s fWAR, weighted by award points, as a share of the WAR ballot&rsquo;s.
                 </>
               )}
             </p>

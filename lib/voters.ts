@@ -20,6 +20,10 @@ export interface AwardPick {
   name: string;
   finalRank: number;
   mentions: number;
+  /** fWAR that season in that league (absent for Manager of the Year). */
+  war?: number | null;
+  /** Rank by fWAR among players eligible for the award. */
+  warRank?: number | null;
 }
 
 export interface AwardBallot {
@@ -34,6 +38,12 @@ export interface AwardBallot {
   firstMatchesWinner: boolean;
   deviation: number;
   solo: string[];
+  /** Points-weighted fWAR of this ballot over the WAR ballot's (1 = as much WAR as the WAR ballot). */
+  warMatch?: number | null;
+  /** Picks that are on the WAR ballot. */
+  warOverlap?: number | null;
+  /** warMatch minus the median voter's that award-year. */
+  warVsField?: number;
 }
 
 export interface HofBallot {
@@ -66,7 +76,13 @@ export interface VoterSummary {
     ballots: number;
     firstMatches: number;
     soloPicks: number;
-    byAward: Partial<Record<AwardCode, { ballots: number; firstMatches: number; avgDeviation: number }>>;
+    warBallots: number;
+    warMatch: number | null;
+    warVsField: number | null;
+    warOverlap: number | null;
+    warPercentile?: number;
+    warPool?: number;
+    byAward: Partial<Record<AwardCode, { ballots: number; firstMatches: number; avgDeviation: number; warMatch: number | null }>>;
   };
 }
 
@@ -93,6 +109,10 @@ export interface VoterIndexRow {
   awardBallots: number;
   awardYears: number[];
   awardCodes: AwardCode[];
+  warMatch: number | null;
+  warVsField: number | null;
+  warBallots: number;
+  warPercentile: number | null;
   avgNames: number | null;
 }
 
@@ -122,6 +142,9 @@ export interface AwardResult {
   voters: number;
   medianDeviation: number;
   standings: { id: number | null; name: string; points: number; firsts: number; rank: number }[];
+  warBallot: { id: number; name: string; war: number }[] | null;
+  medianWarMatch: number | null;
+  consensusWarMatch: number | null;
 }
 
 const profiles = profilesJson as unknown as Record<string, VoterProfile>;
