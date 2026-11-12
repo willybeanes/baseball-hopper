@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { VoterIndexRow } from "@/lib/voters";
 
-type Filter = "all" | "hof" | "mvp" | "both";
+type Filter = "all" | "hof" | "awards" | "both";
 type Sort = "name" | "hof" | "names";
 
 const fold = (s: string) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -23,8 +23,8 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
     const needle = fold(q.trim());
     const out = rows.filter((r) => {
       if (filter === "hof" && !r.hofYears.length) return false;
-      if (filter === "mvp" && !r.mvpYears.length) return false;
-      if (filter === "both" && !(r.hofYears.length && r.mvpYears.length)) return false;
+      if (filter === "awards" && !r.awardBallots) return false;
+      if (filter === "both" && !(r.hofYears.length && r.awardBallots)) return false;
       if (!needle) return true;
       return fold(`${r.name} ${r.outlet ?? ""} ${r.chapter ?? ""}`).includes(needle);
     });
@@ -56,7 +56,7 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
             [
               ["all", "All"],
               ["hof", "Hall of Fame"],
-              ["mvp", "MVP"],
+              ["awards", "Awards"],
               ["both", "Both"],
             ] as [Filter, string][]
           ).map(([k, label]) => (
@@ -91,11 +91,11 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
               <th className="py-2 pr-3 text-left font-medium">Outlet</th>
               <th className="py-2 pr-3 text-left font-medium">Public HOF ballots</th>
               <th className="py-2 pr-3 text-right font-medium">Names / ballot</th>
-              <th className="py-2 text-left font-medium">MVP ballots</th>
+              <th className="py-2 text-left font-medium">Award ballots</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--panel-border)]">
-            {shown.slice(0, 400).map((r) => (
+            {shown.slice(0, 150).map((r) => (
               <tr key={r.slug}>
                 <td className="py-2 pr-3">
                   <Link href={`/voter/${r.slug}`} className="font-semibold text-[var(--text)] hover:underline">
@@ -117,12 +117,10 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
                 </td>
                 <td className="py-2 pr-3 text-right">{r.avgNames != null ? r.avgNames.toFixed(1) : <span className="text-[var(--dim)]">—</span>}</td>
                 <td className="whitespace-nowrap py-2">
-                  {r.mvpYears.length > 3 ? (
+                  {r.awardBallots ? (
                     <>
-                      {r.mvpYears.length} <span className="text-[var(--dim)]">({span(r.mvpYears)})</span>
+                      {r.awardBallots} <span className="text-[var(--dim)]">({span(r.awardYears)})</span>
                     </>
-                  ) : r.mvpYears.length ? (
-                    r.mvpYears.join(", ")
                   ) : (
                     <span className="text-[var(--dim)]">—</span>
                   )}
@@ -131,8 +129,8 @@ export default function VoterList({ rows }: { rows: VoterIndexRow[] }) {
             ))}
           </tbody>
         </table>
-        {shown.length > 400 && (
-          <p className="mt-3 text-[12px] text-[var(--dim)]">Showing the first 400. Search to narrow the list.</p>
+        {shown.length > 150 && (
+          <p className="mt-3 text-[12px] text-[var(--dim)]">Showing the first 150. Search to narrow the list.</p>
         )}
       </div>
     </section>

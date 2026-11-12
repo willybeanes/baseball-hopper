@@ -1,6 +1,6 @@
-"""Build voter profiles from BBWAA MVP ballots + the Thibodaux HOF tracker.
+"""Build voter profiles from BBWAA award ballots (MVP, Cy Young, ROY, Manager, Reliever) + the Thibodaux HOF tracker.
 
-Inputs (scripts/voters/data): mvp_bbwaa.json, hof_tracker.json, player_ids.json; aliases.json beside this file.
+Inputs (scripts/voters/data): mvp_bbwaa.json, awards_bbwaa.json, hof_tracker.json, player_ids.json; aliases.json beside this file.
 Outputs: public/data/voters/index.json (list for /voters) and public/data/voters/profiles.json (one entry per voter).
 """
 import json, re, unicodedata
@@ -41,41 +41,51 @@ def voter_key(name, aliases):
 def main():
     aliases = json.loads((HERE / "aliases.json").read_text())
     mvp = json.loads((D / "mvp_bbwaa.json").read_text())
+    other = json.loads((D / "awards_bbwaa.json").read_text())
     hof = json.loads((D / "hof_tracker.json").read_text())
     ids = json.loads((D / "player_ids.json").read_text())
 
-    voters = defaultdict(lambda: {"names": Counter(), "mvp": [], "hof": [], "outlets": [], "chapters": []})
+    voters = defaultdict(lambda: {"names": Counter(), "awards": [], "hof": [], "outlets": [], "chapters": []})
 
-    # ---------- MVP ----------
-    mvp_awards = []
-    for a in mvp["awards"]:
-        y, lg = a["year"], a["league"]
-        pts, firsts, mentions = Counter(), Counter(), Counter()
+    # ---------- BBWAA awards (MVP, Cy Young, ROY, Manager, Reliever) ----------
+    award_list = []
+
+    def add_award(code, y, lg, url, ballots, lookup, results=None):
+        places = max(max((i + 1 for i, x in enumerate(b["picks"]) if x), default=0) for b in ballots)
+        pts, firsts, mentions, full_to_pid, names = Counter(), Counter(), Counter(), {}, {}
         resolved = []
-        for b in a["ballots"]:
+        for b in ballots:
             picks = []
             for i, raw in enumerate(b["picks"]):
                 if not raw:
                     continue
-                m = ids["mvp"].get(f"{y}|{lg}|{raw}")
-                pid = m["id"] if m else f"?{raw}"
-                pname = m["name"] if m else raw
-                pts[pid] += MVP_POINTS[i]
+                m = lookup(raw)
+                pid = (m["id"] if m and m.get("id") else None) or f"?{m['name'] if m else raw}"
+                names[pid] = m["name"] if m else raw
+                if m and m.get("full"):
+                    full_to_pid[m["full"]] = pid
+                if code == "mvp":
+                    pts[pid] += MVP_POINTS[i]
                 mentions[pid] += 1
                 if i == 0:
                     firsts[pid] += 1
-                picks.append({"rank": i + 1, "id": m["id"] if m else None, "name": pname})
+                picks.append({"rank": i + 1, "id": m["id"] if m else None, "name": names[pid], "pid": pid})
             resolved.append((b, picks))
-        order = sorted(pts, key=lambda p: (-pts[p], -firsts[p]))
+        if results:  # official order and points from the page's results table
+            order, seen = [], set()
+            for r in results:
+                pid = full_to_pid.get(r["name"])
+                if pid and pid not in seen:
+                    order.append(pid)
+                    seen.add(pid)
+                    pts[pid] = r["points"]
+            order += sorted((p for p in mentions if p not in seen), key=lambda p: (-mentions[p], -firsts[p]))
+        else:
+            order = sorted(pts, key=lambda p: (-pts[p], -firsts[p]))
         final = {p: i + 1 for i, p in enumerate(order)}
-        names = {}
-        for _, picks in resolved:
-            for p in picks:
-                names[p["id"] or f"?{p['name']}"] = p["name"]
-        standings = [{"id": p if isinstance(p, int) else None, "name": names.get(p, str(p)), "points": pts[p],
+        standings = [{"id": p if isinstance(p, int) else None, "name": names[p], "points": pts[p],
                       "firsts": firsts[p], "rank": final[p]} for p in order]
-        mvp_awards.append({"year": y, "league": lg, "url": a["url"], "voters": len(a["ballots"]),
-                           "standings": standings[:15]})
+        devs = []
         for b, picks in resolved:
             k = voter_key(b["voter"], aliases)
             v = voters[k]
@@ -86,20 +96,26 @@ def main():
                 v["chapters"].append((y, b["chapter"].replace("*", "").strip()))
             dev = 0
             for p in picks:
-                pid = p["id"] or f"?{p['name']}"
+                pid = p.pop("pid")
                 p["finalRank"] = final[pid]
                 p["mentions"] = mentions[pid]
-                dev += abs(p["rank"] - min(final[pid], 11))
-            v["mvp"].append({"year": y, "league": lg, "outlet": b["outlet"], "chapter": b["chapter"],
-                             "picks": picks, "winner": standings[0]["name"],
-                             "firstMatchesWinner": bool(picks) and (picks[0]["id"] or f"?{picks[0]['name']}") == order[0],
-                             "deviation": dev, "solo": [p["name"] for p in picks if p["mentions"] == 1]})
+                dev += abs(p["rank"] - min(final[pid], places + 1))
+            devs.append(dev)
+            v["awards"].append({"award": code, "year": y, "league": lg, "places": places, "outlet": b["outlet"],
+                                "chapter": b["chapter"], "picks": picks, "winner": standings[0]["name"],
+                                "firstMatchesWinner": bool(picks) and picks[0]["finalRank"] == 1,
+                                "deviation": dev, "solo": [p["name"] for p in picks if p["mentions"] == 1]})
+        devs.sort()
+        award_list.append({"award": code, "year": y, "league": lg, "url": url, "voters": len(ballots),
+                           "places": places, "medianDeviation": devs[len(devs) // 2], "standings": standings[:15]})
 
-    # MVP deviation percentile within each award (lower = closer to consensus)
-    for a in mvp_awards:
-        devs = sorted(b["deviation"] for v in voters.values() for b in v["mvp"]
-                      if b["year"] == a["year"] and b["league"] == a["league"])
-        a["medianDeviation"] = devs[len(devs) // 2]
+    for a in mvp["awards"]:
+        y, lg = a["year"], a["league"]
+        add_award("mvp", y, lg, a["url"], a["ballots"], lambda raw, y=y, lg=lg: ids["mvp"].get(f"{y}|{lg}|{raw}"))
+    for a in other["awards"]:
+        c, y, lg = a["award"], a["year"], a["league"]
+        add_award(c, y, lg, a["url"], a["ballots"],
+                  lambda raw, c=c, y=y, lg=lg: ids["awards"].get(f"{c}|{y}|{lg}|{raw}"), a["results"])
 
     # ---------- HOF ----------
     hof_years = []
@@ -160,19 +176,15 @@ def main():
                 d[(b["year"], c["name"])] = c["name"] in b["votes"]
         return d
 
-    def mvp_sets(v):
-        return {(b["year"], b["league"]): b["picks"] for b in v["mvp"]}
-
     keys = list(voters)
     dec = {k: hof_decisions(voters[k]) for k in keys}
-    mvps = {k: mvp_sets(voters[k]) for k in keys}
 
     profiles, index = {}, []
     for k in keys:
         v = voters[k]
         name = v["names"].most_common(1)[0][0]
         name = re.sub(r"\s+", " ", name).strip()
-        v["mvp"].sort(key=lambda b: (b["year"], b["league"]))
+        v["awards"].sort(key=lambda b: (b["award"], b["year"], b["league"]))
         v["hof"].sort(key=lambda b: b["year"])
         outlet = sorted(v["outlets"])[-1][1] if v["outlets"] else None
         outlet_year = sorted(v["outlets"])[-1][0] if v["outlets"] else None
@@ -202,12 +214,17 @@ def main():
                 tot += sum((c["publicShare"] or 0) for c in hy["candidates"])
                 cnt += 1
             summary["hof"]["peerAvgNames"] = round(tot / cnt, 2) if cnt else None
-        if v["mvp"]:
-            summary["mvp"] = {
-                "ballots": len(v["mvp"]),
-                "firstMatches": sum(1 for b in v["mvp"] if b["firstMatchesWinner"]),
-                "avgDeviation": round(sum(b["deviation"] for b in v["mvp"]) / len(v["mvp"]), 1),
-                "soloPicks": sum(len(b["solo"]) for b in v["mvp"]),
+        if v["awards"]:
+            by = defaultdict(list)
+            for b in v["awards"]:
+                by[b["award"]].append(b)
+            summary["awards"] = {
+                "ballots": len(v["awards"]),
+                "firstMatches": sum(1 for b in v["awards"] if b["firstMatchesWinner"]),
+                "soloPicks": sum(len(b["solo"]) for b in v["awards"]),
+                "byAward": {c: {"ballots": len(bs), "firstMatches": sum(1 for b in bs if b["firstMatchesWinner"]),
+                                "avgDeviation": round(sum(b["deviation"] for b in bs) / len(bs), 1)}
+                            for c, bs in by.items()},
             }
 
         # similar voters: HOF agreement on shared yes/no decisions (>= 20 shared), MVP overlap otherwise
@@ -228,9 +245,11 @@ def main():
 
         profiles[k] = {"slug": k, "name": name, "aliases": sorted(set(v["names"]) - {name}), "outlet": outlet,
                        "outletYear": outlet_year,
-                       "chapter": chapter, "summary": summary, "mvp": v["mvp"], "hof": v["hof"], "similar": similar}
+                       "chapter": chapter, "summary": summary, "awards": v["awards"], "hof": v["hof"], "similar": similar}
         index.append({"slug": k, "name": name, "outlet": outlet, "chapter": chapter,
-                      "hofYears": [b["year"] for b in v["hof"]], "mvpYears": sorted({b["year"] for b in v["mvp"]}),
+                      "hofYears": [b["year"] for b in v["hof"]], "awardBallots": len(v["awards"]),
+                      "awardYears": sorted({b["year"] for b in v["awards"]}),
+                      "awardCodes": sorted({b["award"] for b in v["awards"]}),
                       "avgNames": summary.get("hof", {}).get("avgNames")})
 
     for p in profiles.values():
@@ -241,10 +260,10 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "index.json").write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")))
     (OUT / "profiles.json").write_text(json.dumps(profiles, ensure_ascii=False, separators=(",", ":")))
-    (OUT / "awards.json").write_text(json.dumps({"mvp": mvp_awards, "hof": hof_years,
+    (OUT / "awards.json").write_text(json.dumps({"awards": award_list, "hof": hof_years,
                                                 "committee": COMMITTEE}, ensure_ascii=False, separators=(",", ":")))
-    both = sum(1 for p in profiles.values() if p["mvp"] and p["hof"])
-    print(f"{len(profiles)} voters ({both} with both MVP and HOF ballots)")
+    both = sum(1 for p in profiles.values() if p["awards"] and p["hof"])
+    print(f"{len(profiles)} voters ({both} with both award and HOF ballots), {len(award_list)} award-years")
 
 
 if __name__ == "__main__":

@@ -61,50 +61,71 @@ def main():
     ov = json.loads((Path(__file__).parent / "overrides.json").read_text())
     mvp = json.loads((D / "mvp_bbwaa.json").read_text())
     hof = json.loads((D / "hof_tracker.json").read_text())
+    other = json.loads((D / "awards_bbwaa.json").read_text())
     out = {"mvp": {}, "hof": {}}
     br = br_vote_getters()
     flags = []
 
+    pools = {}
+
+    def pool_for(y, lg):
+        if (y, lg) not in pools:
+            pools[(y, lg)] = season_pool(y, lg)
+        return pools[(y, lg)]
+
+    def last_of(full):
+        return norm(full).split()[-1] if norm(full).split() else ""
+
+    def resolve(tag, key, raw, vg, pool):
+        """Ballot string -> one vote-getter's full name -> MLBAM player. pool=None: name only (managers)."""
+        n = norm(raw)
+        parts = n.replace("jr", "").split()
+        cands = [f for f in vg if norm(f) == n or last_of(f) == (parts[-1] if parts else n)
+                 or " ".join(norm(f).split()[1:]) == n]
+        if len(cands) > 1 and len(parts) > 1:
+            cands = [f for f in cands if norm(f).startswith(parts[0][0])] or cands
+        if not cands:
+            close = difflib.get_close_matches(parts[-1] if parts else n, [last_of(f) for f in vg], n=1, cutoff=0.8)
+            cands = [f for f in vg if close and last_of(f) == close[0]]
+        if len(cands) != 1:
+            flags.append((tag, "MULTI" if cands else "NO MATCH", key, cands))
+            return None
+        if pool is None:
+            return {"id": None, "name": cands[0], "full": cands[0]}
+        full = norm(cands[0])
+        hits = [p for p in pool if norm(p["name"]) == full]
+        if not hits:
+            fp = full.split()
+            hits = [p for p in pool if norm(p["last"]).split()[-1:] == fp[-1:] and norm(p["name"])[:1] == fp[0][:1]]
+        hits.sort(key=lambda p: -p["pt"])
+        if len(hits) > 1:
+            flags.append((tag, "AMBIG", key, cands[0], [(h["name"], h["id"]) for h in hits[:3]]))
+        if not hits:
+            flags.append((tag, "NO PLAYER ID", key, cands[0]))
+            return {"id": None, "name": cands[0], "full": cands[0]}
+        return {"id": hits[0]["id"], "name": hits[0]["name"], "full": cands[0]}
+
     for a in mvp["awards"]:
         y, lg = a["year"], a["league"]
-        pool = season_pool(y, lg)
-        names = sorted({p for b in a["ballots"] for p in b["picks"] if p})
-        for raw in names:
+        for raw in sorted({p for b in a["ballots"] for p in b["picks"] if p}):
             key = f"{y}|{lg}|{raw}"
             o = ov["mvp"].get(key) or ov["mvp"].get(raw)
-            if o:
-                out["mvp"][key] = o
-                continue
-            n = norm(raw)
-            parts = n.replace("jr", "").split()
-            vg = br.get(f"{y}|{lg}", [])
-            def last_of(full):
-                return norm(full).split()[-1] if norm(full).split() else ""
-            # 1) match the ballot string to a Baseball-Reference vote-getter
-            cands = [f for f in vg if norm(f) == n or last_of(f) == (parts[-1] if parts else n)
-                     or " ".join(norm(f).split()[1:]) == n]
-            if len(cands) > 1 and len(parts) > 1:
-                cands = [f for f in cands if norm(f).startswith(parts[0][0])] or cands
-            if not cands:
-                close = difflib.get_close_matches(parts[-1] if parts else n, [last_of(f) for f in vg], n=1, cutoff=0.8)
-                cands = [f for f in vg if close and last_of(f) == close[0]]
-            hits = []
-            if len(cands) == 1:
-                full = norm(cands[0])
-                hits = [p for p in pool if norm(p["name"]) == full]
-                if not hits:
-                    fp = full.split()
-                    hits = [p for p in pool if norm(p["last"]).split()[-1:] == fp[-1:] and norm(p["name"])[:1] == fp[0][:1]]
-                hits.sort(key=lambda p: -p["pt"])
-                if len(hits) > 1:
-                    flags.append(("MVP AMBIG", key, cands[0], [(h["name"], h["id"]) for h in hits[:3]]))
-            elif len(cands) > 1:
-                flags.append(("MVP MULTI VOTE-GETTER", key, cands))
-            if not hits:
-                flags.append(("MVP NO MATCH", key, cands))
-                continue
-            out["mvp"][key] = {"id": hits[0]["id"], "name": hits[0]["name"]}
-        print("mvp", y, lg, len(names), file=sys.stderr)
+            r = o or resolve("MVP", key, raw, br.get(f"{y}|{lg}", []), pool_for(y, lg))
+            if r:
+                out["mvp"][key] = r
+        print("mvp", y, lg, file=sys.stderr)
+
+    out["awards"] = {}
+    for a in other["awards"]:
+        code, y, lg = a["award"], a["year"], a["league"]
+        vg = [r["name"] for r in a["results"]]
+        for raw in sorted({p for b in a["ballots"] for p in b["picks"] if p}):
+            key = f"{code}|{y}|{lg}|{raw}"
+            o = ov.get("awards", {}).get(key)
+            r = o or resolve(code.upper(), key, raw, vg, None if code == "mgr" else pool_for(y, lg))
+            if r:
+                out["awards"][key] = r
+        print(code, y, lg, file=sys.stderr)
 
     seen = {}
     for yr in hof["years"]:

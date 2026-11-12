@@ -5,10 +5,12 @@ import HofGrid, { type HofGridRow } from "@/components/voters/HofGrid";
 import {
   allVoterSlugs,
   getVoter,
+  AWARD_NAMES,
+  awardResult,
   hofYear,
-  mvpAward,
+  type AwardBallot,
+  type AwardCode,
   type HofBallot,
-  type MvpBallot,
   type VoterProfile,
 } from "@/lib/voters";
 
@@ -27,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!v) return { title: "Voter — Baseball Hopper" };
   return {
     title: `${v.name} — Voter Profile — Baseball Hopper`,
-    description: `Every public Hall of Fame and MVP ballot from BBWAA voter ${v.name}${v.outlet ? ` (${v.outlet})` : ""}.`,
+    description: `Every public Hall of Fame and BBWAA award ballot from BBWAA voter ${v.name}${v.outlet ? ` (${v.outlet})` : ""}.`,
   };
 }
 
@@ -150,16 +152,20 @@ function HofYearList({ ballots }: { ballots: HofBallot[] }) {
   );
 }
 
-// ── MVP ───────────────────────────────────────────────────────────────────────
+// ── BBWAA awards ──────────────────────────────────────────────────────────────
 
-function MvpTable({ ballots }: { ballots: MvpBallot[] }) {
+const AWARD_ORDER: AwardCode[] = ["mvp", "cy", "roy", "reliever", "mgr"];
+
+function AwardTable({ ballots }: { ballots: AwardBallot[] }) {
+  const places = Math.max(...ballots.map((b) => b.places));
+  const isMgr = ballots[0]?.award === "mgr";
   return (
     <div className="-mx-1 overflow-x-auto px-1">
-      <table className="w-full min-w-[860px] border-collapse text-[13px]">
+      <table className={`w-full border-collapse text-[13px] ${places > 5 ? "min-w-[860px]" : "min-w-[560px]"}`}>
         <thead>
           <tr className="border-b border-[var(--rule)] text-[11px] font-medium text-[var(--dim)]">
-            <th className="sticky left-0 z-10 bg-[var(--panel)] py-2 pr-3 text-left font-medium">Award</th>
-            {Array.from({ length: 10 }, (_, i) => (
+            <th className="sticky left-0 z-10 bg-[var(--panel)] py-2 pr-3 text-left font-medium">Year</th>
+            {Array.from({ length: places }, (_, i) => (
               <th key={i} className="px-1.5 py-2 text-left font-medium">
                 {i + 1}
               </th>
@@ -168,27 +174,27 @@ function MvpTable({ ballots }: { ballots: MvpBallot[] }) {
         </thead>
         <tbody className="divide-y divide-[var(--panel-border)]">
           {[...ballots].reverse().map((b) => {
-            const award = mvpAward(b.year, b.league);
+            const result = awardResult(b.award, b.year, b.league);
             return (
               <tr key={`${b.year}${b.league}`} className="align-top">
                 <td className="sticky left-0 z-10 whitespace-nowrap bg-[var(--panel)] py-2 pr-3">
-                  <a href={award?.url} target="_blank" rel="noreferrer" className="font-semibold hover:underline">
+                  <a href={result?.url} target="_blank" rel="noreferrer" className="font-semibold hover:underline">
                     {b.year} {b.league}
                   </a>
                   <div className="text-[11px] text-[var(--dim)]">{b.outlet}</div>
                 </td>
-                {Array.from({ length: 10 }, (_, i) => {
+                {Array.from({ length: places }, (_, i) => {
                   const p = b.picks.find((x) => x.rank === i + 1);
-                  if (!p) return <td key={i} className="px-1.5 py-2 text-[var(--dim)]">—</td>;
+                  if (!p) return <td key={i} className="px-1.5 py-2 text-[var(--dim)]">{i < b.places ? "—" : ""}</td>;
                   const solo = p.mentions === 1;
                   return (
                     <td key={i} className="px-1.5 py-2">
                       <div className={`leading-tight ${solo ? "font-semibold text-[var(--accent)]" : ""}`}>
-                        <PlayerName id={p.id} name={p.name} />
+                        {isMgr ? p.name : <PlayerName id={p.id} name={p.name} />}
                       </div>
                       <div className="text-[11px] tabular-nums text-[var(--dim)]" title={`Finished ${p.finalRank} in the final vote`}>
                         {solo ? "only voter · " : ""}
-                        <span className={Math.abs(p.finalRank - p.rank) >= 3 ? "font-semibold text-[var(--text)]" : undefined}>
+                        <span className={Math.abs(p.finalRank - p.rank) >= Math.max(2, Math.round(b.places / 3)) ? "font-semibold text-[var(--text)]" : undefined}>
                           finished {p.finalRank}
                         </span>
                       </div>
@@ -208,17 +214,12 @@ function MvpTable({ ballots }: { ballots: MvpBallot[] }) {
 
 function Header({ v }: { v: VoterProfile }) {
   const hofYears = v.hof.map((b) => b.year);
-  const leagues = [...new Set(v.mvp.map((b) => b.league))].sort().join(" & ");
-  const mvpLabel = v.mvp.length
-    ? v.mvp.length <= 3
-      ? v.mvp.map((b) => `${b.year} ${b.league}`).join(", ")
-      : `${v.mvp.length} (${yearSpan(v.mvp.map((b) => b.year))}, ${leagues})`
-    : "";
+  const awardLabel = v.awards.length ? `${v.awards.length} (${yearSpan(v.awards.map((b) => b.year))})` : "";
   const facts: [string, string | null][] = [
     ["Outlet", v.outlet && (v.outletYear && v.outletYear < 2025 ? `${v.outlet} (as of ${v.outletYear})` : v.outlet)],
     ["Chapter", v.chapter],
     ["Public HOF ballots", hofYears.length ? `${hofYears.length} (${yearSpan(hofYears)})` : null],
-    ["MVP ballots", mvpLabel || null],
+    ["Award ballots", awardLabel || null],
   ];
   return (
     <header>
@@ -245,7 +246,8 @@ export default async function VoterPage({ params }: Props) {
   const v = getVoter((await params).slug);
   if (!v) notFound();
   const h = v.summary.hof;
-  const m = v.summary.mvp;
+  const m = v.summary.awards;
+  const byAward = AWARD_ORDER.map((c) => [c, v.awards.filter((b) => b.award === c)] as const).filter(([, bs]) => bs.length);
 
   return (
     <main className="mx-auto w-full max-w-[1200px] space-y-5 px-4 pb-20 pt-8 sm:px-5">
@@ -265,8 +267,8 @@ export default async function VoterPage({ params }: Props) {
             )}
             {m && (
               <>
-                <Stat label="MVP 1st place = winner" value={`${m.firstMatches} of ${m.ballots}`} />
-                <Stat label="MVP picks off consensus" value={m.avgDeviation.toFixed(1)} sub="avg spots per ballot" />
+                <Stat label="1st-place vote won the award" value={`${m.firstMatches} of ${m.ballots}`} sub="all BBWAA awards" />
+                <Stat label="Picks no one else made" value={`${m.soloPicks}`} sub={`across ${m.ballots} award ${m.ballots === 1 ? "ballot" : "ballots"}`} />
               </>
             )}
           </dl>
@@ -276,7 +278,7 @@ export default async function VoterPage({ params }: Props) {
       {v.hof.length > 0 && (
         <section className={PANEL}>
           <h2 className={H2}>Hall of Fame ballots</h2>
-          <p className="mb-4 mt-1 max-w-[72ch] text-[12px] leading-relaxed text-[var(--dim)]">
+          <p className="mb-4 mt-1 max-w-[62ch] text-[12px] leading-relaxed text-[var(--dim)]">
             Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from Ryan Thibodaux&rsquo;s{" "}
             <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
               BBHOF Tracker
@@ -288,19 +290,31 @@ export default async function VoterPage({ params }: Props) {
         </section>
       )}
 
-      {v.mvp.length > 0 && (
-        <section className={PANEL}>
-          <h2 className={H2}>MVP ballots</h2>
-          <p className="mb-4 mt-1 max-w-[72ch] text-[12px] leading-relaxed text-[var(--dim)]">
-            Each pick shows where the player finished in the final vote, in bold when that&rsquo;s three or more spots from where this voter put him. Red: no other voter listed him. Ballots from{" "}
-            <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
-              bbwaa.com
-            </a>
-            .
-          </p>
-          <MvpTable ballots={v.mvp} />
-        </section>
-      )}
+      {byAward.map(([code, bs], i) => {
+        const st = m?.byAward[code];
+        return (
+          <section key={code} className={PANEL}>
+            <h2 className={H2}>{AWARD_NAMES[code]} ballots</h2>
+            <p className="mb-4 mt-1 max-w-[62ch] text-[12px] leading-relaxed text-[var(--dim)]">
+              {st && (
+                <>
+                  Picked the winner first on {st.firstMatches} of {st.ballots} {st.ballots === 1 ? "ballot" : "ballots"}.{" "}
+                </>
+              )}
+              {i === 0 && (
+                <>
+                  Each pick shows where {code === "mgr" ? "that manager" : "the player"} finished in the final vote, in bold when well off this voter&rsquo;s spot. Red: no other voter listed {code === "mgr" ? "that manager" : "him"}. Ballots from{" "}
+                  <a href="https://bbwaa.com" className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
+                    bbwaa.com
+                  </a>
+                  .
+                </>
+              )}
+            </p>
+            <AwardTable ballots={bs} />
+          </section>
+        );
+      })}
 
       {v.similar.length > 0 && (
         <section className={PANEL}>

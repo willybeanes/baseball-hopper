@@ -18,5 +18,32 @@
     "JJ Putz": "J.J. Putz",
     "Howard Kendrick": "Howie Kendrick"
   },
-  "hof": {}
+  "hof": {},
+  "awards": {
+    "cy|2013|NL|Zimmerman": {
+      "id": 519455,
+      "name": "Jordan Zimmermann",
+      "full": "Jordan Zimmerman"
+    },
+    "cy|2013|NL|Zimmermann": {
+      "id": 519455,
+      "name": "Jordan Zimmermann",
+      "full": "Jordan Zimmerman"
+    },
+    "roy|2012|NL|Pacheco": {
+      "id": 457574,
+      "name": "Jordan Pacheco",
+      "full": "Jordan Pachecho"
+    },
+    "roy|2014|NL|d'Arnaud": {
+      "id": 518595,
+      "name": "Travis d'Arnaud",
+      "full": "Travis dArnau"
+    },
+    "roy|2026|AL|Bolte, H": {
+      "id": 703607,
+      "name": "Henry Bolte",
+      "full": "Henry Bolte"
+    }
+  }
 }

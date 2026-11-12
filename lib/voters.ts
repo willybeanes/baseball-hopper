@@ -1,10 +1,20 @@
-// Voter Profiles data: built by scripts/voters/build_profiles.py from BBWAA MVP ballot pages
-// (bbwaa.com, 2012–2025) and Ryan Thibodaux's BBHOF Tracker (public HOF ballots, 2009–2026).
+// Voter Profiles data: built by scripts/voters/build_profiles.py from BBWAA award ballot pages
+// (bbwaa.com: MVP, Cy Young, Rookie, Manager, Reliever, 2012–2026) and Ryan Thibodaux's BBHOF Tracker (public HOF ballots, 2009–2026).
 import profilesJson from "@/public/data/voters/profiles.json";
 import awardsJson from "@/public/data/voters/awards.json";
 import indexJson from "@/public/data/voters/index.json";
 
-export interface MvpPick {
+export type AwardCode = "mvp" | "cy" | "roy" | "reliever" | "mgr";
+
+export const AWARD_NAMES: Record<AwardCode, string> = {
+  mvp: "MVP",
+  cy: "Cy Young",
+  roy: "Rookie of the Year",
+  reliever: "Reliever of the Year",
+  mgr: "Manager of the Year",
+};
+
+export interface AwardPick {
   rank: number;
   id: number | null;
   name: string;
@@ -12,12 +22,14 @@ export interface MvpPick {
   mentions: number;
 }
 
-export interface MvpBallot {
+export interface AwardBallot {
+  award: AwardCode;
+  places: number;
   year: number;
   league: "AL" | "NL";
   outlet: string | null;
   chapter: string | null;
-  picks: MvpPick[];
+  picks: AwardPick[];
   winner: string;
   firstMatchesWinner: boolean;
   deviation: number;
@@ -50,11 +62,11 @@ export interface VoterSummary {
     pedPublicRate: number | null;
     rareVotes: number;
   };
-  mvp?: {
+  awards?: {
     ballots: number;
     firstMatches: number;
-    avgDeviation: number;
     soloPicks: number;
+    byAward: Partial<Record<AwardCode, { ballots: number; firstMatches: number; avgDeviation: number }>>;
   };
 }
 
@@ -67,7 +79,7 @@ export interface VoterProfile {
   outletYear: number | null;
   chapter: string | null;
   summary: VoterSummary;
-  mvp: MvpBallot[];
+  awards: AwardBallot[];
   hof: HofBallot[];
   similar: { slug: string; name: string; agree: number; shared: number; kind: string }[];
 }
@@ -78,7 +90,9 @@ export interface VoterIndexRow {
   outlet: string | null;
   chapter: string | null;
   hofYears: number[];
-  mvpYears: number[];
+  awardBallots: number;
+  awardYears: number[];
+  awardCodes: AwardCode[];
   avgNames: number | null;
 }
 
@@ -99,7 +113,9 @@ export interface HofYear {
   candidates: HofCandidate[];
 }
 
-export interface MvpAward {
+export interface AwardResult {
+  award: AwardCode;
+  places: number;
   year: number;
   league: "AL" | "NL";
   url: string;
@@ -109,7 +125,7 @@ export interface MvpAward {
 }
 
 const profiles = profilesJson as unknown as Record<string, VoterProfile>;
-const awards = awardsJson as unknown as { mvp: MvpAward[]; hof: HofYear[] };
+const awards = awardsJson as unknown as { awards: AwardResult[]; hof: HofYear[] };
 
 export const voterIndex = indexJson as unknown as VoterIndexRow[];
 
@@ -125,6 +141,6 @@ export function hofYear(year: number): HofYear | undefined {
   return awards.hof.find((y) => y.year === year);
 }
 
-export function mvpAward(year: number, league: string): MvpAward | undefined {
-  return awards.mvp.find((a) => a.year === year && a.league === league);
+export function awardResult(award: AwardCode, year: number, league: string): AwardResult | undefined {
+  return awards.awards.find((a) => a.award === award && a.year === year && a.league === league);
 }
