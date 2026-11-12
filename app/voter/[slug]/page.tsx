@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import { notFound } from "next/navigation";
 import HofGrid, { type HofGridRow } from "@/components/voters/HofGrid";
 import {
@@ -47,6 +47,30 @@ function PlayerName({ id, name }: { id: number | null; name: string }) {
     </Link>
   ) : (
     <>{name}</>
+  );
+}
+
+/** A page panel whose heading toggles it open and closed (native <details>, open by default). */
+function Panel({ title, children }: { title: ReactNode; children: ReactNode }) {
+  return (
+    <details open className={`group ${PANEL}`}>
+      <summary className="-my-1 flex cursor-pointer list-none items-center justify-between gap-3 rounded-md py-1 [&::-webkit-details-marker]:hidden">
+        <h2 className={H2}>{title}</h2>
+        <svg
+          aria-hidden
+          viewBox="0 0 16 16"
+          className="h-4 w-4 shrink-0 text-[var(--dim)] transition-transform duration-150 group-open:rotate-180"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 6l4 4 4-4" />
+        </svg>
+      </summary>
+      {children}
+    </details>
   );
 }
 
@@ -281,8 +305,7 @@ export default async function VoterPage({ params }: Props) {
       <Header v={v} />
 
       {(h || m) && (
-        <section className={PANEL}>
-          <h2 className={H2}>Tendencies</h2>
+        <Panel title={<>Tendencies</>}>
           <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
             {h && (
               <>
@@ -309,12 +332,11 @@ export default async function VoterPage({ params }: Props) {
               </>
             )}
           </dl>
-        </section>
+        </Panel>
       )}
 
       {v.hof.length > 0 && (
-        <section className={PANEL}>
-          <h2 className={H2}>Hall of Fame ballots</h2>
+        <Panel title={<>Hall of Fame ballots</>}>
           <p className="mb-4 mt-1 max-w-[56ch] text-[12px] leading-relaxed text-[var(--dim)]">
             Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from Ryan Thibodaux&rsquo;s{" "}
             <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
@@ -324,14 +346,13 @@ export default async function VoterPage({ params }: Props) {
           </p>
           <HofGridSection ballots={v.hof} />
           <HofYearList ballots={v.hof} />
-        </section>
+        </Panel>
       )}
 
       {byAward.map(([code, bs], i) => {
         const st = m?.byAward[code];
         return (
-          <section key={code} className={PANEL}>
-            <h2 className={H2}>{AWARD_NAMES[code]} ballots</h2>
+          <Panel key={code} title={<>{AWARD_NAMES[code]} ballots</>}>
             <p className="mb-4 mt-1 max-w-[56ch] text-[12px] leading-relaxed text-[var(--dim)]">
               {st && (
                 <>
@@ -350,13 +371,12 @@ export default async function VoterPage({ params }: Props) {
               )}
             </p>
             <AwardTable ballots={bs} />
-          </section>
+          </Panel>
         );
       })}
 
       {v.similar.length > 0 && (
-        <section className={PANEL}>
-          <h2 className={H2}>Votes most like {v.name.split(" ")[0]}&rsquo;s</h2>
+        <Panel title={<>Votes most like {v.name.split(" ")[0]}&rsquo;s</>}>
           <p className="mt-1 text-[12px] text-[var(--dim)]">Share of Hall of Fame yes/no calls that match, on candidates both voters had on the same ballot.</p>
           <ul className="mt-3 divide-y divide-[var(--panel-border)] text-[13px]">
             {v.similar.map((s) => (
@@ -370,7 +390,7 @@ export default async function VoterPage({ params }: Props) {
               </li>
             ))}
           </ul>
-        </section>
+        </Panel>
       )}
     </main>
   );
