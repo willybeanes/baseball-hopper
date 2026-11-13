@@ -23,3 +23,8 @@ WAR alignment: for each award-year the WAR ballot is the top N in fWAR among eli
 pitching; Cy Young: pitching; ROY: FanGraphs `ind=2` rookies; Reliever: FanGraphs relievers; none for Manager).
 A ballot's WAR match is its fWAR weighted by award points (MVP 14-9-8…, 5-place 7-4-3-2-1, 3-place 5-3-1)
 divided by the WAR ballot's. Voters are ranked by their average gap to the median voter (3+ ballots).
+
+`build_profiles.py` also writes `public/data/voters/trends.json` (~45 KB): one row per award-year (winner, WAR leader,
+winner's WAR rank, median/mean/consensus WAR match, share of first-place votes to the WAR leader), one row per HOF year
+(public ballots, average and median names, full-ballot share, blanks, electees) and one row per chapter. It is sized
+for Claude Chat or any tool to read by URL; definitions are inside the file under `about`.

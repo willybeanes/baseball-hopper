@@ -38,6 +38,63 @@ def voter_key(name, aliases):
     return "-".join(toks)
 
 
+def write_trends(award_list, hof_years, profiles, index):
+    """Small, analysis-ready summary (a few KB) for Claude Chat or anyone else: one row per award-year,
+    one row per HOF year, one row per chapter. Lives at /data/voters/trends.json."""
+    import datetime, statistics
+    awards = []
+    for a in award_list:
+        t = a.get("_trend", {})
+        awards.append({
+            "award": a["award"], "year": a["year"], "league": a["league"], "voters": a["voters"],
+            "winner": a["standings"][0]["name"] if a["standings"] else None,
+            "unanimous": bool(a["standings"]) and a["standings"][0]["firsts"] == a["voters"],
+            "medianWarMatch": a.get("medianWarMatch"), "meanWarMatch": t.get("meanWarMatch"),
+            "consensusWarMatch": a.get("consensusWarMatch"), "warLeader": t.get("warLeader"),
+            "winnerWarRank": t.get("winnerWarRank"), "firstPlaceToWarLeader": t.get("firstPlaceToWarLeader"),
+        })
+    hof = []
+    for hy in hof_years:
+        ballots = [b for v in profiles.values() for b in v["hof"] if b["year"] == hy["year"]]
+        filled = [b["count"] for b in ballots if not b["blank"]]
+        hof.append({
+            "year": hy["year"], "publicBallots": hy["publicBallots"], "namedBallots": len(ballots),
+            "avgNames": round(statistics.mean(filled), 2) if filled else None,
+            "medianNames": statistics.median(filled) if filled else None,
+            "fullBallotShare": round(sum(1 for c in filled if c >= 10) / len(filled), 3) if filled else None,
+            "blankBallots": sum(1 for b in ballots if b["blank"]),
+            "elected": [c["name"] for c in hy["candidates"] if c["elected"]],
+            "candidates": len(hy["candidates"]),
+        })
+    chapters = defaultdict(list)
+    for r in index:
+        if r.get("chapter") and r.get("warBallots", 0) >= 3 and r.get("warVsField") is not None:
+            chapters[r["chapter"]].append(r["warVsField"])
+    chapter_rows = sorted(({"chapter": c, "voters": len(v), "avgWarVsField": round(statistics.mean(v), 3)}
+                           for c, v in chapters.items()), key=lambda x: -x["avgWarVsField"])
+    out = {
+        "generated": datetime.date.today().isoformat(),
+        "about": {
+            "source": "Baseball Hopper Voter Profiles: BBWAA award ballots (bbwaa.com, 2012+), public HOF ballots "
+                      "(Ryan Thibodaux's BBHOF Tracker, 2009+), FanGraphs WAR.",
+            "warMatch": "A ballot's fWAR weighted by award points, divided by the same for the WAR ballot "
+                        "(top N in fWAR among eligible players). 1.0 = as much WAR as the WAR ballot.",
+            "winnerWarRank": "The winner's rank in fWAR among eligible players (1 = WAR leader).",
+            "firstPlaceToWarLeader": "Share of voters whose first-place pick was the WAR leader.",
+            "avgWarVsField": "Chapter average of each voter's mean gap to the median voter (voters with 3+ ballots). "
+                             "Each voter counts toward their most recent chapter.",
+            "hof": "Public ballots only; the full electorate is larger. avgNames excludes blank ballots.",
+            "awardCodes": {"mvp": "MVP", "cy": "Cy Young", "roy": "Rookie of the Year", "mgr": "Manager of the Year",
+                           "reliever": "Reliever of the Year"},
+            "files": "Per-voter detail: /data/voters/profiles.json (large). Voter list: /data/voters/index.json.",
+        },
+        "awards": awards,
+        "hof": hof,
+        "chapters": chapter_rows,
+    }
+    (OUT / "trends.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
+
+
 def main():
     aliases = json.loads((HERE / "aliases.json").read_text())
     mvp = json.loads((D / "mvp_bbwaa.json").read_text())
@@ -173,9 +230,20 @@ def main():
         matches.sort()
         med = matches[len(matches) // 2] if matches else None
         consensus = war_match([p for p in order[:places]]) if war_ballot is not None else None
+        trend_extra = {}
+        if war_ballot is not None:
+            war1 = war_ballot[0]["id"] if war_ballot else None
+            firsts_on_war1 = sum(1 for _, picks in resolved if picks and picks[0]["id"] == war1)
+            trend_extra = {
+                "meanWarMatch": round(sum(matches) / len(matches), 3) if matches else None,
+                "winnerWarRank": war_rank.get(order[0]) if isinstance(order[0], int) else None,
+                "warLeader": war_ballot[0]["name"] if war_ballot else None,
+                "firstPlaceToWarLeader": round(firsts_on_war1 / len(resolved), 3) if resolved else None,
+            }
         award_list.append({"award": code, "year": y, "league": lg, "url": url, "voters": len(ballots),
                            "places": places, "medianDeviation": devs[len(devs) // 2], "standings": standings[:15],
-                           "warBallot": war_ballot, "medianWarMatch": med, "consensusWarMatch": consensus})
+                           "warBallot": war_ballot, "medianWarMatch": med, "consensusWarMatch": consensus,
+                           "_trend": trend_extra})
 
     for a in mvp["awards"]:
         y, lg = a["year"], a["league"]
@@ -352,6 +420,9 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "index.json").write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")))
     (OUT / "profiles.json").write_text(json.dumps(profiles, ensure_ascii=False, separators=(",", ":")))
+    write_trends(award_list, hof_years, profiles, index)
+    for a in award_list:
+        a.pop("_trend", None)
     (OUT / "awards.json").write_text(json.dumps({"awards": award_list, "hof": hof_years,
                                                 "committee": COMMITTEE}, ensure_ascii=False, separators=(",", ":")))
     both = sum(1 for p in profiles.values() if p["awards"] and p["hof"])
