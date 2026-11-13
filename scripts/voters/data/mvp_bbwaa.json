@@ -1,0 +1,14481 @@
+{
+"source": "bbwaa.com",
+"awards": [
+{
+"year": 2012,
+"league": "AL",
+"url": "https://bbwaa.com/12-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Paul White",
+"outlet": "USA Today",
+"chapter": "BAL",
+"picks": [
+"Cabrera",
+"Trout",
+"Cano",
+"Verlander",
+"Beltre",
+"Fielder",
+"Zobrist",
+"Price",
+"Hamilton",
+"Cespedes"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN.com",
+"chapter": "BAL",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Jones",
+"Jeter",
+"Hamilton",
+"Cano",
+"Cespedes",
+"Rodney",
+"Verlander"
+]
+},
+{
+"voter": "Tim Britton",
+"outlet": "Providence Journal Bulletin",
+"chapter": "BOS",
+"picks": [
+"Trout",
+"Cabrera",
+"Cano",
+"Verlander",
+"Hamilton",
+"Fielder",
+"Beltre",
+"Encarnacion",
+"Zobrist",
+"Mauer"
+]
+},
+{
+"voter": "Sean McAdam",
+"outlet": "CSNNE.com",
+"chapter": "BOS",
+"picks": [
+"Trout",
+"Cabrera",
+"Beltre",
+"Cano",
+"Jones",
+"Verlander",
+"Hamilton",
+"Rodney",
+"Fielder",
+"Encarnacion"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun Times",
+"chapter": "CHI",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Hamilton",
+"Verlander",
+"Jones",
+"Jeter",
+"Encarnacion",
+"Rios",
+"Cespedes"
+]
+},
+{
+"voter": "Mark Gonzales",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Cabrera",
+"Trout",
+"Jeter",
+"Beltre",
+"Rios",
+"Fielder",
+"Hamilton",
+"Cano",
+"Jones",
+"Encarnacion"
+]
+},
+{
+"voter": "Sheldon Ocker",
+"outlet": "Akron Beacon Journal",
+"chapter": "CLE",
+"picks": [
+"Cabrera",
+"Beltre",
+"Trout",
+"Cano",
+"Hamilton",
+"Pujols",
+"Jones",
+"Rodney",
+"Rios",
+"Fielder"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland Plain Dealer",
+"chapter": "CLE",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Cano",
+"Jones",
+"Reddick",
+"Johnson",
+"Hamilton",
+"Jeter",
+"Fielder"
+]
+},
+{
+"voter": "John Lowe",
+"outlet": "Detroit Free Press",
+"chapter": "DET",
+"picks": [
+"Cabrera",
+"Trout",
+"Johnson",
+"Beltre",
+"Jeter",
+"Hamilton",
+"Rodney",
+"Cespedes",
+"Fielder",
+"Ibanez"
+]
+},
+{
+"voter": "Tom Gage",
+"outlet": "Detroit News",
+"chapter": "DET",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Cano",
+"Hamilton",
+"Fielder",
+"Jeter",
+"Jones",
+"Rios",
+"Pujols"
+]
+},
+{
+"voter": "Bob Dutton",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Cabrera",
+"Trout",
+"Cano",
+"Beltre",
+"Fielder",
+"Price",
+"Verlander",
+"Jones",
+"Hamilton",
+"Encarnacion"
+]
+},
+{
+"voter": "Jeff Passan",
+"outlet": "Yahoo! Sports.com",
+"chapter": "KC",
+"picks": [
+"Trout",
+"Cabrera",
+"Beltre",
+"Cano",
+"Verlander",
+"Jones",
+"Hamilton",
+"Mauer",
+"Hernandez",
+"Fielder"
+]
+},
+{
+"voter": "Mark Whicker",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Johnson",
+"Cespedes",
+"Hamilton",
+"Wieters",
+"Cano",
+"Jones",
+"Fielder"
+]
+},
+{
+"voter": "Joe Haakenson",
+"outlet": "At Large",
+"chapter": "LA",
+"picks": [
+"Trout",
+"Cabrera",
+"Beltre",
+"Hamilton",
+"Encarnacion",
+"Cano",
+"Jones",
+"Fielder",
+"Pujols",
+"Rios"
+]
+},
+{
+"voter": "John Shipley",
+"outlet": "St. Paul Pioneer Press",
+"chapter": "MIN",
+"picks": [
+"Cabrera",
+"Trout",
+"Price",
+"Beltre",
+"Cano",
+"Verlander",
+"Hamilton",
+"Encarnacion",
+"Weaver",
+"Jeter"
+]
+},
+{
+"voter": "La Velle Neal III",
+"outlet": "Minneapolis Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Cano",
+"Encarnacion",
+"Fielder",
+"Jones",
+"Cespedes",
+"Hamilton",
+"Mauer"
+]
+},
+{
+"voter": "George King",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Hamilton",
+"Jeter",
+"Jones",
+"Cano",
+"Fielder",
+"Rios",
+"Cespedes"
+]
+},
+{
+"voter": "Mark Feinsand",
+"outlet": "New York Daily News",
+"chapter": "NY",
+"picks": [
+"Cabrera",
+"Trout",
+"Jeter",
+"Beltre",
+"Jones",
+"Hamilton",
+"Cespedes",
+"Soriano",
+"Verlander",
+"Rodney"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Cabrera",
+"Trout",
+"Cano",
+"Beltre",
+"Jones",
+"Hamilton",
+"Cespedes",
+"Encarnacion",
+"Fielder",
+"Zobrist"
+]
+},
+{
+"voter": "Joe Stiglich",
+"outlet": "Bay Area News Group",
+"chapter": "OAK",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Cano",
+"Hamilton",
+"Jones",
+"Verlander",
+"Encarnacion",
+"Fielder",
+"Reddick"
+]
+},
+{
+"voter": "Jim Caple",
+"outlet": "ESPN.com",
+"chapter": "SEA",
+"picks": [
+"Trout",
+"Cabrera",
+"Beltre",
+"Cano",
+"Jones",
+"Verlander",
+"Hamilton",
+"Jeter",
+"Cespedes",
+"Mauer"
+]
+},
+{
+"voter": "Larry LaRue",
+"outlet": "Tacoma News Tribune",
+"chapter": "SEA",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Jeter",
+"Jones",
+"Reddick",
+"Hamilton",
+"Johnson",
+"Cano",
+"Fielder"
+]
+},
+{
+"voter": "Roger Mooney",
+"outlet": "Tampa Tribune",
+"chapter": "TB",
+"picks": [
+"Trout",
+"Cabrera",
+"Beltre",
+"Jones",
+"Jeter",
+"Cespedes",
+"Cano",
+"Hamilton",
+"Rodney",
+"Encarnacion"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Cabrera",
+"Trout",
+"Jones",
+"Beltre",
+"Jeter",
+"Cespedes",
+"Hamilton",
+"Rodney",
+"Soriano",
+"Reddick"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star Telegram",
+"chapter": "TEX",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Cano",
+"Hamilton",
+"Jones",
+"Jeter",
+"Rodney",
+"Fielder",
+"Encarnacion"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Cabrera",
+"Trout",
+"Cano",
+"Beltre",
+"Verlander",
+"Price",
+"Fielder",
+"Jones",
+"Cespedes",
+"Hamilton"
+]
+},
+{
+"voter": "Bob Elliott",
+"outlet": "Toronto Sun",
+"chapter": "TOR",
+"picks": [
+"Cabrera",
+"Trout",
+"Beltre",
+"Cano",
+"Jones",
+"Jeter",
+"Hamilton",
+"Rodney",
+"Reddick",
+"Encarnacion"
+]
+},
+{
+"voter": "Mark Zwolinski",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Cabrera",
+"Trout",
+"Cano",
+"Beltre",
+"Hamilton",
+"Price",
+"Jones",
+"Jeter",
+"Rios",
+"Cespedes"
+]
+}
+]
+},
+{
+"year": 2012,
+"league": "NL",
+"url": "https://bbwaa.com/12-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Tom Verducci",
+"outlet": "SI.com",
+"chapter": "ATL*",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"LaRoche",
+"Bruce",
+"Headley",
+"Holliday",
+"Kimbrel",
+"Wright"
+]
+},
+{
+"voter": "Jon Heyman",
+"outlet": "CBS Sports.com",
+"chapter": "ATL*",
+"picks": [
+"Posey",
+"Braun",
+"Molina",
+"McCutchen",
+"LaRoche",
+"Kimbrel",
+"Medlen",
+"Ramirez",
+"Harper",
+"Chapman"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Wright",
+"Headley",
+"Kershaw",
+"Dickey",
+"Cueto",
+"Hill"
+]
+},
+{
+"voter": "Bob Nightengale",
+"outlet": "USA Today",
+"chapter": "AZ",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Headley",
+"LaRoche",
+"Craig",
+"Ramirez",
+"Holliday",
+"Phillips"
+]
+},
+{
+"voter": "Doug Padilla",
+"outlet": "ESPN Chicago.com",
+"chapter": "CHI",
+"picks": [
+"Braun",
+"McCutchen",
+"Posey",
+"Bruce",
+"LaRoche",
+"Holliday",
+"Headley",
+"Molina",
+"Soriano",
+"Pence"
+]
+},
+{
+"voter": "Gordon Wittenmyer",
+"outlet": "Chicago Sun Times",
+"chapter": "CHI",
+"picks": [
+"Posey",
+"McCutchen",
+"Molina",
+"Braun",
+"Gonzalez",
+"Phillips",
+"Medlen",
+"Bruce",
+"Ramirez",
+"Soriano"
+]
+},
+{
+"voter": "Hal McCoy",
+"outlet": "At Large",
+"chapter": "CIN",
+"picks": [
+"Posey",
+"Braun",
+"Molina",
+"McCutchen",
+"La Roche",
+"Soriano",
+"Bruce",
+"Prado",
+"Wright",
+"Headley"
+]
+},
+{
+"voter": "C.Trent Rosecrans",
+"outlet": "CBS Sports.com",
+"chapter": "CIN",
+"picks": [
+"Posey",
+"Molina",
+"Braun",
+"McCutchen",
+"Wright",
+"Headley",
+"Ramirez",
+"Bourn",
+"Desmond",
+"Votto"
+]
+},
+{
+"voter": "Troy Renck",
+"outlet": "Denver Post",
+"chapter": "COL",
+"picks": [
+"Posey",
+"McCutchen",
+"Braun",
+"Molina",
+"Headley",
+"LaRoche",
+"Stanton",
+"Kimbrel",
+"Wright",
+"Hill"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "Fox Sports.com",
+"chapter": "COL",
+"picks": [
+"Posey",
+"Kimbrel",
+"Braun",
+"Holliday",
+"Zimmerman",
+"Phillips",
+"McCutchen",
+"Wright",
+"Gonzalez",
+"Molina"
+]
+},
+{
+"voter": "Zachary Levine",
+"outlet": "Houston Chronicle",
+"chapter": "HOU",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Headley",
+"Wright",
+"Hill",
+"Ramirez",
+"Dickey",
+"Holliday"
+]
+},
+{
+"voter": "Joel Sherman",
+"outlet": "New York Post",
+"chapter": "HOU*",
+"picks": [
+"Posey",
+"Braun",
+"Molina",
+"McCutchen",
+"Kimbrel",
+"LaRoche",
+"Chapman",
+"Ruiz",
+"Headley",
+"Votto"
+]
+},
+{
+"voter": "Hirokazu Higuchi",
+"outlet": "Chunichi Shimbun",
+"chapter": "LA",
+"picks": [
+"Posey",
+"Molina",
+"McCutchen",
+"Braun",
+"LaRoche",
+"Bruce",
+"Kimbrel",
+"Wright",
+"Headley",
+"Kershaw"
+]
+},
+{
+"voter": "Mark Saxon",
+"outlet": "ESPN Los Angeles.com",
+"chapter": "LA",
+"picks": [
+"Posey",
+"Molina",
+"Braun",
+"McCutchen",
+"Bourn",
+"Headley",
+"Kershaw",
+"Dickey",
+"Kimbrel",
+"Votto"
+]
+},
+{
+"voter": "Clark Spencer",
+"outlet": "Miami Herald",
+"chapter": "MIA",
+"picks": [
+"Posey",
+"Molina",
+"McCutchen",
+"Braun",
+"Headley",
+"Wright",
+"Ramirez",
+"LaRoche",
+"Dickey",
+"Heyward"
+]
+},
+{
+"voter": "Juan C. Rodriguez",
+"outlet": "South Florida Sun Sentinel",
+"chapter": "MIA",
+"picks": [
+"Posey",
+"McCutchen",
+"Braun",
+"Molina",
+"Wright",
+"Headley",
+"Holliday",
+"Ramirez",
+"LaRoche",
+"Dickey"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Braun",
+"Posey",
+"McCutchen",
+"Molina",
+"LaRoche",
+"Headley",
+"Bruce",
+"Holliday",
+"Ramirez",
+"Wright"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Braun",
+"Posey",
+"McCutchen",
+"Molina",
+"Beltran",
+"LaRoche",
+"Kimbrel",
+"Ramirez",
+"Headley",
+"Holliday"
+]
+},
+{
+"voter": "Adam Rubin",
+"outlet": "ESPN New York.com",
+"chapter": "NY",
+"picks": [
+"Molina",
+"Posey",
+"Braun",
+"McCutchen",
+"Headley",
+"Kimbrel",
+"LaRoche",
+"Chapman",
+"Wright",
+"Montero"
+]
+},
+{
+"voter": "Andy McCullough",
+"outlet": "Newark Star Ledger",
+"chapter": "NY",
+"picks": [
+"Molina",
+"Posey",
+"Braun",
+"McCutchen",
+"Headley",
+"Dickey",
+"Kershaw",
+"Stanton",
+"Votto",
+"Wright"
+]
+},
+{
+"voter": "Ryan Lawrence",
+"outlet": "Philadelphia Daily News",
+"chapter": "PHI",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Kimbrel",
+"Wright",
+"Ramirez",
+"LaRoche",
+"Headley",
+"Votto"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "ESPN.com",
+"chapter": "PHI",
+"picks": [
+"Posey",
+"Braun",
+"Molina",
+"McCutchen",
+"Wright",
+"Votto",
+"Headley",
+"Kimbrel",
+"Kershaw",
+"Ruiz"
+]
+},
+{
+"voter": "Bill Brink",
+"outlet": "Pittsburgh Post Gazette",
+"chapter": "PIT",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Wright",
+"Headley",
+"Ramirez",
+"Bourn",
+"Holliday",
+"Votto"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "Pittburgh Tribune Review",
+"chapter": "PIT",
+"picks": [
+"Posey",
+"McCutchen",
+"Molina",
+"Braun",
+"Wright",
+"Bruce",
+"Holliday",
+"LaRoche",
+"Desmond",
+"Heyward"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "CBS Sports.com",
+"chapter": "SD",
+"picks": [
+"Posey",
+"Molina",
+"Braun",
+"McCutchen",
+"Wright",
+"Headley",
+"Votto",
+"Prado",
+"Holliday",
+"Kimbrel"
+]
+},
+{
+"voter": "John Maffei",
+"outlet": "North County (CA) Times",
+"chapter": "SD",
+"picks": [
+"Posey",
+"McCutchen",
+"Braun",
+"Headley",
+"Bruce",
+"LaRoche",
+"Craig",
+"Ramirez",
+"Prado",
+"Zimmerman"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Posey",
+"Braun",
+"Molina",
+"Bruce",
+"McCutchen",
+"Kimbrel",
+"Desmond",
+"Wright",
+"Headley",
+"Chapman"
+]
+},
+{
+"voter": "Andrew Baggarly",
+"outlet": "At Large",
+"chapter": "SF",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Kimbrel",
+"Chapman",
+"Headley",
+"Desmond",
+"Wright",
+"Pagan"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post Dispatch",
+"chapter": "STL",
+"picks": [
+"Posey",
+"Molina",
+"Braun",
+"McCutchen",
+"Headley",
+"Kimbrel",
+"LaRoche",
+"Phillips",
+"Chapman",
+"Craig"
+]
+},
+{
+"voter": "Joe Strauss",
+"outlet": "St. Louis Post Dispatch",
+"chapter": "STL",
+"picks": [
+"Posey",
+"Braun",
+"Molina",
+"McCutchen",
+"Headley",
+"Kimbrel",
+"Phillips",
+"Desmond",
+"Chapman",
+"Craig"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "Fox Sports.com",
+"chapter": "WAS",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Ramirez",
+"Wright",
+"Headley",
+"LaRoche",
+"Heyward",
+"C Jones"
+]
+},
+{
+"voter": "Amanda Comak",
+"outlet": "Washington Times",
+"chapter": "WAS",
+"picks": [
+"Posey",
+"Braun",
+"McCutchen",
+"Molina",
+"Headley",
+"Ramirez",
+"Wright",
+"LaRoche",
+"Kimbrel",
+"Desmond"
+]
+}
+]
+},
+{
+"year": 2013,
+"league": "AL",
+"url": "https://bbwaa.com/13-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Ken Rosenthal",
+"outlet": "FOX Sports.com",
+"chapter": null,
+"picks": [
+"Trout",
+"Cabrera",
+"Donaldson",
+"Davis",
+"Cano",
+"Beltre",
+"Longoria",
+"Pedroia",
+"Machado",
+"Ortiz"
+]
+},
+{
+"voter": "Mel Antonen",
+"outlet": "SI.com",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Davis",
+"Donaldson",
+"Oritz",
+"Trout",
+"Beltre",
+"Cano",
+"Jones",
+"Hunter",
+"Longoria"
+]
+},
+{
+"voter": "Bill Ballou",
+"outlet": "Worcester Tele. & Gazette",
+"chapter": null,
+"picks": [
+"Davis",
+"Cabrera",
+"Donaldson",
+"Cano",
+"Beltre",
+"Pedroia",
+"Trout",
+"Ortiz",
+"Encarnacion",
+"Longoria"
+]
+},
+{
+"voter": "Rob Bradford",
+"outlet": "WEEI.com",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Cano",
+"Beltre",
+"Donaldson",
+"Ortiz",
+"Encarnacion",
+"Scherzer",
+"Uehara"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun-Times",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Davis",
+"Trout",
+"Donaldson",
+"Pedroia",
+"Cano",
+"Longoria",
+"Machado",
+"Beltre",
+"Kipnis"
+]
+},
+{
+"voter": "Phil Rogers",
+"outlet": "Chicago Tribune",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Pedroia",
+"Kipnis",
+"Longoria",
+"Davis",
+"Cano",
+"Machado",
+"Victorino"
+]
+},
+{
+"voter": "Sheldon Ocker",
+"outlet": "Akron Beacon Journal",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Cano",
+"Davis",
+"Donaldson",
+"Beltre",
+"Ortiz",
+"Holland",
+"Longoria",
+"Kipnis"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland Plain Dealer",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Cano",
+"Longoria",
+"Donaldson",
+"Beltre",
+"Pedroia",
+"Machado",
+"Kipnis"
+]
+},
+{
+"voter": "Lynn Henning",
+"outlet": "Detroit News",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Donaldson",
+"Machado",
+"Beltre",
+"Longoria",
+"Cano",
+"Ortiz",
+"Crisp"
+]
+},
+{
+"voter": "Jon Paul Morosi",
+"outlet": "FOX Sports",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Donaldson",
+"Pedroia",
+"Beltre",
+"Cano",
+"Scherzer",
+"Longoria",
+"Uehara"
+]
+},
+{
+"voter": "Jesus Ortiz",
+"outlet": "Houston Chronicle",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Machado",
+"Scherzer",
+"Longoria",
+"Cano",
+"Pedroia",
+"Darvish"
+]
+},
+{
+"voter": "Tom Verducci",
+"outlet": "SI.com",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Donaldson",
+"Cano",
+"Beltre",
+"Pedroia",
+"Longoria",
+"Kipnis",
+"Machado"
+]
+},
+{
+"voter": "Joe Posnanski",
+"outlet": "NBC Sports",
+"chapter": null,
+"picks": [
+"Trout",
+"Cabrera",
+"Donaldson",
+"Cano",
+"Davis",
+"Longoria",
+"Pedroia",
+"Beltre",
+"Kipnis",
+"Machado"
+]
+},
+{
+"voter": "Bob Dutton",
+"outlet": "Kansas City Star",
+"chapter": null,
+"picks": [
+"Trout",
+"Cabrera",
+"Donaldson",
+"Davis",
+"Pedroia",
+"Scherzer",
+"Cano",
+"Machado",
+"Iwakuma",
+"Perez"
+]
+},
+{
+"voter": "Tim Brown",
+"outlet": "Yahoo Sports",
+"chapter": null,
+"picks": [
+"Trout",
+"Cabrera",
+"Donaldson",
+"Davis",
+"Pedroia",
+"Longoria",
+"Cano",
+"Beltre",
+"Ortiz",
+"Machado"
+]
+},
+{
+"voter": "Jeff Fletcher",
+"outlet": "Orange County Register",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Cano",
+"Donaldson",
+"Ortiz",
+"Beltre",
+"Santana",
+"Longoria",
+"Scherzer"
+]
+},
+{
+"voter": "La Velle Neal III",
+"outlet": "Minneapolis Star Tribune",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Cano",
+"Pedroia",
+"Beltre",
+"Kipnis",
+"Machado",
+"Longoria"
+]
+},
+{
+"voter": "Patrick Borzi",
+"outlet": "Honorary",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Davis",
+"Trout",
+"Donaldson",
+"Pedroia",
+"Cano",
+"Beltre",
+"Machado",
+"Longoria",
+"Ellsbury"
+]
+},
+{
+"voter": "Wallace Matthews",
+"outlet": "ESPNNewYork.com",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Scherzer",
+"Davis",
+"Longoria",
+"Donaldson",
+"Pedroia",
+"Machado",
+"Cano",
+"Hernandez"
+]
+},
+{
+"voter": "Chad Jennings",
+"outlet": "Journal News (NY)",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Donaldson",
+"Cano",
+"Longoria",
+"Beltre",
+"Pedroia",
+"Ellsbury",
+"Machado"
+]
+},
+{
+"voter": "John Hickey",
+"outlet": "Oakland Tribune",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Cabrera",
+"Davis",
+"Trout",
+"Jones",
+"Kipnis",
+"Cano",
+"Longoria",
+"Crisp",
+"Beltre"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Cano",
+"Ortiz",
+"Machado",
+"Longoria",
+"Beltre",
+"Pedroia"
+]
+},
+{
+"voter": "Larry Stone",
+"outlet": "Seattle Times",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Cano",
+"Pedroia",
+"Beltre",
+"Longoria",
+"Machado",
+"Kipnis"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "The News Tribune",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Cano",
+"Beltre",
+"Longoria",
+"Kipnis",
+"Pedroia",
+"Machado"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Longoria",
+"Pedroia",
+"Beltre",
+"Kipnis",
+"Cano",
+"Machado"
+]
+},
+{
+"voter": "Roger Mooney",
+"outlet": "Tampa Tribune",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Donaldson",
+"Ortiz",
+"Longoria",
+"Cano",
+"Machado",
+"Beltre",
+"Scherzer"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star-Telegram",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Davis",
+"Trout",
+"Oritz",
+"Donaldson",
+"Beltre",
+"Pedroia",
+"Cano",
+"Longoria",
+"Kipnis"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Donaldson",
+"Davis",
+"Cano",
+"Longoria",
+"Machado",
+"Pedroia",
+"Beltre",
+"Ortiz"
+]
+},
+{
+"voter": "Brendan Kennedy",
+"outlet": "Toronto Star",
+"chapter": null,
+"picks": [
+"Trout",
+"Cabrera",
+"Davis",
+"Donaldson",
+"Longoria",
+"Machado",
+"Pedroia",
+"Cano",
+"Encarnacion",
+"Beltre"
+]
+},
+{
+"voter": "Bob Elliott",
+"outlet": "Toronto Sun",
+"chapter": null,
+"picks": [
+"Cabrera",
+"Trout",
+"Davis",
+"Donaldson",
+"Cano",
+"Pedroia",
+"Longoria",
+"Beltre",
+"Kipnis",
+"Machado"
+]
+}
+]
+},
+{
+"year": 2013,
+"league": "NL",
+"url": "https://bbwaa.com/13-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Jon Heyman",
+"outlet": "CBSSports.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Carpenter",
+"Ramirez",
+"Goldschmidt",
+"Kershaw",
+"Freeman",
+"Puig",
+"Kimbrel",
+"Votto"
+]
+},
+{
+"voter": "Joel Sherman",
+"outlet": "New York Post",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Goldschmidt",
+"Votto",
+"Ramirez",
+"Carpenter",
+"Freeman",
+"Kershaw",
+"Simmons",
+"Bruce"
+]
+},
+{
+"voter": "Bob Nightengale",
+"outlet": "USA TODAY",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Goldschmidt",
+"Carpenter",
+"Freeman",
+"Kershaw",
+"Bruce",
+"Kimbrel",
+"Ramirez",
+"Votto"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "Arizona Republic",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Molina",
+"Votto",
+"Carpenter",
+"Gomez",
+"Wainwright",
+"Freeman",
+"Choo"
+]
+},
+{
+"voter": "Bruce Miles",
+"outlet": "Daily Herald (Ill.)",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Carpenter",
+"Kershaw",
+"Molina",
+"Votto",
+"Goldschmidt",
+"Freeman",
+"Werth",
+"Holliday",
+"Choo"
+]
+},
+{
+"voter": "Mark Gonzales",
+"outlet": "Chicago Tribune",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Carpenter",
+"Freeman",
+"Molina",
+"Kimbrel",
+"Kershaw",
+"Gomez",
+"Choo",
+"Craig"
+]
+},
+{
+"voter": "C.Trent Rosecrans",
+"outlet": "CBSSports.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Votto",
+"Molina",
+"Carpenter",
+"Freeman",
+"Gomez",
+"Werth",
+"Choo"
+]
+},
+{
+"voter": "John Fay",
+"outlet": "Cincinnati Enquirer",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Molina",
+"Votto",
+"Carpenter",
+"Freeman",
+"Ramirez",
+"Gomez",
+"Bruce"
+]
+},
+{
+"voter": "Troy E. Renck",
+"outlet": "The Denver Post",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Carpenter",
+"Kershaw",
+"Molina",
+"Freeman",
+"Votto",
+"Ramirez",
+"Gomez",
+"Cuddyer"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "At Large",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Ramirez",
+"Goldschmidt",
+"Votto",
+"Freeman",
+"Carpenter",
+"Kershaw",
+"Kimbrel",
+"Bruce"
+]
+},
+{
+"voter": "Molly Knight",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Carpenter",
+"Molina",
+"Freeman",
+"Votto",
+"Gomez",
+"Tulowitzki",
+"Ramirez"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "Orange County Register",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Molina",
+"Votto",
+"Ramirez",
+"Carpenter",
+"Freeman",
+"Puig",
+"Kershaw",
+"Werth"
+]
+},
+{
+"voter": "Clark Spencer",
+"outlet": "The Miami Herald",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Votto",
+"Carpenter",
+"Freeman",
+"Ramirez",
+"Puig",
+"Gomez",
+"Simmons",
+"Molina"
+]
+},
+{
+"voter": "Juan C. Rodriguez",
+"outlet": "Sun Sentinel",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Carpenter",
+"Votto",
+"Freeman",
+"Choo",
+"Ramirez",
+"Kershaw",
+"Molina",
+"Cuddyer"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milw. Journal Sentinel",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Carpenter",
+"Molina",
+"Freeman",
+"Votto",
+"Kershaw",
+"Kimbrel",
+"Bruce",
+"Gomez"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milw. Journal Sentinel",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Carpenter",
+"Molina",
+"Freeman",
+"Goldschmidt",
+"Bruce",
+"Votto",
+"Gonzalez",
+"Kimbrel",
+"Werth"
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Votto",
+"Kershaw",
+"Molina",
+"Freeman",
+"Gomez",
+"Posey",
+"Carpenter",
+"Werth"
+]
+},
+{
+"voter": "Marc Carig",
+"outlet": "Newsday",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Votto",
+"Molina",
+"Carpenter",
+"Gomez",
+"Freeman",
+"Choo",
+"Pence"
+]
+},
+{
+"voter": "Jim Salisbury",
+"outlet": "CSN-Philly.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Carpenter",
+"Goldschmidt",
+"Molina",
+"Votto",
+"Freeman",
+"Kershaw",
+"Simmons",
+"Bruce",
+"Ramirez"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Goldschmidt",
+"Votto",
+"Carpenter",
+"Kershaw",
+"Freeman",
+"Ramirez",
+"Simmons",
+"Werth"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "Pitt. Tribune-Review",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Molina",
+"Carpenter",
+"Freeman",
+"Votto",
+"Bruce",
+"Kershaw",
+"Werth",
+"Cuddyer"
+]
+},
+{
+"voter": "Bill Brink",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Votto",
+"Gomez",
+"Freeman",
+"Choo",
+"Carpenter",
+"Molina",
+"Pence"
+]
+},
+{
+"voter": "Bill Center",
+"outlet": "U-T San Diego",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Carpenter",
+"Goldschmidt",
+"Freeman",
+"Bruce",
+"Kershaw",
+"Molina",
+"Werth",
+"Votto",
+"A.Gonzalez"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "CBSSports.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Carpenter",
+"Molina",
+"Kershaw",
+"Goldschmidt",
+"Freeman",
+"Bruce",
+"Choo",
+"Simmons",
+"Gomez"
+]
+},
+{
+"voter": "Alex Pavlovic",
+"outlet": "San Jose Mercury News",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Molina",
+"Votto",
+"Carpenter",
+"Freeman",
+"Pence",
+"Ramirez",
+"Tulowitzki"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Goldschmidt",
+"Freeman",
+"Votto",
+"Carpenter",
+"Ramirez",
+"Kimbrel",
+"Pence",
+"Werth"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "STL Post-Dispatch",
+"chapter": null,
+"picks": [
+"Molina",
+"Carpenter",
+"McCutchen",
+"Kimbrel",
+"Freeman",
+"Goldschmidt",
+"Kershaw",
+"Craig",
+"Ramirez",
+"Martin"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "STL Post-Dispatch",
+"chapter": null,
+"picks": [
+"Molina",
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Carpenter",
+"Freeman",
+"Votto",
+"Gomez",
+"Tulowitzki",
+"Werth"
+]
+},
+{
+"voter": "Mark Zuckerman",
+"outlet": "CSNWashington.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Goldschmidt",
+"Votto",
+"Freeman",
+"Carpenter",
+"Werth",
+"Gomez",
+"Choo",
+"Ramirez"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Molina",
+"Goldschmidt",
+"Freeman",
+"Carpenter",
+"Votto",
+"Kershaw",
+"Simmons",
+"Choo",
+"Gomez"
+]
+}
+]
+},
+{
+"year": 2014,
+"league": "AL",
+"url": "https://bbwaa.com/14-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"Trout",
+"Cano",
+"Martinez",
+"Brantley",
+"Cruz",
+"Donaldson",
+"Abreu",
+"Gordon",
+"Bautista",
+"Cabrera"
+]
+},
+{
+"voter": "Paul White",
+"outlet": "USA Today",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Brantley",
+"Cano",
+"Bautista",
+"Cabrera",
+"Cruz",
+"Donaldson",
+"Abreu",
+"Seager"
+]
+},
+{
+"voter": "John Tomase",
+"outlet": "Boston Herald",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Donaldson",
+"Cano",
+"Bautista",
+"Abreu",
+"Brantley",
+"Gordon",
+"Kluber",
+"Jones"
+]
+},
+{
+"voter": "Gordon Edes",
+"outlet": "ESPNBoston",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Abreu",
+"Brantley",
+"Cano",
+"Cruz",
+"Gordon",
+"Donaldson",
+"Hernandez",
+"Beltre"
+]
+},
+{
+"voter": "Colleen Kane",
+"outlet": "Chicago Tribune",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Brantley",
+"Abreu",
+"Bautista",
+"Donaldson",
+"Gordon",
+"Hernandez",
+"Kluber",
+"Altuve"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun Times",
+"chapter": null,
+"picks": [
+"Trout",
+"Abreu",
+"Brantley",
+"Martinez",
+"Bautista",
+"Cano",
+"Donaldson",
+"Gordon",
+"Cabrera",
+"Altuve"
+]
+},
+{
+"voter": "Chris Assenheimer",
+"outlet": "The Chronicle-Telegram",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Martinez",
+"Cruz",
+"Abreu",
+"Cabrera",
+"Altuve",
+"Bautista",
+"Jones",
+"Pujols"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland Plain Dealer",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Brantley",
+"Cabrera",
+"Cruz",
+"Abreu",
+"Altuve",
+"Bautista",
+"Holland",
+"Donaldson"
+]
+},
+{
+"voter": "Tom Gage",
+"outlet": "Detroit News",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cabrera",
+"Cruz",
+"Brantley",
+"Holland",
+"Abreu",
+"Bautista",
+"Altuve",
+"Kluber"
+]
+},
+{
+"voter": "Chris Iott",
+"outlet": "MLive.com/MLive Media Group",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Hernandez",
+"Abreu",
+"Kluber",
+"Martinez",
+"Bautista",
+"Cano",
+"Donaldson",
+"Gordon"
+]
+},
+{
+"voter": "David Coleman",
+"outlet": "Fort Bend Herald",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Brantley",
+"Gordon",
+"Cano",
+"Bautista",
+"Kluber",
+"Abreu",
+"Beltre",
+"Altuve"
+]
+},
+{
+"voter": "Tom Verducci",
+"outlet": "SI.com",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Brantley",
+"Donaldson",
+"Bautista",
+"Jones",
+"Cano",
+"Abreu",
+"Altuve",
+"Cabrera"
+]
+},
+{
+"voter": "David Brown",
+"outlet": "Yahoo Sports",
+"chapter": null,
+"picks": [
+"Trout",
+"Hernandez",
+"Kluber",
+"Brantley",
+"Martinez",
+"Bautista",
+"Abreu",
+"Altuve",
+"Donaldson",
+"Cabrera"
+]
+},
+{
+"voter": "Andy McCullough",
+"outlet": "Kansas City Star",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Abreu",
+"Kluber",
+"Bautista",
+"Hernandez",
+"Martinez",
+"Beltre",
+"Cano",
+"Cabrera"
+]
+},
+{
+"voter": "Mark Whicker",
+"outlet": "Los Angeles Daily News",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cruz",
+"Cano",
+"Holland",
+"Jones",
+"Pujols",
+"Donaldson",
+"Cabrera",
+"Altuve"
+]
+},
+{
+"voter": "Jeff Fletcher",
+"outlet": "Orange County Register",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Martinez",
+"Bautista",
+"Cabrera",
+"Abreu",
+"Beltre",
+"Cano",
+"Cruz",
+"Hernandez"
+]
+},
+{
+"voter": "Mike Berardino",
+"outlet": "St. Paul Pioneer Press",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Cabrera",
+"Bautista",
+"Gordon",
+"Martinez",
+"Kluber",
+"Kendrick",
+"Donaldson",
+"Jones"
+]
+},
+{
+"voter": "Phil Miller",
+"outlet": "Minneapolis Star Tribune",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Abreu",
+"Cano",
+"Martinez",
+"Bautista",
+"Donaldson",
+"Beltre",
+"Cabrera",
+"Altuve"
+]
+},
+{
+"voter": "Pete Caldera",
+"outlet": "Bergen Record",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cruz",
+"Cano",
+"Brantley",
+"Altuve",
+"Abreu",
+"Donaldson",
+"Cabrera",
+"Kluber"
+]
+},
+{
+"voter": "Mark Feinsand",
+"outlet": "New York Daily News",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cruz",
+"Cano",
+"Brantley",
+"Abreu",
+"Altuve",
+"Bautista",
+"Cabrera",
+"Donaldson"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Donaldson",
+"Cabrera",
+"Brantley",
+"Cruz",
+"Cano",
+"Beltre",
+"Gordon",
+"Altuve"
+]
+},
+{
+"voter": "John Hickey",
+"outlet": "Oakland Tribune",
+"chapter": null,
+"picks": [
+"Trout",
+"Cabrera",
+"Cano",
+"Cruz",
+"Martinez",
+"Donaldson",
+"Abreu",
+"Altuve",
+"Bautista",
+"Brantley"
+]
+},
+{
+"voter": "Larry Stone",
+"outlet": "Seattle Times",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Abreu",
+"Martinez",
+"Jones",
+"Bautista",
+"Cano",
+"Altuve",
+"Donaldson",
+"Gordon"
+]
+},
+{
+"voter": "Bob Dutton",
+"outlet": "Tacoma News Tribune",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Abreu",
+"Hernandez",
+"Bautista",
+"Brantley",
+"Kluber",
+"Beltre",
+"Donaldson",
+"Cano"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cruz",
+"Brantley",
+"Cano",
+"Abreu",
+"Donaldson",
+"Jones",
+"Cabrera",
+"Altuve"
+]
+},
+{
+"voter": "Roger Mooney",
+"outlet": "Tampa Tribune",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cruz",
+"Abreu",
+"Cano",
+"Gordon",
+"Cabrera",
+"Donaldson",
+"Bautista",
+"Altuve"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": null,
+"picks": [
+"Trout",
+"Brantley",
+"Martinez",
+"Donaldson",
+"Bautista",
+"Gordon",
+"Jones",
+"Beltre",
+"Abreu",
+"Altuve"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star-Telegram",
+"chapter": null,
+"picks": [
+"Trout",
+"Hernandez",
+"Abreu",
+"Martinez",
+"Kluber",
+"Cano",
+"Cruz",
+"Bautista",
+"Altuve",
+"Cabrera"
+]
+},
+{
+"voter": "Richard Griffin",
+"outlet": "Toronto Star",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Bautista",
+"Brantley",
+"Cabrera",
+"Abreu",
+"Cano",
+"Donaldson",
+"Gordon",
+"Cruz"
+]
+},
+{
+"voter": "Bob Elliott",
+"outlet": "Toronto Sun",
+"chapter": null,
+"picks": [
+"Trout",
+"Martinez",
+"Cruz",
+"Bautista",
+"Cano",
+"Jones",
+"Donaldson",
+"Shields",
+"Brantley",
+"Abreu"
+]
+}
+]
+},
+{
+"year": 2014,
+"league": "NL",
+"url": "https://bbwaa.com/14-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Ryan Fagan",
+"outlet": "Sporting News",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Lucroy",
+"Rendon",
+"Harrison",
+"Wainwright",
+"Cueto",
+"Posey",
+"Rizzo"
+]
+},
+{
+"voter": "Dave Cameron",
+"outlet": "FanGraphs",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Lucroy",
+"Stanton",
+"Rendon",
+"Posey",
+"McCutchen",
+"Martin",
+"Mesoraco",
+"Werth",
+"Pence"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Cueto",
+"Lucroy",
+"Rendon",
+"Wainwright",
+"Posey",
+"Gomez",
+"Rizzo"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA Today",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Harrison",
+"Rendon",
+"Posey",
+"Lucroy",
+"Gonzalez",
+"Peralta",
+"Upton"
+]
+},
+{
+"voter": "Mark Gonzales",
+"outlet": "Chicago Tribune",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Lucroy",
+"Posey",
+"Harrison",
+"Rizzo",
+"Pence",
+"Gonzalez",
+"Rendon"
+]
+},
+{
+"voter": "Patrick Mooney",
+"outlet": "CSNCHICAGO.COM",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Posey",
+"Rendon",
+"Wainwright",
+"Lucroy",
+"Martin",
+"Gonzalez",
+"Harrison"
+]
+},
+{
+"voter": "C. Trent Rosecrans",
+"outlet": "Cincinnati Enquirer",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Lucroy",
+"Rendon",
+"Posey",
+"Rizzo",
+"Martin",
+"Puig",
+"Cueto"
+]
+},
+{
+"voter": "Hal McCoy",
+"outlet": "Dayton Daily News/FoxSportsOhio",
+"chapter": null,
+"picks": [
+"Stanton",
+"Kershaw",
+"McCutchen",
+"Span",
+"Holliday",
+"Posey",
+"Lucroy",
+"Duda",
+"Mesoraco",
+"Gonzalez"
+]
+},
+{
+"voter": "Jack Etkin",
+"outlet": "Honorary",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Lucroy",
+"Posey",
+"Wainwright",
+"Harrison",
+"Rendon",
+"Rizzo",
+"Cueto"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Posey",
+"Gonzalez",
+"Wainwright",
+"Rendon",
+"Lucroy",
+"Pence",
+"Peralta"
+]
+},
+{
+"voter": "Molly Knight",
+"outlet": "At Large",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Lucroy",
+"Posey",
+"Rizzo",
+"Rendon",
+"Cueto",
+"Harrison",
+"Upton"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "Orange County Register",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Posey",
+"Lucroy",
+"Rendon",
+"Wainwright",
+"Gonzalez",
+"Pence",
+"Werth"
+]
+},
+{
+"voter": "Craig Davis",
+"outlet": "South Florida Sun Sentinel",
+"chapter": null,
+"picks": [
+"Stanton",
+"Kershaw",
+"McCutchen",
+"Posey",
+"Wainwright",
+"Rendon",
+"Lucroy",
+"Gonzalez",
+"Cueto",
+"Upton"
+]
+},
+{
+"voter": "Jorge Ebro",
+"outlet": "El Nuevo Herald",
+"chapter": null,
+"picks": [
+"Stanton",
+"McCutchen",
+"Posey",
+"Kershaw",
+"Lucroy",
+"Gonzalez",
+"Harrison",
+"Gomez",
+"Rendon",
+"Wainwright"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": null,
+"picks": [
+"Stanton",
+"Kershaw",
+"McCutchen",
+"Gonzalez",
+"Lucroy",
+"Rendon",
+"Posey",
+"Holliday",
+"Pence",
+"Harrison"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": null,
+"picks": [
+"Stanton",
+"Kershaw",
+"McCutchen",
+"Rendon",
+"Lucroy",
+"Gonzalez",
+"Posey",
+"Wainwright",
+"Harrison",
+"Upton"
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": null,
+"picks": [
+"Stanton",
+"Kershaw",
+"McCutchen",
+"Lucroy",
+"Rendon",
+"Posey",
+"Harrison",
+"Puig",
+"Peralta",
+"Rizzo"
+]
+},
+{
+"voter": "Adam Rubin",
+"outlet": "ESPNNewYork.com",
+"chapter": null,
+"picks": [
+"Stanton",
+"Kershaw",
+"McCutchen",
+"Lucroy",
+"Rendon",
+"Pence",
+"Upton",
+"Wainwright",
+"Peralta",
+"Tulowitzki"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Lucroy",
+"Rendon",
+"Posey",
+"Martin",
+"Wainwright",
+"Cueto",
+"Harrison"
+]
+},
+{
+"voter": "Ryan Lawrence",
+"outlet": "Philadelphia Daily News",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Posey",
+"Rendon",
+"Wainwright",
+"Lucroy",
+"Rizzo",
+"Martin",
+"Werth"
+]
+},
+{
+"voter": "Bill Brink",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Lucroy",
+"Posey",
+"Rendon",
+"Rizzo",
+"Harrison",
+"Gomez",
+"Werth"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "Pittsburgh Tribune-Review",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Kershaw",
+"Stanton",
+"Lucroy",
+"Posey",
+"Rendon",
+"Harrison",
+"Martin",
+"Rizzo",
+"Wainwright"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "At Large",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Lucroy",
+"Posey",
+"Rendon",
+"Rizzo",
+"Pence",
+"Harrison",
+"Gomez"
+]
+},
+{
+"voter": "John Maffei",
+"outlet": "U-T San Diego",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Posey",
+"Gonzalez",
+"Rendon",
+"Lucroy",
+"Holliday",
+"J. Upton",
+"Gordon"
+]
+},
+{
+"voter": "Andrew Baggarly",
+"outlet": "CSN Bay Area",
+"chapter": null,
+"picks": [
+"Stanton",
+"McCutchen",
+"Rendon",
+"Kershaw",
+"Pence",
+"Posey",
+"Lucroy",
+"Rizzo",
+"Freeman",
+"Martin"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Kershaw",
+"Stanton",
+"Rendon",
+"Lucroy",
+"Pence",
+"Harrison",
+"Peralta",
+"Gonzalez",
+"Posey"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post Dispatch",
+"chapter": null,
+"picks": [
+"Kershaw",
+"McCutchen",
+"Stanton",
+"Lucroy",
+"Posey",
+"Rendon",
+"Wainwright",
+"Cueto",
+"Rizzo",
+"Martin"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post Dispatch",
+"chapter": null,
+"picks": [
+"Kershaw",
+"Stanton",
+"McCutchen",
+"Rendon",
+"Gonzalez",
+"Holliday",
+"Posey",
+"Peralta",
+"Harrison",
+"Span"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "Fox Sports",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Stanton",
+"Kershaw",
+"Lucroy",
+"Posey",
+"Rendon",
+"Peralta",
+"Puig",
+"Gomez",
+"Harrison"
+]
+},
+{
+"voter": "Mel Antonen",
+"outlet": "SI.com",
+"chapter": null,
+"picks": [
+"McCutchen",
+"Kershaw",
+"Stanton",
+"Rendon",
+"Gonzalez",
+"Pence",
+"Werth",
+"Gomez",
+"Morneau",
+"Rizzo"
+]
+}
+]
+},
+{
+"year": 2015,
+"league": "AL",
+"url": "https://bbwaa.com/15-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Ken Rosenthal",
+"outlet": "Fox Sports",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Cain",
+"Machado",
+"Keuchel",
+"Price",
+"Beltre",
+"Bautista",
+"Cruz",
+"C.Davis"
+]
+},
+{
+"voter": "Rich Dubroff",
+"outlet": "CSNmidatlantic.com",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Bautista",
+"Encarnacion",
+"Cruz",
+"Cabrera",
+"C.Davis",
+"Altuve"
+]
+},
+{
+"voter": "Michael Silverman",
+"outlet": "Boston Herald",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Keuchel",
+"Price",
+"Beltre",
+"C.Davis",
+"Martinez",
+"Cruz"
+]
+},
+{
+"voter": "Peter Abraham",
+"outlet": "Boston Globe",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Keuchel",
+"Price",
+"Beltre",
+"Kinsler",
+"Kiermaier",
+"Betts"
+]
+},
+{
+"voter": "Scot Gregor",
+"outlet": "Daily Herald",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Beltre",
+"Encarnacion",
+"Altuve",
+"Cabrera",
+"Machado",
+"Bautista",
+"Hosmer"
+]
+},
+{
+"voter": "Naoko Sato",
+"outlet": "Nikkan Sports News",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Keuchel",
+"Fielder",
+"Cruz",
+"Bautista",
+"Price",
+"Machado",
+"Ortiz"
+]
+},
+{
+"voter": "Chris Assenheimer",
+"outlet": "The Chronicle-Telegram",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Cruz",
+"Trout",
+"Cain",
+"Fielder",
+"Altuve",
+"Encarnacion",
+"Abreu",
+"Martinez",
+"Brantley"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "NE Ohio Media Group",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Bautista",
+"Cain",
+"Fielder",
+"Encarnacion",
+"Davis",
+"Cruz",
+"Machado",
+"Martinez"
+]
+},
+{
+"voter": "Anthony Fenech",
+"outlet": "Detroit Free Press",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Price",
+"Machado",
+"Keuchel",
+"Martinez",
+"Beltre",
+"Cruz",
+"Martin"
+]
+},
+{
+"voter": "Chris McCosky",
+"outlet": "Detroit News",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Cruz",
+"Machado",
+"Keuchel",
+"Bautista",
+"Encarnacion",
+"Beltre",
+"Martinez"
+]
+},
+{
+"voter": "Evan Drellich",
+"outlet": "Houston Chronicle",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Machado",
+"Keuchel",
+"Price",
+"Cain",
+"Cruz",
+"C.Davis",
+"Bautista",
+"Beltre"
+]
+},
+{
+"voter": "Jesus Ortiz",
+"outlet": "Houston Chronicle",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Machado",
+"Cain",
+"Cabrera",
+"Bautista",
+"Beltre",
+"Keuchel",
+"Cruz",
+"Price"
+]
+},
+{
+"voter": "Joe Posnanski",
+"outlet": "NBCSports.com",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Cain",
+"Machado",
+"Keuchel",
+"Cruz",
+"C.Davis",
+"Cabrera",
+"Fielder",
+"W.Davis"
+]
+},
+{
+"voter": "Sam Mellinger",
+"outlet": "Kansas City Star",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Cain",
+"Machado",
+"Kipnis",
+"Martinez",
+"C.Davis",
+"Betts",
+"Kiermaier",
+"Beltre"
+]
+},
+{
+"voter": "Tim Brown",
+"outlet": "Yahoo Sports",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Machado",
+"Cain",
+"Cruz",
+"Bautista",
+"C.Davis",
+"Keuchel",
+"Cabrera",
+"Beltre"
+]
+},
+{
+"voter": "Pedro Moura",
+"outlet": "Orange County Register",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Machado",
+"Cain",
+"Price",
+"Keuchel",
+"Sale",
+"Kipnis",
+"Beltre",
+"Martin"
+]
+},
+{
+"voter": "La Velle E. Neal III",
+"outlet": "Minneapolis Star Tribune",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Kipnis",
+"Machado",
+"Fielder",
+"Cabrera",
+"Altuve",
+"Cruz",
+"Martinez"
+]
+},
+{
+"voter": "Mike Berardino",
+"outlet": "St. Paul Pioneer Press",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Keuchel",
+"Encarnacion",
+"Beltre",
+"Price",
+"Cruz",
+"Hosmer"
+]
+},
+{
+"voter": "Wallace Matthews",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Price",
+"Cain",
+"Keuchel",
+"Machado",
+"Beltre",
+"Altuve",
+"C.Davis",
+"Kiermaier"
+]
+},
+{
+"voter": "George A. King III",
+"outlet": "NY Post",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Bautista",
+"Morales",
+"Fielder",
+"Altuve",
+"Cain",
+"Encarnacion",
+"McCann",
+"Cruz"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Beltre",
+"Keuchel",
+"Kiermaier",
+"Machado",
+"Altuve",
+"Bautista",
+"C.Davis"
+]
+},
+{
+"voter": "John Hickey",
+"outlet": "Oakland Tribune",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Beltre",
+"Bautista",
+"Altuve",
+"Keuchel",
+"Cruz",
+"Price",
+"Machado"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Cruz",
+"Cabrera",
+"Beltre",
+"Keuchel",
+"Bautista",
+"Price"
+]
+},
+{
+"voter": "John McGrath",
+"outlet": "Tacoma News Tribune",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cabrera",
+"Cain",
+"Cruz",
+"Bautista",
+"Altuve",
+"Encarnacion",
+"Machado",
+"Dozier"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Beltre",
+"Machado",
+"Keuchel",
+"Price",
+"Bautista",
+"Cruz",
+"Rodriguez"
+]
+},
+{
+"voter": "Roger Mooney",
+"outlet": "Tampa Tribune",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Price",
+"Keuchel",
+"Cruz",
+"Bautista",
+"Cabrera",
+"Fielder"
+]
+},
+{
+"voter": "Gerry Fraley",
+"outlet": "Dallas Morning News",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Cain",
+"Keuchel",
+"Beltre",
+"Altuve",
+"Encarnacion",
+"Moustakas",
+"Bautista",
+"Fielder"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star-Telegram",
+"chapter": null,
+"picks": [
+"Trout",
+"Donaldson",
+"Cruz",
+"Cain",
+"Machado",
+"Bautista",
+"C.Davis",
+"Beltre",
+"Correa",
+"Cabrera"
+]
+},
+{
+"voter": "Richard Griffin",
+"outlet": "Toronto Star",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Cruz",
+"Altuve",
+"Bautista",
+"Beltre",
+"Martinez",
+"Kipnis"
+]
+},
+{
+"voter": "Bob Elliott",
+"outlet": "Toronto Sun",
+"chapter": null,
+"picks": [
+"Donaldson",
+"Trout",
+"Cain",
+"Machado",
+"Keuchel",
+"Beltre",
+"Cruz",
+"Bautista",
+"Cabrera",
+"Teixeira"
+]
+}
+]
+},
+{
+"year": 2015,
+"league": "NL",
+"url": "https://bbwaa.com/15-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Paul Newberry",
+"outlet": "The Associated Press",
+"chapter": null,
+"picks": [
+"Harper",
+"Rizzo",
+"Greinke",
+"Arrieta",
+"Bryant",
+"Goldschmidt",
+"Arenado",
+"Kershaw",
+"Posey",
+"Pollock"
+]
+},
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Rizzo",
+"Arenado",
+"Votto",
+"Cespedes",
+"Arrieta",
+"Greinke",
+"Gordon",
+"Posey"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Arrieta",
+"Kershaw",
+"Greinke",
+"Votto",
+"Pollock",
+"Posey",
+"McCutchen",
+"Rizzo"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": null,
+"picks": [
+"Harper",
+"Rizzo",
+"McCutchen",
+"Arenado",
+"Goldschmidt",
+"Votto",
+"Cespedes",
+"Posey",
+"Gordon",
+"Pollock"
+]
+},
+{
+"voter": "Gordon Wittenmyer",
+"outlet": "Chicago Sun Times",
+"chapter": null,
+"picks": [
+"Harper",
+"McCutchen",
+"Goldschmidt",
+"Rizzo",
+"Posey",
+"Votto",
+"Heyward",
+"Bryant",
+"Greinke",
+"Arenado"
+]
+},
+{
+"voter": "Bruce Miles",
+"outlet": "Daily Herald",
+"chapter": null,
+"picks": [
+"Harper",
+"Arrieta",
+"McCutchen",
+"Rizzo",
+"Goldschmidt",
+"Votto",
+"Greinke",
+"Heyward",
+"Posey",
+"Kershaw"
+]
+},
+{
+"voter": "John Fay",
+"outlet": "Cincinnati Enquirer",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Greinke",
+"Arrieta",
+"Votto",
+"Cespedes",
+"McCutchen",
+"Rizzo",
+"Carpenter",
+"Posey"
+]
+},
+{
+"voter": "Joe Kay",
+"outlet": "Associated Press",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Votto",
+"Posey",
+"Rizzo",
+"Arrieta",
+"Carpenter",
+"Cole",
+"Greinke",
+"Arenado"
+]
+},
+{
+"voter": "Jack Etkin",
+"outlet": "Honorary",
+"chapter": null,
+"picks": [
+"Harper",
+"Greinke",
+"Arenado",
+"Goldschmidt",
+"Votto",
+"Rizzo",
+"McCutchen",
+"Posey",
+"Arrieta",
+"Pollock"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": null,
+"picks": [
+"Harper",
+"Arrieta",
+"Arenado",
+"Greinke",
+"Kershaw",
+"Goldschmidt",
+"Cespedes",
+"McCutcheon",
+"Posey",
+"Votto"
+]
+},
+{
+"voter": "J.P. Hoornstra",
+"outlet": "Los Angeles News Group",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Greinke",
+"Votto",
+"Rizzo",
+"Arenado",
+"Pollock",
+"Posey",
+"Bryant",
+"McCutchen"
+]
+},
+{
+"voter": "Mark Saxon",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"Harper",
+"Greinke",
+"Arrieta",
+"Kershaw",
+"Votto",
+"Goldschmidt",
+"Bryant",
+"Rizzo",
+"McCutchen",
+"Posey"
+]
+},
+{
+"voter": "Clark Spencer",
+"outlet": "Miami Herald",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Rizzo",
+"Votto",
+"Arenado",
+"McCutchen",
+"Arrieta",
+"Greinke",
+"Carpenter",
+"Posey"
+]
+},
+{
+"voter": "Craig Davis",
+"outlet": "South Florida Sun Sentinel",
+"chapter": null,
+"picks": [
+"Harper",
+"Arrieta",
+"Bryant",
+"Greinke",
+"Votto",
+"McCutchen",
+"Goldschmidt",
+"Kershaw",
+"Rizzo",
+"Posey"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": null,
+"picks": [
+"Harper",
+"Rizzo",
+"Goldschmidt",
+"Votto",
+"McCutchen",
+"Arenado",
+"Arrieta",
+"Greinke",
+"Carpenter",
+"Posey"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": null,
+"picks": [
+"Harper",
+"Arrieta",
+"Greinke",
+"Arenado",
+"Votto",
+"Rizzo",
+"Goldschmidt",
+"Kershaw",
+"McCutchen",
+"Carpenter"
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"McCutchen",
+"Rizzo",
+"Votto",
+"Posey",
+"Granderson",
+"Bryant",
+"Gonzalez",
+"Carpenter"
+]
+},
+{
+"voter": "Marc Carig",
+"outlet": "New York Newsday",
+"chapter": null,
+"picks": [
+"Harper",
+"Arrieta",
+"Greinke",
+"Votto",
+"Goldschmidt",
+"Kershaw",
+"Rizzo",
+"McCutchen",
+"Posey",
+"Arenado"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Votto",
+"Rizzo",
+"McCutchen",
+"Arenado",
+"Greinke",
+"Arrieta",
+"Carpenter",
+"Cespedes"
+]
+},
+{
+"voter": "Jim Salisbury",
+"outlet": "CSNPhilly.com",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Arenado",
+"Rizzo",
+"Votto",
+"McCutchen",
+"Greinke",
+"Arrieta",
+"Carpenter",
+"Pollock"
+]
+},
+{
+"voter": "Bill Brink",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": null,
+"picks": [
+"Harper",
+"Votto",
+"Goldschmidt",
+"McCutchen",
+"Rizzo",
+"Posey",
+"Greinke",
+"Arrieta",
+"Kershaw",
+"Pollock"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "Pittsburgh Tribune-Review",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Votto",
+"McCutchen",
+"Rizzo",
+"Posey",
+"Bryant",
+"Pollock",
+"Arrieta",
+"Heyward"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "BleacherReport.com",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"McCutchen",
+"Votto",
+"Heyward",
+"Arrieta",
+"Greinke",
+"Rizzo",
+"Arenado",
+"Pollock"
+]
+},
+{
+"voter": "Dennis Lin",
+"outlet": "San Diego Union-Tribune",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Arenado",
+"Votto",
+"McCutchen",
+"Posey",
+"Bryant",
+"Arrieta",
+"Kershaw",
+"Pollock"
+]
+},
+{
+"voter": "Alex Pavlovic",
+"outlet": "Comcast SportsNet Bay Area",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Votto",
+"Rizzo",
+"Posey",
+"McCutchen",
+"Kershaw",
+"Arrieta",
+"Greinke",
+"Pollock"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Votto",
+"Rizzo",
+"Arenado",
+"Posey",
+"Cespedes",
+"McCutchen",
+"Carpenter",
+"Gonzalez"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post Dispatch",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Rizzo",
+"Greinke",
+"Votto",
+"Posey",
+"McCutchen",
+"Arrieta",
+"Carpenter",
+"Arenado"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post Dispatch",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Rizzo",
+"Arenado",
+"McCutchen",
+"Rosenthal",
+"Carpenter",
+"Arrieta",
+"Gordon",
+"Votto"
+]
+},
+{
+"voter": "Tim B. Kurkjian",
+"outlet": "ESPN.com",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Arrieta",
+"Greinke",
+"Kershaw",
+"McCutchen",
+"Rizzo",
+"Posey",
+"Pollock",
+"Heyward"
+]
+},
+{
+"voter": "Mark Zuckerman",
+"outlet": "CSNmidatlantic.com",
+"chapter": null,
+"picks": [
+"Harper",
+"Goldschmidt",
+"Votto",
+"McCutchen",
+"Posey",
+"Arenado",
+"Arrieta",
+"Greinke",
+"Carpenter",
+"Cespedes"
+]
+}
+]
+},
+{
+"year": 2016,
+"league": "AL",
+"url": "https://bbwaa.com/16-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Dan Connolly",
+"outlet": "BaltimoreBaseball.com",
+"chapter": "BAL",
+"picks": [
+"Betts",
+"Trout",
+"Altuve",
+"Beltre",
+"Machado",
+"Donaldson",
+"Cano",
+"Ortiz",
+"Britton",
+"Cabrera"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN",
+"chapter": "BAL",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Donaldson",
+"Machado",
+"Ortiz",
+"Beltre",
+"Cano",
+"Lindor",
+"Cabrera"
+]
+},
+{
+"voter": "Sean McAdam",
+"outlet": "Comcast SportsNet New England",
+"chapter": "BOS",
+"picks": [
+"Betts",
+"Donaldson",
+"Altuve",
+"Machado",
+"Trout",
+"Ortiz",
+"Cano",
+"Beltre",
+"Britton",
+"Seager"
+]
+},
+{
+"voter": "Brian MacPherson",
+"outlet": "Providence Journal",
+"chapter": "BOS",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Machado",
+"Ortiz",
+"Seager",
+"Sale",
+"Verlander",
+"Lindor"
+]
+},
+{
+"voter": "Colleen Kane",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Donaldson",
+"Machado",
+"Ortiz",
+"Beltre",
+"Lindor",
+"Cabrera",
+"Cano"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Donaldson",
+"Beltre",
+"Machado",
+"Lindor",
+"Cano",
+"Ortiz",
+"Eaton"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Betts",
+"Trout",
+"Donaldson",
+"Ortiz",
+"Altuve",
+"Machado",
+"Cano",
+"Encarnacion",
+"Lindor",
+"Dozier"
+]
+},
+{
+"voter": "Jim Ingraham",
+"outlet": "Elyria Chronicle",
+"chapter": "CLE",
+"picks": [
+"Trout",
+"Altuve",
+"Betts",
+"Donaldson",
+"Ortiz",
+"Machado",
+"Cabrera",
+"Dozier",
+"Ramirez",
+"Beltre"
+]
+},
+{
+"voter": "Jason Beck",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Betts",
+"Trout",
+"Donaldson",
+"Altuve",
+"Beltre",
+"Ortiz",
+"Lindor",
+"Machado",
+"Cabrera",
+"Cano"
+]
+},
+{
+"voter": "Jon Paul Morosi",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Betts",
+"Trout",
+"Altuve",
+"Ortiz",
+"Donaldson",
+"Machado",
+"Beltre",
+"Britton",
+"Lindor",
+"Cano"
+]
+},
+{
+"voter": "Brian McTaggart",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Ortiz",
+"Donaldson",
+"Cabrera",
+"Beltre",
+"Cruz",
+"Cano",
+"Machado"
+]
+},
+{
+"voter": "Richard Justice",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Trout",
+"Betts",
+"Beltre",
+"Altuve",
+"Donaldson",
+"Machado",
+"Ortiz",
+"Lindor",
+"Cabrera",
+"Cano"
+]
+},
+{
+"voter": "Rustin Dodd",
+"outlet": "The Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Cano",
+"Machado",
+"Ortiz",
+"Cabrera",
+"Beltre",
+"Lindor"
+]
+},
+{
+"voter": "Jeff Passan",
+"outlet": "Yahoo Sports",
+"chapter": "KC",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Ortiz",
+"Beltre",
+"Machado",
+"Cabrera",
+"Cano",
+"Lindor"
+]
+},
+{
+"voter": "Jeff Miller",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Machado",
+"Cano",
+"Beltre",
+"Ortiz",
+"Cabrera",
+"Lindor"
+]
+},
+{
+"voter": "Jeff Fletcher",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Trout",
+"Donaldson",
+"Betts",
+"Altuve",
+"Beltre",
+"Ortiz",
+"Machado",
+"Cano",
+"Cabrera",
+"Kluber"
+]
+},
+{
+"voter": "Phil Miller",
+"outlet": "Minneapolis Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Machado",
+"Donaldson",
+"Cano",
+"Seager",
+"Lindor",
+"Dozier",
+"Ortiz"
+]
+},
+{
+"voter": "Rhett Bollinger",
+"outlet": "MLB.com",
+"chapter": "MIN",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Machado",
+"Cano",
+"Beltre",
+"Lindor",
+"Ortiz",
+"Dozier"
+]
+},
+{
+"voter": "Mark Feinsand",
+"outlet": "New York Daily News",
+"chapter": "NY",
+"picks": [
+"Ortiz",
+"Trout",
+"Betts",
+"Altuve",
+"Cano",
+"Donaldson",
+"Machado",
+"Beltre",
+"Cabrera",
+"Britton"
+]
+},
+{
+"voter": "George A. King III",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Betts",
+"Ortiz",
+"Trout",
+"Beltre",
+"Altuve",
+"Cabrera",
+"Lindor",
+"Donaldson",
+"Machado",
+"Cano"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Ortiz",
+"Cruz",
+"Beltre",
+"Machado",
+"Cabrera",
+"Cano"
+]
+},
+{
+"voter": "John Hickey",
+"outlet": "Oakland Tribune/Bay Area News Group",
+"chapter": "OAK",
+"picks": [
+"Beltre",
+"Betts",
+"Altuve",
+"Machado",
+"Donaldson",
+"Cabrera",
+"Trout",
+"Ortiz",
+"Cano",
+"Encarnacion"
+]
+},
+{
+"voter": "Larry Stone",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Cano",
+"Ortiz",
+"Donaldson",
+"Machado",
+"Beltre",
+"Lindor",
+"Seager"
+]
+},
+{
+"voter": "Bob Dutton",
+"outlet": "Tacoma News Tribune",
+"chapter": "SEA",
+"picks": [
+"Trout",
+"Altuve",
+"Betts",
+"Donaldson",
+"Beltre",
+"Machado",
+"Ortiz",
+"Cano",
+"Cabrera",
+"Dozier"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Betts",
+"Trout",
+"Altuve",
+"Donaldson",
+"Beltre",
+"Machado",
+"Lindor",
+"Cano",
+"Ortiz",
+"Britton"
+]
+},
+{
+"voter": "Roger Mooney",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Machado",
+"Lindor",
+"Donaldson",
+"Ortiz",
+"Cabrera",
+"Britton",
+"Longoria"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Trout",
+"Betts",
+"Donaldson",
+"Altuve",
+"Beltre",
+"Machado",
+"Cabrera",
+"Ortiz",
+"Cano",
+"Lindor"
+]
+},
+{
+"voter": "T.R. Sullivan",
+"outlet": "MLB.Com",
+"chapter": "TEX",
+"picks": [
+"Betts",
+"Trout",
+"Altuve",
+"Beltre",
+"Lindor",
+"Ortiz",
+"Cabrera",
+"Machado",
+"Donaldson",
+"Cruz"
+]
+},
+{
+"voter": "Richard Griffin",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Trout",
+"Betts",
+"Altuve",
+"Machado",
+"Donaldson",
+"Beltre",
+"Ortiz",
+"Lindor",
+"Encarnacion",
+"Dozier"
+]
+},
+{
+"voter": "Ken Fidlin",
+"outlet": "Toronto Sun",
+"chapter": "TOR",
+"picks": [
+"Betts",
+"Trout",
+"Altuve",
+"Donaldson",
+"Machado",
+"Ortiz",
+"Cano",
+"Beltre",
+"Cabrera",
+"Encarnacion"
+]
+}
+]
+},
+{
+"year": 2016,
+"league": "NL",
+"url": "https://bbwaa.com/16-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Mark Bowman",
+"outlet": "MLB.com",
+"chapter": "ATL",
+"picks": [
+"Bryant",
+"Rizzo",
+"Murphy",
+"Seager",
+"Freeman",
+"Votto",
+"Syndergaard",
+"Turner",
+"Crawford",
+"Arenado"
+]
+},
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Bryant",
+"Murphy",
+"Arenado",
+"Rizzo",
+"Seager",
+"Freeman",
+"Votto",
+"Ramos",
+"Hendricks",
+"Braun"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Bryant",
+"Murphy",
+"Rizzo",
+"Seager",
+"Arenado",
+"Freeman",
+"Votto",
+"Cespedes",
+"Goldschmidt",
+"Braun"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"Bryant",
+"Seager",
+"Arenado",
+"Murphy",
+"Scherzer",
+"Freeman",
+"Rizzo",
+"Segura",
+"Votto",
+"Bumgarner"
+]
+},
+{
+"voter": "Patrick Mooney",
+"outlet": "CSNCHICAGO.COM",
+"chapter": "CHI",
+"picks": [
+"Bryant",
+"Murphy",
+"Seager",
+"Rizzo",
+"Arenado",
+"Turner",
+"Cespedes",
+"Ramos",
+"Votto",
+"Freeman"
+]
+},
+{
+"voter": "Mark Gonzales",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Bryant",
+"Murphy",
+"Rizzo",
+"Seager",
+"Arenado",
+"Cespedes",
+"Turner",
+"Freeman",
+"Votto",
+"Segura"
+]
+},
+{
+"voter": "Mark Sheldon",
+"outlet": "MLB.com",
+"chapter": "CIN",
+"picks": [
+"Bryant",
+"Rizzo",
+"Seager",
+"Murphy",
+"Arenado",
+"Freeman",
+"Votto",
+"Goldschmidt",
+"LeMahieu",
+"Cespedes"
+]
+},
+{
+"voter": "Zach Buchanan",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Bryant",
+"Freeman",
+"Seager",
+"Arenado",
+"Rizzo",
+"Votto",
+"Murphy",
+"Turner",
+"Segura",
+"Goldschmidt"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Bryant",
+"Arenado",
+"Seager",
+"Murphy",
+"Rizzo",
+"Votto",
+"Freeman",
+"Cespedes",
+"Scherzer",
+"Blackmon"
+]
+},
+{
+"voter": "Tracy L Ringolsby",
+"outlet": "MLB.com",
+"chapter": "COL",
+"picks": [
+"Bryant",
+"Seager",
+"Arenado",
+"Murphy",
+"Bumgarner",
+"Rizzo",
+"Freeman",
+"Familia",
+"Scherzer",
+"Turner"
+]
+},
+{
+"voter": "Ken Gurnick",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Bryant",
+"Murphy",
+"Seager",
+"Arenado",
+"Rizzo",
+"Freeman",
+"Votto",
+"Turner",
+"Yelich",
+"Segura"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "So. Cal. News Group",
+"chapter": "LA",
+"picks": [
+"Bryant",
+"Murphy",
+"Seager",
+"Rizzo",
+"Turner",
+"Arenado",
+"Posey",
+"Scherzer",
+"Freeman",
+"Segura"
+]
+},
+{
+"voter": "Steven Wine",
+"outlet": "Associated Press",
+"chapter": "MIA",
+"picks": [
+"Bryant",
+"Murphy",
+"Seager",
+"Arenado",
+"Votto",
+"Freeman",
+"Rizzo",
+"Scherzer",
+"LeMahieu",
+"Cueto"
+]
+},
+{
+"voter": "Clark Spencer",
+"outlet": "Miami Herald",
+"chapter": "MIA",
+"picks": [
+"Bryant",
+"Rizzo",
+"Murphy",
+"Seager",
+"Arenado",
+"Freeman",
+"Scherzer",
+"Votto",
+"Yelich",
+"Segura"
+]
+},
+{
+"voter": "Michael Bauman",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Arenado",
+"Rizzo",
+"Freeman",
+"Votto",
+"Cespedes",
+"LeMahieu",
+"Goldschmidt"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Rizzo",
+"Arenado",
+"Freeman",
+"Votto",
+"Cespedes",
+"Turner",
+"Goldschmidt"
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Murphy",
+"Bryant",
+"Arenado",
+"Seager",
+"Rizzo",
+"Cespedes",
+"Freeman",
+"Votto",
+"Turner",
+"Yelich"
+]
+},
+{
+"voter": "Marc Carig",
+"outlet": "Newsday (NY)",
+"chapter": "NY",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Rizzo",
+"Arenado",
+"Freeman",
+"Votto",
+"Cespedes",
+"Turner",
+"Goldschmidt"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "ESPN.com",
+"chapter": "PHI",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Arenado",
+"Rizzo",
+"Votto",
+"Freeman",
+"Scherzer",
+"Segura",
+"Syndergaard"
+]
+},
+{
+"voter": "Paul Hagen",
+"outlet": "MLB.com",
+"chapter": "PHI",
+"picks": [
+"Bryant",
+"Murphy",
+"Seager",
+"Rizzo",
+"Arenado",
+"Crawford",
+"Freeman",
+"Votto",
+"Scherzer",
+"Goldschmidt"
+]
+},
+{
+"voter": "Travis Sawchik",
+"outlet": "Pittsburgh Tribune-Review",
+"chapter": "PIT",
+"picks": [
+"Bryant",
+"Arenado",
+"Seager",
+"Rizzo",
+"Murphy",
+"Posey",
+"Grandal",
+"Freeman",
+"Goldschmidt",
+"Votto"
+]
+},
+{
+"voter": "Bill Brink",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Bryant",
+"Seager",
+"Rizzo",
+"Murphy",
+"Freeman",
+"Arenado",
+"Votto",
+"Goldschmidt",
+"Scherzer",
+"LeMahieu"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "Bleacher Report",
+"chapter": "SD",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Rizzo",
+"Arenado",
+"Freeman",
+"Cespedes",
+"Turner",
+"Votto",
+"LeMahieu"
+]
+},
+{
+"voter": "Dennis Lin",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Rizzo",
+"Arenado",
+"Turner",
+"Votto",
+"Freeman",
+"Goldschmidt",
+"Crawford"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Bryant",
+"Seager",
+"Murphy",
+"Freeman",
+"Rizzo",
+"Arenado",
+"Votto",
+"Crawford",
+"Cespedes",
+"Molina"
+]
+},
+{
+"voter": "Andrew Baggarly",
+"outlet": "San Jose Mercury News",
+"chapter": "SF",
+"picks": [
+"Bryant",
+"Murphy",
+"Arenado",
+"Seager",
+"Rizzo",
+"Russell",
+"Crawford",
+"Votto",
+"Freeman",
+"Segura"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Bryant",
+"Arenado",
+"Murphy",
+"Seager",
+"Rizzo",
+"Scherzer",
+"Votto",
+"Freeman",
+"Posey",
+"Goldschmidt"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Bryant",
+"Murphy",
+"Rizzo",
+"Arenado",
+"Seager",
+"Cespedes",
+"Scherzer",
+"Familia",
+"Votto",
+"Molina"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "Fox Sports",
+"chapter": "WAS",
+"picks": [
+"Bryant",
+"Murphy",
+"Seager",
+"Rizzo",
+"Arenado",
+"Turner",
+"Freeman",
+"Votto",
+"Cespedes",
+"Segura"
+]
+},
+{
+"voter": "Jerry Crasnick",
+"outlet": "ESPN.com",
+"chapter": "WAS",
+"picks": [
+"Bryant",
+"Seager",
+"Arenado",
+"Murphy",
+"Rizzo",
+"Freeman",
+"Votto",
+"Scherzer",
+"Cespedes",
+"Segura"
+]
+}
+]
+},
+{
+"year": 2017,
+"league": "AL",
+"url": "https://bbwaa.com/17-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Roch Kubatko",
+"outlet": "MASNsports.com",
+"chapter": "BAL",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Simmons",
+"Cruz",
+"Schoop",
+"Betts",
+"Correa"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "The Athletic",
+"chapter": "BAL",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Dozier",
+"Kluber",
+"Springer",
+"Sale",
+"Simmons"
+]
+},
+{
+"voter": "Rob Bradford",
+"outlet": "WEEI.com",
+"chapter": "BOS",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Lindor",
+"Dozier",
+"Kluber",
+"Sale",
+"Abreu",
+"Hosmer",
+"Trout"
+]
+},
+{
+"voter": "Nick Cafardo",
+"outlet": "Boston Globe",
+"chapter": "BOS",
+"picks": [
+"Altuve",
+"Judge",
+"Kluber",
+"Trout",
+"Simmons",
+"Ramirez",
+"Betts",
+"Sale",
+"Lindor",
+"Gregorius"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Betts",
+"Lindor",
+"Simmons",
+"Sale",
+"Kluber",
+"Trout",
+"Correa"
+]
+},
+{
+"voter": "Dan Hayes",
+"outlet": "NBC Sports Chicago",
+"chapter": "CHI",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Kluber",
+"Lindor",
+"Sale",
+"Betts",
+"Simmons",
+"Abreu"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Lindor",
+"Trout",
+"Betts",
+"Upton",
+"Dozier",
+"Simmons",
+"Springer"
+]
+},
+{
+"voter": "Jordan Bastian",
+"outlet": "MLB.com",
+"chapter": "CLE",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Kluber",
+"Sale",
+"Lindor",
+"Betts",
+"Springer",
+"Simmons"
+]
+},
+{
+"voter": "Chris McCosky",
+"outlet": "Detroit News",
+"chapter": "DET",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Betts",
+"Springer",
+"Simmons",
+"Upton",
+"Kluber"
+]
+},
+{
+"voter": "Anthony Fenech",
+"outlet": "Detroit Free Press",
+"chapter": "DET",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Lindor",
+"Trout",
+"Kluber",
+"Sale",
+"Hosmer",
+"Simmons",
+"Buxton"
+]
+},
+{
+"voter": "Brian McTaggart",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Altuve",
+"Judge",
+"Trout",
+"Ramirez",
+"Kluber",
+"Betts",
+"Lindor",
+"Cruz",
+"Simmons",
+"Gonzalez"
+]
+},
+{
+"voter": "Kristie Rieken",
+"outlet": "The Associated Press",
+"chapter": "HOU",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Betts",
+"Lindor",
+"Kluber",
+"Springer",
+"Simmons",
+"Cruz"
+]
+},
+{
+"voter": "Rustin Dodd",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Ramirez",
+"Altuve",
+"Judge",
+"Trout",
+"Lindor",
+"Kluber",
+"Hosmer",
+"Sale",
+"Simmons",
+"Betts"
+]
+},
+{
+"voter": "Sam Mellinger",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Judge",
+"Altuve",
+"Ramirez",
+"Trout",
+"Lindor",
+"Betts",
+"Buxton",
+"Upton",
+"Simmons",
+"Hosmer"
+]
+},
+{
+"voter": "Jeff Miller",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Betts",
+"Simmons",
+"Kluber",
+"Lindor",
+"Sale",
+"Correa"
+]
+},
+{
+"voter": "Tim Brown",
+"outlet": "Yahoo Sports",
+"chapter": "LA",
+"picks": [
+"Altuve",
+"Judge",
+"Trout",
+"Ramirez",
+"Lindor",
+"Schoop",
+"Simmons",
+"Betts",
+"Cruz",
+"Gonzalez"
+]
+},
+{
+"voter": "Dave Campbell",
+"outlet": "Associated Press",
+"chapter": "MIN",
+"picks": [
+"Altuve",
+"Judge",
+"Trout",
+"Ramirez",
+"Betts",
+"Lindor",
+"Abreu",
+"Dozier",
+"Cruz",
+"Hosmer"
+]
+},
+{
+"voter": "Patrick Reusse",
+"outlet": "Minneapolis Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Sale",
+"Kluber",
+"Dozier",
+"Gonzalez",
+"Sanchez"
+]
+},
+{
+"voter": "George A. King III",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Lindor",
+"Betts",
+"Cruz",
+"Encarnacion",
+"Gregorius",
+"Trout",
+"Hosmer"
+]
+},
+{
+"voter": "Erik Boland",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Betts",
+"Springer",
+"Schoop",
+"Cruz",
+"Abreu"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Altuve",
+"Judge",
+"Trout",
+"Ramirez",
+"Betts",
+"Kluber",
+"Correa",
+"Simmons",
+"Buxton",
+"Cruz"
+]
+},
+{
+"voter": "Joe Stiglich",
+"outlet": "NBC Sports Bay Area",
+"chapter": "OAK",
+"picks": [
+"Altuve",
+"Judge",
+"Trout",
+"Ramirez",
+"Lindor",
+"Betts",
+"Kluber",
+"Upton",
+"Cruz",
+"Schoop"
+]
+},
+{
+"voter": "Greg Johns",
+"outlet": "MLB.com",
+"chapter": "SEA",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Kluber",
+"Simmons",
+"Betts",
+"Sale",
+"Cruz"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Betts",
+"Kluber",
+"Lindor",
+"Sale",
+"Simmons",
+"Cruz"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Lindor",
+"Betts",
+"Cruz",
+"Simmons",
+"Kluber",
+"Dozier"
+]
+},
+{
+"voter": "Roger Mooney",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Cruz",
+"Schoop",
+"Simmons",
+"Kluber",
+"Abreu",
+"Hosmer"
+]
+},
+{
+"voter": "TR Sullivan",
+"outlet": "MLB.Com",
+"chapter": "TEX",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Cruz",
+"Abreu",
+"Sale",
+"Kluber",
+"Gonzalez",
+"Schoop"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star-Telegram",
+"chapter": "TEX",
+"picks": [
+"Altuve",
+"Judge",
+"Trout",
+"Ramirez",
+"Sale",
+"Kluber",
+"Cruz",
+"Betts",
+"Lindor",
+"Schoop"
+]
+},
+{
+"voter": "Richard Griffin",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Judge",
+"Altuve",
+"Ramirez",
+"Betts",
+"Trout",
+"Lindor",
+"Dozier",
+"Hosmer",
+"Kluber",
+"Davis"
+]
+},
+{
+"voter": "Gregor Chisholm",
+"outlet": "MLB.com",
+"chapter": "TOR",
+"picks": [
+"Altuve",
+"Judge",
+"Ramirez",
+"Trout",
+"Kluber",
+"Sale",
+"Lindor",
+"Betts",
+"Correa",
+"Donaldson"
+]
+}
+]
+},
+{
+"year": 2017,
+"league": "NL",
+"url": "https://bbwaa.com/17-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Mark Bowman",
+"outlet": "MLB.com",
+"chapter": "ATL",
+"picks": [
+"Bryant",
+"Stanton",
+"Votto",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Pham",
+"Seager",
+"Blackmon",
+"Turner"
+]
+},
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Goldschmidt",
+"Arenado",
+"Stanton",
+"Votto",
+"Blackmon",
+"Rendon",
+"Bryant",
+"Harper",
+"Bellinger",
+"Murphy"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"Votto",
+"Stanton",
+"Goldschmidt",
+"Arenado",
+"Scherzer",
+"Blackmon",
+"Bryant",
+"Rendon",
+"Martinez",
+"Ozuna"
+]
+},
+{
+"voter": "Bob Nightengale",
+"outlet": "USA Today",
+"chapter": "AZ",
+"picks": [
+"Goldschmidt",
+"Blackmon",
+"Stanton",
+"Arenado",
+"Votto",
+"Rendon",
+"Bellinger",
+"Martinez",
+"Rizzo",
+"Zimmerman"
+]
+},
+{
+"voter": "Mark Gonzales",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Goldschmidt",
+"Votto",
+"Blackmon",
+"Stanton",
+"Arenado",
+"Rendon",
+"Rizzo",
+"Bellinger",
+"Ozuna",
+"Bryant"
+]
+},
+{
+"voter": "Jesse Rogers",
+"outlet": "ESPN.com",
+"chapter": "CHI",
+"picks": [
+"Votto",
+"Stanton",
+"Goldschmidt",
+"Rendon",
+"Rizzo",
+"Bryant",
+"Arenado",
+"Blackmon",
+"Bellinger",
+"Martinez"
+]
+},
+{
+"voter": "C. Trent Rosecrans",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Votto",
+"Stanton",
+"Blackmon",
+"Goldschmidt",
+"Arenado",
+"Bryant",
+"Rendon",
+"Scherzer",
+"Turner",
+"Pham"
+]
+},
+{
+"voter": "Mark Sheldon",
+"outlet": "MLB.com",
+"chapter": "CIN",
+"picks": [
+"Votto",
+"Goldschmidt",
+"Stanton",
+"Arenado",
+"Rendon",
+"Blackmon",
+"Turner",
+"Pham",
+"Bryant",
+"Ozuna"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "MLB.com",
+"chapter": "COL",
+"picks": [
+"Blackmon",
+"Goldschmidt",
+"Arenado",
+"Votto",
+"Bryant",
+"Stanton",
+"Kershaw",
+"Rendon",
+"Scherzer",
+"Rizzo"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Blackmon",
+"Votto",
+"Arenado",
+"Stanton",
+"Goldschmidt",
+"Rendon",
+"Bryant",
+"Turner",
+"Scherzer",
+"Pham"
+]
+},
+{
+"voter": "Ken Gurnick",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Arenado",
+"Blackmon",
+"Stanton",
+"Votto",
+"Goldschmidt",
+"Jansen",
+"Bryant",
+"Scherzer",
+"Bellinger",
+"Turner"
+]
+},
+{
+"voter": "J.P. Hoornstra",
+"outlet": "Southern California News Group",
+"chapter": "LA",
+"picks": [
+"Stanton",
+"Votto",
+"Bryant",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Blackmon",
+"Pham",
+"Scherzer",
+"Turner"
+]
+},
+{
+"voter": "Craig Davis",
+"outlet": "South Florida Sun Sentinel",
+"chapter": "MIA",
+"picks": [
+"Stanton",
+"Arenado",
+"Votto",
+"Goldschmidt",
+"Blackmon",
+"Bryant",
+"Bellinger",
+"Rendon",
+"Ozuna",
+"Harper"
+]
+},
+{
+"voter": "Joe Frisaro",
+"outlet": "MLB.com",
+"chapter": "MIA",
+"picks": [
+"Stanton",
+"Blackmon",
+"Votto",
+"Goldschmidt",
+"Rendon",
+"Arenado",
+"Bryant",
+"Seager",
+"Murphy",
+"Ozuna"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Stanton",
+"Votto",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Blackmon",
+"Scherzer",
+"Bryant",
+"Kershaw",
+"Greinke"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Votto",
+"Stanton",
+"Arenado",
+"Goldschmidt",
+"Bryant",
+"Rendon",
+"Blackmon",
+"Turner",
+"Pham",
+"Ozuna"
+]
+},
+{
+"voter": "Marc Carig",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Votto",
+"Stanton",
+"Blackmon",
+"Arenado",
+"Rendon",
+"Bryant",
+"Scherzer",
+"Goldschmidt",
+"Turner",
+"Pham"
+]
+},
+{
+"voter": "Anthony DiComo",
+"outlet": "MLB.com",
+"chapter": "NY",
+"picks": [
+"Stanton",
+"Votto",
+"Blackmon",
+"Arenado",
+"Bryant",
+"Goldschmidt",
+"Rendon",
+"Turner",
+"Pham",
+"Scherzer"
+]
+},
+{
+"voter": "Todd Zolecki",
+"outlet": "MLB.com",
+"chapter": "PHI",
+"picks": [
+"Votto",
+"Stanton",
+"Blackmon",
+"Goldschmidt",
+"Arenado",
+"Bryant",
+"Rendon",
+"Harper",
+"Bellinger",
+"Turner"
+]
+},
+{
+"voter": "Jim Salisbury",
+"outlet": "NBC Sports Philadelphia",
+"chapter": "PHI",
+"picks": [
+"Arenado",
+"Goldschmidt",
+"Votto",
+"Stanton",
+"Blackmon",
+"Bryant",
+"Rendon",
+"Turner",
+"Bellinger",
+"Harper"
+]
+},
+{
+"voter": "Stephen J. Nesbitt",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Votto",
+"Stanton",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Bryant",
+"Blackmon",
+"Turner",
+"Scherzer",
+"Pham"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "Pittsburgh Tribune-Review",
+"chapter": "PIT",
+"picks": [
+"Stanton",
+"Votto",
+"Goldschmidt",
+"Arenado",
+"Blackmon",
+"Rendon",
+"Turner",
+"Harper",
+"Rizzo",
+"Bryant"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "Bleacher Report",
+"chapter": "SD",
+"picks": [
+"Goldschmidt",
+"Arenado",
+"Stanton",
+"Blackmon",
+"Votto",
+"Bryant",
+"Turner",
+"Rendon",
+"Martinez",
+"Bellinger"
+]
+},
+{
+"voter": "Dennis Lin",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Votto",
+"Stanton",
+"Arenado",
+"Goldschmidt",
+"Blackmon",
+"Rendon",
+"Bellinger",
+"Bryant",
+"Turner",
+"Martinez"
+]
+},
+{
+"voter": "Andrew Baggarly",
+"outlet": "San Jose Mercury News",
+"chapter": "SF",
+"picks": [
+"Stanton",
+"Votto",
+"Goldschmidt",
+"Arenado",
+"Bryant",
+"Bellinger",
+"Rendon",
+"Blackmon",
+"Turner",
+"Bradley"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Stanton",
+"Votto",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Bellinger",
+"Blackmon",
+"Bryant",
+"Turner",
+"Pham"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Stanton",
+"Votto",
+"Blackmon",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Bryant",
+"Scherzer",
+"Pham",
+"Turner"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Blackmon",
+"Goldschmidt",
+"Arenado",
+"Votto",
+"Stanton",
+"Harper",
+"Rendon",
+"Jansen",
+"Martinez",
+"Rizzo"
+]
+},
+{
+"voter": "Todd Dybas",
+"outlet": "The Washington Times",
+"chapter": "WAS",
+"picks": [
+"Votto",
+"Stanton",
+"Rendon",
+"Arenado",
+"Bryant",
+"Goldschmidt",
+"Blackmon",
+"Pham",
+"Scherzer",
+"Turner"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN",
+"chapter": "WAS",
+"picks": [
+"Stanton",
+"Goldschmiidt",
+"Blackmon",
+"Votto",
+"Arenado",
+"Harper",
+"Rendon",
+"Bryant",
+"Bellinger",
+"Rizzo"
+]
+}
+]
+},
+{
+"year": 2018,
+"league": "AL",
+"url": "https://bbwaa.com/18-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Dan Connolly",
+"outlet": "The Athletic Baltimore",
+"chapter": "BAL",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Martinez",
+"Lindor",
+"Bregman",
+"Chapman",
+"Treinen",
+"Diaz",
+"Davis"
+]
+},
+{
+"voter": "Rich Dubroff",
+"outlet": "BaltimoreBaseball.com",
+"chapter": "BAL",
+"picks": [
+"Betts",
+"Martinez",
+"Trout",
+"Ramirez",
+"Lindor",
+"Bregman",
+"Snell",
+"Chapman",
+"Diaz",
+"Simmons"
+]
+},
+{
+"voter": "Christopher Smith",
+"outlet": "Springfield Republican",
+"chapter": "BOS",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Ramirez",
+"Bregman",
+"Chapman",
+"Lindor",
+"Davis",
+"Verlander",
+"Judge"
+]
+},
+{
+"voter": "Ian Browne",
+"outlet": "MLB.com",
+"chapter": "BOS",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Ramirez",
+"Bregman",
+"Lindor",
+"Chapman",
+"Davis",
+"Snell",
+"Treinen"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Bregman",
+"Martinez",
+"Lindor",
+"Chapman",
+"Snell",
+"Simmons",
+"Davis"
+]
+},
+{
+"voter": "Scott Merkin",
+"outlet": "MLB.com",
+"chapter": "CHI",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Ramirez",
+"Chapman",
+"Lindor",
+"Bregman",
+"Davis",
+"Snell",
+"Diaz"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Martinez",
+"Lindor",
+"Bregman",
+"Chapman",
+"Bogaerts",
+"Altuve",
+"Merrifield"
+]
+},
+{
+"voter": "Jordan Bastian",
+"outlet": "MLB.com",
+"chapter": "CLE",
+"picks": [
+"Betts",
+"Trout",
+"Lindor",
+"Ramirez",
+"Bregman",
+"Chapman",
+"Martinez",
+"Verlander",
+"Simmons",
+"Merrifield"
+]
+},
+{
+"voter": "Jason Beck",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Lindor",
+"Bregman",
+"Ramirez",
+"Chapman",
+"Verlander",
+"Snell",
+"Simmons"
+]
+},
+{
+"voter": "Jon Paul Morosi",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Betts",
+"Ramirez",
+"Martinez",
+"Bregman",
+"Trout",
+"Lindor",
+"Chapman",
+"Davis",
+"Bogaerts",
+"Verlander"
+]
+},
+{
+"voter": "Chandler Rome",
+"outlet": "Houston Chronicle",
+"chapter": "HOU",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Martinez",
+"Bregman",
+"Lindor",
+"Chapman",
+"Bogaerts",
+"Merrifield",
+"Haniger"
+]
+},
+{
+"voter": "Brian McTaggart",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Betts",
+"Martinez",
+"Trout",
+"Bregman",
+"Ramirez",
+"Lindor",
+"Davis",
+"Verlander",
+"Chapman",
+"Stanton"
+]
+},
+{
+"voter": "Rustin Dodd",
+"outlet": "The Athletic",
+"chapter": "KC",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Bregman",
+"Martinez",
+"Lindor",
+"Chapman",
+"Snell",
+"Merrifield",
+"Verlander"
+]
+},
+{
+"voter": "Jeffrey Flanagan",
+"outlet": "MLB.com",
+"chapter": "KC",
+"picks": [
+"Betts",
+"Trout",
+"Lindor",
+"Ramirez",
+"Chapman",
+"Martinez",
+"Bregman",
+"Haniger",
+"Snell",
+"Bauer"
+]
+},
+{
+"voter": "Jeff Fletcher",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Betts",
+"Trout",
+"Bregman",
+"Martinez",
+"Ramirez",
+"Chapman",
+"Lindor",
+"Davis",
+"Verlander",
+"Haniger"
+]
+},
+{
+"voter": "Sam Miller",
+"outlet": "ESPN",
+"chapter": "LA",
+"picks": [
+"Betts",
+"Trout",
+"Bregman",
+"Ramirez",
+"Chapman",
+"Verlander",
+"Lindor",
+"Martinez",
+"Snell",
+"Sale"
+]
+},
+{
+"voter": "Phil Miller",
+"outlet": "Minneapolis Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Bregman",
+"Lindor",
+"Chapman",
+"Martinez",
+"Verlander",
+"Altuve",
+"Treinen"
+]
+},
+{
+"voter": "Dave Campbell",
+"outlet": "Associated Press",
+"chapter": "MIN",
+"picks": [
+"Martinez",
+"Betts",
+"Bregman",
+"Trout",
+"Lindor",
+"Chapman",
+"Ramirez",
+"Davis",
+"Altuve",
+"Bogaerts"
+]
+},
+{
+"voter": "Marc Carig",
+"outlet": "The Athletic",
+"chapter": "NY",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Bregman",
+"Ramirez",
+"Lindor",
+"Chapman",
+"Haniger",
+"Davis",
+"Hicks"
+]
+},
+{
+"voter": "Brendan Kuty",
+"outlet": "NJ Advance Media",
+"chapter": "NY",
+"picks": [
+"Betts",
+"Trout",
+"Lindor",
+"Ramirez",
+"Bregman",
+"Martinez",
+"Judge",
+"Chapman",
+"Lowrie",
+"Gregorius"
+]
+},
+{
+"voter": "Jane Lee",
+"outlet": "MLB.com",
+"chapter": "OAK",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Ramirez",
+"Bregman",
+"Lindor",
+"Chapman",
+"Davis",
+"Snell",
+"Treinen"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Betts",
+"Trout",
+"Chapman",
+"Ramirez",
+"Martinez",
+"Lindor",
+"Bregman",
+"Davis",
+"Altuve",
+"Judge"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Betts",
+"Trout",
+"Lindor",
+"Bregman",
+"Chapman",
+"Ramirez",
+"Martinez",
+"Davis",
+"Haniger",
+"Verlander"
+]
+},
+{
+"voter": "Larry Stone",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Betts",
+"Trout",
+"Chapman",
+"Lindor",
+"Bregman",
+"Ramirez",
+"Martinez",
+"Snell",
+"Davis",
+"Haniger"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Betts",
+"Trout",
+"Bregman",
+"Ramirez",
+"Lindor",
+"Chapman",
+"Martinez",
+"Snell",
+"Davis",
+"Haniger"
+]
+},
+{
+"voter": "Martin Fennelly",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Betts",
+"Trout",
+"Martinez",
+"Bregman",
+"Lindor",
+"Ramirez",
+"Chapman",
+"Snell",
+"Gregorius",
+"Altuve"
+]
+},
+{
+"voter": "Gerry Fraley",
+"outlet": "Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Betts",
+"Bregman",
+"Ramirez",
+"Martinez",
+"Trout",
+"Chapman",
+"Judge",
+"Lindor",
+"Davis",
+"Lowrie"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star-Telegram",
+"chapter": "TEX",
+"picks": [
+"Trout",
+"Betts",
+"Ramirez",
+"Bregman",
+"Martinez",
+"Lindor",
+"Chapman",
+"Snell",
+"Haniger",
+"Treinen"
+]
+},
+{
+"voter": "Ben Nicholson-Smith",
+"outlet": "Sportsnet.ca",
+"chapter": "TOR",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Lindor",
+"Bregman",
+"Chapman",
+"Martinez",
+"Snell",
+"Verlander",
+"Simmons"
+]
+},
+{
+"voter": "Richard Griffin",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Betts",
+"Trout",
+"Ramirez",
+"Bregman",
+"Martinez",
+"Chapman",
+"Lindor",
+"Stanton",
+"Haniger",
+"Snell"
+]
+}
+]
+},
+{
+"year": 2018,
+"league": "NL",
+"url": "https://bbwaa.com/18-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Freeman",
+"Story",
+"Carpenter",
+"Acuña",
+"Cain",
+"DeGrom",
+"Markakis"
+]
+},
+{
+"voter": "David O'Brien",
+"outlet": "The Athletic",
+"chapter": "ATL",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Carpenter",
+"Arenado",
+"Goldschmidt",
+"DeGrom",
+"Cain",
+"Acuña",
+"Story"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"DeGrom",
+"Yelich",
+"Scherzer",
+"Arenado",
+"Baez",
+"Story",
+"Nola",
+"Goldschmidt",
+"Cain",
+"Freeman"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Yelich",
+"Baez",
+"Story",
+"Arenado",
+"Freeman",
+"Cain",
+"Carpenter",
+"Goldschmidt",
+"Muncy",
+"Rizzo"
+]
+},
+{
+"voter": "Gordon Wittenmyer",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Freeman",
+"Cain",
+"Goldschmidt",
+"Story",
+"Carpenter",
+"Acuña",
+"Turner"
+]
+},
+{
+"voter": "Bruce Miles",
+"outlet": "Daily Herald, Arlington Heights, IL",
+"chapter": "CHI",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Cain",
+"Freeman",
+"Story",
+"DeGrom",
+"Goldschmidt",
+"Rendon",
+"Carpenter"
+]
+},
+{
+"voter": "C. Trent Rosecrans",
+"outlet": "The Athletic",
+"chapter": "CIN",
+"picks": [
+"Yelich",
+"DeGrom",
+"Scherzer",
+"Baez",
+"Arenado",
+"Cain",
+"Goldschmidt",
+"Nola",
+"Story",
+"Freeman"
+]
+},
+{
+"voter": "John Fay",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Arenado",
+"Goldschmidt",
+"Carpenter",
+"Turner",
+"Cain",
+"Rendon",
+"Suarez"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "InsideTheSeams.com",
+"chapter": "COL",
+"picks": [
+"Yelich",
+"Arenado",
+"Freeman",
+"Baez",
+"Story",
+"Cain",
+"Goldschmidt",
+"Rizzo",
+"Rendon",
+"Carpenter"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "Denver Post",
+"chapter": "COL",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Cain",
+"Carpenter",
+"Goldschmidt",
+"Freeman",
+"DeGrom",
+"Muncy",
+"Story"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "Southern California News Group",
+"chapter": "LA",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Freeman",
+"Story",
+"Goldschmidt",
+"Cain",
+"Carpenter",
+"DeGrom",
+"Turner"
+]
+},
+{
+"voter": "Mark Whicker",
+"outlet": "Southern California News Group",
+"chapter": "LA",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Arenado",
+"Acuña",
+"Story",
+"Carpenter",
+"Cain",
+"DeGrom",
+"Turner"
+]
+},
+{
+"voter": "Jon Heyman",
+"outlet": "Fancred",
+"chapter": "MIA",
+"picks": [
+"Yelich",
+"Baez",
+"Story",
+"Arenado",
+"DeGrom",
+"Cain",
+"Acuña",
+"Freeman",
+"Turner",
+"Nola"
+]
+},
+{
+"voter": "Clark Spencer",
+"outlet": "Miami Herald",
+"chapter": "MIA",
+"picks": [
+"Yelich",
+"DeGrom",
+"Baez",
+"Freeman",
+"Arenado",
+"Goldschmidt",
+"Carpenter",
+"Story",
+"Cain",
+"Scherzer"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Yelich",
+"DeGrom",
+"Baez",
+"Goldschmidt",
+"Freeman",
+"Scherzer",
+"Cain",
+"Carpenter",
+"Arenado",
+"Rendon"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Yelich",
+"Baez",
+"Story",
+"Freeman",
+"Cain",
+"Arenado",
+"Carpenter",
+"Goldschmidt",
+"Aguilar",
+"Turner"
+]
+},
+{
+"voter": "David Lennon",
+"outlet": "New York Newsday",
+"chapter": "NY",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Carpenter",
+"DeGrom",
+"Story",
+"Goldschmidt",
+"Freeman",
+"Rendon",
+"Cain"
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Yelich",
+"DeGrom",
+"Arenado",
+"Baez",
+"Cain",
+"Scherzer",
+"Freeman",
+"Nola",
+"Carpenter",
+"Goldschmidt"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "The Athletic",
+"chapter": "PHI",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Arenado",
+"DeGrom",
+"Story",
+"Cain",
+"Scherzer",
+"Goldschmidt",
+"Carpenter"
+]
+},
+{
+"voter": "Matt Breen",
+"outlet": "The Philadelphia Inquirer",
+"chapter": "PHI",
+"picks": [
+"Yelich",
+"Arenado",
+"Carpenter",
+"DeGrom",
+"Baez",
+"Freeman",
+"Muncy",
+"Story",
+"Aguilar",
+"Rendon"
+]
+},
+{
+"voter": "Bill Brink",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Yelich",
+"DeGrom",
+"Goldschmidt",
+"Baez",
+"Cain",
+"Arenado",
+"Carpenter",
+"Scherzer",
+"Freeman",
+"Story"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "The Athletic",
+"chapter": "PIT",
+"picks": [
+"Yelich",
+"Baez",
+"Carpenter",
+"Arenado",
+"Goldschmidt",
+"Freeman",
+"Story",
+"DeGrom",
+"Cain",
+"Acuña"
+]
+},
+{
+"voter": "Dennis Lin",
+"outlet": "The Athletic",
+"chapter": "SD",
+"picks": [
+"Yelich",
+"DeGrom",
+"Baez",
+"Freeman",
+"Scherzer",
+"Story",
+"Nola",
+"Arenado",
+"Cain",
+"Carpenter"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "San Diego UnionTribune",
+"chapter": "SD",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Arenado",
+"Carpenter",
+"DeGrom",
+"Goldschmidt",
+"Cain",
+"Story",
+"Scherzer"
+]
+},
+{
+"voter": "Chris Haft",
+"outlet": "MLB.com",
+"chapter": "SF",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Arenado",
+"Goldschmidt",
+"Rendon",
+"Carpenter",
+"Story",
+"Cain",
+"Suarez"
+]
+},
+{
+"voter": "Andrew Baggarly",
+"outlet": "The Athletic",
+"chapter": "SF",
+"picks": [
+"Yelich",
+"Baez",
+"Cain",
+"Freeman",
+"Arenado",
+"Goldschmidt",
+"Carpenter",
+"Story",
+"Rendon",
+"Markakis"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Yelich",
+"Arenado",
+"DeGrom",
+"Baez",
+"Scherzer",
+"Goldschmidt",
+"Freeman",
+"Story",
+"Carpenter",
+"Cain"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Yelich",
+"Baez",
+"Arenado",
+"Freeman",
+"Story",
+"Carpenter",
+"Goldschmidt",
+"Aguilar",
+"Rizzo",
+"Scherzer"
+]
+},
+{
+"voter": "Jamal Collier",
+"outlet": "MLB.com",
+"chapter": "WAS",
+"picks": [
+"Yelich",
+"DeGrom",
+"Baez",
+"Scherzer",
+"Arenado",
+"Goldschmidt",
+"Freeman",
+"Carpenter",
+"Cain",
+"Rendon"
+]
+},
+{
+"voter": "Mark Zuckerman",
+"outlet": "MASNsports.com",
+"chapter": "WAS",
+"picks": [
+"Yelich",
+"Baez",
+"Freeman",
+"Goldschmidt",
+"DeGrom",
+"Scherzer",
+"Arenado",
+"Rendon",
+"Cain",
+"Nola"
+]
+}
+]
+},
+{
+"year": 2019,
+"league": "AL",
+"url": "https://bbwaa.com/19-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Ken Rosenthal",
+"outlet": "The Athletic",
+"chapter": "*BAL",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Bogaerts",
+"LeMahieu",
+"Cruz",
+"Chapman",
+"Springer",
+"Devers",
+"Betts"
+]
+},
+{
+"voter": "Dave Ginsburg",
+"outlet": "Associated Press",
+"chapter": "BAL",
+"picks": [
+"Trout",
+"Bregman",
+"LeMahieu",
+"Devers",
+"Bogaerts",
+"Semien",
+"Abreu",
+"Rosario",
+"Torres",
+"Verlander"
+]
+},
+{
+"voter": "Rob Bradford",
+"outlet": "WEEI.com",
+"chapter": "BOS",
+"picks": [
+"Bregman",
+"Trout",
+"Bogaerts",
+"Semien",
+"LeMahieu",
+"Devers",
+"Betts",
+"Chapman",
+"Springer",
+"Cruz"
+]
+},
+{
+"voter": "Chad Jennings",
+"outlet": "The Athletic",
+"chapter": "BOS",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Bogaerts",
+"LeMahieu",
+"Betts",
+"Verlander",
+"Chapman",
+"Devers",
+"Springer"
+]
+},
+{
+"voter": "Scot Gregor",
+"outlet": "Daily Herald",
+"chapter": "CHI",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"LeMahieu",
+"Bogaerts",
+"Cruz",
+"Chapman",
+"Springer",
+"Betts",
+"Cole"
+]
+},
+{
+"voter": "James Fegan",
+"outlet": "The Athletic",
+"chapter": "CHI",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Verlander",
+"Cole",
+"Bogaerts",
+"Chapman",
+"Betts",
+"Springer",
+"Moncada"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Trout",
+"Bregman",
+"LeMahieu",
+"Semien",
+"Springer",
+"Bogaerts",
+"Cruz",
+"Chapman",
+"Betts",
+"Santana"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Trout",
+"Bregman",
+"LeMahieu",
+"Semien",
+"Bogaerts",
+"Betts",
+"Chapman",
+"Rosario",
+"Devers",
+"Santana"
+]
+},
+{
+"voter": "Anthony Fenech",
+"outlet": "Detroit Free Press",
+"chapter": "DET",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"LeMahieu",
+"Cruz",
+"Bogaerts",
+"Chapman",
+"Santana",
+"Lindor",
+"Soler"
+]
+},
+{
+"voter": "Chris McCosky",
+"outlet": "Detroit News",
+"chapter": "DET",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"LeMahieu",
+"Bogaerts",
+"Cruz",
+"Springer",
+"Betts",
+"Chapman",
+"Verlander"
+]
+},
+{
+"voter": "Richard Justice",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Bregman",
+"Trout",
+"LeMahieu",
+"Semien",
+"Cruz",
+"Bogaerts",
+"Springer",
+"Devers",
+"Chapman",
+"Betts"
+]
+},
+{
+"voter": "Kristie Rieken",
+"outlet": "The Associated Press",
+"chapter": "HOU",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Bogaerts",
+"Devers",
+"LeMahieu",
+"Chapman",
+"Verlander",
+"Kepler",
+"Meadows"
+]
+},
+{
+"voter": "Jeff Passan",
+"outlet": "ESPN",
+"chapter": "KC",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"Betts",
+"Cole",
+"Verlander",
+"LeMahieu",
+"Chapman",
+"Bogaerts",
+"Polanco"
+]
+},
+{
+"voter": "Mike Oz",
+"outlet": "Yahoo Sports",
+"chapter": "KC",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"LeMahieu",
+"Cole",
+"Verlander",
+"Betts",
+"Bogaerts",
+"Chapman",
+"Springer"
+]
+},
+{
+"voter": "Nobuhiro Saito",
+"outlet": "The Nikkan Sports News",
+"chapter": "LA",
+"picks": [
+"Bregman",
+"Trout",
+"Verlander",
+"Cole",
+"LeMahieu",
+"Semien",
+"Cruz",
+"Devers",
+"Springer",
+"Abreu"
+]
+},
+{
+"voter": "Rhett Bollinger",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Cole",
+"Verlander",
+"Betts",
+"Chapman",
+"Springer",
+"Bogaerts",
+"LeMahieu"
+]
+},
+{
+"voter": "Dan Hayes",
+"outlet": "The Athletic Minnesota",
+"chapter": "MIN",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"LeMahieu",
+"Cruz",
+"Bogaerts",
+"Chapman",
+"Cole",
+"Verlander",
+"Betts"
+]
+},
+{
+"voter": "La Velle E. Neal III",
+"outlet": "Minneapolis Star Tribune.",
+"chapter": "MIN",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"LeMahieu",
+"Lindor",
+"Cole",
+"Bogaerts",
+"Chapman",
+"Polanco",
+"Meadows"
+]
+},
+{
+"voter": "Erik Boland",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Trout",
+"Bregman",
+"LeMahieu",
+"Semien",
+"Bogaerts",
+"Chapman",
+"Polanco",
+"Springer",
+"Meadows",
+"Betts"
+]
+},
+{
+"voter": "George A. King III",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"LeMahieu",
+"Torres",
+"Chapman",
+"Lindor",
+"Bogaerts",
+"Polanco",
+"Martinez"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"Springer",
+"Cruz",
+"Chapman",
+"LeMahieu",
+"Meadows",
+"Bogaerts",
+"Lindor"
+]
+},
+{
+"voter": "Martin Gallegos",
+"outlet": "MLB.com",
+"chapter": "OAK",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"LeMahieu",
+"Bogaerts",
+"Betts",
+"Chapman",
+"Cole",
+"Devers",
+"Olson"
+]
+},
+{
+"voter": "Greg Johns",
+"outlet": "MLB.com",
+"chapter": "SEA",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"Bogaerts",
+"Betts",
+"Springer",
+"Cruz",
+"LeMahieu",
+"Chapman",
+"Polanco"
+]
+},
+{
+"voter": "Corey Brock",
+"outlet": "The Athletic",
+"chapter": "SEA",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Bogaerts",
+"LeMahieu",
+"Verlander",
+"Cole",
+"Devers",
+"Springer",
+"Chapman"
+]
+},
+{
+"voter": "Juan Toribio",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Trout",
+"Bregman",
+"LeMahieu",
+"Semien",
+"Springer",
+"Devers",
+"Bogaerts",
+"Cruz",
+"Cole",
+"Meadows"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"LeMahieu",
+"Bogaerts",
+"Polanco",
+"Chapman",
+"Springer",
+"Cruz",
+"Morton"
+]
+},
+{
+"voter": "TR Sullivan",
+"outlet": "MLB.Com",
+"chapter": "TEX",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"LeMahieu",
+"Meadows",
+"Bogaerts",
+"Santana",
+"Cruz",
+"Springer",
+"Betts"
+]
+},
+{
+"voter": "Levi Weaver",
+"outlet": "The Athletic",
+"chapter": "TEX",
+"picks": [
+"Bregman",
+"Trout",
+"Semien",
+"Chapman",
+"LeMahieu",
+"Polanco",
+"Betts",
+"Springer",
+"Cruz",
+"Meadows"
+]
+},
+{
+"voter": "Ben Nicholson-Smith",
+"outlet": "Sportsnet.ca",
+"chapter": "TOR",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Verlander",
+"Cole",
+"Bogaerts",
+"Betts",
+"Springer",
+"Chapman",
+"LeMahieu"
+]
+},
+{
+"voter": "Gregor Chisholm",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Trout",
+"Bregman",
+"Semien",
+"Bogaerts",
+"LeMahieu",
+"Cole",
+"Springer",
+"Betts",
+"Verlander",
+"Chapman"
+]
+}
+]
+},
+{
+"year": 2019,
+"league": "NL",
+"url": "https://bbwaa.com/19-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Gabriel Burns",
+"outlet": "The Atlanta Journal-Constitution",
+"chapter": "ATL",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Freeman",
+"Acuña",
+"Arenado",
+"Alonso",
+"Soto",
+"DeGrom"
+]
+},
+{
+"voter": "Mark Bowman",
+"outlet": "MLB.com",
+"chapter": "ATL",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"Freeman",
+"Acuña",
+"Arenado",
+"Alonso",
+"Soto",
+"Donaldson"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Bellinger",
+"Rendon",
+"Yelich",
+"Freeman",
+"Acuña",
+"Alonso",
+"Marte",
+"Arenado",
+"Soto",
+"Flaherty"
+]
+},
+{
+"voter": "Zach Buchanan",
+"outlet": "The Athletic",
+"chapter": "AZ",
+"picks": [
+"Bellinger",
+"Yelich",
+"Marte",
+"Rendon",
+"Arenado",
+"Story",
+"Acuña",
+"Muncy",
+"Soto",
+"Alonso"
+]
+},
+{
+"voter": "Jordan Bastian",
+"outlet": "MLB.com",
+"chapter": "CHI",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"Acuña",
+"Arenado",
+"Alonso",
+"Soto",
+"Story",
+"Realmuto"
+]
+},
+{
+"voter": "Sahadev Sharma",
+"outlet": "The Athletic",
+"chapter": "CHI",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"Acuña",
+"DeGrom",
+"Arenado",
+"Donaldson",
+"Alonso",
+"Story"
+]
+},
+{
+"voter": "Mark Sheldon",
+"outlet": "MLB.com",
+"chapter": "CIN",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Acuña",
+"Freeman",
+"Marte",
+"Arenado",
+"Alonso",
+"Soto",
+"Suarez"
+]
+},
+{
+"voter": "Bobby Nightengale",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Acuña",
+"Marte",
+"Freeman",
+"Arenado",
+"Alonso",
+"Soto",
+"Wong"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Bellinger",
+"Yelich",
+"Acuña",
+"Arenado",
+"Rendon",
+"Marte",
+"Freeman",
+"Soto",
+"Alonso",
+"Realmuto"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "InsideTheSeams.com",
+"chapter": "COL",
+"picks": [
+"Rendon",
+"Freeman",
+"Arenado",
+"Yelich",
+"Bellinger",
+"Marte",
+"Acuña",
+"Alonso",
+"DeGrom",
+"Soto"
+]
+},
+{
+"voter": "J.P. Hoornstra",
+"outlet": "Southern California News Group",
+"chapter": "LA",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Arenado",
+"Acuña",
+"Alonso",
+"Soto",
+"Grandal",
+"Freeman"
+]
+},
+{
+"voter": "Tim Brown",
+"outlet": "Yahoo Sports",
+"chapter": "LA",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Arenado",
+"Story",
+"Acuña",
+"Alonso",
+"DeGrom",
+"Soto"
+]
+},
+{
+"voter": "Steven Wine",
+"outlet": "Associated Press",
+"chapter": "MIA",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Acuña",
+"Alonso",
+"Donaldson",
+"Story",
+"Arenado",
+"Suarez"
+]
+},
+{
+"voter": "Andre Fernandez",
+"outlet": "The Athletic",
+"chapter": "MIA",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"Acuña",
+"Arenado",
+"Flaherty",
+"Alonso",
+"DeGrom",
+"Suarez"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"DeGrom",
+"Acuña",
+"Arenado",
+"Strasburg",
+"Story",
+"Scherzer"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"Arenado",
+"Acuña",
+"Donaldson",
+"Alonso",
+"Soto",
+"Story"
+]
+},
+{
+"voter": "Anthony DiComo",
+"outlet": "MLB.com",
+"chapter": "NY",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Alonso",
+"Soto",
+"Acuña",
+"Arenado",
+"Freeman",
+"Suarez"
+]
+},
+{
+"voter": "Tim Britton",
+"outlet": "The Athletic",
+"chapter": "NY",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"DeGrom",
+"Acuña",
+"Alonso",
+"Ryu",
+"Freeman",
+"Soto"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "The Athletic",
+"chapter": "PHI",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Acuña",
+"Marte",
+"Alonso",
+"Freeman",
+"DeGrom",
+"Arenado",
+"Donaldson"
+]
+},
+{
+"voter": "Jim Salisbury",
+"outlet": "NBC Sports Philadelphia",
+"chapter": "PHI",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Freeman",
+"Marte",
+"Acuña",
+"Donaldson",
+"Soto",
+"Goldschmidt",
+"Alonso"
+]
+},
+{
+"voter": "Adam Berry",
+"outlet": "MLB.com",
+"chapter": "PIT",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Arenado",
+"Acuña",
+"DeGrom",
+"Alonso",
+"Grandal",
+"Donaldson"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "The Athletic",
+"chapter": "PIT",
+"picks": [
+"Yelich",
+"Bellinger",
+"Rendon",
+"Marte",
+"Acuña",
+"Arenado",
+"Alonso",
+"Realmuto",
+"Freeman",
+"Soto"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"DeGrom",
+"Donaldson",
+"Alonso",
+"Story",
+"Acuña",
+"Strasburg"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "Bleacher Report",
+"chapter": "SD",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Acuña",
+"Alonso",
+"Arenado",
+"Freeman",
+"Soto",
+"Wong"
+]
+},
+{
+"voter": "Alex Pavlovic",
+"outlet": "NBC Sports Bay Area",
+"chapter": "SF",
+"picks": [
+"Bellinger",
+"Yelich",
+"Marte",
+"Rendon",
+"Arenado",
+"Acuña",
+"Alonso",
+"Realmuto",
+"Donaldson",
+"Muncy"
+]
+},
+{
+"voter": "Henry Schulman",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"Freeman",
+"Alonso",
+"Arenado",
+"Soto",
+"Acuña",
+"Pillar"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Marte",
+"DeGrom",
+"Freeman",
+"Arenado",
+"Flaherty",
+"Alonso",
+"Acuña"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Yelich",
+"Bellinger",
+"Marte",
+"Rendon",
+"Freeman",
+"Arenado",
+"Acuña",
+"Alonso",
+"Soto",
+"Flaherty"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN",
+"chapter": "WAS",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Acuña",
+"Alonso",
+"Marte",
+"Freeman",
+"Soto",
+"Donaldson",
+"Arenado"
+]
+},
+{
+"voter": "Brittany Ghiroli",
+"outlet": "The Athletic",
+"chapter": "WAS",
+"picks": [
+"Bellinger",
+"Yelich",
+"Rendon",
+"Acuña",
+"Marte",
+"Freeman",
+"Story",
+"Alonso",
+"Arenado",
+"DeGrom"
+]
+}
+]
+},
+{
+"year": 2020,
+"league": "AL",
+"url": "https://bbwaa.com/20-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Joseph Trezza",
+"outlet": "MLB.com",
+"chapter": "BAL",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Anderson",
+"Voit",
+"Cruz",
+"Rendon",
+"Lowe"
+]
+},
+{
+"voter": "Dan Connolly",
+"outlet": "The Athletic Baltimore",
+"chapter": "BAL",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Bieber",
+"Cruz",
+"Trout",
+"Anderson",
+"Lowe",
+"Voit",
+"Hendriks"
+]
+},
+{
+"voter": "Julian McWilliams",
+"outlet": "Boston Globe",
+"chapter": "BOS",
+"picks": [
+"Abreu",
+"LeMahieu",
+"Anderson",
+"Ramirez",
+"Verdugo",
+"Cruz",
+"Voit",
+"Trout",
+"Lowe",
+"Bogaerts"
+]
+},
+{
+"voter": "John Tomase",
+"outlet": "NBC Sports Boston",
+"chapter": "BOS",
+"picks": [
+"Ramirez",
+"Abreu",
+"Cruz",
+"Anderson",
+"Lowe",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Voit",
+"Hernandez"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Bieber",
+"Trout",
+"Cruz",
+"Lowe",
+"Anderson",
+"Rendon",
+"Voit"
+]
+},
+{
+"voter": "Scott Merkin",
+"outlet": "MLB.com",
+"chapter": "CHI",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Trout",
+"Anderson",
+"Bieber",
+"Cruz",
+"Lowe",
+"Voit",
+"Hernandez"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Ramirez",
+"Abreu",
+"Bieber",
+"Trout",
+"LeMahieu",
+"Anderson",
+"Voit",
+"Cruz",
+"Lowe",
+"Rosario"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Ramirez",
+"Abreu",
+"LeMahieu",
+"Bieber",
+"Cruz",
+"Voit",
+"Anderson",
+"Trout",
+"Rendon",
+"Lowe"
+]
+},
+{
+"voter": "Jason Beck",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Bieber",
+"Lowe",
+"Trout",
+"Cruz",
+"Voit",
+"Anderson",
+"Hernandez"
+]
+},
+{
+"voter": "Jon Paul Morosi",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Ramirez",
+"Abreu",
+"Bieber",
+"Voit",
+"LeMahieu",
+"Trout",
+"Rendon",
+"Lowe",
+"Cruz",
+"Anderson"
+]
+},
+{
+"voter": "Brian McTaggart",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Abreu",
+"LeMahieu",
+"Ramirez",
+"Anderson",
+"Bieber",
+"Trout",
+"Voit",
+"Cruz",
+"Rendon",
+"Ryu"
+]
+},
+{
+"voter": "Alyson Footer",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Bieber",
+"Cruz",
+"Anderson",
+"Trout",
+"Voit",
+"Lowe",
+"Fletcher"
+]
+},
+{
+"voter": "Lynn Worthy",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Abreu",
+"Ramirez",
+"Rendon",
+"Trout",
+"Lowe",
+"LeMahieu",
+"Cruz",
+"Anderson",
+"Voit",
+"Bieber"
+]
+},
+{
+"voter": "Jeffrey Flanagan",
+"outlet": "MLB.com",
+"chapter": "KC",
+"picks": [
+"Abreu",
+"Ramirez",
+"Trout",
+"LeMahieu",
+"Anderson",
+"Rendon",
+"Voit",
+"Lowe",
+"Springer",
+"Perez"
+]
+},
+{
+"voter": "Jeff Fletcher",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Abreu",
+"LeMahieu",
+"Ramirez",
+"Trout",
+"Lowe",
+"Cruz",
+"Bieber",
+"Rendon",
+"Voit",
+"Anderson"
+]
+},
+{
+"voter": "Hideki Okuda",
+"outlet": "Sports Nippon Newspaper",
+"chapter": "LA",
+"picks": [
+"Ramirez",
+"Abreu",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Anderson",
+"Cruz",
+"Lowe",
+"Voit",
+"Hernandez"
+]
+},
+{
+"voter": "Phil Miller",
+"outlet": "Minneapolis Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Cruz",
+"Anderson",
+"Lowe",
+"Buxton",
+"Keuchel"
+]
+},
+{
+"voter": "Betsy Helfand",
+"outlet": "St. Paul Pioneer Press",
+"chapter": "MIN",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Anderson",
+"Cruz",
+"Lowe",
+"Voit",
+"Rendon"
+]
+},
+{
+"voter": "Pete Caldera",
+"outlet": "Bergen Record",
+"chapter": "NY",
+"picks": [
+"Abreu",
+"LeMahieu",
+"Bieber",
+"Ramirez",
+"Cruz",
+"Anderson",
+"Voit",
+"Trout",
+"Lowe",
+"Hernandez"
+]
+},
+{
+"voter": "Bryan Hoch",
+"outlet": "MLB.com",
+"chapter": "NY",
+"picks": [
+"LeMahieu",
+"Abreu",
+"Ramirez",
+"Bieber",
+"Cruz",
+"Trout",
+"Voit",
+"Lowe",
+"Anderson",
+"Hernandez"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Bieber",
+"Lowe",
+"Trout",
+"Voit",
+"Cruz",
+"Hendriks",
+"Anderson"
+]
+},
+{
+"voter": "Janie McCauley",
+"outlet": "The Associated Press",
+"chapter": "OAK",
+"picks": [
+"Abreu",
+"Ramirez",
+"Trout",
+"Bieber",
+"Anderson",
+"Voit",
+"Cruz",
+"LeMahieu",
+"Lowe",
+"Lewis"
+]
+},
+{
+"voter": "Greg Johns",
+"outlet": "MLB.com",
+"chapter": "SEA",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Cruz",
+"Lowe",
+"Voit",
+"Anderson",
+"Rendon"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Abreu",
+"Ramirez",
+"Trout",
+"LeMahieu",
+"Bieber",
+"Anderson",
+"Cruz",
+"Voit",
+"Lowe",
+"Rendon"
+]
+},
+{
+"voter": "Juan Toribio",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Bieber",
+"Cruz",
+"Voit",
+"Trout",
+"Ryu",
+"Lowe",
+"Anderson"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Abreu",
+"Ramirez",
+"LeMahieu",
+"Lowe",
+"Bieber",
+"Trout",
+"Anderson",
+"Cruz",
+"Hernandez",
+"Hendriks"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Ramirez",
+"LeMahieu",
+"Abreu",
+"Anderson",
+"Trout",
+"Cruz",
+"Bieber",
+"Lowe",
+"Voit",
+"Rendon"
+]
+},
+{
+"voter": "Jeff Wilson",
+"outlet": "Fort Worth Star-Telegram",
+"chapter": "TEX",
+"picks": [
+"Abreu",
+"Ramirez",
+"Trout",
+"Bieber",
+"Lowe",
+"LeMahieu",
+"Anderson",
+"Cruz",
+"Springer",
+"Rendon"
+]
+},
+{
+"voter": "Ben Nicholson-Smith",
+"outlet": "sportsnet.ca",
+"chapter": "TOR",
+"picks": [
+"Ramirez",
+"Abreu",
+"LeMahieu",
+"Trout",
+"Bieber",
+"Rendon",
+"Lowe",
+"Cruz",
+"Anderson",
+"Voit"
+]
+},
+{
+"voter": "Gregor Chisholm",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Ramirez",
+"Abreu",
+"Bieber",
+"LeMahieu",
+"Lowe",
+"Anderson",
+"Rendon",
+"Cruz",
+"Trout",
+"Voit"
+]
+}
+]
+},
+{
+"year": 2020,
+"league": "NL",
+"url": "https://bbwaa.com/20-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Freeman",
+"Soto",
+"Betts",
+"Ozuna",
+"Tatis",
+"Machado",
+"Turner",
+"Yastrzemski",
+"Bauer",
+"Fried"
+]
+},
+{
+"voter": "David O'Brien",
+"outlet": "The Athletic",
+"chapter": "ATL",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Ozuna",
+"Soto",
+"Turner",
+"Yastrzemski",
+"Acuña",
+"Seager"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA Today",
+"chapter": "AZ",
+"picks": [
+"Betts",
+"Freeman",
+"Machado",
+"Tatis",
+"Ozuna",
+"Seager",
+"Soto",
+"Turner",
+"Yastrzemski",
+"Swanson"
+]
+},
+{
+"voter": "Zach Buchanan",
+"outlet": "The Athletic",
+"chapter": "AZ",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Soto",
+"Ozuna",
+"Tatis",
+"Yastrzemski",
+"Acuña",
+"Belt",
+"Turner"
+]
+},
+{
+"voter": "Jesse Rogers",
+"outlet": "ESPN.com",
+"chapter": "CHI",
+"picks": [
+"Freeman",
+"Betts",
+"Soto",
+"Tatis",
+"Ozuna",
+"Machado",
+"Darvish",
+"Smith",
+"Turner",
+"Bauer"
+]
+},
+{
+"voter": "Mark Gonzales",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Soto",
+"Ozuna",
+"Yastrzemski",
+"Turner",
+"Seager",
+"Darvish"
+]
+},
+{
+"voter": "John Fay",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Freeman",
+"Betts",
+"Tatis",
+"Yastrzemski",
+"Ozuna",
+"Turner",
+"Machado",
+"Acuña",
+"Goldschmidt",
+"Williams"
+]
+},
+{
+"voter": "C. Trent Rosecrans",
+"outlet": "The Athletic",
+"chapter": "CIN",
+"picks": [
+"Freeman",
+"Tatis",
+"Betts",
+"Machado",
+"Soto",
+"Ozuna",
+"Yastrzemski",
+"Bauer",
+"Darvish",
+"Turner"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "InsideTheSeams.com",
+"chapter": "COL",
+"picks": [
+"Betts",
+"Freeman",
+"Machado",
+"Turner",
+"Ozuna",
+"Seager",
+"Goldschmidt",
+"Story",
+"Acuña",
+"Tatis"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Soto",
+"Ozuna",
+"Bauer",
+"Story",
+"Turner",
+"Yastrzemski"
+]
+},
+{
+"voter": "Greg Beacham",
+"outlet": "Associated Press",
+"chapter": "LA",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Soto",
+"Tatis",
+"Ozuna",
+"Seager",
+"Yastrzemski",
+"Story",
+"Turner"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "Southern California Newspaper Group",
+"chapter": "LA",
+"picks": [
+"Freeman",
+"Betts",
+"Ozuna",
+"Machado",
+"Tatis",
+"Soto",
+"Turner",
+"Smith",
+"Seager",
+"Yastrzemski"
+]
+},
+{
+"voter": "Joe Frisaro",
+"outlet": "MLB.com",
+"chapter": "MIA",
+"picks": [
+"Freeman",
+"Tatis",
+"Betts",
+"Soto",
+"Machado",
+"Ozuna",
+"Story",
+"Goldschmidt",
+"Seager",
+"Happ"
+]
+},
+{
+"voter": "Jordan McPherson",
+"outlet": "Miami Herald",
+"chapter": "MIA",
+"picks": [
+"Freeman",
+"Machado",
+"Betts",
+"Tatis",
+"Soto",
+"Ozuna",
+"Bauer",
+"Seager",
+"Turner",
+"Acuña"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Freeman",
+"Betts",
+"Tatis",
+"Machado",
+"Soto",
+"Ozuna",
+"Yastrzemski",
+"Seager",
+"Turner",
+"Smith"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Soto",
+"Ozuna",
+"Turner",
+"Seager",
+"Yastrzemski",
+"Acuña"
+]
+},
+{
+"voter": "Tim Healey",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Freeman",
+"Soto",
+"Machado",
+"Turner",
+"Ozuna",
+"Betts",
+"Tatis",
+"Bauer",
+"Smith",
+"Darvish"
+]
+},
+{
+"voter": "Anthony DiComo",
+"outlet": "MLB.com",
+"chapter": "NY",
+"picks": [
+"Freeman",
+"Betts",
+"Tatis",
+"Machado",
+"Ozuna",
+"Soto",
+"Yastrzemski",
+"Turner",
+"Bauer",
+"Smith"
+]
+},
+{
+"voter": "Meghan Montemurro",
+"outlet": "The Athletic",
+"chapter": "PHI",
+"picks": [
+"Freeman",
+"Betts",
+"Tatis",
+"Machado",
+"Ozuna",
+"Yastrzemski",
+"Soto",
+"Turner",
+"Acuña",
+"Bauer"
+]
+},
+{
+"voter": "Todd Zolecki",
+"outlet": "MLB.com",
+"chapter": "PHI",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Soto",
+"Ozuna",
+"Yastrzemski",
+"Turner",
+"Seager",
+"Acuña"
+]
+},
+{
+"voter": "Jason Mackey",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Freeman",
+"Betts",
+"Tatis",
+"Machado",
+"Soto",
+"Ozuna",
+"Turner",
+"Story",
+"Yastrzemski",
+"Seager"
+]
+},
+{
+"voter": "Rob Biertempfel",
+"outlet": "The Athletic",
+"chapter": "PIT",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Soto",
+"Tatis",
+"Ozuna",
+"Story",
+"Yastrzemski",
+"Acuña",
+"Turner"
+]
+},
+{
+"voter": "Scott A Miller",
+"outlet": "Bleacher Report",
+"chapter": "SD",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Soto",
+"Tatis",
+"Ozuna",
+"Seager",
+"Turner",
+"Smith",
+"Yastrzemski"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Freeman",
+"Machado",
+"Betts",
+"Tatis",
+"Soto",
+"Ozuna",
+"Darvish",
+"Yastrzemski",
+"Myers",
+"Seager"
+]
+},
+{
+"voter": "Maria Guardado",
+"outlet": "MLB.com",
+"chapter": "SF",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Soto",
+"Yastrzemski",
+"Ozuna",
+"Turner",
+"Acuña",
+"Story"
+]
+},
+{
+"voter": "Kerry Crowley",
+"outlet": "Bay Area News Group",
+"chapter": "SF",
+"picks": [
+"Freeman",
+"Betts",
+"Ozuna",
+"Tatis",
+"Machado",
+"Soto",
+"Yastrzemski",
+"Turner",
+"Smith",
+"Acuña"
+]
+},
+{
+"voter": "Jenifer Langosch",
+"outlet": "MLB.com",
+"chapter": "STL",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Bauer",
+"Yastrzemski",
+"Ozuna",
+"Soto",
+"Turner",
+"Acuña"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Freeman",
+"Betts",
+"Machado",
+"Tatis",
+"Ozuna",
+"Seager",
+"Bauer",
+"Soto",
+"Darvish",
+"Tepera"
+]
+},
+{
+"voter": "Todd Dybas",
+"outlet": "NBC Sports Washington",
+"chapter": "WAS",
+"picks": [
+"Freeman",
+"Betts",
+"Soto",
+"Machado",
+"Ozuna",
+"Tatis",
+"Yastrzemski",
+"Story",
+"Turner",
+"Bauer"
+]
+},
+{
+"voter": "Mark Zuckerman",
+"outlet": "MASNsports.com",
+"chapter": "WAS",
+"picks": [
+"Freeman",
+"Soto",
+"Machado",
+"Tatis",
+"Betts",
+"Ozuna",
+"Turner",
+"Yastrzemski",
+"Smith",
+"Bauer"
+]
+}
+]
+},
+{
+"year": 2021,
+"league": "AL",
+"url": "https://bbwaa.com/21-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Steve Melewski",
+"outlet": "MASNSports.com",
+"chapter": "BAL",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Judge",
+"Correa",
+"Semien",
+"Devers",
+"Ramirez",
+"Olson",
+"Mullins",
+"Zunino"
+]
+},
+{
+"voter": "Noah Trister",
+"outlet": "The Associated Press",
+"chapter": "BAL",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Ramirez",
+"Correa",
+"Judge",
+"Olson",
+"Lowe",
+"Mullins",
+"Cole"
+]
+},
+{
+"voter": "Rob Bradford",
+"outlet": "WEEI.com",
+"chapter": "BOS",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Judge",
+"Correa",
+"Perez",
+"Olson",
+"Mullins",
+"Ramirez",
+"Devers"
+]
+},
+{
+"voter": "Peter Abraham",
+"outlet": "Boston Globe",
+"chapter": "BOS",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Judge",
+"Semien",
+"Devers",
+"Correa",
+"Olson",
+"Ramirez",
+"Mullins",
+"Perez"
+]
+},
+{
+"voter": "LaMond Pope",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Judge",
+"Correa",
+"Mullins",
+"Perez",
+"Ramirez",
+"Olson",
+"Devers"
+]
+},
+{
+"voter": "James Fegan",
+"outlet": "The Athletic",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Ramirez",
+"Ray",
+"Mullins",
+"Lowe",
+"Bogaerts"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Perez",
+"Semien",
+"Ramirez",
+"Devers",
+"Judge",
+"Mullins",
+"Abreu",
+"Meadows"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Ramirez",
+"Judge",
+"Mullins",
+"Correa",
+"Perez",
+"Olson",
+"Devers"
+]
+},
+{
+"voter": "Evan Woodbery",
+"outlet": "MLive Media Group",
+"chapter": "DET",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Judge",
+"Ramirez",
+"Correa",
+"Olson",
+"Mullins",
+"Lowe",
+"Altuve"
+]
+},
+{
+"voter": "Chris McCosky",
+"outlet": "Detroit News",
+"chapter": "DET",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Olson",
+"Judge",
+"Ramirez",
+"Mullins",
+"Perez",
+"Bichette"
+]
+},
+{
+"voter": "Kristie Rieken",
+"outlet": "The Associated Press",
+"chapter": "HOU",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Perez",
+"Mullins",
+"Correa",
+"Judge",
+"Olson",
+"Ramirez",
+"Devers"
+]
+},
+{
+"voter": "Richard Justice",
+"outlet": "Texas Monthly",
+"chapter": "HOU",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Perez",
+"Olson",
+"Ramirez",
+"Mullins",
+"Haniger"
+]
+},
+{
+"voter": "Jeff Passan",
+"outlet": "ESPN",
+"chapter": "KC",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Perez",
+"Ramirez",
+"Judge",
+"Olson",
+"Mullins",
+"Correa",
+"Tucker"
+]
+},
+{
+"voter": "Lynn Worthy",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Ohtani",
+"Perez",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Olson",
+"Mullins",
+"Judge",
+"Lowe",
+"Bogaerts"
+]
+},
+{
+"voter": "Yuichi Matsushita",
+"outlet": "Kyodo News",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Perez",
+"Semien",
+"Ramirez",
+"Judge",
+"Olson",
+"Correa",
+"Mullins",
+"Lowe"
+]
+},
+{
+"voter": "Rhett Bollinger",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Perez",
+"Ramirez",
+"Correa",
+"Judge",
+"Mullins",
+"Bichette",
+"Lowe"
+]
+},
+{
+"voter": "Do-Hyoung Park",
+"outlet": "MLB.com",
+"chapter": "MIN",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Mullins",
+"Ramirez",
+"Correa",
+"Judge",
+"Perez",
+"Lowe",
+"Olson"
+]
+},
+{
+"voter": "Dan Hayes",
+"outlet": "The Athletic",
+"chapter": "MIN",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Lowe",
+"Ramirez",
+"Mullins",
+"Bogaerts",
+"Perez"
+]
+},
+{
+"voter": "Brendan Kuty",
+"outlet": "NJ Advance Media",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Ramirez",
+"Judge",
+"Correa",
+"Mullins",
+"Lowe",
+"Altuve",
+"Olson"
+]
+},
+{
+"voter": "Erik Boland",
+"outlet": "NY Newsday",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Judge",
+"Correa",
+"Semien",
+"Perez",
+"Devers",
+"Abreu",
+"Ramirez",
+"Mullins"
+]
+},
+{
+"voter": "Janie McCauley",
+"outlet": "The Associated Press",
+"chapter": "OAK",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Perez",
+"Ramirez",
+"Olson",
+"Mullins",
+"Devers"
+]
+},
+{
+"voter": "Martín Gallegos",
+"outlet": "MLB.com",
+"chapter": "OAK",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Olson",
+"Ramirez",
+"Judge",
+"Perez",
+"Correa",
+"Bogaerts",
+"Devers"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Olson",
+"Correa",
+"Judge",
+"Mullins",
+"Perez",
+"Lowe",
+"Bichette"
+]
+},
+{
+"voter": "Larry Stone",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Lowe",
+"Ramirez",
+"Bichette",
+"Olson",
+"Perez"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Ramirez",
+"Lowe",
+"Olson",
+"Mullins",
+"Perez"
+]
+},
+{
+"voter": "Adam Berry",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Judge",
+"Ramirez",
+"Olson",
+"Mullins",
+"Perez",
+"Lowe"
+]
+},
+{
+"voter": "Levi Weaver",
+"outlet": "The Athletic",
+"chapter": "TEX",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Ramirez",
+"Correa",
+"Judge",
+"Eovaldi",
+"Cole",
+"Mullins",
+"Lowe"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Judge",
+"Mullins",
+"Correa",
+"Olson",
+"Ramirez",
+"Perez",
+"Devers"
+]
+},
+{
+"voter": "Gregor Chisholm",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Correa",
+"Ramirez",
+"Perez",
+"Judge",
+"Olson",
+"Mullins",
+"Devers"
+]
+},
+{
+"voter": "Scott Mitchell",
+"outlet": "TSN",
+"chapter": "TOR",
+"picks": [
+"Ohtani",
+"Guerrero Jr.",
+"Semien",
+"Judge",
+"Olson",
+"Perez",
+"Ramirez",
+"Correa",
+"Hernandez",
+"Bogaerts"
+]
+}
+]
+},
+{
+"year": 2021,
+"league": "NL",
+"url": "https://bbwaa.com/21-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Mark Bowman",
+"outlet": "MLB.com",
+"chapter": "ATL",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Turner",
+"Freeman",
+"Riley",
+"Crawford",
+"Goldschmidt",
+"Muncy",
+"Votto"
+]
+},
+{
+"voter": "Paul Newberry",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Turner",
+"Soto",
+"Tatis Jr.",
+"Harper",
+"Riley",
+"Goldschmidt",
+"Crawford",
+"Wheeler",
+"Scherzer",
+"Albies"
+]
+},
+{
+"voter": "Steve Gilbert",
+"outlet": "MLB.com",
+"chapter": "AZ",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Crawford",
+"Goldschmidt",
+"Turner",
+"O'Neill",
+"Freeman",
+"Reynolds",
+"Riley"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Harper",
+"Crawford",
+"Tatis Jr.",
+"Turner",
+"Soto",
+"Riley",
+"Goldschmidt",
+"Freeman",
+"Castellanos",
+"Machado"
+]
+},
+{
+"voter": "Meghan Montemurro",
+"outlet": "The Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Turner",
+"Crawford",
+"O'Neill",
+"Muncy",
+"Goldschmidt",
+"Reynolds",
+"Freeman"
+]
+},
+{
+"voter": "Russell Dorsey",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Turner",
+"Crawford",
+"Freeman",
+"Goldschmidt",
+"Riley",
+"Reynolds",
+"Muncy"
+]
+},
+{
+"voter": "Bobby Nightengale",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Harper",
+"Tatis Jr.",
+"Crawford",
+"Soto",
+"Goldschmidt",
+"Riley",
+"Turner",
+"Adames",
+"Castellanos",
+"Reynolds"
+]
+},
+{
+"voter": "Mark Sheldon",
+"outlet": "MLB.com",
+"chapter": "CIN",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Goldschmidt",
+"Crawford",
+"Castellanos",
+"Votto",
+"Freeman",
+"Riley",
+"Adames"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "InsideTheSeams.com",
+"chapter": "COL",
+"picks": [
+"Soto",
+"Harper",
+"Tatis Jr.",
+"Turner",
+"Scherzer",
+"Crawford",
+"Freeman",
+"Goldschmidt",
+"Muncy",
+"Gausman"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Crawford",
+"Goldschmidt",
+"Turner",
+"Riley",
+"Freeman",
+"Muncy",
+"Burnes"
+]
+},
+{
+"voter": "J.P. Hoornstra",
+"outlet": "Southern California News Group",
+"chapter": "LA",
+"picks": [
+"Soto",
+"Harper",
+"Turner",
+"Tatis Jr.",
+"Crawford",
+"O'Neill",
+"Riley",
+"Reynolds",
+"Machado",
+"Muncy"
+]
+},
+{
+"voter": "Juan Toribio",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Soto",
+"Tatis Jr.",
+"Harper",
+"Turner",
+"Crawford",
+"Goldschmidt",
+"Freeman",
+"Riley",
+"Reynolds",
+"Muncy"
+]
+},
+{
+"voter": "Enrique Rojas",
+"outlet": "ESPNDeportes.com",
+"chapter": "MIA",
+"picks": [
+"Tatis Jr.",
+"Harper",
+"Soto",
+"Castellanos",
+"Albies",
+"Riley",
+"Goldschmidt",
+"Turner",
+"Crawford",
+"Machado"
+]
+},
+{
+"voter": "Jon Heyman",
+"outlet": "MLB Network",
+"chapter": "MIA",
+"picks": [
+"Harper",
+"Crawford",
+"Soto",
+"Tatis Jr.",
+"Turner",
+"Riley",
+"Goldschmidt",
+"Freeman",
+"O'Neill",
+"Burnes"
+]
+},
+{
+"voter": "Tom Haudricourt",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Turner",
+"Crawford",
+"Goldschmidt",
+"Riley",
+"O'Neill",
+"Castellanos",
+"Adames"
+]
+},
+{
+"voter": "Will Sammon",
+"outlet": "The Athletic",
+"chapter": "MIL",
+"picks": [
+"Harper",
+"Tatis Jr.",
+"Soto",
+"Turner",
+"O'Neill",
+"Crawford",
+"Muncy",
+"Riley",
+"Adames",
+"Reynolds"
+]
+},
+{
+"voter": "Deesha Thosar",
+"outlet": "NY Daily News",
+"chapter": "NY",
+"picks": [
+"Soto",
+"Harper",
+"Tatis Jr.",
+"Goldschmidt",
+"Turner",
+"Albies",
+"Crawford",
+"Riley",
+"Muncy",
+"Wheeler"
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Soto",
+"Harper",
+"Tatis Jr.",
+"Crawford",
+"Riley",
+"Turner",
+"Goldschmidt",
+"O'Neill",
+"Reynolds",
+"Muncy"
+]
+},
+{
+"voter": "Jim Salisbury",
+"outlet": "NBC Sports Philadelphia",
+"chapter": "PHI",
+"picks": [
+"Harper",
+"Turner",
+"Goldschmidt",
+"Riley",
+"Crawford",
+"Tatis Jr.",
+"Soto",
+"O'Neill",
+"Castellanos",
+"Freeman"
+]
+},
+{
+"voter": "Matt Breen",
+"outlet": "The Philadelphia Inquirer",
+"chapter": "PHI",
+"picks": [
+"Harper",
+"Soto",
+"Turner",
+"Tatis Jr.",
+"Burnes",
+"Crawford",
+"Riley",
+"Scherzer",
+"Wheeler",
+"Castellanos"
+]
+},
+{
+"voter": "John Perrotto",
+"outlet": "USA TODAY Sports",
+"chapter": "PIT",
+"picks": [
+"Harper",
+"Soto",
+"Turner",
+"Tatis Jr.",
+"O'Neill",
+"Crawford",
+"Goldschmidt",
+"Riley",
+"Muncy",
+"Reynolds"
+]
+},
+{
+"voter": "Jason Mackey",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Soto",
+"Harper",
+"Tatis Jr.",
+"Turner",
+"Crawford",
+"O'Neill",
+"Reynolds",
+"Muncy",
+"Goldschmidt",
+"Votto"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "At Large",
+"chapter": "SD",
+"picks": [
+"Crawford",
+"Harper",
+"Soto",
+"Turner",
+"Tatis Jr.",
+"Goldschmidt",
+"Riley",
+"Machado",
+"Freeman",
+"Castellanos"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Tatis Jr.",
+"Harper",
+"Soto",
+"Crawford",
+"Turner",
+"Riley",
+"O'Neill",
+"Reynolds",
+"Goldschmidt",
+"Muncy"
+]
+},
+{
+"voter": "Andrew Baggarly",
+"outlet": "The Athletic",
+"chapter": "SF",
+"picks": [
+"Crawford",
+"Turner",
+"Harper",
+"Soto",
+"Riley",
+"Tatis Jr.",
+"Reynolds",
+"Goldschmidt",
+"Muncy",
+"Wade Jr."
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Crawford",
+"Turner",
+"O'Neill",
+"Tatis Jr.",
+"Harper",
+"Soto",
+"Goldschmidt",
+"Riley",
+"Reynolds",
+"Posey"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Harper",
+"Soto",
+"Tatis Jr.",
+"Crawford",
+"Goldschmidt",
+"Turner",
+"Reynolds",
+"Riley",
+"O'Neill",
+"Adames"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Crawford",
+"Harper",
+"Tatis Jr.",
+"Goldschmidt",
+"Soto",
+"Muncy",
+"Riley",
+"Wainwright",
+"Votto",
+"Turner"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN",
+"chapter": "WAS",
+"picks": [
+"Harper",
+"Tatis Jr.",
+"Soto",
+"Crawford",
+"Riley",
+"Goldschmidt",
+"Muncy",
+"O'Neill",
+"Castellanos",
+"Burnes"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "The Athletic",
+"chapter": "WAS",
+"picks": [
+"Harper",
+"Tatis Jr.",
+"Soto",
+"Crawford",
+"Goldschmidt",
+"Freeman",
+"Turner",
+"O'Neill",
+"Riley",
+"Muncy"
+]
+}
+]
+},
+{
+"year": 2022,
+"league": "AL",
+"url": "https://bbwaa.com/22-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Dan Connolly",
+"outlet": "The Athletic",
+"chapter": "BAL",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Altuve",
+"Rodríguez",
+"Giménez",
+"Trout",
+"Bichette",
+"Rutschman"
+]
+},
+{
+"voter": "Zachary Silver",
+"outlet": "MLB.com",
+"chapter": "BAL",
+"picks": [
+"Judge",
+"Ohtani",
+"Giménez",
+"Alvarez",
+"Ramírez",
+"Rodríguez",
+"Altuve",
+"Bogaerts",
+"Trout",
+"Rutschman"
+]
+},
+{
+"voter": "Ian Browne",
+"outlet": "MLB.com",
+"chapter": "BOS",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Trout",
+"Altuve",
+"Rodríguez",
+"Verlander",
+"Giménez",
+"Bogaerts"
+]
+},
+{
+"voter": "Sean McAdam",
+"outlet": "Boston Sports Journal",
+"chapter": "BOS",
+"picks": [
+"Judge",
+"Ohtani",
+"Ramírez",
+"Alvarez",
+"Giménez",
+"Trout",
+"Rodríguez",
+"Rutschman",
+"Bogaerts",
+"Altuve"
+]
+},
+{
+"voter": "Daryl Van Schouwen",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Judge",
+"Ohtani",
+"Ramírez",
+"Alvarez",
+"Giménez",
+"Bogaerts",
+"Bregman",
+"Trout",
+"Rodríguez",
+"Rutschman"
+]
+},
+{
+"voter": "Jesse Rogers",
+"outlet": "ESPN",
+"chapter": "CHI",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Verlander",
+"Trout",
+"Altuve",
+"Rodríguez",
+"Arraez",
+"Giménez"
+]
+},
+{
+"voter": "Ryan Lewis",
+"outlet": "Akron Beacon Journal",
+"chapter": "CLE",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Giménez",
+"Rodríguez",
+"Ramírez",
+"Trout",
+"Altuve",
+"Rutschman",
+"Bogaerts"
+]
+},
+{
+"voter": "Mandy Bell",
+"outlet": "MLB.com",
+"chapter": "CLE",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Giménez",
+"Ramírez",
+"Trout",
+"Altuve",
+"Rodríguez",
+"Bogaerts",
+"Devers"
+]
+},
+{
+"voter": "Jason Beck",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Altuve",
+"Giménez",
+"Rodríguez",
+"Trout",
+"Bogaerts",
+"Manoah"
+]
+},
+{
+"voter": "Jon Paul Morosi",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Judge",
+"Ohtani",
+"Ramírez",
+"Alvarez",
+"Rodríguez",
+"Giménez",
+"Bichette",
+"Tucker",
+"Altuve",
+"Manoah"
+]
+},
+{
+"voter": "Alyson Footer",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Altuve",
+"Arraez",
+"Abreu",
+"Giménez",
+"Rodríguez",
+"Guerrero Jr.",
+"Tucker"
+]
+},
+{
+"voter": "Jesus Ortiz",
+"outlet": "Our Esquina",
+"chapter": "HOU",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Giménez",
+"Altuve",
+"Bogaerts",
+"Ramírez",
+"Rodríguez",
+"Trout",
+"Verlander"
+]
+},
+{
+"voter": "Anne Rogers",
+"outlet": "MLB.com",
+"chapter": "KC",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Altuve",
+"Ramírez",
+"Rodríguez",
+"Verlander",
+"Giménez",
+"Trout",
+"Manoah"
+]
+},
+{
+"voter": "Dave Skretta",
+"outlet": "The Associated Press",
+"chapter": "KC",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Bogaerts",
+"Trout",
+"Giménez",
+"Rodríguez",
+"Ramírez",
+"Verlander",
+"Cease"
+]
+},
+{
+"voter": "Greg Beacham",
+"outlet": "Associated Press",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Judge",
+"Alvarez",
+"Ramírez",
+"Altuve",
+"Giménez",
+"Bogaerts",
+"Verlander",
+"Trout",
+"Devers"
+]
+},
+{
+"voter": "Sam Blum",
+"outlet": "The Athletic",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Judge",
+"Alvarez",
+"Ramírez",
+"Trout",
+"Altuve",
+"Giménez",
+"Verlander",
+"Rodríguez",
+"Murphy"
+]
+},
+{
+"voter": "Betsy Helfand",
+"outlet": "St. Paul Pioneer Press",
+"chapter": "MIN",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Altuve",
+"Ramírez",
+"Verlander",
+"Giménez",
+"Trout",
+"Bogaerts",
+"Rodríguez"
+]
+},
+{
+"voter": "Phil Miller",
+"outlet": "Minneapolis Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Altuve",
+"Giménez",
+"Rodríguez",
+"Trout",
+"Verlander",
+"Bogaerts"
+]
+},
+{
+"voter": "Marly Rivera",
+"outlet": "ESPN.COM",
+"chapter": "NY",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Giménez",
+"Altuve",
+"Devers",
+"Rodríguez",
+"Díaz",
+"Trout"
+]
+},
+{
+"voter": "Joel Sherman",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Judge",
+"Ohtani",
+"Ramírez",
+"Alvarez",
+"Rutschman",
+"Rodríguez",
+"Giménez",
+"Altuve",
+"Bogaerts",
+"Tucker"
+]
+},
+{
+"voter": "Matt Kawahara",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Judge",
+"Ohtani",
+"Ramírez",
+"Alvarez",
+"Altuve",
+"Rodríguez",
+"Giménez",
+"Trout",
+"Bichette",
+"Bogaerts"
+]
+},
+{
+"voter": "Manolo Hernández-Douen",
+"outlet": "Beisbolporgotas.com",
+"chapter": "OAK",
+"picks": [
+"Judge",
+"Ohtani",
+"Ramírez",
+"Alvarez",
+"Verlander",
+"Guerrero Jr.",
+"Arraez",
+"Altuve",
+"Valdez",
+"Tucker"
+]
+},
+{
+"voter": "Daniel Kramer",
+"outlet": "MLB.com",
+"chapter": "SEA",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Altuve",
+"Giménez",
+"Ramírez",
+"Trout",
+"Rodríguez",
+"Tucker",
+"Bichette"
+]
+},
+{
+"voter": "Corey Brock",
+"outlet": "The Athletic",
+"chapter": "SEA",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Altuve",
+"Giménez",
+"Ramírez",
+"Trout",
+"Bogaerts",
+"Bichette",
+"Rodríguez"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Rodríguez",
+"Ramírez",
+"Altuve",
+"Bichette",
+"Giménez",
+"Trout",
+"Bogaerts"
+]
+},
+{
+"voter": "Adam Berry",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Altuve",
+"Giménez",
+"Rodríguez",
+"Verlander",
+"Manoah",
+"Trout"
+]
+},
+{
+"voter": "Kennedi Landry",
+"outlet": "MLB.com",
+"chapter": "TEX",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Altuve",
+"Trout",
+"Bogaerts",
+"Giménez",
+"Verlander",
+"Rodríguez"
+]
+},
+{
+"voter": "Levi Weaver",
+"outlet": "The Athletic",
+"chapter": "TEX",
+"picks": [
+"Judge",
+"Ohtani",
+"Giménez",
+"Alvarez",
+"Altuve",
+"Rodríguez",
+"Ramírez",
+"Devers",
+"Bogaerts",
+"Verlander"
+]
+},
+{
+"voter": "Arden Zwelling",
+"outlet": "Sportsnet.ca",
+"chapter": "TOR",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Altuve",
+"Trout",
+"Ramírez",
+"Rodríguez",
+"Giménez",
+"Bogaerts",
+"Devers"
+]
+},
+{
+"voter": "Rob Longley",
+"outlet": "Toronto Sun",
+"chapter": "TOR",
+"picks": [
+"Judge",
+"Ohtani",
+"Alvarez",
+"Ramírez",
+"Rodríguez",
+"Giménez",
+"Trout",
+"Verlander",
+"Altuve",
+"Bichette"
+]
+}
+]
+},
+{
+"year": 2022,
+"league": "NL",
+"url": "https://bbwaa.com/22-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Goldschmidt",
+"Freeman",
+"Arenado",
+"Machado",
+"Riley",
+"Betts",
+"Turner",
+"Alonso",
+"Realmuto",
+"Harris II"
+]
+},
+{
+"voter": "David O'Brien",
+"outlet": "The Athletic",
+"chapter": "ATL",
+"picks": [
+"Goldschmidt",
+"Freeman",
+"Machado",
+"Arenado",
+"Alonso",
+"Harris II",
+"Riley",
+"Betts",
+"Realmuto",
+"Swanson"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Alcantara",
+"Betts",
+"Freeman",
+"Riley",
+"Swanson",
+"Realmuto",
+"Lindor"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Riley",
+"Alonso",
+"Betts",
+"Lindor",
+"Turner",
+"Swanson"
+]
+},
+{
+"voter": "Maddie Lee",
+"outlet": "Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Betts",
+"Realmuto",
+"Lindor",
+"Alonso",
+"Riley",
+"Swanson"
+]
+},
+{
+"voter": "Jordan Bastian",
+"outlet": "MLB.com",
+"chapter": "CHI",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Betts",
+"Freeman",
+"Realmuto",
+"Alonso",
+"Lindor",
+"Riley",
+"Díaz"
+]
+},
+{
+"voter": "C. Trent Rosecrans",
+"outlet": "The Athletic",
+"chapter": "CIN",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Betts",
+"Realmuto",
+"Lindor",
+"Riley",
+"Swanson",
+"Díaz"
+]
+},
+{
+"voter": "Bobby Nightengale",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Goldschmidt",
+"Freeman",
+"Machado",
+"Arenado",
+"Betts",
+"Realmuto",
+"Alonso",
+"Harris II",
+"Swanson",
+"Lindor"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Betts",
+"Riley",
+"Lindor",
+"Realmuto",
+"Alonso",
+"Alcantara"
+]
+},
+{
+"voter": "Tracy Ringolsby",
+"outlet": "InsideTheSeams.com",
+"chapter": "COL",
+"picks": [
+"Goldschmidt",
+"Freeman",
+"Urías",
+"Machado",
+"Alonso",
+"Lindor",
+"Betts",
+"Arenado",
+"Bard",
+"Marte"
+]
+},
+{
+"voter": "Fabian Ardaya",
+"outlet": "The Athletic",
+"chapter": "LA",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Freeman",
+"Arenado",
+"Betts",
+"Riley",
+"Lindor",
+"Realmuto",
+"Alcantara",
+"Alonso"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "Southern California Newspaper Group",
+"chapter": "LA",
+"picks": [
+"Goldschmidt",
+"Freeman",
+"Machado",
+"Arenado",
+"Riley",
+"Alonso",
+"Betts",
+"Turner",
+"Schwarber",
+"McNeil"
+]
+},
+{
+"voter": "Daniel Álvarez",
+"outlet": "El Extrabase",
+"chapter": "MIA",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Arenado",
+"Freeman",
+"Betts",
+"Riley",
+"Lindor",
+"Swanson",
+"Realmuto",
+"Alcantara"
+]
+},
+{
+"voter": "Jordan McPherson",
+"outlet": "Miami Herald",
+"chapter": "MIA",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Freeman",
+"Arenado",
+"Betts",
+"Lindor",
+"Riley",
+"Alcantara",
+"Realmuto",
+"Alonso"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Goldschmidt",
+"Arenado",
+"Machado",
+"Freeman",
+"Betts",
+"Realmuto",
+"Riley",
+"Turner",
+"Lindor",
+"Alonso"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Goldschmidt",
+"Arenado",
+"Machado",
+"Freeman",
+"Lindor",
+"Betts",
+"Realmuto",
+"McNeil",
+"Swanson",
+"Alonso"
+]
+},
+{
+"voter": "Anthony DiComo",
+"outlet": "MLB.com",
+"chapter": "NY",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Freeman",
+"Arenado",
+"Betts",
+"Riley",
+"Alonso",
+"Lindor",
+"Realmuto",
+"McNeil"
+]
+},
+{
+"voter": "Tim Healey",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Freeman",
+"Arenado",
+"Realmuto",
+"Alonso",
+"Turner",
+"Betts",
+"Lindor",
+"Riley"
+]
+},
+{
+"voter": "Todd Zolecki",
+"outlet": "MLB.com",
+"chapter": "PHI",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Arenado",
+"Freeman",
+"Betts",
+"Riley",
+"Realmuto",
+"Lindor",
+"Turner",
+"Swanson"
+]
+},
+{
+"voter": "Scott Lauber",
+"outlet": "Philadelphia Inquirer",
+"chapter": "PHI",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Riley",
+"Realmuto",
+"Betts",
+"Alonso",
+"Turner",
+"Alcantara"
+]
+},
+{
+"voter": "Kevin Gorman",
+"outlet": "Pittsburgh Tribune-Review",
+"chapter": "PIT",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Freeman",
+"Arenado",
+"Alcantara",
+"Betts",
+"Riley",
+"Lindor",
+"Realmuto",
+"Alonso"
+]
+},
+{
+"voter": "Mike Persak",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Arenado",
+"Goldschmidt",
+"Machado",
+"Alcantara",
+"Freeman",
+"Realmuto",
+"Betts",
+"Riley",
+"Swanson",
+"Lindor"
+]
+},
+{
+"voter": "Dennis Lin",
+"outlet": "The Athletic",
+"chapter": "SD",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Arenado",
+"Freeman",
+"Realmuto",
+"Betts",
+"Lindor",
+"Riley",
+"Alcantara",
+"Alonso"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Freeman",
+"Arenado",
+"Riley",
+"Alonso",
+"Betts",
+"Realmuto",
+"Lindor",
+"McNeil"
+]
+},
+{
+"voter": "John Shea",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Betts",
+"Riley",
+"Lindor",
+"Realmuto",
+"Swanson",
+"Alonso"
+]
+},
+{
+"voter": "Alex Pavlovic",
+"outlet": "NBC Sports Bay Area",
+"chapter": "SF",
+"picks": [
+"Machado",
+"Goldschmidt",
+"Betts",
+"Arenado",
+"Freeman",
+"Realmuto",
+"Alcantara",
+"Riley",
+"Lindor",
+"Swanson"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Betts",
+"Riley",
+"Alonso",
+"Realmuto",
+"Lindor",
+"Turner"
+]
+},
+{
+"voter": "Rick Hummel",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Goldschmidt",
+"Alonso",
+"Arenado",
+"Turner",
+"Machado",
+"Riley",
+"Freeman",
+"Lindor",
+"Betts",
+"Swanson"
+]
+},
+{
+"voter": "Mark Zuckerman",
+"outlet": "MASNsports.com",
+"chapter": "WAS",
+"picks": [
+"Goldschmidt",
+"Freeman",
+"Machado",
+"Arenado",
+"Betts",
+"Alcantara",
+"Riley",
+"Realmuto",
+"Alonso",
+"Turner"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "The Athletic",
+"chapter": "WAS",
+"picks": [
+"Goldschmidt",
+"Machado",
+"Arenado",
+"Freeman",
+"Realmuto",
+"Riley",
+"Alonso",
+"Betts",
+"Lindor",
+"Swanson"
+]
+}
+]
+},
+{
+"year": 2023,
+"league": "AL",
+"url": "https://bbwaa.com/23-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN",
+"chapter": "BAL",
+"picks": [
+"Ohtani",
+"Seager",
+"Tucker",
+"Semien",
+"Rodríguez",
+"Díaz",
+"Henderson",
+"Ramírez",
+"Rutschman",
+"Bichette"
+]
+},
+{
+"voter": "Rich Dubroff",
+"outlet": "BaltimoreBaseball.com",
+"chapter": "BAL",
+"picks": [
+"Ohtani",
+"Seager",
+"Díaz",
+"Semien",
+"Rodríguez",
+"Henderson",
+"Tucker",
+"Witt",
+"Robert Jr.",
+"Alvarez"
+]
+},
+{
+"voter": "Jen McCaffrey",
+"outlet": "The Athletic",
+"chapter": "BOS",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Tucker",
+"Díaz",
+"Rutschman",
+"Robert Jr.",
+"Henderson",
+"Ramírez"
+]
+},
+{
+"voter": "Alex Speier",
+"outlet": "Boston Globe",
+"chapter": "BOS",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Tucker",
+"Díaz",
+"Witt",
+"Rutschman",
+"Judge",
+"Alvarez"
+]
+},
+{
+"voter": "Scot Gregor",
+"outlet": "Daily Herald",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Tucker",
+"Díaz",
+"Witt",
+"Henderson",
+"Robert Jr.",
+"Ramírez"
+]
+},
+{
+"voter": "Vinnie Duber",
+"outlet": "CHGO",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Witt",
+"Rodríguez",
+"Robert Jr.",
+"Tucker",
+"Rutschman",
+"Ramírez",
+"Díaz"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Ohtani",
+"Seager",
+"Díaz",
+"Semien",
+"Tucker",
+"Rodríguez",
+"Rutschman",
+"Ramírez",
+"Robert Jr.",
+"Witt"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Ohtani",
+"Semien",
+"Seager",
+"Tucker",
+"Rodríguez",
+"Witt",
+"Henderson",
+"Alvarez",
+"Devers",
+"Naylor"
+]
+},
+{
+"voter": "Evan Woodbery",
+"outlet": "MLive Media Group",
+"chapter": "DET",
+"picks": [
+"Ohtani",
+"Tucker",
+"Seager",
+"Semien",
+"Rodríguez",
+"Díaz",
+"Ramírez",
+"Rutschman",
+"Witt",
+"Bregman"
+]
+},
+{
+"voter": "Chris McCosky",
+"outlet": "Detroit News",
+"chapter": "DET",
+"picks": [
+"Ohtani",
+"Seager",
+"Díaz",
+"Tucker",
+"Rodríguez",
+"Alvarez",
+"Semien",
+"García",
+"Henderson",
+"Witt"
+]
+},
+{
+"voter": "Brian McTaggart",
+"outlet": "MLB.com",
+"chapter": "HOU",
+"picks": [
+"Ohtani",
+"Semien",
+"Seager",
+"Rodríguez",
+"Tucker",
+"Alvarez",
+"Díaz",
+"Witt",
+"Judge",
+"Crawford"
+]
+},
+{
+"voter": "Tom Verducci",
+"outlet": "SI.com",
+"chapter": "HOU",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Tucker",
+"Díaz",
+"Henderson",
+"Witt",
+"Ramírez",
+"Cole"
+]
+},
+{
+"voter": "Pete Grathoff",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Tucker",
+"Díaz",
+"Ramírez",
+"Henderson",
+"Witt",
+"Alvarez"
+]
+},
+{
+"voter": "Dave Skretta",
+"outlet": "The Associated Press",
+"chapter": "KC",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Witt",
+"García",
+"Ramírez",
+"Robert Jr.",
+"Bichette",
+"Rutschman"
+]
+},
+{
+"voter": "Nobuhiro Saito",
+"outlet": "Nikkan Sports News",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Seager",
+"Tucker",
+"Cole",
+"Semien",
+"Rodríguez",
+"García",
+"Witt",
+"Díaz",
+"Robert Jr."
+]
+},
+{
+"voter": "Rhett Bollinger",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Rodríguez",
+"Witt",
+"Tucker",
+"Cole",
+"Henderson",
+"Díaz",
+"Gray"
+]
+},
+{
+"voter": "Dave Campbell",
+"outlet": "Associated Press",
+"chapter": "MIN",
+"picks": [
+"Ohtani",
+"Seager",
+"Tucker",
+"Rodríguez",
+"Semien",
+"Henderson",
+"Díaz",
+"Witt",
+"Raleigh",
+"Robert Jr."
+]
+},
+{
+"voter": "Aaron Gleeman",
+"outlet": "The Athletic",
+"chapter": "MIN",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Semien",
+"Cole",
+"Tucker",
+"Díaz",
+"Henderson",
+"Ramírez",
+"Crawford"
+]
+},
+{
+"voter": "Pete Caldera",
+"outlet": "Bergen Record",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Semien",
+"Seager",
+"Díaz",
+"Henderson",
+"Tucker",
+"Rodríguez",
+"Cole",
+"Rutschman",
+"Gray"
+]
+},
+{
+"voter": "Erik Boland",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Seager",
+"Rodríguez",
+"Tucker",
+"Semien",
+"Díaz",
+"Rutschman",
+"Judge",
+"Paredes",
+"Henderson"
+]
+},
+{
+"voter": "John Shea",
+"outlet": "San Francisco Chronicle",
+"chapter": "OAK",
+"picks": [
+"Ohtani",
+"Semien",
+"Seager",
+"Tucker",
+"Henderson",
+"Díaz",
+"Rodríguez",
+"Ramírez",
+"Rutschman",
+"Witt"
+]
+},
+{
+"voter": "Martín Gallegos",
+"outlet": "MLB.com",
+"chapter": "OAK",
+"picks": [
+"Ohtani",
+"Semien",
+"Seager",
+"Rodríguez",
+"Witt",
+"Tucker",
+"Rutschman",
+"Díaz",
+"Ramírez",
+"Henderson"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Rodríguez",
+"Henderson",
+"Tucker",
+"Díaz",
+"Witt",
+"Cole",
+"Crawford"
+]
+},
+{
+"voter": "Larry Stone",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Rodríguez",
+"Díaz",
+"Tucker",
+"Henderson",
+"Witt",
+"Crawford",
+"Cole"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Ohtani",
+"Seager",
+"Díaz",
+"Rodríguez",
+"Tucker",
+"Rutschman",
+"Semien",
+"Ramírez",
+"Bichette",
+"Witt"
+]
+},
+{
+"voter": "Adam Berry",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Rodríguez",
+"Díaz",
+"Tucker",
+"Witt",
+"Henderson",
+"Ramírez",
+"Rutschman"
+]
+},
+{
+"voter": "Evan Grant",
+"outlet": "Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Ohtani",
+"Seager",
+"Tucker",
+"Rodríguez",
+"Henderson",
+"Díaz",
+"Semien",
+"Witt",
+"Robert Jr.",
+"Rutschman"
+]
+},
+{
+"voter": "Kennedi Landry",
+"outlet": "MLB.com",
+"chapter": "TEX",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Tucker",
+"Díaz",
+"Rodríguez",
+"Cole",
+"Henderson",
+"Witt",
+"Rutschman"
+]
+},
+{
+"voter": "Ian Harrison",
+"outlet": "Associated Press",
+"chapter": "TOR",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Rutschman",
+"Tucker",
+"Díaz",
+"Rodríguez",
+"Henderson",
+"García",
+"Witt"
+]
+},
+{
+"voter": "Keegan Matheson",
+"outlet": "MLB.com",
+"chapter": "TOR",
+"picks": [
+"Ohtani",
+"Seager",
+"Semien",
+"Rodríguez",
+"Witt",
+"Tucker",
+"Ramírez",
+"Rutschman",
+"Cole",
+"Díaz"
+]
+}
+]
+},
+{
+"year": 2023,
+"league": "NL",
+"url": "https://bbwaa.com/23-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Mark Bowman",
+"outlet": "MLB.com",
+"chapter": "ATL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Soto",
+"Riley",
+"Harper",
+"Ozuna",
+"Swanson"
+]
+},
+{
+"voter": "David O'Brien",
+"outlet": "The Athletic",
+"chapter": "ATL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Riley",
+"Carroll",
+"Soto",
+"Lindor",
+"Albies",
+"Bellinger"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Snell",
+"Carroll",
+"Lindor",
+"Webb",
+"Soto",
+"Riley"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Arraez",
+"Bellinger",
+"Harper",
+"Contreras",
+"Walker"
+]
+},
+{
+"voter": "Meghan Montemurro",
+"outlet": "The Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Lindor",
+"Riley",
+"Contreras",
+"Bellinger"
+]
+},
+{
+"voter": "Eugene McIntosh",
+"outlet": "The Bigs Media",
+"chapter": "CHI",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Bellinger",
+"Arraez",
+"Carroll",
+"Riley",
+"Soto",
+"Castellanos"
+]
+},
+{
+"voter": "Gordon Wittenmyer",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Contreras",
+"Riley",
+"Carroll",
+"Harper",
+"Arraez",
+"Kim"
+]
+},
+{
+"voter": "Mark Sheldon",
+"outlet": "MLB.com",
+"chapter": "CIN",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Bellinger",
+"Soto",
+"Alonso",
+"Arraez",
+"Schwarber"
+]
+},
+{
+"voter": "Kevin Henry",
+"outlet": "FanSided",
+"chapter": "COL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Soto",
+"Carroll",
+"Snell",
+"Riley",
+"Harper",
+"Arraez"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Riley",
+"Tatis Jr.",
+"Lindor",
+"Carroll",
+"Bellinger",
+"Arraez"
+]
+},
+{
+"voter": "J.P. Hoornstra",
+"outlet": "Southern California News Group",
+"chapter": "LA",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Riley",
+"Lindor",
+"Arraez",
+"Kim"
+]
+},
+{
+"voter": "Juan Toribio",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Riley",
+"Snell",
+"Bellinger",
+"Kim"
+]
+},
+{
+"voter": "Christina De Nicola",
+"outlet": "MLB.com",
+"chapter": "MIA",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Arraez",
+"Contreras",
+"Lindor",
+"Soto",
+"Riley"
+]
+},
+{
+"voter": "Jorge Ebro",
+"outlet": "El Nuevo Herald",
+"chapter": "MIA",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Arraez",
+"Bellinger",
+"Carroll",
+"Soto",
+"Albies",
+"Riley"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Contreras",
+"Soto",
+"Riley",
+"Lindor",
+"Arraez"
+]
+},
+{
+"voter": "Curt Hogg",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Contreras",
+"Lindor",
+"Riley",
+"Arraez"
+]
+},
+{
+"voter": "Joel Sherman",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Riley",
+"Arraez",
+"Lindor",
+"Soto",
+"Bellinger"
+]
+},
+{
+"voter": "Will Sammon",
+"outlet": "The Athletic",
+"chapter": "NY",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Harper",
+"Bellinger",
+"Arraez",
+"Contreras"
+]
+},
+{
+"voter": "Scott Lauber",
+"outlet": "Philadelphia Inquirer",
+"chapter": "PHI",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Arraez",
+"Bellinger",
+"Harper",
+"Soto",
+"Lindor"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "The Athletic",
+"chapter": "PHI",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Bellinger",
+"Arraez",
+"Harper",
+"Riley"
+]
+},
+{
+"voter": "Alex Stumpf",
+"outlet": "DK Pittsburgh Sports",
+"chapter": "PIT",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Riley",
+"Lindor",
+"Arraez",
+"Soto",
+"Kim"
+]
+},
+{
+"voter": "Jason Mackey",
+"outlet": "Pittsburgh Post-Gazette",
+"chapter": "PIT",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Soto",
+"Carroll",
+"Lindor",
+"Riley",
+"Harper",
+"Swanson"
+]
+},
+{
+"voter": "AJ Cassavell",
+"outlet": "MLB.com",
+"chapter": "SD",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Riley",
+"Snell",
+"Lindor",
+"Kim"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "The San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Soto",
+"Carroll",
+"Harper",
+"Bellinger",
+"Arraez",
+"Friedl"
+]
+},
+{
+"voter": "Maria Guardado",
+"outlet": "MLB.com",
+"chapter": "SF",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Soto",
+"Lindor",
+"Harper",
+"Contreras",
+"Arraez"
+]
+},
+{
+"voter": "Susan Slusser",
+"outlet": "San Francisco Chronicle",
+"chapter": "SF",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Soto",
+"Carroll",
+"Arraez",
+"Harper",
+"Bellinger",
+"Schwarber"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Soto",
+"Harper",
+"Contreras",
+"Arraez",
+"Bellinger"
+]
+},
+{
+"voter": "John Denton",
+"outlet": "MLB.com",
+"chapter": "STL",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Olson",
+"Freeman",
+"Carroll",
+"Arraez",
+"Bellinger",
+"Contreras",
+"Williams",
+"Soto"
+]
+},
+{
+"voter": "Brittany Ghiroli",
+"outlet": "The Athletic",
+"chapter": "WAS",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Lindor",
+"Soto",
+"Contreras",
+"Riley",
+"Gallen"
+]
+},
+{
+"voter": "Gabe Lacques",
+"outlet": "USA Today",
+"chapter": "WAS",
+"picks": [
+"Acuna Jr.",
+"Betts",
+"Freeman",
+"Olson",
+"Carroll",
+"Arraez",
+"Contreras",
+"Lindor",
+"Riley",
+"Bellinger"
+]
+}
+]
+},
+{
+"year": 2024,
+"league": "AL",
+"url": "https://bbwaa.com/24-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Jake Rill",
+"outlet": "MLB.com",
+"chapter": "BAL",
+"picks": [
+"Judge",
+"Witt",
+"Henderson",
+"Soto",
+"Ramírez",
+"Duran",
+"Skubal",
+"Guerrero",
+"Alvarez",
+"Rooker"
+]
+},
+{
+"voter": "Ken Rosenthal",
+"outlet": "The Athletic",
+"chapter": "BAL",
+"picks": [
+"Judge",
+"Witt",
+"Henderson",
+"Soto",
+"Ramírez",
+"Alvarez",
+"Clase",
+"Skubal",
+"Duran",
+"Guerrero"
+]
+},
+{
+"voter": "Christopher Smith",
+"outlet": "MassLive.com",
+"chapter": "BOS",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Skubal",
+"Duran",
+"Alvarez",
+"Guerrero",
+"Rooker"
+]
+},
+{
+"voter": "Rob Bradford",
+"outlet": "WEEI.com",
+"chapter": "BOS",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Guerrero",
+"Duran",
+"Alvarez",
+"Rooker",
+"Skubal"
+]
+},
+{
+"voter": "James Fegan",
+"outlet": "At-Large",
+"chapter": "CHI",
+"picks": [
+"Judge",
+"Witt",
+"Henderson",
+"Soto",
+"Ramírez",
+"Duran",
+"Skubal",
+"Guerrero",
+"Raleigh",
+"Rooker"
+]
+},
+{
+"voter": "Jesse Rogers",
+"outlet": "ESPN",
+"chapter": "CHI",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Alvarez",
+"Ramírez",
+"Clase",
+"Santander",
+"Skubal",
+"Guerrero"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "cleveland.com",
+"chapter": "CLE",
+"picks": [
+"Judge",
+"Witt",
+"Ramírez",
+"Soto",
+"Henderson",
+"Alvarez",
+"Clase",
+"Guerrero",
+"Duran",
+"Santander"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Duran",
+"Guerrero",
+"Alvarez",
+"Rooker",
+"Devers"
+]
+},
+{
+"voter": "Jason Beck",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Skubal",
+"Alvarez",
+"Duran",
+"Guerrero",
+"Rooker"
+]
+},
+{
+"voter": "Jon Paul Morosi",
+"outlet": "MLB.com",
+"chapter": "DET",
+"picks": [
+"Judge",
+"Witt",
+"Henderson",
+"Soto",
+"Ramírez",
+"Skubal",
+"Clase",
+"Duran",
+"Guerrero",
+"Alvarez"
+]
+},
+{
+"voter": "Jesus Ortiz",
+"outlet": "Our Esquina",
+"chapter": "HOU",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Alvarez",
+"Skubal",
+"Duran",
+"Guerrero",
+"Valdez"
+]
+},
+{
+"voter": "Richard Justice",
+"outlet": "Texas Monthly",
+"chapter": "HOU",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Alvarez",
+"Guerrero",
+"Rooker",
+"Duran",
+"Skubal"
+]
+},
+{
+"voter": "Anne Rogers",
+"outlet": "MLB.com",
+"chapter": "KC",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Guerrero",
+"Ramírez",
+"Skubal",
+"Duran",
+"Clase",
+"Rooker"
+]
+},
+{
+"voter": "Sam McDowell",
+"outlet": "The Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Skubal",
+"Guerrero",
+"Duran",
+"Rooker",
+"Clase"
+]
+},
+{
+"voter": "Sam Blum",
+"outlet": "The Athletic",
+"chapter": "LA",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Ramírez",
+"Henderson",
+"Skubal",
+"Guerrero",
+"Clase",
+"Rooker",
+"Lugo"
+]
+},
+{
+"voter": "Jeff Fletcher",
+"outlet": "Orange County Register",
+"chapter": "LA",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Alvarez",
+"Guerrero",
+"Ramírez",
+"Rooker",
+"Skubal",
+"Duran"
+]
+},
+{
+"voter": "Betsy Helfand",
+"outlet": "St. Paul Pioneer Press",
+"chapter": "MIN",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Skubal",
+"Duran",
+"Clase",
+"Guerrero",
+"Alvarez"
+]
+},
+{
+"voter": "Bobby Nightengale",
+"outlet": "Minnesota Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Ramírez",
+"Henderson",
+"Guerrero",
+"Alvarez",
+"Duran",
+"Clase",
+"Skubal"
+]
+},
+{
+"voter": "Joel Sherman",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Judge",
+"Witt",
+"Henderson",
+"Ramírez",
+"Soto",
+"Duran",
+"Skubal",
+"Clase",
+"Alvarez",
+"Guerrero"
+]
+},
+{
+"voter": "Tom Verducci",
+"outlet": "SI.com",
+"chapter": "NY",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Guerrero",
+"Skubal",
+"Duran",
+"Alvarez",
+"Rooker"
+]
+},
+{
+"voter": "Janie McCauley",
+"outlet": "Associated Press",
+"chapter": "OAK",
+"picks": [
+"Judge",
+"Witt",
+"Ramírez",
+"Soto",
+"Henderson",
+"Guerrero",
+"Devers",
+"Duran",
+"Rooker",
+"Altuve"
+]
+},
+{
+"voter": "Eno Sarris",
+"outlet": "The Athletic",
+"chapter": "OAK",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Guerrero",
+"Ramírez",
+"Duran",
+"Alvarez",
+"Rooker",
+"Raleigh"
+]
+},
+{
+"voter": "Daniel Kramer",
+"outlet": "MLB.com",
+"chapter": "SEA",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Ramírez",
+"Henderson",
+"Duran",
+"Rooker",
+"Raleigh",
+"Guerrero",
+"Alvarez"
+]
+},
+{
+"voter": "Adam Jude",
+"outlet": "The Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Ramírez",
+"Henderson",
+"Skubal",
+"Raleigh",
+"Alvarez",
+"Guerrero",
+"Rooker"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Skubal",
+"Alvarez",
+"Guerrero",
+"Rooker",
+"Clase"
+]
+},
+{
+"voter": "Adam Berry",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Skubal",
+"Guerrero",
+"Duran",
+"Rooker",
+"Clase"
+]
+},
+{
+"voter": "Levi Weaver",
+"outlet": "The Athletic",
+"chapter": "TEX",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Skubal",
+"Henderson",
+"Ramírez",
+"Duran",
+"Rooker",
+"Alvarez",
+"Seager"
+]
+},
+{
+"voter": "Shawn McFarland",
+"outlet": "The Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Judge",
+"Witt",
+"Henderson",
+"Duran",
+"Soto",
+"Ramírez",
+"Skubal",
+"Guerrero",
+"Rooker",
+"Alvarez"
+]
+},
+{
+"voter": "Mike Wilner",
+"outlet": "Toronto Star",
+"chapter": "TOR",
+"picks": [
+"Judge",
+"Witt",
+"Ramírez",
+"Soto",
+"Henderson",
+"Guerrero",
+"Clase",
+"Alvarez",
+"Rooker",
+"Holton"
+]
+},
+{
+"voter": "Ben Nicholson-Smith",
+"outlet": "Sportsnet",
+"chapter": "TOR",
+"picks": [
+"Judge",
+"Witt",
+"Soto",
+"Henderson",
+"Ramírez",
+"Guerrero",
+"Duran",
+"Skubal",
+"Raleigh",
+"Alvarez"
+]
+}
+]
+},
+{
+"year": 2024,
+"league": "NL",
+"url": "https://bbwaa.com/24-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Charles Odum",
+"outlet": "The Associated Press",
+"chapter": "ATL",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Ozuna",
+"De La Cruz",
+"Harper",
+"Sale",
+"Merrill",
+"Machado",
+"Cease"
+]
+},
+{
+"voter": "David O'Brien",
+"outlet": "The Athletic",
+"chapter": "ATL",
+"picks": [
+"Ohtani",
+"Marte",
+"Lindor",
+"Ozuna",
+"Harper",
+"Profar",
+"Sale",
+"Wheeler",
+"Freeman",
+"Betts"
+]
+},
+{
+"voter": "Nick Piecoro",
+"outlet": "The Arizona Republic",
+"chapter": "AZ",
+"picks": [
+"Ohtani",
+"Marte",
+"Lindor",
+"Wheeler",
+"Sale",
+"Chapman",
+"De La Cruz",
+"Skenes",
+"Merrill",
+"Ozuna"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Ohtani",
+"Lindor",
+"Ozuna",
+"Adames",
+"Marte",
+"Merrill",
+"Contreras",
+"Schwarber",
+"Sale",
+"De La Cruz"
+]
+},
+{
+"voter": "Sahadev Sharma",
+"outlet": "The Athletic",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Contreras",
+"Harper",
+"Sale",
+"Merrill",
+"De La Cruz",
+"Betts",
+"Adames"
+]
+},
+{
+"voter": "Jordan Bastian",
+"outlet": "MLB.com",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Lindor",
+"Contreras",
+"Marte",
+"Harper",
+"Sale",
+"De La Cruz",
+"Adames",
+"Merrill",
+"Betts"
+]
+},
+{
+"voter": "C. Trent Rosecrans",
+"outlet": "The Athletic",
+"chapter": "CIN",
+"picks": [
+"Ohtani",
+"Marte",
+"Lindor",
+"Contreras",
+"Harper",
+"Merrill",
+"Sale",
+"De La Cruz",
+"Betts",
+"Adames"
+]
+},
+{
+"voter": "Gordon Wittenmyer",
+"outlet": "Cincinnati Enquirer",
+"chapter": "CIN",
+"picks": [
+"Ohtani",
+"Lindor",
+"Contreras",
+"Marte",
+"Harper",
+"Adames",
+"Ozuna",
+"Arraez",
+"De La Cruz",
+"Schwarber"
+]
+},
+{
+"voter": "Thomas Harding",
+"outlet": "MLB.com",
+"chapter": "COL",
+"picks": [
+"Ohtani",
+"Lindor",
+"Ozuna",
+"Harper",
+"Marte",
+"Betts",
+"Machado",
+"Freeman",
+"Tovar",
+"De La Cruz"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Ohtani",
+"Lindor",
+"Ozuna",
+"Marte",
+"Harper",
+"De La Cruz",
+"Contreras",
+"Hernández",
+"Merrill",
+"Tovar"
+]
+},
+{
+"voter": "Fabian Ardaya",
+"outlet": "The Athletic",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Ozuna",
+"Contreras",
+"Sale",
+"Adames",
+"Chapman",
+"Harper",
+"Merrill"
+]
+},
+{
+"voter": "Akiyuki Shiraishi",
+"outlet": "Kyodonews",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Sale",
+"Lindor",
+"Harper",
+"Merrill",
+"Marte",
+"De La Cruz",
+"Ozuna",
+"Wheeler",
+"Contreras"
+]
+},
+{
+"voter": "Enrique Rojas",
+"outlet": "ESPN Deportes",
+"chapter": "MIA",
+"picks": [
+"Ohtani",
+"Lindor",
+"Ozuna",
+"Marte",
+"Adames",
+"Sale",
+"De La Cruz",
+"Merrill",
+"Harper",
+"Chourio"
+]
+},
+{
+"voter": "Jorge Ebro",
+"outlet": "El Nuevo Herald",
+"chapter": "MIA",
+"picks": [
+"Ohtani",
+"Ozuna",
+"Lindor",
+"Marte",
+"De La Cruz",
+"Machado",
+"Harper",
+"Adames",
+"Schwarber",
+"Arraez"
+]
+},
+{
+"voter": "Adam McCalvy",
+"outlet": "MLB.com",
+"chapter": "MIL",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Profar",
+"Contreras",
+"Ozuna",
+"Chapman",
+"De La Cruz",
+"Schwarber",
+"Harper"
+]
+},
+{
+"voter": "Robert Murray",
+"outlet": "FanSided.com",
+"chapter": "MIL",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Ozuna",
+"Contreras",
+"Sale",
+"Adames",
+"Chapman",
+"Merrill",
+"Harper"
+]
+},
+{
+"voter": "Stephanie Apstein",
+"outlet": "Sports Illustrated",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"De La Cruz",
+"Sale",
+"Wheeler",
+"Contreras",
+"Harper",
+"Ozuna",
+"Chapman"
+]
+},
+{
+"voter": "David Lennon",
+"outlet": "Newsday",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"De La Cruz",
+"Contreras",
+"Sale",
+"Harper",
+"Merrill",
+"Adames",
+"Ozuna"
+]
+},
+{
+"voter": "Todd Zolecki",
+"outlet": "MLB.com",
+"chapter": "PHI",
+"picks": [
+"Ohtani",
+"Lindor",
+"Ozuna",
+"Marte",
+"Harper",
+"Contreras",
+"Schwarber",
+"Profar",
+"Betts",
+"Freeman"
+]
+},
+{
+"voter": "Corey Seidman",
+"outlet": "NBC Sports Philadelphia",
+"chapter": "PHI",
+"picks": [
+"Ohtani",
+"Marte",
+"Lindor",
+"Harper",
+"Ozuna",
+"Sale",
+"Wheeler",
+"De La Cruz",
+"Contreras",
+"Merrill"
+]
+},
+{
+"voter": "John Perrotto",
+"outlet": "Pittsburgh Baseball Now",
+"chapter": "PIT",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Contreras",
+"Harper",
+"Merrill",
+"Betts",
+"Ozuna",
+"Chapman",
+"Adames"
+]
+},
+{
+"voter": "Alex Stumpf",
+"outlet": "MLB.com",
+"chapter": "PIT",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"De La Cruz",
+"Contreras",
+"Chapman",
+"Betts",
+"Harper",
+"Adames",
+"Sale"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Ohtani",
+"Lindor",
+"Contreras",
+"Marte",
+"Merrill",
+"Ozuna",
+"Harper",
+"Profar",
+"Adames",
+"Sale"
+]
+},
+{
+"voter": "Scott Miller",
+"outlet": "At Large",
+"chapter": "SD",
+"picks": [
+"Ohtani",
+"Lindor",
+"Ozuna",
+"Marte",
+"Contreras",
+"Harper",
+"Adames",
+"Schwarber",
+"Betts",
+"Machado"
+]
+},
+{
+"voter": "Evan Webeck",
+"outlet": "San Jose Mercury News",
+"chapter": "SF",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"De La Cruz",
+"Adames",
+"Contreras",
+"Sale",
+"Harper",
+"Chapman",
+"Ozuna"
+]
+},
+{
+"voter": "Shayna Rubin",
+"outlet": "San Chronicle",
+"chapter": "SF",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Harper",
+"Contreras",
+"De La Cruz",
+"Chapman",
+"Profar",
+"Sale",
+"Betts"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Ohtani",
+"Marte",
+"Lindor",
+"Contreras",
+"Sale",
+"Harper",
+"Ozuna",
+"Merrill",
+"Wheeler",
+"Profar"
+]
+},
+{
+"voter": "Katie Woo",
+"outlet": "The Athletic",
+"chapter": "STL",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Ozuna",
+"Sale",
+"Contreras",
+"Harper",
+"Adames",
+"Merrill",
+"Profar"
+]
+},
+{
+"voter": "Andy Kostka",
+"outlet": "Baltimore Banner",
+"chapter": "WAS",
+"picks": [
+"Ohtani",
+"Lindor",
+"Chapman",
+"Marte",
+"Sale",
+"De La Cruz",
+"Wheeler",
+"Contreras",
+"Harper",
+"Merrill"
+]
+},
+{
+"voter": "Mark Zuckerman",
+"outlet": "MASNsports.com",
+"chapter": "WAS",
+"picks": [
+"Ohtani",
+"Lindor",
+"Marte",
+"Ozuna",
+"Harper",
+"Contreras",
+"Wheeler",
+"Sale",
+"De La Cruz",
+"Merrill"
+]
+}
+]
+},
+{
+"year": 2025,
+"league": "AL",
+"url": "https://bbwaa.com/25-al-mvp-ballots/",
+"ballots": [
+{
+"voter": "Danielle Allentuck",
+"outlet": "The Baltimore Banner",
+"chapter": "BAL",
+"picks": [
+"Raleigh",
+"Judge",
+"Witt Jr.",
+"Skubal",
+"Ramírez",
+"Crochet",
+"Springer",
+"Rodríguez",
+"Peña",
+"Kurtz"
+]
+},
+{
+"voter": "Britt Ghiroli",
+"outlet": "The Athletic",
+"chapter": "BAL",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Skubal",
+"Crochet",
+"Rodríguez",
+"Springer",
+"Garcia",
+"Caminero"
+]
+},
+{
+"voter": "Ian Browne",
+"outlet": "MLB.com",
+"chapter": "BOS",
+"picks": [
+"Raleigh",
+"Judge",
+"Witt Jr.",
+"Rodríguez",
+"Ramírez",
+"Springer",
+"Skubal",
+"Caminero",
+"Crochet",
+"Buxton"
+]
+},
+{
+"voter": "Peter Abraham",
+"outlet": "Boston Globe",
+"chapter": "BOS",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Springer",
+"Skubal",
+"Crochet",
+"Rodríguez",
+"Caminero",
+"Peña"
+]
+},
+{
+"voter": "LaMond Pope",
+"outlet": "Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Judge",
+"Raleigh",
+"Witt Jr.",
+"Skubal",
+"Ramírez",
+"Rodríguez",
+"Springer",
+"Buxton",
+"Crochet",
+"Peña"
+]
+},
+{
+"voter": "Scott Merkin",
+"outlet": "MLB.com",
+"chapter": "CHI",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Skubal",
+"Crochet",
+"Rodríguez",
+"Springer",
+"Caminero",
+"Buxton"
+]
+},
+{
+"voter": "Zack Meisel",
+"outlet": "The Athletic",
+"chapter": "CLE",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Springer",
+"Guerrero Jr.",
+"Caminero",
+"Rodríguez",
+"Garcia",
+"Díaz"
+]
+},
+{
+"voter": "Paul Hoynes",
+"outlet": "Cleveland.com/The Plain Dealer",
+"chapter": "CLE",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Kurtz",
+"Rodríguez",
+"Bellinger",
+"Bichette",
+"Greene",
+"Caminero"
+]
+},
+{
+"voter": "Evan Petzold",
+"outlet": "Detroit Free Press",
+"chapter": "DET",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Skubal",
+"Springer",
+"Rodríguez",
+"Crochet",
+"Peña",
+"Buxton"
+]
+},
+{
+"voter": "Chris McCosky",
+"outlet": "Detroit News",
+"chapter": "DET",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Springer",
+"Rodríguez",
+"Caminero",
+"Buxton",
+"Guerrero Jr.",
+"Peña"
+]
+},
+{
+"voter": "Javier Gonzalez",
+"outlet": "Pelota Cubana USA",
+"chapter": "HOU",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Springer",
+"Rodríguez",
+"Skubal",
+"Peña",
+"Buxton",
+"Caminero"
+]
+},
+{
+"voter": "Chandler Rome",
+"outlet": "The Athletic",
+"chapter": "HOU",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Springer",
+"Buxton",
+"Skubal",
+"Garcia",
+"Kurtz"
+]
+},
+{
+"voter": "Jaylon Thompson",
+"outlet": "Kansas City Star",
+"chapter": "KC",
+"picks": [
+"Raleigh",
+"Judge",
+"Witt Jr.",
+"Ramírez",
+"Springer",
+"Skubal",
+"Caminero",
+"Kurtz",
+"Bichette",
+"Greene"
+]
+},
+{
+"voter": "Joe Posnanski",
+"outlet": "JoeBlogs",
+"chapter": "KC",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Skubal",
+"Crochet",
+"Peña",
+"Springer",
+"Kurtz"
+]
+},
+{
+"voter": "Mike DiGiovanna",
+"outlet": "BBWAA (At-Large)",
+"chapter": "LA",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Springer",
+"Skubal",
+"Rodríguez",
+"Crochet",
+"Guerrero Jr.",
+"Kurtz"
+]
+},
+{
+"voter": "Rhett Bollinger",
+"outlet": "MLB.com",
+"chapter": "LA",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Skubal",
+"Rodríguez",
+"Crochet",
+"Springer",
+"Guerrero Jr.",
+"Peña"
+]
+},
+{
+"voter": "Betsy Helfand",
+"outlet": "St. Paul Pioneer Press",
+"chapter": "MIN",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Springer",
+"Buxton",
+"Skubal",
+"Crochet",
+"Peña"
+]
+},
+{
+"voter": "Phil Miller",
+"outlet": "Minnesota Star Tribune",
+"chapter": "MIN",
+"picks": [
+"Judge",
+"Raleigh",
+"Witt Jr.",
+"Ramírez",
+"Rodríguez",
+"Skubal",
+"Buxton",
+"Springer",
+"Kurtz",
+"Bellinger"
+]
+},
+{
+"voter": "Tyler Kepner",
+"outlet": "The Athletic",
+"chapter": "NY",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Crochet",
+"Springer",
+"Skubal",
+"Rodríguez",
+"Bellinger",
+"Chapman"
+]
+},
+{
+"voter": "Ronald Blum",
+"outlet": "The Associated Press",
+"chapter": "NY",
+"picks": [
+"Judge",
+"Raleigh",
+"Skubal",
+"Witt Jr.",
+"Ramírez",
+"Springer",
+"Crochet",
+"Rodríguez",
+"Peña",
+"Buxton"
+]
+},
+{
+"voter": "Tim Booth",
+"outlet": "The Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Skubal",
+"Springer",
+"Peña",
+"Crochet",
+"Garcia"
+]
+},
+{
+"voter": "Ryan Divish",
+"outlet": "Seattle Times",
+"chapter": "SEA",
+"picks": [
+"Raleigh",
+"Judge",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Caminero",
+"Skubal",
+"Kurtz",
+"Springer",
+"Crochet"
+]
+},
+{
+"voter": "Martín Gallegos",
+"outlet": "MLB.com",
+"chapter": "SF",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Skubal",
+"Springer",
+"Crochet",
+"Kurtz",
+"Buxton"
+]
+},
+{
+"voter": "Manolo Hernández-Douen",
+"outlet": "beisbolporgotas",
+"chapter": "SF",
+"picks": [
+"Raleigh",
+"Judge",
+"Caminero",
+"Kurtz",
+"Ramírez",
+"Skubal",
+"Witt Jr.",
+"Guerrero Jr.",
+"Rodríguez",
+"Wilson"
+]
+},
+{
+"voter": "Adam Berry",
+"outlet": "MLB.com",
+"chapter": "TB",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Witt Jr.",
+"Rodríguez",
+"Skubal",
+"Springer",
+"Crochet",
+"Peña",
+"Caminero"
+]
+},
+{
+"voter": "Marc Topkin",
+"outlet": "Tampa Bay Times",
+"chapter": "TB",
+"picks": [
+"Judge",
+"Raleigh",
+"Ramírez",
+"Springer",
+"Witt Jr.",
+"Rodríguez",
+"Crochet",
+"Skubal",
+"Peña",
+"Caminero"
+]
+},
+{
+"voter": "Shawn McFarland",
+"outlet": "The Dallas Morning News",
+"chapter": "TEX",
+"picks": [
+"Judge",
+"Raleigh",
+"Witt Jr.",
+"Ramírez",
+"Skubal",
+"Crochet",
+"Rodríguez",
+"Peña",
+"Springer",
+"Buxton"
+]
+},
+{
+"voter": "Kennedi Landry",
+"outlet": "MLB.com",
+"chapter": "TEX",
+"picks": [
+"Judge",
+"Raleigh",
+"Witt Jr.",
+"Ramírez",
+"Skubal",
+"Rodríguez",
+"Springer",
+"Crochet",
+"Peña",
+"Buxton"
+]
+},
+{
+"voter": "Ben Nicholson-Smith",
+"outlet": "Sportsnet",
+"chapter": "TOR",
+"picks": [
+"Raleigh",
+"Judge",
+"Witt Jr.",
+"Ramírez",
+"Skubal",
+"Rodríguez",
+"Springer",
+"Buxton",
+"Peña",
+"Crochet"
+]
+},
+{
+"voter": "Keegan Matheson",
+"outlet": "MLB.com",
+"chapter": "TOR",
+"picks": [
+"Judge",
+"Raleigh",
+"Witt Jr.",
+"Ramírez",
+"Springer",
+"Skubal",
+"Rodríguez",
+"Crochet",
+"Kurtz",
+"Peña"
+]
+}
+]
+},
+{
+"year": 2025,
+"league": "NL",
+"url": "https://bbwaa.com/25-nl-mvp-ballots/",
+"ballots": [
+{
+"voter": "Mark Bowman",
+"outlet": "MLB.com",
+"chapter": "ATL",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Tatis Jr.",
+"Skenes",
+"PCA",
+"Lindor",
+"Carroll",
+"Alonso",
+"Perdomo"
+]
+},
+{
+"voter": "David O'Brien",
+"outlet": "The Athletic",
+"chapter": "ATL",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Perdomo",
+"Soto",
+"Carroll",
+"Lindor",
+"PCA",
+"Skenes",
+"Tatis Jr.",
+"Olson"
+]
+},
+{
+"voter": "Robert Nightengale",
+"outlet": "USA TODAY",
+"chapter": "AZ",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Turner",
+"Perdomo",
+"Yelich",
+"Alonso",
+"Tatis Jr.",
+"Lindor",
+"Carroll"
+]
+},
+{
+"voter": "Barry M. Bloom",
+"outlet": "Sportio",
+"chapter": "AZ",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Tatis Jr.",
+"Perdomo",
+"Yelich",
+"Alonso",
+"Skenes",
+"Freeman",
+"Machado"
+]
+},
+{
+"voter": "Meghan Montemurro",
+"outlet": "The Chicago Tribune",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Perdomo",
+"Schwarber",
+"Soto",
+"Turner",
+"PCA",
+"Tatis Jr.",
+"Carroll",
+"Sánchez",
+"Lindor"
+]
+},
+{
+"voter": "Maddie Lee",
+"outlet": "Chicago Sun-Times",
+"chapter": "CHI",
+"picks": [
+"Ohtani",
+"Perdomo",
+"Schwarber",
+"Soto",
+"Turner",
+"Lindor",
+"Carroll",
+"PCA",
+"Tatis Jr.",
+"Skenes"
+]
+},
+{
+"voter": "Mark Sheldon",
+"outlet": "MLB.com",
+"chapter": "CIN",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Alonso",
+"Nico Hoerner",
+"Turang",
+"Freeman",
+"Carroll",
+"Olson"
+]
+},
+{
+"voter": "Charlie Goldsmith",
+"outlet": "FOX19 Cincinnati",
+"chapter": "CIN",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Skenes",
+"Carroll",
+"Turner",
+"Lindor",
+"Smith",
+"Sánchez"
+]
+},
+{
+"voter": "Thomas Harding",
+"outlet": "MLB.com",
+"chapter": "COL",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Freeman",
+"Yelich",
+"Soto",
+"Machado",
+"Alonso",
+"Suzuki",
+"Marte",
+"De La Cruz"
+]
+},
+{
+"voter": "Patrick Saunders",
+"outlet": "The Denver Post",
+"chapter": "COL",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Perdomo",
+"Soto",
+"Tatis Jr.",
+"PCA",
+"Turner",
+"Freeman",
+"Skenes",
+"Yelich"
+]
+},
+{
+"voter": "Hiroyuki Minegishi",
+"outlet": "JIJI PRESS",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Skenes",
+"Turner",
+"Carroll",
+"Lindor",
+"Freeman",
+"PCA"
+]
+},
+{
+"voter": "Bill Plunkett",
+"outlet": "SCNG/Orange County Register",
+"chapter": "LA",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Freeman",
+"Alonso",
+"Turner",
+"Yelich",
+"Lindor",
+"Machado"
+]
+},
+{
+"voter": "Mari Montes",
+"outlet": "El Extrabase",
+"chapter": "MIA",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Skenes",
+"Turner",
+"Tatis Jr.",
+"Carroll",
+"Lindor",
+"Sánchez"
+]
+},
+{
+"voter": "Santos A. Perez",
+"outlet": "Miami based freelance baseball writer",
+"chapter": "MIA",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Alonso",
+"Perdomo",
+"Busch",
+"Turner",
+"Carroll",
+"Freeman",
+"Turang"
+]
+},
+{
+"voter": "Todd Rosiak",
+"outlet": "Milwaukee Journal Sentinel",
+"chapter": "MIL",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"PCA",
+"Skenes",
+"Tatis Jr.",
+"Lindor",
+"Sánchez",
+"Carroll"
+]
+},
+{
+"voter": "Steve Megargee",
+"outlet": "Associated Press",
+"chapter": "MIL",
+"picks": [
+"Ohtani",
+"Soto",
+"Perdomo",
+"Schwarber",
+"Skenes",
+"Turang",
+"Carroll",
+"PCA",
+"Turner",
+"Tatis Jr."
+]
+},
+{
+"voter": "Mike Puma",
+"outlet": "New York Post",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Turner",
+"Tatis Jr.",
+"Olson",
+"Carroll",
+"Lindor",
+"PCA"
+]
+},
+{
+"voter": "Mark Feinsand",
+"outlet": "MLB.com",
+"chapter": "NY",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Perdomo",
+"Soto",
+"Turner",
+"PCA",
+"Carroll",
+"Tatis Jr.",
+"Yelich",
+"Skenes"
+]
+},
+{
+"voter": "Jayson Stark",
+"outlet": "The Athletic",
+"chapter": "PHI",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Turner",
+"Carroll",
+"Turang",
+"Tatis Jr.",
+"Alonso",
+"Freeman"
+]
+},
+{
+"voter": "Scott Lauber",
+"outlet": "The Philadelphia Inquirer",
+"chapter": "PHI",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Turner",
+"Tatis Jr.",
+"PCA",
+"Skenes",
+"Freeman",
+"Yelich"
+]
+},
+{
+"voter": "Alex Stumpf",
+"outlet": "MLB.com",
+"chapter": "PIT",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Perdomo",
+"Soto",
+"Skenes",
+"Carroll",
+"Tatis Jr.",
+"Turner",
+"PCA",
+"Olson"
+]
+},
+{
+"voter": "Will Graves",
+"outlet": "Associated Press",
+"chapter": "PIT",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Turner",
+"Skenes",
+"Perdomo",
+"PCA",
+"Carroll",
+"Tatis Jr.",
+"Lindor"
+]
+},
+{
+"voter": "Kevin Acee",
+"outlet": "The San Diego Union-Tribune",
+"chapter": "SD",
+"picks": [
+"Ohtani",
+"Soto",
+"Schwarber",
+"Lindor",
+"Busch",
+"Tatis Jr.",
+"Perdomo",
+"PCA",
+"Turner",
+"Carroll"
+]
+},
+{
+"voter": "AJ Cassavell",
+"outlet": "MLB.com",
+"chapter": "SD",
+"picks": [
+"Ohtani",
+"Perdomo",
+"Schwarber",
+"Skenes",
+"Soto",
+"Lindor",
+"Turner",
+"Tatis Jr.",
+"Carroll",
+"Sánchez"
+]
+},
+{
+"voter": "Justice delos Santos",
+"outlet": "San Jose Mercury News",
+"chapter": "SF",
+"picks": [
+"Ohtani",
+"Soto",
+"Schwarber",
+"Perdomo",
+"Carroll",
+"Skenes",
+"Turner",
+"Lindor",
+"Tatis Jr.",
+"Turang"
+]
+},
+{
+"voter": "Maria Guardado",
+"outlet": "MLB.com",
+"chapter": "SF",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Perdomo",
+"Soto",
+"Carroll",
+"Lindor",
+"Tatis Jr.",
+"Skenes",
+"Turner",
+"Turang"
+]
+},
+{
+"voter": "Derrick Goold",
+"outlet": "St. Louis Post-Dispatch",
+"chapter": "STL",
+"picks": [
+"Ohtani",
+"Soto",
+"Perdomo",
+"Skenes",
+"Schwarber",
+"Sánchez",
+"Lindor",
+"Carroll",
+"Tatis Jr.",
+"Turang"
+]
+},
+{
+"voter": "Rob Rains",
+"outlet": "STLSportsPage.com",
+"chapter": "STL",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Soto",
+"Perdomo",
+"Alonso",
+"Yelich",
+"Machado",
+"PCA",
+"Carroll",
+"Turner"
+]
+},
+{
+"voter": "Gabe Lacques",
+"outlet": "USA Today",
+"chapter": "WAS",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Turner",
+"Soto",
+"Turang",
+"Perdomo",
+"Lindor",
+"PCA",
+"Sánchez",
+"Smith"
+]
+},
+{
+"voter": "Tim Kurkjian",
+"outlet": "ESPN",
+"chapter": "WAS",
+"picks": [
+"Ohtani",
+"Schwarber",
+"Alonso",
+"Soto",
+"PCA",
+"Yelich",
+"Carroll",
+"Perdomo",
+"Sánchez",
+"Skenes"
+]
+}
+]
+}
+]
+}
