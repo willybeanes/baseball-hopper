@@ -33,6 +33,8 @@ export interface AwardBallot {
   league: "AL" | "NL";
   outlet: string | null;
   chapter: string | null;
+  /** True when the BBWAA page starred the chapter: a writer from another city filled a short-handed chapter. */
+  chapterSub?: boolean;
   picks: AwardPick[];
   winner: string;
   firstMatchesWinner: boolean;

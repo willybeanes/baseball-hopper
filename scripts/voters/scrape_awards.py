@@ -7,7 +7,7 @@ import json, re, sys, time, urllib.error
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from scrape_mvp import Table, fetch  # noqa: E402
+from scrape_mvp import Table, chapter_of, fetch  # noqa: E402
 
 OUT = Path(__file__).parent / "data" / "awards_bbwaa.json"
 # Pages that don't follow the YY-lg-award slug.
@@ -37,13 +37,13 @@ def parse(page):
         first = next((i for i, c in enumerate(hdr) if c in FIRST), None)
         if first is None:
             continue
-        if "affiliation" in hdr or "chapter" in hdr:
+        if "affiliation" in hdr or any(c.startswith("chap") for c in hdr):
             for r in rows[1:]:
                 if len(r) <= first or not r[0]:
                     continue
                 info = dict(zip(hdr[:first], r[:first]))
                 ballots.append({"voter": r[0], "outlet": info.get("affiliation") or None,
-                                "chapter": info.get("chapter") or None, "picks": r[first:]})
+                                "chapter": chapter_of(info), "picks": r[first:]})
         elif "points" in hdr:
             pi = hdr.index("points")
             for r in rows[1:]:
@@ -69,14 +69,25 @@ def fetch_retry(url):
 
 
 def main():
-    """Default: scrape everything. --missing: keep the existing file, fetch only award-years it lacks."""
+    """Default: scrape everything. --missing: keep the existing file, fetch only award-years it lacks.
+    --only cy:2014:nl,cy:2015: re-fetch just those award-years (league optional), keeping the rest."""
     missing_only = "--missing" in sys.argv
+    only = None
+    if "--only" in sys.argv:
+        only = [t.split(":") for t in sys.argv[sys.argv.index("--only") + 1].split(",")]
+        missing_only = True
+
+    def targeted(code, y, lg):
+        return any(t[0] == code and int(t[1]) == y and (len(t) < 3 or t[2].lower() == lg) for t in only)
+
     out = json.loads(OUT.read_text())["awards"] if missing_only and OUT.exists() else []
+    if only:
+        out = [a for a in out if not targeted(a["award"], a["year"], a["league"].lower())]
     have = {(a["award"], a["year"], a["league"].lower()) for a in out}
     for code in AWARDS:
         for y in range(2009, 2027):
             for lg in ("al", "nl"):
-                if (code, y, lg) in have:
+                if (code, y, lg) in have or (only and not targeted(code, y, lg)):
                     continue
                 url = SPECIAL.get((code, y, lg), f"https://bbwaa.com/{y % 100:02d}-{lg}-{code}/")
                 try:

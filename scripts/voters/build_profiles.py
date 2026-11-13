@@ -24,6 +24,16 @@ def ascii_(s):
     return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
 
 
+def clean_chapter(raw):
+    """BBWAA chapter cell -> (code, sub). A "*" before or after the code marks a writer from another city
+    voting for a chapter that lacked enough eligible voters; it becomes sub=True. Codes are uppercased
+    ("Was" -> "WAS"). "SF/ATH" (2026 Athletics slot) is kept as its own code."""
+    if not raw:
+        return None, False
+    code = raw.replace("*", "").strip().upper()
+    return (code or None), "*" in raw
+
+
 def tidy(name):
     return re.sub(r"\s+", " ", name.replace("*", "")).strip()
 
@@ -199,8 +209,9 @@ def main():
             v["names"][aliases.get(tidy(b["voter"]), tidy(b["voter"]))] += 1
             if b["outlet"]:
                 v["outlets"].append((y, b["outlet"]))
-            if b["chapter"]:
-                v["chapters"].append((y, b["chapter"].replace("*", "").strip()))
+            chapter, chapter_sub = clean_chapter(b["chapter"])
+            if chapter:
+                v["chapters"].append((y, chapter))
             dev = 0
             for p in picks:
                 pid = p.pop("pid")
@@ -222,7 +233,7 @@ def main():
                 if wm is not None:
                     matches.append(wm)
             v["awards"].append({"award": code, "year": y, "league": lg, "places": places, "outlet": b["outlet"],
-                                "chapter": b["chapter"], "picks": picks, "winner": standings[0]["name"],
+                                "chapter": chapter, "chapterSub": chapter_sub, "picks": picks, "winner": standings[0]["name"],
                                 "firstMatchesWinner": bool(picks) and picks[0]["finalRank"] == 1,
                                 "deviation": dev, "solo": [p["name"] for p in picks if p["mentions"] == 1],
                                 "warMatch": wm, "warOverlap": wo})

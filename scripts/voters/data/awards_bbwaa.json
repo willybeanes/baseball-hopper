@@ -2582,7 +2582,7 @@
 {
 "voter": "Guy Curtright",
 "outlet": "The Sports Xchange",
-"chapter": null,
+"chapter": "ATL",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2594,7 +2594,7 @@
 {
 "voter": "Justin McGuire",
 "outlet": "Sporting News",
-"chapter": null,
+"chapter": "ATL*",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2606,7 +2606,7 @@
 {
 "voter": "Jack Magruder",
 "outlet": "Fox Sports Arizona",
-"chapter": null,
+"chapter": "AZ",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2618,7 +2618,7 @@
 {
 "voter": "Zach Buchanan",
 "outlet": "azcentral sports",
-"chapter": null,
+"chapter": "AZ",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2630,7 +2630,7 @@
 {
 "voter": "Gordon Wittenmyer",
 "outlet": "Chicago Sun Times",
-"chapter": null,
+"chapter": "CHI",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2642,7 +2642,7 @@
 {
 "voter": "Bruce Miles",
 "outlet": "Daily Herald",
-"chapter": null,
+"chapter": "CHI",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2654,7 +2654,7 @@
 {
 "voter": "John Fay",
 "outlet": "Cincinnati Enquirer",
-"chapter": null,
+"chapter": "CIN",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2666,7 +2666,7 @@
 {
 "voter": "Mark Schmetzer",
 "outlet": "Reds Report",
-"chapter": null,
+"chapter": "CIN",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2678,7 +2678,7 @@
 {
 "voter": "Barney Hutchinson",
 "outlet": "Daily Camera",
-"chapter": null,
+"chapter": "COL",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2690,7 +2690,7 @@
 {
 "voter": "Nick Groke",
 "outlet": "The Denver Post",
-"chapter": null,
+"chapter": "COL",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2702,7 +2702,7 @@
 {
 "voter": "J.P. Hoornstra",
 "outlet": "Los Angeles News Group",
-"chapter": null,
+"chapter": "LA",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2714,7 +2714,7 @@
 {
 "voter": "Mark Saxon",
 "outlet": "ESPN.com",
-"chapter": null,
+"chapter": "LA",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2726,7 +2726,7 @@
 {
 "voter": "Manny Navarro",
 "outlet": "Miami Herald",
-"chapter": null,
+"chapter": "MIA",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2738,7 +2738,7 @@
 {
 "voter": "Juan C. Rodriguez",
 "outlet": "Sun Sentinel",
-"chapter": null,
+"chapter": "MIA",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2750,7 +2750,7 @@
 {
 "voter": "Drew Olson",
 "outlet": "ESPN Milwaukee",
-"chapter": null,
+"chapter": "MIL",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2762,7 +2762,7 @@
 {
 "voter": "Andrew Gruman",
 "outlet": "FOXSportsWisconsin.com",
-"chapter": null,
+"chapter": "MIL",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2774,7 +2774,7 @@
 {
 "voter": "Marc Carig",
 "outlet": "Newsday (New York)",
-"chapter": null,
+"chapter": "NY",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2786,7 +2786,7 @@
 {
 "voter": "Anthony McCarron",
 "outlet": "New York Daily News",
-"chapter": null,
+"chapter": "NY",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2798,7 +2798,7 @@
 {
 "voter": "Jim Salisbury",
 "outlet": "CSNPhilly.com",
-"chapter": null,
+"chapter": "PHI",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2810,7 +2810,7 @@
 {
 "voter": "Kevin Cooney",
 "outlet": "Bucks County Courier Times",
-"chapter": null,
+"chapter": "PHI",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2822,7 +2822,7 @@
 {
 "voter": "John Perrotto",
 "outlet": "USA Today",
-"chapter": null,
+"chapter": "PIT",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2834,7 +2834,7 @@
 {
 "voter": "Travis Sawchik",
 "outlet": "Pittsburgh Tribune-Review",
-"chapter": null,
+"chapter": "PIT",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2846,7 +2846,7 @@
 {
 "voter": "Jeff Sanders",
 "outlet": "San Diego Union-Tribune",
-"chapter": null,
+"chapter": "SD",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2858,7 +2858,7 @@
 {
 "voter": "Dennis Lin",
 "outlet": "U-T San Diego",
-"chapter": null,
+"chapter": "SD",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2870,7 +2870,7 @@
 {
 "voter": "John Shea",
 "outlet": "San Francisco Chronicle",
-"chapter": null,
+"chapter": "SF",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2882,7 +2882,7 @@
 {
 "voter": "Alex Pavlovic",
 "outlet": "San Jose Mercury News",
-"chapter": null,
+"chapter": "SF",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2894,7 +2894,7 @@
 {
 "voter": "Bernie Miklasz",
 "outlet": "St. Louis Post Dispatch",
-"chapter": null,
+"chapter": "STL",
 "picks": [
 "Kershaw",
 "Wainwright",
@@ -2906,7 +2906,7 @@
 {
 "voter": "Joe Strauss",
 "outlet": "St. Louis Post Dispatch",
-"chapter": null,
+"chapter": "STL",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2918,7 +2918,7 @@
 {
 "voter": "Tim Kurkjian",
 "outlet": "ESPN.com",
-"chapter": null,
+"chapter": "WAS",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -2930,7 +2930,7 @@
 {
 "voter": "Mark Zuckerman",
 "outlet": "CSNwashington.com",
-"chapter": null,
+"chapter": "WAS",
 "picks": [
 "Kershaw",
 "Cueto",
@@ -3036,7 +3036,7 @@
 {
 "voter": "Dave Ginsburg",
 "outlet": "Associated Press",
-"chapter": null,
+"chapter": "BAL",
 "picks": [
 "Keuchel",
 "Price",
@@ -3048,7 +3048,7 @@
 {
 "voter": "Paul White",
 "outlet": "USA Today",
-"chapter": null,
+"chapter": "BAL",
 "picks": [
 "Keuchel",
 "Gray",
@@ -3060,7 +3060,7 @@
 {
 "voter": "Tim Britton",
 "outlet": "Providence Journal",
-"chapter": null,
+"chapter": "BOS",
 "picks": [
 "Keuchel",
 "Price",
@@ -3072,7 +3072,7 @@
 {
 "voter": "Sean McAdam",
 "outlet": "Comcast SportsNet New England",
-"chapter": null,
+"chapter": "BOS",
 "picks": [
 "Keuchel",
 "Price",
@@ -3084,7 +3084,7 @@
 {
 "voter": "Colleen Kane",
 "outlet": "Chicago Tribune",
-"chapter": null,
+"chapter": "CHI",
 "picks": [
 "Keuchel",
 "Price",
@@ -3096,7 +3096,7 @@
 {
 "voter": "Daryl Van Schouwen",
 "outlet": "Chicago Sun-Times",
-"chapter": null,
+"chapter": "CHI",
 "picks": [
 "Keuchel",
 "Price",
@@ -3108,7 +3108,7 @@
 {
 "voter": "Zack Meisel",
 "outlet": "Cleveland.com",
-"chapter": null,
+"chapter": "CLE",
 "picks": [
 "Price",
 "Keuchel",
@@ -3120,7 +3120,7 @@
 {
 "voter": "Jim Ingraham",
 "outlet": "News-Herald",
-"chapter": null,
+"chapter": "CLE",
 "picks": [
 "Keuchel",
 "Price",
@@ -3132,7 +3132,7 @@
 {
 "voter": "Lynn Henning",
 "outlet": "Detroit News",
-"chapter": null,
+"chapter": "DET",
 "picks": [
 "Keuchel",
 "Price",
@@ -3144,7 +3144,7 @@
 {
 "voter": "Chris Iott",
 "outlet": "MLive.com/MLive Media Group",
-"chapter": null,
+"chapter": "DET",
 "picks": [
 "Keuchel",
 "Price",
@@ -3156,7 +3156,7 @@
 {
 "voter": "David Barron",
 "outlet": "Houston Chronicle",
-"chapter": null,
+"chapter": "HOU",
 "picks": [
 "Keuchel",
 "Price",
@@ -3168,7 +3168,7 @@
 {
 "voter": "Kristie Rieken",
 "outlet": "The Associated Press",
-"chapter": null,
+"chapter": "HOU",
 "picks": [
 "Keuchel",
 "Price",
@@ -3180,7 +3180,7 @@
 {
 "voter": "Jeff Passan",
 "outlet": "Yahoo Sports",
-"chapter": null,
+"chapter": "KC",
 "picks": [
 "Keuchel",
 "Price",
@@ -3192,7 +3192,7 @@
 {
 "voter": "Andy McCullough",
 "outlet": "The Kansas City Star",
-"chapter": null,
+"chapter": "KC",
 "picks": [
 "Keuchel",
 "Price",
@@ -3204,7 +3204,7 @@
 {
 "voter": "Jeff Fletcher",
 "outlet": "OC Register",
-"chapter": null,
+"chapter": "LA",
 "picks": [
 "Keuchel",
 "Price",
@@ -3216,7 +3216,7 @@
 {
 "voter": "Mark Whicker",
 "outlet": "LA Daily News",
-"chapter": null,
+"chapter": "LA",
 "picks": [
 "Keuchel",
 "Price",
@@ -3228,7 +3228,7 @@
 {
 "voter": "Patrick Borzi",
 "outlet": "Honorary",
-"chapter": null,
+"chapter": "MIN",
 "picks": [
 "Price",
 "Keuchel",
@@ -3240,7 +3240,7 @@
 {
 "voter": "Phil Miller",
 "outlet": "Minneapolis Star Tribune",
-"chapter": null,
+"chapter": "MIN",
 "picks": [
 "Keuchel",
 "Price",
@@ -3252,7 +3252,7 @@
 {
 "voter": "Pete Caldera",
 "outlet": "Bergen Record",
-"chapter": null,
+"chapter": "NY",
 "picks": [
 "Keuchel",
 "Price",
@@ -3264,7 +3264,7 @@
 {
 "voter": "Mark Feinsand",
 "outlet": "New York Daily News",
-"chapter": null,
+"chapter": "NY",
 "picks": [
 "Price",
 "Keuchel",
@@ -3276,7 +3276,7 @@
 {
 "voter": "Joe Stiglich",
 "outlet": "Comcast SportsNet Bay Area",
-"chapter": null,
+"chapter": "OAK",
 "picks": [
 "Price",
 "Keuchel",
@@ -3288,7 +3288,7 @@
 {
 "voter": "Matt Kawahara",
 "outlet": "The Sacramento Bee",
-"chapter": null,
+"chapter": "OAK",
 "picks": [
 "Keuchel",
 "Price",
@@ -3300,7 +3300,7 @@
 {
 "voter": "Larry Stone",
 "outlet": "Seattle Times",
-"chapter": null,
+"chapter": "SEA",
 "picks": [
 "Price",
 "Keuchel",
@@ -3312,7 +3312,7 @@
 {
 "voter": "Bob Dutton",
 "outlet": "Tacoma News Tribune",
-"chapter": null,
+"chapter": "SEA",
 "picks": [
 "Keuchel",
 "Price",
@@ -3324,7 +3324,7 @@
 {
 "voter": "Martin Fennelly",
 "outlet": "Tampa Tribune",
-"chapter": null,
+"chapter": "TB",
 "picks": [
 "Price",
 "Keuchel",
@@ -3336,7 +3336,7 @@
 {
 "voter": "Matt Baker",
 "outlet": "Tampa Bay Times",
-"chapter": null,
+"chapter": "TB",
 "picks": [
 "Keuchel",
 "Price",
@@ -3348,7 +3348,7 @@
 {
 "voter": "Evan Grant",
 "outlet": "Morning News",
-"chapter": null,
+"chapter": "TEX",
 "picks": [
 "Keuchel",
 "Price",
@@ -3360,7 +3360,7 @@
 {
 "voter": "Stefan C Stevenson",
 "outlet": "Fort Worth Star-Telegram",
-"chapter": null,
+"chapter": "TEX",
 "picks": [
 "Keuchel",
 "Price",
@@ -3372,7 +3372,7 @@
 {
 "voter": "Shi Davidi",
 "outlet": "At Large",
-"chapter": null,
+"chapter": "TOR",
 "picks": [
 "Price",
 "Keuchel",
@@ -3384,7 +3384,7 @@
 {
 "voter": "Ken Fidlin",
 "outlet": "Toronto Sun",
-"chapter": null,
+"chapter": "TOR",
 "picks": [
 "Price",
 "Keuchel",
@@ -3460,7 +3460,7 @@
 {
 "voter": "Ryan Fagan",
 "outlet": "Sporting News",
-"chapter": null,
+"chapter": "ATL",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3472,7 +3472,7 @@
 {
 "voter": "Dave Cameron",
 "outlet": "FanGraphs",
-"chapter": null,
+"chapter": "ATL*",
 "picks": [
 "Arrieta",
 "Kershaw",
@@ -3484,7 +3484,7 @@
 {
 "voter": "Jack Magruder",
 "outlet": "Fox Sports Arizona",
-"chapter": null,
+"chapter": "AZ",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3496,7 +3496,7 @@
 {
 "voter": "Zach Buchanan",
 "outlet": "Arizona Republic",
-"chapter": null,
+"chapter": "AZ",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3508,7 +3508,7 @@
 {
 "voter": "Mark Gonzales",
 "outlet": "Chicago Tribune",
-"chapter": null,
+"chapter": "CHI",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3520,7 +3520,7 @@
 {
 "voter": "Jesse Rogers",
 "outlet": "ESPN Chicago",
-"chapter": null,
+"chapter": "CHI",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3532,7 +3532,7 @@
 {
 "voter": "C. Trent Rosecrans",
 "outlet": "Cincinnati Enquirer",
-"chapter": null,
+"chapter": "CIN",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3544,7 +3544,7 @@
 {
 "voter": "Hal McCoy",
 "outlet": "Dayton Daily News/FoxSportsOhio",
-"chapter": null,
+"chapter": "CIN",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3556,7 +3556,7 @@
 {
 "voter": "Nick Groke",
 "outlet": "The Denver Post",
-"chapter": null,
+"chapter": "COL",
 "picks": [
 "Kershaw",
 "Greinke",
@@ -3568,7 +3568,7 @@
 {
 "voter": "Barney Hutchinson",
 "outlet": "Honorary",
-"chapter": null,
+"chapter": "COL",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3580,7 +3580,7 @@
 {
 "voter": "Jeff Miller",
 "outlet": "Orange County Register",
-"chapter": null,
+"chapter": "LA",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3592,7 +3592,7 @@
 {
 "voter": "Bill Plunkett",
 "outlet": "Orange County Register",
-"chapter": null,
+"chapter": "LA",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3604,7 +3604,7 @@
 {
 "voter": "Manny Navarro",
 "outlet": "The Miami Herald",
-"chapter": null,
+"chapter": "MIA",
 "picks": [
 "Grienke",
 "Arrieta",
@@ -3616,7 +3616,7 @@
 {
 "voter": "Jon Heyman",
 "outlet": "CBSSports.com",
-"chapter": null,
+"chapter": "MIA",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3628,7 +3628,7 @@
 {
 "voter": "Drew Olson",
 "outlet": "Milwaukee",
-"chapter": null,
+"chapter": "MIL",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3640,7 +3640,7 @@
 {
 "voter": "Bob Klapisch",
 "outlet": "Bergen Record",
-"chapter": null,
+"chapter": "MIL*",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3652,7 +3652,7 @@
 {
 "voter": "John Harper",
 "outlet": "NY Daily News",
-"chapter": null,
+"chapter": "NY",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3664,7 +3664,7 @@
 {
 "voter": "Adam Rubin",
 "outlet": "ESPN",
-"chapter": null,
+"chapter": "NY",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3676,7 +3676,7 @@
 {
 "voter": "Meghan Montemurro",
 "outlet": "The (Wilmington) News Journal",
-"chapter": null,
+"chapter": "PHI",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3688,7 +3688,7 @@
 {
 "voter": "Ryan Lawrence",
 "outlet": "Philadelphia Daily News",
-"chapter": null,
+"chapter": "PHI",
 "picks": [
 "Kershaw",
 "Greinke",
@@ -3700,7 +3700,7 @@
 {
 "voter": "Travis Sawchik",
 "outlet": "Pittsburgh Tribune-Review",
-"chapter": null,
+"chapter": "PIT",
 "picks": [
 "Arrieta",
 "Grenkie",
@@ -3712,7 +3712,7 @@
 {
 "voter": "John Perrotto",
 "outlet": "USA TODAY",
-"chapter": null,
+"chapter": "PIT",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3724,7 +3724,7 @@
 {
 "voter": "Bernie Wilson",
 "outlet": "Associated Press",
-"chapter": null,
+"chapter": "SD",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3736,7 +3736,7 @@
 {
 "voter": "JOHN J MAFFEI",
 "outlet": "San Diego Union-Tribune",
-"chapter": null,
+"chapter": "SD",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3748,7 +3748,7 @@
 {
 "voter": "John Shea",
 "outlet": "San Francisco Chronicle",
-"chapter": null,
+"chapter": "SF",
 "picks": [
 "Arrieta",
 "Greinke",
@@ -3760,7 +3760,7 @@
 {
 "voter": "Andrew Baggarly",
 "outlet": "San Jose Mercury News",
-"chapter": null,
+"chapter": "SF",
 "picks": [
 "Kershaw",
 "Arrieta",
@@ -3772,7 +3772,7 @@
 {
 "voter": "Joe Strauss",
 "outlet": "St. Louis Post Dispatch",
-"chapter": null,
+"chapter": "STL",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3784,7 +3784,7 @@
 {
 "voter": "Bernie Miklasz",
 "outlet": "St. Louis Post-Dispatch, 101 ESPN Radio",
-"chapter": null,
+"chapter": "STL",
 "picks": [
 "Arrieta",
 "Kershaw",
@@ -3796,7 +3796,7 @@
 {
 "voter": "Mel Antonen",
 "outlet": "SI.com",
-"chapter": null,
+"chapter": "WAS",
 "picks": [
 "Greinke",
 "Arrieta",
@@ -3808,7 +3808,7 @@
 {
 "voter": "Jerry Crasnick",
 "outlet": "ESPN.com",
-"chapter": null,
+"chapter": "WAS*",
 "picks": [
 "Arrieta",
 "Greinke",

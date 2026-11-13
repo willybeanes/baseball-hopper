@@ -44,6 +44,11 @@ def fetch(url):
         return r.read().decode("utf-8", "replace")
 
 
+def chapter_of(info):
+    """The chapter column is headed "Chapter", "Chapt.", "Chap." etc. depending on the year."""
+    return next((v for k, v in info.items() if k.startswith("chap")), None) or None
+
+
 def parse(page):
     t = Table()
     t.feed(page)
@@ -58,13 +63,17 @@ def parse(page):
         info = dict(zip(hdr[:first], r[:first]))
         picks = [p for p in r[first:first + 10]]
         ballots.append({"voter": r[0], "outlet": info.get("affiliation") or info.get("outlet") or None,
-                        "chapter": info.get("chapter") or None, "picks": picks})
+                        "chapter": chapter_of(info), "picks": picks})
     return ballots
 
 
 def main():
+    """Default: scrape 2012-2025. --years 2013,2014: re-scrape only those years, keeping the rest of the file."""
     years = range(2012, 2026)
     out = []
+    if "--years" in sys.argv:
+        years = [int(y) for y in sys.argv[sys.argv.index("--years") + 1].split(",")]
+        out = [a for a in json.loads(OUT.read_text())["awards"] if a["year"] not in years]
     for y in years:
         for lg in ("al", "nl"):
             url = f"https://bbwaa.com/{y % 100:02d}-{lg}-mvp-ballots/"
@@ -76,6 +85,7 @@ def main():
             out.append({"year": y, "league": lg.upper(), "url": url, "ballots": b})
             print(y, lg, len(b), b[0]["voter"], b[0]["outlet"], b[0]["chapter"], b[0]["picks"][:3])
             time.sleep(0.5)
+    out.sort(key=lambda a: (a["year"], a["league"]))
     OUT.write_text(json.dumps({"source": "bbwaa.com", "awards": out}, ensure_ascii=False, indent=0))
 
 
