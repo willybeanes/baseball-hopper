@@ -1988,11 +1988,6 @@
    "avgWarVsField": 0.005
   },
   {
-   "chapter": "Was",
-   "voters": 1,
-   "avgWarVsField": 0.004
-  },
-  {
    "chapter": "MIA",
    "voters": 12,
    "avgWarVsField": 0.002
@@ -2063,14 +2058,14 @@
    "avgWarVsField": -0.008
   },
   {
-   "chapter": "OAK",
-   "voters": 5,
+   "chapter": "BAL",
+   "voters": 13,
    "avgWarVsField": -0.012
   },
   {
-   "chapter": "BAL",
-   "voters": 12,
-   "avgWarVsField": -0.013
+   "chapter": "OAK",
+   "voters": 5,
+   "avgWarVsField": -0.012
   },
   {
    "chapter": "LA",
