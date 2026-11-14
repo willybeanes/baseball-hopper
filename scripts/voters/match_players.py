@@ -29,7 +29,7 @@ BR_CACHE = D / "br_mvp_votes.json"
 def br_vote_getters():
     """Full names of every MVP vote-getter by year/league, from Baseball-Reference award pages (cached)."""
     cache = json.loads(BR_CACHE.read_text()) if BR_CACHE.exists() else {}
-    for y in range(2012, 2026):
+    for y in range(2012, 2027):
         if all(f"{y}|{lg}" in cache for lg in ("AL", "NL")):
             continue
         req = urllib.request.Request(f"https://www.baseball-reference.com/awards/awards_{y}.shtml",

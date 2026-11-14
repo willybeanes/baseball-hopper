@@ -68,8 +68,8 @@ def parse(page):
 
 
 def main():
-    """Default: scrape 2012-2025. --years 2013,2014: re-scrape only those years, keeping the rest of the file."""
-    years = range(2012, 2026)
+    """Default: scrape 2012-2026. --years 2013,2014: re-scrape only those years, keeping the rest of the file."""
+    years = range(2012, 2027)
     out = []
     if "--years" in sys.argv:
         years = [int(y) for y in sys.argv[sys.argv.index("--years") + 1].split(",")]

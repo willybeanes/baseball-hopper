@@ -410,6 +410,34 @@
    "firstPlaceToWarLeader": 1.0
   },
   {
+   "award": "mvp",
+   "year": 2026,
+   "league": "AL",
+   "voters": 30,
+   "winner": "Yordan Alvarez",
+   "unanimous": true,
+   "medianWarMatch": 0.958,
+   "meanWarMatch": 0.949,
+   "consensusWarMatch": 0.972,
+   "warLeader": "Bobby Witt Jr.",
+   "winnerWarRank": 2,
+   "firstPlaceToWarLeader": 0.0
+  },
+  {
+   "award": "mvp",
+   "year": 2026,
+   "league": "NL",
+   "voters": 30,
+   "winner": "Pete Crow-Armstrong",
+   "unanimous": true,
+   "medianWarMatch": 0.973,
+   "meanWarMatch": 0.956,
+   "consensusWarMatch": 0.981,
+   "warLeader": "Pete Crow-Armstrong",
+   "winnerWarRank": 1,
+   "firstPlaceToWarLeader": 1.0
+  },
+  {
    "award": "cy",
    "year": 2009,
    "league": "NL",
@@ -1968,29 +1996,29 @@
  ],
  "chapters": [
   {
-   "chapter": "DET",
-   "voters": 11,
+   "chapter": "KC",
+   "voters": 14,
    "avgWarVsField": 0.007
   },
   {
-   "chapter": "BOS",
-   "voters": 15,
+   "chapter": "DET",
+   "voters": 11,
    "avgWarVsField": 0.006
   },
   {
-   "chapter": "KC",
-   "voters": 14,
-   "avgWarVsField": 0.006
+   "chapter": "BOS",
+   "voters": 16,
+   "avgWarVsField": 0.005
   },
   {
    "chapter": "ATL",
    "voters": 8,
-   "avgWarVsField": 0.005
+   "avgWarVsField": 0.004
   },
   {
-   "chapter": "MIA",
-   "voters": 12,
-   "avgWarVsField": 0.002
+   "chapter": "WAS",
+   "voters": 7,
+   "avgWarVsField": 0.004
   },
   {
    "chapter": "PIT",
@@ -1998,23 +2026,18 @@
    "avgWarVsField": 0.001
   },
   {
-   "chapter": "NY",
-   "voters": 23,
-   "avgWarVsField": -0.001
-  },
-  {
-   "chapter": "WAS",
-   "voters": 9,
-   "avgWarVsField": -0.001
-  },
-  {
-   "chapter": "SEA",
-   "voters": 10,
-   "avgWarVsField": -0.002
+   "chapter": "MIA",
+   "voters": 12,
+   "avgWarVsField": 0.001
   },
   {
    "chapter": "TOR",
    "voters": 13,
+   "avgWarVsField": -0.001
+  },
+  {
+   "chapter": "NY",
+   "voters": 22,
    "avgWarVsField": -0.002
   },
   {
@@ -2023,14 +2046,19 @@
    "avgWarVsField": -0.003
   },
   {
-   "chapter": "MIN",
-   "voters": 13,
-   "avgWarVsField": -0.004
+   "chapter": "SEA",
+   "voters": 10,
+   "avgWarVsField": -0.003
   },
   {
-   "chapter": "SF",
+   "chapter": "MIN",
    "voters": 13,
-   "avgWarVsField": -0.004
+   "avgWarVsField": -0.005
+  },
+  {
+   "chapter": "HOU",
+   "voters": 10,
+   "avgWarVsField": -0.005
   },
   {
    "chapter": "PHI",
@@ -2038,9 +2066,9 @@
    "avgWarVsField": -0.005
   },
   {
-   "chapter": "CLE",
-   "voters": 13,
-   "avgWarVsField": -0.006
+   "chapter": "SF",
+   "voters": 12,
+   "avgWarVsField": -0.005
   },
   {
    "chapter": "CHI",
@@ -2053,14 +2081,9 @@
    "avgWarVsField": -0.006
   },
   {
-   "chapter": "HOU",
-   "voters": 9,
-   "avgWarVsField": -0.008
-  },
-  {
-   "chapter": "BAL",
-   "voters": 13,
-   "avgWarVsField": -0.012
+   "chapter": "CLE",
+   "voters": 14,
+   "avgWarVsField": -0.007
   },
   {
    "chapter": "OAK",
@@ -2069,8 +2092,13 @@
   },
   {
    "chapter": "LA",
-   "voters": 22,
-   "avgWarVsField": -0.014
+   "voters": 23,
+   "avgWarVsField": -0.013
+  },
+  {
+   "chapter": "BAL",
+   "voters": 15,
+   "avgWarVsField": -0.013
   },
   {
    "chapter": "STL",
@@ -2094,8 +2122,8 @@
   },
   {
    "chapter": "SF/ATH",
-   "voters": 5,
-   "avgWarVsField": -0.025
+   "voters": 6,
+   "avgWarVsField": -0.019
   },
   {
    "chapter": "SD",
