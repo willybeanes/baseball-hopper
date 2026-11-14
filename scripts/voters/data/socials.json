@@ -536,6 +536,16 @@
    "x": "charlottevarnes"
   }
  },
+ "chelsea-janes": {
+  "bluesky": {
+   "handle": "chelseajanes.bsky.social",
+   "url": "https://bsky.app/profile/chelseajanes.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2l2l2lh5dmqlct4puunktpcx/bafkreifyemjcj46hnx45rd274pk5u37oycpwo7f2ddoeipc2zvaond44pi",
+   "followers": 6077,
+   "bio": "MLB insider, SNY",
+   "x": null
+  }
+ },
  "chris-kirschner": {
   "bluesky": {
    "handle": "chriskirschner.bsky.social",

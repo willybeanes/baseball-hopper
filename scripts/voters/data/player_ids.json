@@ -3322,6 +3322,245 @@
 "id": 592885,
 "name": "Christian Yelich",
 "full": "Christian Yelich"
+},
+"2026|AL|Abreu": {
+"id": 677800,
+"name": "Wilyer Abreu",
+"full": "Wilyer Abreu"
+},
+"2026|AL|Alonso": {
+"id": 624413,
+"name": "Pete Alonso",
+"full": "Pete Alonso"
+},
+"2026|AL|Alvarez": {
+"id": 670541,
+"name": "Yordan Alvarez",
+"full": "Yordan Alvarez"
+},
+"2026|AL|Arozarena": {
+"id": 668227,
+"name": "Randy Arozarena",
+"full": "Randy Arozarena"
+},
+"2026|AL|Caminero": {
+"id": 691406,
+"name": "Junior Caminero",
+"full": "Junior Caminero"
+},
+"2026|AL|Cease": {
+"id": 656302,
+"name": "Dylan Cease",
+"full": "Dylan Cease"
+},
+"2026|AL|Contreras": {
+"id": 575929,
+"name": "Willson Contreras",
+"full": "Willson Contreras"
+},
+"2026|AL|Dingler": {
+"id": 693307,
+"name": "Dillon Dingler",
+"full": "Dillon Dingler"
+},
+"2026|AL|Durán": {
+"id": 677649,
+"name": "Ezequiel Duran",
+"full": "Ezequiel Duran"
+},
+"2026|AL|Kwan": {
+"id": 680757,
+"name": "Steven Kwan",
+"full": "Steven Kwan"
+},
+"2026|AL|McGonigle": {
+"id": 805808,
+"name": "Kevin McGonigle",
+"full": "Kevin McGonigle"
+},
+"2026|AL|Messick": {
+"id": 800048,
+"name": "Parker Messick",
+"full": "Parker Messick"
+},
+"2026|AL|Murakami": {
+"id": 808959,
+"name": "Munetaka Murakami",
+"full": "Munetaka Murakami"
+},
+"2026|AL|Paredes": {
+"id": 670623,
+"name": "Isaac Paredes",
+"full": "Isaac Paredes"
+},
+"2026|AL|Rafaela": {
+"id": 678882,
+"name": "Ceddanne Rafaela",
+"full": "Ceddanne Rafaela"
+},
+"2026|AL|Rasmussen": {
+"id": 656876,
+"name": "Drew Rasmussen",
+"full": "Drew Rasmussen"
+},
+"2026|AL|Rice": {
+"id": 700250,
+"name": "Ben Rice",
+"full": "Ben Rice"
+},
+"2026|AL|Schlittler": {
+"id": 693645,
+"name": "Cam Schlittler",
+"full": "Cam Schlittler"
+},
+"2026|AL|Smith": {
+"id": 671922,
+"name": "Cade Smith",
+"full": "Cade Smith"
+},
+"2026|AL|Vargas": {
+"id": 678246,
+"name": "Miguel Vargas",
+"full": "Miguel Vargas"
+},
+"2026|AL|Witt Jr.": {
+"id": 677951,
+"name": "Bobby Witt Jr.",
+"full": "Bobby Witt Jr."
+},
+"2026|NL|Abrams": {
+"id": 682928,
+"name": "CJ Abrams",
+"full": "CJ Abrams"
+},
+"2026|NL|Albies": {
+"id": 645277,
+"name": "Ozzie Albies",
+"full": "Ozzie Albies"
+},
+"2026|NL|Andy Pages": {
+"id": 681624,
+"name": "Andy Pages",
+"full": "Andy Pages"
+},
+"2026|NL|Bauers": {
+"id": 641343,
+"name": "Jake Bauers",
+"full": "Jake Bauers"
+},
+"2026|NL|Bregman": {
+"id": 608324,
+"name": "Alex Bregman",
+"full": "Alex Bregman"
+},
+"2026|NL|Burleson": {
+"id": 676475,
+"name": "Alec Burleson",
+"full": "Alec Burleson"
+},
+"2026|NL|Chourio": {
+"id": 694192,
+"name": "Jackson Chourio",
+"full": "Jackson Chourio"
+},
+"2026|NL|De La Cruz": {
+"id": 682829,
+"name": "Elly De La Cruz",
+"full": "Elly De La Cruz"
+},
+"2026|NL|France": {
+"id": 664034,
+"name": "Ty France",
+"full": "Ty France"
+},
+"2026|NL|Goodman": {
+"id": 696100,
+"name": "Hunter Goodman",
+"full": "Hunter Goodman"
+},
+"2026|NL|Harper": {
+"id": 547180,
+"name": "Bryce Harper",
+"full": "Bryce Harper"
+},
+"2026|NL|Harris II": {
+"id": 671739,
+"name": "Michael Harris II",
+"full": "Michael Harris II"
+},
+"2026|NL|Lopez": {
+"id": 672640,
+"name": "Otto Lopez",
+"full": "Otto Lopez"
+},
+"2026|NL|Lowe": {
+"id": 664040,
+"name": "Brandon Lowe",
+"full": "Brandon Lowe"
+},
+"2026|NL|Misiorowski": {
+"id": 694819,
+"name": "Jacob Misiorowski",
+"full": "Jacob Misiorowski"
+},
+"2026|NL|Moreno": {
+"id": 672515,
+"name": "Gabriel Moreno",
+"full": "Gabriel Moreno"
+},
+"2026|NL|Ohtani": {
+"id": 660271,
+"name": "Shohei Ohtani",
+"full": "Shohei Ohtani"
+},
+"2026|NL|Olson": {
+"id": 621566,
+"name": "Matt Olson",
+"full": "Matt Olson"
+},
+"2026|NL|PCA": {
+"id": 691718,
+"name": "Pete Crow-Armstrong"
+},
+"2026|NL|Sale": {
+"id": 519242,
+"name": "Chris Sale",
+"full": "Chris Sale"
+},
+"2026|NL|Schwarber": {
+"id": 656941,
+"name": "Kyle Schwarber",
+"full": "Kyle Schwarber"
+},
+"2026|NL|Stewart": {
+"id": 701398,
+"name": "Sal Stewart",
+"full": "Sal Stewart"
+},
+"2026|NL|Sánchez": {
+"id": 650911,
+"name": "Cristopher Sánchez",
+"full": "Cristopher Sánchez"
+},
+"2026|NL|Tatis Jr.": {
+"id": 665487,
+"name": "Fernando Tatis Jr.",
+"full": "Fernando Tatis Jr."
+},
+"2026|NL|Turang": {
+"id": 668930,
+"name": "Brice Turang",
+"full": "Brice Turang"
+},
+"2026|NL|Walker": {
+"id": 691023,
+"name": "Jordan Walker",
+"full": "Jordan Walker"
+},
+"2026|NL|Wood": {
+"id": 695578,
+"name": "James Wood",
+"full": "James Wood"
 }
 },
 "hof": {
@@ -7119,6 +7358,11 @@
 "name": "Dylan Beavers",
 "full": "Dylan Beavers"
 },
+"roy|2026|AL|Bolte, H": {
+"id": 703607,
+"name": "Henry Bolte",
+"full": "Henry Bolte"
+},
 "roy|2026|AL|DeLauter": {
 "id": 800050,
 "name": "Chase DeLauter",
@@ -8313,11 +8557,6 @@
 "id": 682842,
 "name": "Abner Uribe",
 "full": "Abner Uribe"
-},
-"roy|2026|AL|Bolte, H": {
-"id": 703607,
-"name": "Henry Bolte",
-"full": "Henry Bolte"
 }
 }
 }
