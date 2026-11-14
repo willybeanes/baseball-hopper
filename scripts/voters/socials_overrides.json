@@ -1,5 +1,5 @@
 {
- "_comment": "Hand fixes for fetch_socials.py matches. {slug: null} drops everything for a voter; {slug: {field: value}} sets bluesky/page/x/avatar, and a null value removes that field. Entries below re-add Bluesky accounts the bio rule rejects but that were checked by hand (2026-11-14), or drop a wrong match.",
+ "_comment": "Hand fixes for fetch_socials.py matches. {slug: null} drops everything for a voter; {slug: {field: value}} sets bluesky/page/x/avatar, and a null value removes that field. Entries below re-add Bluesky accounts the bio rule rejects but that were checked by hand (2026-11-14), or drop a wrong match. \"hideAvatar\": true keeps a voter's links but shows no headshot (applied to female writers, 2026-11-14; add new ones by hand after a refetch).",
  "arden-zwelling": {
   "bluesky": {
    "handle": "ardenzwelling.bsky.social",
@@ -72,5 +72,98 @@
  },
  "paul-white": {
   "bluesky": null
+ },
+ "abbey-mastracco": {
+  "hideAvatar": true
+ },
+ "alex-coffey": {
+  "hideAvatar": true
+ },
+ "alyson-footer": {
+  "hideAvatar": true
+ },
+ "ann-killion": {
+  "hideAvatar": true
+ },
+ "anne-rogers": {
+  "hideAvatar": true
+ },
+ "brittany-ghiroli": {
+  "hideAvatar": true
+ },
+ "charlotte-varnes": {
+  "hideAvatar": true
+ },
+ "christina-de-nicola": {
+  "hideAvatar": true
+ },
+ "claire-smith": {
+  "hideAvatar": true
+ },
+ "colleen-kane": {
+  "hideAvatar": true
+ },
+ "danielle-allentuck": {
+  "hideAvatar": true
+ },
+ "dawn-klemish": {
+  "hideAvatar": true
+ },
+ "deesha-thosar": {
+  "hideAvatar": true
+ },
+ "janie-mccauley": {
+  "hideAvatar": true
+ },
+ "jen-mccaffrey": {
+  "hideAvatar": true
+ },
+ "jenifer-langosch": {
+  "hideAvatar": true
+ },
+ "jessica-camerato": {
+  "hideAvatar": true
+ },
+ "kaitlyn-mcgrath": {
+  "hideAvatar": true
+ },
+ "katie-woo": {
+  "hideAvatar": true
+ },
+ "kennedi-landry": {
+  "hideAvatar": true
+ },
+ "laura-albanese": {
+  "hideAvatar": true
+ },
+ "maria-guardado": {
+  "hideAvatar": true
+ },
+ "maria-torres": {
+  "hideAvatar": true
+ },
+ "meg-rowley": {
+  "hideAvatar": true
+ },
+ "meghan-montemurro": {
+  "hideAvatar": true
+ },
+ "melissa-lockard": {
+  "hideAvatar": true
+ },
+ "molly-knight": {
+  "hideAvatar": true
+ },
+ "paige-leckie": {
+  "hideAvatar": true
+ },
+ "savannah-mccann": {
+  "hideAvatar": true
+ },
+ "sonja-chen": {
+  "hideAvatar": true
+ },
+ "susan-slusser": {
+  "hideAvatar": true
  }
 }
