@@ -9,10 +9,17 @@ python3 -I scripts/voters/scrape_awards.py [--missing | --only cy:2014:nl]     #
 python3 -I scripts/voters/fetch_fwar.py                                      # FanGraphs WAR by league-season via fg-proxy
 python3 -I scripts/voters/match_players.py                                   # names -> MLBAM ids (prints anything uncertain)
 python3 -I scripts/voters/build_profiles.py                                  # profiles, standings, similar voters
+python3 -I scripts/voters/fetch_socials.py [--only slug,slug]                  # Bluesky / The Athletic / MLB.com links + headshots
+python3 -I scripts/voters/build_profiles.py                                  # again, to merge data/socials.json
 ```
 
 - `overrides.json`: hand fixes for MVP ballot names and HOF candidate searches.
 - `aliases.json`: voter name spellings that are the same person (raw name -> canonical).
+- `socials_overrides.json`: hand fixes for `fetch_socials.py` (re-add a checked account, drop a wrong match).
+  Bluesky matches need the exact first/last name, 100+ followers, and a bio that says baseball/MLB/BBWAA outright
+  or pairs a journalism word with a team or outlet name. Team names alone are too loose ("Wests Tigers", "Reds fan").
+  Headshots are hotlinked (publication photo first, then Bluesky avatar); the page falls back to initials on error.
+  X handles come only from The Athletic author pages and Bluesky bios; X itself isn't searched.
 - bbwaa.com rate-limits bursts with 403s; `scrape_awards.py --missing` refetches only award-years the file lacks,
   `--only award:year[:lg],...` refetches specific pages, and `scrape_mvp.py --years` does the same for MVP.
 - The chapter column is headed "Chapter" on some pages and "Chapt." on others (2013-15); both scrapers take any header
