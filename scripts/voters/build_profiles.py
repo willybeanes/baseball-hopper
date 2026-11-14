@@ -61,7 +61,7 @@ def build_social(rec):
         links.append({"kind": "bluesky", "label": "Bluesky", "url": bsky["url"]})
     if x:
         links.append({"kind": "x", "label": "X", "url": f"https://x.com/{x}"})
-    avatar = rec.get("avatar") or (page or {}).get("image") or (bsky or {}).get("avatar")
+    avatar = None if rec.get("hideAvatar") else rec.get("avatar") or (page or {}).get("image") or (bsky or {}).get("avatar")
     if not links and not avatar:
         return None
     return {"avatar": avatar, "links": links}
@@ -69,7 +69,8 @@ def build_social(rec):
 
 def load_socials():
     """fetch_socials.py output with socials_overrides.json on top: {slug: null} drops a voter,
-    {slug: {"bluesky": null, "x": "handle", "avatar": url, "page": {...}}} replaces or removes fields."""
+    {slug: {"bluesky": null, "x": "handle", "avatar": url, "page": {...}}} replaces or removes fields,
+    and {"hideAvatar": true} keeps the links but drops the headshot."""
     f = D / "socials.json"
     socials = json.loads(f.read_text()) if f.exists() else {}
     of = HERE / "socials_overrides.json"
