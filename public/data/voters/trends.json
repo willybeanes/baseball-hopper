@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13",
+ "generated": "2026-11-14",
  "about": {
   "source": "Baseball Hopper Voter Profiles: BBWAA award ballots (bbwaa.com, 2012+), public HOF ballots (Ryan Thibodaux's BBHOF Tracker, 2009+), FanGraphs WAR.",
   "warMatch": "A ballot's fWAR weighted by award points, divided by the same for the WAR ballot (top N in fWAR among eligible players). 1.0 = as much WAR as the WAR ballot.",

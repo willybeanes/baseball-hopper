@@ -101,6 +101,13 @@ export interface VoterProfile {
   awards: AwardBallot[];
   hof: HofBallot[];
   similar: { slug: string; name: string; agree: number; shared: number; kind: string }[];
+  /** Publication page / Bluesky / X links and a hotlinked headshot, from fetch_socials.py. */
+  social: VoterSocial | null;
+}
+
+export interface VoterSocial {
+  avatar: string | null;
+  links: { kind: "page" | "bluesky" | "x"; label: string; url: string }[];
 }
 
 export interface VoterIndexRow {

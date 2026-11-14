@@ -48,6 +48,46 @@ def voter_key(name, aliases):
     return "-".join(toks)
 
 
+def build_social(rec):
+    """data/socials.json record (+ overrides) -> {avatar, links} for the profile page, or None."""
+    if not rec:
+        return None
+    page, bsky = rec.get("page"), rec.get("bluesky")
+    x = rec.get("x") or (page or {}).get("x") or (bsky or {}).get("x")
+    links = []
+    if page:
+        links.append({"kind": "page", "label": page["label"], "url": page["url"]})
+    if bsky:
+        links.append({"kind": "bluesky", "label": "Bluesky", "url": bsky["url"]})
+    if x:
+        links.append({"kind": "x", "label": "X", "url": f"https://x.com/{x}"})
+    avatar = rec.get("avatar") or (page or {}).get("image") or (bsky or {}).get("avatar")
+    if not links and not avatar:
+        return None
+    return {"avatar": avatar, "links": links}
+
+
+def load_socials():
+    """fetch_socials.py output with socials_overrides.json on top: {slug: null} drops a voter,
+    {slug: {"bluesky": null, "x": "handle", "avatar": url, "page": {...}}} replaces or removes fields."""
+    f = D / "socials.json"
+    socials = json.loads(f.read_text()) if f.exists() else {}
+    of = HERE / "socials_overrides.json"
+    for slug, o in (json.loads(of.read_text()) if of.exists() else {}).items():
+        if slug.startswith("_"):
+            continue
+        if o is None:
+            socials.pop(slug, None)
+            continue
+        rec = socials.setdefault(slug, {})
+        for k, val in o.items():
+            if val is None:
+                rec.pop(k, None)
+            else:
+                rec[k] = val
+    return socials
+
+
 def write_trends(award_list, hof_years, profiles, index):
     """Small, analysis-ready summary (a few KB) for Claude Chat or anyone else: one row per award-year,
     one row per HOF year, one row per chapter. Lives at /data/voters/trends.json."""
@@ -423,7 +463,9 @@ def main():
         a = profiles[r["slug"]]["summary"].get("awards", {})
         r["warPercentile"] = a.get("warPercentile")
 
+    socials = load_socials()
     for p in profiles.values():
+        p["social"] = build_social(socials.get(p["slug"]))
         for s in p["similar"]:
             s["name"] = profiles[s["slug"]]["name"]
 

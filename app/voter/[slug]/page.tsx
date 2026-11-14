@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { notFound } from "next/navigation";
 import HofGrid, { type HofGridRow } from "@/components/voters/HofGrid";
+import VoterAvatar from "@/components/voters/VoterAvatar";
 import {
   allVoterSlugs,
   getVoter,
@@ -338,8 +339,29 @@ function Header({ v }: { v: VoterProfile }) {
       <Link href="/voters" className="text-[12px] text-[var(--dim)] hover:text-[var(--text)]">
         ← All voters
       </Link>
-      <h1 className="mt-2 text-[26px] font-bold tracking-tight text-[var(--text)]">{v.name}</h1>
-      {v.aliases.length > 0 && <p className="text-[12px] text-[var(--dim)]">Also listed as {v.aliases.join(", ")}</p>}
+      <div className="mt-3 flex items-center gap-4">
+        {v.social?.avatar && <VoterAvatar src={v.social.avatar} name={v.name} />}
+        <div className="min-w-0">
+          <h1 className="text-[26px] font-bold leading-tight tracking-tight text-[var(--text)]">{v.name}</h1>
+          {v.social && v.social.links.length > 0 && (
+            <p className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[13px]">
+              {v.social.links.map((l) => (
+                <a
+                  key={l.kind}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--dim)] underline decoration-[var(--panel-border)] underline-offset-2 hover:text-[var(--text)] hover:decoration-current"
+                >
+                  {l.kind === "x" ? `X @${l.url.split("/").pop()}` : l.kind === "bluesky" ? `Bluesky @${l.url.split("/").pop()}` : l.label}
+                  <span aria-hidden> ↗</span>
+                </a>
+              ))}
+            </p>
+          )}
+          {v.aliases.length > 0 && <p className="mt-0.5 text-[12px] text-[var(--dim)]">Also listed as {v.aliases.join(", ")}</p>}
+        </div>
+      </div>
       <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[13px]">
         {facts
           .filter(([, val]) => val)

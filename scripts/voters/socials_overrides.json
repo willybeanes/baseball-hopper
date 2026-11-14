@@ -1,0 +1,76 @@
+{
+ "_comment": "Hand fixes for fetch_socials.py matches. {slug: null} drops everything for a voter; {slug: {field: value}} sets bluesky/page/x/avatar, and a null value removes that field. Entries below re-add Bluesky accounts the bio rule rejects but that were checked by hand (2026-11-14), or drop a wrong match.",
+ "arden-zwelling": {
+  "bluesky": {
+   "handle": "ardenzwelling.bsky.social",
+   "url": "https://bsky.app/profile/ardenzwelling.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:63anohy4gblruetpgkicfnz3/bafkreicgwmrnwwxgifuubybyhfrhtyza6rvlbjfjwrln5ggfamcs6me3pa",
+   "followers": 956,
+   "bio": "Blue Jays on Sportsnet | Stories: http://sprtsnt.ca/2ieaV6k | Podcast: http://sprtsnt.ca/3XjsSVN",
+   "x": null
+  }
+ },
+ "jeff-schultz": {
+  "bluesky": {
+   "handle": "jeffschultzatl.bsky.social",
+   "url": "https://bsky.app/profile/jeffschultzatl.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:hlawk4j2y3l576ky76ajqb5h/bafkreifzvp3j33evpnov6h4yrmf34piv6xuhopngfa44nbehaian7czlw4",
+   "followers": 3694,
+   "bio": "Wrote a bunch of words. Spelled most of them correctly. Exit ramp: https://www.nytimes.com/athletic/5162555/2023/12/27/atlanta-braves-falcons-hawks-georgia-jeff-schultz/ Practicing radical empathy. Bo",
+   "x": null
+  }
+ },
+ "joe-posnanski": {
+  "bluesky": {
+   "handle": "joeposnanski.com",
+   "url": "https://bsky.app/profile/joeposnanski.com",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:3fip3tf6aqianjsuq7qqdwop/bafkreielvtn75oxiqmtwf3mg37nlrywfwfiumkqzljr556lrlv4eyrfrwy",
+   "followers": 18644,
+   "bio": "Writer, author, podcaster, father, husband, juggler and believer in blue skies.",
+   "x": null
+  }
+ },
+ "mike-vaccaro": {
+  "bluesky": {
+   "handle": "mikevacc.bsky.social",
+   "url": "https://bsky.app/profile/mikevacc.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:fdpfucsmqcwjwvjvujyqxlxx/bafkreieimrayaipe3f2oaknywlhulonr4hnfkzmb5lsmnqiefclyskeaca",
+   "followers": 1617,
+   "bio": "Sports columnist, New York Post. Author, four books. St. Bonaventure graduate. Master to a knuckleheaded (but awesome) Airedale named Desmond.  “BOSSES OF THE BRONX”: https://www.amazon.com/dp/0063414",
+   "x": null
+  }
+ },
+ "richard-justice": {
+  "bluesky": {
+   "handle": "richardjust42.bsky.social",
+   "url": "https://bsky.app/profile/richardjust42.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:35iaux6nsrwftaxp7i2xyqn2/bafkreibnnj2ediolwzhbjmjmc7xxy57o4skkaswfuaeojj5safponildd4",
+   "followers": 587,
+   "bio": "Once did a little sportswriting: Houston Chronicle, Wash Post, Texas Monthly, Balt Sun, etc. May try it again someday. UT-Austin ‘76. Waxahachie High ‘71. Email: richardjustice@hotmail.com",
+   "x": null
+  }
+ },
+ "steve-politi": {
+  "bluesky": {
+   "handle": "stevepoliti.bsky.social",
+   "url": "https://bsky.app/profile/stevepoliti.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ipl3ymdgtfiod3hr7ovignl5/bafkreiagg6ipi74myzodt3fcbib2egsptv764rdlkzvqynkz6ljkkhely4",
+   "followers": 1107,
+   "bio": "Sports columnist at NJ.com. Host of the Rutgers Rant podcast. Nutley Hall of Fame Class of 2013. Former Star-Ledger paperboy.",
+   "x": null
+  }
+ },
+ "zack-meisel": {
+  "bluesky": {
+   "handle": "zackmeisel.bsky.social",
+   "url": "https://bsky.app/profile/zackmeisel.bsky.social",
+   "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:n5fo3pjbephlmqus7o5nv5rp/bafkreiawp5a6hayvxc5fnk7spwgpopvmlyq5iqbzjdvbfmniot4uxzndwu",
+   "followers": 2515,
+   "bio": "Cleveland. The Athletic.",
+   "x": null
+  }
+ },
+ "paul-white": {
+  "bluesky": null
+ }
+}
