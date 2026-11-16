@@ -44,6 +44,12 @@
   font-weight: 500;
   color: var(--dim);
 }
+/* Years with no public ballot from this voter. */
+.grid th.none,
+.grid .totals th.none {
+  color: var(--rule);
+  font-weight: 400;
+}
 .y,
 .n {
   display: inline-block;

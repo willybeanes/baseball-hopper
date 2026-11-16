@@ -7,27 +7,38 @@ export interface HofGridRow {
   name: string;
   id: number | null;
   inducted: "BBWAA" | "Committee" | null;
-  /** One character per year: Y voted for, N on ballot but left off, B blank ballot, . not on ballot. */
+  /** One character per year: Y voted for, N on ballot but left off, B blank ballot, . not on ballot,
+   *  - no public ballot from this voter that year. */
   marks: string;
 }
 
 /** Candidate-by-year grid of one voter's public HOF ballots. Client component so the page
  *  ships the compact rows once instead of a second copy of every rendered cell. */
-export default function HofGrid({ years, counts, rows }: { years: number[]; counts: number[]; rows: HofGridRow[] }) {
+export default function HofGrid({ years, counts, rows }: { years: number[]; counts: (number | null)[]; rows: HofGridRow[] }) {
   return (
     <div className="-mx-1 overflow-x-auto px-1">
       <table className={s.grid}>
         <thead>
           <tr className={s.totals}>
             <th>Names on ballot</th>
-            {counts.map((c, i) => (
-              <th key={years[i]}>{c}</th>
-            ))}
+            {counts.map((c, i) =>
+              c === null ? (
+                <th key={years[i]} className={s.none} title="No public ballot this year">
+                  –
+                </th>
+              ) : (
+                <th key={years[i]} title={c === 0 ? "Blank ballot: submitted with no names" : undefined}>
+                  {c}
+                </th>
+              ),
+            )}
           </tr>
           <tr>
             <th>Candidate</th>
-            {years.map((y) => (
-              <th key={y}>{y}</th>
+            {years.map((y, i) => (
+              <th key={y} className={counts[i] === null ? s.none : undefined}>
+                {y}
+              </th>
             ))}
           </tr>
         </thead>
@@ -54,7 +65,7 @@ export default function HofGrid({ years, counts, rows }: { years: number[]; coun
                     <span className={s.y} role="img" aria-label="voted for" />
                   ) : m === "N" ? (
                     <span className={s.n} role="img" aria-label="left off" />
-                  ) : m === "B" ? (
+                  ) : m === "-" ? null : m === "B" ? (
                     <span className={s.tag}>—</span>
                   ) : (
                     <span className={s.off}>·</span>
