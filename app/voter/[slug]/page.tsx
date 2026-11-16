@@ -94,11 +94,13 @@ function yearSpan(years: number[]) {
 // ── Hall of Fame ──────────────────────────────────────────────────────────────
 
 function HofGridSection({ ballots }: { ballots: HofBallot[] }) {
-  const years = ballots.map((b) => b.year).sort((a, b) => a - b);
+  const ballotYears = ballots.map((b) => b.year).sort((a, b) => a - b);
+  // Every year from the first public ballot to the last, so gaps (no public ballot) show as their own columns.
+  const years = Array.from({ length: ballotYears[ballotYears.length - 1] - ballotYears[0] + 1 }, (_, i) => ballotYears[0] + i);
   const byYear = new Map(ballots.map((b) => [b.year, b]));
   // Every candidate on a ballot this voter made public, in order of first appearance.
   const cands = new Map<string, { id: number | null; first: number; inducted: HofGridRow["inducted"]; yes: number; on: number; peak: number }>();
-  for (const y of years) {
+  for (const y of ballotYears) {
     for (const c of hofYear(y)?.candidates ?? []) {
       const e = cands.get(c.name) ?? { id: c.id, first: y, inducted: c.inducted, yes: 0, on: 0, peak: 0 };
       e.on += 1;
@@ -117,14 +119,15 @@ function HofGridSection({ ballots }: { ballots: HofBallot[] }) {
       inducted: c.inducted,
       marks: years
         .map((y) => {
-          const b = byYear.get(y)!;
+          const b = byYear.get(y);
+          if (!b) return "-";
           if (!hofYear(y)?.candidates.some((x) => x.name === name)) return ".";
           if (b.blank) return "B";
           return b.votes.includes(name) ? "Y" : "N";
         })
         .join(""),
     }));
-  const counts = years.map((y) => byYear.get(y)!.count);
+  const counts = years.map((y) => byYear.get(y)?.count ?? null);
   return <HofGrid years={years} counts={counts} rows={rows} />;
 }
 
@@ -425,7 +428,7 @@ export default async function VoterPage({ params }: Props) {
             <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
               BBHOF Tracker
             </a>
-            . Names in red got under 5% of public ballots.
+            . Names in red got under 5% of public ballots. In the &ldquo;Names on ballot&rdquo; row, 0 is a blank ballot (submitted with no names) and &ndash; means no public ballot that year: the voter may not have voted, or kept the ballot private.
           </p>
           <HofGridSection ballots={v.hof} />
           <HofYearList ballots={v.hof} />
