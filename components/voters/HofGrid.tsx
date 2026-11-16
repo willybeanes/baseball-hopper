@@ -18,6 +18,12 @@ export default function HofGrid({ years, counts, rows }: { years: number[]; coun
     <div className="-mx-1 overflow-x-auto px-1">
       <table className={s.grid}>
         <thead>
+          <tr className={s.totals}>
+            <th>Names on ballot</th>
+            {counts.map((c, i) => (
+              <th key={years[i]}>{c}</th>
+            ))}
+          </tr>
           <tr>
             <th>Candidate</th>
             {years.map((y) => (
@@ -58,14 +64,6 @@ export default function HofGrid({ years, counts, rows }: { years: number[]; coun
             </tr>
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <td>Names on ballot</td>
-            {counts.map((c, i) => (
-              <td key={years[i]}>{c}</td>
-            ))}
-          </tr>
-        </tfoot>
       </table>
     </div>
   );
