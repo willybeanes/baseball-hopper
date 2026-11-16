@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const TRACKER_URL = "https://1drv.ms/x/c/f2e5d8fc5199dfaf/EdbgAklsFj9NofGNQYqyGHkBwQRlbI_-6kBfDDfmGjR0eQ";
+const TRACKER_URL = "https://tracker.fyi/";
 const PANEL =
   "rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] px-5 py-5 shadow-[var(--panel-shadow)] sm:px-7";
 const H2 = "text-[15px] font-semibold tracking-tight text-[var(--text)]";
@@ -424,9 +424,9 @@ export default async function VoterPage({ params }: Props) {
       {v.hof.length > 0 && (
         <Panel title={<>Hall of Fame ballots</>}>
           <p className="mb-4 mt-1 max-w-[110ch] text-[12px] leading-relaxed text-[var(--dim)]">
-            Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from Ryan Thibodaux&rsquo;s{" "}
+            Filled dot: voted for. Open dot: on the ballot but left off. Lists everyone this voter backed, plus inducted or 20%+ candidates they passed on. Public ballots from{" "}
             <a href={TRACKER_URL} className="underline hover:text-[var(--text)]" target="_blank" rel="noreferrer">
-              BBHOF Tracker
+              Ryan Thibodaux&rsquo;s BBHOF Tracker
             </a>
             . Names in red got under 5% of public ballots. In the &ldquo;Names on ballot&rdquo; row, 0 is a blank ballot (submitted with no names) and &ndash; means no public ballot that year: the voter may not have voted, or kept the ballot private.
           </p>
