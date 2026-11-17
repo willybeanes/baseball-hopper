@@ -8,6 +8,7 @@ import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { depthChart, type Credit } from '@/lib/team-builder/depth'
 import { fmtRecord, projectedRecord, warScale, warScaleFromTotal } from '@/lib/team-builder/record'
 import assumptions from '@/lib/team-builder/assumptions.json'
+import payrolls2026 from '@/lib/team-builder/payrolls-2026.json'
 import FieldDiagram from './FieldDiagram'
 import { fmtWar, isEstimate, money, warPrice, warTier, warTint, type Meta, type Player, type TeamFile } from '@/lib/team-builder/roster'
 import { addMove, buildRoster, payrollEffects, poolToPlayer, salaryEditable, undoPlayer, type Move, type Slot } from '@/lib/team-builder/moves'
@@ -391,7 +392,7 @@ function PayrollEffect({ dollars, className = '', suffix = '' }: { dollars: numb
   )
 }
 
-function Stat({ label, value, delta, sub }: { label: string; value: string; delta?: React.ReactNode; sub?: React.ReactNode }) {
+function Stat({ label, value, delta, sub, foot }: { label: string; value: string; delta?: React.ReactNode; sub?: React.ReactNode; foot?: React.ReactNode }) {
   return (
     <div>
       <div className="text-[11px] font-medium uppercase tracking-wider text-[var(--dimmer)]">{label}</div>
@@ -400,7 +401,22 @@ function Stat({ label, value, delta, sub }: { label: string; value: string; delt
         <span className="text-xl font-bold leading-tight tracking-tight sm:text-2xl" aria-live="polite">{value}{delta}</span>
         {sub && <span className="text-[11px] text-[var(--dim)]">{sub}</span>}
       </div>
+      {foot && <div className="text-[11px] text-[var(--dim)]">{foot}</div>}
     </div>
+  )
+}
+
+// Where the team was last year: Cot's 2026 payroll at Opening Day (26-man) and at season's end
+// (40-man), saved before the sheets rolled over to 2027 (payrolls-2026.json).
+const PAYROLLS_2026 = payrolls2026 as unknown as Record<string, { openingDay: number | null; payroll: number } | undefined>
+function LastYearPayroll({ team }: { team: string }) {
+  const p = PAYROLLS_2026[team]
+  if (!p) return null
+  return (
+    <span title="Cot's Baseball Contracts: 26-man Opening Day payroll and 40-man year-end payroll for 2026">
+      2026: {p.openingDay != null && <>Opening Day <span className="font-mono text-[var(--text)]">{money(p.openingDay)}</span>, </>}
+      year-end <span className="font-mono text-[var(--text)]">{money(p.payroll)}</span>
+    </span>
   )
 }
 
@@ -818,7 +834,7 @@ export default function TeamBuilderApp() {
               <div className="flex items-stretch gap-3 sm:gap-5">
               {meta.taxThreshold && <TaxGauge taxPayroll={built.taxPayroll} threshold={meta.taxThreshold} />}
               <div className="grid grid-cols-1 content-center gap-y-2">
-                <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money, buyouts" />
+                <Stat label="2027 payroll" value={money(built.payroll)} delta={<Delta now={built.payroll} then={start.payroll} />} sub="Salaries, dead money, buyouts" foot={<LastYearPayroll team={team} />} />
                 <Stat
                   label="Luxury-tax payroll"
                   value={money(built.taxPayroll)}
