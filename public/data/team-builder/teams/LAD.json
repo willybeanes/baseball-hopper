@@ -101,7 +101,7 @@
    "walkYear": false,
    "mlbamId": 605141,
    "salarySource": "cots",
-   "war": 4.08,
+   "war": 4.09,
    "pa": 589
   },
   {
@@ -255,8 +255,8 @@
    "walkYear": false,
    "mlbamId": 808975,
    "salarySource": "cots",
-   "war": 0.06,
-   "pa": 108
+   "war": 0.05,
+   "pa": 101
   },
   {
    "name": "Emmet Sheehan",
@@ -605,6 +605,22 @@
    "pa": 366
   },
   {
+   "name": "Christian Cairo",
+   "sheetName": "Cairo, Christian",
+   "pos": "ss",
+   "age": 26,
+   "mls": 0.013,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 686551,
+   "salarySource": "minimum",
+   "war": 0.02,
+   "pa": 38
+  },
+  {
    "name": "Ronan Kopp",
    "sheetName": "Kopp, Ronan",
    "pos": "lhp",
@@ -619,23 +635,6 @@
    "salarySource": "minimum",
    "war": -0.02,
    "ip": 6
-  },
-  {
-   "name": "Christian Cairo",
-   "sheetName": "",
-   "pos": "ss-3b-lf",
-   "age": 26,
-   "mls": 0,
-   "contract": "Added to the 40-man",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 686551,
-   "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": 0.02,
-   "pa": 15
   }
  ],
  "deadMoney": [
@@ -764,6 +763,16 @@
    "age": 21,
    "war": 1.05,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 692416,
+   "name": "Christian Cerda",
+   "pos": "c",
+   "age": 24,
+   "war": 0.99,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

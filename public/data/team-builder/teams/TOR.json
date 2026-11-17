@@ -70,8 +70,8 @@
    "walkYear": false,
    "mlbamId": 665926,
    "salarySource": "cots",
-   "war": 1.94,
-   "pa": 477
+   "war": 1.95,
+   "pa": 479
   },
   {
    "name": "Kazuma Okamoto",
@@ -300,7 +300,7 @@
    "mlbamId": 670102,
    "salarySource": "mlbtr-arb",
    "war": 0.09,
-   "ip": 28
+   "ip": 30
   },
   {
    "name": "Addison Barger",
@@ -315,8 +315,8 @@
    "salaryPrevYear": 811000,
    "mlbamId": 680718,
    "salarySource": "minimum",
-   "war": 0.73,
-   "pa": 280
+   "war": 0.67,
+   "pa": 282
   },
   {
    "name": "Brendon Little",
@@ -379,8 +379,8 @@
    "salaryPrevYear": 453879,
    "mlbamId": 682729,
    "salarySource": "minimum",
-   "war": 0.22,
-   "pa": 168
+   "war": 0.2,
+   "pa": 165
   },
   {
    "name": "Trey Yesavage",
@@ -460,7 +460,7 @@
    "mlbamId": 814005,
    "salarySource": "minimum",
    "war": 0.19,
-   "ip": 63.9
+   "ip": 59.9
   },
   {
    "name": "Yohendrick Pinango",
@@ -523,7 +523,7 @@
    "salaryPrevYear": 216899,
    "mlbamId": 703520,
    "salarySource": "minimum",
-   "war": 1.83,
+   "war": 1.84,
    "pa": 489
   },
   {

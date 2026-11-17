@@ -50,7 +50,7 @@
    "cotsEstimate": 11750000,
    "mlbamId": 668930,
    "salarySource": "mlbtr-arb",
-   "war": 3.37,
+   "war": 3.38,
    "pa": 620
   },
   {
@@ -85,7 +85,7 @@
    "walkYear": false,
    "mlbamId": 694192,
    "salarySource": "cots",
-   "war": 3.89,
+   "war": 3.9,
    "pa": 648
   },
   {
@@ -137,8 +137,8 @@
    "walkYear": false,
    "mlbamId": 806198,
    "salarySource": "cots",
-   "war": 2.24,
-   "pa": 477
+   "war": 2.37,
+   "pa": 498
   },
   {
    "name": "Garrett Mitchell",
@@ -155,7 +155,7 @@
    "cotsEstimate": 3000000,
    "mlbamId": 669003,
    "salarySource": "mlbtr-arb",
-   "war": 2.14,
+   "war": 2.15,
    "pa": 487
   },
   {
@@ -190,8 +190,8 @@
    "cotsEstimate": 2250000,
    "mlbamId": 687401,
    "salarySource": "mlbtr-arb",
-   "war": 1.4,
-   "pa": 334
+   "war": 1.38,
+   "pa": 329
   },
   {
    "name": "Sal Frelick",
@@ -226,8 +226,8 @@
    "cotsEstimate": 1787000,
    "mlbamId": 666152,
    "salarySource": "mlbtr-arb",
-   "war": 0.62,
-   "pa": 265
+   "war": 0.61,
+   "pa": 262
   },
   {
    "name": "DL Hall",
@@ -262,8 +262,8 @@
    "cotsEstimate": 1225000,
    "mlbamId": 666310,
    "salarySource": "mlbtr-arb",
-   "war": 0.18,
-   "pa": 56
+   "war": 0.35,
+   "pa": 105
   },
   {
    "name": "Angel Zerpa",
@@ -316,8 +316,8 @@
    "cotsEstimate": 1000000,
    "mlbamId": 682990,
    "salarySource": "mlbtr-arb",
-   "war": 1.44,
-   "ip": 141.6
+   "war": 1.43,
+   "ip": 139.6
   },
   {
    "name": "Abner Uribe",
@@ -460,8 +460,8 @@
    "salaryPrevYear": 600611,
    "mlbamId": 687075,
    "salarySource": "minimum",
-   "war": 0.91,
-   "ip": 87.4
+   "war": 0.88,
+   "ip": 84.4
   },
   {
    "name": "Colton Gordon",
@@ -524,8 +524,8 @@
    "salaryPrevYear": 251320,
    "mlbamId": 689441,
    "salarySource": "minimum",
-   "war": 0.44,
-   "ip": 51
+   "war": 0.42,
+   "ip": 49
   },
   {
    "name": "Garrett Stallings",
@@ -541,7 +541,7 @@
    "mlbamId": 668831,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 16
+   "ip": 17
   },
   {
    "name": "Jeferson Quero",
@@ -556,8 +556,25 @@
    "salaryPrevYear": 75093,
    "mlbamId": 691620,
    "salarySource": "minimum",
-   "war": 0.32,
-   "pa": 110
+   "war": 0.18,
+   "pa": 61
+  },
+  {
+   "name": "Ryan Walker",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 31,
+   "mls": 2.136,
+   "contract": "Added to the 40-man",
+   "status": "arb",
+   "salary": 1600000,
+   "taxValue": 1600000,
+   "salaryPrevYear": null,
+   "mlbamId": 676254,
+   "salarySource": "mlbtr-arb",
+   "corrected": "Added from RosterResource",
+   "war": 0.08,
+   "ip": 40
   }
  ],
  "deadMoney": [
@@ -603,6 +620,16 @@
  "rowsTaxPayroll": 138120988,
  "minors": [
   {
+   "mlbamId": 824620,
+   "name": "Tyson Hardin",
+   "pos": "sp",
+   "age": 25,
+   "war": 2.75,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 815908,
    "name": "Jesús Made",
    "pos": "ss",
@@ -613,9 +640,9 @@
    "debuted": false
   },
   {
-   "mlbamId": 702518,
-   "name": "Jett Williams",
-   "pos": "ss",
+   "mlbamId": 702726,
+   "name": "Luke Adams",
+   "pos": "3b",
    "age": 23,
    "war": 1.7,
    "pa": 600,
@@ -623,11 +650,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 702726,
-   "name": "Luke Adams",
-   "pos": "3b",
+   "mlbamId": 702518,
+   "name": "Jett Williams",
+   "pos": "ss",
    "age": 23,
-   "war": 1.7,
+   "war": 1.68,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -743,22 +770,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 702652,
-   "name": "Andrew Fischer",
-   "pos": "3b",
-   "age": 23,
-   "war": 0.77,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 809229,
    "name": "Jaron DeBerry",
    "pos": "sp",
    "age": 24,
    "war": 0.74,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 702652,
+   "name": "Andrew Fischer",
+   "pos": "3b",
+   "age": 23,
+   "war": 0.7,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -789,16 +816,6 @@
    "age": 24,
    "war": 0.55,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 824620,
-   "name": "Tyson Hardin",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.28,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   },
@@ -841,16 +858,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 700183,
-   "name": "Blake Holub",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.14,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
   }
  ]
 }

@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 592518,
    "salarySource": "cots",
-   "war": 2.7,
+   "war": 2.71,
    "pa": 602
   },
   {
@@ -50,7 +50,7 @@
    "mlbamId": 665487,
    "salarySource": "cots",
    "war": 4.64,
-   "pa": 643
+   "pa": 642
   },
   {
    "name": "Joe Musgrove",
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 506433,
    "salarySource": "cots",
-   "war": 0.94,
+   "war": 0.93,
    "ip": 89.5
   },
   {
@@ -100,7 +100,7 @@
    "walkYear": false,
    "mlbamId": 630105,
    "salarySource": "cots",
-   "war": 0.9,
+   "war": 0.89,
    "pa": 474
   },
   {
@@ -135,7 +135,7 @@
    "walkYear": false,
    "mlbamId": 701538,
    "salarySource": "cots",
-   "war": 4.46,
+   "war": 4.47,
    "pa": 633
   },
   {
@@ -212,7 +212,7 @@
    "walkYear": false,
    "mlbamId": 823550,
    "salarySource": "cots",
-   "war": 0.41,
+   "war": 0.42,
    "pa": 212
   },
   {
@@ -230,7 +230,7 @@
    "cotsEstimate": 2900000,
    "mlbamId": 676664,
    "salarySource": "mlbtr-arb",
-   "war": 0.8,
+   "war": 0.79,
    "ip": 144.9
   },
   {
@@ -265,8 +265,24 @@
    "walkYear": false,
    "mlbamId": 606996,
    "salarySource": "cots",
-   "war": 0.73,
-   "ip": 106
+   "war": 0.54,
+   "ip": 84.6
+  },
+  {
+   "name": "Ryan Weiss",
+   "sheetName": "Weiss, Ryan",
+   "pos": "rhp-s",
+   "age": 30,
+   "mls": 0,
+   "contract": "1 y (27)+28 cl opt",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 680802,
+   "salarySource": "minimum",
+   "war": 1.08,
+   "ip": 108.8
   },
   {
    "name": "Luis Campusano",
@@ -320,7 +336,7 @@
    "mlbamId": 663773,
    "salarySource": "mlbtr-arb",
    "war": -0.02,
-   "ip": 33
+   "ip": 28
   },
   {
    "name": "Jhony Brito",
@@ -337,8 +353,8 @@
    "cotsEstimate": 801500,
    "mlbamId": 666745,
    "salarySource": "mlbtr-arb",
-   "war": 0.61,
-   "ip": 120
+   "war": 0.54,
+   "ip": 122.8
   },
   {
    "name": "Randy Vásquez",
@@ -386,7 +402,7 @@
    "mlbamId": 676702,
    "salarySource": "minimum",
    "war": 0.04,
-   "ip": 46
+   "ip": 44
   },
   {
    "name": "Will Wagner",
@@ -401,8 +417,8 @@
    "salaryPrevYear": 348240,
    "mlbamId": 695238,
    "salarySource": "minimum",
-   "war": -0.02,
-   "pa": 91
+   "war": -0.03,
+   "pa": 87
   },
   {
    "name": "Samad Taylor",
@@ -466,7 +482,7 @@
    "mlbamId": 687957,
    "salarySource": "minimum",
    "war": 0.5,
-   "pa": 327
+   "pa": 325
   },
   {
    "name": "Jase Bowen",
@@ -482,7 +498,7 @@
    "mlbamId": 687749,
    "salarySource": "minimum",
    "war": -0.14,
-   "pa": 154
+   "pa": 149
   },
   {
    "name": "Rodolfo Durán",
@@ -529,7 +545,7 @@
    "salaryPrevYear": 112620,
    "mlbamId": 806956,
    "salarySource": "minimum",
-   "war": 1.33,
+   "war": 1.34,
    "pa": 385
   },
   {
@@ -545,8 +561,8 @@
    "salaryPrevYear": null,
    "mlbamId": 692294,
    "salarySource": "minimum",
-   "war": 0.48,
-   "ip": 77.9
+   "war": 0.42,
+   "ip": 70.6
   },
   {
    "name": "Garrett Hawkins",
@@ -561,8 +577,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 678184,
    "salarySource": "minimum",
-   "war": -0.1,
-   "ip": 38
+   "war": -0.08,
+   "ip": 30
   }
  ],
  "deadMoney": [
@@ -636,11 +652,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 801293,
-   "name": "Eric Yost",
+   "mlbamId": 685719,
+   "name": "Fernando Sanchez",
    "pos": "sp",
-   "age": 24,
-   "war": 0.74,
+   "age": 26,
+   "war": 0.7,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -656,11 +672,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 685719,
-   "name": "Fernando Sanchez",
+   "mlbamId": 801293,
+   "name": "Eric Yost",
    "pos": "sp",
-   "age": 26,
-   "war": 0.62,
+   "age": 24,
+   "war": 0.59,
    "ip": 200,
    "salary": 780000,
    "debuted": false

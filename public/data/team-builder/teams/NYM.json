@@ -70,8 +70,8 @@
    "walkYear": false,
    "mlbamId": 543760,
    "salarySource": "cots",
-   "war": 1.02,
-   "pa": 378
+   "war": 1.03,
+   "pa": 382
   },
   {
    "name": "Jorge Polanco",
@@ -87,8 +87,8 @@
    "walkYear": true,
    "mlbamId": 593871,
    "salarySource": "cots",
-   "war": 0.1,
-   "pa": 280
+   "war": 0.09,
+   "pa": 259
   },
   {
    "name": "Sean Manaea",
@@ -173,7 +173,7 @@
    "cotsEstimate": 3500000,
    "mlbamId": 682626,
    "salarySource": "mlbtr-arb",
-   "war": 1.67,
+   "war": 1.68,
    "pa": 343
   },
   {
@@ -210,7 +210,7 @@
    "mlbamId": 683146,
    "salarySource": "mlbtr-arb",
    "war": 0.97,
-   "pa": 370
+   "pa": 398
   },
   {
    "name": "Christopher Morel",
@@ -227,8 +227,8 @@
    "cotsEstimate": 2000000,
    "mlbamId": 666624,
    "salarySource": "mlbtr-arb",
-   "war": 0.09,
-   "pa": 57
+   "war": 0.08,
+   "pa": 55
   },
   {
    "name": "Cionel Pérez",
@@ -245,8 +245,8 @@
    "cotsEstimate": 1550000,
    "mlbamId": 672335,
    "salarySource": "mlbtr-arb",
-   "war": 0.26,
-   "ip": 50
+   "war": 0.24,
+   "ip": 47
   },
   {
    "name": "Mark Vientos",
@@ -264,7 +264,7 @@
    "mlbamId": 668901,
    "salarySource": "mlbtr-arb",
    "war": 0.51,
-   "pa": 252
+   "pa": 250
   },
   {
    "name": "Reed Garrett",
@@ -281,8 +281,8 @@
    "cotsEstimate": 1300000,
    "mlbamId": 657585,
    "salarySource": "mlbtr-arb",
-   "war": 0.37,
-   "ip": 42
+   "war": 0.45,
+   "ip": 52
   },
   {
    "name": "Austin Warren",
@@ -333,8 +333,8 @@
    "salaryPrevYear": 379197,
    "mlbamId": 650960,
    "salarySource": "minimum",
-   "war": 0.24,
-   "ip": 56
+   "war": 0.22,
+   "ip": 50
   },
   {
    "name": "Ronny Mauricio",
@@ -349,8 +349,8 @@
    "salaryPrevYear": 572319,
    "mlbamId": 677595,
    "salarySource": "minimum",
-   "war": 0.2,
-   "pa": 121
+   "war": 0.15,
+   "pa": 103
   },
   {
    "name": "Christian Scott",
@@ -397,8 +397,8 @@
    "salaryPrevYear": 536358,
    "mlbamId": 668964,
    "salarySource": "minimum",
-   "war": 0.25,
-   "ip": 54
+   "war": 0.26,
+   "ip": 56
   },
   {
    "name": "Jared Young",
@@ -509,7 +509,7 @@
    "salaryPrevYear": 579787,
    "mlbamId": 805999,
    "salarySource": "minimum",
-   "war": 2.45,
+   "war": 2.46,
    "pa": 527
   },
   {
@@ -589,8 +589,8 @@
    "salaryPrevYear": 528617,
    "mlbamId": 702752,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 32
+   "war": 0.14,
+   "ip": 34
   },
   {
    "name": "Jefry Yan",
@@ -621,8 +621,8 @@
    "salaryPrevYear": 193855,
    "mlbamId": 703492,
    "salarySource": "minimum",
-   "war": 0.15,
-   "pa": 180
+   "war": 0.14,
+   "pa": 155
   },
   {
    "name": "Jack Weisenburger",

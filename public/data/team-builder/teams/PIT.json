@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 656605,
    "salarySource": "cots",
-   "war": 1.52,
+   "war": 1.51,
    "ip": 155.6
   },
   {
@@ -49,8 +49,8 @@
    "walkYear": true,
    "mlbamId": 656811,
    "salarySource": "cots",
-   "war": 0.67,
-   "pa": 477
+   "war": 0.75,
+   "pa": 478
   },
   {
    "name": "Luke Weaver",
@@ -102,7 +102,7 @@
    "cotsEstimate": 6600000,
    "mlbamId": 665833,
    "salarySource": "mlbtr-arb",
-   "war": 2.53,
+   "war": 2.54,
    "pa": 553
   },
   {
@@ -119,7 +119,7 @@
    "walkYear": false,
    "mlbamId": 804606,
    "salarySource": "cots",
-   "war": 3.16,
+   "war": 3.17,
    "pa": 552
   },
   {
@@ -173,7 +173,7 @@
    "cotsEstimate": 2002000,
    "mlbamId": 687462,
    "salarySource": "mlbtr-arb",
-   "war": 0.99,
+   "war": 0.89,
    "pa": 411
   },
   {
@@ -209,7 +209,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 669707,
    "salarySource": "mlbtr-arb",
-   "war": 0.53,
+   "war": 0.54,
    "pa": 246
   },
   {
@@ -425,8 +425,8 @@
    "salaryPrevYear": 663582,
    "mlbamId": 695257,
    "salarySource": "minimum",
-   "war": -0.03,
-   "pa": 43
+   "war": -0.01,
+   "pa": 34
   },
   {
    "name": "Ronny Simon",
@@ -758,7 +758,7 @@
    "name": "Keiner Delgado",
    "pos": "2b",
    "age": 23,
-   "war": 0.73,
+   "war": 0.74,
    "pa": 600,
    "salary": 780000,
    "debuted": false

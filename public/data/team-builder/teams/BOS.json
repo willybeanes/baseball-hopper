@@ -49,8 +49,8 @@
    "walkYear": true,
    "mlbamId": 807799,
    "salarySource": "cots",
-   "war": 0.15,
-   "pa": 86
+   "war": 0.09,
+   "pa": 53
   },
   {
    "name": "Willson Contreras",
@@ -66,8 +66,8 @@
    "walkYear": false,
    "mlbamId": 575929,
    "salarySource": "cots",
-   "war": 2.13,
-   "pa": 550
+   "war": 2.05,
+   "pa": 549
   },
   {
    "name": "Ranger Suárez",
@@ -85,6 +85,23 @@
    "salarySource": "cots",
    "war": 3.13,
    "ip": 169
+  },
+  {
+   "name": "Jake Bauers",
+   "sheetName": "Bauers, Jake",
+   "pos": "1b",
+   "age": 31,
+   "mls": 6.084,
+   "contract": "4 y/$58M (27-30)",
+   "status": "signed",
+   "salary": 14500000,
+   "taxValue": 14500000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 641343,
+   "salarySource": "cots",
+   "war": 1.75,
+   "pa": 502
   },
   {
    "name": "Aroldis Chapman",
@@ -118,8 +135,8 @@
    "cotsEstimate": 10850000,
    "mlbamId": 680776,
    "salarySource": "mlbtr-arb",
-   "war": 1.13,
-   "pa": 523
+   "war": 0.85,
+   "pa": 345
   },
   {
    "name": "Adley Rutschman",
@@ -188,8 +205,8 @@
    "cotsEstimate": 5250000,
    "mlbamId": 677800,
    "salarySource": "mlbtr-arb",
-   "war": 2.36,
-   "pa": 583
+   "war": 2.17,
+   "pa": 541
   },
   {
    "name": "Tanner Houck",
@@ -223,8 +240,8 @@
    "walkYear": false,
    "mlbamId": 701350,
    "salarySource": "cots",
-   "war": 2.55,
-   "pa": 527
+   "war": 2.81,
+   "pa": 526
   },
   {
    "name": "Ceddanne Rafaela",
@@ -240,8 +257,8 @@
    "walkYear": false,
    "mlbamId": 678882,
    "salarySource": "cots",
-   "war": 2.76,
-   "pa": 531
+   "war": 2.7,
+   "pa": 518
   },
   {
    "name": "Kristian Campbell",
@@ -257,8 +274,8 @@
    "walkYear": false,
    "mlbamId": 692225,
    "salarySource": "cots",
-   "war": 0.18,
-   "pa": 73
+   "war": 0.16,
+   "pa": 64
   },
   {
    "name": "Kutter Crawford",
@@ -311,8 +328,8 @@
    "cotsEstimate": 1900000,
    "mlbamId": 663853,
    "salarySource": "mlbtr-arb",
-   "war": 0.13,
-   "pa": 68
+   "war": 0.12,
+   "pa": 59
   },
   {
    "name": "Johan Oviedo",
@@ -347,8 +364,8 @@
    "cotsEstimate": 1610000,
    "mlbamId": 671213,
    "salarySource": "mlbtr-arb",
-   "war": 0.13,
-   "pa": 41
+   "war": 0.1,
+   "pa": 31
   },
   {
    "name": "Eli White",
@@ -365,8 +382,8 @@
    "cotsEstimate": 1575000,
    "mlbamId": 642201,
    "salarySource": "mlbtr-arb",
-   "war": 0.06,
-   "pa": 50
+   "war": 0.05,
+   "pa": 34
   },
   {
    "name": "Erik Miller",
@@ -401,7 +418,7 @@
    "cotsEstimate": 1250000,
    "mlbamId": 655316,
    "salarySource": "mlbtr-arb",
-   "war": 0.39,
+   "war": 0.4,
    "pa": 164
   },
   {
@@ -473,8 +490,8 @@
    "cotsEstimate": 900000,
    "mlbamId": 663330,
    "salarySource": "mlbtr-arb",
-   "war": 0.25,
-   "pa": 166
+   "war": 0.15,
+   "pa": 102
   },
   {
    "name": "Jovani Moran",
@@ -505,8 +522,8 @@
    "salaryPrevYear": 266150,
    "mlbamId": 678554,
    "salarySource": "minimum",
-   "war": 1.89,
-   "pa": 441
+   "war": 1.83,
+   "pa": 405
   },
   {
    "name": "Caleb Durbin",
@@ -521,8 +538,8 @@
    "salaryPrevYear": 796000,
    "mlbamId": 702332,
    "salarySource": "minimum",
-   "war": 2.53,
-   "pa": 514
+   "war": 2.49,
+   "pa": 505
   },
   {
    "name": "Mickey Gasper",
@@ -537,8 +554,8 @@
    "salaryPrevYear": 507409,
    "mlbamId": 681508,
    "salarySource": "minimum",
-   "war": 0.42,
-   "pa": 115
+   "war": 0.39,
+   "pa": 100
   },
   {
    "name": "Nick Sogard",
@@ -553,8 +570,8 @@
    "salaryPrevYear": 549390,
    "mlbamId": 686765,
    "salarySource": "minimum",
-   "war": 0.46,
-   "pa": 227
+   "war": 0.43,
+   "pa": 206
   },
   {
    "name": "Anthony Seigler",
@@ -569,8 +586,8 @@
    "salaryPrevYear": 450620,
    "mlbamId": 678011,
    "salarySource": "minimum",
-   "war": 0.17,
-   "pa": 55
+   "war": 0.16,
+   "pa": 52
   },
   {
    "name": "Payton Tolle",
@@ -653,22 +670,6 @@
    "ip": 36
   },
   {
-   "name": "Raymond Burgos",
-   "sheetName": "Burgos, Raymond",
-   "pos": "lhp",
-   "age": 28,
-   "mls": 0.034,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 115647,
-   "mlbamId": 670103,
-   "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 18
-  },
-  {
    "name": "Jedixson Paez",
    "sheetName": "Paez, Jedixson",
    "pos": "rhp",
@@ -733,10 +734,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 212918334,
- "sheetTaxPayroll": 252367552,
- "rowsPayroll": 212918334,
- "rowsTaxPayroll": 252367552,
+ "sheetPayroll": 227418334,
+ "sheetTaxPayroll": 266867552,
+ "rowsPayroll": 227418334,
+ "rowsTaxPayroll": 266867552,
  "minors": [
   {
    "mlbamId": 808265,
@@ -804,6 +805,16 @@
    "pos": "3b",
    "age": 24,
    "war": 1.61,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 801442,
+   "name": "Jack Pineda",
+   "pos": "ss",
+   "age": 27,
+   "war": 1.56,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -985,16 +996,6 @@
    "age": 28,
    "war": 0.15,
    "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 682785,
-   "name": "Angel Bastardo",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.05,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   },

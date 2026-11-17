@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 670541,
    "salarySource": "cots",
-   "war": 5,
+   "war": 5.01,
    "pa": 581
   },
   {
@@ -174,7 +174,7 @@
    "cotsEstimate": 8010000,
    "mlbamId": 686613,
    "salarySource": "mlbtr-arb",
-   "war": 3.35,
+   "war": 3.34,
    "ip": 173.3
   },
   {
@@ -380,24 +380,8 @@
    "salaryPrevYear": 573414,
    "mlbamId": 681347,
    "salarySource": "minimum",
-   "war": 0.79,
+   "war": 0.78,
    "ip": 117.8
-  },
-  {
-   "name": "Joey Loperfido",
-   "sheetName": "Loperfido, Joey",
-   "pos": "lf-1b",
-   "age": 28,
-   "mls": 1.132,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 505767,
-   "mlbamId": 694388,
-   "salarySource": "minimum",
-   "war": 0.2,
-   "pa": 213
   },
   {
    "name": "César Salazar",
@@ -719,16 +703,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 673945,
-   "name": "Freuddy Batista",
-   "pos": "c",
-   "age": 27,
-   "war": 0.97,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 801802,
    "name": "James Hicks",
    "pos": "sp",
@@ -789,6 +763,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 694388,
+   "name": "Joey Loperfido",
+   "pos": "lf",
+   "age": 28,
+   "war": 0.55,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 801700,
    "name": "Nolan DeVos",
    "pos": "sp",
@@ -797,16 +781,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 669699,
-   "name": "Braden Shewmake",
-   "pos": "ss",
-   "age": 29,
-   "war": 0.47,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 694545,
@@ -879,16 +853,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 685005,
-   "name": "Christian Roa",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.12,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 690667,
    "name": "Trey Dombroski",
    "pos": "sp",
@@ -915,16 +879,6 @@
    "age": 23,
    "war": 0.03,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 680588,
-   "name": "Julio Rodriguez",
-   "pos": "rp",
-   "age": 27,
-   "war": 0.03,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   }

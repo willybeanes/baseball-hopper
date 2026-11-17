@@ -50,7 +50,7 @@
    "cotsEstimate": 16350000,
    "mlbamId": 669302,
    "salarySource": "mlbtr-arb",
-   "war": 3.64,
+   "war": 3.63,
    "ip": 184.4
   },
   {
@@ -155,7 +155,7 @@
    "cotsEstimate": 5000000,
    "mlbamId": 693433,
    "salarySource": "mlbtr-arb",
-   "war": 3.09,
+   "war": 3.1,
    "ip": 162.1
   },
   {
@@ -226,7 +226,7 @@
    "walkYear": false,
    "mlbamId": 806068,
    "salarySource": "cots",
-   "war": 1.31,
+   "war": 1.32,
    "pa": 396
   },
   {
@@ -244,7 +244,7 @@
    "cotsEstimate": 2800000,
    "mlbamId": 686527,
    "salarySource": "mlbtr-arb",
-   "war": 1.76,
+   "war": 1.77,
    "pa": 484
   },
   {

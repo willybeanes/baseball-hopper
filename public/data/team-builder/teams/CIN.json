@@ -139,7 +139,7 @@
    "cotsEstimate": 3850000,
    "mlbamId": 668709,
    "salarySource": "mlbtr-arb",
-   "war": 1.32,
+   "war": 1.33,
    "pa": 502
   },
   {
@@ -157,7 +157,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 680574,
    "salarySource": "mlbtr-arb",
-   "war": 1.25,
+   "war": 1.26,
    "pa": 495
   },
   {
@@ -281,7 +281,7 @@
    "cotsEstimate": 1000000,
    "mlbamId": 667472,
    "salarySource": "mlbtr-arb",
-   "war": 0.58,
+   "war": 0.59,
    "pa": 323
   },
   {
@@ -297,7 +297,7 @@
    "salaryPrevYear": 577649,
    "mlbamId": 682622,
    "salarySource": "minimum",
-   "war": 0.16,
+   "war": 0.17,
    "pa": 151
   },
   {
@@ -569,7 +569,7 @@
    "salaryPrevYear": 100107,
    "mlbamId": 699115,
    "salarySource": "minimum",
-   "war": 0.38,
+   "war": 0.39,
    "pa": 332
   },
   {
@@ -679,6 +679,16 @@
    "age": 21,
    "war": 1.81,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 686844,
+   "name": "Ben Wereski",
+   "pos": "sp",
+   "age": 29,
+   "war": 1.28,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -793,16 +803,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 693312,
-   "name": "Kyle Nicolas",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.1,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 605335,
    "name": "Brandon Leibrandt",
    "pos": "rp",
@@ -831,6 +831,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 693312,
+   "name": "Kyle Nicolas",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.03,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 681114,

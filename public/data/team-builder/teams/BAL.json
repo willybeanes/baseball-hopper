@@ -71,7 +71,7 @@
     "type": "player",
     "buyout": null
    },
-   "war": 0.56,
+   "war": 0.55,
    "ip": 61
   },
   {
@@ -123,7 +123,7 @@
    "cotsEstimate": 3000000,
    "mlbamId": 681297,
    "salarySource": "mlbtr-arb",
-   "war": 1.58,
+   "war": 1.59,
    "pa": 397
   },
   {
@@ -337,7 +337,7 @@
    "salaryPrevYear": 693418,
    "mlbamId": 687064,
    "salarySource": "minimum",
-   "war": 1.71,
+   "war": 1.7,
    "ip": 156.9
   },
   {
@@ -421,22 +421,6 @@
    "ip": 48
   },
   {
-   "name": "Rece Hinds",
-   "sheetName": "Hinds, Rece",
-   "pos": "of",
-   "age": 26,
-   "mls": 0.14,
-   "contract": "1 y (27)",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 128208,
-   "mlbamId": 677956,
-   "salarySource": "minimum",
-   "war": 0.11,
-   "pa": 94
-  },
-  {
    "name": "Alex Hoppe",
    "sheetName": "Hoppe, Alex",
    "pos": "rhp",
@@ -467,22 +451,6 @@
    "salarySource": "minimum",
    "war": 0.08,
    "ip": 38
-  },
-  {
-   "name": "Philip Abner",
-   "sheetName": "Abner, Philip",
-   "pos": "lhp",
-   "age": 25,
-   "mls": 0.064,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 691769,
-   "salarySource": "minimum",
-   "war": -0.06,
-   "ip": 18
   },
   {
    "name": "Christian Franklin",
@@ -529,72 +497,8 @@
    "salaryPrevYear": 95163,
    "mlbamId": 801725,
    "salarySource": "minimum",
-   "war": 0.52,
-   "ip": 61.9
-  },
-  {
-   "name": "Cameron Foster",
-   "sheetName": "Foster, Cameron",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.015,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 113403,
-   "mlbamId": 671382,
-   "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 20
-  },
-  {
-   "name": "Zach Morgan",
-   "sheetName": "Morgan, Zach",
-   "pos": "c",
-   "age": 27,
-   "mls": 0.01,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 681439,
-   "salarySource": "minimum",
-   "war": 0.1,
-   "pa": 42
-  },
-  {
-   "name": "Josh White",
-   "sheetName": "White, Josh",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.001,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 687985,
-   "salarySource": "minimum",
-   "war": -0.03,
-   "ip": 30
-  },
-  {
-   "name": "Chase Hampton",
-   "sheetName": "Hampton, Chase",
-   "pos": "rhp",
-   "age": 25,
-   "mls": 0,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 694633,
-   "salarySource": "minimum",
-   "war": -0.1,
-   "ip": 26.5
+   "war": 0.44,
+   "ip": 52.7
   },
   {
    "name": "Reed Trimble",
@@ -806,11 +710,21 @@
    "debuted": false
   },
   {
+   "mlbamId": 681439,
+   "name": "Zach Morgan",
+   "pos": "c",
+   "age": 27,
+   "war": 1.02,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 702650,
    "name": "Michael Forret",
    "pos": "sp",
    "age": 23,
-   "war": 1.02,
+   "war": 1.01,
    "ip": 200,
    "salary": 780000,
    "debuted": false

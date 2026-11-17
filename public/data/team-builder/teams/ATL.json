@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 621566,
    "salarySource": "cots",
-   "war": 2.69,
+   "war": 2.7,
    "pa": 622
   },
   {
@@ -66,8 +66,8 @@
    "walkYear": false,
    "mlbamId": 675911,
    "salarySource": "cots",
-   "war": 1.85,
-   "ip": 116.5
+   "war": 1.97,
+   "ip": 125.5
   },
   {
    "name": "Ronald Acuña Jr.",
@@ -138,6 +138,23 @@
    "pa": 421
   },
   {
+   "name": "Evan Phillips",
+   "sheetName": "Phillips, Evan",
+   "pos": "rhp",
+   "age": 32,
+   "mls": 6.136,
+   "contract": "3 y/$35M (27-29)",
+   "status": "signed",
+   "salary": 11000000,
+   "taxValue": 11666667,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 623465,
+   "salarySource": "cots",
+   "war": 0.78,
+   "ip": 61
+  },
+  {
    "name": "Mike Yastrzemski",
    "sheetName": "Yastrzemski, Mike",
    "pos": "rf",
@@ -151,7 +168,7 @@
    "walkYear": false,
    "mlbamId": 573262,
    "salarySource": "cots",
-   "war": 0.48,
+   "war": 0.5,
    "pa": 365
   },
   {
@@ -168,7 +185,7 @@
    "walkYear": false,
    "mlbamId": 671739,
    "salarySource": "cots",
-   "war": 3.97,
+   "war": 3.98,
    "pa": 605
   },
   {
@@ -189,8 +206,8 @@
    "decidedBy": "club",
    "defaultExercised": true,
    "salarySource": "option",
-   "war": 1.25,
-   "ip": 141.3
+   "war": 0.83,
+   "ip": 101
   },
   {
    "name": "Ozzie Albies",
@@ -206,7 +223,7 @@
    "walkYear": true,
    "mlbamId": 645277,
    "salarySource": "cots",
-   "war": 1.82,
+   "war": 1.83,
    "pa": 612
   },
   {
@@ -242,7 +259,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 693821,
    "salarySource": "mlbtr-arb",
-   "war": 1.54,
+   "war": 1.53,
    "ip": 149.4
   },
   {
@@ -260,8 +277,8 @@
    "cotsEstimate": 1600000,
    "mlbamId": 675916,
    "salarySource": "mlbtr-arb",
-   "war": 0.1,
-   "ip": 36
+   "war": 0.07,
+   "ip": 25
   },
   {
    "name": "Mitchell Parker",
@@ -296,8 +313,8 @@
    "cotsEstimate": 975000,
    "mlbamId": 675627,
    "salarySource": "mlbtr-arb",
-   "war": 0.15,
-   "ip": 24
+   "war": 0.11,
+   "ip": 18
   },
   {
    "name": "Joey Wentz",
@@ -314,8 +331,8 @@
    "cotsEstimate": 900000,
    "mlbamId": 666214,
    "salarySource": "mlbtr-arb",
-   "war": 0.16,
-   "ip": 49
+   "war": 0.11,
+   "ip": 44
   },
   {
    "name": "Spencer Schwellenbach",
@@ -364,8 +381,8 @@
    "salaryPrevYear": 752893,
    "mlbamId": 700363,
    "salarySource": "minimum",
-   "war": 1.08,
-   "ip": 109.8
+   "war": 0.77,
+   "ip": 80.2
   },
   {
    "name": "Drake Baldwin",
@@ -396,8 +413,8 @@
    "salaryPrevYear": null,
    "mlbamId": 664849,
    "salarySource": "minimum",
-   "war": 0.18,
-   "ip": 33
+   "war": 0.17,
+   "ip": 32
   },
   {
    "name": "Hurston Waldrep",
@@ -428,8 +445,8 @@
    "salaryPrevYear": 183957,
    "mlbamId": 678061,
    "salarySource": "minimum",
-   "war": 0.43,
-   "ip": 44
+   "war": 0.45,
+   "ip": 46
   },
   {
    "name": "Dylan Dodd",
@@ -444,8 +461,8 @@
    "salaryPrevYear": 703106,
    "mlbamId": 689266,
    "salarySource": "minimum",
-   "war": 0.45,
-   "ip": 54
+   "war": 0.48,
+   "ip": 58
   },
   {
    "name": "Brett Wisely",
@@ -460,8 +477,8 @@
    "salaryPrevYear": null,
    "mlbamId": 689172,
    "salarySource": "minimum",
-   "war": 0.18,
-   "pa": 166
+   "war": 0.17,
+   "pa": 152
   },
   {
    "name": "Victor Mederos",
@@ -477,7 +494,7 @@
    "mlbamId": 682989,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 50
+   "ip": 54
   },
   {
    "name": "Didier Fuentes",
@@ -492,8 +509,8 @@
    "salaryPrevYear": 690742,
    "mlbamId": 800311,
    "salarySource": "minimum",
-   "war": 0.91,
-   "ip": 72
+   "war": 1.94,
+   "ip": 139.3
   },
   {
    "name": "Brewer Hicklen",
@@ -508,8 +525,8 @@
    "salaryPrevYear": 248751,
    "mlbamId": 676551,
    "salarySource": "minimum",
-   "war": 0.08,
-   "pa": 162
+   "war": 0.07,
+   "pa": 126
   },
   {
    "name": "J.R. Ritchie",
@@ -524,8 +541,8 @@
    "salaryPrevYear": 333401,
    "mlbamId": 702275,
    "salarySource": "minimum",
-   "war": 0.84,
-   "ip": 98.9
+   "war": 0.56,
+   "ip": 65.9
   },
   {
    "name": "Jim Jarvis",
@@ -572,8 +589,8 @@
    "salaryPrevYear": 119939,
    "mlbamId": 702566,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 32.2
+   "war": 0.05,
+   "ip": 9.1
   },
   {
    "name": "Tyler Uberstine",
@@ -605,14 +622,65 @@
    "mlbamId": 686628,
    "salarySource": "minimum",
    "war": -0.02,
-   "ip": 10
+   "ip": 8
+  },
+  {
+   "name": "Cedric De Grandpre",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 678142,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
+  },
+  {
+   "name": "Davis Polo",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 22,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 805175,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
+  },
+  {
+   "name": "Cameron Foster",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 671382,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.04,
+   "ip": 20
   }
  ],
  "deadMoney": [
   {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 5100000,
+   "taxValue": 5100000,
    "note": ""
   },
   {
@@ -632,10 +700,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 211285000,
- "sheetTaxPayroll": 218818334,
- "rowsPayroll": 211285000,
- "rowsTaxPayroll": 218818334,
+ "sheetPayroll": 221435000,
+ "sheetTaxPayroll": 229635001,
+ "rowsPayroll": 221435000,
+ "rowsTaxPayroll": 229635001,
  "minors": [
   {
    "mlbamId": 822412,
@@ -653,16 +721,6 @@
    "pos": "sp",
    "age": 22,
    "war": 1.6,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 678142,
-   "name": "Cedric De Grandpre",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.43,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -688,16 +746,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 805175,
-   "name": "Davis Polo",
-   "pos": "sp",
-   "age": 22,
-   "war": 1.37,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 807284,
    "name": "Cam Caminiti",
    "pos": "sp",
@@ -716,6 +764,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 671289,
+   "name": "Tyler Freeman",
+   "pos": "rf",
+   "age": 28,
+   "war": 1.12,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 802357,
@@ -778,16 +836,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 802117,
-   "name": "Patrick Clohisy",
-   "pos": "cf",
-   "age": 25,
-   "war": 0.56,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 803349,
    "name": "Herick Hernandez",
    "pos": "sp",
@@ -796,6 +844,26 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 802117,
+   "name": "Patrick Clohisy",
+   "pos": "cf",
+   "age": 25,
+   "war": 0.39,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 660644,
+   "name": "Vidal Bruján",
+   "pos": "ss",
+   "age": 29,
+   "war": 0.31,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 677954,
@@ -846,16 +914,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 660644,
-   "name": "Vidal Bruján",
-   "pos": "ss",
-   "age": 29,
-   "war": 0.17,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 679489,

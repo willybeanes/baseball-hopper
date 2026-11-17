@@ -36,6 +36,27 @@
    "pa": 179
   },
   {
+   "name": "Emilio Pagán",
+   "sheetName": "Pagán, Emilio",
+   "pos": "rhp-c",
+   "age": 36,
+   "mls": 9.091,
+   "contract": "1 y/$11M (27)",
+   "status": "signed",
+   "salary": 11500000,
+   "taxValue": 11500000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 641941,
+   "salarySource": "cots",
+   "playerOption": {
+    "type": "player",
+    "buyout": null
+   },
+   "war": 0.36,
+   "ip": 64
+  },
+  {
    "name": "Drew Anderson",
    "sheetName": "Anderson, Drew",
    "pos": "rhp",
@@ -49,8 +70,8 @@
    "walkYear": true,
    "mlbamId": 623454,
    "salarySource": "cots",
-   "war": 1.18,
-   "ip": 102.2
+   "war": 1.19,
+   "ip": 103.2
   },
   {
    "name": "Riley Greene",
@@ -85,7 +106,7 @@
    "mlbamId": 640448,
    "salarySource": "cots",
    "war": 0.01,
-   "ip": 62
+   "ip": 60
   },
   {
    "name": "Spencer Torkelson",
@@ -138,8 +159,8 @@
    "cotsEstimate": 4600000,
    "mlbamId": 676684,
    "salarySource": "mlbtr-arb",
-   "war": 0.42,
-   "ip": 44
+   "war": 0.51,
+   "ip": 53
   },
   {
    "name": "Colt Keith",
@@ -244,8 +265,8 @@
    "cotsEstimate": 1350000,
    "mlbamId": 689225,
    "salarySource": "mlbtr-arb",
-   "war": 0.08,
-   "ip": 42
+   "war": 0.06,
+   "ip": 34
   },
   {
    "name": "Jacob Waguespack",
@@ -262,7 +283,7 @@
    "mlbamId": 621097,
    "salarySource": "cots",
    "war": 0.06,
-   "ip": 58
+   "ip": 55
   },
   {
    "name": "Parker Meadows",
@@ -363,8 +384,8 @@
    "salaryPrevYear": 793725,
    "mlbamId": 676428,
    "salarySource": "minimum",
-   "war": 0.08,
-   "ip": 30
+   "war": 0.11,
+   "ip": 43
   },
   {
    "name": "Keider Montero",
@@ -411,8 +432,8 @@
    "salaryPrevYear": 382989,
    "mlbamId": 669724,
    "salarySource": "minimum",
-   "war": 0.06,
-   "ip": 28
+   "war": 0.05,
+   "ip": 24
   },
   {
    "name": "Ty Madden",
@@ -427,8 +448,8 @@
    "salaryPrevYear": 566746,
    "mlbamId": 680744,
    "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 50
+   "war": 0.03,
+   "ip": 30
   },
   {
    "name": "River Ryan",
@@ -475,8 +496,8 @@
    "salaryPrevYear": 560040,
    "mlbamId": 805427,
    "salarySource": "minimum",
-   "war": 0.7,
-   "ip": 63
+   "war": 0.69,
+   "ip": 62
   },
   {
    "name": "Hao-Yu Lee",
@@ -507,8 +528,8 @@
    "salaryPrevYear": 1300000,
    "mlbamId": 646241,
    "salarySource": "minimum",
-   "war": 0.24,
-   "ip": 52
+   "war": 0.12,
+   "ip": 26
   },
   {
    "name": "Ben Malgeri",
@@ -571,7 +592,7 @@
    "salaryPrevYear": 246097,
    "mlbamId": 703601,
    "salarySource": "minimum",
-   "war": 2.36,
+   "war": 2.37,
    "pa": 474
   },
   {
@@ -619,8 +640,8 @@
    "salaryPrevYear": 122229,
    "mlbamId": 808825,
    "salarySource": "minimum",
-   "war": 0.49,
-   "ip": 74
+   "war": 0.48,
+   "ip": 70
   },
   {
    "name": "John Peck",
@@ -686,8 +707,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -707,10 +728,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 145885012,
- "sheetTaxPayroll": 174088571,
- "rowsPayroll": 145885012,
- "rowsTaxPayroll": 174088571,
+ "sheetPayroll": 156535012,
+ "sheetTaxPayroll": 184738571,
+ "rowsPayroll": 156535012,
+ "rowsTaxPayroll": 184738571,
  "minors": [
   {
    "mlbamId": 801194,
@@ -983,6 +1004,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 690544,
+   "name": "Bailey Horn",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.19,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 806224,
    "name": "Brady Smith",
    "pos": "sp",
@@ -1021,6 +1052,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 687830,
+   "name": "Sawyer Gipson-Long",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.07,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 700270,

@@ -119,8 +119,8 @@
    "cotsEstimate": 6500000,
    "mlbamId": 669394,
    "salarySource": "mlbtr-arb",
-   "war": 1.28,
-   "pa": 556
+   "war": 1.26,
+   "pa": 546
   },
   {
    "name": "Josh Jung",
@@ -191,7 +191,7 @@
    "cotsEstimate": 3750000,
    "mlbamId": 677649,
    "salarySource": "mlbtr-arb",
-   "war": 1.88,
+   "war": 1.89,
    "pa": 534
   },
   {
@@ -619,6 +619,23 @@
    "salarySource": "minimum",
    "war": 0.08,
    "ip": 9.2
+  },
+  {
+   "name": "Josh White",
+   "sheetName": "White, Josh",
+   "pos": "rhp",
+   "age": 26,
+   "mls": 0.001,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 687985,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from BAL",
+   "war": -0.03,
+   "ip": 30
   }
  ],
  "deadMoney": [
@@ -709,16 +726,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 660636,
-   "name": "Diego Castillo",
-   "pos": "ss",
-   "age": 29,
-   "war": 1.14,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 699213,
    "name": "Gleider Figuereo",
    "pos": "3b",
@@ -769,26 +776,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 657022,
-   "name": "Trey Supak",
-   "pos": "sp",
-   "age": 31,
-   "war": 0.68,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694395,
-   "name": "Dylan MacLean",
-   "pos": "sp",
-   "age": 24,
-   "war": 0.61,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 697795,
    "name": "Ismael Agreda",
    "pos": "sp",
@@ -829,26 +816,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 678636,
-   "name": "Orlando Martinez",
-   "pos": "of",
-   "age": 29,
-   "war": 0.38,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 669413,
-   "name": "Frainyer Chavez",
-   "pos": "2b",
-   "age": 28,
-   "war": 0.3,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 683149,
    "name": "Julian Brock",
    "pos": "c",
@@ -879,32 +846,12 @@
    "debuted": false
   },
   {
-   "mlbamId": 666194,
-   "name": "Cooper Johnson",
-   "pos": "c",
-   "age": 29,
-   "war": 0.23,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 822476,
    "name": "Connor O'Hara",
    "pos": "sp",
    "age": 26,
    "war": 0.22,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 687144,
-   "name": "Corey Joyce",
-   "pos": "ss",
-   "age": 28,
-   "war": 0.22,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -975,6 +922,16 @@
    "age": 30,
    "war": 0.05,
    "ip": 65,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 694484,
+   "name": "Max Wagner",
+   "pos": "3b",
+   "age": 25,
+   "war": 0.04,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   }

@@ -52,7 +52,7 @@
    "cotsEstimate": 4250000,
    "mlbamId": 691023,
    "salarySource": "mlbtr-arb",
-   "war": 1.66,
+   "war": 1.67,
    "pa": 586
   },
   {
@@ -88,7 +88,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 671056,
    "salarySource": "mlbtr-arb",
-   "war": 2.12,
+   "war": 2.13,
    "pa": 611
   },
   {
@@ -106,7 +106,7 @@
    "cotsEstimate": 3000000,
    "mlbamId": 669357,
    "salarySource": "mlbtr-arb",
-   "war": 0.49,
+   "war": 0.5,
    "pa": 311
   },
   {
@@ -141,7 +141,7 @@
    "walkYear": false,
    "mlbamId": 802139,
    "salarySource": "cots",
-   "war": 4.62,
+   "war": 4.63,
    "pa": 663
   },
   {
@@ -241,7 +241,7 @@
    "salaryPrevYear": 792350,
    "mlbamId": 665877,
    "salarySource": "minimum",
-   "war": 0.63,
+   "war": 0.64,
    "pa": 211
   },
   {
@@ -449,7 +449,7 @@
    "salaryPrevYear": 450482,
    "mlbamId": 691458,
    "salarySource": "minimum",
-   "war": 0.57,
+   "war": 0.58,
    "pa": 183
   },
   {

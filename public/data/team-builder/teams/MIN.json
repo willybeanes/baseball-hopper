@@ -137,7 +137,7 @@
    "cotsEstimate": 6100000,
    "mlbamId": 663616,
    "salarySource": "mlbtr-arb",
-   "war": 1.21,
+   "war": 1.22,
    "pa": 398
   },
   {
@@ -191,8 +191,8 @@
    "cotsEstimate": 3750000,
    "mlbamId": 665019,
    "salarySource": "mlbtr-arb",
-   "war": 1.88,
-   "pa": 515
+   "war": 1.87,
+   "pa": 513
   },
   {
    "name": "Cole Sands",
@@ -275,7 +275,7 @@
    "salaryPrevYear": 793050,
    "mlbamId": 686797,
    "salarySource": "minimum",
-   "war": 2.66,
+   "war": 2.67,
    "pa": 587
   },
   {
@@ -515,8 +515,8 @@
    "salaryPrevYear": 216899,
    "mlbamId": 701785,
    "salarySource": "minimum",
-   "war": 2.55,
-   "pa": 473
+   "war": 2.56,
+   "pa": 469
   },
   {
    "name": "Marco Raya",

@@ -36,7 +36,7 @@
    "walkYear": false,
    "mlbamId": 667670,
    "salarySource": "cots",
-   "war": 1.26,
+   "war": 1.27,
    "pa": 467
   },
   {
@@ -123,7 +123,7 @@
    "walkYear": false,
    "mlbamId": 805779,
    "salarySource": "cots",
-   "war": 2.73,
+   "war": 2.74,
    "pa": 495
   },
   {
@@ -159,8 +159,8 @@
    "cotsEstimate": 1275000,
    "mlbamId": 665622,
    "salarySource": "mlbtr-arb",
-   "war": 1.19,
-   "ip": 123.2
+   "war": 1.13,
+   "ip": 120.2
   },
   {
    "name": "J.T. Ginn",
@@ -191,7 +191,7 @@
    "salaryPrevYear": 325295,
    "mlbamId": 622268,
    "salarySource": "minimum",
-   "war": 0.49,
+   "war": 0.5,
    "pa": 191
   },
   {
@@ -207,7 +207,7 @@
    "salaryPrevYear": 785000,
    "mlbamId": 701762,
    "salarySource": "minimum",
-   "war": 4.48,
+   "war": 4.49,
    "pa": 652
   },
   {
@@ -335,8 +335,8 @@
    "salaryPrevYear": 780000,
    "mlbamId": 672016,
    "salarySource": "minimum",
-   "war": 0.17,
-   "pa": 135
+   "war": 0.15,
+   "pa": 120
   },
   {
    "name": "Hunter Bigge",
@@ -383,8 +383,8 @@
    "salaryPrevYear": 730568,
    "mlbamId": 678022,
    "salarySource": "minimum",
-   "war": 0.69,
-   "ip": 61.3
+   "war": 1.13,
+   "ip": 101.5
   },
   {
    "name": "Drew Rom",
@@ -399,8 +399,8 @@
    "salaryPrevYear": 147279,
    "mlbamId": 680723,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 30
+   "war": 0.12,
+   "ip": 28
   },
   {
    "name": "Nate Eaton",
@@ -431,8 +431,8 @@
    "salaryPrevYear": 780000,
    "mlbamId": 666126,
    "salarySource": "minimum",
-   "war": 0.11,
-   "pa": 161
+   "war": 0.09,
+   "pa": 147
   },
   {
    "name": "Chris Roycroft",
@@ -495,8 +495,8 @@
    "salaryPrevYear": 579787,
    "mlbamId": 703607,
    "salarySource": "minimum",
-   "war": 3.03,
-   "pa": 526
+   "war": 3.01,
+   "pa": 522
   },
   {
    "name": "Gage Jump",
@@ -528,7 +528,7 @@
    "mlbamId": 686930,
    "salarySource": "minimum",
    "war": 0.11,
-   "ip": 47.3
+   "ip": 45.3
   },
   {
    "name": "Joshua Kuroda-Grauer",
@@ -608,7 +608,7 @@
    "mlbamId": 814305,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 26
+   "ip": 25
   },
   {
    "name": "Hayden Juenger",
@@ -640,23 +640,24 @@
    "mlbamId": 695034,
    "salarySource": "minimum",
    "war": 0.21,
-   "ip": 37.2
+   "ip": 35.2
   },
   {
-   "name": "Braden Nett",
-   "sheetName": "Nett, Braden",
-   "pos": "rhp",
-   "age": 25,
-   "mls": 0,
+   "name": "Raymond Burgos",
+   "sheetName": "Burgos, Raymond",
+   "pos": "lhp",
+   "age": 28,
+   "mls": 0.034,
    "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 63600,
-   "mlbamId": 804556,
+   "salaryPrevYear": 115647,
+   "mlbamId": 670103,
    "salarySource": "minimum",
-   "war": 0,
-   "ip": 4
+   "corrected": "RosterResource: moved from BOS",
+   "war": 0.03,
+   "ip": 18
   }
  ],
  "deadMoney": [
@@ -820,6 +821,26 @@
    "debuted": false
   },
   {
+   "mlbamId": 804556,
+   "name": "Braden Nett",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.62,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 805127,
+   "name": "Devin Taylor",
+   "pos": "of",
+   "age": 23,
+   "war": 0.61,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 823990,
    "name": "Zane Taylor",
    "pos": "sp",
@@ -835,16 +856,6 @@
    "pos": "ss",
    "age": 24,
    "war": 0.55,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 805127,
-   "name": "Devin Taylor",
-   "pos": "of",
-   "age": 23,
-   "war": 0.54,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -888,6 +899,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 641386,
+   "name": "Ben Bowden",
+   "pos": "rp",
+   "age": 32,
+   "war": 0.11,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 671748,

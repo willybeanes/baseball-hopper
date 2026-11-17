@@ -156,7 +156,7 @@
    "cotsEstimate": 2250000,
    "mlbamId": 623474,
    "salarySource": "mlbtr-arb",
-   "war": 0.01,
+   "war": 0,
    "ip": 70
   },
   {
@@ -319,7 +319,7 @@
    "mlbamId": 687859,
    "salarySource": "minimum",
    "war": -0.09,
-   "pa": 226
+   "pa": 227
   },
   {
    "name": "Kyle Karros",
@@ -462,7 +462,7 @@
    "salaryPrevYear": 462995,
    "mlbamId": 694249,
    "salarySource": "minimum",
-   "war": 1.6,
+   "war": 1.61,
    "pa": 492
   },
   {

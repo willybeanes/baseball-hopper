@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 543037,
    "salarySource": "cots",
-   "war": 2.75,
+   "war": 2.74,
    "ip": 173.8
   },
   {
@@ -153,8 +153,8 @@
    "cotsEstimate": 5575000,
    "mlbamId": 657376,
    "salarySource": "mlbtr-arb",
-   "war": 0.75,
-   "ip": 100.7
+   "war": 0.71,
+   "ip": 94.7
   },
   {
    "name": "Anthony Volpe",
@@ -171,8 +171,8 @@
    "cotsEstimate": 5000000,
    "mlbamId": 683011,
    "salarySource": "mlbtr-arb",
-   "war": 1.98,
-   "pa": 448
+   "war": 1.99,
+   "pa": 450
   },
   {
    "name": "Jose Caballero",
@@ -190,7 +190,7 @@
    "mlbamId": 676609,
    "salarySource": "mlbtr-arb",
    "war": 0.98,
-   "pa": 324
+   "pa": 326
   },
   {
    "name": "Ryan Weathers",
@@ -207,8 +207,8 @@
    "cotsEstimate": 3000000,
    "mlbamId": 677960,
    "salarySource": "mlbtr-arb",
-   "war": 1.09,
-   "ip": 80
+   "war": 1.01,
+   "ip": 74
   },
   {
    "name": "Austin Wells",
@@ -261,8 +261,25 @@
    "cotsEstimate": 2362500,
    "mlbamId": 661563,
    "salarySource": "mlbtr-arb",
-   "war": 0.1,
-   "ip": 63
+   "war": 0.09,
+   "ip": 59
+  },
+  {
+   "name": "Tim Hill",
+   "sheetName": "Hill, Tim",
+   "pos": "lhp",
+   "age": 37,
+   "mls": 8.112,
+   "contract": "1 y/$2.25M (27)+28 cl opt",
+   "status": "signed",
+   "salary": 2250000,
+   "taxValue": 2250000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 657612,
+   "salarySource": "cots",
+   "war": -0.08,
+   "ip": 54
   },
   {
    "name": "Heliot Ramos",
@@ -391,8 +408,8 @@
    "salaryPrevYear": 534636,
    "mlbamId": 660787,
    "salarySource": "minimum",
-   "war": 0.18,
-   "ip": 50
+   "war": 0.16,
+   "ip": 45
   },
   {
    "name": "Angel Chivilli",
@@ -407,8 +424,8 @@
    "salaryPrevYear": 524978,
    "mlbamId": 683409,
    "salarySource": "minimum",
-   "war": 0.17,
-   "ip": 40
+   "war": 0.15,
+   "ip": 36
   },
   {
    "name": "Cam Schlittler",
@@ -456,7 +473,7 @@
    "mlbamId": 665645,
    "salarySource": "minimum",
    "war": 0.07,
-   "ip": 44
+   "ip": 42
   },
   {
    "name": "Spencer Jones",
@@ -520,7 +537,7 @@
    "mlbamId": 690440,
    "salarySource": "minimum",
    "war": -0.03,
-   "ip": 26
+   "ip": 22
   },
   {
    "name": "Elmer Rodríguez",
@@ -535,8 +552,8 @@
    "salaryPrevYear": 151713,
    "mlbamId": 695684,
    "salarySource": "minimum",
-   "war": 0.35,
-   "ip": 40.9
+   "war": 0.36,
+   "ip": 42.9
   },
   {
    "name": "Brendan Beck",
@@ -551,8 +568,25 @@
    "salaryPrevYear": 255151,
    "mlbamId": 694341,
    "salarySource": "minimum",
-   "war": 0.16,
-   "ip": 31.1
+   "war": 0.17,
+   "ip": 34.1
+  },
+  {
+   "name": "Chase Hampton",
+   "sheetName": "Hampton, Chase",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694633,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from BAL",
+   "war": -0.05,
+   "ip": 8
   }
  ],
  "deadMoney": [
@@ -564,8 +598,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 7650000,
-   "taxValue": 7650000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -585,10 +619,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 243920833,
- "sheetTaxPayroll": 280659201,
- "rowsPayroll": 243920833,
- "rowsTaxPayroll": 280659201,
+ "sheetPayroll": 245320833,
+ "sheetTaxPayroll": 282059201,
+ "rowsPayroll": 245320833,
+ "rowsTaxPayroll": 282059201,
  "minors": [
   {
    "mlbamId": 701778,
@@ -785,7 +819,7 @@
    "name": "Luis Serna",
    "pos": "sp",
    "age": 22,
-   "war": 0.25,
+   "war": 0.26,
    "ip": 200,
    "salary": 780000,
    "debuted": false
