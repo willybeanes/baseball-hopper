@@ -3,7 +3,13 @@ import { parseArgs } from '../../scripts/team-builder/simulate-many'
 
 describe('simulate-many options', () => {
   test('defaults: 500 runs from seed 1, suggested plans, no moves', () => {
-    expect(parseArgs([])).toEqual({ runs: 500, seed: 1, attitudes: {}, manual: {}, from: null, out: null, talentSd: 5 })
+    expect(parseArgs([])).toEqual({ runs: 500, seed: 1, attitudes: {}, manual: {}, from: null, out: null, talentSd: 5, earmark: true })
+  })
+
+  test('--no-earmark turns the free-agent earmark off and takes no value', () => {
+    const o = parseArgs(['--no-earmark', '--runs', '10'])
+    expect(o.earmark).toBe(false)
+    expect(o.runs).toBe(10)
   })
 
   test('a page link supplies plans and moves; its seed is ignored', () => {
