@@ -104,6 +104,24 @@
    "pa": 553
   },
   {
+   "name": "Bryce Miller",
+   "sheetName": "Miller, Bryce",
+   "pos": "rhp-s",
+   "age": 28,
+   "mls": 3.153,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 3900000,
+   "taxValue": 3900000,
+   "salaryPrevYear": 2437500,
+   "arbYear": 1,
+   "cotsEstimate": 3750000,
+   "mlbamId": 682243,
+   "salarySource": "mlbtr-arb",
+   "war": 1.26,
+   "ip": 124
+  },
+  {
    "name": "Kyle Isbel",
    "sheetName": "Isbel, Kyle",
    "pos": "cf",
@@ -227,6 +245,24 @@
    "salarySource": "mlbtr-arb",
    "war": -0.08,
    "ip": 62
+  },
+  {
+   "name": "Jose Ferrer",
+   "sheetName": "Ferrer, Jose",
+   "pos": "lhp",
+   "age": 28,
+   "mls": 3.094,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 1600000,
+   "taxValue": 1600000,
+   "salaryPrevYear": 796600,
+   "arbYear": 1,
+   "cotsEstimate": 1750000,
+   "mlbamId": 678606,
+   "salarySource": "mlbtr-arb",
+   "war": 0.57,
+   "ip": 64
   },
   {
    "name": "Anthony Gose",
@@ -421,6 +457,22 @@
    "salarySource": "minimum",
    "war": 0.15,
    "pa": 187
+  },
+  {
+   "name": "Logan Evans",
+   "sheetName": "Evans, Logan",
+   "pos": "rhp",
+   "age": 26,
+   "mls": 1.124,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": 785800,
+   "mlbamId": 688138,
+   "salarySource": "minimum",
+   "war": 0.06,
+   "ip": 26.2
   },
   {
    "name": "Spencer Bivens",
@@ -629,61 +681,6 @@
    "salarySource": "minimum",
    "war": 0,
    "ip": 1
-  },
-  {
-   "name": "Bryce Miller",
-   "sheetName": "Miller, Bryce",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 3.153,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 3900000,
-   "taxValue": 3900000,
-   "salaryPrevYear": 2437500,
-   "arbYear": 1,
-   "cotsEstimate": 3750000,
-   "mlbamId": 682243,
-   "salarySource": "mlbtr-arb",
-   "corrected": "RosterResource: moved from SEA",
-   "war": 1.26,
-   "ip": 124
-  },
-  {
-   "name": "Jose Ferrer",
-   "sheetName": "Ferrer, Jose",
-   "pos": "lhp",
-   "age": 28,
-   "mls": 3.094,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1600000,
-   "taxValue": 1600000,
-   "salaryPrevYear": 796600,
-   "arbYear": 1,
-   "cotsEstimate": 1750000,
-   "mlbamId": 678606,
-   "salarySource": "mlbtr-arb",
-   "corrected": "RosterResource: moved from SEA",
-   "war": 0.57,
-   "ip": 64
-  },
-  {
-   "name": "Logan Evans",
-   "sheetName": "Evans, Logan",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 1.124,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 785800,
-   "mlbamId": 688138,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from SEA",
-   "war": 0.06,
-   "ip": 26.2
   }
  ],
  "deadMoney": [
@@ -716,10 +713,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 119577075,
- "sheetTaxPayroll": 149217176,
- "rowsPayroll": 119577075,
- "rowsTaxPayroll": 149217176,
+ "sheetPayroll": 117067075,
+ "sheetTaxPayroll": 142407176,
+ "rowsPayroll": 117067075,
+ "rowsTaxPayroll": 142407176,
  "minors": [
   {
    "mlbamId": 703610,
@@ -950,6 +947,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 592826,
+   "name": "Vince Velasquez",
+   "pos": "rp",
+   "age": 35,
+   "war": 0,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   }
  ]
 }
