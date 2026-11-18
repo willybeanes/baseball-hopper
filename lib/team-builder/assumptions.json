@@ -39,6 +39,11 @@
     "replacementWinPct": 0.294,
     "games": 162
   },
+  "fieldedPositions": {
+    "note": "Positions added to Cot's position text from MLB fielding stats: any position a hitter played at least minGames times over the last `seasons` big-league seasons (2027 refresh: 2025 and 2026). Added 2026-11-18 after Maikel Garcia's trade left KC with no third baseman, though Nick Loftin (\"2b\" on Cot's) played 75 games there in 2026. The depth chart counts a hitter at every listed position.",
+    "seasons": 2,
+    "minGames": 10
+  },
   "playingTime": {
     "note": "A season's playing time per spot, used to turn individual projections into a team total like a depth chart: each spot is filled by the best players there (by WAR per PA or per inning), leftovers fill other gaps, and below-replacement players are left out. Since 2026-11-05 a hitter counts at every position he's listed at (\"2b-lf\" is 2B and LF), best players placed first, and leftover time goes to DH and the corners but never to catcher (Altuve was being counted behind the plate once Arraez took second). About 6,200 PA and 1,450 innings in all. Added 2026-10-14 after Will questioned the A's leading on summed WAR. Rotation/bullpen split 850/600 innings, close to how starters and relievers have split them in recent seasons, and no one pitcher counts for more than 75 innings in the bullpen (starter prospects listed as plain RHP/LHP were each being counted for ~100 relief innings). Both added 2026-10-15 after Will asked how many innings the Twins' seven 1-WAR starters would throw.",
     "pa": {

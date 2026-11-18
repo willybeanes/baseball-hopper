@@ -54,10 +54,22 @@ export function depthChart(players: DepthPlayer[]): Depth {
       cr.war += war
       cr.share = 1 - c.left / volumeOf(c.p)
     }
-    // Best player first, each at the positions he's listed at, primary first, so a good
-    // utility man plays ahead of a weak regular. Then whatever room is left (bench bats at DH
-    // and the corners, never catcher; swingmen in the rotation).
-    for (const c of pool) for (const spot of listedSpotsFor(c.p.pos)) use(c, spot)
+    // Best player first, each at the positions he's listed at, so a good utility man plays
+    // ahead of a weak regular. He goes where his listed spots have the most open time (primary
+    // first on a tie), the way a utility man fills the hole: with Maikel Garcia traded, Nick
+    // Loftin ("2b-3b-...") plays third rather than sharing second. Then whatever room is left
+    // (bench bats at DH and the corners, never catcher; swingmen in the rotation).
+    for (const c of pool) {
+      const listed = listedSpotsFor(c.p.pos)
+      while (c.left > 0) {
+        const open = listed.filter((s) => room[s] > 0)
+        if (!open.length) break
+        const spot = open.reduce((a, b) => (room[b] > room[a] ? b : a))
+        const before = c.left
+        use(c, spot)
+        if (c.left === before) break // reliever cap reached
+      }
+    }
     for (const c of pool) for (const spot of pitching ? spots : SPILLOVER) use(c, spot)
   }
 

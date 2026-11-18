@@ -22,6 +22,7 @@ import { fetchTracker, trackerFreeAgents, type TrackerRow } from './fa-tracker'
 import { checkTeamSheet, parseTeamSheet, type KnownMismatch, type TeamSheet } from '../../lib/team-builder/cots'
 import { matchPlayer } from '../../lib/team-builder/ids'
 import { leaguePool, peopleInfo, teamPool, type OrgPlayer } from '../../lib/team-builder/rosters'
+import { fetchFieldingGames, withFieldedPositions, type FieldingGames } from '../../lib/team-builder/fielding'
 
 const OUT_DIR = join(import.meta.dir, '../../public/data/team-builder')
 const TIER_STEPS = [20e6, 40e6, 60e6] // gaps above the base line used since 2022
@@ -265,6 +266,35 @@ async function main() {
     if (list) (s as unknown as TeamFile).minors = list.sort((a, b) => b.war - a.war)
   }
 
+  // Positions each hitter has actually played (MLB fielding stats), added after Cot's own.
+  // If MLB can't be reached, reuse what the last snapshot had for each player.
+  const { seasons: fieldSeasons, minGames } = assumptions.fieldedPositions
+  let fielding: FieldingGames | null = null
+  let fieldingError: string | null = null
+  try {
+    fielding = await fetchFieldingGames(Array.from({ length: fieldSeasons }, (_, i) => config.firstYear - i))
+  } catch (e) {
+    fieldingError = (e as Error).message
+  }
+  const prevPos = new Map<number, string>()
+  for (const s of sheets) {
+    const f = join(OUT_DIR, 'teams', `${s.team}.json`)
+    if (!existsSync(f)) continue
+    const prev = JSON.parse(readFileSync(f, 'utf8')) as TeamFile
+    for (const p of [...prev.players, ...(prev.minors ?? [])]) if (p.mlbamId) prevPos.set(p.mlbamId, p.pos)
+  }
+  const addPositions = (p: { mlbamId?: number | null; pos: string }) => {
+    if (!p.mlbamId) return
+    if (fielding) { p.pos = withFieldedPositions(p.pos, fielding.get(p.mlbamId), minGames); return }
+    // No fresh stats: keep the extra positions the last snapshot added (the part after Cot's text).
+    const before = prevPos.get(p.mlbamId)
+    if (before && before.startsWith(p.pos + '-')) p.pos = before
+  }
+  for (const s of sheets) {
+    for (const p of s.players) addPositions(p)
+    for (const m of (s as unknown as TeamFile).minors ?? []) addPositions(m)
+  }
+
   const base = mode(sheets.map((s) => s.threshold).filter((t): t is number => t != null))
   const sheetTiers = sheets.find((s) => s.tiers && s.tiers[0] === base)?.tiers ?? null
   const meta = {
@@ -309,7 +339,10 @@ async function main() {
       : {}
     const pr = projections[e.mlbamId]
     const note = pr?.from ? [e.note, `Projection from ${pr.from} (Steamer has none)`].filter(Boolean).join('. ') : e.note
-    return { ...e, ...carried, ...(note ? { note } : {}), war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
+    const out = { ...e, ...carried, ...(note ? { note } : {}), war: pr?.war ?? null, ...(pr?.pa ? { pa: pr.pa } : {}), ...(pr?.ip ? { ip: pr.ip } : {}) }
+    // Free agents' positions come from MLBTR or the last pool; add what they've played too.
+    if (fielding) out.pos = withFieldedPositions(out.pos, fielding.get(out.mlbamId), minGames)
+    return out
   })
   files.set(join(OUT_DIR, 'pool.json'), JSON.stringify(pool) + '\n')
   // What RosterResource changed (and what it flagged but we left alone); rewritten only when that changes.
@@ -362,6 +395,10 @@ async function main() {
   console.log(`Projections (${assumptions.projections.system}): ${projected} of ${sheets.reduce((n, s) => n + s.players.length, 0)} sheet players have a projected WAR.`)
   if (projError) {
     console.error(`Projections failed, kept the ones from ${projFetchedAt ?? 'never'}: ${projError}`)
+    process.exitCode = 1
+  }
+  if (fieldingError) {
+    console.error(`Fielding stats failed, kept the last snapshot's added positions: ${fieldingError}`)
     process.exitCode = 1
   }
   if (teamErrors.size) {

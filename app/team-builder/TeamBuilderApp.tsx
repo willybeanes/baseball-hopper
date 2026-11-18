@@ -6,6 +6,7 @@ import { headshotUrl } from '@/lib/player'
 import { MLB_TEAM_IDS } from '@/lib/team-builder/ids'
 import { TEAM_NAMES } from '@/lib/team-builder/teams'
 import { depthChart, type Credit } from '@/lib/team-builder/depth'
+import { listedSpotsFor, spotsFor } from '@/lib/team-builder/field'
 import { fmtRecord, projectedRecord, warScale, warScaleFromTotal } from '@/lib/team-builder/record'
 import assumptions from '@/lib/team-builder/assumptions.json'
 import payrolls2026 from '@/lib/team-builder/payrolls-2026.json'
@@ -40,6 +41,13 @@ function posBucket(pos: string): string {
   if (['lf', 'cf', 'rf', 'of'].includes(first)) return 'OF'
   if (first === 'inf' || first === 'if' || first === 'ut') return 'IF'
   return POSITION_GROUPS.some((g) => g.key === first.toUpperCase()) ? first.toUpperCase() : 'IF'
+}
+
+// Positions a hitter is listed at besides his primary one (Cot's second position, plus any
+// he's played 10+ games at lately), in roster-group keys: LF, CF and RF all count as OF.
+function otherPositions(pos: string): Set<string> {
+  const primary = new Set<string>(spotsFor(pos))
+  return new Set(listedSpotsFor(pos).filter((x) => !primary.has(x) && x !== 'SP' && x !== 'RP').map((x) => (['LF', 'CF', 'RF'].includes(x) ? 'OF' : x)))
 }
 
 const POSITIONS: { key: string; label: string }[] = [
@@ -760,8 +768,12 @@ export default function TeamBuilderApp() {
       : sortBy === 'name' ? sortName(a.player).localeCompare(sortName(b.player))
         : byWar(a, b)
   const isPitcher = (s: Slot) => ['SP', 'RP'].includes(posBucket(s.player.pos))
-  const rosterGroups: { key: string; title: string; test: (s: Slot) => boolean }[] =
-    groupBy === 'position' ? POSITION_GROUPS.map((g) => ({ ...g, test: (s: Slot) => posBucket(s.player.pos) === g.key }))
+  const rosterGroups: { key: string; title: string; test: (s: Slot) => boolean; also?: (s: Slot) => boolean }[] =
+    groupBy === 'position' ? POSITION_GROUPS.map((g) => ({
+      ...g,
+      test: (s: Slot) => posBucket(s.player.pos) === g.key,
+      also: (s: Slot) => posBucket(s.player.pos) !== g.key && otherPositions(s.player.pos).has(g.key),
+    }))
       : groupBy === 'role' ? [{ key: 'hitters', title: 'Hitters', test: (s: Slot) => !isPitcher(s) }, { key: 'pitchers', title: 'Pitchers', test: isPitcher }]
         : [{ key: 'all', title: 'All players', test: () => true }]
 
@@ -963,18 +975,25 @@ export default function TeamBuilderApp() {
               >
                 {rosterGroups.map((g) => {
                   const slots = onRosterSlots.filter(g.test).sort(rosterSort)
-                  if (!slots.length) return null
+                  // Players listed here as a second position: named, not counted in the totals.
+                  const also = g.also ? onRosterSlots.filter(g.also).sort(byWar) : []
+                  if (!slots.length && !also.length) return null
                   const war = slots.reduce((n, s) => n + (creditOf(s)?.war ?? 0), 0)
                   const pay = slots.reduce((n, s) => n + (s.salary ?? 0), 0)
                   return (
                     <div key={g.key}>
                       <h3 className="flex items-baseline justify-between px-4 pb-1 pt-3 text-[13px] font-semibold text-[var(--text)]">
                         {g.title}
-                        <span className="text-[11px] font-normal text-[var(--dimmer)]">{slots.length} · {war.toFixed(1)} WAR · {money(pay)}</span>
+                        <span className="text-[11px] font-normal text-[var(--dimmer)]">{slots.length ? `${slots.length} · ${war.toFixed(1)} WAR · ${money(pay)}` : 'no regular'}</span>
                       </h3>
                       <div className="divide-y divide-[var(--rule)]">
                         {slots.map((s) => <PlayerRow key={s.player.mlbamId ?? s.player.sheetName} s={s} credit={creditOf(s)} actions={rosterActions(s)} editor={editorFor(s)} />)}
                       </div>
+                      {also.length > 0 && (
+                        <p className={`px-4 pb-2 text-[11px] text-[var(--dim)] ${slots.length ? 'border-t border-[var(--rule)] pt-1.5' : ''}`}>
+                          Also plays here: {also.map((s) => `${s.player.name} (${posBucket(s.player.pos)})`).join(', ')}
+                        </p>
+                      )}
                     </div>
                   )
                 })}
