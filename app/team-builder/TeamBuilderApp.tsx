@@ -982,7 +982,8 @@ export default function TeamBuilderApp() {
                   const pay = slots.reduce((n, s) => n + (s.salary ?? 0), 0)
                   return (
                     <div key={g.key}>
-                      <h3 className="flex items-baseline justify-between px-4 pb-1 pt-3 text-[13px] font-semibold text-[var(--text)]">
+                      {/* A tinted band, so where one position ends and the next starts reads at a glance. */}
+                      <h3 className="flex items-baseline justify-between border-b border-[var(--rule)] bg-[var(--track)] px-4 py-2 text-[13px] font-semibold text-[var(--text)]">
                         {g.title}
                         <span className="text-[11px] font-normal text-[var(--dimmer)]">{slots.length ? `${slots.length} · ${war.toFixed(1)} WAR · ${money(pay)}` : 'no regular'}</span>
                       </h3>
@@ -990,7 +991,7 @@ export default function TeamBuilderApp() {
                         {slots.map((s) => <PlayerRow key={s.player.mlbamId ?? s.player.sheetName} s={s} credit={creditOf(s)} actions={rosterActions(s)} editor={editorFor(s)} />)}
                       </div>
                       {also.length > 0 && (
-                        <p className={`px-4 pb-2 text-[11px] text-[var(--dim)] ${slots.length ? 'border-t border-[var(--rule)] pt-1.5' : ''}`}>
+                        <p className={`px-4 pb-2 pt-1.5 text-[11px] text-[var(--dim)] ${slots.length ? 'border-t border-[var(--rule)]' : ''}`}>
                           Also plays here: {also.map((s) => `${s.player.name} (${posBucket(s.player.pos)})`).join(', ')}
                         </p>
                       )}
