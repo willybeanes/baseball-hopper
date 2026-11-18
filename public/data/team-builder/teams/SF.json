@@ -15,13 +15,13 @@
    "walkYear": false,
    "mlbamId": 642715,
    "salarySource": "cots",
-   "war": 2.08,
+   "war": 2.09,
    "pa": 536
   },
   {
    "name": "Rafael Devers",
    "sheetName": "Devers, Rafael",
-   "pos": "dh-3b",
+   "pos": "dh-3b-1b",
    "age": 30,
    "mls": 9.07,
    "contract": "10 y/$313.5M (24-33)*",
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 646240,
    "salarySource": "cots",
-   "war": 2.56,
+   "war": 2.57,
    "pa": 644
   },
   {
@@ -49,13 +49,13 @@
    "walkYear": false,
    "mlbamId": 656305,
    "salarySource": "cots",
-   "war": 2.05,
+   "war": 2.06,
    "pa": 464
   },
   {
    "name": "Jung Hoo Lee",
    "sheetName": "Lee, Jung Hoo",
-   "pos": "rf",
+   "pos": "rf-cf",
    "age": 28,
    "mls": 3,
    "contract": "6 y/$113M (24-29)",
@@ -89,7 +89,7 @@
   {
    "name": "Harrison Bader",
    "sheetName": "Bader, Harrison",
-   "pos": "cf",
+   "pos": "cf-lf",
    "age": 33,
    "mls": 9.03,
    "contract": "2 y/$20.5M (26-27)",
@@ -141,7 +141,7 @@
   {
    "name": "Casey Schmitt",
    "sheetName": "Schmitt, Casey",
-   "pos": "3b",
+   "pos": "3b-2b-1b-lf",
    "age": 28,
    "mls": 3.035,
    "contract": "A1",
@@ -153,7 +153,7 @@
    "cotsEstimate": 2410000,
    "mlbamId": 669477,
    "salarySource": "mlbtr-arb",
-   "war": 1.19,
+   "war": 1.23,
    "pa": 486
   },
   {
@@ -173,23 +173,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.39,
    "ip": 58
-  },
-  {
-   "name": "Rowan Wick",
-   "sheetName": "Wick, Rowan",
-   "pos": "rhp",
-   "age": 34,
-   "mls": 4.114,
-   "contract": "1 y/$880,000 (26)+27 cl opt",
-   "status": "signed",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": 780000,
-   "walkYear": false,
-   "mlbamId": 592858,
-   "salarySource": "cots",
-   "war": 0.09,
-   "ip": 30
   },
   {
    "name": "Randy Rodríguez",
@@ -258,25 +241,9 @@
    "ip": 43.3
   },
   {
-   "name": "Christian Koss",
-   "sheetName": "Koss, Christian",
-   "pos": "ss",
-   "age": 29,
-   "mls": 1.141,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 691860,
-   "mlbamId": 683766,
-   "salarySource": "minimum",
-   "war": 0.07,
-   "pa": 91
-  },
-  {
    "name": "Marcelo Mayer",
    "sheetName": "Mayer, Marcelo",
-   "pos": "2b",
+   "pos": "2b-3b-ss",
    "age": 24,
    "mls": 1.128,
    "contract": "",
@@ -302,13 +269,13 @@
    "salaryPrevYear": 177915,
    "mlbamId": 683627,
    "salarySource": "minimum",
-   "war": 1.16,
-   "ip": 120.6
+   "war": 1.15,
+   "ip": 118.6
   },
   {
    "name": "Drew Gilbert",
    "sheetName": "Gilbert, Drew",
-   "pos": "cf",
+   "pos": "cf-rf-lf",
    "age": 26,
    "mls": 1.046,
    "contract": "",
@@ -414,13 +381,13 @@
    "salaryPrevYear": 531521,
    "mlbamId": 681916,
    "salarySource": "minimum",
-   "war": 0.25,
+   "war": 0.24,
    "ip": 54
   },
   {
    "name": "Victor Bericoto",
    "sheetName": "Bericoto, Victor",
-   "pos": "1b-rf",
+   "pos": "1b-rf-lf",
    "age": 25,
    "mls": 0.129,
    "contract": "",
@@ -452,7 +419,7 @@
   {
    "name": "Jonah Cox",
    "sheetName": "Cox, Jonah",
-   "pos": "cf",
+   "pos": "cf-2b",
    "age": 25,
    "mls": 0.111,
    "contract": "",
@@ -462,8 +429,8 @@
    "salaryPrevYear": 465621,
    "mlbamId": 813841,
    "salarySource": "minimum",
-   "war": 0.71,
-   "pa": 265
+   "war": 0.74,
+   "pa": 275
   },
   {
    "name": "Jesús Rodriguez",
@@ -494,7 +461,7 @@
    "salaryPrevYear": 392086,
    "mlbamId": 701852,
    "salarySource": "minimum",
-   "war": 0.22,
+   "war": 0.23,
    "pa": 211
   },
   {
@@ -532,7 +499,7 @@
   {
    "name": "Turner Hill",
    "sheetName": "Hill, Turner",
-   "pos": "cf",
+   "pos": "cf-lf",
    "age": 28,
    "mls": 0.046,
    "contract": "",
@@ -542,8 +509,8 @@
    "salaryPrevYear": 191872,
    "mlbamId": 806367,
    "salarySource": "minimum",
-   "war": 0.3,
-   "pa": 151
+   "war": 0.32,
+   "pa": 155
   },
   {
    "name": "Matt Wilkinson",
@@ -558,8 +525,8 @@
    "salaryPrevYear": 145896,
    "mlbamId": 683363,
    "salarySource": "minimum",
-   "war": 1.02,
-   "ip": 115.9
+   "war": 1.01,
+   "ip": 113.9
   },
   {
    "name": "Yunior Marte",
@@ -591,7 +558,7 @@
    "mlbamId": 702885,
    "salarySource": "minimum",
    "war": 0.28,
-   "ip": 78.9
+   "ip": 80.9
   },
   {
    "name": "Scott Bandura",
@@ -606,8 +573,8 @@
    "salaryPrevYear": 62567,
    "mlbamId": 814154,
    "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 122
+   "war": 0.18,
+   "pa": 133
   },
   {
    "name": "Bo Davidson",
@@ -622,8 +589,8 @@
    "salaryPrevYear": 29198,
    "mlbamId": 815589,
    "salarySource": "minimum",
-   "war": 0.42,
-   "pa": 157
+   "war": 0.44,
+   "pa": 161
   },
   {
    "name": "Miguel Mendez",
@@ -640,6 +607,57 @@
    "salarySource": "minimum",
    "war": -0.01,
    "ip": 6
+  },
+  {
+   "name": "Henry Lalane",
+   "sheetName": "",
+   "pos": "lhp-s",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 700649,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
+  },
+  {
+   "name": "Josh Bostick",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 701241,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
+  },
+  {
+   "name": "Marty Gair",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 700248,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": -0.03,
+   "ip": 12
   }
  ],
  "deadMoney": [
@@ -666,6 +684,12 @@
    "salary": 2800000,
    "taxValue": 2800000,
    "note": ""
+  },
+  {
+   "name": "Rowan Wick",
+   "salary": 800000,
+   "taxValue": 800000,
+   "note": "off the 40-man (RosterResource)"
   }
  ],
  "benefits": 18500000,
@@ -829,6 +853,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 683766,
+   "name": "Christian Koss",
+   "pos": "ss-2b-3b",
+   "age": 29,
+   "war": 0.45,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 698973,
    "name": "Jose Astudillo",
    "pos": "3b",
@@ -865,16 +899,6 @@
    "age": 27,
    "war": 0.28,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 700649,
-   "name": "Henry Lalane",
-   "pos": "sp",
-   "age": 23,
-   "war": 0.24,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },

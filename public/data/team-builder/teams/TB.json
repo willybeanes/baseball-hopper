@@ -32,7 +32,7 @@
    "walkYear": true,
    "mlbamId": 650490,
    "salarySource": "cots",
-   "war": 2.48,
+   "war": 2.49,
    "pa": 654
   },
   {
@@ -91,7 +91,7 @@
   {
    "name": "Jonathan Aranda",
    "sheetName": "Aranda, Jonathan",
-   "pos": "2b",
+   "pos": "2b-1b",
    "age": 29,
    "mls": 3.03,
    "contract": "A1",
@@ -103,7 +103,7 @@
    "cotsEstimate": 3900000,
    "mlbamId": 666018,
    "salarySource": "mlbtr-arb",
-   "war": 2.09,
+   "war": 2.1,
    "pa": 613
   },
   {
@@ -157,7 +157,7 @@
    "cotsEstimate": 3535000,
    "mlbamId": 663743,
    "salarySource": "mlbtr-arb",
-   "war": 0.75,
+   "war": 0.76,
    "pa": 213
   },
   {
@@ -192,7 +192,7 @@
    "walkYear": true,
    "mlbamId": 670764,
    "salarySource": "cots",
-   "war": 0.55,
+   "war": 0.56,
    "pa": 432
   },
   {
@@ -270,7 +270,7 @@
   {
    "name": "Jonny DeLuca",
    "sheetName": "DeLuca, Jonny",
-   "pos": "lf",
+   "pos": "lf-cf-rf",
    "age": 28,
    "mls": 3.085,
    "contract": "A1",
@@ -282,7 +282,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 676356,
    "salarySource": "mlbtr-arb",
-   "war": 1.1,
+   "war": 1.11,
    "pa": 446
   },
   {
@@ -342,7 +342,7 @@
   {
    "name": "Jack Suwinski",
    "sheetName": "Suwinski, Jack",
-   "pos": "cf",
+   "pos": "cf-lf-rf",
    "age": 28,
    "mls": 2.17,
    "contract": "",
@@ -384,7 +384,7 @@
    "salaryPrevYear": 794800,
    "mlbamId": 691406,
    "salarySource": "minimum",
-   "war": 5.84,
+   "war": 5.85,
    "pa": 647
   },
   {
@@ -422,7 +422,7 @@
   {
    "name": "Liam Hicks",
    "sheetName": "Hicks, Liam",
-   "pos": "c",
+   "pos": "c-1b",
    "age": 28,
    "mls": 2,
    "contract": "",
@@ -448,13 +448,13 @@
    "salaryPrevYear": 785100,
    "mlbamId": 802415,
    "salarySource": "minimum",
-   "war": 1.52,
+   "war": 1.53,
    "pa": 498
   },
   {
    "name": "Ben Williamson",
    "sheetName": "Williamson, Ben",
-   "pos": "3b",
+   "pos": "3b-2b-ss",
    "age": 26,
    "mls": 1.11,
    "contract": "",
@@ -486,7 +486,7 @@
   {
    "name": "Ryan Vilade",
    "sheetName": "Vilade, Ryan",
-   "pos": "lf",
+   "pos": "lf-rf-1b-2b",
    "age": 28,
    "mls": 1.076,
    "contract": "",
@@ -528,7 +528,7 @@
    "salaryPrevYear": 570514,
    "mlbamId": 683748,
    "salarySource": "minimum",
-   "war": 1.56,
+   "war": 1.57,
    "pa": 469
   },
   {
@@ -658,6 +658,23 @@
    "salarySource": "minimum",
    "war": 0.05,
    "pa": 17
+  },
+  {
+   "name": "Xavier Isaac",
+   "sheetName": "",
+   "pos": "1b",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 800060,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.03,
+   "pa": 20
   }
  ],
  "deadMoney": [
@@ -816,16 +833,6 @@
    "age": 22,
    "war": 1.08,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 800060,
-   "name": "Xavier Isaac",
-   "pos": "1b",
-   "age": 23,
-   "war": 1.04,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

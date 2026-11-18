@@ -15,13 +15,13 @@
    "walkYear": false,
    "mlbamId": 624413,
    "salarySource": "cots",
-   "war": 2.92,
+   "war": 2.93,
    "pa": 616
   },
   {
    "name": "Tyler O'Neill",
    "sheetName": "O'Neill, Tyler",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 32,
    "mls": 8.059,
    "contract": "3 y/$49.5M (25-27)",
@@ -32,7 +32,7 @@
    "walkYear": true,
    "mlbamId": 641933,
    "salarySource": "cots",
-   "war": 0.77,
+   "war": 0.79,
    "pa": 351
   },
   {
@@ -50,7 +50,7 @@
    "cotsEstimate": 15750000,
    "mlbamId": 683002,
    "salarySource": "mlbtr-arb",
-   "war": 4.82,
+   "war": 4.83,
    "pa": 632
   },
   {
@@ -71,8 +71,8 @@
     "type": "player",
     "buyout": null
    },
-   "war": 0.55,
-   "ip": 61
+   "war": 0.56,
+   "ip": 62
   },
   {
    "name": "Kyle Bradish",
@@ -140,8 +140,8 @@
    "walkYear": false,
    "mlbamId": 666974,
    "salarySource": "cots",
-   "war": 0.36,
-   "ip": 58
+   "war": 0.37,
+   "ip": 59
   },
   {
    "name": "Felix Bautista",
@@ -164,7 +164,7 @@
   {
    "name": "Samuel Basallo",
    "sheetName": "Basallo, Samuel",
-   "pos": "c",
+   "pos": "c-1b",
    "age": 22,
    "mls": 1.043,
    "contract": "8 y/$67M (26-33)+34 opt",
@@ -175,13 +175,13 @@
    "walkYear": false,
    "mlbamId": 694212,
    "salarySource": "cots",
-   "war": 2.28,
+   "war": 2.29,
    "pa": 455
   },
   {
    "name": "Jordan Westburg",
    "sheetName": "Westburg, Jordan",
-   "pos": "ss",
+   "pos": "ss-3b-2b",
    "age": 28,
    "mls": 3.098,
    "contract": "A1",
@@ -193,8 +193,8 @@
    "cotsEstimate": 1200000,
    "mlbamId": 676059,
    "salarySource": "mlbtr-arb",
-   "war": 1.8,
-   "pa": 423
+   "war": 1.97,
+   "pa": 453
   },
   {
    "name": "Rico Garcia",
@@ -225,13 +225,13 @@
    "salaryPrevYear": 446369,
    "mlbamId": 687952,
    "salarySource": "minimum",
-   "war": 1.08,
-   "pa": 399
+   "war": 1.17,
+   "pa": 437
   },
   {
    "name": "Jackson Holliday",
    "sheetName": "Holliday, Jackson",
-   "pos": "2b",
+   "pos": "2b-ss",
    "age": 23,
    "mls": 2.078,
    "contract": "",
@@ -241,13 +241,13 @@
    "salaryPrevYear": 802200,
    "mlbamId": 702616,
    "salarySource": "minimum",
-   "war": 2.11,
-   "pa": 499
+   "war": 2.1,
+   "pa": 495
   },
   {
    "name": "Blaze Alexander",
    "sheetName": "Alexander, Blaze",
-   "pos": "ss",
+   "pos": "ss-3b-2b-lf-cf",
    "age": 28,
    "mls": 2.053,
    "contract": "",
@@ -257,8 +257,8 @@
    "salaryPrevYear": 792800,
    "mlbamId": 677942,
    "salarySource": "minimum",
-   "war": 0.99,
-   "pa": 386
+   "war": 0.93,
+   "pa": 380
   },
   {
    "name": "Carlos Narváez",
@@ -273,13 +273,13 @@
    "salaryPrevYear": 235294,
    "mlbamId": 665966,
    "salarySource": "minimum",
-   "war": 0.59,
-   "pa": 203
+   "war": 0.61,
+   "pa": 207
   },
   {
    "name": "Coby Mayo",
    "sheetName": "Mayo, Coby",
-   "pos": "3b",
+   "pos": "3b-1b",
    "age": 25,
    "mls": 1.17,
    "contract": "",
@@ -289,7 +289,7 @@
    "salaryPrevYear": 790800,
    "mlbamId": 691723,
    "salarySource": "minimum",
-   "war": 1.18,
+   "war": 1.19,
    "pa": 328
   },
   {
@@ -305,8 +305,8 @@
    "salaryPrevYear": 539943,
    "mlbamId": 700249,
    "salarySource": "minimum",
-   "war": 1.42,
-   "ip": 131.9
+   "war": 1.48,
+   "ip": 139.9
   },
   {
    "name": "Grant Wolfram",
@@ -321,8 +321,8 @@
    "salaryPrevYear": 800000,
    "mlbamId": 664991,
    "salarySource": "minimum",
-   "war": 0.31,
-   "ip": 40
+   "war": 0.34,
+   "ip": 44
   },
   {
    "name": "Brandon Young",
@@ -343,7 +343,7 @@
   {
    "name": "Jeremiah Jackson",
    "sheetName": "Jackson, Jeremiah",
-   "pos": "2b",
+   "pos": "2b-rf-3b",
    "age": 27,
    "mls": 1.056,
    "contract": "",
@@ -353,8 +353,8 @@
    "salaryPrevYear": 696713,
    "mlbamId": 669236,
    "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 93
+   "war": 0.13,
+   "pa": 81
   },
   {
    "name": "Dylan Beavers",
@@ -417,8 +417,8 @@
    "salaryPrevYear": 640342,
    "mlbamId": 689296,
    "salarySource": "minimum",
-   "war": 0.29,
-   "ip": 48
+   "war": 0.3,
+   "ip": 50
   },
   {
    "name": "Alex Hoppe",
@@ -433,8 +433,8 @@
    "salaryPrevYear": 229412,
    "mlbamId": 695380,
    "salarySource": "minimum",
-   "war": 0.15,
-   "ip": 33
+   "war": 0.16,
+   "ip": 36
   },
   {
    "name": "Cam Sanders",
@@ -449,8 +449,8 @@
    "salaryPrevYear": 229040,
    "mlbamId": 676742,
    "salarySource": "minimum",
-   "war": 0.08,
-   "ip": 38
+   "war": 0.09,
+   "ip": 40
   },
   {
    "name": "Christian Franklin",
@@ -481,8 +481,8 @@
    "salaryPrevYear": 161435,
    "mlbamId": 694346,
    "salarySource": "minimum",
-   "war": 1.26,
-   "ip": 126.6
+   "war": 1.28,
+   "ip": 130.6
   },
   {
    "name": "Luis De Leon",
@@ -497,8 +497,8 @@
    "salaryPrevYear": 95163,
    "mlbamId": 801725,
    "salarySource": "minimum",
-   "war": 0.44,
-   "ip": 52.7
+   "war": 0.45,
+   "ip": 53.7
   },
   {
    "name": "Reed Trimble",
@@ -513,8 +513,127 @@
    "salaryPrevYear": 63600,
    "mlbamId": 701655,
    "salarySource": "minimum",
+   "war": 0.07,
+   "pa": 42
+  },
+  {
+   "name": "Aron Estrada",
+   "sheetName": "",
+   "pos": "2b",
+   "age": 22,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 800406,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.2,
+   "pa": 62
+  },
+  {
+   "name": "Enrique Bradfield",
+   "sheetName": "",
+   "pos": "cf-lf",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 690961,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.15,
+   "pa": 90
+  },
+  {
+   "name": "Michael Forret",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 702650,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.16,
+   "ip": 39.7
+  },
+  {
+   "name": "Nestor German",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 815148,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.14,
+   "ip": 28.5
+  },
+  {
+   "name": "Levi Wells",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694370,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
    "war": 0.02,
-   "pa": 6
+   "ip": 18
+  },
+  {
+   "name": "Braxton Bragg",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 26,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 688867,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
+  },
+  {
+   "name": "Patrick Reilly",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694345,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
   }
  ],
  "deadMoney": [
@@ -590,16 +709,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 800406,
-   "name": "Aron Estrada",
-   "pos": "2b",
-   "age": 22,
-   "war": 1.88,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 827267,
    "name": "Caden Hunter",
    "pos": "sp",
@@ -640,16 +749,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 688867,
-   "name": "Braxton Bragg",
-   "pos": "sp",
-   "age": 26,
-   "war": 1.71,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 814450,
    "name": "Wehiwa Aloy",
    "pos": "ss",
@@ -666,16 +765,6 @@
    "age": 27,
    "war": 1.4,
    "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 815148,
-   "name": "Nestor German",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.25,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -714,38 +803,8 @@
    "name": "Zach Morgan",
    "pos": "c",
    "age": 27,
-   "war": 1.02,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 702650,
-   "name": "Michael Forret",
-   "pos": "sp",
-   "age": 23,
    "war": 1.01,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 690961,
-   "name": "Enrique Bradfield Jr.",
-   "pos": "of",
-   "age": 25,
-   "war": 0.97,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694370,
-   "name": "Levi Wells",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.93,
-   "ip": 200,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -756,16 +815,6 @@
    "age": 24,
    "war": 0.87,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694345,
-   "name": "Patrick Reilly",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.8,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -814,7 +863,7 @@
    "name": "Chadwick Tromp",
    "pos": "c",
    "age": 32,
-   "war": 0.44,
+   "war": 0.45,
    "pa": 450,
    "salary": 780000,
    "debuted": true
@@ -950,19 +999,19 @@
    "debuted": false
   },
   {
-   "mlbamId": 700072,
-   "name": "Yaqui Rivera",
-   "pos": "rp",
-   "age": 23,
-   "war": 0.06,
-   "ip": 65,
+   "mlbamId": 676480,
+   "name": "José Barrero",
+   "pos": "ss",
+   "age": 29,
+   "war": 0.02,
+   "pa": 600,
    "salary": 780000,
-   "debuted": false
+   "debuted": true
   },
   {
    "mlbamId": 676679,
    "name": "Luis Vázquez",
-   "pos": "ss",
+   "pos": "ss-3b",
    "age": 27,
    "war": 0.02,
    "pa": 600,

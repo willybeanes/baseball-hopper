@@ -38,7 +38,7 @@
   {
    "name": "Nico Hoerner",
    "sheetName": "Hoerner, Nico",
-   "pos": "2b",
+   "pos": "2b-ss",
    "age": 30,
    "mls": 7.014,
    "contract": "6 y/$141M (27-32)*",
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 691718,
    "salarySource": "cots",
-   "war": 6.44,
+   "war": 6.45,
    "pa": 650
   },
   {
@@ -125,7 +125,7 @@
   {
    "name": "Michael Busch",
    "sheetName": "Busch, Michael",
-   "pos": "3b",
+   "pos": "3b-1b",
    "age": 29,
    "mls": 3.045,
    "contract": "A1",
@@ -137,7 +137,7 @@
    "cotsEstimate": 4860000,
    "mlbamId": 683737,
    "salarySource": "mlbtr-arb",
-   "war": 2.04,
+   "war": 2.05,
    "pa": 605
   },
   {
@@ -208,7 +208,7 @@
    "cotsEstimate": 1808500,
    "mlbamId": 665804,
    "salarySource": "mlbtr-arb",
-   "war": 1.49,
+   "war": 1.5,
    "pa": 343
   },
   {
@@ -285,7 +285,7 @@
   {
    "name": "Gabriel Arias",
    "sheetName": "Arias, Gabriel",
-   "pos": "ss",
+   "pos": "ss-3b-2b",
    "age": 27,
    "mls": 3.124,
    "contract": "A1",
@@ -369,7 +369,7 @@
   {
    "name": "Matt Shaw",
    "sheetName": "Shaw, Matt",
-   "pos": "3b",
+   "pos": "3b-rf-2b",
    "age": 25,
    "mls": 1.162,
    "contract": "",
@@ -427,8 +427,8 @@
    "salaryPrevYear": 2036,
    "mlbamId": 687924,
    "salarySource": "minimum",
-   "war": 0.02,
-   "ip": 39.5
+   "war": -0.01,
+   "ip": 30.3
   },
   {
    "name": "Eric Orze",
@@ -481,7 +481,7 @@
   {
    "name": "Pedro Ramirez",
    "sheetName": "Ramirez, Pedro",
-   "pos": "2b",
+   "pos": "2b-3b",
    "age": 23,
    "mls": 0.129,
    "contract": "",
@@ -491,7 +491,7 @@
    "salaryPrevYear": 557802,
    "mlbamId": 699393,
    "salarySource": "minimum",
-   "war": 0.66,
+   "war": 0.67,
    "pa": 456
   },
   {
@@ -573,6 +573,40 @@
    "salarySource": "minimum",
    "war": 0.11,
    "pa": 110
+  },
+  {
+   "name": "Jaxon Wiggins",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694393,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.28,
+   "ip": 70.6
+  },
+  {
+   "name": "Brody McCullough",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 27,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 805664,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.13,
+   "ip": 18.5
   }
  ],
  "deadMoney": [
@@ -645,16 +679,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 805664,
-   "name": "Brody McCullough",
-   "pos": "sp",
-   "age": 27,
-   "war": 1.45,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 810830,
    "name": "Jake Knapp",
    "pos": "sp",
@@ -679,7 +703,7 @@
    "name": "Tyler Schlaffer",
    "pos": "sp",
    "age": 26,
-   "war": 1.42,
+   "war": 1.41,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -705,6 +729,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 683100,
+   "name": "Dawson Netz",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.11,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 687766,
    "name": "Miguel Useche",
    "pos": "c",
@@ -721,26 +755,6 @@
    "age": 26,
    "war": 1.09,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694393,
-   "name": "Jaxon Wiggins",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.02,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 683100,
-   "name": "Dawson Netz",
-   "pos": "sp",
-   "age": 26,
-   "war": 1.01,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },

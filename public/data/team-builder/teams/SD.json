@@ -32,13 +32,13 @@
    "walkYear": false,
    "mlbamId": 593428,
    "salarySource": "cots",
-   "war": 2.53,
+   "war": 2.54,
    "pa": 535
   },
   {
    "name": "Fernando Tatis Jr.",
    "sheetName": "Tatis Jr., Fernando",
-   "pos": "rf",
+   "pos": "rf-2b",
    "age": 28,
    "mls": 7.12,
    "contract": "14 y/$340M (21-34)",
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 665487,
    "salarySource": "cots",
-   "war": 4.64,
+   "war": 4.65,
    "pa": 642
   },
   {
@@ -83,13 +83,13 @@
    "walkYear": false,
    "mlbamId": 506433,
    "salarySource": "cots",
-   "war": 0.93,
+   "war": 0.94,
    "ip": 89.5
   },
   {
    "name": "Jake Cronenworth",
    "sheetName": "Cronenworth, Jake",
-   "pos": "1b",
+   "pos": "1b-2b-ss",
    "age": 33,
    "mls": 7,
    "contract": "7 y/$80M (24-30)",
@@ -135,7 +135,7 @@
    "walkYear": false,
    "mlbamId": 701538,
    "salarySource": "cots",
-   "war": 4.47,
+   "war": 4.48,
    "pa": 633
   },
   {
@@ -162,7 +162,7 @@
   {
    "name": "Gavin Sheets",
    "sheetName": "Sheets, Gavin",
-   "pos": "1b",
+   "pos": "1b-lf",
    "age": 31,
    "mls": 5.076,
    "contract": "A3",
@@ -174,7 +174,7 @@
    "cotsEstimate": 5500000,
    "mlbamId": 657757,
    "salarySource": "mlbtr-arb",
-   "war": 0.47,
+   "war": 0.48,
    "pa": 393
   },
   {
@@ -201,7 +201,7 @@
   {
    "name": "Sung Mun Song",
    "sheetName": "Song, Sung Mun",
-   "pos": "3b-2b",
+   "pos": "3b-2b-ss",
    "age": 30,
    "mls": 0.166,
    "contract": "4 y/$15M (26-29)",
@@ -248,7 +248,7 @@
    "cotsEstimate": 2800000,
    "mlbamId": 666023,
    "salarySource": "mlbtr-arb",
-   "war": 0.58,
+   "war": 0.59,
    "pa": 137
   },
   {
@@ -265,8 +265,8 @@
    "walkYear": false,
    "mlbamId": 606996,
    "salarySource": "cots",
-   "war": 0.54,
-   "ip": 84.6
+   "war": 0.39,
+   "ip": 67.4
   },
   {
    "name": "Ryan Weiss",
@@ -299,7 +299,7 @@
    "cotsEstimate": 1500000,
    "mlbamId": 669134,
    "salarySource": "mlbtr-arb",
-   "war": 0.97,
+   "war": 0.98,
    "pa": 365
   },
   {
@@ -407,7 +407,7 @@
   {
    "name": "Will Wagner",
    "sheetName": "Wagner, Will",
-   "pos": "2b",
+   "pos": "2b-3b-1b",
    "age": 28,
    "mls": 1.044,
    "contract": "",
@@ -423,7 +423,7 @@
   {
    "name": "Samad Taylor",
    "sheetName": "Taylor, Samad",
-   "pos": "2b",
+   "pos": "2b-lf",
    "age": 28,
    "mls": 1.023,
    "contract": "",
@@ -471,7 +471,7 @@
   {
    "name": "Dustin Harris",
    "sheetName": "Harris, Dustin",
-   "pos": "1b-3b",
+   "pos": "1b-3b-lf-rf",
    "age": 27,
    "mls": 0.128,
    "contract": "",
@@ -519,7 +519,7 @@
   {
    "name": "Gage Workman",
    "sheetName": "Workman, Gage",
-   "pos": "ss",
+   "pos": "ss-3b",
    "age": 27,
    "mls": 0.086,
    "contract": "",
@@ -579,6 +579,40 @@
    "salarySource": "minimum",
    "war": -0.08,
    "ip": 30
+  },
+  {
+   "name": "Ian Koenig",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 26,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 701617,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": -0.02,
+   "ip": 46.9
+  },
+  {
+   "name": "Tucker Musgrove",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 814491,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.06,
+   "ip": 23
   }
  ],
  "deadMoney": [
@@ -656,7 +690,7 @@
    "name": "Fernando Sanchez",
    "pos": "sp",
    "age": 26,
-   "war": 0.7,
+   "war": 0.71,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -666,7 +700,7 @@
    "name": "Justin DeCriscio",
    "pos": "ss",
    "age": 24,
-   "war": 0.7,
+   "war": 0.69,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -692,24 +726,14 @@
    "debuted": false
   },
   {
-   "mlbamId": 701617,
-   "name": "Ian Koenig",
-   "pos": "sp",
-   "age": 26,
-   "war": 0.23,
-   "ip": 200,
+   "mlbamId": 670276,
+   "name": "Cal Stevenson",
+   "pos": "of",
+   "age": 30,
+   "war": 0.38,
+   "pa": 600,
    "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 814491,
-   "name": "Tucker Musgrove",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.18,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
+   "debuted": true
   },
   {
    "mlbamId": 676203,

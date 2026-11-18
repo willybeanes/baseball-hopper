@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 677594,
    "salarySource": "cots",
-   "war": 4.73,
+   "war": 4.74,
    "pa": 628
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 647304,
    "salarySource": "cots",
-   "war": 2.16,
+   "war": 2.17,
    "pa": 590
   },
   {
@@ -67,7 +67,7 @@
    "walkYear": false,
    "mlbamId": 663728,
    "salarySource": "cots",
-   "war": 3.9,
+   "war": 3.91,
    "pa": 501
   },
   {
@@ -85,7 +85,7 @@
    "cotsEstimate": 10550000,
    "mlbamId": 669923,
    "salarySource": "mlbtr-arb",
-   "war": 2.8,
+   "war": 2.81,
    "ip": 172
   },
   {
@@ -125,7 +125,7 @@
   {
    "name": "Brendan Donovan",
    "sheetName": "Donovan, Brendan",
-   "pos": "2b-lf",
+   "pos": "2b-lf-3b",
    "age": 30,
    "mls": 5,
    "contract": "A3",
@@ -137,7 +137,7 @@
    "cotsEstimate": 6500000,
    "mlbamId": 680977,
    "salarySource": "mlbtr-arb",
-   "war": 2.52,
+   "war": 2.53,
    "pa": 481
   },
   {
@@ -155,31 +155,13 @@
    "cotsEstimate": 5000000,
    "mlbamId": 693433,
    "salarySource": "mlbtr-arb",
-   "war": 3.1,
+   "war": 3.09,
    "ip": 162.1
-  },
-  {
-   "name": "Bryce Miller",
-   "sheetName": "Miller, Bryce",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 3.153,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 3900000,
-   "taxValue": 3900000,
-   "salaryPrevYear": 2437500,
-   "arbYear": 1,
-   "cotsEstimate": 3750000,
-   "mlbamId": 682243,
-   "salarySource": "mlbtr-arb",
-   "war": 1.26,
-   "ip": 124
   },
   {
    "name": "Luke Raley",
    "sheetName": "Raley, Luke",
-   "pos": "rf",
+   "pos": "rf-1b-cf",
    "age": 32,
    "mls": 4.106,
    "contract": "A2",
@@ -215,7 +197,7 @@
   {
    "name": "Colt Emerson",
    "sheetName": "Emerson, Colt",
-   "pos": "ss",
+   "pos": "ss-3b",
    "age": 21,
    "mls": 0.134,
    "contract": "8 y/$95M (26-33)+34 cl opt",
@@ -282,24 +264,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.55,
    "ip": 60
-  },
-  {
-   "name": "Jose Ferrer",
-   "sheetName": "Ferrer, Jose",
-   "pos": "lhp",
-   "age": 28,
-   "mls": 3.094,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1600000,
-   "taxValue": 1600000,
-   "salaryPrevYear": 796600,
-   "arbYear": 1,
-   "cotsEstimate": 1750000,
-   "mlbamId": 678606,
-   "salarySource": "mlbtr-arb",
-   "war": 0.57,
-   "ip": 64
   },
   {
    "name": "Cooper Criswell",
@@ -388,25 +352,9 @@
    "ip": 154.1
   },
   {
-   "name": "Logan Evans",
-   "sheetName": "Evans, Logan",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 1.124,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 785800,
-   "mlbamId": 688138,
-   "salarySource": "minimum",
-   "war": 0.06,
-   "ip": 26.2
-  },
-  {
    "name": "Cole Young",
    "sheetName": "Young, Cole",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 23,
    "mls": 1.121,
    "contract": "",
@@ -416,13 +364,13 @@
    "salaryPrevYear": 786100,
    "mlbamId": 702284,
    "salarySource": "minimum",
-   "war": 2.82,
+   "war": 2.83,
    "pa": 531
   },
   {
    "name": "Leo Rivas",
    "sheetName": "Rivas, Leo",
-   "pos": "ss",
+   "pos": "ss-2b-3b",
    "age": 29,
    "mls": 1.092,
    "contract": "",
@@ -438,7 +386,7 @@
   {
    "name": "Ryan Bliss",
    "sheetName": "Bliss, Ryan",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 26,
    "mls": 1.072,
    "contract": "",
@@ -470,7 +418,7 @@
   {
    "name": "Grant McCray",
    "sheetName": "McCray, Grant",
-   "pos": "cf",
+   "pos": "cf-rf-lf",
    "age": 26,
    "mls": 0.165,
    "contract": "",
@@ -513,7 +461,7 @@
    "mlbamId": 689546,
    "salarySource": "minimum",
    "war": -0.03,
-   "ip": 6
+   "ip": 8
   },
   {
    "name": "Troy Taylor",
@@ -550,7 +498,7 @@
   {
    "name": "Brock Rodden",
    "sheetName": "Rodden, Brock",
-   "pos": "2b",
+   "pos": "2b-3b-ss",
    "age": 27,
    "mls": 0.045,
    "contract": "",
@@ -560,7 +508,7 @@
    "salaryPrevYear": 187701,
    "mlbamId": 801126,
    "salarySource": "minimum",
-   "war": 0.33,
+   "war": 0.34,
    "pa": 133
   },
   {
@@ -608,7 +556,7 @@
    "salaryPrevYear": 112620,
    "mlbamId": 703155,
    "salarySource": "minimum",
-   "war": 1.05,
+   "war": 1.06,
    "pa": 415
   },
   {
@@ -644,11 +592,48 @@
    "ip": 18
   },
   {
+   "name": "Maikel Garcia",
+   "sheetName": "Garcia, Maikel",
+   "pos": "3b-ss-2b",
+   "age": 27,
+   "mls": 3.168,
+   "contract": "5 y/$57.5M (26-30)+31 cl opt",
+   "status": "signed",
+   "salary": 7200000,
+   "taxValue": 11500000,
+   "salaryPrevYear": 4200000,
+   "walkYear": false,
+   "mlbamId": 672580,
+   "salarySource": "cots",
+   "corrected": "RosterResource: moved from KC",
+   "war": 3.08,
+   "pa": 548
+  },
+  {
+   "name": "James McArthur",
+   "sheetName": "McArthur, James",
+   "pos": "rhp",
+   "age": 30,
+   "mls": 3.15,
+   "contract": "A2",
+   "status": "arb",
+   "salary": 800000,
+   "taxValue": 800000,
+   "salaryPrevYear": 810000,
+   "arbYear": 2,
+   "cotsEstimate": 810000,
+   "mlbamId": 663704,
+   "salarySource": "mlbtr-arb",
+   "corrected": "RosterResource: moved from KC",
+   "war": 0.07,
+   "ip": 18
+  },
+  {
    "name": "Isaac Mattson",
    "sheetName": "",
    "pos": "rhp",
    "age": 31,
-   "mls": 0.161,
+   "mls": 1.124,
    "contract": "Added to the 40-man",
    "status": "prearb",
    "salary": 780000,
@@ -810,7 +795,7 @@
   {
    "mlbamId": 656413,
    "name": "Stuart Fairchild",
-   "pos": "cf",
+   "pos": "cf-rf",
    "age": 31,
    "war": 0.82,
    "pa": 600,

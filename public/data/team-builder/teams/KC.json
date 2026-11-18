@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 677951,
    "salarySource": "cots",
-   "war": 6.11,
+   "war": 6.12,
    "pa": 599
   },
   {
@@ -55,7 +55,7 @@
   {
    "name": "Salvador Perez",
    "sheetName": "Perez, Salvador",
-   "pos": "c",
+   "pos": "c-1b",
    "age": 37,
    "mls": 15.05,
    "contract": "2 y/$25M (26-27)*",
@@ -87,23 +87,6 @@
    "ip": 1
   },
   {
-   "name": "Maikel Garcia",
-   "sheetName": "Garcia, Maikel",
-   "pos": "3b",
-   "age": 27,
-   "mls": 3.168,
-   "contract": "5 y/$57.5M (26-30)+31 cl opt",
-   "status": "signed",
-   "salary": 7200000,
-   "taxValue": 11500000,
-   "salaryPrevYear": 4200000,
-   "walkYear": false,
-   "mlbamId": 672580,
-   "salarySource": "cots",
-   "war": 3.07,
-   "pa": 548
-  },
-  {
    "name": "Vinnie Pasquantino",
    "sheetName": "Pasquantino, Vinnie",
    "pos": "1b",
@@ -117,7 +100,7 @@
    "walkYear": false,
    "mlbamId": 686469,
    "salarySource": "cots",
-   "war": 1.73,
+   "war": 1.74,
    "pa": 553
   },
   {
@@ -136,7 +119,7 @@
    "mlbamId": 664728,
    "salarySource": "mlbtr-arb",
    "war": 0.65,
-   "pa": 350
+   "pa": 348
   },
   {
    "name": "Michael Massey",
@@ -170,8 +153,8 @@
    "walkYear": true,
    "mlbamId": 664062,
    "salarySource": "cots",
-   "war": 0.98,
-   "ip": 130.8
+   "war": 0.97,
+   "ip": 128.8
   },
   {
    "name": "Daniel Lynch IV",
@@ -206,8 +189,8 @@
    "cotsEstimate": 2000000,
    "mlbamId": 677976,
    "salarySource": "mlbtr-arb",
-   "war": 0.66,
-   "ip": 116.3
+   "war": 0.61,
+   "ip": 107.3
   },
   {
    "name": "Lucas Erceg",
@@ -226,24 +209,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.29,
    "ip": 63
-  },
-  {
-   "name": "Nick Mears",
-   "sheetName": "Mears, Nick",
-   "pos": "rhp",
-   "age": 30,
-   "mls": 5.022,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 2200000,
-   "taxValue": 2200000,
-   "salaryPrevYear": 1900000,
-   "arbYear": 3,
-   "cotsEstimate": 1900000,
-   "mlbamId": 683232,
-   "salarySource": "mlbtr-arb",
-   "war": 0.04,
-   "ip": 34
   },
   {
    "name": "Nate Pearson",
@@ -282,24 +247,6 @@
    "ip": 55
   },
   {
-   "name": "James McArthur",
-   "sheetName": "McArthur, James",
-   "pos": "rhp",
-   "age": 30,
-   "mls": 3.15,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": 810000,
-   "arbYear": 2,
-   "cotsEstimate": 810000,
-   "mlbamId": 663704,
-   "salarySource": "mlbtr-arb",
-   "war": 0.08,
-   "ip": 20
-  },
-  {
    "name": "Noah Cameron",
    "sheetName": "Cameron, Noah",
    "pos": "lhp-s",
@@ -328,7 +275,7 @@
    "salaryPrevYear": 784000,
    "mlbamId": 695506,
    "salarySource": "minimum",
-   "war": 3.2,
+   "war": 3.22,
    "pa": 596
   },
   {
@@ -344,13 +291,13 @@
    "salaryPrevYear": 781150,
    "mlbamId": 695600,
    "salarySource": "minimum",
-   "war": 3.45,
+   "war": 3.46,
    "pa": 535
   },
   {
    "name": "Nick Loftin",
    "sheetName": "Loftin, Nick",
-   "pos": "2b",
+   "pos": "2b-3b-lf-rf",
    "age": 28,
    "mls": 2.081,
    "contract": "",
@@ -360,7 +307,7 @@
    "salaryPrevYear": 747734,
    "mlbamId": 679845,
    "salarySource": "minimum",
-   "war": 0.69,
+   "war": 0.7,
    "pa": 253
   },
   {
@@ -392,13 +339,13 @@
    "salaryPrevYear": 799750,
    "mlbamId": 686555,
    "salarySource": "minimum",
-   "war": 0.74,
+   "war": 0.75,
    "pa": 382
   },
   {
    "name": "John Rave",
    "sheetName": "Rave, John",
-   "pos": "rf",
+   "pos": "rf-lf-cf",
    "age": 29,
    "mls": 1.01,
    "contract": "",
@@ -456,13 +403,13 @@
    "salaryPrevYear": 316911,
    "mlbamId": 687765,
    "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 10
+   "war": 0.06,
+   "ip": 12
   },
   {
    "name": "Tyler Tolbert",
    "sheetName": "Tolbert, Tyler",
-   "pos": "2b-of",
+   "pos": "2b-of-ss",
    "age": 29,
    "mls": 1.126,
    "contract": "",
@@ -473,7 +420,7 @@
    "mlbamId": 686475,
    "salarySource": "minimum",
    "war": 0.15,
-   "pa": 189
+   "pa": 187
   },
   {
    "name": "Spencer Bivens",
@@ -524,6 +471,22 @@
    "ip": 1
   },
   {
+   "name": "Angel Bastardo",
+   "sheetName": "Bastardo, Angel",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 1,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 682785,
+   "salarySource": "minimum",
+   "war": 0.02,
+   "ip": 32
+  },
+  {
    "name": "Beck Way",
    "sheetName": "Way, Beck",
    "pos": "rhp",
@@ -537,7 +500,7 @@
    "mlbamId": 694360,
    "salarySource": "minimum",
    "war": -0.07,
-   "ip": 32
+   "ip": 35
   },
   {
    "name": "Ryan Bergert",
@@ -558,7 +521,7 @@
   {
    "name": "Matthew Lugo",
    "sheetName": "Lugo, Matthew",
-   "pos": "lf",
+   "pos": "lf-cf-rf",
    "age": 26,
    "mls": 0.104,
    "contract": "",
@@ -569,7 +532,7 @@
    "mlbamId": 683090,
    "salarySource": "minimum",
    "war": 0.01,
-   "pa": 69
+   "pa": 58
   },
   {
    "name": "Nolan Hoffman",
@@ -604,6 +567,22 @@
    "ip": 37
   },
   {
+   "name": "Lucas Braun",
+   "sheetName": "Braun, Lucas",
+   "pos": "rhp",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 814351,
+   "salarySource": "minimum",
+   "war": 0.24,
+   "ip": 46.9
+  },
+  {
    "name": "Ben Kudrna",
    "sheetName": "Kudrna, Ben",
    "pos": "rhp",
@@ -618,6 +597,22 @@
    "salarySource": "minimum",
    "war": 0.04,
    "ip": 17.2
+  },
+  {
+   "name": "Carson Roccaforte",
+   "sheetName": "Roccaforte, Carson",
+   "pos": "of",
+   "age": 25,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 811287,
+   "salarySource": "minimum",
+   "war": 0.11,
+   "pa": 121
   },
   {
    "name": "Steven Zobac",
@@ -636,21 +631,59 @@
    "ip": 1
   },
   {
-   "name": "Angel Bastardo",
-   "sheetName": "",
+   "name": "Bryce Miller",
+   "sheetName": "Miller, Bryce",
    "pos": "rhp",
-   "age": 25,
-   "mls": 1,
-   "contract": "Added to the 40-man",
+   "age": 28,
+   "mls": 3.153,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 3900000,
+   "taxValue": 3900000,
+   "salaryPrevYear": 2437500,
+   "arbYear": 1,
+   "cotsEstimate": 3750000,
+   "mlbamId": 682243,
+   "salarySource": "mlbtr-arb",
+   "corrected": "RosterResource: moved from SEA",
+   "war": 1.26,
+   "ip": 124
+  },
+  {
+   "name": "Jose Ferrer",
+   "sheetName": "Ferrer, Jose",
+   "pos": "lhp",
+   "age": 28,
+   "mls": 3.094,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 1600000,
+   "taxValue": 1600000,
+   "salaryPrevYear": 796600,
+   "arbYear": 1,
+   "cotsEstimate": 1750000,
+   "mlbamId": 678606,
+   "salarySource": "mlbtr-arb",
+   "corrected": "RosterResource: moved from SEA",
+   "war": 0.57,
+   "ip": 64
+  },
+  {
+   "name": "Logan Evans",
+   "sheetName": "Evans, Logan",
+   "pos": "rhp",
+   "age": 26,
+   "mls": 1.124,
+   "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 682785,
+   "salaryPrevYear": 785800,
+   "mlbamId": 688138,
    "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": 0.01,
-   "ip": 6
+   "corrected": "RosterResource: moved from SEA",
+   "war": 0.06,
+   "ip": 26.2
   }
  ],
  "deadMoney": [
@@ -662,8 +695,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 7650000,
-   "taxValue": 7650000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -683,10 +716,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 120627075,
- "sheetTaxPayroll": 150267176,
- "rowsPayroll": 120627075,
- "rowsTaxPayroll": 150267176,
+ "sheetPayroll": 119577075,
+ "sheetTaxPayroll": 149217176,
+ "rowsPayroll": 119577075,
+ "rowsTaxPayroll": 149217176,
  "minors": [
   {
    "mlbamId": 703610,
@@ -703,18 +736,8 @@
    "name": "Jack Pineda",
    "pos": "ss",
    "age": 27,
-   "war": 1.56,
+   "war": 1.38,
    "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 814351,
-   "name": "Lucas Braun",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.47,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -784,16 +807,6 @@
    "pos": "2b",
    "age": 27,
    "war": 0.64,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 811287,
-   "name": "Carson Roccaforte",
-   "pos": "cf",
-   "age": 25,
-   "war": 0.54,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -907,6 +920,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 683232,
+   "name": "Nick Mears",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.08,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 701401,

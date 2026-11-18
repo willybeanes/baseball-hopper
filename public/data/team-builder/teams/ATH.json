@@ -25,7 +25,7 @@
   {
    "name": "Brent Rooker",
    "sheetName": "Rooker, Brent",
-   "pos": "dh-lf",
+   "pos": "dh-lf-rf",
    "age": 32,
    "mls": 5.059,
    "contract": "5 y/$60M (25-29)+30 cl opt",
@@ -54,13 +54,13 @@
    "cotsEstimate": 9250000,
    "mlbamId": 669127,
    "salarySource": "mlbtr-arb",
-   "war": 2.61,
+   "war": 2.62,
    "pa": 516
   },
   {
    "name": "Tyler Soderstrom",
    "sheetName": "Soderstrom, Tyler",
-   "pos": "lf",
+   "pos": "lf-1b",
    "age": 25,
    "mls": 3.053,
    "contract": "7 y/$86M (26-32)+33 cl opt",
@@ -71,13 +71,13 @@
    "walkYear": false,
    "mlbamId": 691016,
    "salarySource": "cots",
-   "war": 2.33,
+   "war": 2.34,
    "pa": 499
   },
   {
    "name": "Lawrence Butler",
    "sheetName": "Butler, Lawrence",
-   "pos": "rf",
+   "pos": "rf-cf",
    "age": 26,
    "mls": 3.032,
    "contract": "7 y/$65.5M (25-31)+32 cl opt",
@@ -88,13 +88,13 @@
    "walkYear": false,
    "mlbamId": 671732,
    "salarySource": "cots",
-   "war": 1.33,
+   "war": 1.34,
    "pa": 507
   },
   {
    "name": "Zack Gelof",
    "sheetName": "Gelof, Zack",
-   "pos": "2b",
+   "pos": "2b-3b-lf-cf",
    "age": 27,
    "mls": 3.05,
    "contract": "A1",
@@ -106,7 +106,7 @@
    "cotsEstimate": 3050000,
    "mlbamId": 680869,
    "salarySource": "mlbtr-arb",
-   "war": 2.03,
+   "war": 2.04,
    "pa": 478
   },
   {
@@ -123,7 +123,7 @@
    "walkYear": false,
    "mlbamId": 805779,
    "salarySource": "cots",
-   "war": 2.74,
+   "war": 2.75,
    "pa": 495
   },
   {
@@ -159,8 +159,8 @@
    "cotsEstimate": 1275000,
    "mlbamId": 665622,
    "salarySource": "mlbtr-arb",
-   "war": 1.13,
-   "ip": 120.2
+   "war": 1.14,
+   "ip": 122.2
   },
   {
    "name": "J.T. Ginn",
@@ -181,7 +181,7 @@
   {
    "name": "Donovan Walton",
    "sheetName": "Walton, Donovan",
-   "pos": "2b",
+   "pos": "2b-ss-3b",
    "age": 33,
    "mls": 2.003,
    "contract": "",
@@ -207,7 +207,7 @@
    "salaryPrevYear": 785000,
    "mlbamId": 701762,
    "salarySource": "minimum",
-   "war": 4.49,
+   "war": 4.5,
    "pa": 652
   },
   {
@@ -245,7 +245,7 @@
   {
    "name": "Darell Hernaiz",
    "sheetName": "Hernaiz, Darell",
-   "pos": "ss",
+   "pos": "ss-3b-2b",
    "age": 25,
    "mls": 1.164,
    "contract": "",
@@ -261,7 +261,7 @@
   {
    "name": "Alika Williams",
    "sheetName": "Williams, Alika",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 28,
    "mls": 1.163,
    "contract": "",
@@ -288,7 +288,7 @@
    "mlbamId": 680684,
    "salarySource": "minimum",
    "war": 0.13,
-   "ip": 22.4
+   "ip": 28.4
   },
   {
    "name": "Jacob Lopez",
@@ -309,7 +309,7 @@
   {
    "name": "Max Muncy",
    "sheetName": "Muncy, Max",
-   "pos": "ss",
+   "pos": "ss-3b-2b",
    "age": 24,
    "mls": 1.137,
    "contract": "",
@@ -352,7 +352,7 @@
    "mlbamId": 685801,
    "salarySource": "minimum",
    "war": 0.06,
-   "ip": 34
+   "ip": 36
   },
   {
    "name": "Brady Basso",
@@ -367,8 +367,8 @@
    "salaryPrevYear": 558457,
    "mlbamId": 669620,
    "salarySource": "minimum",
-   "war": 0.23,
-   "ip": 54
+   "war": 0.22,
+   "ip": 52
   },
   {
    "name": "Jack Perkins",
@@ -383,8 +383,8 @@
    "salaryPrevYear": 730568,
    "mlbamId": 678022,
    "salarySource": "minimum",
-   "war": 1.13,
-   "ip": 101.5
+   "war": 1.2,
+   "ip": 109.5
   },
   {
    "name": "Drew Rom",
@@ -400,12 +400,12 @@
    "mlbamId": 680723,
    "salarySource": "minimum",
    "war": 0.12,
-   "ip": 28
+   "ip": 27
   },
   {
    "name": "Nate Eaton",
    "sheetName": "Eaton, Nate",
-   "pos": "of",
+   "pos": "of-3b",
    "age": 30,
    "mls": 1.081,
    "contract": "",
@@ -431,7 +431,7 @@
    "salaryPrevYear": 780000,
    "mlbamId": 666126,
    "salarySource": "minimum",
-   "war": 0.09,
+   "war": 0.1,
    "pa": 147
   },
   {
@@ -447,8 +447,8 @@
    "salaryPrevYear": 138971,
    "mlbamId": 688297,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 46
+   "war": 0.1,
+   "ip": 48
   },
   {
    "name": "Elvis Alvarado",
@@ -480,7 +480,7 @@
    "mlbamId": 686751,
    "salarySource": "minimum",
    "war": 0.14,
-   "ip": 43
+   "ip": 44
   },
   {
    "name": "Henry Bolte",
@@ -495,7 +495,7 @@
    "salaryPrevYear": 579787,
    "mlbamId": 703607,
    "salarySource": "minimum",
-   "war": 3.01,
+   "war": 3.02,
    "pa": 522
   },
   {
@@ -527,13 +527,13 @@
    "salaryPrevYear": 420382,
    "mlbamId": 686930,
    "salarySource": "minimum",
-   "war": 0.11,
-   "ip": 45.3
+   "war": 0.09,
+   "ip": 40.5
   },
   {
    "name": "Joshua Kuroda-Grauer",
    "sheetName": "Kuroda-Grauer, Joshua",
-   "pos": "ss",
+   "pos": "ss-3b",
    "age": 24,
    "mls": 0.091,
    "contract": "",
@@ -543,7 +543,7 @@
    "salaryPrevYear": 379573,
    "mlbamId": 811965,
    "salarySource": "minimum",
-   "war": 1.08,
+   "war": 1.09,
    "pa": 284
   },
   {
@@ -559,13 +559,13 @@
    "salaryPrevYear": 699697,
    "mlbamId": 806960,
    "salarySource": "minimum",
-   "war": 0.06,
-   "ip": 20
+   "war": 0.07,
+   "ip": 24
   },
   {
    "name": "Tommy White",
    "sheetName": "White, Tommy",
-   "pos": "3b",
+   "pos": "3b-1b",
    "age": 24,
    "mls": 0.073,
    "contract": "",
@@ -575,7 +575,7 @@
    "salaryPrevYear": 304492,
    "mlbamId": 695720,
    "salarySource": "minimum",
-   "war": 0.13,
+   "war": 0.14,
    "pa": 145
   },
   {
@@ -591,40 +591,8 @@
    "salaryPrevYear": 39021,
    "mlbamId": 697812,
    "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 6
-  },
-  {
-   "name": "Yunior Tur",
-   "sheetName": "Tur, Yunior",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.04,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 183651,
-   "mlbamId": 814305,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 25
-  },
-  {
-   "name": "Hayden Juenger",
-   "sheetName": "Juenger, Hayden",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.038,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 295220,
-   "mlbamId": 696522,
-   "salarySource": "minimum",
-   "war": -0.03,
-   "ip": 16
+   "war": 0.02,
+   "ip": 8
   },
   {
    "name": "Kade Morris",
@@ -639,8 +607,25 @@
    "salaryPrevYear": 184946,
    "mlbamId": 695034,
    "salarySource": "minimum",
-   "war": 0.21,
-   "ip": 35.2
+   "war": 0.22,
+   "ip": 39.2
+  },
+  {
+   "name": "Cole Conn",
+   "sheetName": "",
+   "pos": "c",
+   "age": 26,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 813833,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.32,
+   "pa": 134
   },
   {
    "name": "Raymond Burgos",
@@ -652,12 +637,29 @@
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 115647,
+   "salaryPrevYear": null,
    "mlbamId": 670103,
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from BOS",
-   "war": 0.03,
-   "ip": 18
+   "war": 0.18,
+   "ip": 39.2
+  },
+  {
+   "name": "Yaqui Rivera",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 700072,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.06,
+   "ip": 28
   }
  ],
  "deadMoney": [
@@ -737,16 +739,6 @@
    "age": 25,
    "war": 1.18,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 813833,
-   "name": "Cole Conn",
-   "pos": "c",
-   "age": 25,
-   "war": 1.08,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -919,6 +911,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 814305,
+   "name": "Yunior Tur",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.01,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   }
  ]
 }

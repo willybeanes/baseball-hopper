@@ -32,13 +32,13 @@
    "walkYear": false,
    "mlbamId": 678662,
    "salarySource": "cots",
-   "war": 1.4,
+   "war": 1.41,
    "pa": 456
   },
   {
    "name": "Willi Castro",
    "sheetName": "Castro, Willi",
-   "pos": "2b-of",
+   "pos": "2b-of-3b-ss-1b",
    "age": 30,
    "mls": 7.017,
    "contract": "2 y/$12.8M (26-27)",
@@ -49,7 +49,7 @@
    "walkYear": true,
    "mlbamId": 650489,
    "salarySource": "cots",
-   "war": 0.56,
+   "war": 0.57,
    "pa": 271
   },
   {
@@ -84,7 +84,7 @@
    "cotsEstimate": 4510000,
    "mlbamId": 696100,
    "salarySource": "mlbtr-arb",
-   "war": 1.89,
+   "war": 1.9,
    "pa": 536
   },
   {
@@ -108,7 +108,7 @@
   {
    "name": "Jake McCarthy",
    "sheetName": "McCarthy, Jake",
-   "pos": "rf",
+   "pos": "rf-lf-cf",
    "age": 28,
    "mls": 4.074,
    "contract": "A2",
@@ -174,13 +174,13 @@
    "cotsEstimate": 1000000,
    "mlbamId": 687597,
    "salarySource": "mlbtr-arb",
-   "war": -0.13,
+   "war": -0.12,
    "pa": 184
   },
   {
    "name": "Connor Norby",
    "sheetName": "Norby, Connor",
-   "pos": "2b",
+   "pos": "2b-3b-1b",
    "age": 27,
    "mls": 2.026,
    "contract": "",
@@ -207,7 +207,7 @@
    "mlbamId": 688642,
    "salarySource": "minimum",
    "war": -0.34,
-   "ip": 74
+   "ip": 63
   },
   {
    "name": "Tanner Gordon",
@@ -286,8 +286,8 @@
    "salaryPrevYear": 800000,
    "mlbamId": 664954,
    "salarySource": "minimum",
-   "war": 0.03,
-   "pa": 154
+   "war": 0.02,
+   "pa": 140
   },
   {
    "name": "Jaden Hill",
@@ -334,7 +334,7 @@
    "salaryPrevYear": 782000,
    "mlbamId": 691720,
    "salarySource": "minimum",
-   "war": 2.02,
+   "war": 2.03,
    "pa": 466
   },
   {
@@ -367,7 +367,7 @@
    "mlbamId": 690924,
    "salarySource": "minimum",
    "war": 0.01,
-   "pa": 71
+   "pa": 69
   },
   {
    "name": "T.J. Rumfield",
@@ -382,13 +382,13 @@
    "salaryPrevYear": 780000,
    "mlbamId": 681198,
    "salarySource": "minimum",
-   "war": 1.09,
+   "war": 1.1,
    "pa": 537
   },
   {
    "name": "Ryan Ritter",
    "sheetName": "Ritter, Ryan",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 26,
    "mls": 0.14,
    "contract": "",
@@ -447,12 +447,12 @@
    "mlbamId": 680604,
    "salarySource": "minimum",
    "war": -0.07,
-   "ip": 40
+   "ip": 38
   },
   {
    "name": "Cole Carrigg",
    "sheetName": "Carrigg, Cole",
-   "pos": "of",
+   "pos": "of-ss",
    "age": 25,
    "mls": 0.111,
    "contract": "",
@@ -478,8 +478,8 @@
    "salaryPrevYear": 97845,
    "mlbamId": 807743,
    "salarySource": "minimum",
-   "war": 0.69,
-   "ip": 117.2
+   "war": 0.63,
+   "ip": 108.1
   },
   {
    "name": "Gabriel Hughes",
@@ -526,8 +526,8 @@
    "salaryPrevYear": 242419,
    "mlbamId": 693308,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 56
+   "war": 0.08,
+   "ip": 54
   },
   {
    "name": "Mark Manfredi",
@@ -592,6 +592,57 @@
    "salarySource": "minimum",
    "war": -0.01,
    "ip": 36
+  },
+  {
+   "name": "Bryant Betancourt",
+   "sheetName": "",
+   "pos": "c",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 700164,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.14,
+   "pa": 62
+  },
+  {
+   "name": "Jack Mahoney",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694968,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.29,
+   "ip": 61.4
+  },
+  {
+   "name": "Jackson Cox",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 702484,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.25,
+   "ip": 36.9
   }
  ],
  "deadMoney": [
@@ -636,34 +687,14 @@
  "rowsTaxPayroll": 103946100,
  "minors": [
   {
-   "mlbamId": 820825,
-   "name": "Konner Eaton",
-   "pos": "sp",
-   "age": 24,
-   "war": 1.58,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 666397,
    "name": "Edouard Julien",
-   "pos": "2b",
+   "pos": "2b-1b",
    "age": 28,
    "war": 1.48,
    "pa": 600,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 702484,
-   "name": "Jackson Cox",
-   "pos": "sp",
-   "age": 23,
-   "war": 1.39,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
   },
   {
    "mlbamId": 691792,
@@ -686,31 +717,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 694968,
-   "name": "Jack Mahoney",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.08,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 700164,
-   "name": "Bryant Betancourt",
-   "pos": "c",
-   "age": 23,
-   "war": 1.05,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 694811,
    "name": "Bryson Hammer",
    "pos": "sp",
    "age": 25,
-   "war": 1.04,
+   "war": 1.03,
    "ip": 200,
    "salary": 780000,
    "debuted": false

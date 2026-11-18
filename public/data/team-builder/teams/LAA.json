@@ -4,7 +4,7 @@
   {
    "name": "Mike Trout",
    "sheetName": "Trout, Mike",
-   "pos": "cf",
+   "pos": "cf-rf",
    "age": 35,
    "mls": 15.07,
    "contract": "12 y/$426.5M (19-30)",
@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 545361,
    "salarySource": "cots",
-   "war": 2.45,
+   "war": 2.46,
    "pa": 546
   },
   {
@@ -74,7 +74,7 @@
   {
    "name": "Josh Lowe",
    "sheetName": "Lowe, Josh",
-   "pos": "rf-3b",
+   "pos": "rf-3b-lf-cf",
    "age": 29,
    "mls": 4.075,
    "contract": "A2",
@@ -86,8 +86,8 @@
    "cotsEstimate": 3500000,
    "mlbamId": 666139,
    "salarySource": "mlbtr-arb",
-   "war": 0.12,
-   "pa": 330
+   "war": 0.11,
+   "pa": 328
   },
   {
    "name": "Nolan Schanuel",
@@ -104,13 +104,13 @@
    "cotsEstimate": 3250000,
    "mlbamId": 694384,
    "salarySource": "mlbtr-arb",
-   "war": 2.09,
+   "war": 2.1,
    "pa": 507
   },
   {
    "name": "Jose Siri",
    "sheetName": "Siri, Jose",
-   "pos": "cf",
+   "pos": "cf-lf",
    "age": 31,
    "mls": 4.15,
    "contract": "A3",
@@ -122,8 +122,8 @@
    "cotsEstimate": 2500000,
    "mlbamId": 642350,
    "salarySource": "mlbtr-arb",
-   "war": 0.34,
-   "pa": 275
+   "war": 0.32,
+   "pa": 264
   },
   {
    "name": "Robert Stephenson",
@@ -163,7 +163,7 @@
   {
    "name": "Oswald Peraza",
    "sheetName": "Peraza, Oswald",
-   "pos": "ss",
+   "pos": "ss-3b-2b-1b",
    "age": 27,
    "mls": 3.014,
    "contract": "A1",
@@ -175,7 +175,7 @@
    "cotsEstimate": 1500000,
    "mlbamId": 672724,
    "salarySource": "mlbtr-arb",
-   "war": 0.24,
+   "war": 0.25,
    "pa": 301
   },
   {
@@ -193,7 +193,7 @@
    "cotsEstimate": 1337500,
    "mlbamId": 623168,
    "salarySource": "mlbtr-arb",
-   "war": 0.98,
+   "war": 0.99,
    "pa": 208
   },
   {
@@ -253,7 +253,7 @@
   {
    "name": "Vaughn Grissom",
    "sheetName": "Grissom, Vaughn",
-   "pos": "2b",
+   "pos": "2b-1b-3b",
    "age": 26,
    "mls": 2.086,
    "contract": "",
@@ -311,8 +311,8 @@
    "salaryPrevYear": 389480,
    "mlbamId": 672569,
    "salarySource": "minimum",
-   "war": 0.39,
-   "pa": 101
+   "war": 0.36,
+   "pa": 85
   },
   {
    "name": "Ryan Johnson",
@@ -359,7 +359,7 @@
    "salaryPrevYear": 231618,
    "mlbamId": 694208,
    "salarySource": "minimum",
-   "war": 1.44,
+   "war": 1.45,
    "pa": 399
   },
   {
@@ -423,8 +423,8 @@
    "salaryPrevYear": 342769,
    "mlbamId": 695681,
    "salarySource": "minimum",
-   "war": 0.74,
-   "pa": 245
+   "war": 0.75,
+   "pa": 239
   },
   {
    "name": "Wade Meckler",
@@ -439,13 +439,13 @@
    "salaryPrevYear": 538076,
    "mlbamId": 685133,
    "salarySource": "minimum",
-   "war": 1.25,
+   "war": 1.26,
    "pa": 474
   },
   {
    "name": "Bryce Teodosio",
    "sheetName": "Teodosio, Bryce",
-   "pos": "cf",
+   "pos": "cf-lf",
    "age": 28,
    "mls": 0.146,
    "contract": "",
@@ -455,13 +455,13 @@
    "salaryPrevYear": 463867,
    "mlbamId": 669326,
    "salarySource": "minimum",
-   "war": -0.21,
-   "pa": 153
+   "war": -0.18,
+   "pa": 135
   },
   {
    "name": "Denzer Guzman",
    "sheetName": "Guzman, Denzer",
-   "pos": "ss",
+   "pos": "ss-3b",
    "age": 23,
    "mls": 0.128,
    "contract": "",
@@ -471,7 +471,7 @@
    "salaryPrevYear": 518142,
    "mlbamId": 694203,
    "salarySource": "minimum",
-   "war": 1.03,
+   "war": 1.04,
    "pa": 306
   },
   {
@@ -648,8 +648,8 @@
    "mlbamId": 703185,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.2,
-   "pa": 192
+   "war": 0.16,
+   "pa": 201
   },
   {
    "name": "Raudi Rodriguez",
@@ -665,8 +665,8 @@
    "mlbamId": 804558,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.16,
-   "pa": 63
+   "war": 0.25,
+   "pa": 154
   }
  ],
  "deadMoney": [

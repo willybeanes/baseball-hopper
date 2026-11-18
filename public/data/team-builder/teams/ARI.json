@@ -76,7 +76,7 @@
   {
    "name": "Corbin Carroll",
    "sheetName": "Carroll, Corbin",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 25,
    "mls": 4.038,
    "contract": "8 y/$111M (23-30)+31 cl opt",
@@ -87,7 +87,7 @@
    "walkYear": false,
    "mlbamId": 682998,
    "salarySource": "cots",
-   "war": 3.67,
+   "war": 3.68,
    "pa": 618
   },
   {
@@ -104,7 +104,7 @@
    "walkYear": false,
    "mlbamId": 606466,
    "salarySource": "cots",
-   "war": 3.8,
+   "war": 3.81,
    "pa": 614
   },
   {
@@ -121,7 +121,7 @@
    "walkYear": false,
    "mlbamId": 672695,
    "salarySource": "cots",
-   "war": 4.4,
+   "war": 4.41,
    "pa": 620
   },
   {
@@ -139,13 +139,13 @@
    "cotsEstimate": 7525000,
    "mlbamId": 672515,
    "salarySource": "mlbtr-arb",
-   "war": 4.74,
+   "war": 4.75,
    "pa": 542
   },
   {
    "name": "Lars Nootbaar",
    "sheetName": "Nootbaar, Lars",
-   "pos": "lf",
+   "pos": "lf-rf-cf",
    "age": 29,
    "mls": 5.076,
    "contract": "A3",
@@ -157,7 +157,7 @@
    "cotsEstimate": 6400000,
    "mlbamId": 663457,
    "salarySource": "mlbtr-arb",
-   "war": 1.37,
+   "war": 1.38,
    "pa": 476
   },
   {
@@ -192,8 +192,8 @@
    "cotsEstimate": 4000000,
    "mlbamId": 669194,
    "salarySource": "mlbtr-arb",
-   "war": 1.68,
-   "ip": 156
+   "war": 1.7,
+   "ip": 158
   },
   {
    "name": "Justin Martinez",
@@ -226,7 +226,7 @@
    "mlbamId": 686753,
    "salarySource": "minimum",
    "war": 0.12,
-   "ip": 55
+   "ip": 54
   },
   {
    "name": "Blake Walston",
@@ -242,7 +242,7 @@
    "mlbamId": 686796,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 38
+   "ip": 36
   },
   {
    "name": "Cristian Mena",
@@ -311,7 +311,7 @@
   {
    "name": "Tim Tawa",
    "sheetName": "Tawa, Tim",
-   "pos": "2b",
+   "pos": "2b-1b-lf-cf-3b",
    "age": 28,
    "mls": 1.098,
    "contract": "",
@@ -321,13 +321,13 @@
    "salaryPrevYear": 696830,
    "mlbamId": 694374,
    "salarySource": "minimum",
-   "war": 0.15,
+   "war": 0.16,
    "pa": 384
   },
   {
    "name": "Jordan Lawlar",
    "sheetName": "Lawlar, Jordan",
-   "pos": "ss",
+   "pos": "ss-cf-lf-3b",
    "age": 24,
    "mls": 1.073,
    "contract": "",
@@ -359,7 +359,7 @@
   {
    "name": "Tyler Locklear",
    "sheetName": "Locklear, Tyler",
-   "pos": "3b",
+   "pos": "3b-1b",
    "age": 26,
    "mls": 1.004,
    "contract": "",
@@ -375,7 +375,7 @@
   {
    "name": "Tommy Troy",
    "sheetName": "Troy, Tommy",
-   "pos": "ss",
+   "pos": "ss-lf-cf",
    "age": 13,
    "mls": 0.128,
    "contract": "",
@@ -385,8 +385,8 @@
    "salaryPrevYear": 488516,
    "mlbamId": 694371,
    "salarySource": "minimum",
-   "war": 0.23,
-   "pa": 163
+   "war": 0.24,
+   "pa": 166
   },
   {
    "name": "Ryan Waldschmidt",
@@ -401,7 +401,7 @@
    "salaryPrevYear": 500696,
    "mlbamId": 814439,
    "salarySource": "minimum",
-   "war": 0.83,
+   "war": 0.84,
    "pa": 381
   },
   {
@@ -433,13 +433,13 @@
    "salaryPrevYear": 182506,
    "mlbamId": 703615,
    "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 66
+   "war": 0.36,
+   "ip": 57
   },
   {
    "name": "Jose Fernandez",
    "sheetName": "Fernandez, Jose",
-   "pos": "ss",
+   "pos": "ss-3b-1b",
    "age": 23,
    "mls": 0.098,
    "contract": "",
@@ -466,7 +466,7 @@
    "mlbamId": 669704,
    "salarySource": "minimum",
    "war": -0.02,
-   "ip": 48
+   "ip": 45
   },
   {
    "name": "Mitch Bratt",
@@ -498,7 +498,7 @@
    "mlbamId": 672629,
    "salarySource": "minimum",
    "war": 0.26,
-   "ip": 52
+   "ip": 51
   },
   {
    "name": "LuJames Groover",
@@ -545,7 +545,109 @@
    "salaryPrevYear": 63600,
    "mlbamId": 691009,
    "salarySource": "minimum",
-   "war": 0.01,
+   "war": 0,
+   "ip": 8
+  },
+  {
+   "name": "Demetrio Crisantes",
+   "sheetName": "",
+   "pos": "2b",
+   "age": 22,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 702679,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.13,
+   "pa": 71
+  },
+  {
+   "name": "Cristofer Torin",
+   "sheetName": "",
+   "pos": "ss-2b",
+   "age": 22,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 800198,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.08,
+   "pa": 45
+  },
+  {
+   "name": "Druw Jones",
+   "sheetName": "",
+   "pos": "cf-rf",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 702258,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "pa": 14
+  },
+  {
+   "name": "Ashton Izzi",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 23,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 802416,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.08,
+   "ip": 18.5
+  },
+  {
+   "name": "Wellington Aracena",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 22,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 800286,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
+  },
+  {
+   "name": "Spencer Giesting",
+   "sheetName": "",
+   "pos": "lhp",
+   "age": 26,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 801517,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.04,
    "ip": 14
   }
  ],
@@ -612,21 +714,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 702679,
-   "name": "Demetrio Crisantes",
-   "pos": "ss",
-   "age": 22,
-   "war": 1.12,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 800198,
-   "name": "Cristofer Torin",
-   "pos": "2b",
-   "age": 22,
-   "war": 1.11,
+   "mlbamId": 665998,
+   "name": "Ismael Munguia",
+   "pos": "of",
+   "age": 28,
+   "war": 1.35,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -642,31 +734,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 802416,
-   "name": "Ashton Izzi",
-   "pos": "sp",
-   "age": 23,
-   "war": 0.88,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 808087,
    "name": "Junior Sanchez",
    "pos": "sp",
    "age": 21,
    "war": 0.81,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 800286,
-   "name": "Wellington Aracena",
-   "pos": "sp",
-   "age": 22,
-   "war": 0.55,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -696,16 +768,6 @@
    "name": "Joe Ariola",
    "pos": "rp",
    "age": 23,
-   "war": 0.19,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 801517,
-   "name": "Spencer Giesting",
-   "pos": "rp",
-   "age": 25,
    "war": 0.19,
    "ip": 65,
    "salary": 780000,
@@ -752,22 +814,22 @@
    "debuted": false
   },
   {
+   "mlbamId": 801179,
+   "name": "Yu-Min Lin",
+   "pos": "rp",
+   "age": 23,
+   "war": 0.08,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 828344,
    "name": "Dean Livingston",
    "pos": "sp",
    "age": 20,
    "war": 0.01,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 702258,
-   "name": "Druw Jones",
-   "pos": "cf",
-   "age": 23,
-   "war": 0.01,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

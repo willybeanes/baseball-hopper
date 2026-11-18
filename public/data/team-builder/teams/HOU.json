@@ -15,13 +15,13 @@
    "walkYear": false,
    "mlbamId": 514888,
    "salarySource": "cots",
-   "war": 1.8,
+   "war": 1.82,
    "pa": 575
   },
   {
    "name": "Carlos Correa",
    "sheetName": "Correa, Carlos",
-   "pos": "3b",
+   "pos": "3b-ss",
    "age": 32,
    "mls": 11.119,
    "contract": "6 yr/$200M (23-28)+opts",
@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 621043,
    "salarySource": "cots",
-   "war": 2.33,
-   "pa": 348
+   "war": 2.59,
+   "pa": 385
   },
   {
    "name": "Yordan Alvarez",
@@ -49,8 +49,8 @@
    "walkYear": false,
    "mlbamId": 670541,
    "salarySource": "cots",
-   "war": 5.01,
-   "pa": 581
+   "war": 5.26,
+   "pa": 604
   },
   {
    "name": "Cristian Javier",
@@ -83,7 +83,7 @@
    "walkYear": true,
    "mlbamId": 572233,
    "salarySource": "cots",
-   "war": 1.21,
+   "war": 1.22,
    "pa": 542
   },
   {
@@ -139,13 +139,13 @@
    "cotsEstimate": 14975000,
    "mlbamId": 665161,
    "salarySource": "mlbtr-arb",
-   "war": 3.28,
+   "war": 3.29,
    "pa": 578
   },
   {
    "name": "Isaac Paredes",
    "sheetName": "Paredes, Isaac",
-   "pos": "3b",
+   "pos": "3b-1b",
    "age": 28,
    "mls": 5.16,
    "contract": "1 y/$9.35M (26)+27 cl opt",
@@ -156,8 +156,8 @@
    "walkYear": true,
    "mlbamId": 670623,
    "salarySource": "cots",
-   "war": 2.78,
-   "pa": 532
+   "war": 3.03,
+   "pa": 584
   },
   {
    "name": "Hunter Brown",
@@ -174,7 +174,7 @@
    "cotsEstimate": 8010000,
    "mlbamId": 686613,
    "salarySource": "mlbtr-arb",
-   "war": 3.34,
+   "war": 3.35,
    "ip": 173.3
   },
   {
@@ -192,7 +192,7 @@
    "cotsEstimate": 6750000,
    "mlbamId": 673237,
    "salarySource": "mlbtr-arb",
-   "war": 2.18,
+   "war": 2.19,
    "pa": 420
   },
   {
@@ -216,7 +216,7 @@
   {
    "name": "Nick Allen",
    "sheetName": "Allen, Nick",
-   "pos": "ss",
+   "pos": "ss-2b-3b",
    "age": 28,
    "mls": 3.164,
    "contract": "A2",
@@ -228,8 +228,8 @@
    "cotsEstimate": 2250000,
    "mlbamId": 669397,
    "salarySource": "mlbtr-arb",
-   "war": 0.25,
-   "pa": 127
+   "war": 0.24,
+   "pa": 125
   },
   {
    "name": "Hayden Wesneski",
@@ -264,8 +264,8 @@
    "cotsEstimate": 1250000,
    "mlbamId": 669854,
    "salarySource": "mlbtr-arb",
-   "war": 0.23,
-   "ip": 60.1
+   "war": 0.22,
+   "ip": 58.1
   },
   {
    "name": "Bennett Sousa",
@@ -283,7 +283,7 @@
    "mlbamId": 656986,
    "salarySource": "mlbtr-arb",
    "war": 0.34,
-   "ip": 54
+   "ip": 53
   },
   {
    "name": "Taylor Trammell",
@@ -300,8 +300,8 @@
    "cotsEstimate": 1050000,
    "mlbamId": 666211,
    "salarySource": "mlbtr-arb",
-   "war": 0.37,
-   "pa": 206
+   "war": 0.42,
+   "pa": 231
   },
   {
    "name": "Bryan King",
@@ -316,8 +316,8 @@
    "salaryPrevYear": 757561,
    "mlbamId": 687911,
    "salarySource": "minimum",
-   "war": 0.14,
-   "ip": 50
+   "war": 0.13,
+   "ip": 48
   },
   {
    "name": "Brandon Walter",
@@ -348,13 +348,13 @@
    "salaryPrevYear": 809900,
    "mlbamId": 701358,
    "salarySource": "minimum",
-   "war": 1.97,
+   "war": 1.98,
    "pa": 526
   },
   {
    "name": "Zach Dezenzo",
    "sheetName": "Dezenzo, Zach",
-   "pos": "3b",
+   "pos": "3b-lf-rf",
    "age": 27,
    "mls": 1.16,
    "contract": "",
@@ -364,8 +364,8 @@
    "salaryPrevYear": 609121,
    "mlbamId": 701305,
    "salarySource": "minimum",
-   "war": 0.04,
-   "pa": 52
+   "war": 0.07,
+   "pa": 90
   },
   {
    "name": "Michael Burrows",
@@ -396,13 +396,13 @@
    "salaryPrevYear": null,
    "mlbamId": 663967,
    "salarySource": "minimum",
-   "war": 0.43,
+   "war": 0.44,
    "pa": 120
   },
   {
    "name": "Jorge Barrosa",
    "sheetName": "Barrosa, Jorge",
-   "pos": "lf",
+   "pos": "lf-cf-rf",
    "age": 26,
    "mls": 1.07,
    "contract": "",
@@ -413,7 +413,7 @@
    "mlbamId": 678489,
    "salarySource": "minimum",
    "war": 0.01,
-   "pa": 63
+   "pa": 61
   },
   {
    "name": "Kai-Wei Teng",
@@ -445,12 +445,12 @@
    "mlbamId": 805123,
    "salarySource": "minimum",
    "war": 0.12,
-   "ip": 82
+   "ip": 80
   },
   {
    "name": "Brice Matthews",
    "sheetName": "Matthews, Brice",
-   "pos": "ss",
+   "pos": "ss-cf-lf-2b",
    "age": 25,
    "mls": 1.03,
    "contract": "",
@@ -460,8 +460,8 @@
    "salaryPrevYear": 782400,
    "mlbamId": 694728,
    "salarySource": "minimum",
-   "war": 0.42,
-   "pa": 195
+   "war": 0.45,
+   "pa": 220
   },
   {
    "name": "Roddery Muñoz",
@@ -476,8 +476,8 @@
    "salaryPrevYear": null,
    "mlbamId": 682610,
    "salarySource": "minimum",
-   "war": 0.11,
-   "ip": 35
+   "war": 0.1,
+   "ip": 33
   },
   {
    "name": "Logan VanWey",
@@ -492,8 +492,8 @@
    "salaryPrevYear": 167023,
    "mlbamId": 701121,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 46
+   "war": 0.08,
+   "ip": 44
   },
   {
    "name": "Zach Cole",
@@ -509,7 +509,7 @@
    "mlbamId": 805904,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 70
+   "pa": 94
   },
   {
    "name": "Ethan Pecko",
@@ -556,8 +556,8 @@
    "salaryPrevYear": 174657,
    "mlbamId": 669384,
    "salarySource": "minimum",
-   "war": 0.1,
-   "pa": 85
+   "war": 0.07,
+   "pa": 60
   },
   {
    "name": "Alimber Santa",
@@ -588,8 +588,8 @@
    "salaryPrevYear": 126428,
    "mlbamId": 828599,
    "salarySource": "minimum",
-   "war": 1.23,
-   "pa": 371
+   "war": 1.14,
+   "pa": 343
   },
   {
    "name": "Collin Price",
@@ -620,8 +620,25 @@
    "salaryPrevYear": 20856,
    "mlbamId": 681973,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 30
+   "war": 0.08,
+   "ip": 26
+  },
+  {
+   "name": "Jackson Nezuh",
+   "sheetName": "",
+   "pos": "rhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694545,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.01,
+   "ip": 21.2
   },
   {
    "name": "Evan Reifert",
@@ -637,8 +654,8 @@
    "mlbamId": 682126,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.08,
-   "ip": 25
+   "war": 0.07,
+   "ip": 24
   }
  ],
  "deadMoney": [
@@ -765,9 +782,9 @@
   {
    "mlbamId": 694388,
    "name": "Joey Loperfido",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 28,
-   "war": 0.55,
+   "war": 0.51,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -778,16 +795,6 @@
    "pos": "sp",
    "age": 26,
    "war": 0.49,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 694545,
-   "name": "Jackson Nezuh",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.47,
    "ip": 200,
    "salary": 780000,
    "debuted": false

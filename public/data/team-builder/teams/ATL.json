@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 663586,
    "salarySource": "cots",
-   "war": 1.43,
+   "war": 1.44,
    "pa": 549
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 675911,
    "salarySource": "cots",
-   "war": 1.97,
+   "war": 1.98,
    "ip": 125.5
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 660670,
    "salarySource": "cots",
-   "war": 2.86,
+   "war": 2.87,
    "pa": 566
   },
   {
@@ -157,7 +157,7 @@
   {
    "name": "Mike Yastrzemski",
    "sheetName": "Yastrzemski, Mike",
-   "pos": "rf",
+   "pos": "rf-lf-cf",
    "age": 36,
    "mls": 7.128,
    "contract": "2 y/$23M (26-27)+28 cl opt",
@@ -168,7 +168,7 @@
    "walkYear": false,
    "mlbamId": 573262,
    "salarySource": "cots",
-   "war": 0.5,
+   "war": 0.49,
    "pa": 365
   },
   {
@@ -185,7 +185,7 @@
    "walkYear": false,
    "mlbamId": 671739,
    "salarySource": "cots",
-   "war": 3.98,
+   "war": 3.99,
    "pa": 605
   },
   {
@@ -206,8 +206,8 @@
    "decidedBy": "club",
    "defaultExercised": true,
    "salarySource": "option",
-   "war": 0.83,
-   "ip": 101
+   "war": 0.78,
+   "ip": 94.3
   },
   {
    "name": "Ozzie Albies",
@@ -259,8 +259,8 @@
    "cotsEstimate": 3250000,
    "mlbamId": 693821,
    "salarySource": "mlbtr-arb",
-   "war": 1.53,
-   "ip": 149.4
+   "war": 1.44,
+   "ip": 140.1
   },
   {
    "name": "James Karinchak",
@@ -277,8 +277,8 @@
    "cotsEstimate": 1600000,
    "mlbamId": 675916,
    "salarySource": "mlbtr-arb",
-   "war": 0.07,
-   "ip": 25
+   "war": 0.06,
+   "ip": 22
   },
   {
    "name": "Mitchell Parker",
@@ -313,8 +313,8 @@
    "cotsEstimate": 975000,
    "mlbamId": 675627,
    "salarySource": "mlbtr-arb",
-   "war": 0.11,
-   "ip": 18
+   "war": 0.09,
+   "ip": 14
   },
   {
    "name": "Joey Wentz",
@@ -349,8 +349,8 @@
    "cotsEstimate": 825000,
    "mlbamId": 680885,
    "salarySource": "cots-arb",
-   "war": 0.59,
-   "ip": 28.4
+   "war": 1.59,
+   "ip": 75.8
   },
   {
    "name": "Grant Holmes",
@@ -381,8 +381,8 @@
    "salaryPrevYear": 752893,
    "mlbamId": 700363,
    "salarySource": "minimum",
-   "war": 0.77,
-   "ip": 80.2
+   "war": 0.51,
+   "ip": 55.5
   },
   {
    "name": "Drake Baldwin",
@@ -397,7 +397,7 @@
    "salaryPrevYear": 800000,
    "mlbamId": 686948,
    "salarySource": "minimum",
-   "war": 2.96,
+   "war": 2.97,
    "pa": 601
   },
   {
@@ -413,8 +413,8 @@
    "salaryPrevYear": null,
    "mlbamId": 664849,
    "salarySource": "minimum",
-   "war": 0.17,
-   "ip": 32
+   "war": 0.16,
+   "ip": 30
   },
   {
    "name": "Hurston Waldrep",
@@ -445,8 +445,8 @@
    "salaryPrevYear": 183957,
    "mlbamId": 678061,
    "salarySource": "minimum",
-   "war": 0.45,
-   "ip": 46
+   "war": 0.47,
+   "ip": 48
   },
   {
    "name": "Dylan Dodd",
@@ -467,7 +467,7 @@
   {
    "name": "Brett Wisely",
    "sheetName": "Wisely, Brett",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 28,
    "mls": 1.105,
    "contract": "",
@@ -494,7 +494,7 @@
    "mlbamId": 682989,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 54
+   "ip": 52
   },
   {
    "name": "Didier Fuentes",
@@ -509,13 +509,13 @@
    "salaryPrevYear": 690742,
    "mlbamId": 800311,
    "salarySource": "minimum",
-   "war": 1.94,
-   "ip": 139.3
+   "war": 1.86,
+   "ip": 135.4
   },
   {
    "name": "Brewer Hicklen",
    "sheetName": "Hicklen, Brewer",
-   "pos": "lf-cf",
+   "pos": "lf-cf-rf",
    "age": 31,
    "mls": 0.095,
    "contract": "",
@@ -557,7 +557,7 @@
    "salaryPrevYear": 289630,
    "mlbamId": 805347,
    "salarySource": "minimum",
-   "war": 1.16,
+   "war": 1.17,
    "pa": 377
   },
   {
@@ -663,7 +663,7 @@
    "sheetName": "",
    "pos": "rhp",
    "age": 28,
-   "mls": 0,
+   "mls": 0.015,
    "contract": "Added to the 40-man",
    "status": "prearb",
    "salary": 780000,
@@ -672,8 +672,8 @@
    "mlbamId": 671382,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.04,
-   "ip": 20
+   "war": 0.03,
+   "ip": 10
   }
  ],
  "deadMoney": [
@@ -768,9 +768,9 @@
   {
    "mlbamId": 671289,
    "name": "Tyler Freeman",
-   "pos": "rf",
+   "pos": "rf-2b",
    "age": 28,
-   "war": 1.12,
+   "war": 1.13,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -858,9 +858,9 @@
   {
    "mlbamId": 660644,
    "name": "Vidal Bruján",
-   "pos": "ss",
+   "pos": "ss-3b",
    "age": 29,
-   "war": 0.31,
+   "war": 0.32,
    "pa": 600,
    "salary": 780000,
    "debuted": true

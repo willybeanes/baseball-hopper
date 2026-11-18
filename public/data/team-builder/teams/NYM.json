@@ -4,7 +4,7 @@
   {
    "name": "Juan Soto",
    "sheetName": "Soto, Juan",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 28,
    "mls": 8.134,
    "contract": "15 y/$765M (25-39)",
@@ -15,13 +15,13 @@
    "walkYear": false,
    "mlbamId": 665742,
    "salarySource": "cots",
-   "war": 4.89,
+   "war": 4.9,
    "pa": 626
   },
   {
    "name": "Bo Bichette",
    "sheetName": "Bichette, Bo",
-   "pos": "3b",
+   "pos": "3b-ss",
    "age": 29,
    "mls": 7.063,
    "contract": "3 y/$126M (26-28)",
@@ -36,7 +36,7 @@
     "type": "opt-out",
     "buyout": 5000000
    },
-   "war": 3.16,
+   "war": 3.17,
    "pa": 616
   },
   {
@@ -53,7 +53,7 @@
    "walkYear": false,
    "mlbamId": 596019,
    "salarySource": "cots",
-   "war": 4.64,
+   "war": 4.65,
    "pa": 708
   },
   {
@@ -76,7 +76,7 @@
   {
    "name": "Jorge Polanco",
    "sheetName": "Polanco, Jorge",
-   "pos": "1b-3b",
+   "pos": "1b-3b-2b",
    "age": 33,
    "mls": 10.024,
    "contract": "2 y/$40M (26-27)",
@@ -155,7 +155,7 @@
    "walkYear": false,
    "mlbamId": 620443,
    "salarySource": "cots",
-   "war": 1.8,
+   "war": 1.81,
    "pa": 292
   },
   {
@@ -197,7 +197,7 @@
   {
    "name": "Brett Baty",
    "sheetName": "Baty, Brett",
-   "pos": "3b-dh",
+   "pos": "3b-dh-2b-1b-rf",
    "age": 27,
    "mls": 3.088,
    "contract": "A1",
@@ -215,7 +215,7 @@
   {
    "name": "Christopher Morel",
    "sheetName": "Morel, Christopher",
-   "pos": "1b-3b",
+   "pos": "1b-3b-lf",
    "age": 27,
    "mls": 4.08,
    "contract": "A2",
@@ -251,7 +251,7 @@
   {
    "name": "Mark Vientos",
    "sheetName": "Vientos, Mark",
-   "pos": "3b",
+   "pos": "3b-1b",
    "age": 27,
    "mls": 3.102,
    "contract": "A1",
@@ -333,13 +333,13 @@
    "salaryPrevYear": 379197,
    "mlbamId": 650960,
    "salarySource": "minimum",
-   "war": 0.22,
+   "war": 0.21,
    "ip": 50
   },
   {
    "name": "Ronny Mauricio",
    "sheetName": "Mauricio, Ronny",
-   "pos": "ss",
+   "pos": "ss-3b-2b",
    "age": 26,
    "mls": 2.124,
    "contract": "",
@@ -413,7 +413,7 @@
    "salaryPrevYear": 1150000,
    "mlbamId": 676724,
    "salarySource": "minimum",
-   "war": 0.91,
+   "war": 0.92,
    "pa": 380
   },
   {
@@ -483,7 +483,7 @@
   {
    "name": "Carson Benge",
    "sheetName": "Benge, Carson",
-   "pos": "rf",
+   "pos": "rf-lf-cf",
    "age": 24,
    "mls": 1,
    "contract": "",
@@ -493,7 +493,7 @@
    "salaryPrevYear": 780000,
    "mlbamId": 701807,
    "salarySource": "minimum",
-   "war": 2.63,
+   "war": 2.64,
    "pa": 565
   },
   {
@@ -509,7 +509,7 @@
    "salaryPrevYear": 579787,
    "mlbamId": 805999,
    "salarySource": "minimum",
-   "war": 2.46,
+   "war": 2.47,
    "pa": 527
   },
   {
@@ -657,20 +657,21 @@
    "ip": 18
   },
   {
-   "name": "Dylan Ross",
-   "sheetName": "Ross, Dylan",
-   "pos": "rhp",
-   "age": 26,
-   "mls": 0.004,
-   "contract": "",
+   "name": "Jefferson Rojas",
+   "sheetName": "",
+   "pos": "3b-ss-2b",
+   "age": 22,
+   "mls": 0,
+   "contract": "Added to the 40-man",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 130591,
-   "mlbamId": 697811,
+   "salaryPrevYear": null,
+   "mlbamId": 800473,
    "salarySource": "minimum",
-   "war": 0.11,
-   "ip": 16
+   "corrected": "Added from RosterResource",
+   "war": 0.07,
+   "pa": 37
   }
  ],
  "deadMoney": [
@@ -805,16 +806,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 800473,
-   "name": "Jefferson Rojas",
-   "pos": "ss",
-   "age": 22,
-   "war": 1.05,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 814492,
    "name": "Will Watson",
    "pos": "sp",
@@ -943,6 +934,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 697811,
+   "name": "Dylan Ross",
+   "pos": "rp",
+   "age": 26,
+   "war": 0.46,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 809784,

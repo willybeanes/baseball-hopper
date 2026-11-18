@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 663647,
    "salarySource": "cots",
-   "war": 0.34,
-   "pa": 243
+   "war": 0.35,
+   "pa": 245
   },
   {
    "name": "Elly De La Cruz",
@@ -50,7 +50,7 @@
    "cotsEstimate": 7200000,
    "mlbamId": 682829,
    "salarySource": "mlbtr-arb",
-   "war": 5.53,
+   "war": 5.54,
    "pa": 636
   },
   {
@@ -91,7 +91,7 @@
   {
    "name": "Spencer Steer",
    "sheetName": "Steer, Spencer",
-   "pos": "3b-of",
+   "pos": "3b-of-1b-2b",
    "age": 29,
    "mls": 4.035,
    "contract": "A2",
@@ -103,8 +103,8 @@
    "cotsEstimate": 5250000,
    "mlbamId": 668715,
    "salarySource": "mlbtr-arb",
-   "war": 0.41,
-   "pa": 451
+   "war": 0.42,
+   "pa": 449
   },
   {
    "name": "Andrew Abbott",
@@ -121,13 +121,13 @@
    "cotsEstimate": 4000000,
    "mlbamId": 671096,
    "salarySource": "mlbtr-arb",
-   "war": 1.54,
+   "war": 1.55,
    "ip": 175.1
   },
   {
    "name": "JJ Bleday",
    "sheetName": "Bleday, JJ",
-   "pos": "cf",
+   "pos": "cf-lf-rf",
    "age": 29,
    "mls": 4.013,
    "contract": "A2",
@@ -139,13 +139,13 @@
    "cotsEstimate": 3850000,
    "mlbamId": 668709,
    "salarySource": "mlbtr-arb",
-   "war": 1.33,
-   "pa": 502
+   "war": 1.31,
+   "pa": 495
   },
   {
    "name": "Matt McLain",
    "sheetName": "McLain, Matt",
-   "pos": "2b",
+   "pos": "2b-ss",
    "age": 27,
    "mls": 3.14,
    "contract": "A2",
@@ -263,8 +263,8 @@
    "walkYear": false,
    "mlbamId": 665828,
    "salarySource": "cots",
-   "war": 0.23,
-   "pa": 281
+   "war": 0.22,
+   "pa": 274
   },
   {
    "name": "Dane Myers",
@@ -287,7 +287,7 @@
   {
    "name": "Noelvi Marte",
    "sheetName": "Marte, Noelvi",
-   "pos": "rf",
+   "pos": "rf-3b",
    "age": 25,
    "mls": 2.062,
    "contract": "",
@@ -351,7 +351,7 @@
   {
    "name": "Sal Stewart",
    "sheetName": "Stewart, Sal",
-   "pos": "1b",
+   "pos": "1b-3b",
    "age": 23,
    "mls": 1.028,
    "contract": "",
@@ -361,7 +361,7 @@
    "salaryPrevYear": 781500,
    "mlbamId": 701398,
    "salarySource": "minimum",
-   "war": 2.26,
+   "war": 2.28,
    "pa": 582
   },
   {
@@ -463,7 +463,7 @@
   {
    "name": "Edwin Arroyo",
    "sheetName": "Arroyo, Edwin",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 23,
    "mls": 0.069,
    "contract": "",
@@ -495,7 +495,7 @@
   {
    "name": "Héctor Rodríguez",
    "sheetName": "Rodríguez, Héctor",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 23,
    "mls": 0.055,
    "contract": "",
@@ -511,7 +511,7 @@
   {
    "name": "Juan Brito",
    "sheetName": "Brito, Juan",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 25,
    "mls": 0.048,
    "contract": "",
@@ -522,7 +522,7 @@
    "mlbamId": 682877,
    "salarySource": "minimum",
    "war": 0.18,
-   "pa": 276
+   "pa": 272
   },
   {
    "name": "Jose Franco",
@@ -569,8 +569,8 @@
    "salaryPrevYear": 100107,
    "mlbamId": 699115,
    "salarySource": "minimum",
-   "war": 0.39,
-   "pa": 332
+   "war": 0.38,
+   "pa": 317
   },
   {
    "name": "Duncan Davitt",
@@ -619,6 +619,23 @@
    "salarySource": "minimum",
    "war": 0.04,
    "pa": 43
+  },
+  {
+   "name": "Carter Graham",
+   "sheetName": "",
+   "pos": "1b-3b-lf",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 807728,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": -0.03,
+   "pa": 56
   }
  ],
  "deadMoney": [

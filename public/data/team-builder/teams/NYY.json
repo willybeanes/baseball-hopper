@@ -4,7 +4,7 @@
   {
    "name": "Cody Bellinger",
    "sheetName": "Bellinger, Cody",
-   "pos": "cf",
+   "pos": "cf-lf-rf-1b",
    "age": 31,
    "mls": 9.16,
    "contract": "5 y/$162.5M (26-30)",
@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 641355,
    "salarySource": "cots",
-   "war": 2.83,
+   "war": 2.84,
    "pa": 565
   },
   {
@@ -87,6 +87,23 @@
    "ip": 146.1
   },
   {
+   "name": "David Bednar",
+   "sheetName": "Bednar, David",
+   "pos": "rhp",
+   "age": 32,
+   "mls": 6.076,
+   "contract": "1 y/$23.15M (27)",
+   "status": "signed",
+   "salary": 23150000,
+   "taxValue": 23150000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 670280,
+   "salarySource": "cots",
+   "war": 0.68,
+   "ip": 67
+  },
+  {
    "name": "Ryan McMahon",
    "sheetName": "McMahon, Ryan",
    "pos": "3b",
@@ -123,7 +140,7 @@
   {
    "name": "Luis García Jr.",
    "sheetName": "García Jr., Luis",
-   "pos": "2b",
+   "pos": "2b-1b",
    "age": 27,
    "mls": 5.142,
    "contract": "A4",
@@ -135,7 +152,7 @@
    "cotsEstimate": 10250000,
    "mlbamId": 671277,
    "salarySource": "mlbtr-arb",
-   "war": 1.94,
+   "war": 1.95,
    "pa": 415
   },
   {
@@ -153,13 +170,13 @@
    "cotsEstimate": 5575000,
    "mlbamId": 657376,
    "salarySource": "mlbtr-arb",
-   "war": 0.71,
-   "ip": 94.7
+   "war": 0.73,
+   "ip": 97.7
   },
   {
    "name": "Anthony Volpe",
    "sheetName": "Volpe, Anthony",
-   "pos": "ss",
+   "pos": "ss-2b",
    "age": 26,
    "mls": 3.142,
    "contract": "A2",
@@ -177,7 +194,7 @@
   {
    "name": "Jose Caballero",
    "sheetName": "Caballero, Jose",
-   "pos": "2b-ss",
+   "pos": "2b-ss-3b-rf-lf",
    "age": 30,
    "mls": 3.17,
    "contract": "A2",
@@ -207,8 +224,8 @@
    "cotsEstimate": 3000000,
    "mlbamId": 677960,
    "salarySource": "mlbtr-arb",
-   "war": 1.01,
-   "ip": 74
+   "war": 0.87,
+   "ip": 61
   },
   {
    "name": "Austin Wells",
@@ -225,7 +242,7 @@
    "cotsEstimate": 2500000,
    "mlbamId": 669224,
    "salarySource": "mlbtr-arb",
-   "war": 2.79,
+   "war": 2.8,
    "pa": 404
   },
   {
@@ -243,8 +260,8 @@
    "cotsEstimate": 2450000,
    "mlbamId": 518585,
    "salarySource": "mlbtr-arb",
-   "war": 0.26,
-   "ip": 38
+   "war": 0.2,
+   "ip": 30
   },
   {
    "name": "Luis Gil",
@@ -279,12 +296,12 @@
    "mlbamId": 657612,
    "salarySource": "cots",
    "war": -0.08,
-   "ip": 54
+   "ip": 55
   },
   {
    "name": "Heliot Ramos",
    "sheetName": "Ramos, Heliot",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 27,
    "mls": 3.103,
    "contract": "A1",
@@ -296,13 +313,13 @@
    "cotsEstimate": 2250000,
    "mlbamId": 671218,
    "salarySource": "mlbtr-arb",
-   "war": 1.15,
-   "pa": 424
+   "war": 1.13,
+   "pa": 415
   },
   {
    "name": "Max Schuemann",
    "sheetName": "Schuemann, Max",
-   "pos": "2b",
+   "pos": "2b-3b-ss-lf-rf",
    "age": 30,
    "mls": 2.109,
    "contract": "",
@@ -328,13 +345,13 @@
    "salaryPrevYear": 845800,
    "mlbamId": 700250,
    "salarySource": "minimum",
-   "war": 3.49,
+   "war": 3.5,
    "pa": 645
   },
   {
    "name": "Jasson Domínguez",
    "sheetName": "Domínguez, Jasson",
-   "pos": "lf",
+   "pos": "lf-rf",
    "age": 24,
    "mls": 2.063,
    "contract": "",
@@ -344,8 +361,8 @@
    "salaryPrevYear": 613328,
    "mlbamId": 691176,
    "salarySource": "minimum",
-   "war": 0.42,
-   "pa": 125
+   "war": 0.4,
+   "pa": 117
   },
   {
    "name": "Will Warren",
@@ -409,7 +426,7 @@
    "mlbamId": 660787,
    "salarySource": "minimum",
    "war": 0.16,
-   "ip": 45
+   "ip": 46
   },
   {
    "name": "Angel Chivilli",
@@ -472,13 +489,13 @@
    "salaryPrevYear": 340078,
    "mlbamId": 665645,
    "salarySource": "minimum",
-   "war": 0.07,
-   "ip": 42
+   "war": 0.06,
+   "ip": 40
   },
   {
    "name": "Spencer Jones",
    "sheetName": "Jones, Spencer",
-   "pos": "rf",
+   "pos": "rf-cf-lf",
    "age": 26,
    "mls": 0.108,
    "contract": "",
@@ -488,8 +505,8 @@
    "salaryPrevYear": 477350,
    "mlbamId": 682987,
    "salarySource": "minimum",
-   "war": 1.61,
-   "pa": 435
+   "war": 1.6,
+   "pa": 429
   },
   {
    "name": "Marco Luciano",
@@ -504,8 +521,8 @@
    "salaryPrevYear": null,
    "mlbamId": 682617,
    "salarySource": "minimum",
-   "war": 0.21,
-   "pa": 72
+   "war": 0.22,
+   "pa": 68
   },
   {
    "name": "George Lombard Jr.",
@@ -520,7 +537,7 @@
    "salaryPrevYear": 229412,
    "mlbamId": 806146,
    "salarySource": "minimum",
-   "war": 2.26,
+   "war": 2.27,
    "pa": 487
   },
   {
@@ -536,8 +553,8 @@
    "salaryPrevYear": 104939,
    "mlbamId": 690440,
    "salarySource": "minimum",
-   "war": -0.03,
-   "ip": 22
+   "war": -0.02,
+   "ip": 16
   },
   {
    "name": "Elmer Rodríguez",
@@ -552,8 +569,8 @@
    "salaryPrevYear": 151713,
    "mlbamId": 695684,
    "salarySource": "minimum",
-   "war": 0.36,
-   "ip": 42.9
+   "war": 0.23,
+   "ip": 27.9
   },
   {
    "name": "Brendan Beck",
@@ -568,8 +585,59 @@
    "salaryPrevYear": 255151,
    "mlbamId": 694341,
    "salarySource": "minimum",
-   "war": 0.17,
-   "ip": 34.1
+   "war": 0.14,
+   "ip": 27.1
+  },
+  {
+   "name": "Garrett Martin",
+   "sheetName": "",
+   "pos": "rf-cf-lf",
+   "age": 27,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 682003,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.05,
+   "pa": 46
+  },
+  {
+   "name": "Carlos Lagrange",
+   "sheetName": "",
+   "pos": "sp-rp",
+   "age": 24,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 801739,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.14,
+   "ip": 28
+  },
+  {
+   "name": "Kyle Carr",
+   "sheetName": "",
+   "pos": "lhp-s",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694805,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.02,
+   "ip": 12
   },
   {
    "name": "Chase Hampton",
@@ -619,10 +687,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 245320833,
- "sheetTaxPayroll": 282059201,
- "rowsPayroll": 245320833,
- "rowsTaxPayroll": 282059201,
+ "sheetPayroll": 268470833,
+ "sheetTaxPayroll": 305209201,
+ "rowsPayroll": 268470833,
+ "rowsTaxPayroll": 305209201,
  "minors": [
   {
    "mlbamId": 701778,
@@ -673,16 +741,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 694805,
-   "name": "Kyle Carr",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.12,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
   },
   {
    "mlbamId": 696292,
@@ -749,7 +807,7 @@
    "name": "Tyler Boudreau",
    "pos": "sp",
    "age": 24,
-   "war": 0.52,
+   "war": 0.53,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -775,16 +833,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 682003,
-   "name": "Garrett Martin",
-   "pos": "rf",
-   "age": 27,
-   "war": 0.46,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 800344,
    "name": "Sean Paul Liñan",
    "pos": "sp",
@@ -801,16 +849,6 @@
    "age": 24,
    "war": 0.37,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 801739,
-   "name": "Carlos Lagrange",
-   "pos": "rp",
-   "age": 24,
-   "war": 0.31,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   },

@@ -21,7 +21,7 @@
   {
    "name": "Javier Báez",
    "sheetName": "Báez, Javier",
-   "pos": "ss-cf",
+   "pos": "ss-cf-3b-2b-lf",
    "age": 34,
    "mls": 11.089,
    "contract": "6 y/$140M (22-27)",
@@ -33,7 +33,7 @@
    "mlbamId": 595879,
    "salarySource": "cots",
    "war": 0.17,
-   "pa": 179
+   "pa": 189
   },
   {
    "name": "Emilio Pagán",
@@ -41,7 +41,7 @@
    "pos": "rhp-c",
    "age": 36,
    "mls": 9.091,
-   "contract": "1 y/$11M (27)",
+   "contract": "1 y/$11.5M (27)",
    "status": "signed",
    "salary": 11500000,
    "taxValue": 11500000,
@@ -70,13 +70,13 @@
    "walkYear": true,
    "mlbamId": 623454,
    "salarySource": "cots",
-   "war": 1.19,
+   "war": 1.18,
    "ip": 103.2
   },
   {
    "name": "Riley Greene",
    "sheetName": "Greene, Riley",
-   "pos": "lf",
+   "pos": "lf-cf",
    "age": 26,
    "mls": 4.11,
    "contract": "A2",
@@ -88,7 +88,7 @@
    "cotsEstimate": 9000000,
    "mlbamId": 682985,
    "salarySource": "mlbtr-arb",
-   "war": 2.89,
+   "war": 2.9,
    "pa": 591
   },
   {
@@ -123,13 +123,13 @@
    "cotsEstimate": 7275000,
    "mlbamId": 679529,
    "salarySource": "mlbtr-arb",
-   "war": 1.09,
+   "war": 1.1,
    "pa": 569
   },
   {
    "name": "Zach McKinstry",
    "sheetName": "McKinstry, Zach",
-   "pos": "2b",
+   "pos": "2b-3b-rf-ss-lf",
    "age": 32,
    "mls": 5.099,
    "contract": "A3",
@@ -141,8 +141,8 @@
    "cotsEstimate": 5750000,
    "mlbamId": 656716,
    "salarySource": "mlbtr-arb",
-   "war": 0.54,
-   "pa": 278
+   "war": 0.49,
+   "pa": 241
   },
   {
    "name": "Will Vest",
@@ -165,7 +165,7 @@
   {
    "name": "Colt Keith",
    "sheetName": "Keith, Colt",
-   "pos": "1b-dh",
+   "pos": "1b-dh-3b-2b",
    "age": 25,
    "mls": 3,
    "contract": "6 y/$28,642,500 (24-29)+opts",
@@ -176,13 +176,13 @@
    "walkYear": false,
    "mlbamId": 690993,
    "salarySource": "cots",
-   "war": 2.04,
-   "pa": 422
+   "war": 2.05,
+   "pa": 424
   },
   {
    "name": "Kerry Carpenter",
    "sheetName": "Carpenter, Kerry",
-   "pos": "rf",
+   "pos": "rf-lf",
    "age": 29,
    "mls": 4.057,
    "contract": "A2",
@@ -194,26 +194,8 @@
    "cotsEstimate": 3750000,
    "mlbamId": 681481,
    "salarySource": "mlbtr-arb",
-   "war": 0.81,
+   "war": 0.82,
    "pa": 382
-  },
-  {
-   "name": "Matt Vierling",
-   "sheetName": "Vierling, Matt",
-   "pos": "rf",
-   "age": 30,
-   "mls": 5.026,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 3700000,
-   "taxValue": 3700000,
-   "salaryPrevYear": 3255000,
-   "arbYear": 3,
-   "cotsEstimate": 3500000,
-   "mlbamId": 663837,
-   "salarySource": "mlbtr-arb",
-   "war": 0.21,
-   "pa": 142
   },
   {
    "name": "Kevin McGonigle",
@@ -229,7 +211,7 @@
    "walkYear": false,
    "mlbamId": 805808,
    "salarySource": "cots",
-   "war": 5.54,
+   "war": 5.55,
    "pa": 662
   },
   {
@@ -324,7 +306,7 @@
   {
    "name": "Wenceel Pérez",
    "sheetName": "Pérez, Wenceel",
-   "pos": "cf",
+   "pos": "cf-rf",
    "age": 27,
    "mls": 2.171,
    "contract": "A1",
@@ -336,8 +318,8 @@
    "cotsEstimate": 1100000,
    "mlbamId": 672761,
    "salarySource": "mlbtr-arb",
-   "war": 0.28,
-   "pa": 146
+   "war": 0.35,
+   "pa": 191
   },
   {
    "name": "Dillon Dingler",
@@ -352,24 +334,8 @@
    "salaryPrevYear": 834900,
    "mlbamId": 693307,
    "salarySource": "minimum",
-   "war": 3.52,
+   "war": 3.53,
    "pa": 486
-  },
-  {
-   "name": "Trey Sweeney",
-   "sheetName": "Sweeney, Trey",
-   "pos": "ss",
-   "age": 27,
-   "mls": 2.045,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 788700,
-   "mlbamId": 700242,
-   "salarySource": "minimum",
-   "war": 0.05,
-   "pa": 43
   },
   {
    "name": "Brant Hurter",
@@ -502,7 +468,7 @@
   {
    "name": "Hao-Yu Lee",
    "sheetName": "Lee, Hao-Yu",
-   "pos": "2b",
+   "pos": "2b-3b",
    "age": 24,
    "mls": 0.154,
    "contract": "",
@@ -512,8 +478,8 @@
    "salaryPrevYear": 649746,
    "mlbamId": 701678,
    "salarySource": "minimum",
-   "war": 2.05,
-   "pa": 471
+   "war": 2.09,
+   "pa": 477
   },
   {
    "name": "Enmanuel De Jesus",
@@ -534,7 +500,7 @@
   {
    "name": "Ben Malgeri",
    "sheetName": "Malgeri, Ben",
-   "pos": "cf",
+   "pos": "cf-rf-lf",
    "age": 27,
    "mls": 0.097,
    "contract": "",
@@ -544,24 +510,8 @@
    "salaryPrevYear": 404599,
    "mlbamId": 701162,
    "salarySource": "minimum",
-   "war": 0.43,
-   "pa": 211
-  },
-  {
-   "name": "Jace Jung",
-   "sheetName": "Jung, Jace",
-   "pos": "2b",
-   "age": 26,
-   "mls": 0.093,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 168997,
-   "mlbamId": 690291,
-   "salarySource": "minimum",
-   "war": 0.23,
-   "pa": 89
+   "war": 0.46,
+   "pa": 224
   },
   {
    "name": "Eduardo Valencia",
@@ -576,7 +526,7 @@
    "salaryPrevYear": 347096,
    "mlbamId": 680664,
    "salarySource": "minimum",
-   "war": 1.28,
+   "war": 1.26,
    "pa": 296
   },
   {
@@ -608,8 +558,8 @@
    "salaryPrevYear": 179359,
    "mlbamId": 814430,
    "salarySource": "minimum",
-   "war": 0.15,
-   "pa": 108
+   "war": 0.16,
+   "pa": 115
   },
   {
    "name": "Tsung-Che Cheng",
@@ -676,20 +626,55 @@
    "pa": 18
   },
   {
-   "name": "Jake Miller",
-   "sheetName": "Miller, Jake",
-   "pos": "lhp",
-   "age": 26,
+   "name": "Josue Briceno",
+   "sheetName": "",
+   "pos": "c-1b",
+   "age": 22,
    "mls": 0,
-   "contract": "",
+   "contract": "Added to the 40-man",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 63600,
-   "mlbamId": 805725,
+   "salaryPrevYear": null,
+   "mlbamId": 800522,
    "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
+   "corrected": "Added from RosterResource",
+   "war": 0.39,
+   "pa": 75
+  },
+  {
+   "name": "Max Anderson",
+   "sheetName": "",
+   "pos": "2b-3b",
+   "age": 25,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 801194,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.58,
+   "pa": 136
+  },
+  {
+   "name": "Peyton Graham",
+   "sheetName": "",
+   "pos": "ss-2b-cf",
+   "age": 26,
+   "mls": 0,
+   "contract": "Added to the 40-man",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 689931,
+   "salarySource": "minimum",
+   "corrected": "Added from RosterResource",
+   "war": 0.15,
+   "pa": 65
   }
  ],
  "deadMoney": [
@@ -734,26 +719,6 @@
  "rowsTaxPayroll": 184738571,
  "minors": [
   {
-   "mlbamId": 801194,
-   "name": "Max Anderson",
-   "pos": "2b",
-   "age": 25,
-   "war": 2.56,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 800522,
-   "name": "Josue Briceño",
-   "pos": "c",
-   "age": 22,
-   "war": 2.34,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 827640,
    "name": "Lucas Elissalt",
    "pos": "sp",
@@ -764,22 +729,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 689931,
-   "name": "Peyton Graham",
-   "pos": "ss",
-   "age": 26,
-   "war": 1.55,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 807740,
    "name": "Luke Shliger",
    "pos": "c",
    "age": 25,
    "war": 1.45,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 805725,
+   "name": "Jake Miller",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.41,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -852,6 +817,26 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 663837,
+   "name": "Matt Vierling",
+   "pos": "cf-rf-lf",
+   "age": 30,
+   "war": 0.8,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 700242,
+   "name": "Trey Sweeney",
+   "pos": "ss",
+   "age": 27,
+   "war": 0.77,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 811290,
@@ -1004,16 +989,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 690544,
-   "name": "Bailey Horn",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.19,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 806224,
    "name": "Brady Smith",
    "pos": "sp",
@@ -1034,6 +1009,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 690544,
+   "name": "Bailey Horn",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.16,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 802412,
    "name": "Malachi Witherspoon",
    "pos": "sp",
@@ -1052,6 +1037,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 690291,
+   "name": "Jace Jung",
+   "pos": "3b",
+   "age": 26,
+   "war": 0.08,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 687830,
