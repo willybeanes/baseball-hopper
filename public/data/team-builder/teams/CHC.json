@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 608324,
    "salarySource": "cots",
-   "war": 3.27,
+   "war": 3.28,
    "pa": 606
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 663538,
    "salarySource": "cots",
-   "war": 3.07,
+   "war": 3.08,
    "pa": 613
   },
   {
@@ -379,7 +379,7 @@
    "salaryPrevYear": 804500,
    "mlbamId": 807713,
    "salarySource": "minimum",
-   "war": 1.32,
+   "war": 1.33,
    "pa": 386
   },
   {
@@ -491,7 +491,7 @@
    "salaryPrevYear": 557802,
    "mlbamId": 699393,
    "salarySource": "minimum",
-   "war": 0.67,
+   "war": 0.68,
    "pa": 456
   },
   {
@@ -703,7 +703,7 @@
    "name": "Tyler Schlaffer",
    "pos": "sp",
    "age": 26,
-   "war": 1.41,
+   "war": 1.42,
    "ip": 200,
    "salary": 780000,
    "debuted": false

@@ -88,7 +88,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 671056,
    "salarySource": "mlbtr-arb",
-   "war": 2.13,
+   "war": 2.14,
    "pa": 611
   },
   {
@@ -141,7 +141,7 @@
    "walkYear": false,
    "mlbamId": 802139,
    "salarySource": "cots",
-   "war": 4.64,
+   "war": 4.65,
    "pa": 663
   },
   {
@@ -242,7 +242,7 @@
    "mlbamId": 665877,
    "salarySource": "minimum",
    "war": 0.64,
-   "pa": 211
+   "pa": 209
   },
   {
    "name": "Victor Scott II",
@@ -257,7 +257,7 @@
    "salaryPrevYear": 606080,
    "mlbamId": 687363,
    "salarySource": "minimum",
-   "war": 0.17,
+   "war": 0.18,
    "pa": 185
   },
   {
@@ -449,7 +449,7 @@
    "salaryPrevYear": 450482,
    "mlbamId": 691458,
    "salarySource": "minimum",
-   "war": 0.53,
+   "war": 0.54,
    "pa": 171
   },
   {
@@ -513,7 +513,7 @@
    "salaryPrevYear": 232165,
    "mlbamId": 695491,
    "salarySource": "minimum",
-   "war": 1.25,
+   "war": 1.26,
    "pa": 431
   },
   {
@@ -578,7 +578,7 @@
    "mlbamId": 699024,
    "salarySource": "minimum",
    "war": 1.95,
-   "pa": 394
+   "pa": 392
   },
   {
    "name": "Cooper Hjerpe",
@@ -643,7 +643,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.14,
-   "pa": 53
+   "pa": 55
   },
   {
    "name": "Jacob Odle",
@@ -881,7 +881,7 @@
    "name": "Tai Peete",
    "pos": "of",
    "age": 21,
-   "war": 0.85,
+   "war": 0.86,
    "pa": 600,
    "salary": 780000,
    "debuted": false

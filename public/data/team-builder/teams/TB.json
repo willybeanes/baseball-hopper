@@ -103,7 +103,7 @@
    "cotsEstimate": 3900000,
    "mlbamId": 666018,
    "salarySource": "mlbtr-arb",
-   "war": 2.1,
+   "war": 2.11,
    "pa": 613
   },
   {
@@ -121,7 +121,7 @@
    "cotsEstimate": 3775000,
    "mlbamId": 641329,
    "salarySource": "mlbtr-arb",
-   "war": 0.49,
+   "war": 0.5,
    "ip": 65
   },
   {
@@ -141,24 +141,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.58,
    "ip": 70
-  },
-  {
-   "name": "Nick Fortes",
-   "sheetName": "Fortes, Nick",
-   "pos": "c",
-   "age": 30,
-   "mls": 4.149,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 3400000,
-   "taxValue": 3400000,
-   "salaryPrevYear": 2535000,
-   "arbYear": 3,
-   "cotsEstimate": 3535000,
-   "mlbamId": 663743,
-   "salarySource": "mlbtr-arb",
-   "war": 0.76,
-   "pa": 213
   },
   {
    "name": "Garrett Cleavinger",
@@ -228,7 +210,7 @@
    "cotsEstimate": 2075000,
    "mlbamId": 680700,
    "salarySource": "mlbtr-arb",
-   "war": 1.1,
+   "war": 1.11,
    "pa": 353
   },
   {
@@ -264,7 +246,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 687330,
    "salarySource": "mlbtr-arb",
-   "war": 0.52,
+   "war": 0.53,
    "ip": 72
   },
   {
@@ -384,7 +366,7 @@
    "salaryPrevYear": 794800,
    "mlbamId": 691406,
    "salarySource": "minimum",
-   "war": 5.85,
+   "war": 5.86,
    "pa": 647
   },
   {
@@ -432,7 +414,7 @@
    "salaryPrevYear": 232353,
    "mlbamId": 689414,
    "salarySource": "minimum",
-   "war": 2.56,
+   "war": 2.57,
    "pa": 418
   },
   {
@@ -464,7 +446,7 @@
    "salaryPrevYear": 785700,
    "mlbamId": 810938,
    "salarySource": "minimum",
-   "war": 0.67,
+   "war": 0.68,
    "pa": 256
   },
   {
@@ -480,7 +462,7 @@
    "salaryPrevYear": 783800,
    "mlbamId": 693855,
    "salarySource": "minimum",
-   "war": 1.84,
+   "war": 1.85,
    "ip": 140.8
   },
   {
@@ -496,7 +478,7 @@
    "salaryPrevYear": 950000,
    "mlbamId": 668723,
    "salarySource": "minimum",
-   "war": 0.47,
+   "war": 0.48,
    "pa": 247
   },
   {
@@ -528,7 +510,7 @@
    "salaryPrevYear": 570514,
    "mlbamId": 683748,
    "salarySource": "minimum",
-   "war": 1.57,
+   "war": 1.58,
    "pa": 469
   },
   {
@@ -576,8 +558,8 @@
    "salaryPrevYear": 135823,
    "mlbamId": 700652,
    "salarySource": "minimum",
-   "war": 0.07,
-   "pa": 27
+   "war": 0.34,
+   "pa": 134
   },
   {
    "name": "Alex Cook",
@@ -592,7 +574,7 @@
    "salaryPrevYear": 140220,
    "mlbamId": 702047,
    "salarySource": "minimum",
-   "war": 0.02,
+   "war": 0.03,
    "ip": 18
   },
   {
@@ -710,8 +692,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -731,17 +713,17 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 102739545,
- "sheetTaxPayroll": 116651667,
- "rowsPayroll": 102739545,
- "rowsTaxPayroll": 116651667,
+ "sheetPayroll": 100054545,
+ "sheetTaxPayroll": 113966667,
+ "rowsPayroll": 100054545,
+ "rowsTaxPayroll": 113966667,
  "minors": [
   {
    "mlbamId": 805207,
    "name": "Caden Bodine",
    "pos": "c",
    "age": 23,
-   "war": 2.89,
+   "war": 2.92,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -771,7 +753,7 @@
    "name": "Jack Kartsonas",
    "pos": "sp",
    "age": 26,
-   "war": 1.5,
+   "war": 1.51,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -891,7 +873,7 @@
    "name": "Dominic Fritton",
    "pos": "sp",
    "age": 24,
-   "war": 0.53,
+   "war": 0.54,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -901,7 +883,7 @@
    "name": "Jackson Baumeister",
    "pos": "sp",
    "age": 24,
-   "war": 0.5,
+   "war": 0.51,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -911,7 +893,7 @@
    "name": "Garrett Edwards",
    "pos": "sp",
    "age": 25,
-   "war": 0.4,
+   "war": 0.41,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -1011,7 +993,7 @@
    "name": "Chandler Murphy",
    "pos": "sp",
    "age": 26,
-   "war": 0.01,
+   "war": 0.02,
    "ip": 200,
    "salary": 780000,
    "debuted": false

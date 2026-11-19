@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 647304,
    "salarySource": "cots",
-   "war": 2.17,
-   "pa": 590
+   "war": 2.15,
+   "pa": 583
   },
   {
    "name": "Logan Gilbert",
@@ -67,8 +67,8 @@
    "walkYear": false,
    "mlbamId": 663728,
    "salarySource": "cots",
-   "war": 3.91,
-   "pa": 501
+   "war": 3.97,
+   "pa": 500
   },
   {
    "name": "George Kirby",
@@ -85,7 +85,7 @@
    "cotsEstimate": 10550000,
    "mlbamId": 669923,
    "salarySource": "mlbtr-arb",
-   "war": 2.81,
+   "war": 2.8,
    "ip": 172
   },
   {
@@ -136,8 +136,8 @@
    "walkYear": false,
    "mlbamId": 672580,
    "salarySource": "cots",
-   "war": 3.08,
-   "pa": 548
+   "war": 2.91,
+   "pa": 524
   },
   {
    "name": "Brendan Donovan",
@@ -154,8 +154,8 @@
    "cotsEstimate": 6500000,
    "mlbamId": 680977,
    "salarySource": "mlbtr-arb",
-   "war": 2.53,
-   "pa": 481
+   "war": 1.63,
+   "pa": 449
   },
   {
    "name": "Bryan Woo",
@@ -172,7 +172,7 @@
    "cotsEstimate": 5000000,
    "mlbamId": 693433,
    "salarySource": "mlbtr-arb",
-   "war": 3.09,
+   "war": 3.1,
    "ip": 162.1
   },
   {
@@ -190,8 +190,8 @@
    "cotsEstimate": 3500000,
    "mlbamId": 670042,
    "salarySource": "mlbtr-arb",
-   "war": 0.89,
-   "pa": 360
+   "war": 0.87,
+   "pa": 354
   },
   {
    "name": "Gabe Speier",
@@ -208,8 +208,8 @@
    "cotsEstimate": 3500000,
    "mlbamId": 642100,
    "salarySource": "mlbtr-arb",
-   "war": 0.52,
-   "ip": 52
+   "war": 0.56,
+   "ip": 56
   },
   {
    "name": "Colt Emerson",
@@ -225,7 +225,7 @@
    "walkYear": false,
    "mlbamId": 806068,
    "salarySource": "cots",
-   "war": 1.32,
+   "war": 1.33,
    "pa": 396
   },
   {
@@ -243,8 +243,8 @@
    "cotsEstimate": 2800000,
    "mlbamId": 686527,
    "salarySource": "mlbtr-arb",
-   "war": 1.77,
-   "pa": 484
+   "war": 1.87,
+   "pa": 483
   },
   {
    "name": "Eduard Bazardo",
@@ -297,8 +297,8 @@
    "cotsEstimate": 950000,
    "mlbamId": 681867,
    "salarySource": "mlbtr-arb",
-   "war": 0.05,
-   "ip": 24.1
+   "war": 0.13,
+   "ip": 66.4
   },
   {
    "name": "Michael Rucker",
@@ -315,8 +315,8 @@
    "cotsEstimate": 850000,
    "mlbamId": 621074,
    "salarySource": "mlbtr-arb",
-   "war": 0.1,
-   "ip": 28
+   "war": 0.13,
+   "ip": 38
   },
   {
    "name": "James McArthur",
@@ -333,8 +333,8 @@
    "cotsEstimate": 810000,
    "mlbamId": 663704,
    "salarySource": "mlbtr-arb",
-   "war": 0.07,
-   "ip": 18
+   "war": 0.09,
+   "ip": 25
   },
   {
    "name": "Carlos Vargas",
@@ -352,7 +352,7 @@
    "mlbamId": 672841,
    "salarySource": "mlbtr-arb",
    "war": -0.05,
-   "ip": 42
+   "ip": 46
   },
   {
    "name": "Michael Toglia",
@@ -367,8 +367,8 @@
    "salaryPrevYear": null,
    "mlbamId": 669911,
    "salarySource": "minimum",
-   "war": -0.05,
-   "pa": 60
+   "war": -0.04,
+   "pa": 51
   },
   {
    "name": "Emerson Hancock",
@@ -383,8 +383,8 @@
    "salaryPrevYear": 793300,
    "mlbamId": 676106,
    "salarySource": "minimum",
-   "war": 1.33,
-   "ip": 154.1
+   "war": 1.38,
+   "ip": 159.1
   },
   {
    "name": "Cole Young",
@@ -399,8 +399,8 @@
    "salaryPrevYear": 786100,
    "mlbamId": 702284,
    "salarySource": "minimum",
-   "war": 2.83,
-   "pa": 531
+   "war": 2.8,
+   "pa": 526
   },
   {
    "name": "Leo Rivas",
@@ -415,8 +415,8 @@
    "salaryPrevYear": 474277,
    "mlbamId": 660844,
    "salarySource": "minimum",
-   "war": 0.34,
-   "pa": 129
+   "war": 0.17,
+   "pa": 74
   },
   {
    "name": "Ryan Bliss",
@@ -431,8 +431,8 @@
    "salaryPrevYear": 402545,
    "mlbamId": 669208,
    "salarySource": "minimum",
-   "war": 0.13,
-   "pa": 152
+   "war": 0.09,
+   "pa": 104
   },
   {
    "name": "Jhonny Pereda",
@@ -447,8 +447,8 @@
    "salaryPrevYear": 455296,
    "mlbamId": 640902,
    "salarySource": "minimum",
-   "war": 0.62,
-   "pa": 128
+   "war": 0.59,
+   "pa": 121
   },
   {
    "name": "Grant McCray",
@@ -480,7 +480,7 @@
    "mlbamId": 677961,
    "salarySource": "minimum",
    "war": 0.04,
-   "ip": 24
+   "ip": 28
   },
   {
    "name": "Nick Davila",
@@ -495,8 +495,8 @@
    "salaryPrevYear": 645915,
    "mlbamId": 689546,
    "salarySource": "minimum",
-   "war": -0.03,
-   "ip": 8
+   "war": -0.08,
+   "ip": 18
   },
   {
    "name": "Troy Taylor",
@@ -511,8 +511,8 @@
    "salaryPrevYear": 147779,
    "mlbamId": 700187,
    "salarySource": "minimum",
-   "war": -0.11,
-   "ip": 20
+   "war": -0.14,
+   "ip": 24
   },
   {
    "name": "Willie MacIver",
@@ -543,8 +543,8 @@
    "salaryPrevYear": 187701,
    "mlbamId": 801126,
    "salarySource": "minimum",
-   "war": 0.34,
-   "pa": 133
+   "war": 0.14,
+   "pa": 50
   },
   {
    "name": "Brennen Davis",
@@ -591,8 +591,8 @@
    "salaryPrevYear": 112620,
    "mlbamId": 703155,
    "salarySource": "minimum",
-   "war": 1.06,
-   "pa": 415
+   "war": 0.76,
+   "pa": 275
   },
   {
    "name": "Michael Arroyo",
@@ -607,8 +607,8 @@
    "salaryPrevYear": 91765,
    "mlbamId": 703197,
    "salarySource": "minimum",
-   "war": 1.1,
-   "pa": 381
+   "war": 0.93,
+   "pa": 340
   },
   {
    "name": "Robinson Ortiz",
@@ -623,14 +623,14 @@
    "salaryPrevYear": 115406,
    "mlbamId": 673662,
    "salarySource": "minimum",
-   "war": -0.06,
-   "ip": 18
+   "war": -0.08,
+   "ip": 22
   },
   {
    "name": "Isaac Mattson",
    "sheetName": "",
    "pos": "rhp",
-   "age": 31,
+   "age": 32,
    "mls": 1.124,
    "contract": "Added to the 40-man",
    "status": "prearb",
@@ -641,7 +641,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.02,
-   "ip": 30
+   "ip": 33
   }
  ],
  "deadMoney": [
@@ -775,7 +775,7 @@
    "name": "Nico Tellache",
    "pos": "sp",
    "age": 29,
-   "war": 0.88,
+   "war": 0.86,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -911,6 +911,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 804577,
+   "name": "Reid VanScoter",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.09,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 641540,
    "name": "Dane Dunning",
    "pos": "rp",
@@ -919,16 +929,6 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
-  },
-  {
-   "mlbamId": 804577,
-   "name": "Reid VanScoter",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.08,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
   }
  ]
 }

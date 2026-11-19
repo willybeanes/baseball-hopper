@@ -16,7 +16,7 @@
    "cotsEstimate": 9750000,
    "mlbamId": 682928,
    "salarySource": "mlbtr-arb",
-   "war": 2.93,
+   "war": 2.94,
    "pa": 607
   },
   {
@@ -199,8 +199,8 @@
    "salaryPrevYear": 782700,
    "mlbamId": 686452,
    "salarySource": "minimum",
-   "war": 0.23,
-   "pa": 65
+   "war": 0.25,
+   "pa": 71
   },
   {
    "name": "Brad Lord",
@@ -263,7 +263,7 @@
    "salaryPrevYear": 657022,
    "mlbamId": 665953,
    "salarySource": "minimum",
-   "war": 0.45,
+   "war": 0.46,
    "pa": 337
   },
   {
@@ -279,7 +279,7 @@
    "salaryPrevYear": 786000,
    "mlbamId": 695734,
    "salarySource": "minimum",
-   "war": 1.96,
+   "war": 1.97,
    "pa": 578
   },
   {
@@ -311,7 +311,7 @@
    "salaryPrevYear": 790600,
    "mlbamId": 678391,
    "salarySource": "minimum",
-   "war": 0.33,
+   "war": 0.34,
    "pa": 169
   },
   {
@@ -327,7 +327,7 @@
    "salaryPrevYear": 576406,
    "mlbamId": 691781,
    "salarySource": "minimum",
-   "war": 1.59,
+   "war": 1.6,
    "pa": 463
   },
   {
@@ -472,7 +472,7 @@
    "mlbamId": 687605,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 82
+   "pa": 83
   },
   {
    "name": "Yovanny Cruz",
@@ -551,8 +551,8 @@
    "salaryPrevYear": 112620,
    "mlbamId": 691002,
    "salarySource": "minimum",
-   "war": 0.31,
-   "pa": 323
+   "war": 0.32,
+   "pa": 333
   },
   {
    "name": "Jared Simpson",

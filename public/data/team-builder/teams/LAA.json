@@ -50,8 +50,8 @@
    "cotsEstimate": 9650000,
    "mlbamId": 687263,
    "salarySource": "mlbtr-arb",
-   "war": 3.54,
-   "pa": 653
+   "war": 3.56,
+   "pa": 654
   },
   {
    "name": "Reid Detmers",
@@ -86,8 +86,8 @@
    "cotsEstimate": 3500000,
    "mlbamId": 666139,
    "salarySource": "mlbtr-arb",
-   "war": 0.11,
-   "pa": 328
+   "war": 0.13,
+   "pa": 324
   },
   {
    "name": "Nolan Schanuel",
@@ -104,7 +104,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 694384,
    "salarySource": "mlbtr-arb",
-   "war": 2.1,
+   "war": 2.11,
    "pa": 507
   },
   {
@@ -122,7 +122,7 @@
    "cotsEstimate": 2500000,
    "mlbamId": 642350,
    "salarySource": "mlbtr-arb",
-   "war": 0.32,
+   "war": 0.33,
    "pa": 264
   },
   {
@@ -175,26 +175,8 @@
    "cotsEstimate": 1500000,
    "mlbamId": 672724,
    "salarySource": "mlbtr-arb",
-   "war": 0.25,
-   "pa": 301
-  },
-  {
-   "name": "Tyler Heineman",
-   "sheetName": "Heineman, Tyler",
-   "pos": "c",
-   "age": 36,
-   "mls": 4.066,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1500000,
-   "taxValue": 1500000,
-   "salaryPrevYear": 675000,
-   "arbYear": 2,
-   "cotsEstimate": 1337500,
-   "mlbamId": 623168,
-   "salarySource": "mlbtr-arb",
-   "war": 0.99,
-   "pa": 208
+   "war": 0.23,
+   "pa": 291
   },
   {
    "name": "Tayler Saucedo",
@@ -213,6 +195,23 @@
    "salarySource": "mlbtr-arb",
    "war": 0.05,
    "ip": 54
+  },
+  {
+   "name": "Tyler Heineman",
+   "sheetName": "Heineman, Tyler",
+   "pos": "c",
+   "age": 36,
+   "mls": 4.066,
+   "contract": "1 y/$1,237,500 (27)",
+   "status": "signed",
+   "salary": 1237500,
+   "taxValue": 1237500,
+   "salaryPrevYear": 675000,
+   "walkYear": false,
+   "mlbamId": 623168,
+   "salarySource": "cots",
+   "war": 0.99,
+   "pa": 208
   },
   {
    "name": "Ben Joyce",
@@ -263,8 +262,8 @@
    "salaryPrevYear": 800000,
    "mlbamId": 687093,
    "salarySource": "minimum",
-   "war": 1.34,
-   "pa": 449
+   "war": 1.3,
+   "pa": 405
   },
   {
    "name": "Jack Kochanowicz",
@@ -311,8 +310,8 @@
    "salaryPrevYear": 389480,
    "mlbamId": 672569,
    "salarySource": "minimum",
-   "war": 0.36,
-   "pa": 85
+   "war": 0.37,
+   "pa": 86
   },
   {
    "name": "Ryan Johnson",
@@ -359,8 +358,8 @@
    "salaryPrevYear": 231618,
    "mlbamId": 694208,
    "salarySource": "minimum",
-   "war": 1.45,
-   "pa": 399
+   "war": 1.47,
+   "pa": 393
   },
   {
    "name": "Walbert Urena",
@@ -407,8 +406,8 @@
    "salaryPrevYear": 94845,
    "mlbamId": 805373,
    "salarySource": "minimum",
-   "war": 0.4,
-   "pa": 206
+   "war": 0.34,
+   "pa": 181
   },
   {
    "name": "Christian Moore",
@@ -423,8 +422,8 @@
    "salaryPrevYear": 342769,
    "mlbamId": 695681,
    "salarySource": "minimum",
-   "war": 0.75,
-   "pa": 239
+   "war": 0.59,
+   "pa": 189
   },
   {
    "name": "Wade Meckler",
@@ -471,8 +470,8 @@
    "salaryPrevYear": 518142,
    "mlbamId": 694203,
    "salarySource": "minimum",
-   "war": 1.04,
-   "pa": 306
+   "war": 1.01,
+   "pa": 299
   },
   {
    "name": "Sammy Natera Jr.",
@@ -489,6 +488,22 @@
    "salarySource": "minimum",
    "war": 0.34,
    "ip": 59
+  },
+  {
+   "name": "Jace Jung",
+   "sheetName": "Jung, Jace",
+   "pos": "2b-3b",
+   "age": 26,
+   "mls": 0.093,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 690291,
+   "salarySource": "minimum",
+   "war": 0.4,
+   "pa": 202
   },
   {
    "name": "Samuel Aldegheri",
@@ -665,11 +680,17 @@
    "mlbamId": 804558,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.25,
-   "pa": 154
+   "war": 0.22,
+   "pa": 136
   }
  ],
  "deadMoney": [
+  {
+   "name": "Jace Jung",
+   "salary": 100000,
+   "taxValue": 100000,
+   "note": "to Detroit, 11/18/26 trade"
+  },
   {
    "name": "0- to 3-year players",
    "salary": 11050000,
@@ -729,16 +750,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 804558,
-   "name": "Raudi Rodriguez",
-   "pos": "cf",
-   "age": 23,
-   "war": 1.53,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 695524,
    "name": "Jacob Cozart",
    "pos": "c",
@@ -755,26 +766,6 @@
    "age": 23,
    "war": 0.76,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 683079,
-   "name": "Omar Martinez",
-   "pos": "c",
-   "age": 25,
-   "war": 0.67,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 703185,
-   "name": "Nelson Rada",
-   "pos": "cf",
-   "age": 21,
-   "war": 0.64,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -799,6 +790,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 694359,
+   "name": "Niko Kavadas",
+   "pos": "if",
+   "age": 28,
+   "war": 0.54,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 803135,
    "name": "Austin Gordon",
    "pos": "sp",
@@ -807,16 +808,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 694359,
-   "name": "Niko Kavadas",
-   "pos": "if",
-   "age": 28,
-   "war": 0.52,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 808129,
@@ -867,16 +858,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 622569,
-   "name": "Pablo Reyes",
-   "pos": "of",
-   "age": 33,
-   "war": 0.15,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 701836,

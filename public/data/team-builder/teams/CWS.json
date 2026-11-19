@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 622491,
    "salarySource": "cots",
-   "war": 0.93,
+   "war": 0.92,
    "ip": 108.4
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": true,
    "mlbamId": 808959,
    "salarySource": "cots",
-   "war": 2.16,
+   "war": 2.17,
    "pa": 550
   },
   {
@@ -156,24 +156,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.19,
    "ip": 62
-  },
-  {
-   "name": "Jordan Leasure",
-   "sheetName": "Leasure, Jordan",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 2.161,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1000000,
-   "taxValue": 1000000,
-   "salaryPrevYear": 762072,
-   "arbYear": 1,
-   "cotsEstimate": 950000,
-   "mlbamId": 673929,
-   "salarySource": "mlbtr-arb",
-   "war": 0,
-   "ip": 1
   },
   {
    "name": "Chris Murphy",
@@ -367,7 +349,7 @@
    "mlbamId": 700337,
    "salarySource": "minimum",
    "war": 0.54,
-   "pa": 193
+   "pa": 192
   },
   {
    "name": "Kyle Teel",
@@ -382,7 +364,7 @@
    "salaryPrevYear": 788050,
    "mlbamId": 691019,
    "salarySource": "minimum",
-   "war": 2.49,
+   "war": 2.5,
    "pa": 431
   },
   {
@@ -478,7 +460,7 @@
    "salaryPrevYear": 780350,
    "mlbamId": 671976,
    "salarySource": "minimum",
-   "war": 1.36,
+   "war": 1.37,
    "pa": 388
   },
   {
@@ -510,7 +492,7 @@
    "salaryPrevYear": 692407,
    "mlbamId": 803011,
    "salarySource": "minimum",
-   "war": 2.54,
+   "war": 2.55,
    "pa": 513
   },
   {
@@ -691,8 +673,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11900000,
-   "taxValue": 11900000,
+   "salary": 12750000,
+   "taxValue": 12750000,
    "note": ""
   },
   {
@@ -712,10 +694,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 116800000,
- "sheetTaxPayroll": 137133061,
- "rowsPayroll": 116800000,
- "rowsTaxPayroll": 137133061,
+ "sheetPayroll": 116700000,
+ "sheetTaxPayroll": 137033061,
+ "rowsPayroll": 116700000,
+ "rowsTaxPayroll": 137033061,
  "minors": [
   {
    "mlbamId": 815352,
@@ -778,6 +760,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 683569,
+   "name": "Jose Colmenares",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.77,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 681066,
    "name": "Ky Bush",
    "pos": "sp",
@@ -794,16 +786,6 @@
    "age": 28,
    "war": 0.76,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 683569,
-   "name": "Jose Colmenares",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.74,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -876,6 +858,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 673929,
+   "name": "Jordan Leasure",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.26,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 802359,

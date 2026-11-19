@@ -32,7 +32,7 @@
    "walkYear": true,
    "mlbamId": 641933,
    "salarySource": "cots",
-   "war": 0.79,
+   "war": 0.8,
    "pa": 351
   },
   {
@@ -175,7 +175,7 @@
    "walkYear": false,
    "mlbamId": 694212,
    "salarySource": "cots",
-   "war": 2.29,
+   "war": 2.3,
    "pa": 455
   },
   {
@@ -225,7 +225,7 @@
    "salaryPrevYear": 446369,
    "mlbamId": 687952,
    "salarySource": "minimum",
-   "war": 1.17,
+   "war": 1.18,
    "pa": 437
   },
   {
@@ -241,7 +241,7 @@
    "salaryPrevYear": 802200,
    "mlbamId": 702616,
    "salarySource": "minimum",
-   "war": 2.1,
+   "war": 2.11,
    "pa": 495
   },
   {
@@ -354,7 +354,7 @@
    "mlbamId": 669236,
    "salarySource": "minimum",
    "war": 0.13,
-   "pa": 81
+   "pa": 83
   },
   {
    "name": "Dylan Beavers",
@@ -369,7 +369,7 @@
    "salaryPrevYear": 787400,
    "mlbamId": 687637,
    "salarySource": "minimum",
-   "war": 1.38,
+   "war": 1.39,
    "pa": 404
   },
   {
@@ -514,7 +514,7 @@
    "mlbamId": 701655,
    "salarySource": "minimum",
    "war": 0.07,
-   "pa": 42
+   "pa": 41
   },
   {
    "name": "Aron Estrada",
@@ -959,6 +959,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 692024,
+   "name": "Alex Carrillo",
+   "pos": "rp",
+   "age": 30,
+   "war": 0.11,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 811296,
    "name": "Kiefer Lord",
    "pos": "sp",
@@ -1014,6 +1024,16 @@
    "pos": "ss-3b",
    "age": 27,
    "war": 0.02,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 678577,
+   "name": "Junior Perez",
+   "pos": "of",
+   "age": 25,
+   "war": 0,
    "pa": 600,
    "salary": 780000,
    "debuted": true

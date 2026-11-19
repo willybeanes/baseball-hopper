@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 514888,
    "salarySource": "cots",
-   "war": 1.82,
+   "war": 1.83,
    "pa": 575
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 670541,
    "salarySource": "cots",
-   "war": 5.26,
+   "war": 5.27,
    "pa": 604
   },
   {
@@ -139,7 +139,7 @@
    "cotsEstimate": 14975000,
    "mlbamId": 665161,
    "salarySource": "mlbtr-arb",
-   "war": 3.29,
+   "war": 3.3,
    "pa": 578
   },
   {
@@ -174,7 +174,7 @@
    "cotsEstimate": 8010000,
    "mlbamId": 686613,
    "salarySource": "mlbtr-arb",
-   "war": 3.35,
+   "war": 3.34,
    "ip": 173.3
   },
   {
@@ -192,7 +192,7 @@
    "cotsEstimate": 6750000,
    "mlbamId": 673237,
    "salarySource": "mlbtr-arb",
-   "war": 2.19,
+   "war": 2.2,
    "pa": 420
   },
   {
@@ -300,7 +300,7 @@
    "cotsEstimate": 1050000,
    "mlbamId": 666211,
    "salarySource": "mlbtr-arb",
-   "war": 0.42,
+   "war": 0.43,
    "pa": 231
   },
   {
@@ -348,7 +348,7 @@
    "salaryPrevYear": 809900,
    "mlbamId": 701358,
    "salarySource": "minimum",
-   "war": 1.98,
+   "war": 1.99,
    "pa": 526
   },
   {
@@ -364,8 +364,8 @@
    "salaryPrevYear": 609121,
    "mlbamId": 701305,
    "salarySource": "minimum",
-   "war": 0.07,
-   "pa": 90
+   "war": 0.08,
+   "pa": 91
   },
   {
    "name": "Michael Burrows",
@@ -588,7 +588,7 @@
    "salaryPrevYear": 126428,
    "mlbamId": 828599,
    "salarySource": "minimum",
-   "war": 1.14,
+   "war": 1.15,
    "pa": 343
   },
   {
@@ -772,7 +772,7 @@
   {
    "mlbamId": 699043,
    "name": "Yamal Encarnacion",
-   "pos": "2b",
+   "pos": "of",
    "age": 23,
    "war": 0.64,
    "pa": 600,
@@ -784,7 +784,7 @@
    "name": "Joey Loperfido",
    "pos": "lf-rf",
    "age": 28,
-   "war": 0.51,
+   "war": 0.52,
    "pa": 600,
    "salary": 780000,
    "debuted": true

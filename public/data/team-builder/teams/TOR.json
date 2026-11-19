@@ -87,7 +87,7 @@
    "walkYear": false,
    "mlbamId": 672960,
    "salarySource": "cots",
-   "war": 2.3,
+   "war": 2.31,
    "pa": 531
   },
   {
@@ -173,7 +173,7 @@
    "cotsEstimate": 7400000,
    "mlbamId": 676391,
    "salarySource": "mlbtr-arb",
-   "war": 1.46,
+   "war": 1.47,
    "pa": 490
   },
   {
@@ -476,7 +476,7 @@
    "mlbamId": 682818,
    "salarySource": "minimum",
    "war": 0.21,
-   "pa": 128
+   "pa": 127
   },
   {
    "name": "Charles McAdoo",
@@ -523,7 +523,7 @@
    "salaryPrevYear": 216899,
    "mlbamId": 703520,
    "salarySource": "minimum",
-   "war": 1.84,
+   "war": 1.85,
    "pa": 489
   },
   {

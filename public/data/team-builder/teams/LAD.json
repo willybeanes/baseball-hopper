@@ -101,7 +101,7 @@
    "walkYear": false,
    "mlbamId": 605141,
    "salarySource": "cots",
-   "war": 4.09,
+   "war": 4.1,
    "pa": 589
   },
   {
@@ -152,7 +152,7 @@
    "walkYear": false,
    "mlbamId": 606192,
    "salarySource": "cots",
-   "war": 0.46,
+   "war": 0.47,
    "pa": 300
   },
   {
@@ -220,8 +220,8 @@
    "walkYear": false,
    "mlbamId": 571970,
    "salarySource": "cots",
-   "war": 2.16,
-   "pa": 441
+   "war": 2.14,
+   "pa": 438
   },
   {
    "name": "Andy Pages",
@@ -327,8 +327,8 @@
    "cotsEstimate": 1010000,
    "mlbamId": 694813,
    "salarySource": "mlbtr-arb",
-   "war": 0.52,
-   "ip": 47.6
+   "war": 0.56,
+   "ip": 51.6
   },
   {
    "name": "Bobby Miller",
@@ -359,8 +359,8 @@
    "salaryPrevYear": 649225,
    "mlbamId": 669165,
    "salarySource": "minimum",
-   "war": 0.31,
-   "ip": 33
+   "war": 0.34,
+   "ip": 36
   },
   {
    "name": "Ben Casparius",
@@ -376,7 +376,7 @@
    "mlbamId": 676508,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 12
+   "ip": 18
   },
   {
    "name": "Jack Dreyer",
@@ -439,8 +439,8 @@
    "salaryPrevYear": 790000,
    "mlbamId": 680736,
    "salarySource": "minimum",
-   "war": 0.88,
-   "ip": 76.4
+   "war": 0.91,
+   "ip": 79.4
   },
   {
    "name": "Dalton Rushing",
@@ -471,8 +471,8 @@
    "salaryPrevYear": 241193,
    "mlbamId": 678020,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 36
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Hunter Feduccia",
@@ -519,8 +519,8 @@
    "salaryPrevYear": 552795,
    "mlbamId": 689017,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 33
+   "war": 0.1,
+   "ip": 37
   },
   {
    "name": "Alex Freeland",
@@ -551,8 +551,8 @@
    "salaryPrevYear": 217878,
    "mlbamId": 801434,
    "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 14
+   "war": 0.05,
+   "ip": 20
   },
   {
    "name": "Eliezer Alfonzo",
@@ -599,8 +599,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 691947,
    "salarySource": "minimum",
-   "war": -0.02,
-   "ip": 8
+   "war": -0.04,
+   "ip": 14
   },
   {
    "name": "Christian Zazueta",
@@ -668,7 +668,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0,
-   "ip": 6
+   "ip": 8
   }
  ],
  "deadMoney": [
@@ -901,16 +901,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 814527,
-   "name": "Patrick Copen",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.68,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 804942,
    "name": "Cam Leiter",
    "pos": "sp",
@@ -975,7 +965,7 @@
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.32,
+   "war": 0.33,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -1069,6 +1059,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
+  },
+  {
+   "mlbamId": 814527,
+   "name": "Patrick Copen",
+   "pos": "rp",
+   "age": 25,
+   "war": 0.02,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 695771,

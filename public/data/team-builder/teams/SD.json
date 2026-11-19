@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 592518,
    "salarySource": "cots",
-   "war": 2.71,
+   "war": 2.72,
    "pa": 602
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 665487,
    "salarySource": "cots",
-   "war": 4.65,
+   "war": 4.66,
    "pa": 642
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 506433,
    "salarySource": "cots",
-   "war": 0.94,
+   "war": 0.93,
    "ip": 89.5
   },
   {
@@ -100,7 +100,7 @@
    "walkYear": false,
    "mlbamId": 630105,
    "salarySource": "cots",
-   "war": 0.89,
+   "war": 0.9,
    "pa": 474
   },
   {
@@ -274,13 +274,14 @@
    "pos": "rhp-s",
    "age": 30,
    "mls": 0,
-   "contract": "1 y (27)+28 cl opt",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
+   "contract": "1 y/$1.85M (27)+28 cl opt",
+   "status": "signed",
+   "salary": 1850000,
+   "taxValue": 1850000,
    "salaryPrevYear": null,
+   "walkYear": false,
    "mlbamId": 680802,
-   "salarySource": "minimum",
+   "salarySource": "cots",
    "war": 1.08,
    "ip": 108.8
   },
@@ -300,7 +301,7 @@
    "mlbamId": 669134,
    "salarySource": "mlbtr-arb",
    "war": 0.98,
-   "pa": 365
+   "pa": 362
   },
   {
    "name": "Jeremiah Estrada",
@@ -336,7 +337,7 @@
    "mlbamId": 663773,
    "salarySource": "mlbtr-arb",
    "war": -0.02,
-   "ip": 28
+   "ip": 30
   },
   {
    "name": "Jhony Brito",
@@ -481,7 +482,7 @@
    "salaryPrevYear": 145989,
    "mlbamId": 687957,
    "salarySource": "minimum",
-   "war": 0.5,
+   "war": 0.51,
    "pa": 325
   },
   {
@@ -545,7 +546,7 @@
    "salaryPrevYear": 112620,
    "mlbamId": 806956,
    "salarySource": "minimum",
-   "war": 1.34,
+   "war": 1.35,
    "pa": 385
   },
   {
@@ -578,7 +579,7 @@
    "mlbamId": 678184,
    "salarySource": "minimum",
    "war": -0.08,
-   "ip": 30
+   "ip": 31
   },
   {
    "name": "Ian Koenig",
@@ -612,7 +613,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.06,
-   "ip": 23
+   "ip": 20
   }
  ],
  "deadMoney": [
@@ -654,8 +655,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 5100000,
+   "taxValue": 5100000,
    "note": ""
   },
   {
@@ -670,10 +671,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 202156398,
- "sheetTaxPayroll": 210295180,
- "rowsPayroll": 202156398,
- "rowsTaxPayroll": 210295180,
+ "sheetPayroll": 203156398,
+ "sheetTaxPayroll": 211295180,
+ "rowsPayroll": 203156398,
+ "rowsTaxPayroll": 211295180,
  "minors": [
   {
    "mlbamId": 699546,
@@ -690,7 +691,7 @@
    "name": "Fernando Sanchez",
    "pos": "sp",
    "age": 26,
-   "war": 0.71,
+   "war": 0.7,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -700,7 +701,7 @@
    "name": "Justin DeCriscio",
    "pos": "ss",
    "age": 24,
-   "war": 0.69,
+   "war": 0.7,
    "pa": 600,
    "salary": 780000,
    "debuted": false

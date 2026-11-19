@@ -36,7 +36,7 @@
    "walkYear": false,
    "mlbamId": 667670,
    "salarySource": "cots",
-   "war": 1.27,
+   "war": 1.28,
    "pa": 467
   },
   {
@@ -54,7 +54,7 @@
    "cotsEstimate": 9250000,
    "mlbamId": 669127,
    "salarySource": "mlbtr-arb",
-   "war": 2.62,
+   "war": 2.63,
    "pa": 516
   },
   {
@@ -88,7 +88,7 @@
    "walkYear": false,
    "mlbamId": 671732,
    "salarySource": "cots",
-   "war": 1.34,
+   "war": 1.35,
    "pa": 507
   },
   {
@@ -207,7 +207,7 @@
    "salaryPrevYear": 785000,
    "mlbamId": 701762,
    "salarySource": "minimum",
-   "war": 4.5,
+   "war": 4.51,
    "pa": 652
   },
   {
@@ -255,7 +255,7 @@
    "salaryPrevYear": 530754,
    "mlbamId": 687231,
    "salarySource": "minimum",
-   "war": 0.39,
+   "war": 0.4,
    "pa": 158
   },
   {
@@ -271,8 +271,8 @@
    "salaryPrevYear": 557502,
    "mlbamId": 675961,
    "salarySource": "minimum",
-   "war": 0.4,
-   "pa": 194
+   "war": 0.41,
+   "pa": 196
   },
   {
    "name": "Gunnar Hoglund",
@@ -319,8 +319,8 @@
    "salaryPrevYear": 721969,
    "mlbamId": 691777,
    "salarySource": "minimum",
-   "war": 0.25,
-   "pa": 120
+   "war": 0.26,
+   "pa": 123
   },
   {
    "name": "Denzel Clarke",
@@ -495,7 +495,7 @@
    "salaryPrevYear": 579787,
    "mlbamId": 703607,
    "salarySource": "minimum",
-   "war": 3.02,
+   "war": 3.03,
    "pa": 522
   },
   {

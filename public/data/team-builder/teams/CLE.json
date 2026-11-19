@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 608070,
    "salarySource": "cots",
-   "war": 3.7,
+   "war": 3.71,
    "pa": 586
   },
   {
@@ -124,7 +124,7 @@
    "cotsEstimate": 4100000,
    "mlbamId": 668909,
    "salarySource": "mlbtr-arb",
-   "war": 3.82,
+   "war": 3.81,
    "ip": 181.4
   },
   {
@@ -142,7 +142,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 677587,
    "salarySource": "mlbtr-arb",
-   "war": 2.45,
+   "war": 2.46,
    "pa": 494
   },
   {
@@ -178,7 +178,7 @@
    "cotsEstimate": 2510000,
    "mlbamId": 672275,
    "salarySource": "mlbtr-arb",
-   "war": 2.53,
+   "war": 2.54,
    "pa": 397
   },
   {
@@ -214,7 +214,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 682120,
    "salarySource": "mlbtr-arb",
-   "war": 0.07,
+   "war": 0.06,
    "ip": 59
   },
   {
@@ -250,8 +250,8 @@
    "cotsEstimate": 1575000,
    "mlbamId": 681807,
    "salarySource": "mlbtr-arb",
-   "war": 0.31,
-   "pa": 200
+   "war": 0.32,
+   "pa": 203
   },
   {
    "name": "Matt Festa",
@@ -318,7 +318,7 @@
    "salaryPrevYear": 788000,
    "mlbamId": 682657,
    "salarySource": "minimum",
-   "war": 0.89,
+   "war": 0.9,
    "pa": 365
   },
   {
@@ -478,8 +478,8 @@
    "salaryPrevYear": 780000,
    "mlbamId": 800050,
    "salarySource": "minimum",
-   "war": 3.09,
-   "pa": 511
+   "war": 3.1,
+   "pa": 512
   },
   {
    "name": "Travis Bazzana",
@@ -671,8 +671,8 @@
    "mlbamId": 687627,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.18,
-   "pa": 85
+   "war": 0.19,
+   "pa": 90
   },
   {
    "name": "Jaison Chourio",
@@ -688,8 +688,8 @@
    "mlbamId": 702693,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.09,
-   "pa": 61
+   "war": 0.08,
+   "pa": 52
   },
   {
    "name": "Justin Campbell",

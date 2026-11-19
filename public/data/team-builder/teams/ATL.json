@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 621566,
    "salarySource": "cots",
-   "war": 2.7,
+   "war": 2.71,
    "pa": 622
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 663586,
    "salarySource": "cots",
-   "war": 1.44,
+   "war": 1.45,
    "pa": 549
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 675911,
    "salarySource": "cots",
-   "war": 1.98,
+   "war": 1.97,
    "ip": 125.5
   },
   {
@@ -168,7 +168,7 @@
    "walkYear": false,
    "mlbamId": 573262,
    "salarySource": "cots",
-   "war": 0.49,
+   "war": 0.5,
    "pa": 365
   },
   {
@@ -223,7 +223,7 @@
    "walkYear": true,
    "mlbamId": 645277,
    "salarySource": "cots",
-   "war": 1.83,
+   "war": 1.84,
    "pa": 612
   },
   {
@@ -397,7 +397,7 @@
    "salaryPrevYear": 800000,
    "mlbamId": 686948,
    "salarySource": "minimum",
-   "war": 2.97,
+   "war": 2.98,
    "pa": 601
   },
   {
@@ -477,8 +477,8 @@
    "salaryPrevYear": null,
    "mlbamId": 689172,
    "salarySource": "minimum",
-   "war": 0.17,
-   "pa": 152
+   "war": 0.16,
+   "pa": 151
   },
   {
    "name": "Victor Mederos",
@@ -770,7 +770,7 @@
    "name": "Tyler Freeman",
    "pos": "rf-2b",
    "age": 28,
-   "war": 1.13,
+   "war": 1.14,
    "pa": 600,
    "salary": 780000,
    "debuted": true

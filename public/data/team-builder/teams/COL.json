@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 666160,
    "salarySource": "cots",
-   "war": 0.11,
+   "war": 0.12,
    "pa": 452
   },
   {
@@ -120,7 +120,7 @@
    "cotsEstimate": 3825000,
    "mlbamId": 664983,
    "salarySource": "mlbtr-arb",
-   "war": 1.1,
+   "war": 1.11,
    "pa": 537
   },
   {
@@ -190,7 +190,7 @@
    "salaryPrevYear": 220326,
    "mlbamId": 681393,
    "salarySource": "minimum",
-   "war": 0.8,
+   "war": 0.81,
    "pa": 401
   },
   {
@@ -286,7 +286,7 @@
    "salaryPrevYear": 800000,
    "mlbamId": 664954,
    "salarySource": "minimum",
-   "war": 0.02,
+   "war": 0.03,
    "pa": 140
   },
   {
@@ -318,8 +318,8 @@
    "salaryPrevYear": 782000,
    "mlbamId": 687859,
    "salarySource": "minimum",
-   "war": -0.09,
-   "pa": 227
+   "war": -0.08,
+   "pa": 228
   },
   {
    "name": "Kyle Karros",
@@ -334,7 +334,7 @@
    "salaryPrevYear": 782000,
    "mlbamId": 691720,
    "salarySource": "minimum",
-   "war": 2.03,
+   "war": 2.04,
    "pa": 466
   },
   {
@@ -366,7 +366,7 @@
    "salaryPrevYear": 517926,
    "mlbamId": 690924,
    "salarySource": "minimum",
-   "war": 0.01,
+   "war": 0.02,
    "pa": 69
   },
   {
@@ -462,7 +462,7 @@
    "salaryPrevYear": 462995,
    "mlbamId": 694249,
    "salarySource": "minimum",
-   "war": 1.61,
+   "war": 1.62,
    "pa": 492
   },
   {
@@ -691,7 +691,7 @@
    "name": "Edouard Julien",
    "pos": "2b-1b",
    "age": 28,
-   "war": 1.48,
+   "war": 1.49,
    "pa": 600,
    "salary": 780000,
    "debuted": true

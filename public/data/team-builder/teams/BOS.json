@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 676979,
    "salarySource": "cots",
-   "war": 4.26,
+   "war": 4.25,
    "ip": 175.4
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 596115,
    "salarySource": "cots",
-   "war": 0.83,
+   "war": 0.84,
    "pa": 487
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 575929,
    "salarySource": "cots",
-   "war": 2.06,
+   "war": 2.07,
    "pa": 549
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 641343,
    "salarySource": "cots",
-   "war": 1.75,
+   "war": 1.76,
    "pa": 502
   },
   {
@@ -100,7 +100,7 @@
    "walkYear": false,
    "mlbamId": 624133,
    "salarySource": "cots",
-   "war": 3.13,
+   "war": 3.12,
    "ip": 169
   },
   {
@@ -135,8 +135,8 @@
    "cotsEstimate": 10850000,
    "mlbamId": 680776,
    "salarySource": "mlbtr-arb",
-   "war": 0.85,
-   "pa": 345
+   "war": 0.77,
+   "pa": 308
   },
   {
    "name": "Adley Rutschman",
@@ -153,7 +153,7 @@
    "cotsEstimate": 10250000,
    "mlbamId": 668939,
    "salarySource": "mlbtr-arb",
-   "war": 3.51,
+   "war": 3.44,
    "pa": 470
   },
   {
@@ -170,7 +170,7 @@
    "walkYear": false,
    "mlbamId": 678394,
    "salarySource": "cots",
-   "war": 1.47,
+   "war": 1.46,
    "ip": 141.8
   },
   {
@@ -187,7 +187,7 @@
    "walkYear": true,
    "mlbamId": 676477,
    "salarySource": "cots",
-   "war": 0.83,
+   "war": 0.82,
    "ip": 64
   },
   {
@@ -240,7 +240,7 @@
    "walkYear": false,
    "mlbamId": 701350,
    "salarySource": "cots",
-   "war": 2.82,
+   "war": 2.83,
    "pa": 526
   },
   {
@@ -259,6 +259,24 @@
    "salarySource": "cots",
    "war": 2.71,
    "pa": 518
+  },
+  {
+   "name": "Nick Fortes",
+   "sheetName": "Fortes, Nick",
+   "pos": "c",
+   "age": 30,
+   "mls": 4.149,
+   "contract": "A3",
+   "status": "arb",
+   "salary": 3400000,
+   "taxValue": 3400000,
+   "salaryPrevYear": null,
+   "arbYear": 3,
+   "cotsEstimate": 3535000,
+   "mlbamId": 663743,
+   "salarySource": "mlbtr-arb",
+   "war": 0.62,
+   "pa": 177
   },
   {
    "name": "Kristian Campbell",
@@ -296,24 +314,6 @@
    "ip": 57.6
   },
   {
-   "name": "Connor Wong",
-   "sheetName": "Wong, Connor",
-   "pos": "c",
-   "age": 31,
-   "mls": 4.079,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 2000000,
-   "taxValue": 2000000,
-   "salaryPrevYear": 1375000,
-   "arbYear": 2,
-   "cotsEstimate": 2000000,
-   "mlbamId": 657136,
-   "salarySource": "mlbtr-arb",
-   "war": 0.21,
-   "pa": 155
-  },
-  {
    "name": "Romy González",
    "sheetName": "González, Romy",
    "pos": "2b-1b",
@@ -328,8 +328,8 @@
    "cotsEstimate": 1900000,
    "mlbamId": 663853,
    "salarySource": "mlbtr-arb",
-   "war": 0.12,
-   "pa": 59
+   "war": 0.1,
+   "pa": 55
   },
   {
    "name": "Johan Oviedo",
@@ -436,7 +436,7 @@
    "cotsEstimate": 1250000,
    "mlbamId": 669711,
    "salarySource": "mlbtr-arb",
-   "war": 0.12,
+   "war": 0.11,
    "ip": 44
   },
   {
@@ -454,7 +454,7 @@
    "cotsEstimate": 1000000,
    "mlbamId": 686580,
    "salarySource": "mlbtr-arb",
-   "war": 0.42,
+   "war": 0.41,
    "ip": 52
   },
   {
@@ -506,7 +506,7 @@
    "salaryPrevYear": 790000,
    "mlbamId": 663558,
    "salarySource": "minimum",
-   "war": 0.35,
+   "war": 0.34,
    "ip": 55
   },
   {
@@ -522,8 +522,8 @@
    "salaryPrevYear": 266150,
    "mlbamId": 678554,
    "salarySource": "minimum",
-   "war": 1.84,
-   "pa": 405
+   "war": 1.87,
+   "pa": 408
   },
   {
    "name": "Caleb Durbin",
@@ -538,7 +538,7 @@
    "salaryPrevYear": 796000,
    "mlbamId": 702332,
    "salarySource": "minimum",
-   "war": 2.49,
+   "war": 2.5,
    "pa": 505
   },
   {
@@ -554,8 +554,8 @@
    "salaryPrevYear": 507409,
    "mlbamId": 681508,
    "salarySource": "minimum",
-   "war": 0.4,
-   "pa": 100
+   "war": 0.25,
+   "pa": 84
   },
   {
    "name": "Nick Sogard",
@@ -602,7 +602,7 @@
    "salaryPrevYear": 678749,
    "mlbamId": 801139,
    "salarySource": "minimum",
-   "war": 3.27,
+   "war": 3.26,
    "ip": 159.1
   },
   {
@@ -618,7 +618,7 @@
    "salaryPrevYear": 511830,
    "mlbamId": 687562,
    "salarySource": "minimum",
-   "war": 2.07,
+   "war": 2.06,
    "ip": 148.3
   },
   {
@@ -634,7 +634,7 @@
    "salaryPrevYear": 458195,
    "mlbamId": 687941,
    "salarySource": "minimum",
-   "war": 0.26,
+   "war": 0.25,
    "ip": 39.5
   },
   {
@@ -734,10 +734,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 228918334,
- "sheetTaxPayroll": 266867552,
- "rowsPayroll": 228918334,
- "rowsTaxPayroll": 266867552,
+ "sheetPayroll": 230453334,
+ "sheetTaxPayroll": 268402552,
+ "rowsPayroll": 230453334,
+ "rowsTaxPayroll": 268402552,
  "minors": [
   {
    "mlbamId": 808265,
@@ -764,7 +764,7 @@
    "name": "Yordanny Monegro",
    "pos": "sp",
    "age": 24,
-   "war": 2.06,
+   "war": 2.05,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -794,7 +794,7 @@
    "name": "Devin Futrell",
    "pos": "sp",
    "age": 24,
-   "war": 1.55,
+   "war": 1.54,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -804,7 +804,7 @@
    "name": "Dylan Brown",
    "pos": "sp",
    "age": 23,
-   "war": 1.52,
+   "war": 1.51,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -874,7 +874,7 @@
    "name": "Morgan McSweeney",
    "pos": "sp",
    "age": 29,
-   "war": 0.81,
+   "war": 0.8,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -892,7 +892,7 @@
   {
    "mlbamId": 821100,
    "name": "Justin Gonzales",
-   "pos": "of",
+   "pos": "cf",
    "age": 20,
    "war": 0.54,
    "pa": 600,
@@ -914,17 +914,27 @@
    "name": "Gage Ziehl",
    "pos": "rp",
    "age": 24,
-   "war": 0.47,
+   "war": 0.46,
    "ip": 65,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 657136,
+   "name": "Connor Wong",
+   "pos": "c",
+   "age": 31,
+   "war": 0.45,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 806333,
    "name": "Michael Sansone",
    "pos": "sp",
    "age": 27,
-   "war": 0.46,
+   "war": 0.45,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -934,7 +944,7 @@
    "name": "John Holobetz",
    "pos": "rp",
    "age": 24,
-   "war": 0.43,
+   "war": 0.42,
    "ip": 65,
    "salary": 780000,
    "debuted": false
@@ -974,7 +984,7 @@
    "name": "Isaac Coffey",
    "pos": "sp",
    "age": 27,
-   "war": 0.32,
+   "war": 0.31,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -984,7 +994,7 @@
    "name": "Juan Valera",
    "pos": "sp",
    "age": 21,
-   "war": 0.24,
+   "war": 0.23,
    "ip": 200,
    "salary": 780000,
    "debuted": false

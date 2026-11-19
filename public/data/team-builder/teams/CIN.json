@@ -50,7 +50,7 @@
    "cotsEstimate": 7200000,
    "mlbamId": 682829,
    "salarySource": "mlbtr-arb",
-   "war": 5.54,
+   "war": 5.55,
    "pa": 636
   },
   {
@@ -85,7 +85,7 @@
    "walkYear": false,
    "mlbamId": 624431,
    "salarySource": "cots",
-   "war": 0.98,
+   "war": 0.99,
    "pa": 274
   },
   {
@@ -121,7 +121,7 @@
    "cotsEstimate": 4000000,
    "mlbamId": 671096,
    "salarySource": "mlbtr-arb",
-   "war": 1.55,
+   "war": 1.54,
    "ip": 175.1
   },
   {
@@ -139,7 +139,7 @@
    "cotsEstimate": 3850000,
    "mlbamId": 668709,
    "salarySource": "mlbtr-arb",
-   "war": 1.31,
+   "war": 1.32,
    "pa": 495
   },
   {
@@ -157,7 +157,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 680574,
    "salarySource": "mlbtr-arb",
-   "war": 1.26,
+   "war": 1.27,
    "pa": 495
   },
   {
@@ -473,7 +473,7 @@
    "salaryPrevYear": 331771,
    "mlbamId": 695490,
    "salarySource": "minimum",
-   "war": 0.22,
+   "war": 0.23,
    "pa": 121
   },
   {
@@ -505,7 +505,7 @@
    "salaryPrevYear": 274306,
    "mlbamId": 699302,
    "salarySource": "minimum",
-   "war": 0.82,
+   "war": 0.83,
    "pa": 387
   },
   {
@@ -521,7 +521,7 @@
    "salaryPrevYear": 150697,
    "mlbamId": 682877,
    "salarySource": "minimum",
-   "war": 0.18,
+   "war": 0.19,
    "pa": 272
   },
   {
@@ -622,18 +622,17 @@
   },
   {
    "name": "Carter Graham",
-   "sheetName": "",
-   "pos": "1b-3b-lf",
+   "sheetName": "Graham, Carter",
+   "pos": "1b",
    "age": 25,
    "mls": 0,
-   "contract": "Added to the 40-man",
+   "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": null,
    "mlbamId": 807728,
    "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
    "war": -0.03,
    "pa": 56
   }

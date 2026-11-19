@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 664285,
    "salarySource": "cots",
-   "war": 2.74,
+   "war": 2.73,
    "ip": 186.4
   },
   {
@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 595879,
    "salarySource": "cots",
-   "war": 0.17,
-   "pa": 189
+   "war": 0.18,
+   "pa": 187
   },
   {
    "name": "Emilio Pagán",
@@ -70,7 +70,7 @@
    "walkYear": true,
    "mlbamId": 623454,
    "salarySource": "cots",
-   "war": 1.18,
+   "war": 1.19,
    "ip": 103.2
   },
   {
@@ -141,8 +141,8 @@
    "cotsEstimate": 5750000,
    "mlbamId": 656716,
    "salarySource": "mlbtr-arb",
-   "war": 0.49,
-   "pa": 241
+   "war": 0.5,
+   "pa": 236
   },
   {
    "name": "Will Vest",
@@ -176,7 +176,7 @@
    "walkYear": false,
    "mlbamId": 690993,
    "salarySource": "cots",
-   "war": 2.05,
+   "war": 2.08,
    "pa": 424
   },
   {
@@ -194,8 +194,8 @@
    "cotsEstimate": 3750000,
    "mlbamId": 681481,
    "salarySource": "mlbtr-arb",
-   "war": 0.82,
-   "pa": 382
+   "war": 0.81,
+   "pa": 380
   },
   {
    "name": "Kevin McGonigle",
@@ -211,7 +211,7 @@
    "walkYear": false,
    "mlbamId": 805808,
    "salarySource": "cots",
-   "war": 5.55,
+   "war": 5.56,
    "pa": 662
   },
   {
@@ -247,7 +247,7 @@
    "cotsEstimate": 1350000,
    "mlbamId": 689225,
    "salarySource": "mlbtr-arb",
-   "war": 0.06,
+   "war": 0.07,
    "ip": 34
   },
   {
@@ -319,7 +319,7 @@
    "mlbamId": 672761,
    "salarySource": "mlbtr-arb",
    "war": 0.35,
-   "pa": 191
+   "pa": 186
   },
   {
    "name": "Dillon Dingler",
@@ -334,8 +334,8 @@
    "salaryPrevYear": 834900,
    "mlbamId": 693307,
    "salarySource": "minimum",
-   "war": 3.53,
-   "pa": 486
+   "war": 3.58,
+   "pa": 482
   },
   {
    "name": "Brant Hurter",
@@ -510,8 +510,8 @@
    "salaryPrevYear": 404599,
    "mlbamId": 701162,
    "salarySource": "minimum",
-   "war": 0.46,
-   "pa": 224
+   "war": 0.44,
+   "pa": 213
   },
   {
    "name": "Eduardo Valencia",
@@ -526,7 +526,7 @@
    "salaryPrevYear": 347096,
    "mlbamId": 680664,
    "salarySource": "minimum",
-   "war": 1.26,
+   "war": 1.27,
    "pa": 296
   },
   {
@@ -543,7 +543,7 @@
    "mlbamId": 703601,
    "salarySource": "minimum",
    "war": 2.37,
-   "pa": 474
+   "pa": 473
   },
   {
    "name": "Brett Callahan",
@@ -558,8 +558,8 @@
    "salaryPrevYear": 179359,
    "mlbamId": 814430,
    "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 115
+   "war": 0.13,
+   "pa": 91
   },
   {
    "name": "Tsung-Che Cheng",
@@ -575,7 +575,7 @@
    "mlbamId": 691907,
    "salarySource": "minimum",
    "war": 0.05,
-   "pa": 35
+   "pa": 38
   },
   {
    "name": "Andrew Sears",
@@ -606,7 +606,7 @@
    "salaryPrevYear": 116792,
    "mlbamId": 807726,
    "salarySource": "minimum",
-   "war": 0.32,
+   "war": 0.33,
    "pa": 86
   },
   {
@@ -639,8 +639,8 @@
    "mlbamId": 800522,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.39,
-   "pa": 75
+   "war": 0.33,
+   "pa": 62
   },
   {
    "name": "Max Anderson",
@@ -656,8 +656,8 @@
    "mlbamId": 801194,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.58,
-   "pa": 136
+   "war": 0.57,
+   "pa": 134
   },
   {
    "name": "Peyton Graham",
@@ -678,6 +678,12 @@
   }
  ],
  "deadMoney": [
+  {
+   "name": "Jace Jung",
+   "salary": -100000,
+   "taxValue": -100000,
+   "note": "from LA Angels, 11/18/26 trade"
+  },
   {
    "name": "Kenley Jansen",
    "salary": 2000000,
@@ -713,17 +719,17 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 156535012,
- "sheetTaxPayroll": 184738571,
- "rowsPayroll": 156535012,
- "rowsTaxPayroll": 184738571,
+ "sheetPayroll": 156435012,
+ "sheetTaxPayroll": 184638571,
+ "rowsPayroll": 156435012,
+ "rowsTaxPayroll": 184638571,
  "minors": [
   {
    "mlbamId": 827640,
    "name": "Lucas Elissalt",
    "pos": "sp",
    "age": 22,
-   "war": 1.55,
+   "war": 1.56,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -789,16 +795,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 814307,
-   "name": "Zyhir Hope",
-   "pos": "cf",
-   "age": 22,
-   "war": 1.01,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 701464,
    "name": "Joe Miller",
    "pos": "sp",
@@ -815,6 +811,16 @@
    "age": 24,
    "war": 0.91,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 814307,
+   "name": "Zyhir Hope",
+   "pos": "cf",
+   "age": 22,
+   "war": 0.9,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -993,7 +999,7 @@
    "name": "Brady Smith",
    "pos": "sp",
    "age": 22,
-   "war": 0.19,
+   "war": 0.2,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -1039,26 +1045,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 690291,
-   "name": "Jace Jung",
-   "pos": "3b",
-   "age": 26,
-   "war": 0.08,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 687830,
-   "name": "Sawyer Gipson-Long",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.07,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 700270,
    "name": "Yilber Díaz",
    "pos": "rp",
@@ -1077,6 +1063,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 687830,
+   "name": "Sawyer Gipson-Long",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.05,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 681289,

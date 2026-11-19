@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 668804,
    "salarySource": "cots",
-   "war": 1.24,
+   "war": 1.25,
    "pa": 639
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": true,
    "mlbamId": 656811,
    "salarySource": "cots",
-   "war": 0.74,
+   "war": 0.75,
    "pa": 478
   },
   {
@@ -102,7 +102,7 @@
    "cotsEstimate": 6600000,
    "mlbamId": 665833,
    "salarySource": "mlbtr-arb",
-   "war": 2.54,
+   "war": 2.55,
    "pa": 553
   },
   {
@@ -119,7 +119,7 @@
    "walkYear": false,
    "mlbamId": 804606,
    "salarySource": "cots",
-   "war": 3.18,
+   "war": 3.19,
    "pa": 552
   },
   {
@@ -173,7 +173,7 @@
    "cotsEstimate": 2002000,
    "mlbamId": 687462,
    "salarySource": "mlbtr-arb",
-   "war": 0.89,
+   "war": 0.9,
    "pa": 409
   },
   {
@@ -281,7 +281,7 @@
    "cotsEstimate": 1200000,
    "mlbamId": 680779,
    "salarySource": "mlbtr-arb",
-   "war": 1.21,
+   "war": 1.22,
    "pa": 248
   },
   {
@@ -442,7 +442,7 @@
    "mlbamId": 682927,
    "salarySource": "minimum",
    "war": 0.06,
-   "pa": 74
+   "pa": 73
   },
   {
    "name": "Jacob Gonzalez",
@@ -457,7 +457,7 @@
    "salaryPrevYear": 325348,
    "mlbamId": 694378,
    "salarySource": "minimum",
-   "war": 0.73,
+   "war": 0.74,
    "pa": 294
   },
   {
@@ -668,7 +668,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0,
-   "pa": 54
+   "pa": 49
   }
  ],
  "deadMoney": [

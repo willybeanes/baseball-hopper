@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 592450,
    "salarySource": "cots",
-   "war": 4.96,
+   "war": 4.97,
    "pa": 550
   },
   {
@@ -117,7 +117,7 @@
    "walkYear": true,
    "mlbamId": 641857,
    "salarySource": "cots",
-   "war": 0.97,
+   "war": 0.98,
    "pa": 307
   },
   {
@@ -188,7 +188,7 @@
    "cotsEstimate": 5000000,
    "mlbamId": 683011,
    "salarySource": "mlbtr-arb",
-   "war": 1.99,
+   "war": 2,
    "pa": 450
   },
   {
@@ -206,7 +206,7 @@
    "cotsEstimate": 4250000,
    "mlbamId": 676609,
    "salarySource": "mlbtr-arb",
-   "war": 0.98,
+   "war": 0.99,
    "pa": 326
   },
   {
@@ -260,7 +260,7 @@
    "cotsEstimate": 2450000,
    "mlbamId": 518585,
    "salarySource": "mlbtr-arb",
-   "war": 0.2,
+   "war": 0.21,
    "ip": 30
   },
   {
@@ -345,7 +345,7 @@
    "salaryPrevYear": 845800,
    "mlbamId": 700250,
    "salarySource": "minimum",
-   "war": 3.5,
+   "war": 3.51,
    "pa": 645
   },
   {
@@ -521,8 +521,8 @@
    "salaryPrevYear": null,
    "mlbamId": 682617,
    "salarySource": "minimum",
-   "war": 0.22,
-   "pa": 68
+   "war": 0.23,
+   "pa": 70
   },
   {
    "name": "George Lombard Jr.",
@@ -537,7 +537,7 @@
    "salaryPrevYear": 229412,
    "mlbamId": 806146,
    "salarySource": "minimum",
-   "war": 2.27,
+   "war": 2.28,
    "pa": 487
   },
   {
@@ -602,8 +602,8 @@
    "mlbamId": 682003,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.05,
-   "pa": 46
+   "war": 0.06,
+   "pa": 49
   },
   {
    "name": "Carlos Lagrange",
@@ -859,6 +859,16 @@
    "age": 22,
    "war": 0.26,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 691369,
+   "name": "Allan Castro",
+   "pos": "of",
+   "age": 24,
+   "war": 0.2,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

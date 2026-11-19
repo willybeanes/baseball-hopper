@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 646240,
    "salarySource": "cots",
-   "war": 2.57,
+   "war": 2.58,
    "pa": 644
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 808982,
    "salarySource": "cots",
-   "war": 1.4,
+   "war": 1.41,
    "pa": 515
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 657277,
    "salarySource": "cots",
-   "war": 3.69,
+   "war": 3.68,
    "ip": 196.8
   },
   {
@@ -153,7 +153,7 @@
    "cotsEstimate": 2410000,
    "mlbamId": 669477,
    "salarySource": "mlbtr-arb",
-   "war": 1.23,
+   "war": 1.24,
    "pa": 486
   },
   {
@@ -253,7 +253,7 @@
    "salaryPrevYear": 230441,
    "mlbamId": 691785,
    "salarySource": "minimum",
-   "war": 1.05,
+   "war": 1.06,
    "pa": 347
   },
   {
@@ -317,7 +317,7 @@
    "salaryPrevYear": 780000,
    "mlbamId": 691740,
    "salarySource": "minimum",
-   "war": 1.69,
+   "war": 1.7,
    "pa": 281
   },
   {
@@ -333,7 +333,7 @@
    "salaryPrevYear": 640343,
    "mlbamId": 805811,
    "salarySource": "minimum",
-   "war": 1.76,
+   "war": 1.77,
    "pa": 541
   },
   {
@@ -429,7 +429,7 @@
    "salaryPrevYear": 465621,
    "mlbamId": 813841,
    "salarySource": "minimum",
-   "war": 0.74,
+   "war": 0.75,
    "pa": 275
   },
   {
@@ -857,7 +857,7 @@
    "name": "Christian Koss",
    "pos": "ss-2b-3b",
    "age": 29,
-   "war": 0.45,
+   "war": 0.46,
    "pa": 600,
    "salary": 780000,
    "debuted": true
