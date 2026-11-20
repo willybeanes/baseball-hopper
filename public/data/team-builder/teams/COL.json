@@ -19,6 +19,23 @@
    "pa": 1
   },
   {
+   "name": "Luis Castillo",
+   "sheetName": "Castillo, Luis",
+   "pos": "rhp-s",
+   "age": 34,
+   "mls": 9.101,
+   "contract": "5 yr/$108M (23-27)+28 v opt",
+   "status": "signed",
+   "salary": 22750000,
+   "taxValue": 22750000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 622491,
+   "salarySource": "cots",
+   "war": 1.53,
+   "ip": 168.8
+  },
+  {
    "name": "Ezequiel Tovar",
    "sheetName": "Tovar, Ezequiel",
    "pos": "ss",
@@ -102,8 +119,8 @@
    "cotsEstimate": 4250000,
    "mlbamId": 663372,
    "salarySource": "mlbtr-arb",
-   "war": 1.22,
-   "ip": 157.8
+   "war": 1.1,
+   "ip": 142.8
   },
   {
    "name": "Jake McCarthy",
@@ -178,6 +195,22 @@
    "pa": 184
   },
   {
+   "name": "Davis Martin",
+   "sheetName": "Martin, Davis",
+   "pos": "rhp-s",
+   "age": 30,
+   "mls": 2.117,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 663436,
+   "salarySource": "minimum",
+   "war": 1.7,
+   "ip": 163.3
+  },
+  {
    "name": "Connor Norby",
    "sheetName": "Norby, Connor",
    "pos": "2b-3b-1b",
@@ -206,8 +239,8 @@
    "salaryPrevYear": 769144,
    "mlbamId": 688642,
    "salarySource": "minimum",
-   "war": -0.34,
-   "ip": 63
+   "war": -0.29,
+   "ip": 54
   },
   {
    "name": "Tanner Gordon",
@@ -222,8 +255,8 @@
    "salaryPrevYear": 717319,
    "mlbamId": 685299,
    "salarySource": "minimum",
-   "war": 0.77,
-   "ip": 130.2
+   "war": 0.59,
+   "ip": 107.5
   },
   {
    "name": "Juan Mejia",
@@ -350,8 +383,8 @@
    "salaryPrevYear": 782000,
    "mlbamId": 685326,
    "salarySource": "minimum",
-   "war": 0.35,
-   "ip": 53.8
+   "war": 0.3,
+   "ip": 44.8
   },
   {
    "name": "Braxton Fulford",
@@ -415,7 +448,7 @@
    "mlbamId": 700327,
    "salarySource": "minimum",
    "war": 0.06,
-   "ip": 10
+   "ip": 9
   },
   {
    "name": "Adael Amador",
@@ -466,22 +499,6 @@
    "pa": 492
   },
   {
-   "name": "Sean Sullivan",
-   "sheetName": "Sullivan, Sean",
-   "pos": "lhp",
-   "age": 23,
-   "mls": 0.104,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 97845,
-   "mlbamId": 807743,
-   "salarySource": "minimum",
-   "war": 0.63,
-   "ip": 108.1
-  },
-  {
    "name": "Gabriel Hughes",
    "sheetName": "Hughes, Gabriel",
    "pos": "rhp",
@@ -494,8 +511,8 @@
    "salaryPrevYear": 370082,
    "mlbamId": 687312,
    "salarySource": "minimum",
-   "war": 1.5,
-   "ip": 136.2
+   "war": 0.94,
+   "ip": 92.7
   },
   {
    "name": "Zac Veen",
@@ -574,8 +591,8 @@
    "salaryPrevYear": 141818,
    "mlbamId": 690279,
    "salarySource": "minimum",
-   "war": 1.79,
-   "ip": 153.8
+   "war": 1.48,
+   "ip": 126.7
   },
   {
    "name": "Hayden Harris",
@@ -624,8 +641,8 @@
    "mlbamId": 694968,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.29,
-   "ip": 61.4
+   "war": 0.19,
+   "ip": 42.9
   },
   {
    "name": "Jackson Cox",
@@ -641,8 +658,8 @@
    "mlbamId": 702484,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.25,
-   "ip": 36.9
+   "war": 0.19,
+   "ip": 27.7
   }
  ],
  "deadMoney": [
@@ -660,8 +677,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 13600000,
-   "taxValue": 13600000,
+   "salary": 12750000,
+   "taxValue": 12750000,
    "note": ""
   },
   {
@@ -681,10 +698,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 84999286,
- "sheetTaxPayroll": 103946100,
- "rowsPayroll": 84999286,
- "rowsTaxPayroll": 103946100,
+ "sheetPayroll": 106899286,
+ "sheetTaxPayroll": 125846100,
+ "rowsPayroll": 106899286,
+ "rowsTaxPayroll": 125846100,
  "minors": [
   {
    "mlbamId": 666397,
@@ -823,6 +840,16 @@
    "age": 23,
    "war": 0.18,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 820825,
+   "name": "Konner Eaton",
+   "pos": "rp",
+   "age": 24,
+   "war": 0.18,
+   "ip": 65,
    "salary": 780000,
    "debuted": false
   },

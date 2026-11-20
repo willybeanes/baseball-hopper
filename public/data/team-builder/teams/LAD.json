@@ -821,16 +821,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 674976,
-   "name": "Griffin Lockwood-Powell",
-   "pos": "c",
-   "age": 29,
-   "war": 0.84,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 815896,
    "name": "Emil Morales",
    "pos": "ss",
@@ -877,16 +867,6 @@
    "age": 25,
    "war": 0.72,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 686551,
-   "name": "Christian Cairo",
-   "pos": "ss",
-   "age": 26,
-   "war": 0.69,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -951,21 +931,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 805891,
-   "name": "Taylor Young",
-   "pos": "2b",
-   "age": 28,
-   "war": 0.35,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 684491,
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.33,
+   "war": 0.32,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -996,16 +966,6 @@
    "pos": "cf",
    "age": 26,
    "war": 0.19,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 702789,
-   "name": "Austin Gauthier",
-   "pos": "ss",
-   "age": 28,
-   "war": 0.18,
    "pa": 600,
    "salary": 780000,
    "debuted": false

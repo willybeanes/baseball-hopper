@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 650490,
    "salarySource": "cots",
-   "war": 2.49,
-   "pa": 654
+   "war": 2.48,
+   "pa": 651
   },
   {
    "name": "Steven Matz",
@@ -121,7 +121,7 @@
    "cotsEstimate": 3775000,
    "mlbamId": 641329,
    "salarySource": "mlbtr-arb",
-   "war": 0.5,
+   "war": 0.49,
    "ip": 65
   },
   {
@@ -284,24 +284,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.16,
    "ip": 22
-  },
-  {
-   "name": "Jesse Scholtens",
-   "sheetName": "Scholtens, Jesse",
-   "pos": "rhp",
-   "age": 33,
-   "mls": 3.032,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 900000,
-   "taxValue": 900000,
-   "salaryPrevYear": 578218,
-   "arbYear": 1,
-   "cotsEstimate": 1000000,
-   "mlbamId": 669947,
-   "salarySource": "mlbtr-arb",
-   "war": 0.05,
-   "ip": 19.2
   },
   {
    "name": "Manuel Rodríguez",
@@ -494,8 +476,8 @@
    "salaryPrevYear": 365259,
    "mlbamId": 671212,
    "salarySource": "minimum",
-   "war": 0.22,
-   "ip": 16.9
+   "war": 0.25,
+   "ip": 18.9
   },
   {
    "name": "Victor Jr. Mesa",
@@ -606,8 +588,8 @@
    "salaryPrevYear": 66738,
    "mlbamId": 811315,
    "salarySource": "minimum",
-   "war": 0.08,
-   "ip": 30
+   "war": 0.13,
+   "ip": 39.2
   },
   {
    "name": "Alexander Alberto",
@@ -643,18 +625,17 @@
   },
   {
    "name": "Xavier Isaac",
-   "sheetName": "",
+   "sheetName": "Isaac, Xavier",
    "pos": "1b",
    "age": 23,
    "mls": 0,
-   "contract": "Added to the 40-man",
+   "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": null,
    "mlbamId": 800060,
    "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
    "war": 0.03,
    "pa": 20
   }
@@ -692,8 +673,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 7650000,
+   "taxValue": 7650000,
    "note": ""
   },
   {
@@ -713,10 +694,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 100054545,
- "sheetTaxPayroll": 113966667,
- "rowsPayroll": 100054545,
- "rowsTaxPayroll": 113966667,
+ "sheetPayroll": 99904545,
+ "sheetTaxPayroll": 113816667,
+ "rowsPayroll": 99904545,
+ "rowsTaxPayroll": 113816667,
  "minors": [
   {
    "mlbamId": 805207,

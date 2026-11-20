@@ -53,8 +53,8 @@
     "type": "opt-out",
     "buyout": null
    },
-   "war": 0.2,
-   "ip": 44.8
+   "war": 0.21,
+   "ip": 46.8
   },
   {
    "name": "Andrés Giménez",
@@ -299,8 +299,8 @@
    "cotsEstimate": 850000,
    "mlbamId": 670102,
    "salarySource": "mlbtr-arb",
-   "war": 0.09,
-   "ip": 30
+   "war": 0.1,
+   "ip": 32
   },
   {
    "name": "Addison Barger",
@@ -431,22 +431,6 @@
    "pa": 209
   },
   {
-   "name": "Chase Lee",
-   "sheetName": "Lee, Chase",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.119,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 299646,
-   "mlbamId": 695445,
-   "salarySource": "minimum",
-   "war": -0.01,
-   "ip": 22
-  },
-  {
    "name": "Jake Bloss",
    "sheetName": "Bloss, Jake",
    "pos": "rhp",
@@ -460,7 +444,7 @@
    "mlbamId": 814005,
    "salarySource": "minimum",
    "war": 0.19,
-   "ip": 59.9
+   "ip": 61.9
   },
   {
    "name": "Yohendrick Pinango",
@@ -588,7 +572,7 @@
    "mlbamId": 804619,
    "salarySource": "minimum",
    "war": 0.03,
-   "ip": 16
+   "ip": 18
   },
   {
    "name": "José Rodríguez",
@@ -623,6 +607,23 @@
    "pa": 30
   },
   {
+   "name": "Christian Cairo",
+   "sheetName": "Cairo, Christian",
+   "pos": "ss",
+   "age": 26,
+   "mls": 0.013,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 686551,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from LAD",
+   "war": 0.06,
+   "pa": 51
+  },
+  {
    "name": "RJ Schreck",
    "sheetName": "",
    "pos": "rf-cf-lf",
@@ -653,8 +654,8 @@
    "mlbamId": 804526,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0,
-   "ip": 1
+   "war": 0.03,
+   "ip": 6
   },
   {
    "name": "Daniel D. Guerra",
@@ -671,7 +672,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": -0.01,
-   "ip": 4
+   "ip": 8
   }
  ],
  "deadMoney": [
@@ -811,7 +812,7 @@
    "name": "Josh Kasevich",
    "pos": "ss",
    "age": 26,
-   "war": 1.12,
+   "war": 1.14,
    "pa": 600,
    "salary": 780000,
    "debuted": false

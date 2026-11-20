@@ -67,8 +67,8 @@
    "walkYear": false,
    "mlbamId": 663728,
    "salarySource": "cots",
-   "war": 3.97,
-   "pa": 500
+   "war": 4.02,
+   "pa": 506
   },
   {
    "name": "George Kirby",
@@ -136,8 +136,8 @@
    "walkYear": false,
    "mlbamId": 672580,
    "salarySource": "cots",
-   "war": 2.91,
-   "pa": 524
+   "war": 2.96,
+   "pa": 529
   },
   {
    "name": "Brendan Donovan",
@@ -154,8 +154,8 @@
    "cotsEstimate": 6500000,
    "mlbamId": 680977,
    "salarySource": "mlbtr-arb",
-   "war": 1.63,
-   "pa": 449
+   "war": 1.64,
+   "pa": 438
   },
   {
    "name": "Bryan Woo",
@@ -190,8 +190,8 @@
    "cotsEstimate": 3500000,
    "mlbamId": 670042,
    "salarySource": "mlbtr-arb",
-   "war": 0.87,
-   "pa": 354
+   "war": 0.76,
+   "pa": 318
   },
   {
    "name": "Gabe Speier",
@@ -225,8 +225,8 @@
    "walkYear": false,
    "mlbamId": 806068,
    "salarySource": "cots",
-   "war": 1.33,
-   "pa": 396
+   "war": 1.35,
+   "pa": 403
   },
   {
    "name": "Dominic Canzone",
@@ -243,8 +243,8 @@
    "cotsEstimate": 2800000,
    "mlbamId": 686527,
    "salarySource": "mlbtr-arb",
-   "war": 1.87,
-   "pa": 483
+   "war": 1.78,
+   "pa": 487
   },
   {
    "name": "Eduard Bazardo",
@@ -415,8 +415,8 @@
    "salaryPrevYear": 474277,
    "mlbamId": 660844,
    "salarySource": "minimum",
-   "war": 0.17,
-   "pa": 74
+   "war": 0.2,
+   "pa": 85
   },
   {
    "name": "Ryan Bliss",
@@ -543,8 +543,8 @@
    "salaryPrevYear": 187701,
    "mlbamId": 801126,
    "salarySource": "minimum",
-   "war": 0.14,
-   "pa": 50
+   "war": 0.17,
+   "pa": 59
   },
   {
    "name": "Brennen Davis",
@@ -575,7 +575,7 @@
    "salaryPrevYear": 154332,
    "mlbamId": 807739,
    "salarySource": "minimum",
-   "war": 2.67,
+   "war": 2.68,
    "ip": 136.3
   },
   {
@@ -591,8 +591,8 @@
    "salaryPrevYear": 112620,
    "mlbamId": 703155,
    "salarySource": "minimum",
-   "war": 0.76,
-   "pa": 275
+   "war": 0.87,
+   "pa": 313
   },
   {
    "name": "Michael Arroyo",
@@ -607,8 +607,8 @@
    "salaryPrevYear": 91765,
    "mlbamId": 703197,
    "salarySource": "minimum",
-   "war": 0.93,
-   "pa": 340
+   "war": 0.8,
+   "pa": 298
   },
   {
    "name": "Robinson Ortiz",
@@ -795,7 +795,7 @@
    "name": "Stuart Fairchild",
    "pos": "cf-rf",
    "age": 31,
-   "war": 0.82,
+   "war": 0.83,
    "pa": 600,
    "salary": 780000,
    "debuted": true

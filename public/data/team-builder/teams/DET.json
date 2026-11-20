@@ -70,7 +70,7 @@
    "walkYear": true,
    "mlbamId": 623454,
    "salarySource": "cots",
-   "war": 1.19,
+   "war": 1.18,
    "ip": 103.2
   },
   {
@@ -334,7 +334,7 @@
    "salaryPrevYear": 834900,
    "mlbamId": 693307,
    "salarySource": "minimum",
-   "war": 3.58,
+   "war": 3.59,
    "pa": 482
   },
   {
@@ -639,8 +639,8 @@
    "mlbamId": 800522,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.33,
-   "pa": 62
+   "war": 0.29,
+   "pa": 55
   },
   {
    "name": "Max Anderson",

@@ -2,23 +2,6 @@
  "team": "CWS",
  "players": [
   {
-   "name": "Luis Castillo",
-   "sheetName": "Castillo, Luis",
-   "pos": "rhp-s",
-   "age": 34,
-   "mls": 9.101,
-   "contract": "5 yr/$108M (23-27)+28 v opt",
-   "status": "signed",
-   "salary": 22750000,
-   "taxValue": 23516394,
-   "salaryPrevYear": 7934492,
-   "walkYear": false,
-   "mlbamId": 622491,
-   "salarySource": "cots",
-   "war": 0.92,
-   "ip": 108.4
-  },
-  {
    "name": "Dustin May",
    "sheetName": "May, Dustin",
    "pos": "rhp-s",
@@ -32,8 +15,8 @@
    "walkYear": false,
    "mlbamId": 669160,
    "salarySource": "cots",
-   "war": 2.04,
-   "ip": 150.9
+   "war": 2.16,
+   "ip": 159.8
   },
   {
    "name": "Munetaka Murakami",
@@ -118,8 +101,8 @@
    "walkYear": false,
    "mlbamId": 641743,
    "salarySource": "cots",
-   "war": 1.4,
-   "ip": 117.8
+   "war": 1.8,
+   "ip": 149.3
   },
   {
    "name": "Brenton Doyle",
@@ -176,22 +159,6 @@
    "ip": 33
   },
   {
-   "name": "Davis Martin",
-   "sheetName": "Martin, Davis",
-   "pos": "rhp-s",
-   "age": 30,
-   "mls": 2.117,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 798900,
-   "mlbamId": 663436,
-   "salarySource": "minimum",
-   "war": 1.58,
-   "ip": 151.6
-  },
-  {
    "name": "Drew Thorpe",
    "sheetName": "Thorpe, Drew",
    "pos": "rhp",
@@ -204,8 +171,8 @@
    "salaryPrevYear": 762532,
    "mlbamId": 689672,
    "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 9.2
+   "war": 0.13,
+   "ip": 27.5
   },
   {
    "name": "Bryan Hudson",
@@ -333,7 +300,7 @@
    "mlbamId": 686563,
    "salarySource": "minimum",
    "war": -0.01,
-   "ip": 40
+   "ip": 42
   },
   {
    "name": "Edgar Quero",
@@ -444,8 +411,8 @@
    "salaryPrevYear": 413383,
    "mlbamId": 681343,
    "salarySource": "minimum",
-   "war": 0.19,
-   "ip": 26.7
+   "war": 0.73,
+   "ip": 96.5
   },
   {
    "name": "Tristan Peters",
@@ -508,8 +475,8 @@
    "salaryPrevYear": 301983,
    "mlbamId": 702273,
    "salarySource": "minimum",
-   "war": 0.58,
-   "ip": 65.3
+   "war": 0.76,
+   "ip": 82.6
   },
   {
    "name": "Braden Montgomery",
@@ -526,6 +493,22 @@
    "salarySource": "minimum",
    "war": 1.51,
    "pa": 474
+  },
+  {
+   "name": "Sean Sullivan",
+   "sheetName": "Sullivan, Sean",
+   "pos": "lhp",
+   "age": 23,
+   "mls": 0.104,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 807743,
+   "salarySource": "minimum",
+   "war": 0.13,
+   "ip": 30
   },
   {
    "name": "Tyler Davis",
@@ -588,8 +571,8 @@
    "salaryPrevYear": 258982,
    "mlbamId": 689818,
    "salarySource": "minimum",
-   "war": 0.28,
-   "ip": 46.3
+   "war": 0.51,
+   "ip": 73.7
   },
   {
    "name": "Rikuu Nishida",
@@ -620,8 +603,8 @@
    "salaryPrevYear": 104679,
    "mlbamId": 701780,
    "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 21
+   "war": 0.16,
+   "ip": 48.7
   },
   {
    "name": "William Bergolla Jr.",
@@ -654,11 +637,17 @@
    "mlbamId": 692243,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0,
-   "ip": 12
+   "war": 0.01,
+   "ip": 15
   }
  ],
  "deadMoney": [
+  {
+   "name": "Luis Castillo",
+   "salary": 0,
+   "taxValue": 766394,
+   "note": "traded to Colorado 11/19/26"
+  },
   {
    "name": "Austin Hays",
    "salary": 1000000,
@@ -673,8 +662,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 12750000,
-   "taxValue": 12750000,
+   "salary": 13600000,
+   "taxValue": 13600000,
    "note": ""
   },
   {
@@ -694,10 +683,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 116700000,
- "sheetTaxPayroll": 137033061,
- "rowsPayroll": 116700000,
- "rowsTaxPayroll": 137033061,
+ "sheetPayroll": 94800000,
+ "sheetTaxPayroll": 115133061,
+ "rowsPayroll": 94800000,
+ "rowsTaxPayroll": 115133061,
  "minors": [
   {
    "mlbamId": 815352,
@@ -760,16 +749,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 683569,
-   "name": "Jose Colmenares",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.77,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 681066,
    "name": "Ky Bush",
    "pos": "sp",
@@ -786,6 +765,16 @@
    "age": 28,
    "war": 0.76,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 683569,
+   "name": "Jose Colmenares",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.74,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

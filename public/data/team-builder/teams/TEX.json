@@ -66,8 +66,8 @@
    "walkYear": false,
    "mlbamId": 607043,
    "salarySource": "cots",
-   "war": 1.92,
-   "pa": 631
+   "war": 1.91,
+   "pa": 630
   },
   {
    "name": "MacKenzie Gore",
@@ -264,7 +264,7 @@
    "mlbamId": 674003,
    "salarySource": "mlbtr-arb",
    "war": 0.48,
-   "ip": 91.1
+   "ip": 93.1
   },
   {
    "name": "José Buttó",
@@ -377,7 +377,7 @@
    "salaryPrevYear": 517339,
    "mlbamId": 696030,
    "salarySource": "minimum",
-   "war": 0.79,
+   "war": 0.8,
    "pa": 321
   },
   {
@@ -397,22 +397,6 @@
    "pa": 158
   },
   {
-   "name": "Carter Baumier",
-   "sheetName": "Baumier, Carter",
-   "pos": "rhp",
-   "age": 25,
-   "mls": 1,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 780000,
-   "mlbamId": 691945,
-   "salarySource": "minimum",
-   "war": -0.01,
-   "ip": 38
-  },
-  {
    "name": "Michel Otañez",
    "sheetName": "Otañez, Michel",
    "pos": "rhp",
@@ -425,8 +409,8 @@
    "salaryPrevYear": 118958,
    "mlbamId": 671305,
    "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 22
+   "war": 0.05,
+   "ip": 25
   },
   {
    "name": "Peyton Gray",
@@ -489,8 +473,8 @@
    "salaryPrevYear": 388959,
    "mlbamId": 692030,
    "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
+   "war": -0.05,
+   "ip": 20
   },
   {
    "name": "Cameron Cauley",
@@ -522,7 +506,7 @@
    "mlbamId": 686560,
    "salarySource": "minimum",
    "war": -0.02,
-   "ip": 33
+   "ip": 35
   },
   {
    "name": "Ben Peoples",
@@ -538,7 +522,7 @@
    "mlbamId": 687239,
    "salarySource": "minimum",
    "war": -0.12,
-   "ip": 30
+   "ip": 32
   },
   {
    "name": "Winston Santos",
@@ -586,7 +570,7 @@
    "mlbamId": 687985,
    "salarySource": "minimum",
    "war": -0.01,
-   "ip": 24
+   "ip": 28
   },
   {
    "name": "Aidan Curry",

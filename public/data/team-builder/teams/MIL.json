@@ -590,8 +590,8 @@
    "mlbamId": 702726,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.24,
-   "pa": 65
+   "war": 0.19,
+   "pa": 57
   },
   {
    "name": "Dylan O'Rae",
@@ -624,8 +624,8 @@
    "mlbamId": 702518,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.27,
-   "pa": 101
+   "war": 0.26,
+   "pa": 99
   },
   {
    "name": "Tate Kuehner",

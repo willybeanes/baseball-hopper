@@ -175,24 +175,6 @@
    "ip": 62.6
   },
   {
-   "name": "Randy Dobnak",
-   "sheetName": "Dobnak, Randy",
-   "pos": "rhp",
-   "age": 32,
-   "mls": 3.148,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 2300000,
-   "taxValue": 2300000,
-   "salaryPrevYear": 622727,
-   "arbYear": 1,
-   "cotsEstimate": 2000000,
-   "mlbamId": 677976,
-   "salarySource": "mlbtr-arb",
-   "war": 0.41,
-   "ip": 71.6
-  },
-  {
    "name": "Lucas Erceg",
    "sheetName": "Erceg, Lucas",
    "pos": "rhp",
@@ -245,6 +227,24 @@
    "salarySource": "mlbtr-arb",
    "war": 0.56,
    "ip": 64
+  },
+  {
+   "name": "Randy Dobnak",
+   "sheetName": "Dobnak, Randy",
+   "pos": "rhp",
+   "age": 32,
+   "mls": 3.148,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 2300000,
+   "taxValue": 2300000,
+   "salaryPrevYear": 622727,
+   "arbYear": 1,
+   "cotsEstimate": 1350000,
+   "mlbamId": 677976,
+   "salarySource": "mlbtr-arb",
+   "war": 0.41,
+   "ip": 71.6
   },
   {
    "name": "Anthony Gose",
@@ -357,7 +357,7 @@
    "salaryPrevYear": 799750,
    "mlbamId": 686555,
    "salarySource": "minimum",
-   "war": 0.83,
+   "war": 0.85,
    "pa": 401
   },
   {
@@ -373,8 +373,8 @@
    "salaryPrevYear": 453819,
    "mlbamId": 670231,
    "salarySource": "minimum",
-   "war": 0.4,
-   "pa": 359
+   "war": 0.37,
+   "pa": 338
   },
   {
    "name": "Stephen Kolek",
@@ -437,7 +437,7 @@
    "salaryPrevYear": 698384,
    "mlbamId": 686475,
    "salarySource": "minimum",
-   "war": 0.3,
+   "war": 0.29,
    "pa": 261
   },
   {
@@ -566,7 +566,7 @@
    "mlbamId": 683090,
    "salarySource": "minimum",
    "war": 0.03,
-   "pa": 110
+   "pa": 130
   },
   {
    "name": "Nolan Hoffman",
@@ -645,8 +645,8 @@
    "salaryPrevYear": null,
    "mlbamId": 811287,
    "salarySource": "minimum",
-   "war": 0.58,
-   "pa": 313
+   "war": 0.59,
+   "pa": 323
   },
   {
    "name": "Steven Zobac",
@@ -695,10 +695,10 @@
   307000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 114717075,
- "sheetTaxPayroll": 140057176,
- "rowsPayroll": 114717075,
- "rowsTaxPayroll": 140057176,
+ "sheetPayroll": 114067075,
+ "sheetTaxPayroll": 139407176,
+ "rowsPayroll": 114067075,
+ "rowsTaxPayroll": 139407176,
  "minors": [
   {
    "mlbamId": 804114,
@@ -939,16 +939,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 592826,
-   "name": "Vince Velasquez",
-   "pos": "rp",
-   "age": 35,
-   "war": 0,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   }
  ]
 }

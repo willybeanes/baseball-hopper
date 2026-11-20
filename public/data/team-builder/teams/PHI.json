@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 607208,
    "salarySource": "cots",
-   "war": 2.39,
+   "war": 2.34,
    "pa": 605
   },
   {
@@ -170,8 +170,8 @@
    "cotsEstimate": 8900000,
    "mlbamId": 681082,
    "salarySource": "mlbtr-arb",
-   "war": 2.01,
-   "pa": 533
+   "war": 2.04,
+   "pa": 537
   },
   {
    "name": "Brandon Marsh",
@@ -205,7 +205,7 @@
    "walkYear": false,
    "mlbamId": 650911,
    "salarySource": "cots",
-   "war": 5.46,
+   "war": 5.47,
    "ip": 200.2
   },
   {
@@ -520,8 +520,8 @@
    "salaryPrevYear": 302596,
    "mlbamId": 805249,
    "salarySource": "minimum",
-   "war": 0.14,
-   "pa": 221
+   "war": 0.12,
+   "pa": 201
   },
   {
    "name": "Felix Reyes",
@@ -620,6 +620,22 @@
    "ip": 9.2
   },
   {
+   "name": "Bryan Rincon",
+   "sheetName": "Rincon, Bryan",
+   "pos": "ss",
+   "age": 23,
+   "mls": 0,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 804858,
+   "salarySource": "minimum",
+   "war": 0.2,
+   "pa": 91
+  },
+  {
    "name": "Johan Rojas",
    "sheetName": "",
    "pos": "of",
@@ -635,23 +651,6 @@
    "corrected": "Added from RosterResource",
    "war": 0.02,
    "pa": 32
-  },
-  {
-   "name": "Bryan Rincon",
-   "sheetName": "",
-   "pos": "ss",
-   "age": 23,
-   "mls": 0,
-   "contract": "Added to the 40-man",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 804858,
-   "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": 0.2,
-   "pa": 91
   }
  ],
  "deadMoney": [
@@ -780,16 +779,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 640459,
-   "name": "Brian Navarreto",
-   "pos": "c",
-   "age": 32,
-   "war": 0.36,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 691001,
    "name": "Robert Moore",
    "pos": "2b",
@@ -878,6 +867,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 640459,
+   "name": "Brian Navarreto",
+   "pos": "c",
+   "age": 32,
+   "war": 0.08,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 687362,

@@ -66,7 +66,7 @@
    "walkYear": true,
    "mlbamId": 605397,
    "salarySource": "cots",
-   "war": 2.2,
+   "war": 2.19,
    "ip": 155.8
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 506433,
    "salarySource": "cots",
-   "war": 0.93,
+   "war": 0.94,
    "ip": 89.5
   },
   {
@@ -354,7 +354,7 @@
    "cotsEstimate": 801500,
    "mlbamId": 666745,
    "salarySource": "mlbtr-arb",
-   "war": 0.54,
+   "war": 0.53,
    "ip": 122.8
   },
   {
@@ -691,7 +691,7 @@
    "name": "Fernando Sanchez",
    "pos": "sp",
    "age": 26,
-   "war": 0.7,
+   "war": 0.71,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -701,7 +701,7 @@
    "name": "Justin DeCriscio",
    "pos": "ss",
    "age": 24,
-   "war": 0.7,
+   "war": 0.69,
    "pa": 600,
    "salary": 780000,
    "debuted": false

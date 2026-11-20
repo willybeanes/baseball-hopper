@@ -472,7 +472,7 @@
    "mlbamId": 687605,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 83
+   "pa": 82
   },
   {
    "name": "Yovanny Cruz",
@@ -805,7 +805,7 @@
    "name": "Caleb Lomavita",
    "pos": "c",
    "age": 24,
-   "war": 0.93,
+   "war": 0.94,
    "pa": 450,
    "salary": 780000,
    "debuted": false

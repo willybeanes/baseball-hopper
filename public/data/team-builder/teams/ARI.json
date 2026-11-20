@@ -104,8 +104,8 @@
    "walkYear": false,
    "mlbamId": 606466,
    "salarySource": "cots",
-   "war": 3.85,
-   "pa": 619
+   "war": 3.87,
+   "pa": 623
   },
   {
    "name": "Geraldo Perdomo",
@@ -450,7 +450,7 @@
    "mlbamId": 699912,
    "salarySource": "minimum",
    "war": 0.09,
-   "pa": 133
+   "pa": 130
   },
   {
    "name": "Kade Strowd",

@@ -539,8 +539,8 @@
    "salaryPrevYear": 88237,
    "mlbamId": 681151,
    "salarySource": "minimum",
-   "war": -0.06,
-   "ip": 16
+   "war": -0.07,
+   "ip": 18
   },
   {
    "name": "BJ Murray",
@@ -607,6 +607,23 @@
    "corrected": "Added from RosterResource",
    "war": 0.13,
    "ip": 18.5
+  },
+  {
+   "name": "Chayce McDermott",
+   "sheetName": "McDermott, Chayce",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.085,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": 124315,
+   "mlbamId": 694646,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from NYM",
+   "war": 0.06,
+   "ip": 16
   }
  ],
  "deadMoney": [
@@ -703,7 +720,7 @@
    "name": "Tyler Schlaffer",
    "pos": "sp",
    "age": 26,
-   "war": 1.42,
+   "war": 1.41,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -823,7 +840,7 @@
    "name": "Ariel Armas",
    "pos": "c",
    "age": 24,
-   "war": 0.47,
+   "war": 0.48,
    "pa": 450,
    "salary": 780000,
    "debuted": false

@@ -153,8 +153,8 @@
    "cotsEstimate": 10250000,
    "mlbamId": 668939,
    "salarySource": "mlbtr-arb",
-   "war": 3.44,
-   "pa": 470
+   "war": 3.41,
+   "pa": 466
   },
   {
    "name": "Brayan Bello",
@@ -187,7 +187,7 @@
    "walkYear": true,
    "mlbamId": 676477,
    "salarySource": "cots",
-   "war": 0.82,
+   "war": 0.83,
    "ip": 64
   },
   {
@@ -276,7 +276,7 @@
    "mlbamId": 663743,
    "salarySource": "mlbtr-arb",
    "war": 0.62,
-   "pa": 177
+   "pa": 174
   },
   {
    "name": "Kristian Campbell",
@@ -329,7 +329,7 @@
    "mlbamId": 663853,
    "salarySource": "mlbtr-arb",
    "war": 0.1,
-   "pa": 55
+   "pa": 54
   },
   {
    "name": "Johan Oviedo",
@@ -994,7 +994,7 @@
    "name": "Juan Valera",
    "pos": "sp",
    "age": 21,
-   "war": 0.23,
+   "war": 0.24,
    "ip": 200,
    "salary": 780000,
    "debuted": false
