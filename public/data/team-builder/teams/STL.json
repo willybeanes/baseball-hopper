@@ -16,7 +16,7 @@
    "cotsEstimate": 7750000,
    "mlbamId": 676475,
    "salarySource": "mlbtr-arb",
-   "war": 2.06,
+   "war": 2.07,
    "pa": 570
   },
   {
@@ -52,7 +52,7 @@
    "cotsEstimate": 4250000,
    "mlbamId": 691023,
    "salarySource": "mlbtr-arb",
-   "war": 1.68,
+   "war": 1.69,
    "pa": 586
   },
   {
@@ -88,26 +88,8 @@
    "cotsEstimate": 3250000,
    "mlbamId": 671056,
    "salarySource": "mlbtr-arb",
-   "war": 2.14,
-   "pa": 611
-  },
-  {
-   "name": "Nolan Gorman",
-   "sheetName": "Gorman, Nolan",
-   "pos": "3b-2b",
-   "age": 27,
-   "mls": 4.055,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 3400000,
-   "taxValue": 3400000,
-   "salaryPrevYear": 2655000,
-   "arbYear": 2,
-   "cotsEstimate": 3000000,
-   "mlbamId": 669357,
-   "salarySource": "mlbtr-arb",
-   "war": 0.49,
-   "pa": 307
+   "war": 2.12,
+   "pa": 614
   },
   {
    "name": "Masyn Winn",
@@ -241,8 +223,8 @@
    "salaryPrevYear": 792350,
    "mlbamId": 665877,
    "salarySource": "minimum",
-   "war": 0.64,
-   "pa": 209
+   "war": 0.77,
+   "pa": 244
   },
   {
    "name": "Victor Scott II",
@@ -273,7 +255,7 @@
    "salaryPrevYear": 481391,
    "mlbamId": 681676,
    "salarySource": "minimum",
-   "war": 0.05,
+   "war": 0.06,
    "ip": 42
   },
   {
@@ -338,7 +320,7 @@
    "mlbamId": 677592,
    "salarySource": "minimum",
    "war": 0.18,
-   "pa": 169
+   "pa": 177
   },
   {
    "name": "Thomas Saggese",
@@ -353,8 +335,8 @@
    "salaryPrevYear": 553293,
    "mlbamId": 695336,
    "salarySource": "minimum",
-   "war": 1.02,
-   "pa": 299
+   "war": 1.19,
+   "pa": 346
   },
   {
    "name": "Matt Svanson",
@@ -417,8 +399,8 @@
    "salaryPrevYear": 557802,
    "mlbamId": 663494,
    "salarySource": "minimum",
-   "war": 0.23,
-   "pa": 131
+   "war": 0.26,
+   "pa": 145
   },
   {
    "name": "Jimmy Crooks",
@@ -433,8 +415,8 @@
    "salaryPrevYear": 455296,
    "mlbamId": 699625,
    "salarySource": "minimum",
-   "war": 0.3,
-   "pa": 65
+   "war": 0.31,
+   "pa": 67
   },
   {
    "name": "Blaze Jordan",
@@ -449,8 +431,8 @@
    "salaryPrevYear": 450482,
    "mlbamId": 691458,
    "salarySource": "minimum",
-   "war": 0.54,
-   "pa": 171
+   "war": 0.74,
+   "pa": 223
   },
   {
    "name": "César Prieto",
@@ -465,8 +447,8 @@
    "salaryPrevYear": 315638,
    "mlbamId": 693409,
    "salarySource": "minimum",
-   "war": 0.08,
-   "pa": 58
+   "war": 0.11,
+   "pa": 64
   },
   {
    "name": "Luis Gastelum",
@@ -578,7 +560,7 @@
    "mlbamId": 699024,
    "salarySource": "minimum",
    "war": 1.95,
-   "pa": 392
+   "pa": 396
   },
   {
    "name": "Cooper Hjerpe",
@@ -642,8 +624,8 @@
    "mlbamId": 800305,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.14,
-   "pa": 55
+   "war": 0.23,
+   "pa": 91
   },
   {
    "name": "Jacob Odle",
@@ -690,8 +672,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 13600000,
-   "taxValue": 13600000,
+   "salary": 14450000,
+   "taxValue": 14450000,
    "note": ""
   },
   {
@@ -703,18 +685,18 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 70860000,
- "sheetTaxPayroll": 94887780,
- "rowsPayroll": 70860000,
- "rowsTaxPayroll": 94887780,
+ "sheetPayroll": 68710000,
+ "sheetTaxPayroll": 92737780,
+ "rowsPayroll": 68710000,
+ "rowsTaxPayroll": 92737780,
  "minors": [
   {
    "mlbamId": 823787,
@@ -881,7 +863,7 @@
    "name": "Tai Peete",
    "pos": "of",
    "age": 21,
-   "war": 0.85,
+   "war": 0.86,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -951,8 +933,18 @@
    "name": "Leonel Sequera",
    "pos": "sp",
    "age": 21,
-   "war": 0.32,
+   "war": 0.33,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 703766,
+   "name": "Dakota Harris",
+   "pos": "ss",
+   "age": 25,
+   "war": 0.31,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -961,7 +953,7 @@
    "name": "Brian Holiday",
    "pos": "sp",
    "age": 24,
-   "war": 0.27,
+   "war": 0.28,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -987,16 +979,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 691008,
-   "name": "Max Rajcic",
-   "pos": "rp",
-   "age": 25,
-   "war": 0.16,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 803679,
    "name": "Sammy Hernandez",
    "pos": "2b",
@@ -1012,16 +994,6 @@
    "pos": "ss",
    "age": 25,
    "war": 0.13,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 703766,
-   "name": "Dakota Harris",
-   "pos": "ss",
-   "age": 25,
-   "war": 0.12,
    "pa": 600,
    "salary": 780000,
    "debuted": false

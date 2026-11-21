@@ -153,8 +153,8 @@
    "walkYear": true,
    "mlbamId": 664062,
    "salarySource": "cots",
-   "war": 0.69,
-   "ip": 102.1
+   "war": 0.78,
+   "ip": 113.3
   },
   {
    "name": "Daniel Lynch IV",
@@ -243,26 +243,8 @@
    "cotsEstimate": 1350000,
    "mlbamId": 677976,
    "salarySource": "mlbtr-arb",
-   "war": 0.41,
-   "ip": 71.6
-  },
-  {
-   "name": "Anthony Gose",
-   "sheetName": "Gose, Anthony",
-   "pos": "lhp",
-   "age": 36,
-   "mls": 4.019,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 171123,
-   "arbYear": 2,
-   "cotsEstimate": 1200000,
-   "mlbamId": 543238,
-   "salarySource": "mlbtr-arb",
-   "war": 0.28,
-   "ip": 50
+   "war": 0.5,
+   "ip": 89.5
   },
   {
    "name": "Noah Cameron",
@@ -293,7 +275,7 @@
    "salaryPrevYear": 784000,
    "mlbamId": 695506,
    "salarySource": "minimum",
-   "war": 3.22,
+   "war": 3.23,
    "pa": 596
   },
   {
@@ -453,8 +435,8 @@
    "salaryPrevYear": 785800,
    "mlbamId": 688138,
    "salarySource": "minimum",
-   "war": 0.31,
-   "ip": 63.8
+   "war": 0.17,
+   "ip": 36.4
   },
   {
    "name": "Spencer Bivens",
@@ -485,8 +467,8 @@
    "salaryPrevYear": 191917,
    "mlbamId": 671162,
    "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 18
+   "war": 0.02,
+   "ip": 35
   },
   {
    "name": "Luinder Avila",
@@ -550,7 +532,7 @@
    "mlbamId": 686701,
    "salarySource": "minimum",
    "war": 0.09,
-   "ip": 22
+   "ip": 24
   },
   {
    "name": "Matthew Lugo",
@@ -661,8 +643,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 686632,
    "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
+   "war": -0.04,
+   "ip": 16
   }
  ],
  "deadMoney": [
@@ -674,8 +656,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 9350000,
-   "taxValue": 9350000,
+   "salary": 10200000,
+   "taxValue": 10200000,
    "note": ""
   },
   {
@@ -687,18 +669,18 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 114067075,
- "sheetTaxPayroll": 139407176,
- "rowsPayroll": 114067075,
- "rowsTaxPayroll": 139407176,
+ "sheetPayroll": 113717075,
+ "sheetTaxPayroll": 139057176,
+ "rowsPayroll": 113717075,
+ "rowsTaxPayroll": 139057176,
  "minors": [
   {
    "mlbamId": 804114,
@@ -749,16 +731,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 664728,
-   "name": "Kyle Isbel",
-   "pos": "cf",
-   "age": 30,
-   "war": 0.8,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 686523,
@@ -909,16 +881,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 683232,
-   "name": "Nick Mears",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.08,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 689531,

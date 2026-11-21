@@ -121,7 +121,7 @@
    "cotsEstimate": 4000000,
    "mlbamId": 671096,
    "salarySource": "mlbtr-arb",
-   "war": 1.55,
+   "war": 1.54,
    "ip": 175.1
   },
   {
@@ -281,7 +281,7 @@
    "cotsEstimate": 1000000,
    "mlbamId": 667472,
    "salarySource": "mlbtr-arb",
-   "war": 0.59,
+   "war": 0.6,
    "pa": 323
   },
   {
@@ -361,7 +361,7 @@
    "salaryPrevYear": 781500,
    "mlbamId": 701398,
    "salarySource": "minimum",
-   "war": 2.28,
+   "war": 2.29,
    "pa": 582
   },
   {
@@ -473,8 +473,8 @@
    "salaryPrevYear": 331771,
    "mlbamId": 695490,
    "salarySource": "minimum",
-   "war": 0.23,
-   "pa": 121
+   "war": 0.22,
+   "pa": 120
   },
   {
    "name": "Chase Petty",
@@ -605,22 +605,6 @@
    "ip": 27.2
   },
   {
-   "name": "Leo Balcazar",
-   "sheetName": "Balcazar, Leo",
-   "pos": "ss",
-   "age": 23,
-   "mls": 0,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 63600,
-   "mlbamId": 699114,
-   "salarySource": "minimum",
-   "war": 0.04,
-   "pa": 43
-  },
-  {
    "name": "Carter Graham",
    "sheetName": "Graham, Carter",
    "pos": "1b",
@@ -665,12 +649,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 84969047,

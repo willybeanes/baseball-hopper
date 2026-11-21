@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 608369,
    "salarySource": "cots",
-   "war": 3.1,
+   "war": 3.11,
    "pa": 499
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 607043,
    "salarySource": "cots",
-   "war": 1.91,
+   "war": 1.92,
    "pa": 630
   },
   {
@@ -137,7 +137,7 @@
    "cotsEstimate": 5250000,
    "mlbamId": 673962,
    "salarySource": "mlbtr-arb",
-   "war": 2.54,
+   "war": 2.55,
    "pa": 509
   },
   {
@@ -173,7 +173,7 @@
    "cotsEstimate": 2950000,
    "mlbamId": 681351,
    "salarySource": "mlbtr-arb",
-   "war": 0.46,
+   "war": 0.47,
    "pa": 254
   },
   {
@@ -227,7 +227,7 @@
    "cotsEstimate": 1500000,
    "mlbamId": 694497,
    "salarySource": "mlbtr-arb",
-   "war": 1.78,
+   "war": 1.79,
    "pa": 350
   },
   {
@@ -264,25 +264,7 @@
    "mlbamId": 674003,
    "salarySource": "mlbtr-arb",
    "war": 0.48,
-   "ip": 93.1
-  },
-  {
-   "name": "José Buttó",
-   "sheetName": "Buttó, José",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 2.168,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": null,
-   "arbYear": 1,
-   "cotsEstimate": 800000,
-   "mlbamId": 676130,
-   "salarySource": "mlbtr-arb",
-   "war": 0,
-   "ip": 55
+   "ip": 95.1
   },
   {
    "name": "Chase Silseth",
@@ -313,8 +295,8 @@
    "salaryPrevYear": 788000,
    "mlbamId": 668390,
    "salarySource": "minimum",
-   "war": 0.12,
-   "ip": 50
+   "war": 0.13,
+   "ip": 53
   },
   {
    "name": "Jack Leiter",
@@ -425,8 +407,8 @@
    "salaryPrevYear": 659038,
    "mlbamId": 682608,
    "salarySource": "minimum",
-   "war": 0.26,
-   "ip": 40
+   "war": 0.32,
+   "ip": 48
   },
   {
    "name": "Robby Ahlstrom",
@@ -506,7 +488,7 @@
    "mlbamId": 686560,
    "salarySource": "minimum",
    "war": -0.02,
-   "ip": 35
+   "ip": 38
   },
   {
    "name": "Ben Peoples",
@@ -521,8 +503,8 @@
    "salaryPrevYear": 300043,
    "mlbamId": 687239,
    "salarySource": "minimum",
-   "war": -0.12,
-   "ip": 32
+   "war": -0.14,
+   "ip": 36
   },
   {
    "name": "Winston Santos",
@@ -553,8 +535,8 @@
    "salaryPrevYear": 86586,
    "mlbamId": 693713,
    "salarySource": "minimum",
-   "war": 0.02,
-   "ip": 6
+   "war": 0.03,
+   "ip": 8
   },
   {
    "name": "Josh White",
@@ -586,7 +568,7 @@
    "mlbamId": 695778,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 1
+   "ip": 10
   },
   {
    "name": "David Davalillo",
@@ -655,12 +637,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 172085000,
@@ -753,7 +735,7 @@
    "name": "Dalton Pence",
    "pos": "sp",
    "age": 24,
-   "war": 0.7,
+   "war": 0.75,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -783,6 +765,16 @@
    "name": "Austin Bergner",
    "pos": "sp",
    "age": 30,
+   "war": 0.47,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 668766,
+   "name": "Dylan File",
+   "pos": "sp",
+   "age": 31,
    "war": 0.47,
    "ip": 200,
    "salary": 780000,
@@ -824,6 +816,16 @@
    "pos": "c",
    "age": 24,
    "war": 0.27,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 666194,
+   "name": "Cooper Johnson",
+   "pos": "c",
+   "age": 29,
+   "war": 0.23,
    "pa": 450,
    "salary": 780000,
    "debuted": false

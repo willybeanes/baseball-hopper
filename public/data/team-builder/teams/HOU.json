@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 514888,
    "salarySource": "cots",
-   "war": 1.83,
+   "war": 1.82,
    "pa": 575
   },
   {
@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 621043,
    "salarySource": "cots",
-   "war": 2.59,
-   "pa": 385
+   "war": 2.71,
+   "pa": 400
   },
   {
    "name": "Yordan Alvarez",
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 670541,
    "salarySource": "cots",
-   "war": 5.27,
+   "war": 5.31,
    "pa": 604
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": true,
    "mlbamId": 572233,
    "salarySource": "cots",
-   "war": 1.22,
+   "war": 1.23,
    "pa": 542
   },
   {
@@ -156,7 +156,7 @@
    "walkYear": true,
    "mlbamId": 670623,
    "salarySource": "cots",
-   "war": 3.03,
+   "war": 2.95,
    "pa": 584
   },
   {
@@ -174,7 +174,7 @@
    "cotsEstimate": 8010000,
    "mlbamId": 686613,
    "salarySource": "mlbtr-arb",
-   "war": 3.36,
+   "war": 3.35,
    "ip": 173.3
   },
   {
@@ -228,8 +228,8 @@
    "cotsEstimate": 2250000,
    "mlbamId": 669397,
    "salarySource": "mlbtr-arb",
-   "war": 0.24,
-   "pa": 125
+   "war": 0.25,
+   "pa": 127
   },
   {
    "name": "Hayden Wesneski",
@@ -284,24 +284,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.34,
    "ip": 53
-  },
-  {
-   "name": "Taylor Trammell",
-   "sheetName": "Trammell, Taylor",
-   "pos": "of",
-   "age": 29,
-   "mls": 3.143,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1500000,
-   "taxValue": 1500000,
-   "salaryPrevYear": 822995,
-   "arbYear": 2,
-   "cotsEstimate": 1050000,
-   "mlbamId": 666211,
-   "salarySource": "mlbtr-arb",
-   "war": 0.43,
-   "pa": 231
   },
   {
    "name": "Bryan King",
@@ -364,8 +346,8 @@
    "salaryPrevYear": 609121,
    "mlbamId": 701305,
    "salarySource": "minimum",
-   "war": 0.08,
-   "pa": 91
+   "war": 0.1,
+   "pa": 117
   },
   {
    "name": "Michael Burrows",
@@ -412,8 +394,8 @@
    "salaryPrevYear": 83807,
    "mlbamId": 678489,
    "salarySource": "minimum",
-   "war": 0.01,
-   "pa": 61
+   "war": 0.02,
+   "pa": 97
   },
   {
    "name": "Kai-Wei Teng",
@@ -460,8 +442,8 @@
    "salaryPrevYear": 782400,
    "mlbamId": 694728,
    "salarySource": "minimum",
-   "war": 0.45,
-   "pa": 220
+   "war": 0.46,
+   "pa": 234
   },
   {
    "name": "Roddery Muñoz",
@@ -509,7 +491,7 @@
    "mlbamId": 805904,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 94
+   "pa": 131
   },
   {
    "name": "Ethan Pecko",
@@ -556,8 +538,8 @@
    "salaryPrevYear": 174657,
    "mlbamId": 669384,
    "salarySource": "minimum",
-   "war": 0.07,
-   "pa": 60
+   "war": 0.08,
+   "pa": 68
   },
   {
    "name": "Alimber Santa",
@@ -686,12 +668,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 224818333,
@@ -784,7 +766,7 @@
    "name": "Joey Loperfido",
    "pos": "lf-rf",
    "age": 28,
-   "war": 0.52,
+   "war": 0.54,
    "pa": 600,
    "salary": 780000,
    "debuted": true

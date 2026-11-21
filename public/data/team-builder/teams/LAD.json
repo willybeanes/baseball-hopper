@@ -119,7 +119,7 @@
    "mlbamId": 518692,
    "salarySource": "cots",
    "war": 2.02,
-   "pa": 589
+   "pa": 587
   },
   {
    "name": "Edwin Díaz",
@@ -204,7 +204,7 @@
    "mlbamId": 669242,
    "salarySource": "cots",
    "war": 1.11,
-   "pa": 410
+   "pa": 425
   },
   {
    "name": "Max Muncy",
@@ -220,8 +220,8 @@
    "walkYear": false,
    "mlbamId": 571970,
    "salarySource": "cots",
-   "war": 2.14,
-   "pa": 438
+   "war": 2.03,
+   "pa": 407
   },
   {
    "name": "Andy Pages",
@@ -238,8 +238,26 @@
    "cotsEstimate": 5600000,
    "mlbamId": 681624,
    "salarySource": "mlbtr-arb",
-   "war": 3.11,
+   "war": 3.12,
    "pa": 547
+  },
+  {
+   "name": "Royce Lewis",
+   "sheetName": "Lewis, Royce",
+   "pos": "3b-dh-1b-2b",
+   "age": 28,
+   "mls": 4.139,
+   "contract": "A3",
+   "status": "arb",
+   "salary": 5100000,
+   "taxValue": 5100000,
+   "salaryPrevYear": null,
+   "arbYear": 3,
+   "cotsEstimate": 4850000,
+   "mlbamId": 668904,
+   "salarySource": "mlbtr-arb",
+   "war": 0.95,
+   "pa": 312
   },
   {
    "name": "Hyeseong Kim",
@@ -256,7 +274,7 @@
    "mlbamId": 808975,
    "salarySource": "cots",
    "war": 0.05,
-   "pa": 101
+   "pa": 92
   },
   {
    "name": "Emmet Sheehan",
@@ -273,8 +291,8 @@
    "cotsEstimate": 2425000,
    "mlbamId": 686218,
    "salarySource": "mlbtr-arb",
-   "war": 2.32,
-   "ip": 131.7
+   "war": 2.35,
+   "ip": 133.7
   },
   {
    "name": "Alex Call",
@@ -282,15 +300,14 @@
    "pos": "cf-lf-rf",
    "age": 32,
    "mls": 3.161,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1900000,
-   "taxValue": 1900000,
+   "contract": "1 y/$2.175M (27)",
+   "status": "signed",
+   "salary": 2175000,
+   "taxValue": 2175000,
    "salaryPrevYear": 1600000,
-   "arbYear": 2,
-   "cotsEstimate": 2100000,
+   "walkYear": false,
    "mlbamId": 669743,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.14,
    "pa": 92
   },
@@ -327,24 +344,8 @@
    "cotsEstimate": 1010000,
    "mlbamId": 694813,
    "salarySource": "mlbtr-arb",
-   "war": 0.56,
-   "ip": 51.6
-  },
-  {
-   "name": "Bobby Miller",
-   "sheetName": "Miller, Bobby",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 2.119,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 698993,
-   "mlbamId": 676272,
-   "salarySource": "minimum",
-   "war": 0.22,
-   "ip": 40
+   "war": 0.59,
+   "ip": 55.6
   },
   {
    "name": "Kyle Hurt",
@@ -359,8 +360,8 @@
    "salaryPrevYear": 649225,
    "mlbamId": 669165,
    "salarySource": "minimum",
-   "war": 0.34,
-   "ip": 36
+   "war": 0.38,
+   "ip": 40
   },
   {
    "name": "Ben Casparius",
@@ -376,7 +377,7 @@
    "mlbamId": 676508,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 18
+   "ip": 22
   },
   {
    "name": "Jack Dreyer",
@@ -439,8 +440,8 @@
    "salaryPrevYear": 790000,
    "mlbamId": 680736,
    "salarySource": "minimum",
-   "war": 0.91,
-   "ip": 79.4
+   "war": 0.94,
+   "ip": 82.4
   },
   {
    "name": "Dalton Rushing",
@@ -487,7 +488,7 @@
    "salaryPrevYear": 230000,
    "mlbamId": 676439,
    "salarySource": "minimum",
-   "war": 0.44,
+   "war": 0.45,
    "pa": 128
   },
   {
@@ -503,7 +504,7 @@
    "salaryPrevYear": 790000,
    "mlbamId": 694361,
    "salarySource": "minimum",
-   "war": 0.3,
+   "war": 0.29,
    "ip": 44
   },
   {
@@ -519,8 +520,8 @@
    "salaryPrevYear": 552795,
    "mlbamId": 689017,
    "salarySource": "minimum",
-   "war": 0.1,
-   "ip": 37
+   "war": 0.11,
+   "ip": 41
   },
   {
    "name": "Alex Freeland",
@@ -535,8 +536,8 @@
    "salaryPrevYear": 593240,
    "mlbamId": 690976,
    "salarySource": "minimum",
-   "war": 0.91,
-   "pa": 307
+   "war": 0.37,
+   "pa": 132
   },
   {
    "name": "Paul Gervase",
@@ -551,8 +552,8 @@
    "salaryPrevYear": 217878,
    "mlbamId": 801434,
    "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 20
+   "war": 0.06,
+   "ip": 24
   },
   {
    "name": "Eliezer Alfonzo",
@@ -583,7 +584,7 @@
    "salaryPrevYear": 53452,
    "mlbamId": 800543,
    "salarySource": "minimum",
-   "war": 1.16,
+   "war": 1.17,
    "pa": 366
   },
   {
@@ -599,8 +600,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 691947,
    "salarySource": "minimum",
-   "war": -0.04,
-   "ip": 14
+   "war": -0.05,
+   "ip": 18
   },
   {
    "name": "Christian Zazueta",
@@ -668,7 +669,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0,
-   "ip": 8
+   "ip": 10
   }
  ],
  "deadMoney": [
@@ -687,18 +688,18 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 366005616,
- "sheetTaxPayroll": 388474886,
- "rowsPayroll": 366005616,
- "rowsTaxPayroll": 388474886,
+ "sheetPayroll": 369930616,
+ "sheetTaxPayroll": 392399886,
+ "rowsPayroll": 369930616,
+ "rowsTaxPayroll": 392399886,
  "minors": [
   {
    "mlbamId": 701394,
@@ -741,6 +742,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 696486,
+   "name": "James Tibbs III",
+   "pos": "rf",
+   "age": 24,
+   "war": 1.43,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 695372,
    "name": "Jake Gelof",
    "pos": "3b",
@@ -756,16 +767,6 @@
    "pos": "cf",
    "age": 22,
    "war": 1.26,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 696486,
-   "name": "James Tibbs III",
-   "pos": "rf",
-   "age": 24,
-   "war": 1.19,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -905,7 +906,7 @@
    "name": "Payton Martin",
    "pos": "sp",
    "age": 23,
-   "war": 0.38,
+   "war": 0.37,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -925,7 +926,7 @@
    "name": "Peter Heubeck",
    "pos": "sp",
    "age": 24,
-   "war": 0.35,
+   "war": 0.34,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -935,7 +936,7 @@
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.32,
+   "war": 0.33,
    "pa": 450,
    "salary": 780000,
    "debuted": false
@@ -971,14 +972,14 @@
    "debuted": false
   },
   {
-   "mlbamId": 664776,
-   "name": "Jake Cousins",
-   "pos": "rp",
-   "age": 32,
+   "mlbamId": 695653,
+   "name": "Noah Miller",
+   "pos": "ss",
+   "age": 24,
    "war": 0.16,
-   "ip": 65,
+   "pa": 600,
    "salary": 780000,
-   "debuted": true
+   "debuted": false
   },
   {
    "mlbamId": 805841,

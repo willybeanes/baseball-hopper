@@ -32,7 +32,7 @@
    "walkYear": true,
    "mlbamId": 650490,
    "salarySource": "cots",
-   "war": 2.48,
+   "war": 2.49,
    "pa": 651
   },
   {
@@ -49,8 +49,8 @@
    "walkYear": true,
    "mlbamId": 571927,
    "salarySource": "cots",
-   "war": 0.37,
-   "ip": 66
+   "war": 0.38,
+   "ip": 68
   },
   {
    "name": "Shane McClanahan",
@@ -157,8 +157,8 @@
    "cotsEstimate": 3250000,
    "mlbamId": 664076,
    "salarySource": "mlbtr-arb",
-   "war": 0.4,
-   "ip": 48
+   "war": 0.42,
+   "ip": 50
   },
   {
    "name": "Taylor Walls",
@@ -214,24 +214,6 @@
    "pa": 353
   },
   {
-   "name": "Cole Sulser",
-   "sheetName": "Sulser, Cole",
-   "pos": "rhp",
-   "age": 37,
-   "mls": 5.096,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 1900000,
-   "taxValue": 1900000,
-   "salaryPrevYear": 1050000,
-   "arbYear": 3,
-   "cotsEstimate": 2025000,
-   "mlbamId": 642121,
-   "salarySource": "mlbtr-arb",
-   "war": 0.16,
-   "ip": 52
-  },
-  {
    "name": "Kevin Kelly",
    "sheetName": "Kelly, Kevin",
    "pos": "rhp",
@@ -246,7 +228,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 687330,
    "salarySource": "mlbtr-arb",
-   "war": 0.53,
+   "war": 0.52,
    "ip": 72
   },
   {
@@ -264,7 +246,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 676356,
    "salarySource": "mlbtr-arb",
-   "war": 1.11,
+   "war": 1.12,
    "pa": 446
   },
   {
@@ -282,8 +264,8 @@
    "cotsEstimate": 1525000,
    "mlbamId": 670955,
    "salarySource": "mlbtr-arb",
-   "war": 0.16,
-   "ip": 22
+   "war": 0.2,
+   "ip": 28
   },
   {
    "name": "Manuel Rodríguez",
@@ -300,8 +282,8 @@
    "cotsEstimate": 825000,
    "mlbamId": 655889,
    "salarySource": "mlbtr-arb",
-   "war": 0.39,
-   "ip": 50
+   "war": 0.4,
+   "ip": 52
   },
   {
    "name": "Jack Suwinski",
@@ -332,8 +314,8 @@
    "salaryPrevYear": 657286,
    "mlbamId": 668984,
    "salarySource": "minimum",
-   "war": -0.05,
-   "ip": 32
+   "war": -0.06,
+   "ip": 40
   },
   {
    "name": "Junior Caminero",
@@ -364,8 +346,8 @@
    "salaryPrevYear": 372795,
    "mlbamId": 669438,
    "salarySource": "minimum",
-   "war": 0.37,
-   "ip": 56.1
+   "war": 0.38,
+   "ip": 58.1
   },
   {
    "name": "Cam Booser",
@@ -412,7 +394,7 @@
    "salaryPrevYear": 785100,
    "mlbamId": 802415,
    "salarySource": "minimum",
-   "war": 1.53,
+   "war": 1.54,
    "pa": 498
   },
   {
@@ -524,8 +506,8 @@
    "salaryPrevYear": 186722,
    "mlbamId": 700246,
    "salarySource": "minimum",
-   "war": 0.34,
-   "pa": 137
+   "war": 0.3,
+   "pa": 121
   },
   {
    "name": "Kenny Piper",
@@ -557,7 +539,7 @@
    "mlbamId": 702047,
    "salarySource": "minimum",
    "war": 0.03,
-   "ip": 18
+   "ip": 20
   },
   {
    "name": "Ty Johnson",
@@ -588,8 +570,8 @@
    "salaryPrevYear": 66738,
    "mlbamId": 811315,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 39.2
+   "war": 0.14,
+   "ip": 42.2
   },
   {
    "name": "Alexander Alberto",
@@ -604,8 +586,8 @@
    "salaryPrevYear": null,
    "mlbamId": 693739,
    "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 14
+   "war": 0.05,
+   "ip": 16
   },
   {
    "name": "Jadher Areinamo",
@@ -638,6 +620,23 @@
    "salarySource": "minimum",
    "war": 0.03,
    "pa": 20
+  },
+  {
+   "name": "Christian Koss",
+   "sheetName": "Koss, Christian",
+   "pos": "ss-2b-3b",
+   "age": 29,
+   "mls": 1.141,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 683766,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from SF",
+   "war": 0.05,
+   "pa": 59
   }
  ],
  "deadMoney": [
@@ -686,12 +685,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 99904545,
@@ -735,6 +734,16 @@
    "pos": "sp",
    "age": 26,
    "war": 1.51,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 678789,
+   "name": "Julio Robaina",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.39,
    "ip": 200,
    "salary": 780000,
    "debuted": false

@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 675911,
    "salarySource": "cots",
-   "war": 1.98,
+   "war": 1.97,
    "ip": 125.5
   },
   {
@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 660670,
    "salarySource": "cots",
-   "war": 2.87,
+   "war": 2.88,
    "pa": 566
   },
   {
@@ -117,7 +117,7 @@
    "walkYear": false,
    "mlbamId": 669221,
    "salarySource": "cots",
-   "war": 1.03,
+   "war": 1.04,
    "pa": 246
   },
   {
@@ -185,7 +185,7 @@
    "walkYear": false,
    "mlbamId": 671739,
    "salarySource": "cots",
-   "war": 3.99,
+   "war": 4,
    "pa": 605
   },
   {
@@ -263,24 +263,6 @@
    "ip": 140.1
   },
   {
-   "name": "James Karinchak",
-   "sheetName": "Karinchak, James",
-   "pos": "rhp",
-   "age": 31,
-   "mls": 4.13,
-   "contract": "A4",
-   "status": "arb",
-   "salary": 1100000,
-   "taxValue": 1100000,
-   "salaryPrevYear": 285027,
-   "arbYear": 4,
-   "cotsEstimate": 1600000,
-   "mlbamId": 675916,
-   "salarySource": "mlbtr-arb",
-   "war": 0.06,
-   "ip": 22
-  },
-  {
    "name": "Mitchell Parker",
    "sheetName": "Parker, Mitchell",
    "pos": "lhp-s",
@@ -297,24 +279,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.01,
    "ip": 4
-  },
-  {
-   "name": "Michael Grove",
-   "sheetName": "Grove, Michael",
-   "pos": "rhp",
-   "age": 30,
-   "mls": 3.122,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1000000,
-   "taxValue": 1000000,
-   "salaryPrevYear": 25348,
-   "arbYear": 2,
-   "cotsEstimate": 975000,
-   "mlbamId": 675627,
-   "salarySource": "mlbtr-arb",
-   "war": 0.09,
-   "ip": 14
   },
   {
    "name": "Joey Wentz",
@@ -573,8 +537,8 @@
    "salaryPrevYear": 130591,
    "mlbamId": 691548,
    "salarySource": "minimum",
-   "war": 0.02,
-   "ip": 4
+   "war": 0.03,
+   "ip": 8
   },
   {
    "name": "Owen Murphy",
@@ -593,6 +557,22 @@
    "ip": 9.1
   },
   {
+   "name": "Cameron Foster",
+   "sheetName": "Foster, Cameron",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.015,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 671382,
+   "salarySource": "minimum",
+   "war": 0.05,
+   "ip": 18
+  },
+  {
    "name": "Tyler Uberstine",
    "sheetName": "Uberstine, Tyler",
    "pos": "rhp",
@@ -606,7 +586,7 @@
    "mlbamId": 700413,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 6
+   "ip": 8
   },
   {
    "name": "Blake Burkhalter",
@@ -622,7 +602,7 @@
    "mlbamId": 686628,
    "salarySource": "minimum",
    "war": -0.02,
-   "ip": 8
+   "ip": 10
   },
   {
    "name": "Cedric De Grandpre",
@@ -638,8 +618,8 @@
    "mlbamId": 678142,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0,
-   "ip": 1
+   "war": 0.03,
+   "ip": 6
   },
   {
    "name": "Davis Polo",
@@ -657,30 +637,13 @@
    "corrected": "Added from RosterResource",
    "war": 0,
    "ip": 1
-  },
-  {
-   "name": "Cameron Foster",
-   "sheetName": "",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.015,
-   "contract": "Added to the 40-man",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 671382,
-   "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": 0.03,
-   "ip": 10
   }
  ],
  "deadMoney": [
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 6800000,
+   "taxValue": 6800000,
    "note": ""
   },
   {
@@ -692,18 +655,18 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 221435000,
- "sheetTaxPayroll": 229635001,
- "rowsPayroll": 221435000,
- "rowsTaxPayroll": 229635001,
+ "sheetPayroll": 220560000,
+ "sheetTaxPayroll": 228760001,
+ "rowsPayroll": 220560000,
+ "rowsTaxPayroll": 228760001,
  "minors": [
   {
    "mlbamId": 822412,

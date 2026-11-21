@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 642715,
    "salarySource": "cots",
-   "war": 2.09,
+   "war": 2.1,
    "pa": 536
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 646240,
    "salarySource": "cots",
-   "war": 2.58,
+   "war": 2.59,
    "pa": 644
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 808982,
    "salarySource": "cots",
-   "war": 1.41,
+   "war": 1.4,
    "pa": 515
   },
   {
@@ -100,8 +100,8 @@
    "walkYear": true,
    "mlbamId": 664056,
    "salarySource": "cots",
-   "war": 0.22,
-   "pa": 167
+   "war": 0.25,
+   "pa": 190
   },
   {
    "name": "Adrian Houser",
@@ -153,8 +153,8 @@
    "cotsEstimate": 2410000,
    "mlbamId": 669477,
    "salarySource": "mlbtr-arb",
-   "war": 1.24,
-   "pa": 486
+   "war": 1.25,
+   "pa": 484
   },
   {
    "name": "Sam Hentges",
@@ -173,6 +173,21 @@
    "salarySource": "mlbtr-arb",
    "war": 0.39,
    "ip": 58
+  },
+  {
+   "name": "Rowan Wick",
+   "sheetName": "Wick, Rowan",
+   "pos": "rhp",
+   "age": 34,
+   "mls": 4.114,
+   "contract": "1 y/$880,000 (26)+27 cl opt",
+   "status": "signed",
+   "salary": 800000,
+   "taxValue": 800000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "salarySource": "cots",
+   "war": null
   },
   {
    "name": "Randy Rodríguez",
@@ -253,8 +268,8 @@
    "salaryPrevYear": 230441,
    "mlbamId": 691785,
    "salarySource": "minimum",
-   "war": 1.05,
-   "pa": 345
+   "war": 1.11,
+   "pa": 361
   },
   {
    "name": "Anthony Molina",
@@ -285,8 +300,8 @@
    "salaryPrevYear": 706681,
    "mlbamId": 687551,
    "salarySource": "minimum",
-   "war": 1.31,
-   "pa": 390
+   "war": 1.32,
+   "pa": 399
   },
   {
    "name": "Joel Peguero",
@@ -333,8 +348,8 @@
    "salaryPrevYear": 640343,
    "mlbamId": 805811,
    "salarySource": "minimum",
-   "war": 1.77,
-   "pa": 541
+   "war": 1.8,
+   "pa": 543
   },
   {
    "name": "Trevor McDonald",
@@ -381,24 +396,8 @@
    "salaryPrevYear": 531521,
    "mlbamId": 681916,
    "salarySource": "minimum",
-   "war": 0.24,
+   "war": 0.25,
    "ip": 54
-  },
-  {
-   "name": "Victor Bericoto",
-   "sheetName": "Bericoto, Victor",
-   "pos": "1b-rf-lf",
-   "age": 25,
-   "mls": 0.129,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 538076,
-   "mlbamId": 682674,
-   "salarySource": "minimum",
-   "war": 0.21,
-   "pa": 169
   },
   {
    "name": "Carson Whisenhunt",
@@ -429,8 +428,8 @@
    "salaryPrevYear": 465621,
    "mlbamId": 813841,
    "salarySource": "minimum",
-   "war": 0.75,
-   "pa": 275
+   "war": 0.69,
+   "pa": 263
   },
   {
    "name": "Jesús Rodriguez",
@@ -509,8 +508,8 @@
    "salaryPrevYear": 191872,
    "mlbamId": 806367,
    "salarySource": "minimum",
-   "war": 0.32,
-   "pa": 155
+   "war": 0.45,
+   "pa": 218
   },
   {
    "name": "Matt Wilkinson",
@@ -573,8 +572,8 @@
    "salaryPrevYear": 62567,
    "mlbamId": 814154,
    "salarySource": "minimum",
-   "war": 0.18,
-   "pa": 133
+   "war": 0.2,
+   "pa": 148
   },
   {
    "name": "Bo Davidson",
@@ -589,8 +588,8 @@
    "salaryPrevYear": 29198,
    "mlbamId": 815589,
    "salarySource": "minimum",
-   "war": 0.44,
-   "pa": 161
+   "war": 0.48,
+   "pa": 183
   },
   {
    "name": "Miguel Mendez",
@@ -684,12 +683,6 @@
    "salary": 2800000,
    "taxValue": 2800000,
    "note": ""
-  },
-  {
-   "name": "Rowan Wick",
-   "salary": 800000,
-   "taxValue": 800000,
-   "note": "off the 40-man (RosterResource)"
   }
  ],
  "benefits": 18500000,
@@ -853,16 +846,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 683766,
-   "name": "Christian Koss",
-   "pos": "ss-2b-3b",
-   "age": 29,
-   "war": 0.46,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 698973,
    "name": "Jose Astudillo",
    "pos": "3b",
@@ -941,6 +924,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 676130,
+   "name": "José Buttó",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.02,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 686846,

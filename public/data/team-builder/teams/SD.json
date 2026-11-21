@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 593428,
    "salarySource": "cots",
-   "war": 2.54,
+   "war": 2.55,
    "pa": 535
   },
   {
@@ -135,7 +135,7 @@
    "walkYear": false,
    "mlbamId": 701538,
    "salarySource": "cots",
-   "war": 4.48,
+   "war": 4.49,
    "pa": 633
   },
   {
@@ -174,8 +174,8 @@
    "cotsEstimate": 5500000,
    "mlbamId": 657757,
    "salarySource": "mlbtr-arb",
-   "war": 0.48,
-   "pa": 393
+   "war": 0.53,
+   "pa": 427
   },
   {
    "name": "Wandy Peralta",
@@ -216,24 +216,6 @@
    "pa": 212
   },
   {
-   "name": "JP Sears",
-   "sheetName": "Sears, JP",
-   "pos": "lhp-s",
-   "age": 31,
-   "mls": 3.108,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 2800000,
-   "taxValue": 2800000,
-   "salaryPrevYear": 2750000,
-   "arbYear": 1,
-   "cotsEstimate": 2900000,
-   "mlbamId": 676664,
-   "salarySource": "mlbtr-arb",
-   "war": 0.79,
-   "ip": 144.9
-  },
-  {
    "name": "Freddy Fermin",
    "sheetName": "Fermin, Freddy",
    "pos": "c",
@@ -265,8 +247,8 @@
    "walkYear": false,
    "mlbamId": 606996,
    "salarySource": "cots",
-   "war": 0.39,
-   "ip": 67.4
+   "war": 0.57,
+   "ip": 88.2
   },
   {
    "name": "Ryan Weiss",
@@ -282,8 +264,8 @@
    "walkYear": false,
    "mlbamId": 680802,
    "salarySource": "cots",
-   "war": 1.08,
-   "ip": 108.8
+   "war": 1.26,
+   "ip": 126.9
   },
   {
    "name": "Luis Campusano",
@@ -337,7 +319,7 @@
    "mlbamId": 663773,
    "salarySource": "mlbtr-arb",
    "war": -0.02,
-   "ip": 30
+   "ip": 38
   },
   {
    "name": "Jhony Brito",
@@ -354,8 +336,8 @@
    "cotsEstimate": 801500,
    "mlbamId": 666745,
    "salarySource": "mlbtr-arb",
-   "war": 0.53,
-   "ip": 122.8
+   "war": 0.66,
+   "ip": 141.8
   },
   {
    "name": "Randy Vásquez",
@@ -562,24 +544,8 @@
    "salaryPrevYear": null,
    "mlbamId": 692294,
    "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 70.6
-  },
-  {
-   "name": "Garrett Hawkins",
-   "sheetName": "Hawkins, Garrett",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 63600,
-   "mlbamId": 678184,
-   "salarySource": "minimum",
-   "war": -0.08,
-   "ip": 31
+   "war": 0.55,
+   "ip": 89.1
   },
   {
    "name": "Ian Koenig",
@@ -595,8 +561,8 @@
    "mlbamId": 701617,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": -0.02,
-   "ip": 46.9
+   "war": 0.04,
+   "ip": 102.3
   },
   {
    "name": "Tucker Musgrove",
@@ -612,8 +578,8 @@
    "mlbamId": 814491,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.06,
-   "ip": 20
+   "war": 0.07,
+   "ip": 24
   }
  ],
  "deadMoney": [

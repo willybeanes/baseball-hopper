@@ -123,7 +123,7 @@
    "walkYear": false,
    "mlbamId": 805779,
    "salarySource": "cots",
-   "war": 2.75,
+   "war": 2.76,
    "pa": 495
   },
   {
@@ -159,7 +159,7 @@
    "cotsEstimate": 1275000,
    "mlbamId": 665622,
    "salarySource": "mlbtr-arb",
-   "war": 1.14,
+   "war": 1.15,
    "ip": 122.2
   },
   {
@@ -543,7 +543,7 @@
    "salaryPrevYear": 379573,
    "mlbamId": 811965,
    "salarySource": "minimum",
-   "war": 1.09,
+   "war": 1.1,
    "pa": 284
   },
   {
@@ -595,6 +595,22 @@
    "ip": 8
   },
   {
+   "name": "Raymond Burgos",
+   "sheetName": "Burgos, Raymond",
+   "pos": "lhp",
+   "age": 28,
+   "mls": 0.034,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 670103,
+   "salarySource": "minimum",
+   "war": 0.18,
+   "ip": 39.2
+  },
+  {
    "name": "Kade Morris",
    "sheetName": "Morris, Kade",
    "pos": "rhp",
@@ -611,20 +627,20 @@
    "ip": 39.2
   },
   {
-   "name": "Braden Nett",
-   "sheetName": "Nett, Braden",
+   "name": "Yaqui Rivera",
+   "sheetName": "Rivera, Yaqui",
    "pos": "rhp",
-   "age": 25,
+   "age": 23,
    "mls": 0,
    "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": null,
-   "mlbamId": 804556,
+   "mlbamId": 700072,
    "salarySource": "minimum",
-   "war": -0.02,
-   "ip": 10
+   "war": 0.06,
+   "ip": 28
   },
   {
    "name": "Cole Conn",
@@ -641,41 +657,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.32,
-   "pa": 134
-  },
-  {
-   "name": "Raymond Burgos",
-   "sheetName": "Burgos, Raymond",
-   "pos": "lhp",
-   "age": 28,
-   "mls": 0.034,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 670103,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from BOS",
-   "war": 0.18,
-   "ip": 39.2
-  },
-  {
-   "name": "Yaqui Rivera",
-   "sheetName": "",
-   "pos": "rhp",
-   "age": 23,
-   "mls": 0,
-   "contract": "Added to the 40-man",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 700072,
-   "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": 0.06,
-   "ip": 28
+   "pa": 132
   }
  ],
  "deadMoney": [
@@ -883,7 +865,7 @@
    "name": "Brian Serven",
    "pos": "c",
    "age": 32,
-   "war": 0.37,
+   "war": 0.36,
    "pa": 450,
    "salary": 780000,
    "debuted": true
@@ -927,16 +909,6 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 814305,
-   "name": "Yunior Tur",
-   "pos": "rp",
-   "age": 27,
-   "war": 0.01,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   }
  ]
 }

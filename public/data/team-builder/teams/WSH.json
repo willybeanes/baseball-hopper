@@ -85,7 +85,7 @@
    "walkYear": false,
    "mlbamId": 696285,
    "salarySource": "cots",
-   "war": 1.65,
+   "war": 1.66,
    "pa": 464
   },
   {
@@ -119,8 +119,8 @@
    "salaryPrevYear": null,
    "mlbamId": 665665,
    "salarySource": "minimum",
-   "war": 0.17,
-   "ip": 35
+   "war": 0.18,
+   "ip": 38
   },
   {
    "name": "Matt Waldron",
@@ -135,8 +135,8 @@
    "salaryPrevYear": 153395,
    "mlbamId": 663362,
    "salarySource": "minimum",
-   "war": 0.22,
-   "ip": 32.8
+   "war": 0.24,
+   "ip": 38.8
   },
   {
    "name": "D.J. Herz",
@@ -151,8 +151,8 @@
    "salaryPrevYear": 784200,
    "mlbamId": 687792,
    "salarySource": "minimum",
-   "war": 1.04,
-   "ip": 94.2
+   "war": 1.05,
+   "ip": 96.2
   },
   {
    "name": "James Wood",
@@ -167,7 +167,7 @@
    "salaryPrevYear": 806900,
    "mlbamId": 695578,
    "salarySource": "minimum",
-   "war": 4.39,
+   "war": 4.4,
    "pa": 680
   },
   {
@@ -215,8 +215,8 @@
    "salaryPrevYear": 785200,
    "mlbamId": 695418,
    "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 55
+   "war": 0.44,
+   "ip": 57
   },
   {
    "name": "Dylan Crews",
@@ -296,7 +296,7 @@
    "mlbamId": 690925,
    "salarySource": "minimum",
    "war": 0.1,
-   "ip": 40
+   "ip": 42
   },
   {
    "name": "Jorbit Vivas",
@@ -472,7 +472,7 @@
    "mlbamId": 687605,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 82
+   "pa": 83
   },
   {
    "name": "Yovanny Cruz",
@@ -520,7 +520,7 @@
    "mlbamId": 678868,
    "salarySource": "minimum",
    "war": 0.06,
-   "ip": 16
+   "ip": 18
   },
   {
    "name": "Luis Perales",
@@ -535,8 +535,8 @@
    "salaryPrevYear": 288392,
    "mlbamId": 691384,
    "salarySource": "minimum",
-   "war": 0.31,
-   "ip": 46
+   "war": 0.33,
+   "ip": 48
   },
   {
    "name": "Yohandy Morales",
@@ -555,22 +555,6 @@
    "pa": 333
   },
   {
-   "name": "Jared Simpson",
-   "sheetName": "Simpson, Jared",
-   "pos": "lhp",
-   "age": 27,
-   "mls": 0.027,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 88180,
-   "mlbamId": 688692,
-   "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 22
-  },
-  {
    "name": "Jack Sinclair",
    "sheetName": "Sinclair, Jack",
    "pos": "rhp",
@@ -584,7 +568,7 @@
    "mlbamId": 695378,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 32
+   "ip": 35
   },
   {
    "name": "Jarlin Susana",
@@ -652,7 +636,7 @@
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from BAL",
    "war": -0.03,
-   "ip": 20
+   "ip": 22
   }
  ],
  "deadMoney": [
@@ -677,12 +661,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 47675000,
@@ -791,6 +775,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 685332,
+   "name": "Carlos Mendoza",
+   "pos": "3b",
+   "age": 27,
+   "war": 1.01,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 695763,
    "name": "Sam Petersen",
    "pos": "cf",
@@ -881,6 +875,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 678316,
+   "name": "Omar Cruz",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.22,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 803849,
    "name": "Devin Fitz-Gerald",
    "pos": "ss",
@@ -909,26 +913,6 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 681402,
-   "name": "Gus Varland",
-   "pos": "rp",
-   "age": 30,
-   "war": 0.09,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
-   "mlbamId": 694820,
-   "name": "Braxton Roxby",
-   "pos": "rp",
-   "age": 28,
-   "war": 0.03,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 807715,

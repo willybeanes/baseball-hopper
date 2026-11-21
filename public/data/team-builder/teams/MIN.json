@@ -16,7 +16,7 @@
    "mlbamId": 680777,
    "salarySource": "cots",
    "war": 2.66,
-   "pa": 455
+   "pa": 457
   },
   {
    "name": "Pablo López",
@@ -32,7 +32,7 @@
    "walkYear": true,
    "mlbamId": 641154,
    "salarySource": "cots",
-   "war": 1.8,
+   "war": 1.81,
    "ip": 110.3
   },
   {
@@ -66,8 +66,8 @@
    "walkYear": false,
    "mlbamId": 621439,
    "salarySource": "cots",
-   "war": 2.47,
-   "pa": 475
+   "war": 2.48,
+   "pa": 492
   },
   {
    "name": "Jeff Hoffman",
@@ -118,8 +118,8 @@
    "cotsEstimate": 7750000,
    "mlbamId": 665152,
    "salarySource": "mlbtr-arb",
-   "war": 1.09,
-   "ip": 108.5
+   "war": 1.38,
+   "ip": 135.6
   },
   {
    "name": "Victor Caratini",
@@ -135,44 +135,8 @@
    "walkYear": false,
    "mlbamId": 605170,
    "salarySource": "cots",
-   "war": 1.12,
-   "pa": 285
-  },
-  {
-   "name": "Trevor Larnach",
-   "sheetName": "Larnach, Trevor",
-   "pos": "lf-rf",
-   "age": 30,
-   "mls": 5.014,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 6300000,
-   "taxValue": 6300000,
-   "salaryPrevYear": 4475000,
-   "arbYear": 3,
-   "cotsEstimate": 6100000,
-   "mlbamId": 663616,
-   "salarySource": "mlbtr-arb",
-   "war": 1.19,
-   "pa": 387
-  },
-  {
-   "name": "Royce Lewis",
-   "sheetName": "Lewis, Royce",
-   "pos": "3b-dh-1b-2b",
-   "age": 28,
-   "mls": 4.139,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 5100000,
-   "taxValue": 5100000,
-   "salaryPrevYear": 2850000,
-   "arbYear": 3,
-   "cotsEstimate": 4850000,
-   "mlbamId": 668904,
-   "salarySource": "mlbtr-arb",
-   "war": 1.34,
-   "pa": 490
+   "war": 1.08,
+   "pa": 300
   },
   {
    "name": "Taj Bradley",
@@ -207,8 +171,8 @@
    "cotsEstimate": 3750000,
    "mlbamId": 665019,
    "salarySource": "mlbtr-arb",
-   "war": 1.88,
-   "pa": 513
+   "war": 1.25,
+   "pa": 505
   },
   {
    "name": "Cole Sands",
@@ -216,17 +180,16 @@
    "pos": "rhp",
    "age": 29,
    "mls": 4.017,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 1200000,
+   "taxValue": 1200000,
    "salaryPrevYear": 1100000,
-   "arbYear": 2,
-   "cotsEstimate": 1200000,
+   "walkYear": false,
    "mlbamId": 663485,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.04,
-   "ip": 46
+   "ip": 44
   },
   {
    "name": "Tommy Nance",
@@ -234,17 +197,32 @@
    "pos": "rhp",
    "age": 36,
    "mls": 3.165,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1200000,
-   "taxValue": 1200000,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 1075000,
+   "taxValue": 1075000,
    "salaryPrevYear": 342066,
-   "arbYear": 1,
-   "cotsEstimate": 1075000,
+   "walkYear": false,
    "mlbamId": 667297,
-   "salarySource": "mlbtr-arb",
-   "war": 0.33,
-   "ip": 53
+   "salarySource": "cots",
+   "war": 0.32,
+   "ip": 52
+  },
+  {
+   "name": "Bobby Miller",
+   "sheetName": "Miller, Bobby",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 2.119,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 676272,
+   "salarySource": "minimum",
+   "war": 0.18,
+   "ip": 40
   },
   {
    "name": "Kody Funderburk",
@@ -260,23 +238,7 @@
    "mlbamId": 681892,
    "salarySource": "minimum",
    "war": 0.24,
-   "ip": 57
-  },
-  {
-   "name": "Matt Wallner",
-   "sheetName": "Wallner, Matt",
-   "pos": "rf",
-   "age": 29,
-   "mls": 2.093,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 496064,
-   "mlbamId": 670242,
-   "salarySource": "minimum",
-   "war": 0.12,
-   "pa": 64
+   "ip": 56
   },
   {
    "name": "Brooks Lee",
@@ -323,8 +285,8 @@
    "salaryPrevYear": 790650,
    "mlbamId": 668885,
    "salarySource": "minimum",
-   "war": 0.56,
-   "pa": 237
+   "war": 0.62,
+   "pa": 259
   },
   {
    "name": "Luke Keaschall",
@@ -339,7 +301,7 @@
    "salaryPrevYear": 788200,
    "mlbamId": 807712,
    "salarySource": "minimum",
-   "war": 3.33,
+   "war": 3.32,
    "pa": 558
   },
   {
@@ -355,8 +317,8 @@
    "salaryPrevYear": 678277,
    "mlbamId": 668952,
    "salarySource": "minimum",
-   "war": 0.42,
-   "pa": 201
+   "war": 0.72,
+   "pa": 332
   },
   {
    "name": "Zebby Matthews",
@@ -371,8 +333,8 @@
    "salaryPrevYear": 640880,
    "mlbamId": 805673,
    "salarySource": "minimum",
-   "war": 0.59,
-   "ip": 52
+   "war": 0.66,
+   "ip": 59
   },
   {
    "name": "Yoendrys Gómez",
@@ -419,8 +381,8 @@
    "salaryPrevYear": 782500,
    "mlbamId": 690953,
    "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 46.1
+   "war": 0.41,
+   "ip": 45.1
   },
   {
    "name": "Alan Roden",
@@ -435,8 +397,8 @@
    "salaryPrevYear": 343570,
    "mlbamId": 702176,
    "salarySource": "minimum",
-   "war": 0.43,
-   "pa": 170
+   "war": 0.75,
+   "pa": 284
   },
   {
    "name": "Andrew Morris",
@@ -467,8 +429,8 @@
    "salaryPrevYear": 672732,
    "mlbamId": 687570,
    "salarySource": "minimum",
-   "war": 0.88,
-   "ip": 65
+   "war": 1.59,
+   "ip": 111.1
   },
   {
    "name": "Garrett Acton",
@@ -484,7 +446,7 @@
    "mlbamId": 670183,
    "salarySource": "minimum",
    "war": -0.03,
-   "ip": 22
+   "ip": 18
   },
   {
    "name": "Mike Paredes",
@@ -499,8 +461,8 @@
    "salaryPrevYear": 500535,
    "mlbamId": 702474,
    "salarySource": "minimum",
-   "war": -0.03,
-   "ip": 12
+   "war": -0.02,
+   "ip": 21
   },
   {
    "name": "Kendry Rojas",
@@ -515,8 +477,8 @@
    "salaryPrevYear": 347096,
    "mlbamId": 696070,
    "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 41.8
+   "war": 0.54,
+   "ip": 53.7
   },
   {
    "name": "Kaelen Culpepper",
@@ -531,8 +493,8 @@
    "salaryPrevYear": 216899,
    "mlbamId": 701785,
    "salarySource": "minimum",
-   "war": 2.58,
-   "pa": 469
+   "war": 2.59,
+   "pa": 481
   },
   {
    "name": "Marco Raya",
@@ -547,8 +509,8 @@
    "salaryPrevYear": 235335,
    "mlbamId": 694397,
    "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 18
+   "war": 0.03,
+   "ip": 16
   },
   {
    "name": "Walker Jenkins",
@@ -563,8 +525,8 @@
    "salaryPrevYear": 129305,
    "mlbamId": 805805,
    "salarySource": "minimum",
-   "war": 1.63,
-   "pa": 379
+   "war": 1.81,
+   "pa": 388
   },
   {
    "name": "Ben Ross",
@@ -579,8 +541,8 @@
    "salaryPrevYear": 98655,
    "mlbamId": 805346,
    "salarySource": "minimum",
-   "war": 0.21,
-   "pa": 114
+   "war": 0.4,
+   "pa": 221
   },
   {
    "name": "Gabriel Gonzalez",
@@ -595,8 +557,8 @@
    "salaryPrevYear": 117234,
    "mlbamId": 694224,
    "salarySource": "minimum",
-   "war": 0.04,
-   "pa": 47
+   "war": 0.14,
+   "pa": 142
   },
   {
    "name": "Emmanuel Rodriguez",
@@ -611,8 +573,8 @@
    "salaryPrevYear": 241121,
    "mlbamId": 691181,
    "salarySource": "minimum",
-   "war": 0.64,
-   "pa": 173
+   "war": 0.93,
+   "pa": 278
   },
   {
    "name": "Hendry Mendez",
@@ -627,8 +589,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 694230,
    "salarySource": "minimum",
-   "war": 0.03,
-   "pa": 15
+   "war": 0.07,
+   "pa": 72
   }
  ],
  "deadMoney": [
@@ -658,8 +620,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 10200000,
-   "taxValue": 10200000,
+   "salary": 11900000,
+   "taxValue": 11900000,
    "note": ""
   },
   {
@@ -671,18 +633,18 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 164951190,
- "sheetTaxPayroll": 189893359,
- "rowsPayroll": 164951190,
- "rowsTaxPayroll": 189893359,
+ "sheetPayroll": 148451190,
+ "sheetTaxPayroll": 173393359,
+ "rowsPayroll": 148451190,
+ "rowsTaxPayroll": 173393359,
  "minors": [
   {
    "mlbamId": 813715,
@@ -695,22 +657,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 701339,
-   "name": "Marek Houston",
-   "pos": "ss",
-   "age": 23,
-   "war": 1.86,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 804981,
    "name": "Riley Quick",
    "pos": "sp",
    "age": 23,
    "war": 1.54,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 701339,
+   "name": "Marek Houston",
+   "pos": "ss",
+   "age": 23,
+   "war": 1.46,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },
@@ -799,7 +761,7 @@
    "name": "Jay Thomason",
    "pos": "3b",
    "age": 25,
-   "war": 0.41,
+   "war": 0.4,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -825,20 +787,20 @@
    "debuted": false
   },
   {
-   "mlbamId": 807974,
-   "name": "Adrian Bohorquez",
+   "mlbamId": 814098,
+   "name": "Sam Armstrong",
    "pos": "sp",
-   "age": 22,
-   "war": 0.32,
+   "age": 26,
+   "war": 0.33,
    "ip": 200,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 814098,
-   "name": "Sam Armstrong",
+   "mlbamId": 807974,
+   "name": "Adrian Bohorquez",
    "pos": "sp",
-   "age": 26,
+   "age": 22,
    "war": 0.32,
    "ip": 200,
    "salary": 780000,

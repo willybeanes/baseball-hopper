@@ -118,7 +118,7 @@
    "mlbamId": 592663,
    "salarySource": "cots",
    "war": 1.27,
-   "pa": 383
+   "pa": 385
   },
   {
    "name": "Brad Keller",
@@ -189,7 +189,7 @@
    "mlbamId": 669016,
    "salarySource": "mlbtr-arb",
    "war": 1.03,
-   "pa": 473
+   "pa": 475
   },
   {
    "name": "Cristopher Sánchez",
@@ -205,7 +205,7 @@
    "walkYear": false,
    "mlbamId": 650911,
    "salarySource": "cots",
-   "war": 5.47,
+   "war": 5.46,
    "ip": 200.2
   },
   {
@@ -222,8 +222,8 @@
    "walkYear": true,
    "mlbamId": 641835,
    "salarySource": "cots",
-   "war": 0.51,
-   "ip": 64
+   "war": 0.5,
+   "ip": 63
   },
   {
    "name": "Derek Hill",
@@ -240,8 +240,8 @@
    "cotsEstimate": 1500000,
    "mlbamId": 656537,
    "salarySource": "mlbtr-arb",
-   "war": -0.1,
-   "pa": 252
+   "war": -0.11,
+   "pa": 260
   },
   {
    "name": "Tanner Banks",
@@ -258,8 +258,8 @@
    "cotsEstimate": 1300000,
    "mlbamId": 621383,
    "salarySource": "mlbtr-arb",
-   "war": 0.16,
-   "ip": 40
+   "war": 0.18,
+   "ip": 44
   },
   {
    "name": "Orion Kerkering",
@@ -276,26 +276,8 @@
    "cotsEstimate": 1211000,
    "mlbamId": 689147,
    "salarySource": "mlbtr-arb",
-   "war": 0.34,
-   "ip": 50
-  },
-  {
-   "name": "Bryan De La Cruz",
-   "sheetName": "De La Cruz, Bryan",
-   "pos": "lf-rf",
-   "age": 30,
-   "mls": 3.148,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1200000,
-   "taxValue": 1200000,
-   "salaryPrevYear": 403209,
-   "arbYear": 1,
-   "cotsEstimate": 975000,
-   "mlbamId": 650559,
-   "salarySource": "mlbtr-arb",
-   "war": -0.3,
-   "pa": 282
+   "war": 0.36,
+   "ip": 52
   },
   {
    "name": "Rafael Marchán",
@@ -344,8 +326,8 @@
    "salaryPrevYear": 250000,
    "mlbamId": 668873,
    "salarySource": "minimum",
-   "war": 0.3,
-   "ip": 56
+   "war": 0.29,
+   "ip": 55
   },
   {
    "name": "Jonathan Bowlan",
@@ -377,7 +359,7 @@
    "mlbamId": 676661,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 16
+   "ip": 15
   },
   {
    "name": "Grant Holman",
@@ -393,7 +375,7 @@
    "mlbamId": 680880,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 28
+   "ip": 24
   },
   {
    "name": "Colby Thomas",
@@ -408,8 +390,8 @@
    "salaryPrevYear": 48143,
    "mlbamId": 687515,
    "salarySource": "minimum",
-   "war": -0.1,
-   "pa": 99
+   "war": -0.13,
+   "pa": 140
   },
   {
    "name": "Justin Crawford",
@@ -425,7 +407,7 @@
    "mlbamId": 702222,
    "salarySource": "minimum",
    "war": 1.42,
-   "pa": 400
+   "pa": 404
   },
   {
    "name": "Shay Whitcomb",
@@ -440,8 +422,8 @@
    "salaryPrevYear": null,
    "mlbamId": 694376,
    "salarySource": "minimum",
-   "war": 0.13,
-   "pa": 173
+   "war": 0.15,
+   "pa": 185
   },
   {
    "name": "Kameron Misner",
@@ -456,8 +438,8 @@
    "salaryPrevYear": 132310,
    "mlbamId": 670224,
    "salarySource": "minimum",
-   "war": -0.01,
-   "pa": 58
+   "war": -0.09,
+   "pa": 204
   },
   {
    "name": "Andrew Painter",
@@ -476,22 +458,6 @@
    "ip": 141.8
   },
   {
-   "name": "Brett Harris",
-   "sheetName": "Harris, Brett",
-   "pos": "3b-1b",
-   "age": 29,
-   "mls": 0.14,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 695391,
-   "salarySource": "minimum",
-   "war": -0.04,
-   "pa": 59
-  },
-  {
    "name": "Kyle Backhus",
    "sheetName": "Backhus, Kyle",
    "pos": "lhp",
@@ -504,7 +470,7 @@
    "salaryPrevYear": 505294,
    "mlbamId": 679775,
    "salarySource": "minimum",
-   "war": 0.07,
+   "war": 0.08,
    "ip": 20
   },
   {
@@ -520,8 +486,8 @@
    "salaryPrevYear": 302596,
    "mlbamId": 805249,
    "salarySource": "minimum",
-   "war": 0.12,
-   "pa": 201
+   "war": 0.09,
+   "pa": 203
   },
   {
    "name": "Felix Reyes",
@@ -536,24 +502,8 @@
    "salaryPrevYear": 170368,
    "mlbamId": 694025,
    "salarySource": "minimum",
-   "war": 0.09,
-   "pa": 144
-  },
-  {
-   "name": "Andrew Hoffmann",
-   "sheetName": "Hoffmann, Andrew",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.068,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 25828,
-   "mlbamId": 694851,
-   "salarySource": "minimum",
-   "war": 0.07,
-   "ip": 24
+   "war": 0.11,
+   "pa": 170
   },
   {
    "name": "Alan Rangel",
@@ -568,8 +518,8 @@
    "salaryPrevYear": 217878,
    "mlbamId": 660604,
    "salarySource": "minimum",
-   "war": 0.19,
-   "ip": 48
+   "war": 0.25,
+   "ip": 57.1
   },
   {
    "name": "Alex McFarlane",
@@ -584,7 +534,7 @@
    "salaryPrevYear": 270475,
    "mlbamId": 686934,
    "salarySource": "minimum",
-   "war": 0.42,
+   "war": 0.43,
    "ip": 58
   },
   {
@@ -601,7 +551,7 @@
    "mlbamId": 687282,
    "salarySource": "minimum",
    "war": -0.01,
-   "pa": 96
+   "pa": 138
   },
   {
    "name": "Moises Chace",
@@ -614,10 +564,8 @@
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": 127100,
-   "mlbamId": 691330,
    "salarySource": "minimum",
-   "war": 0.06,
-   "ip": 9.2
+   "war": null
   },
   {
    "name": "Bryan Rincon",
@@ -651,6 +599,23 @@
    "corrected": "Added from RosterResource",
    "war": 0.02,
    "pa": 32
+  },
+  {
+   "name": "Jordan Leasure",
+   "sheetName": "",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 2.162,
+   "contract": "Added to the 40-man",
+   "status": "arb",
+   "salary": 1000000,
+   "taxValue": 1000000,
+   "salaryPrevYear": null,
+   "mlbamId": 673929,
+   "salarySource": "mlbtr-arb",
+   "corrected": "Added from RosterResource",
+   "war": 0,
+   "ip": 1
   }
  ],
  "deadMoney": [
@@ -675,12 +640,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 261378618,
@@ -703,7 +668,7 @@
    "name": "Cody Bowker",
    "pos": "sp",
    "age": 23,
-   "war": 1.29,
+   "war": 1.3,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -759,16 +724,6 @@
    "debuted": true
   },
   {
-   "mlbamId": 805906,
-   "name": "Gage Wood",
-   "pos": "rp",
-   "age": 23,
-   "war": 0.43,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 823804,
    "name": "Ryan Dromboski",
    "pos": "sp",
@@ -779,12 +734,32 @@
    "debuted": false
   },
   {
-   "mlbamId": 691001,
-   "name": "Robert Moore",
-   "pos": "2b",
-   "age": 25,
+   "mlbamId": 805906,
+   "name": "Gage Wood",
+   "pos": "rp",
+   "age": 23,
+   "war": 0.39,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 805704,
+   "name": "Keaton Anthony",
+   "pos": "1b",
+   "age": 26,
    "war": 0.25,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 814372,
+   "name": "Brad Pacheco",
+   "pos": "sp",
+   "age": 22,
+   "war": 0.24,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -799,21 +774,11 @@
    "debuted": false
   },
   {
-   "mlbamId": 814372,
-   "name": "Brad Pacheco",
-   "pos": "sp",
-   "age": 22,
-   "war": 0.23,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 805704,
-   "name": "Keaton Anthony",
-   "pos": "1b",
-   "age": 26,
-   "war": 0.22,
+   "mlbamId": 691001,
+   "name": "Robert Moore",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.24,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -827,6 +792,16 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 681006,
+   "name": "Josh Simpson",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.17,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 664129,

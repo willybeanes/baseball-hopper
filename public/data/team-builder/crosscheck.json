@@ -2,25 +2,57 @@
  "source": "https://www.fangraphs.com/roster-resource/depth-charts",
  "applied": [
   {
-   "team": "ATH",
-   "name": "Cole Conn",
-   "mlbamId": 813833,
+   "team": "BAL",
+   "name": "Aron Estrada",
+   "mlbamId": 800406,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "ATH",
-   "name": "Raymond Burgos",
-   "mlbamId": 670103,
-   "change": "moved from BOS with his contract",
-   "move": "2026-11-17: Traded to Athletics for SP Kenya Huggins"
+   "team": "BAL",
+   "name": "Enrique Bradfield",
+   "mlbamId": 690961,
+   "change": "added to the roster at the minimum"
   },
   {
-   "team": "ATH",
-   "name": "Yaqui Rivera",
-   "mlbamId": 700072,
+   "team": "BAL",
+   "name": "Michael Forret",
+   "mlbamId": 702650,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "BAL",
+   "name": "Nestor German",
+   "mlbamId": 815148,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "BAL",
+   "name": "Levi Wells",
+   "mlbamId": 694370,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "BAL",
+   "name": "Braden Nett",
+   "mlbamId": 804556,
+   "change": "moved from ATH with his contract",
+   "move": "2026-11-19: Lost off waivers to Orioles"
+  },
+  {
+   "team": "BAL",
+   "name": "Braxton Bragg",
+   "mlbamId": 688867,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "BAL",
+   "name": "Patrick Reilly",
+   "mlbamId": 694345,
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "ATL",
@@ -37,11 +69,11 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "ATL",
-   "name": "Cameron Foster",
-   "mlbamId": 671382,
+   "team": "ATH",
+   "name": "Cole Conn",
+   "mlbamId": 813833,
    "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Claimed off waivers from Orioles"
+   "move": "2026-11-17: Contract selected from minors"
   },
   {
    "team": "ARI",
@@ -86,41 +118,6 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "COL",
-   "name": "Bryant Betancourt",
-   "mlbamId": 700164,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "COL",
-   "name": "Jack Mahoney",
-   "mlbamId": 694968,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "COL",
-   "name": "Jackson Cox",
-   "mlbamId": 702484,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "CWS",
-   "name": "William Bergolla Jr.",
-   "mlbamId": 703151,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "CWS",
-   "name": "Jaden Woods",
-   "mlbamId": 692243,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
    "team": "CLE",
    "name": "Kody Huff",
    "mlbamId": 687627,
@@ -140,6 +137,13 @@
    "mlbamId": 683235,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "CHC",
+   "name": "Joey Bart",
+   "mlbamId": 663698,
+   "change": "moved from CWS with his contract",
+   "move": "2026-11-20: Lost off waivers to Cubs"
   },
   {
    "team": "CHC",
@@ -163,6 +167,55 @@
    "move": "2026-11-19: Lost off waivers to Cubs"
   },
   {
+   "team": "CHC",
+   "name": "Braxton Roxby",
+   "mlbamId": 694820,
+   "change": "moved from WSH with his contract",
+   "move": "2026-11-20: Traded to Cubs for cash"
+  },
+  {
+   "team": "CWS",
+   "name": "William Bergolla Jr.",
+   "mlbamId": 703151,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "CWS",
+   "name": "Jaden Woods",
+   "mlbamId": 692243,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "COL",
+   "name": "Bryant Betancourt",
+   "mlbamId": 700164,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "COL",
+   "name": "Jack Mahoney",
+   "mlbamId": 694968,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "COL",
+   "name": "Jackson Cox",
+   "mlbamId": 702484,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "COL",
+   "name": "Chase Lee",
+   "mlbamId": 695445,
+   "change": "moved from TOR with his contract",
+   "move": "2026-11-20: Traded to Rockies for cash"
+  },
+  {
    "team": "HOU",
    "name": "Jackson Nezuh",
    "mlbamId": 694545,
@@ -175,41 +228,6 @@
    "mlbamId": 682126,
    "change": "added to the roster at the minimum",
    "move": "2026-11-02: Contract selected from minors"
-  },
-  {
-   "team": "DET",
-   "name": "Josue Briceno",
-   "mlbamId": 800522,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "DET",
-   "name": "Max Anderson",
-   "mlbamId": 801194,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "DET",
-   "name": "Peyton Graham",
-   "mlbamId": 689931,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "LAA",
-   "name": "Nelson Rada",
-   "mlbamId": 703185,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "LAA",
-   "name": "Raudi Rodriguez",
-   "mlbamId": 804558,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
   },
   {
    "team": "LAD",
@@ -240,18 +258,30 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "NYM",
-   "name": "Jefferson Rojas",
-   "mlbamId": 800473,
+   "team": "DET",
+   "name": "Josue Briceno",
+   "mlbamId": 800522,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "DET",
+   "name": "Max Anderson",
+   "mlbamId": 801194,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "DET",
+   "name": "Peyton Graham",
+   "mlbamId": 689931,
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "MIL",
    "name": "Matthew Wood",
    "mlbamId": 687783,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "MIL",
@@ -285,15 +315,28 @@
    "team": "MIL",
    "name": "Cameron Wagoner",
    "mlbamId": 687726,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "NYY",
+   "name": "Garrett Martin",
+   "mlbamId": 682003,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "MIL",
-   "name": "Ryan Walker",
-   "mlbamId": 676254,
-   "change": "added to the roster at his arbitration estimate",
-   "move": "2026-11-15: Acquired from Giants for SP Gavin Perry and RP Blake Holub"
+   "team": "NYY",
+   "name": "Carlos Lagrange",
+   "mlbamId": 801739,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "NYY",
+   "name": "Kyle Carr",
+   "mlbamId": 694805,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
   },
   {
    "team": "MIA",
@@ -324,54 +367,6 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "NYY",
-   "name": "Garrett Martin",
-   "mlbamId": 682003,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "NYY",
-   "name": "Carlos Lagrange",
-   "mlbamId": 801739,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "NYY",
-   "name": "Kyle Carr",
-   "mlbamId": 694805,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "NYY",
-   "name": "Chase Hampton",
-   "mlbamId": 694633,
-   "change": "moved from BAL with his contract",
-   "move": "2026-11-17: Lost off waivers to Yankees"
-  },
-  {
-   "team": "PHI",
-   "name": "Johan Rojas",
-   "mlbamId": 679032,
-   "change": "added to the roster at the minimum"
-  },
-  {
-   "team": "SD",
-   "name": "Ian Koenig",
-   "mlbamId": 701617,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "SD",
-   "name": "Tucker Musgrove",
-   "mlbamId": 814491,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
    "team": "PIT",
    "name": "Axiel Plaz",
    "mlbamId": 800208,
@@ -386,11 +381,23 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
+   "team": "PHI",
+   "name": "Johan Rojas",
+   "mlbamId": 679032,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "PHI",
+   "name": "Jordan Leasure",
+   "mlbamId": 673929,
+   "change": "added to the roster at his arbitration estimate",
+   "move": "2026-11-20: Agreed to one-year contract (2027), avoiding arbitration"
+  },
+  {
    "team": "SEA",
    "name": "Isaac Mattson",
    "mlbamId": 676755,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-02: Claimed off waivers from Pirates"
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "SF",
@@ -414,34 +421,6 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "WSH",
-   "name": "Jarlin Susana",
-   "mlbamId": 703186,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "WSH",
-   "name": "Travis Sykora",
-   "mlbamId": 805809,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "WSH",
-   "name": "Alejandro Rosario",
-   "mlbamId": 691730,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "WSH",
-   "name": "Philip Abner",
-   "mlbamId": 691769,
-   "change": "moved from BAL with his contract",
-   "move": "2026-11-17: Lost off waivers to Nationals"
-  },
-  {
    "team": "STL",
    "name": "Jesus Baez",
    "mlbamId": 800305,
@@ -454,6 +433,13 @@
    "mlbamId": 813838,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "TB",
+   "name": "Christian Koss",
+   "mlbamId": 683766,
+   "change": "moved from SF with his contract",
+   "move": "2026-11-20: Traded to Rays for RP Cole Stokes"
   },
   {
    "team": "TOR",
@@ -484,18 +470,43 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "ATH",
-   "name": "Yunior Tur",
-   "mlbamId": 814305,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "team": "WSH",
+   "name": "Jarlin Susana",
+   "mlbamId": 703186,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "WSH",
+   "name": "Travis Sykora",
+   "mlbamId": 805809,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "WSH",
+   "name": "Alejandro Rosario",
+   "mlbamId": 691730,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "WSH",
+   "name": "Philip Abner",
+   "mlbamId": 691769,
+   "change": "moved from BAL with his contract"
+  },
+  {
+   "team": "BAL",
+   "name": "Zach Morgan",
+   "mlbamId": 681439,
+   "change": "off the 40-man"
   },
   {
    "team": "ATH",
    "name": "Hayden Juenger",
    "mlbamId": 696522,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Cleared waivers; outrighted to minors"
   },
   {
    "team": "CIN",
@@ -504,11 +515,39 @@
    "change": "off the 40-man"
   },
   {
-   "team": "CWS",
-   "name": "Joey Bart",
-   "mlbamId": 663698,
+   "team": "CLE",
+   "name": "David Fry",
+   "mlbamId": 681807,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "CHC",
+   "name": "Gabriel Arias",
+   "mlbamId": 672356,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "CHC",
+   "name": "Ethan Roberts",
+   "mlbamId": 681799,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "COL",
+   "name": "Jimmy Herget",
+   "mlbamId": 623474,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "HOU",
+   "name": "Taylor Trammell",
+   "mlbamId": 666211,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
   },
   {
    "team": "HOU",
@@ -518,102 +557,87 @@
    "move": "2026-11-17: Outrighted to minors"
   },
   {
-   "team": "DET",
-   "name": "Matt Vierling",
-   "mlbamId": 663837,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
-  },
-  {
-   "team": "DET",
-   "name": "Trey Sweeney",
-   "mlbamId": 700242,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
-  },
-  {
-   "team": "DET",
-   "name": "Jake Miller",
-   "mlbamId": 805725,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
-  },
-  {
-   "team": "LAD",
-   "name": "Jake Cousins",
-   "mlbamId": 664776,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
-  },
-  {
    "team": "NYM",
-   "name": "Dylan Ross",
-   "mlbamId": 697811,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "name": "Darwinzon Hernández",
+   "mlbamId": 678226,
+   "change": "off the 40-man"
   },
   {
-   "team": "MIN",
-   "name": "Bailey Ober",
-   "mlbamId": 641927,
+   "team": "PHI",
+   "name": "Bryan De La Cruz",
+   "mlbamId": 650559,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "PHI",
+   "name": "Brett Harris",
+   "mlbamId": 695391,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "PHI",
+   "name": "Andrew Hoffmann",
+   "mlbamId": 694851,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "SD",
+   "name": "JP Sears",
+   "mlbamId": 676664,
+   "change": "off the 40-man",
+   "move": "2026-11-20: Non-tendered"
+  },
+  {
+   "team": "SD",
+   "name": "Garrett Hawkins",
+   "mlbamId": 678184,
    "change": "off the 40-man",
    "move": "2026-11-20: Non-tendered"
   },
   {
    "team": "SF",
-   "name": "Rowan Wick",
-   "mlbamId": 592858,
+   "name": "Victor Bericoto",
+   "mlbamId": 682674,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
   },
   {
-   "team": "SF",
-   "name": "Christian Koss",
-   "mlbamId": 683766,
+   "team": "TB",
+   "name": "Cole Sulser",
+   "mlbamId": 642121,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
   },
   {
    "team": "WSH",
    "name": "Josiah Gray",
    "mlbamId": 680686,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
-  },
-  {
-   "team": "WSH",
-   "name": "Gus Varland",
-   "mlbamId": 681402,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
   },
   {
    "team": "WSH",
    "name": "Carson Palmquist",
    "mlbamId": 687223,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
   },
   {
    "team": "WSH",
-   "name": "Braxton Roxby",
-   "mlbamId": 694820,
+   "name": "Jared Simpson",
+   "mlbamId": 688692,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
   },
   {
-   "team": "STL",
-   "name": "Max Rajcic",
-   "mlbamId": 691008,
+   "team": "TEX",
+   "name": "José Buttó",
+   "mlbamId": 676130,
    "change": "off the 40-man",
-   "move": "2026-11-17: Designated for assignment (pending)"
-  },
-  {
-   "team": "TOR",
-   "name": "Chase Lee",
-   "mlbamId": 695445,
-   "change": "off the 40-man",
-   "move": "2026-11-19: Designated for assignment (pending)"
+   "move": "2026-11-20: Non-tendered"
   },
   {
    "team": "TEX",
@@ -632,31 +656,11 @@
  ],
  "reported": [
   {
-   "team": "BAL",
-   "name": "",
-   "mlbamId": null,
-   "change": "11 differences from RosterResource, more than the 10 we apply on our own; left as Cot's has it"
-  },
-  {
    "team": "NYM",
    "name": "Darwinzon Hernandez",
    "mlbamId": 650382,
    "change": "signed as a free agent; contract unknown until Cot's adds it",
    "move": "2026-11-19: Agreed to three-year contract (2027-29)"
-  },
-  {
-   "team": "NYY",
-   "name": "Jonathan Loaisiga",
-   "mlbamId": 642528,
-   "change": "signed as a free agent; contract unknown until Cot's adds it",
-   "move": "2026-11-20: Agreed to two-year contract (2027-28)"
-  },
-  {
-   "team": "ATH",
-   "name": "Braden Nett",
-   "mlbamId": 804556,
-   "change": "on BAL's 40-man per RosterResource; left as Cot's has it",
-   "move": "2026-11-19: Claimed off waivers from Athletics"
   },
   {
    "team": "CLE",

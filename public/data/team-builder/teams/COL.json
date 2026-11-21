@@ -101,7 +101,7 @@
    "cotsEstimate": 4510000,
    "mlbamId": 696100,
    "salarySource": "mlbtr-arb",
-   "war": 1.9,
+   "war": 1.91,
    "pa": 536
   },
   {
@@ -157,24 +157,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.18,
    "ip": 66
-  },
-  {
-   "name": "Jimmy Herget",
-   "sheetName": "Herget, Jimmy",
-   "pos": "rhp",
-   "age": 33,
-   "mls": 5.069,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 2400000,
-   "taxValue": 2400000,
-   "salaryPrevYear": 1550000,
-   "arbYear": 3,
-   "cotsEstimate": 2250000,
-   "mlbamId": 623474,
-   "salarySource": "mlbtr-arb",
-   "war": 0,
-   "ip": 70
   },
   {
    "name": "Jordan Beck",
@@ -239,8 +221,8 @@
    "salaryPrevYear": 769144,
    "mlbamId": 688642,
    "salarySource": "minimum",
-   "war": -0.29,
-   "ip": 54
+   "war": -0.31,
+   "ip": 57
   },
   {
    "name": "Tanner Gordon",
@@ -287,8 +269,8 @@
    "salaryPrevYear": 597043,
    "mlbamId": 676105,
    "salarySource": "minimum",
-   "war": 0.12,
-   "ip": 30
+   "war": 0.15,
+   "ip": 38
   },
   {
    "name": "Chase Dollander",
@@ -303,8 +285,8 @@
    "salaryPrevYear": 782000,
    "mlbamId": 801403,
    "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 1
+   "war": 0.32,
+   "ip": 26.4
   },
   {
    "name": "Brett Sullivan",
@@ -463,7 +445,7 @@
    "salaryPrevYear": 281905,
    "mlbamId": 691182,
    "salarySource": "minimum",
-   "war": 0.39,
+   "war": 0.4,
    "pa": 302
   },
   {
@@ -479,8 +461,8 @@
    "salaryPrevYear": 439757,
    "mlbamId": 680604,
    "salarySource": "minimum",
-   "war": -0.07,
-   "ip": 38
+   "war": -0.08,
+   "ip": 44
   },
   {
    "name": "Cole Carrigg",
@@ -543,8 +525,8 @@
    "salaryPrevYear": 242419,
    "mlbamId": 693308,
    "salarySource": "minimum",
-   "war": 0.08,
-   "ip": 54
+   "war": 0.09,
+   "ip": 58
   },
   {
    "name": "Mark Manfredi",
@@ -560,7 +542,7 @@
    "mlbamId": 815081,
    "salarySource": "minimum",
    "war": 0.02,
-   "ip": 48
+   "ip": 52
   },
   {
    "name": "Sterlin Thompson",
@@ -575,7 +557,7 @@
    "salaryPrevYear": 231983,
    "mlbamId": 694514,
    "salarySource": "minimum",
-   "war": 0.1,
+   "war": 0.11,
    "pa": 70
   },
   {
@@ -658,8 +640,25 @@
    "mlbamId": 702484,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.19,
-   "ip": 27.7
+   "war": 0.12,
+   "ip": 18.5
+  },
+  {
+   "name": "Chase Lee",
+   "sheetName": "Lee, Chase",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.119,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 695445,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from TOR",
+   "war": -0.03,
+   "ip": 28
   }
  ],
  "deadMoney": [
@@ -690,12 +689,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 106899286,
@@ -748,7 +747,7 @@
    "name": "Jake Brooks",
    "pos": "sp",
    "age": 25,
-   "war": 0.78,
+   "war": 0.79,
    "ip": 200,
    "salary": 780000,
    "debuted": false

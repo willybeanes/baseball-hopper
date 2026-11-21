@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 592885,
    "salarySource": "cots",
-   "war": 0.47,
+   "war": 0.48,
    "pa": 442
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": true,
    "mlbamId": 661388,
    "salarySource": "cots",
-   "war": 4.27,
+   "war": 4.28,
    "pa": 568
   },
   {
@@ -68,7 +68,7 @@
    "cotsEstimate": 9250000,
    "mlbamId": 683734,
    "salarySource": "mlbtr-arb",
-   "war": 0.83,
+   "war": 0.84,
    "pa": 450
   },
   {
@@ -85,7 +85,7 @@
    "walkYear": false,
    "mlbamId": 694192,
    "salarySource": "cots",
-   "war": 3.91,
+   "war": 3.92,
    "pa": 648
   },
   {
@@ -181,15 +181,14 @@
    "pos": "ss-3b",
    "age": 28,
    "mls": 3.03,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 2400000,
-   "taxValue": 2400000,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 2250000,
+   "taxValue": 2250000,
    "salaryPrevYear": 790400,
-   "arbYear": 1,
-   "cotsEstimate": 2250000,
+   "walkYear": false,
    "mlbamId": 687401,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 1.39,
    "pa": 329
   },
@@ -235,15 +234,14 @@
    "pos": "lhp-s",
    "age": 28,
    "mls": 3.074,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1000000,
-   "taxValue": 1000000,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 1500000,
+   "taxValue": 1500000,
    "salaryPrevYear": 788000,
-   "arbYear": 1,
-   "cotsEstimate": 1500000,
+   "walkYear": false,
    "mlbamId": 669084,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.25,
    "ip": 62
   },
@@ -271,15 +269,14 @@
    "pos": "lhp",
    "age": 27,
    "mls": 4.082,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
+   "contract": "1 y/$1.195M (27)",
+   "status": "signed",
+   "salary": 1195000,
+   "taxValue": 1195000,
    "salaryPrevYear": 1095000,
-   "arbYear": 2,
-   "cotsEstimate": 1200000,
+   "walkYear": false,
    "mlbamId": 672582,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.3,
    "ip": 26
   },
@@ -289,15 +286,14 @@
    "pos": "rhp",
    "age": 30,
    "mls": 3.007,
-   "contract": "A1",
-   "status": "arb",
+   "contract": "1 y (27)",
+   "status": "signed",
    "salary": 1000000,
    "taxValue": 1000000,
    "salaryPrevYear": 770224,
-   "arbYear": 1,
-   "cotsEstimate": 1000000,
+   "walkYear": false,
    "mlbamId": 681982,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.09,
    "ip": 42
   },
@@ -318,6 +314,23 @@
    "salarySource": "mlbtr-arb",
    "war": 1.43,
    "ip": 139.6
+  },
+  {
+   "name": "Ryan Walker",
+   "sheetName": "Walker, Ryan",
+   "pos": "rhp-c",
+   "age": 31,
+   "mls": 3.05,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 1000000,
+   "taxValue": 1000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 676254,
+   "salarySource": "cots",
+   "war": 0.08,
+   "ip": 40
   },
   {
    "name": "Abner Uribe",
@@ -590,8 +603,8 @@
    "mlbamId": 702726,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.19,
-   "pa": 57
+   "war": 0.18,
+   "pa": 54
   },
   {
    "name": "Dylan O'Rae",
@@ -660,24 +673,6 @@
    "corrected": "Added from RosterResource",
    "war": 0.1,
    "ip": 24
-  },
-  {
-   "name": "Ryan Walker",
-   "sheetName": "",
-   "pos": "rhp",
-   "age": 31,
-   "mls": 3.05,
-   "contract": "Added to the 40-man",
-   "status": "arb",
-   "arbYear": 1,
-   "salary": 1600000,
-   "taxValue": 1600000,
-   "salaryPrevYear": null,
-   "mlbamId": 676254,
-   "salarySource": "mlbtr-arb",
-   "corrected": "Added from RosterResource",
-   "war": 0.08,
-   "ip": 40
   }
  ],
  "deadMoney": [
@@ -701,8 +696,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -717,10 +712,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 114268396,
- "sheetTaxPayroll": 138120988,
- "rowsPayroll": 114268396,
- "rowsTaxPayroll": 138120988,
+ "sheetPayroll": 114413396,
+ "sheetTaxPayroll": 138265988,
+ "rowsPayroll": 114413396,
+ "rowsTaxPayroll": 138265988,
  "minors": [
   {
    "mlbamId": 824620,

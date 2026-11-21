@@ -36,7 +36,7 @@
     "type": "opt-out",
     "buyout": 5000000
    },
-   "war": 3.17,
+   "war": 3.18,
    "pa": 616
   },
   {
@@ -53,7 +53,7 @@
    "walkYear": false,
    "mlbamId": 596019,
    "salarySource": "cots",
-   "war": 4.65,
+   "war": 4.66,
    "pa": 708
   },
   {
@@ -213,38 +213,19 @@
    "pa": 398
   },
   {
-   "name": "Christopher Morel",
-   "sheetName": "Morel, Christopher",
-   "pos": "1b-3b-lf",
-   "age": 27,
-   "mls": 4.08,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 2100000,
-   "taxValue": 2100000,
-   "salaryPrevYear": 175187,
-   "arbYear": 2,
-   "cotsEstimate": 2000000,
-   "mlbamId": 666624,
-   "salarySource": "mlbtr-arb",
-   "war": 0.08,
-   "pa": 55
-  },
-  {
    "name": "Cionel Pérez",
    "sheetName": "Pérez, Cionel",
    "pos": "lhp",
    "age": 31,
    "mls": 5.139,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 1200000,
-   "taxValue": 1200000,
+   "contract": "1 y/$1.9M (27)",
+   "status": "signed",
+   "salary": 1900000,
+   "taxValue": 1900000,
    "salaryPrevYear": 504706,
-   "arbYear": 3,
-   "cotsEstimate": 1550000,
+   "walkYear": true,
    "mlbamId": 672335,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.22,
    "ip": 43
   },
@@ -263,8 +244,8 @@
    "cotsEstimate": 1500000,
    "mlbamId": 668901,
    "salarySource": "mlbtr-arb",
-   "war": 0.52,
-   "pa": 250
+   "war": 0.53,
+   "pa": 254
   },
   {
    "name": "Reed Garrett",
@@ -290,15 +271,14 @@
    "pos": "rhp",
    "age": 31,
    "mls": 3.137,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1200000,
-   "taxValue": 1200000,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 1100000,
+   "taxValue": 1100000,
    "salaryPrevYear": 724128,
-   "arbYear": 1,
-   "cotsEstimate": 1100000,
+   "walkYear": false,
    "mlbamId": 681810,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.15,
    "ip": 45
   },
@@ -349,7 +329,7 @@
    "salaryPrevYear": 572319,
    "mlbamId": 677595,
    "salarySource": "minimum",
-   "war": 0.15,
+   "war": 0.16,
    "pa": 103
   },
   {
@@ -381,8 +361,8 @@
    "salaryPrevYear": 243851,
    "mlbamId": 476594,
    "salarySource": "minimum",
-   "war": 0.25,
-   "ip": 24.9
+   "war": 0.23,
+   "ip": 22.9
   },
   {
    "name": "Tobias Myers",
@@ -413,8 +393,24 @@
    "salaryPrevYear": 1150000,
    "mlbamId": 676724,
    "salarySource": "minimum",
-   "war": 0.92,
+   "war": 0.93,
    "pa": 380
+  },
+  {
+   "name": "Gus Varland",
+   "sheetName": "Varland, Gus",
+   "pos": "rhp",
+   "age": 30,
+   "mls": 1.096,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 681402,
+   "salarySource": "minimum",
+   "war": 0.01,
+   "ip": 16
   },
   {
    "name": "Pierson Ohl",
@@ -430,7 +426,7 @@
    "mlbamId": 701487,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 8
+   "ip": 6
   },
   {
    "name": "Nate Lavender",
@@ -477,8 +473,8 @@
    "salaryPrevYear": 780416,
    "mlbamId": 663795,
    "salarySource": "minimum",
-   "war": 0.15,
-   "ip": 28.2
+   "war": 0.13,
+   "ip": 18.2
   },
   {
    "name": "Carson Benge",
@@ -511,22 +507,6 @@
    "salarySource": "minimum",
    "war": 2.47,
    "pa": 527
-  },
-  {
-   "name": "Hayden Senger",
-   "sheetName": "Senger, Hayden",
-   "pos": "c",
-   "age": 30,
-   "mls": 0.133,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 297177,
-   "mlbamId": 663584,
-   "salarySource": "minimum",
-   "war": 0.01,
-   "pa": 22
   },
   {
    "name": "Zach Thornton",
@@ -593,6 +573,22 @@
    "ip": 28
   },
   {
+   "name": "Yunior Tur",
+   "sheetName": "Tur, Yunior",
+   "pos": "rhp",
+   "age": 27,
+   "mls": 0.04,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 814305,
+   "salarySource": "minimum",
+   "war": 0,
+   "ip": 8
+  },
+  {
    "name": "Nick Morabito",
    "sheetName": "Morabito, Nick",
    "pos": "of",
@@ -622,7 +618,7 @@
    "mlbamId": 674073,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 12
+   "ip": 10
   },
   {
    "name": "Jack Anderson",
@@ -642,18 +638,17 @@
   },
   {
    "name": "Jefferson Rojas",
-   "sheetName": "",
-   "pos": "3b-ss-2b",
+   "sheetName": "Rojas, Jefferson",
+   "pos": "2b",
    "age": 22,
    "mls": 0,
-   "contract": "Added to the 40-man",
+   "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": null,
    "mlbamId": 800473,
    "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
    "war": 0.07,
    "pa": 37
   }
@@ -682,22 +677,28 @@
    "salary": 2800000,
    "taxValue": 2800000,
    "note": ""
+  },
+  {
+   "name": "Darwinzon Hernández",
+   "salary": 4166667,
+   "taxValue": 4000000,
+   "note": "off the 40-man (RosterResource)"
   }
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 267995474,
- "sheetTaxPayroll": 281280858,
- "rowsPayroll": 267995474,
- "rowsTaxPayroll": 281280858,
+ "sheetPayroll": 270512141,
+ "sheetTaxPayroll": 283630858,
+ "rowsPayroll": 270512141,
+ "rowsTaxPayroll": 283630858,
  "minors": [
   {
    "mlbamId": 695558,
@@ -810,22 +811,22 @@
    "debuted": false
   },
   {
+   "mlbamId": 691006,
+   "name": "Kevin Parada",
+   "pos": "c",
+   "age": 25,
+   "war": 0.96,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 809950,
    "name": "Dakota Hawkins",
    "pos": "sp",
    "age": 27,
    "war": 0.95,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 691006,
-   "name": "Kevin Parada",
-   "pos": "c",
-   "age": 25,
-   "war": 0.95,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },
@@ -920,16 +921,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 697811,
-   "name": "Dylan Ross",
-   "pos": "rp",
-   "age": 26,
-   "war": 0.46,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 809784,
    "name": "Garrett Stratton",
    "pos": "rp",
@@ -974,7 +965,7 @@
    "name": "Channing Austin",
    "pos": "sp",
    "age": 25,
-   "war": 0.13,
+   "war": 0.14,
    "ip": 200,
    "salary": 780000,
    "debuted": false

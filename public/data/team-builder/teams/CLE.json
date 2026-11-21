@@ -71,7 +71,7 @@
    "cotsEstimate": 8200000,
    "mlbamId": 666176,
    "salarySource": "mlbtr-arb",
-   "war": 1.03,
+   "war": 1.04,
    "pa": 513
   },
   {
@@ -236,24 +236,6 @@
    "ip": 66.7
   },
   {
-   "name": "David Fry",
-   "sheetName": "Fry, David",
-   "pos": "c-inf-lf-rf",
-   "age": 31,
-   "mls": 3.154,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1900000,
-   "taxValue": 1900000,
-   "salaryPrevYear": 1375000,
-   "arbYear": 2,
-   "cotsEstimate": 1575000,
-   "mlbamId": 681807,
-   "salarySource": "mlbtr-arb",
-   "war": 0.32,
-   "pa": 203
-  },
-  {
    "name": "Matt Festa",
    "sheetName": "Festa, Matt",
    "pos": "rhp",
@@ -367,7 +349,7 @@
    "mlbamId": 700932,
    "salarySource": "minimum",
    "war": 0.51,
-   "pa": 321
+   "pa": 318
   },
   {
    "name": "Erik Sabrowski",
@@ -510,8 +492,8 @@
    "salaryPrevYear": 605429,
    "mlbamId": 690984,
    "salarySource": "minimum",
-   "war": 0.46,
-   "pa": 206
+   "war": 0.51,
+   "pa": 226
   },
   {
    "name": "C.J. Kayfus",
@@ -526,8 +508,8 @@
    "salaryPrevYear": 193783,
    "mlbamId": 692216,
    "salarySource": "minimum",
-   "war": 0.15,
-   "pa": 81
+   "war": 0.19,
+   "pa": 102
   },
   {
    "name": "Franco Aleman",
@@ -558,7 +540,7 @@
    "salaryPrevYear": 270475,
    "mlbamId": 694197,
    "salarySource": "minimum",
-   "war": 1.1,
+   "war": 1.11,
    "pa": 225
   },
   {
@@ -606,8 +588,8 @@
    "salaryPrevYear": 109279,
    "mlbamId": 694876,
    "salarySource": "minimum",
-   "war": 0.59,
-   "pa": 94
+   "war": 0.71,
+   "pa": 114
   },
   {
    "name": "Austin Peterson",
@@ -660,7 +642,7 @@
   {
    "name": "Kody Huff",
    "sheetName": "",
-   "pos": "c-1b-3b",
+   "pos": "c-inf",
    "age": 26,
    "mls": 0,
    "contract": "Added to the 40-man",
@@ -671,8 +653,8 @@
    "mlbamId": 687627,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.19,
-   "pa": 90
+   "war": 0.25,
+   "pa": 178
   },
   {
    "name": "Jaison Chourio",
@@ -755,12 +737,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 91858140,
@@ -803,7 +785,7 @@
    "name": "Ralphy Velazquez",
    "pos": "1b",
    "age": 22,
-   "war": 1.47,
+   "war": 1.49,
    "pa": 600,
    "salary": 780000,
    "debuted": false

@@ -49,7 +49,7 @@
    "walkYear": true,
    "mlbamId": 656811,
    "salarySource": "cots",
-   "war": 0.75,
+   "war": 0.77,
    "pa": 478
   },
   {
@@ -155,7 +155,7 @@
    "cotsEstimate": 2250000,
    "mlbamId": 693304,
    "salarySource": "mlbtr-arb",
-   "war": 1.57,
+   "war": 1.58,
    "pa": 527
   },
   {
@@ -254,15 +254,14 @@
    "pos": "of",
    "age": 28,
    "mls": 3.082,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
+   "contract": "1 y (27)",
+   "status": "signed",
+   "salary": 1200000,
+   "taxValue": 1200000,
    "salaryPrevYear": null,
-   "arbYear": 1,
-   "cotsEstimate": 1200000,
+   "walkYear": false,
    "mlbamId": 668731,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": -0.03,
    "pa": 120
   },
@@ -473,7 +472,7 @@
    "salaryPrevYear": 504167,
    "mlbamId": 699013,
    "salarySource": "minimum",
-   "war": 1.53,
+   "war": 1.54,
    "pa": 442
   },
   {
@@ -525,22 +524,6 @@
    "pa": 300
   },
   {
-   "name": "Noah Murdock",
-   "sheetName": "Murdock, Noah",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.06,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 103162,
-   "mlbamId": 668716,
-   "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 26
-  },
-  {
    "name": "Jhostynxon Garcia",
    "sheetName": "Garcia, Jhostynxon",
    "pos": "of",
@@ -569,8 +552,8 @@
    "salaryPrevYear": 214774,
    "mlbamId": 682995,
    "salarySource": "minimum",
-   "war": 0.35,
-   "ip": 58.9
+   "war": 0.36,
+   "ip": 61.9
   },
   {
    "name": "Antwone Kelly",
@@ -601,8 +584,8 @@
    "salaryPrevYear": 132732,
    "mlbamId": 694753,
    "salarySource": "minimum",
-   "war": 0.2,
-   "ip": 43.7
+   "war": 0.21,
+   "ip": 47.7
   },
   {
    "name": "Thomas Harrington",
@@ -618,7 +601,7 @@
    "mlbamId": 802419,
    "salarySource": "minimum",
    "war": 0.04,
-   "ip": 17.2
+   "ip": 19.2
   },
   {
    "name": "Jack Brannigan",
@@ -707,16 +690,6 @@
  "rowsPayroll": 100458433,
  "rowsTaxPayroll": 124747761,
  "minors": [
-  {
-   "mlbamId": 809733,
-   "name": "Connor Wietgrefe",
-   "pos": "sp",
-   "age": 25,
-   "war": 1.69,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
   {
    "mlbamId": 809092,
    "name": "Murf Gray",
@@ -842,7 +815,7 @@
    "name": "Kyler Fedko",
    "pos": "lf",
    "age": 27,
-   "war": 0.59,
+   "war": 0.6,
    "pa": 600,
    "salary": 780000,
    "debuted": true

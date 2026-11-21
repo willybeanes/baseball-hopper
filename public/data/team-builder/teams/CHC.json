@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 608324,
    "salarySource": "cots",
-   "war": 3.28,
+   "war": 3.34,
    "pa": 606
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 621020,
    "salarySource": "cots",
-   "war": 2.4,
+   "war": 2.41,
    "pa": 502
   },
   {
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 691718,
    "salarySource": "cots",
-   "war": 6.45,
+   "war": 6.46,
    "pa": 650
   },
   {
@@ -137,7 +137,7 @@
    "cotsEstimate": 4860000,
    "mlbamId": 683737,
    "salarySource": "mlbtr-arb",
-   "war": 2.05,
+   "war": 2.06,
    "pa": 605
   },
   {
@@ -155,7 +155,7 @@
    "cotsEstimate": 2800000,
    "mlbamId": 665871,
    "salarySource": "mlbtr-arb",
-   "war": 0.71,
+   "war": 0.72,
    "ip": 144.5
   },
   {
@@ -208,8 +208,8 @@
    "cotsEstimate": 1808500,
    "mlbamId": 665804,
    "salarySource": "mlbtr-arb",
-   "war": 1.5,
-   "pa": 343
+   "war": 1.45,
+   "pa": 358
   },
   {
    "name": "Braxton Garrett",
@@ -283,42 +283,6 @@
    "ip": 60
   },
   {
-   "name": "Gabriel Arias",
-   "sheetName": "Arias, Gabriel",
-   "pos": "ss-3b-2b",
-   "age": 27,
-   "mls": 3.124,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
-   "salaryPrevYear": 167074,
-   "arbYear": 1,
-   "cotsEstimate": 1200000,
-   "mlbamId": 672356,
-   "salarySource": "mlbtr-arb",
-   "war": 0.12,
-   "pa": 122
-  },
-  {
-   "name": "Ethan Roberts",
-   "sheetName": "Roberts, Ethan",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 3.08,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": 268891,
-   "arbYear": 1,
-   "cotsEstimate": 875000,
-   "mlbamId": 681799,
-   "salarySource": "mlbtr-arb",
-   "war": -0.06,
-   "ip": 25
-  },
-  {
    "name": "Porter Hodge",
    "sheetName": "Hodge, Porter",
    "pos": "rhp",
@@ -332,7 +296,7 @@
    "mlbamId": 687863,
    "salarySource": "minimum",
    "war": 0.12,
-   "ip": 21
+   "ip": 22
   },
   {
    "name": "Ryan Zeferjahn",
@@ -379,7 +343,7 @@
    "salaryPrevYear": 804500,
    "mlbamId": 807713,
    "salarySource": "minimum",
-   "war": 1.33,
+   "war": 1.4,
    "pa": 386
   },
   {
@@ -491,8 +455,8 @@
    "salaryPrevYear": 557802,
    "mlbamId": 699393,
    "salarySource": "minimum",
-   "war": 0.68,
-   "pa": 456
+   "war": 0.63,
+   "pa": 437
   },
   {
    "name": "Justin Dean",
@@ -507,8 +471,8 @@
    "salaryPrevYear": 284215,
    "mlbamId": 681909,
    "salarySource": "minimum",
-   "war": -0.07,
-   "pa": 45
+   "war": -0.11,
+   "pa": 77
   },
   {
    "name": "Kevin Alcántara",
@@ -523,8 +487,8 @@
    "salaryPrevYear": 403295,
    "mlbamId": 682634,
    "salarySource": "minimum",
-   "war": 0.39,
-   "pa": 295
+   "war": 0.43,
+   "pa": 323
   },
   {
    "name": "Jayden Murray",
@@ -539,8 +503,8 @@
    "salaryPrevYear": 88237,
    "mlbamId": 681151,
    "salarySource": "minimum",
-   "war": -0.07,
-   "ip": 18
+   "war": -0.09,
+   "ip": 24
   },
   {
    "name": "BJ Murray",
@@ -555,7 +519,7 @@
    "salaryPrevYear": 74310,
    "mlbamId": 681230,
    "salarySource": "minimum",
-   "war": 0.36,
+   "war": 0.35,
    "pa": 299
   },
   {
@@ -571,8 +535,27 @@
    "salaryPrevYear": 155545,
    "mlbamId": 701649,
    "salarySource": "minimum",
-   "war": 0.11,
-   "pa": 110
+   "war": 0.14,
+   "pa": 126
+  },
+  {
+   "name": "Joey Bart",
+   "sheetName": "Bart, Joey",
+   "pos": "c",
+   "age": 30,
+   "mls": 5.02,
+   "contract": "A3",
+   "status": "arb",
+   "salary": 2900000,
+   "taxValue": 2900000,
+   "salaryPrevYear": null,
+   "arbYear": 3,
+   "cotsEstimate": 3000000,
+   "mlbamId": 663698,
+   "salarySource": "mlbtr-arb",
+   "corrected": "RosterResource: moved from CWS",
+   "war": 0.46,
+   "pa": 209
   },
   {
    "name": "Jaxon Wiggins",
@@ -618,12 +601,29 @@
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
-   "salaryPrevYear": 124315,
+   "salaryPrevYear": null,
    "mlbamId": 694646,
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from NYM",
    "war": 0.06,
    "ip": 16
+  },
+  {
+   "name": "Braxton Roxby",
+   "sheetName": "Roxby, Braxton",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.019,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694820,
+   "salarySource": "minimum",
+   "corrected": "RosterResource: moved from WSH",
+   "war": -0.01,
+   "ip": 8
   }
  ],
  "deadMoney": [
@@ -672,12 +672,12 @@
  ],
  "benefits": 18500000,
  "bonusPool": 1666667,
- "threshold": 247000000,
+ "threshold": 244000000,
  "tiers": [
-  247000000,
-  267000000,
-  287000000,
-  307000000
+  244000000,
+  264000000,
+  284000000,
+  304000000
  ],
  "sheetFirstYear": 2027,
  "sheetPayroll": 146216863,
@@ -720,7 +720,7 @@
    "name": "Tyler Schlaffer",
    "pos": "sp",
    "age": 26,
-   "war": 1.41,
+   "war": 1.42,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -730,7 +730,7 @@
    "name": "Ethan Flanagan",
    "pos": "sp",
    "age": 25,
-   "war": 1.34,
+   "war": 1.35,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -760,16 +760,6 @@
    "name": "Miguel Useche",
    "pos": "c",
    "age": 26,
-   "war": 1.1,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 689196,
-   "name": "Owen Ayers",
-   "pos": "c",
-   "age": 26,
    "war": 1.09,
    "pa": 450,
    "salary": 780000,
@@ -780,7 +770,7 @@
    "name": "Grant Kipp",
    "pos": "sp",
    "age": 27,
-   "war": 0.92,
+   "war": 0.93,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -822,6 +812,16 @@
    "age": 24,
    "war": 0.72,
    "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 689196,
+   "name": "Owen Ayers",
+   "pos": "c",
+   "age": 26,
+   "war": 0.59,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

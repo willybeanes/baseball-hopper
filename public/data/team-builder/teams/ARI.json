@@ -104,7 +104,7 @@
    "walkYear": false,
    "mlbamId": 606466,
    "salarySource": "cots",
-   "war": 3.87,
+   "war": 3.88,
    "pa": 623
   },
   {
@@ -213,6 +213,24 @@
    "ip": 61
   },
   {
+   "name": "Johan Oviedo",
+   "sheetName": "Oviedo, Johan",
+   "pos": "rhp-s",
+   "age": 29,
+   "mls": 5.079,
+   "contract": "A3",
+   "status": "arb",
+   "salary": 1800000,
+   "taxValue": 1800000,
+   "salaryPrevYear": null,
+   "arbYear": 3,
+   "cotsEstimate": 1800000,
+   "mlbamId": 670912,
+   "salarySource": "mlbtr-arb",
+   "war": 0.86,
+   "ip": 85.2
+  },
+  {
    "name": "Drey Jameson",
    "sheetName": "Jameson, Drey",
    "pos": "rhp",
@@ -229,22 +247,6 @@
    "ip": 54
   },
   {
-   "name": "Blake Walston",
-   "sheetName": "Walston, Blake",
-   "pos": "lhp",
-   "age": 26,
-   "mls": 2.093,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 742820,
-   "mlbamId": 686796,
-   "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 36
-  },
-  {
    "name": "Cristian Mena",
    "sheetName": "Mena, Cristian",
    "pos": "rhp",
@@ -259,22 +261,6 @@
    "salarySource": "minimum",
    "war": 0.01,
    "ip": 1
-  },
-  {
-   "name": "Andrew Saalfrank",
-   "sheetName": "Saalfrank, Andrew",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 1.118,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 786900,
-   "mlbamId": 685314,
-   "salarySource": "minimum",
-   "war": -0.07,
-   "ip": 21
   },
   {
    "name": "Juan Morillo",
@@ -305,7 +291,7 @@
    "salaryPrevYear": 600649,
    "mlbamId": 680728,
    "salarySource": "minimum",
-   "war": 0.24,
+   "war": 0.25,
    "pa": 223
   },
   {
@@ -369,7 +355,7 @@
    "salaryPrevYear": 447595,
    "mlbamId": 682988,
    "salarySource": "minimum",
-   "war": 0.19,
+   "war": 0.2,
    "pa": 183
   },
   {
@@ -433,8 +419,8 @@
    "salaryPrevYear": 182506,
    "mlbamId": 703615,
    "salarySource": "minimum",
-   "war": 0.36,
-   "ip": 57
+   "war": 0.27,
+   "ip": 46
   },
   {
    "name": "Jose Fernandez",
@@ -465,8 +451,8 @@
    "salaryPrevYear": 148049,
    "mlbamId": 669704,
    "salarySource": "minimum",
-   "war": -0.02,
-   "ip": 45
+   "war": -0.01,
+   "ip": 44
   },
   {
    "name": "Mitch Bratt",
@@ -497,8 +483,8 @@
    "salaryPrevYear": 73377,
    "mlbamId": 672629,
    "salarySource": "minimum",
-   "war": 0.26,
-   "ip": 51
+   "war": 0.24,
+   "ip": 48
   },
   {
    "name": "LuJames Groover",
@@ -529,8 +515,8 @@
    "salaryPrevYear": 144051,
    "mlbamId": 684442,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 42.9
+   "war": 0.05,
+   "ip": 37.9
   },
   {
    "name": "Dylan Ray",
@@ -613,8 +599,8 @@
    "mlbamId": 802416,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.08,
-   "ip": 18.5
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Wellington Aracena",
@@ -647,8 +633,8 @@
    "mlbamId": 801517,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.04,
-   "ip": 14
+   "war": 0.05,
+   "ip": 18
   }
  ],
  "deadMoney": [
@@ -672,8 +658,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11900000,
-   "taxValue": 11900000,
+   "salary": 11050000,
+   "taxValue": 11050000,
    "note": ""
   },
   {
@@ -688,10 +674,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 158529905,
- "sheetTaxPayroll": 191068377,
- "rowsPayroll": 158529905,
- "rowsTaxPayroll": 191068377,
+ "sheetPayroll": 159479905,
+ "sheetTaxPayroll": 192018377,
+ "rowsPayroll": 159479905,
+ "rowsTaxPayroll": 192018377,
  "minors": [
   {
    "mlbamId": 696277,
