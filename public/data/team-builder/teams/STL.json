@@ -16,7 +16,7 @@
    "cotsEstimate": 7750000,
    "mlbamId": 676475,
    "salarySource": "mlbtr-arb",
-   "war": 2.07,
+   "war": 2.06,
    "pa": 570
   },
   {
@@ -52,7 +52,7 @@
    "cotsEstimate": 4250000,
    "mlbamId": 691023,
    "salarySource": "mlbtr-arb",
-   "war": 1.69,
+   "war": 1.68,
    "pa": 586
   },
   {
@@ -223,8 +223,8 @@
    "salaryPrevYear": 792350,
    "mlbamId": 665877,
    "salarySource": "minimum",
-   "war": 0.77,
-   "pa": 244
+   "war": 0.76,
+   "pa": 241
   },
   {
    "name": "Victor Scott II",
@@ -255,7 +255,7 @@
    "salaryPrevYear": 481391,
    "mlbamId": 681676,
    "salarySource": "minimum",
-   "war": 0.06,
+   "war": 0.05,
    "ip": 42
   },
   {
@@ -320,7 +320,7 @@
    "mlbamId": 677592,
    "salarySource": "minimum",
    "war": 0.18,
-   "pa": 177
+   "pa": 174
   },
   {
    "name": "Thomas Saggese",
@@ -447,8 +447,8 @@
    "salaryPrevYear": 315638,
    "mlbamId": 693409,
    "salarySource": "minimum",
-   "war": 0.11,
-   "pa": 64
+   "war": 0.1,
+   "pa": 63
   },
   {
    "name": "Luis Gastelum",
@@ -560,7 +560,7 @@
    "mlbamId": 699024,
    "salarySource": "minimum",
    "war": 1.95,
-   "pa": 396
+   "pa": 398
   },
   {
    "name": "Cooper Hjerpe",

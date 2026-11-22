@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 650490,
    "salarySource": "cots",
-   "war": 2.49,
-   "pa": 651
+   "war": 2.5,
+   "pa": 654
   },
   {
    "name": "Steven Matz",
@@ -299,7 +299,7 @@
    "mlbamId": 669261,
    "salarySource": "minimum",
    "war": 0.2,
-   "pa": 129
+   "pa": 128
   },
   {
    "name": "Casey Legumina",
@@ -619,7 +619,7 @@
    "mlbamId": 800060,
    "salarySource": "minimum",
    "war": 0.03,
-   "pa": 20
+   "pa": 17
   },
   {
    "name": "Christian Koss",
@@ -636,7 +636,7 @@
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from SF",
    "war": 0.05,
-   "pa": 59
+   "pa": 58
   }
  ],
  "deadMoney": [

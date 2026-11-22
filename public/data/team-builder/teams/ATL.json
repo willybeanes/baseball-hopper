@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 660670,
    "salarySource": "cots",
-   "war": 2.88,
+   "war": 2.87,
    "pa": 566
   },
   {
@@ -117,7 +117,7 @@
    "walkYear": false,
    "mlbamId": 669221,
    "salarySource": "cots",
-   "war": 1.04,
+   "war": 1.03,
    "pa": 246
   },
   {
@@ -185,7 +185,7 @@
    "walkYear": false,
    "mlbamId": 671739,
    "salarySource": "cots",
-   "war": 4,
+   "war": 3.99,
    "pa": 605
   },
   {
@@ -362,7 +362,7 @@
    "mlbamId": 686948,
    "salarySource": "minimum",
    "war": 2.98,
-   "pa": 602
+   "pa": 601
   },
   {
    "name": "Danny Young",

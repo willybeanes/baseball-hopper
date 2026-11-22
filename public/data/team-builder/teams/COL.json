@@ -101,7 +101,7 @@
    "cotsEstimate": 4510000,
    "mlbamId": 696100,
    "salarySource": "mlbtr-arb",
-   "war": 1.91,
+   "war": 1.9,
    "pa": 536
   },
   {
@@ -334,7 +334,7 @@
    "mlbamId": 687859,
    "salarySource": "minimum",
    "war": -0.08,
-   "pa": 228
+   "pa": 227
   },
   {
    "name": "Kyle Karros",
@@ -817,7 +817,7 @@
    "name": "Braylen Wimmer",
    "pos": "ss",
    "age": 26,
-   "war": 0.25,
+   "war": 0.27,
    "pa": 600,
    "salary": 780000,
    "debuted": false

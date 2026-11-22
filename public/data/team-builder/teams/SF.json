@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 642715,
    "salarySource": "cots",
-   "war": 2.1,
+   "war": 2.09,
    "pa": 536
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 646240,
    "salarySource": "cots",
-   "war": 2.59,
+   "war": 2.58,
    "pa": 644
   },
   {
@@ -269,7 +269,7 @@
    "mlbamId": 691785,
    "salarySource": "minimum",
    "war": 1.11,
-   "pa": 361
+   "pa": 364
   },
   {
    "name": "Anthony Molina",

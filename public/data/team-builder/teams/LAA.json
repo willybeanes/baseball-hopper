@@ -50,8 +50,8 @@
    "cotsEstimate": 9650000,
    "mlbamId": 687263,
    "salarySource": "mlbtr-arb",
-   "war": 3.58,
-   "pa": 658
+   "war": 3.55,
+   "pa": 653
   },
   {
    "name": "Reid Detmers",
@@ -176,7 +176,7 @@
    "mlbamId": 672724,
    "salarySource": "mlbtr-arb",
    "war": 0.24,
-   "pa": 287
+   "pa": 291
   },
   {
    "name": "Tayler Saucedo",
@@ -358,8 +358,8 @@
    "salaryPrevYear": 231618,
    "mlbamId": 694208,
    "salarySource": "minimum",
-   "war": 1.48,
-   "pa": 394
+   "war": 1.49,
+   "pa": 396
   },
   {
    "name": "Walbert Urena",
@@ -664,7 +664,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.15,
-   "pa": 197
+   "pa": 190
   },
   {
    "name": "Raudi Rodriguez",

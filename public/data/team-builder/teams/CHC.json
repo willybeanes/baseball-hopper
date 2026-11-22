@@ -208,8 +208,8 @@
    "cotsEstimate": 1808500,
    "mlbamId": 665804,
    "salarySource": "mlbtr-arb",
-   "war": 1.45,
-   "pa": 358
+   "war": 1.44,
+   "pa": 355
   },
   {
    "name": "Braxton Garrett",
@@ -344,7 +344,7 @@
    "mlbamId": 807713,
    "salarySource": "minimum",
    "war": 1.4,
-   "pa": 386
+   "pa": 388
   },
   {
    "name": "Tyler Ferguson",
@@ -519,8 +519,8 @@
    "salaryPrevYear": 74310,
    "mlbamId": 681230,
    "salarySource": "minimum",
-   "war": 0.35,
-   "pa": 299
+   "war": 0.34,
+   "pa": 289
   },
   {
    "name": "James Triantos",
@@ -536,7 +536,7 @@
    "mlbamId": 701649,
    "salarySource": "minimum",
    "war": 0.14,
-   "pa": 126
+   "pa": 128
   },
   {
    "name": "Joey Bart",
@@ -555,7 +555,7 @@
    "salarySource": "mlbtr-arb",
    "corrected": "RosterResource: moved from CWS",
    "war": 0.46,
-   "pa": 209
+   "pa": 210
   },
   {
    "name": "Jaxon Wiggins",
@@ -836,22 +836,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 813666,
-   "name": "Ariel Armas",
-   "pos": "c",
-   "age": 24,
-   "war": 0.48,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 823702,
    "name": "Alex Madera",
    "pos": "ss",
    "age": 26,
-   "war": 0.46,
+   "war": 0.48,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 813666,
+   "name": "Ariel Armas",
+   "pos": "c",
+   "age": 24,
+   "war": 0.47,
+   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

@@ -67,8 +67,8 @@
    "walkYear": false,
    "mlbamId": 663728,
    "salarySource": "cots",
-   "war": 3.96,
-   "pa": 507
+   "war": 3.91,
+   "pa": 501
   },
   {
    "name": "George Kirby",
@@ -783,7 +783,7 @@
    "name": "Stuart Fairchild",
    "pos": "cf-rf",
    "age": 31,
-   "war": 0.82,
+   "war": 0.83,
    "pa": 600,
    "salary": 780000,
    "debuted": true

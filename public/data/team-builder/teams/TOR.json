@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 665489,
    "salarySource": "cots",
-   "war": 3.56,
+   "war": 3.55,
    "pa": 610
   },
   {
@@ -442,7 +442,7 @@
    "mlbamId": 682818,
    "salarySource": "minimum",
    "war": 0.21,
-   "pa": 128
+   "pa": 127
   },
   {
    "name": "Charles McAdoo",

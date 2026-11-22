@@ -155,7 +155,7 @@
    "cotsEstimate": 2250000,
    "mlbamId": 693304,
    "salarySource": "mlbtr-arb",
-   "war": 1.58,
+   "war": 1.57,
    "pa": 527
   },
   {
@@ -191,7 +191,7 @@
    "cotsEstimate": 2000000,
    "mlbamId": 669387,
    "salarySource": "mlbtr-arb",
-   "war": 0.6,
+   "war": 0.59,
    "ip": 75.2
   },
   {
@@ -441,7 +441,7 @@
    "mlbamId": 682927,
    "salarySource": "minimum",
    "war": 0.06,
-   "pa": 73
+   "pa": 72
   },
   {
    "name": "Jacob Gonzalez",
@@ -815,7 +815,7 @@
    "name": "Kyler Fedko",
    "pos": "lf",
    "age": 27,
-   "war": 0.6,
+   "war": 0.59,
    "pa": 600,
    "salary": 780000,
    "debuted": true

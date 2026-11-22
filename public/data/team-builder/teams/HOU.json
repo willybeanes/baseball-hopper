@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 621043,
    "salarySource": "cots",
-   "war": 2.71,
-   "pa": 400
+   "war": 2.75,
+   "pa": 406
   },
   {
    "name": "Yordan Alvarez",
@@ -83,7 +83,7 @@
    "walkYear": true,
    "mlbamId": 572233,
    "salarySource": "cots",
-   "war": 1.23,
+   "war": 1.22,
    "pa": 542
   },
   {
@@ -156,8 +156,8 @@
    "walkYear": true,
    "mlbamId": 670623,
    "salarySource": "cots",
-   "war": 2.95,
-   "pa": 584
+   "war": 2.94,
+   "pa": 581
   },
   {
    "name": "Hunter Brown",
@@ -443,7 +443,7 @@
    "mlbamId": 694728,
    "salarySource": "minimum",
    "war": 0.46,
-   "pa": 234
+   "pa": 230
   },
   {
    "name": "Roddery Muñoz",

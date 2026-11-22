@@ -49,7 +49,7 @@
    "walkYear": true,
    "mlbamId": 543135,
    "salarySource": "cots",
-   "war": 2.61,
+   "war": 2.6,
    "ip": 153.3
   },
   {
@@ -67,7 +67,7 @@
    "mlbamId": 607043,
    "salarySource": "cots",
    "war": 1.92,
-   "pa": 630
+   "pa": 631
   },
   {
    "name": "MacKenzie Gore",
@@ -137,7 +137,7 @@
    "cotsEstimate": 5250000,
    "mlbamId": 673962,
    "salarySource": "mlbtr-arb",
-   "war": 2.55,
+   "war": 2.54,
    "pa": 509
   },
   {
@@ -327,7 +327,7 @@
    "salaryPrevYear": 789000,
    "mlbamId": 677958,
    "salarySource": "minimum",
-   "war": 1.59,
+   "war": 1.58,
    "ip": 136.4
   },
   {
@@ -343,8 +343,8 @@
    "salaryPrevYear": 661790,
    "mlbamId": 679822,
    "salarySource": "minimum",
-   "war": 0.55,
-   "pa": 283
+   "war": 0.54,
+   "pa": 275
   },
   {
    "name": "Alejandro Osuna",

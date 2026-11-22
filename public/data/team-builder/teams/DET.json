@@ -576,7 +576,7 @@
    "mlbamId": 691907,
    "salarySource": "minimum",
    "war": 0.05,
-   "pa": 38
+   "pa": 35
   },
   {
    "name": "Andrew Sears",
@@ -640,8 +640,8 @@
    "mlbamId": 800522,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.33,
-   "pa": 62
+   "war": 0.29,
+   "pa": 55
   },
   {
    "name": "Max Anderson",
