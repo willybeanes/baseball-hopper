@@ -626,7 +626,6 @@ export default function TeamBuilderApp() {
   const nameOf = (id: number) => built?.slots.find((s) => s.player.mlbamId === id)?.player.name ?? pool.find((e) => e.mlbamId === id)?.name ?? 'a player no longer listed'
   // Until the market has loaded, signings and trades can't be checked, so nothing is flagged yet.
   const skipped = built && pool.length ? built.skipped : []
-  const stale = meta?.staleTeams?.[team]
   const updated = meta ? new Date(meta.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null
 
   const ownPoolFreeAgents: PoolSlot[] = built
@@ -814,12 +813,6 @@ export default function TeamBuilderApp() {
 
       {built && start && meta && (
         <div className="space-y-4">
-          {stale && (
-            <p className="max-w-[58ch] text-xs text-[var(--accent)]">
-              {`Cot's sheet for the ${TEAM_NAMES[team]} didn't pass today's checks (it's probably mid-update), so this shows the last version that did.`}
-            </p>
-          )}
-
           {/* Pinned on wider screens: the team strip, and, once the totals panel below has
               scrolled away, a one-line summary of it (overlaid, so nothing jumps). */}
           <div ref={setTotalsEl} className="relative z-20 sm:sticky sm:top-14">
