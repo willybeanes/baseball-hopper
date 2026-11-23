@@ -83,7 +83,7 @@
    "walkYear": false,
    "mlbamId": 666200,
    "salarySource": "cots",
-   "war": 4.4,
+   "war": 4.39,
    "ip": 180.2
   },
   {
@@ -784,6 +784,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 681006,
+   "name": "Josh Simpson",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.2,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
    "mlbamId": 800607,
    "name": "Kehden Hettiger",
    "pos": "c",
@@ -792,16 +802,6 @@
    "pa": 450,
    "salary": 780000,
    "debuted": false
-  },
-  {
-   "mlbamId": 681006,
-   "name": "Josh Simpson",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.17,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
   },
   {
    "mlbamId": 664129,

@@ -70,8 +70,8 @@
    "walkYear": true,
    "mlbamId": 623454,
    "salarySource": "cots",
-   "war": 1.19,
-   "ip": 103.2
+   "war": 1.13,
+   "ip": 97.3
   },
   {
    "name": "Riley Greene",
@@ -159,8 +159,8 @@
    "cotsEstimate": 4600000,
    "mlbamId": 676684,
    "salarySource": "mlbtr-arb",
-   "war": 0.51,
-   "ip": 53
+   "war": 0.53,
+   "ip": 55
   },
   {
    "name": "Colt Keith",
@@ -264,8 +264,8 @@
    "cotsEstimate": 1350000,
    "mlbamId": 689225,
    "salarySource": "mlbtr-arb",
-   "war": 0.07,
-   "ip": 34
+   "war": 0.06,
+   "ip": 30
   },
   {
    "name": "Jacob Waguespack",
@@ -281,8 +281,8 @@
    "walkYear": true,
    "mlbamId": 621097,
    "salarySource": "cots",
-   "war": 0.06,
-   "ip": 55
+   "war": 0.05,
+   "ip": 50
   },
   {
    "name": "Parker Meadows",
@@ -317,8 +317,8 @@
    "cotsEstimate": 1250000,
    "mlbamId": 681857,
    "salarySource": "mlbtr-arb",
-   "war": 0.78,
-   "ip": 57.2
+   "war": 0.75,
+   "ip": 55.2
   },
   {
    "name": "Wenceel Pérez",
@@ -367,8 +367,8 @@
    "salaryPrevYear": 793725,
    "mlbamId": 676428,
    "salarySource": "minimum",
-   "war": 0.11,
-   "ip": 43
+   "war": 0.09,
+   "ip": 33
   },
   {
    "name": "Keider Montero",
@@ -432,7 +432,7 @@
    "mlbamId": 680744,
    "salarySource": "minimum",
    "war": 0.03,
-   "ip": 30
+   "ip": 27
   },
   {
    "name": "River Ryan",
@@ -495,8 +495,8 @@
    "salaryPrevYear": 1300000,
    "mlbamId": 646241,
    "salarySource": "minimum",
-   "war": 0.12,
-   "ip": 26
+   "war": 0.1,
+   "ip": 22
   },
   {
    "name": "Ben Malgeri",
@@ -591,8 +591,8 @@
    "salaryPrevYear": 122229,
    "mlbamId": 808825,
    "salarySource": "minimum",
-   "war": 0.4,
-   "ip": 61
+   "war": 0.27,
+   "ip": 43
   },
   {
    "name": "John Peck",

@@ -246,8 +246,8 @@
    "cotsEstimate": 2000000,
    "mlbamId": 676356,
    "salarySource": "mlbtr-arb",
-   "war": 1.12,
-   "pa": 446
+   "war": 1.1,
+   "pa": 440
   },
   {
    "name": "Edwin Uceta",
@@ -298,8 +298,8 @@
    "salaryPrevYear": null,
    "mlbamId": 669261,
    "salarySource": "minimum",
-   "war": 0.2,
-   "pa": 128
+   "war": 0.26,
+   "pa": 158
   },
   {
    "name": "Casey Legumina",
@@ -394,8 +394,8 @@
    "salaryPrevYear": 785100,
    "mlbamId": 802415,
    "salarySource": "minimum",
-   "war": 1.54,
-   "pa": 498
+   "war": 1.52,
+   "pa": 492
   },
   {
    "name": "Ben Williamson",
@@ -474,8 +474,8 @@
    "salaryPrevYear": 570514,
    "mlbamId": 683748,
    "salarySource": "minimum",
-   "war": 1.58,
-   "pa": 469
+   "war": 1.55,
+   "pa": 462
   },
   {
    "name": "Jacob Melton",
@@ -490,8 +490,8 @@
    "salaryPrevYear": 190443,
    "mlbamId": 689200,
    "salarySource": "minimum",
-   "war": 0.11,
-   "pa": 133
+   "war": 0.09,
+   "pa": 114
   },
   {
    "name": "Carson Williams",
@@ -743,7 +743,7 @@
    "name": "Julio Robaina",
    "pos": "sp",
    "age": 26,
-   "war": 1.39,
+   "war": 1.31,
    "ip": 200,
    "salary": 780000,
    "debuted": false

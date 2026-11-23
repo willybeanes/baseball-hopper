@@ -65,7 +65,7 @@
    "contract": "8 y/$260M (19-26)+'27 extn*",
    "status": "signed",
    "salary": 15000000,
-   "taxValue": 21000000,
+   "taxValue": 15000000,
    "salaryPrevYear": 24398219,
    "walkYear": true,
    "mlbamId": 571448,
@@ -451,7 +451,7 @@
    "salaryPrevYear": 148049,
    "mlbamId": 669704,
    "salarySource": "minimum",
-   "war": -0.01,
+   "war": -0.02,
    "ip": 44
   },
   {
@@ -623,7 +623,7 @@
    "name": "Spencer Giesting",
    "sheetName": "",
    "pos": "lhp",
-   "age": 26,
+   "age": 25,
    "mls": 0,
    "contract": "Added to the 40-man",
    "status": "prearb",
@@ -675,9 +675,9 @@
  "tiers": null,
  "sheetFirstYear": 2027,
  "sheetPayroll": 159479905,
- "sheetTaxPayroll": 192018377,
+ "sheetTaxPayroll": 186018377,
  "rowsPayroll": 159479905,
- "rowsTaxPayroll": 192018377,
+ "rowsTaxPayroll": 186018377,
  "minors": [
   {
    "mlbamId": 696277,

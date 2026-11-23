@@ -70,8 +70,8 @@
    "walkYear": false,
    "mlbamId": 665926,
    "salarySource": "cots",
-   "war": 1.96,
-   "pa": 479
+   "war": 1.95,
+   "pa": 477
   },
   {
    "name": "Kazuma Okamoto",
@@ -609,7 +609,7 @@
    "name": "RJ Schreck",
    "sheetName": "",
    "pos": "rf-cf-lf",
-   "age": 27,
+   "age": 26,
    "mls": 0,
    "contract": "Added to the 40-man",
    "status": "prearb",

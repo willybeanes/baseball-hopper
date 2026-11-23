@@ -699,21 +699,21 @@
    "debuted": false
   },
   {
-   "mlbamId": 678789,
-   "name": "Julio Robaina",
-   "pos": "sp",
-   "age": 26,
-   "war": 1.39,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 807284,
    "name": "Cam Caminiti",
    "pos": "sp",
    "age": 20,
    "war": 1.32,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 678789,
+   "name": "Julio Robaina",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.31,
    "ip": 200,
    "salary": 780000,
    "debuted": false

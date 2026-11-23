@@ -343,8 +343,8 @@
    "salaryPrevYear": 661790,
    "mlbamId": 679822,
    "salarySource": "minimum",
-   "war": 0.54,
-   "pa": 275
+   "war": 0.55,
+   "pa": 282
   },
   {
    "name": "Alejandro Osuna",
@@ -781,6 +781,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 666194,
+   "name": "Cooper Johnson",
+   "pos": "c",
+   "age": 29,
+   "war": 0.45,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 805823,
    "name": "Paul Bonzagni",
    "pos": "sp",
@@ -816,16 +826,6 @@
    "pos": "c",
    "age": 24,
    "war": 0.27,
-   "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 666194,
-   "name": "Cooper Johnson",
-   "pos": "c",
-   "age": 29,
-   "war": 0.23,
    "pa": 450,
    "salary": 780000,
    "debuted": false

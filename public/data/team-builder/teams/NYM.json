@@ -53,7 +53,7 @@
    "walkYear": false,
    "mlbamId": 596019,
    "salarySource": "cots",
-   "war": 4.65,
+   "war": 4.66,
    "pa": 708
   },
   {
@@ -104,8 +104,8 @@
    "walkYear": true,
    "mlbamId": 640455,
    "salarySource": "cots",
-   "war": 1.33,
-   "ip": 135.4
+   "war": 1.16,
+   "ip": 122.3
   },
   {
    "name": "Kodai Senga",
@@ -121,8 +121,8 @@
    "walkYear": true,
    "mlbamId": 673540,
    "salarySource": "cots",
-   "war": 1.29,
-   "ip": 129.2
+   "war": 1.14,
+   "ip": 114.9
   },
   {
    "name": "Devin Williams",
@@ -191,8 +191,8 @@
    "cotsEstimate": 2500000,
    "mlbamId": 656731,
    "salarySource": "mlbtr-arb",
-   "war": 0.38,
-   "ip": 26.9
+   "war": 0.25,
+   "ip": 18
   },
   {
    "name": "Brett Baty",
@@ -227,7 +227,7 @@
    "mlbamId": 672335,
    "salarySource": "cots",
    "war": 0.22,
-   "ip": 43
+   "ip": 42
   },
   {
    "name": "Mark Vientos",
@@ -262,8 +262,8 @@
    "cotsEstimate": 1300000,
    "mlbamId": 657585,
    "salarySource": "mlbtr-arb",
-   "war": 0.42,
-   "ip": 48
+   "war": 0.38,
+   "ip": 44
   },
   {
    "name": "Austin Warren",
@@ -279,8 +279,8 @@
    "walkYear": false,
    "mlbamId": 681810,
    "salarySource": "cots",
-   "war": 0.15,
-   "ip": 45
+   "war": 0.13,
+   "ip": 40
   },
   {
    "name": "Dedniel Núñez",
@@ -297,8 +297,8 @@
    "cotsEstimate": 950000,
    "mlbamId": 673380,
    "salarySource": "mlbtr-arb",
-   "war": 0.47,
-   "ip": 64
+   "war": 0.46,
+   "ip": 63
   },
   {
    "name": "Daniel Duarte",
@@ -313,8 +313,8 @@
    "salaryPrevYear": 379197,
    "mlbamId": 650960,
    "salarySource": "minimum",
-   "war": 0.17,
-   "ip": 40
+   "war": 0.15,
+   "ip": 36
   },
   {
    "name": "Ronny Mauricio",
@@ -345,8 +345,8 @@
    "salaryPrevYear": 718045,
    "mlbamId": 681035,
    "salarySource": "minimum",
-   "war": 2.33,
-   "ip": 145.3
+   "war": 2.28,
+   "ip": 142.1
   },
   {
    "name": "Robert Stock",
@@ -361,8 +361,8 @@
    "salaryPrevYear": 243851,
    "mlbamId": 476594,
    "salarySource": "minimum",
-   "war": 0.23,
-   "ip": 22.9
+   "war": 0.28,
+   "ip": 28.9
   },
   {
    "name": "Tobias Myers",
@@ -377,8 +377,8 @@
    "salaryPrevYear": 536358,
    "mlbamId": 668964,
    "salarySource": "minimum",
-   "war": 0.27,
-   "ip": 58
+   "war": 0.26,
+   "ip": 56
   },
   {
    "name": "Jared Young",
@@ -393,7 +393,7 @@
    "salaryPrevYear": 1150000,
    "mlbamId": 676724,
    "salarySource": "minimum",
-   "war": 0.92,
+   "war": 0.93,
    "pa": 380
   },
   {
@@ -410,7 +410,7 @@
    "mlbamId": 681402,
    "salarySource": "minimum",
    "war": 0.01,
-   "ip": 16
+   "ip": 10
   },
   {
    "name": "Pierson Ohl",
@@ -425,8 +425,8 @@
    "salaryPrevYear": null,
    "mlbamId": 701487,
    "salarySource": "minimum",
-   "war": 0.01,
-   "ip": 6
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Nate Lavender",
@@ -457,8 +457,8 @@
    "salaryPrevYear": 791500,
    "mlbamId": 690997,
    "salarySource": "minimum",
-   "war": 3.27,
-   "ip": 187
+   "war": 3.22,
+   "ip": 183.7
   },
   {
    "name": "Justin Hagenman",
@@ -473,8 +473,8 @@
    "salaryPrevYear": 780416,
    "mlbamId": 663795,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 18.2
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Carson Benge",
@@ -521,8 +521,8 @@
    "salaryPrevYear": 358698,
    "mlbamId": 804267,
    "salarySource": "minimum",
-   "war": 1.46,
-   "ip": 151
+   "war": 1.24,
+   "ip": 128.8
   },
   {
    "name": "Jonah Tong",
@@ -537,8 +537,8 @@
    "salaryPrevYear": 242318,
    "mlbamId": 804636,
    "salarySource": "minimum",
-   "war": 1.03,
-   "ip": 80.9
+   "war": 0.34,
+   "ip": 27
   },
   {
    "name": "Jonathan Pintaro",
@@ -553,8 +553,8 @@
    "salaryPrevYear": 528617,
    "mlbamId": 702752,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 32
+   "war": 0.12,
+   "ip": 30
   },
   {
    "name": "Jefry Yan",
@@ -569,8 +569,8 @@
    "salaryPrevYear": 213436,
    "mlbamId": 642376,
    "salarySource": "minimum",
-   "war": 0.2,
-   "ip": 28
+   "war": 0.15,
+   "ip": 22
   },
   {
    "name": "Yunior Tur",
@@ -586,7 +586,7 @@
    "mlbamId": 814305,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 8
+   "ip": 6
   },
   {
    "name": "Nick Morabito",
@@ -618,7 +618,7 @@
    "mlbamId": 674073,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 10
+   "ip": 1
   },
   {
    "name": "Jack Anderson",
@@ -633,8 +633,8 @@
    "salaryPrevYear": null,
    "mlbamId": 681252,
    "salarySource": "minimum",
-   "war": 0.06,
-   "ip": 20
+   "war": 0.05,
+   "ip": 16
   },
   {
    "name": "Jefferson Rojas",
