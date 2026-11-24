@@ -767,22 +767,22 @@
    "debuted": false
   },
   {
+   "mlbamId": 801346,
+   "name": "Luis Hernandez",
+   "pos": "c",
+   "age": 24,
+   "war": 0.37,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 802355,
    "name": "Tanner Schobel",
    "pos": "2b",
    "age": 26,
    "war": 0.37,
    "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 801346,
-   "name": "Luis Hernandez",
-   "pos": "c",
-   "age": 24,
-   "war": 0.35,
-   "pa": 450,
    "salary": 780000,
    "debuted": false
   },

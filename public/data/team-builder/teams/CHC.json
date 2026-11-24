@@ -36,6 +36,23 @@
    "pa": 502
   },
   {
+   "name": "Trevor Rogers",
+   "sheetName": "Rogers, Trevor",
+   "pos": "lhp-s",
+   "age": 29,
+   "mls": 6.047,
+   "contract": "5 y/$120M (27-31)",
+   "status": "signed",
+   "salary": 24000000,
+   "taxValue": 24000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 669432,
+   "salarySource": "cots",
+   "war": 3.34,
+   "ip": 183.3
+  },
+  {
    "name": "Nico Hoerner",
    "sheetName": "Hoerner, Nico",
    "pos": "2b-ss",
@@ -51,6 +68,21 @@
    "salarySource": "cots",
    "war": 3.08,
    "pa": 613
+  },
+  {
+   "name": "Teruaki Sato",
+   "sheetName": "Sato, Teruaki",
+   "pos": "rf-3b",
+   "age": 28,
+   "mls": 0,
+   "contract": "6 y/$120M (27-32)",
+   "status": "signed",
+   "salary": 20000000,
+   "taxValue": 20000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "salarySource": "cots",
+   "war": null
   },
   {
    "name": "Pete Crow-Armstrong",
@@ -84,8 +116,8 @@
    "cotsEstimate": 6775000,
    "mlbamId": 657006,
    "salarySource": "mlbtr-arb",
-   "war": 2.83,
-   "ip": 170.4
+   "war": 2.76,
+   "ip": 165.8
   },
   {
    "name": "Phil Maton",
@@ -119,8 +151,8 @@
    "cotsEstimate": 4650000,
    "mlbamId": 665795,
    "salarySource": "mlbtr-arb",
-   "war": 2,
-   "ip": 146.6
+   "war": 1.96,
+   "ip": 143.8
   },
   {
    "name": "Michael Busch",
@@ -141,6 +173,24 @@
    "pa": 605
   },
   {
+   "name": "Joey Bart",
+   "sheetName": "Bart, Joey",
+   "pos": "c",
+   "age": 30,
+   "mls": 5.02,
+   "contract": "A3",
+   "status": "arb",
+   "salary": 2900000,
+   "taxValue": 2900000,
+   "salaryPrevYear": null,
+   "arbYear": 3,
+   "cotsEstimate": 3000000,
+   "mlbamId": 663698,
+   "salarySource": "mlbtr-arb",
+   "war": 0.46,
+   "pa": 210
+  },
+  {
    "name": "Javier Assad",
    "sheetName": "Assad, Javier",
    "pos": "rhp",
@@ -155,8 +205,8 @@
    "cotsEstimate": 2800000,
    "mlbamId": 665871,
    "salarySource": "mlbtr-arb",
-   "war": 0.72,
-   "ip": 144.5
+   "war": 0.57,
+   "ip": 122.6
   },
   {
    "name": "Jacob Webb",
@@ -226,8 +276,8 @@
    "cotsEstimate": 1530000,
    "mlbamId": 666129,
    "salarySource": "mlbtr-arb",
-   "war": 1.75,
-   "ip": 134.2
+   "war": 1.4,
+   "ip": 107.3
   },
   {
    "name": "Shelby Miller",
@@ -375,8 +425,8 @@
    "salaryPrevYear": 410253,
    "mlbamId": 696136,
    "salarySource": "minimum",
-   "war": 0.73,
-   "ip": 112.1
+   "war": 0.35,
+   "ip": 56.6
   },
   {
    "name": "Julian Aguiar",
@@ -391,8 +441,8 @@
    "salaryPrevYear": 2036,
    "mlbamId": 687924,
    "salarySource": "minimum",
-   "war": -0.01,
-   "ip": 30.3
+   "war": -0.03,
+   "ip": 13
   },
   {
    "name": "Eric Orze",
@@ -407,8 +457,8 @@
    "salaryPrevYear": null,
    "mlbamId": 679358,
    "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 38
+   "war": 0.05,
+   "ip": 40
   },
   {
    "name": "Gavin Hollowell",
@@ -539,25 +589,6 @@
    "pa": 128
   },
   {
-   "name": "Joey Bart",
-   "sheetName": "Bart, Joey",
-   "pos": "c",
-   "age": 30,
-   "mls": 5.02,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 2900000,
-   "taxValue": 2900000,
-   "salaryPrevYear": null,
-   "arbYear": 3,
-   "cotsEstimate": 3000000,
-   "mlbamId": 663698,
-   "salarySource": "mlbtr-arb",
-   "corrected": "RosterResource: moved from CWS",
-   "war": 0.46,
-   "pa": 210
-  },
-  {
    "name": "Jaxon Wiggins",
    "sheetName": "",
    "pos": "rhp-s",
@@ -571,8 +602,8 @@
    "mlbamId": 694393,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.28,
-   "ip": 70.6
+   "war": 0.12,
+   "ip": 33.7
   },
   {
    "name": "Brody McCullough",
@@ -588,8 +619,8 @@
    "mlbamId": 805664,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.13,
-   "ip": 18.5
+   "war": 0.06,
+   "ip": 9.2
   },
   {
    "name": "Chayce McDermott",
@@ -605,8 +636,8 @@
    "mlbamId": 694646,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.06,
-   "ip": 16
+   "war": 0.03,
+   "ip": 8
   },
   {
    "name": "Braxton Roxby",
@@ -659,8 +690,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 6800000,
-   "taxValue": 6800000,
+   "salary": 4250000,
+   "taxValue": 4250000,
    "note": ""
   },
   {
@@ -680,10 +711,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 146216863,
- "sheetTaxPayroll": 167888249,
- "rowsPayroll": 146216863,
- "rowsTaxPayroll": 167888249,
+ "sheetPayroll": 190666863,
+ "sheetTaxPayroll": 212338249,
+ "rowsPayroll": 190666863,
+ "rowsTaxPayroll": 212338249,
  "minors": [
   {
    "mlbamId": 823807,
@@ -836,22 +867,22 @@
    "debuted": false
   },
   {
+   "mlbamId": 823702,
+   "name": "Alex Madera",
+   "pos": "ss",
+   "age": 26,
+   "war": 0.48,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 813666,
    "name": "Ariel Armas",
    "pos": "c",
    "age": 24,
    "war": 0.47,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 823702,
-   "name": "Alex Madera",
-   "pos": "ss",
-   "age": 26,
-   "war": 0.46,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

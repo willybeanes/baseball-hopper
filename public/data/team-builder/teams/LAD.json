@@ -220,8 +220,8 @@
    "walkYear": false,
    "mlbamId": 571970,
    "salarySource": "cots",
-   "war": 2.02,
-   "pa": 407
+   "war": 2,
+   "pa": 402
   },
   {
    "name": "Andy Pages",
@@ -256,8 +256,8 @@
    "cotsEstimate": 4850000,
    "mlbamId": 668904,
    "salarySource": "mlbtr-arb",
-   "war": 0.95,
-   "pa": 313
+   "war": 0.99,
+   "pa": 324
   },
   {
    "name": "Hyeseong Kim",
@@ -273,8 +273,8 @@
    "walkYear": false,
    "mlbamId": 808975,
    "salarySource": "cots",
-   "war": 0.05,
-   "pa": 92
+   "war": 0.04,
+   "pa": 71
   },
   {
    "name": "Emmet Sheehan",
@@ -536,8 +536,8 @@
    "salaryPrevYear": 593240,
    "mlbamId": 690976,
    "salarySource": "minimum",
-   "war": 0.37,
-   "pa": 132
+   "war": 0.36,
+   "pa": 129
   },
   {
    "name": "Paul Gervase",
@@ -669,7 +669,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0,
-   "ip": 10
+   "ip": 8
   }
  ],
  "deadMoney": [

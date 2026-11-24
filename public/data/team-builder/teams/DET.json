@@ -215,6 +215,23 @@
    "pa": 662
   },
   {
+   "name": "Luis Gil",
+   "sheetName": "Gil, Luis",
+   "pos": "rhp-s",
+   "age": 29,
+   "mls": 3.119,
+   "contract": "1 y/$2.3M (27)",
+   "status": "signed",
+   "salary": 2300000,
+   "taxValue": 2300000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 661563,
+   "salarySource": "cots",
+   "war": 0.19,
+   "ip": 75.8
+  },
+  {
    "name": "Tyler Holton",
    "sheetName": "Holton, Tyler",
    "pos": "lhp",
@@ -233,23 +250,6 @@
    "ip": 70
   },
   {
-   "name": "Troy Melton",
-   "sheetName": "Melton, Troy",
-   "pos": "rhp-s",
-   "age": 26,
-   "mls": 1.068,
-   "contract": "6 y/$46.5M (27-32)+33 cl opt",
-   "status": "signed",
-   "salary": 1500000,
-   "taxValue": 7750000,
-   "salaryPrevYear": 785500,
-   "walkYear": false,
-   "mlbamId": 675512,
-   "salarySource": "cots",
-   "war": 1.85,
-   "ip": 150.8
-  },
-  {
    "name": "Beau Brieske",
    "sheetName": "Brieske, Beau",
    "pos": "rhp",
@@ -266,6 +266,23 @@
    "salarySource": "mlbtr-arb",
    "war": 0.06,
    "ip": 30
+  },
+  {
+   "name": "Troy Melton",
+   "sheetName": "Melton, Troy",
+   "pos": "rhp-s",
+   "age": 26,
+   "mls": 1.068,
+   "contract": "6 y/$46.5M (27-32)+33 cl opt",
+   "status": "signed",
+   "salary": 1333333,
+   "taxValue": 7750000,
+   "salaryPrevYear": 785500,
+   "walkYear": false,
+   "mlbamId": 675512,
+   "salarySource": "cots",
+   "war": 1.85,
+   "ip": 150.8
   },
   {
    "name": "Jacob Waguespack",
@@ -699,8 +716,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 5100000,
+   "taxValue": 5100000,
    "note": ""
   },
   {
@@ -720,10 +737,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 154435012,
- "sheetTaxPayroll": 188888571,
- "rowsPayroll": 154435012,
- "rowsTaxPayroll": 188888571,
+ "sheetPayroll": 155718345,
+ "sheetTaxPayroll": 190338571,
+ "rowsPayroll": 155718345,
+ "rowsTaxPayroll": 190338571,
  "minors": [
   {
    "mlbamId": 827640,

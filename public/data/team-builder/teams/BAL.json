@@ -19,6 +19,23 @@
    "pa": 616
   },
   {
+   "name": "Freddy Peralta",
+   "sheetName": "Peralta, Freddy",
+   "pos": "rhp-s",
+   "age": 31,
+   "mls": 8.09,
+   "contract": "5 y/$125M (27-31)",
+   "status": "signed",
+   "salary": 25000000,
+   "taxValue": 25000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 642547,
+   "salarySource": "cots",
+   "war": 1.88,
+   "ip": 168.7
+  },
+  {
    "name": "Tyler O'Neill",
    "sheetName": "O'Neill, Tyler",
    "pos": "lf-rf",
@@ -672,8 +689,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 12750000,
-   "taxValue": 12750000,
+   "salary": 11900000,
+   "taxValue": 11900000,
    "note": ""
   },
   {
@@ -688,10 +705,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 128150000,
- "sheetTaxPayroll": 154241667,
- "rowsPayroll": 128150000,
- "rowsTaxPayroll": 154241667,
+ "sheetPayroll": 152300000,
+ "sheetTaxPayroll": 178391667,
+ "rowsPayroll": 152300000,
+ "rowsTaxPayroll": 178391667,
  "minors": [
   {
    "mlbamId": 809254,

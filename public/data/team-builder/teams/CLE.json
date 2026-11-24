@@ -19,6 +19,23 @@
    "pa": 586
   },
   {
+   "name": "Kris Bubic",
+   "sheetName": "Bubic, Kris",
+   "pos": "lhp-s",
+   "age": 29,
+   "mls": 6.135,
+   "contract": "1 y/$17.5M (27)",
+   "status": "signed",
+   "salary": 17500000,
+   "taxValue": 17500000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 663460,
+   "salarySource": "cots",
+   "war": 2.26,
+   "ip": 147.8
+  },
+  {
    "name": "Steven Kwan",
    "sheetName": "Kwan, Steven",
    "pos": "lf-cf",
@@ -724,8 +741,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 9350000,
-   "taxValue": 9350000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -745,10 +762,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 91858140,
- "sheetTaxPayroll": 107261551,
- "rowsPayroll": 91858140,
- "rowsTaxPayroll": 107261551,
+ "sheetPayroll": 108508140,
+ "sheetTaxPayroll": 123911551,
+ "rowsPayroll": 108508140,
+ "rowsTaxPayroll": 123911551,
  "minors": [
   {
    "mlbamId": 701750,

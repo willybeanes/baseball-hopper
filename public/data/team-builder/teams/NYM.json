@@ -36,7 +36,7 @@
     "type": "opt-out",
     "buyout": 5000000
    },
-   "war": 3.18,
+   "war": 3.2,
    "pa": 616
   },
   {
@@ -53,7 +53,7 @@
    "walkYear": false,
    "mlbamId": 596019,
    "salarySource": "cots",
-   "war": 4.66,
+   "war": 4.65,
    "pa": 708
   },
   {
@@ -70,8 +70,8 @@
    "walkYear": false,
    "mlbamId": 543760,
    "salarySource": "cots",
-   "war": 1.04,
-   "pa": 382
+   "war": 1.03,
+   "pa": 380
   },
   {
    "name": "Jorge Polanco",
@@ -104,8 +104,8 @@
    "walkYear": true,
    "mlbamId": 640455,
    "salarySource": "cots",
-   "war": 1.16,
-   "ip": 122.3
+   "war": 1.1,
+   "ip": 116.3
   },
   {
    "name": "Kodai Senga",
@@ -121,8 +121,8 @@
    "walkYear": true,
    "mlbamId": 673540,
    "salarySource": "cots",
-   "war": 1.14,
-   "ip": 114.9
+   "war": 1.09,
+   "ip": 110.2
   },
   {
    "name": "Devin Williams",
@@ -173,8 +173,8 @@
    "cotsEstimate": 3500000,
    "mlbamId": 682626,
    "salarySource": "mlbtr-arb",
-   "war": 1.69,
-   "pa": 343
+   "war": 1.68,
+   "pa": 337
   },
   {
    "name": "Tylor Megill",
@@ -209,8 +209,8 @@
    "cotsEstimate": 2250000,
    "mlbamId": 683146,
    "salarySource": "mlbtr-arb",
-   "war": 0.98,
-   "pa": 398
+   "war": 0.97,
+   "pa": 389
   },
   {
    "name": "Cionel Pérez",
@@ -244,8 +244,8 @@
    "cotsEstimate": 1500000,
    "mlbamId": 668901,
    "salarySource": "mlbtr-arb",
-   "war": 0.53,
-   "pa": 254
+   "war": 0.15,
+   "pa": 90
   },
   {
    "name": "Reed Garrett",
@@ -329,8 +329,8 @@
    "salaryPrevYear": 572319,
    "mlbamId": 677595,
    "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 103
+   "war": 0.15,
+   "pa": 80
   },
   {
    "name": "Christian Scott",
@@ -393,8 +393,8 @@
    "salaryPrevYear": 1150000,
    "mlbamId": 676724,
    "salarySource": "minimum",
-   "war": 0.93,
-   "pa": 380
+   "war": 0.91,
+   "pa": 378
   },
   {
    "name": "Gus Varland",
@@ -489,8 +489,8 @@
    "salaryPrevYear": 780000,
    "mlbamId": 701807,
    "salarySource": "minimum",
-   "war": 2.65,
-   "pa": 565
+   "war": 2.73,
+   "pa": 583
   },
   {
    "name": "A.J. Ewing",
@@ -521,8 +521,8 @@
    "salaryPrevYear": 358698,
    "mlbamId": 804267,
    "salarySource": "minimum",
-   "war": 1.24,
-   "ip": 128.8
+   "war": 1.33,
+   "ip": 138
   },
   {
    "name": "Jonah Tong",
@@ -537,8 +537,8 @@
    "salaryPrevYear": 242318,
    "mlbamId": 804636,
    "salarySource": "minimum",
-   "war": 0.34,
-   "ip": 27
+   "war": 0.46,
+   "ip": 36
   },
   {
    "name": "Jonathan Pintaro",
@@ -553,8 +553,8 @@
    "salaryPrevYear": 528617,
    "mlbamId": 702752,
    "salarySource": "minimum",
-   "war": 0.12,
-   "ip": 30
+   "war": 0.11,
+   "ip": 27
   },
   {
    "name": "Jefry Yan",
@@ -602,7 +602,7 @@
    "mlbamId": 703492,
    "salarySource": "minimum",
    "war": 0.14,
-   "pa": 155
+   "pa": 153
   },
   {
    "name": "Jack Weisenburger",
@@ -633,8 +633,8 @@
    "salaryPrevYear": null,
    "mlbamId": 681252,
    "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 16
+   "war": 0.04,
+   "ip": 14
   },
   {
    "name": "Jefferson Rojas",
