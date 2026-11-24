@@ -172,11 +172,14 @@ export function simulateOffseason(input: SimInput): Simulation {
   // the Team Builder and the setup screen show. The standings' +/− measure from here.
   const start = new Map(teams.map((t) => [t.team, { war: war.get(t.team)!, payroll: built.get(t.team)!.payroll }]))
   // Budgets: last year's payroll scaled by the plan (all in spends past it, tanking well under),
-  // but always enough for a little more than what's already owed for 2027, and never below what
-  // the user's moves cost.
+  // but always enough for a little more than what's already owed for 2027. Whatever the user's
+  // moves add to payroll goes on top, so a team the user spends on still acts on its plan
+  // (2026-11-24: adding Peralta to BAL had used up all but $3.9M and the Orioles made no moves).
+  // Moves that save money leave the budget as it was, so the team can spend the savings.
   const budget = new Map(teams.map((t) => {
     const st = ATTITUDES[attitudes[t.team] ?? 'buysell']
-    return [t.team, Math.max(built.get(t.team)!.payroll, payroll2026(t) * st.budget, before.get(t.team)!.payroll + st.cushion)]
+    const userAdded = Math.max(0, start.get(t.team)!.payroll - before.get(t.team)!.payroll)
+    return [t.team, Math.max(payroll2026(t) * st.budget, before.get(t.team)!.payroll + st.cushion) + userAdded]
   }))
   const signed = new Map<string, number>()
   const settings = (team: string) => ATTITUDES[attitudes[team] ?? 'buysell']

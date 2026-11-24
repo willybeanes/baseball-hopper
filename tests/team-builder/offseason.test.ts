@@ -86,6 +86,18 @@ describe('simulateOffseason', () => {
     expect(r.teams[worst].payrollBefore).toBe(buildRoster(team(worst), manual[worst], pool).payroll)
   })
 
+  test("what the user's moves add to payroll goes on top of the team's budget", () => {
+    // Adding a $15M player used to eat the team's room, so it made no moves of its own.
+    const code = 'BAL'
+    const plain = simulateOffseason(base).teams[code]
+    const fa = [...pool].filter((e) => e.kind === 'fa' && e.from !== code).sort((a, b) => (b.war ?? 0) - (a.war ?? 0))[5]
+    const manual: Record<string, Move[]> = { [code]: [{ type: 'add', id: fa.mlbamId, salary: 15e6 }] }
+    const r = simulateOffseason({ ...base, manual }).teams[code]
+    const added = r.payrollBefore - buildRoster(team(code), [], pool).payroll
+    expect(added).toBeGreaterThan(0)
+    expect(r.budget).toBeCloseTo(plain.budget + added, 0)
+  })
+
   test('each signing lists its bids, keenest first, with the winner on top', () => {
     for (const x of sim.log.filter((t) => t.kind === 'signed')) {
       expect(x.bids!.length).toBe(x.bidders!)
