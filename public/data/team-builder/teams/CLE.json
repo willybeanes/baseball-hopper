@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 663460,
    "salarySource": "cots",
-   "war": 2.26,
-   "ip": 147.8
+   "war": 2.16,
+   "ip": 148.6
   },
   {
    "name": "Steven Kwan",
@@ -50,7 +50,7 @@
    "cotsEstimate": 11000000,
    "mlbamId": 680757,
    "salarySource": "mlbtr-arb",
-   "war": 2.96,
+   "war": 2.95,
    "pa": 655
   },
   {
@@ -88,7 +88,7 @@
    "cotsEstimate": 8200000,
    "mlbamId": 666176,
    "salarySource": "mlbtr-arb",
-   "war": 1.04,
+   "war": 1.03,
    "pa": 513
   },
   {
@@ -232,7 +232,7 @@
    "mlbamId": 682120,
    "salarySource": "mlbtr-arb",
    "war": 0.06,
-   "ip": 59
+   "ip": 58
   },
   {
    "name": "Slade Cecconi",
@@ -249,8 +249,8 @@
    "cotsEstimate": 1795000,
    "mlbamId": 677944,
    "salarySource": "mlbtr-arb",
-   "war": 0.36,
-   "ip": 66.7
+   "war": 0.29,
+   "ip": 57.8
   },
   {
    "name": "Matt Festa",
@@ -267,8 +267,8 @@
    "cotsEstimate": 1250000,
    "mlbamId": 670036,
    "salarySource": "mlbtr-arb",
-   "war": 0.18,
-   "ip": 54
+   "war": 0.17,
+   "ip": 53
   },
   {
    "name": "Blake Perkins",
@@ -317,7 +317,7 @@
    "salaryPrevYear": 788000,
    "mlbamId": 682657,
    "salarySource": "minimum",
-   "war": 0.9,
+   "war": 0.89,
    "pa": 365
   },
   {
@@ -333,8 +333,8 @@
    "salaryPrevYear": 441400,
    "mlbamId": 671106,
    "salarySource": "minimum",
-   "war": 0.74,
-   "ip": 129
+   "war": 0.3,
+   "ip": 58.2
   },
   {
    "name": "Daniel Schneemann",
@@ -461,8 +461,8 @@
    "salaryPrevYear": 234742,
    "mlbamId": 684974,
    "salarySource": "minimum",
-   "war": 0.1,
-   "ip": 35
+   "war": 0.09,
+   "ip": 32
   },
   {
    "name": "Chase DeLauter",
@@ -478,7 +478,7 @@
    "mlbamId": 800050,
    "salarySource": "minimum",
    "war": 3.1,
-   "pa": 511
+   "pa": 512
   },
   {
    "name": "Travis Bazzana",
@@ -541,8 +541,8 @@
    "salaryPrevYear": 354570,
    "mlbamId": 680916,
    "salarySource": "minimum",
-   "war": 0.22,
-   "ip": 30
+   "war": 0.19,
+   "ip": 26
   },
   {
    "name": "Angel Genao",
@@ -573,8 +573,8 @@
    "salaryPrevYear": 383617,
    "mlbamId": 682982,
    "salarySource": "minimum",
-   "war": 0.75,
-   "ip": 68.2
+   "war": 0.58,
+   "ip": 54.7
   },
   {
    "name": "Kahlil Watson",
@@ -621,8 +621,8 @@
    "salaryPrevYear": 82224,
    "mlbamId": 804926,
    "salarySource": "minimum",
-   "war": 0.21,
-   "ip": 56.9
+   "war": 0.18,
+   "ip": 45.7
   },
   {
    "name": "Yorman Gómez",
@@ -637,8 +637,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 691414,
    "salarySource": "minimum",
-   "war": -0.05,
-   "ip": 40.5
+   "war": -0.04,
+   "ip": 22
   },
   {
    "name": "Milán Tolentino",

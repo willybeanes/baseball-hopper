@@ -104,8 +104,8 @@
    "walkYear": false,
    "mlbamId": 606466,
    "salarySource": "cots",
-   "war": 3.82,
-   "pa": 614
+   "war": 3.83,
+   "pa": 616
   },
   {
    "name": "Geraldo Perdomo",
@@ -355,7 +355,7 @@
    "salaryPrevYear": 447595,
    "mlbamId": 682988,
    "salarySource": "minimum",
-   "war": 0.2,
+   "war": 0.19,
    "pa": 183
   },
   {

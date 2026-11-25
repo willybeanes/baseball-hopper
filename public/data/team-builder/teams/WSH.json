@@ -85,7 +85,7 @@
    "walkYear": false,
    "mlbamId": 696285,
    "salarySource": "cots",
-   "war": 1.66,
+   "war": 1.65,
    "pa": 464
   },
   {
@@ -167,7 +167,7 @@
    "salaryPrevYear": 806900,
    "mlbamId": 695578,
    "salarySource": "minimum",
-   "war": 4.4,
+   "war": 4.39,
    "pa": 680
   },
   {
@@ -551,8 +551,8 @@
    "salaryPrevYear": 112620,
    "mlbamId": 691002,
    "salarySource": "minimum",
-   "war": 0.31,
-   "pa": 323
+   "war": 0.32,
+   "pa": 329
   },
   {
    "name": "Jack Sinclair",

@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 642547,
    "salarySource": "cots",
-   "war": 1.88,
-   "ip": 168.7
+   "war": 1.77,
+   "ip": 176.3
   },
   {
    "name": "Tyler O'Neill",
@@ -105,8 +105,8 @@
    "walkYear": false,
    "mlbamId": 680694,
    "salarySource": "cots",
-   "war": 2.27,
-   "ip": 170.6
+   "war": 2.21,
+   "ip": 167.4
   },
   {
    "name": "Shane Baz",
@@ -122,8 +122,8 @@
    "walkYear": false,
    "mlbamId": 669358,
    "salarySource": "cots",
-   "war": 1.76,
-   "ip": 170.6
+   "war": 1.73,
+   "ip": 168
   },
   {
    "name": "Colton Cowser",
@@ -140,7 +140,7 @@
    "cotsEstimate": 3000000,
    "mlbamId": 681297,
    "salarySource": "mlbtr-arb",
-   "war": 1.6,
+   "war": 1.59,
    "pa": 397
   },
   {
@@ -241,7 +241,7 @@
    "salaryPrevYear": 446369,
    "mlbamId": 687952,
    "salarySource": "minimum",
-   "war": 1.18,
+   "war": 1.17,
    "pa": 437
   },
   {
@@ -321,8 +321,8 @@
    "salaryPrevYear": 539943,
    "mlbamId": 700249,
    "salarySource": "minimum",
-   "war": 1.48,
-   "ip": 139.9
+   "war": 1.15,
+   "ip": 110.7
   },
   {
    "name": "Grant Wolfram",
@@ -353,8 +353,8 @@
    "salaryPrevYear": 693418,
    "mlbamId": 687064,
    "salarySource": "minimum",
-   "war": 1.7,
-   "ip": 156.9
+   "war": 1.67,
+   "ip": 153.9
   },
   {
    "name": "Jeremiah Jackson",
@@ -417,8 +417,8 @@
    "salaryPrevYear": 557198,
    "mlbamId": 682274,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 28
+   "war": 0.12,
+   "ip": 25
   },
   {
    "name": "Anthony Nunez",
@@ -497,8 +497,8 @@
    "salaryPrevYear": 161435,
    "mlbamId": 694346,
    "salarySource": "minimum",
-   "war": 1.28,
-   "ip": 130.6
+   "war": 0.78,
+   "ip": 84.8
   },
   {
    "name": "Luis De Leon",
@@ -513,8 +513,8 @@
    "salaryPrevYear": 95163,
    "mlbamId": 801725,
    "salarySource": "minimum",
-   "war": 0.45,
-   "ip": 53.7
+   "war": 0.37,
+   "ip": 50.5
   },
   {
    "name": "Braden Nett",
@@ -530,7 +530,7 @@
    "mlbamId": 804556,
    "salarySource": "minimum",
    "war": -0.02,
-   "ip": 10
+   "ip": 8
   },
   {
    "name": "Reed Trimble",
@@ -596,8 +596,8 @@
    "mlbamId": 702650,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.16,
-   "ip": 39.7
+   "war": 0.07,
+   "ip": 19.2
   },
   {
    "name": "Nestor German",
@@ -613,8 +613,8 @@
    "mlbamId": 815148,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.11,
-   "ip": 18.5
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Levi Wells",
@@ -630,8 +630,8 @@
    "mlbamId": 694370,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.02,
-   "ip": 18
+   "war": 0.01,
+   "ip": 12
   },
   {
    "name": "Braxton Bragg",

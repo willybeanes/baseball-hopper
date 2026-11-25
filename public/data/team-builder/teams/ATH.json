@@ -123,7 +123,7 @@
    "walkYear": false,
    "mlbamId": 805779,
    "salarySource": "cots",
-   "war": 2.76,
+   "war": 2.75,
    "pa": 495
   },
   {
@@ -543,7 +543,7 @@
    "salaryPrevYear": 379573,
    "mlbamId": 811965,
    "salarySource": "minimum",
-   "war": 1.1,
+   "war": 1.09,
    "pa": 284
   },
   {
@@ -690,6 +690,16 @@
  "rowsPayroll": 84360713,
  "rowsTaxPayroll": 118967857,
  "minors": [
+  {
+   "mlbamId": 694372,
+   "name": "Adam Seminaris",
+   "pos": "sp",
+   "age": 28,
+   "war": 2.41,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
   {
    "mlbamId": 815888,
    "name": "Leo De Vries",

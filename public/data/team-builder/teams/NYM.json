@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 665742,
    "salarySource": "cots",
-   "war": 4.91,
+   "war": 4.9,
    "pa": 626
   },
   {
@@ -330,7 +330,7 @@
    "mlbamId": 677595,
    "salarySource": "minimum",
    "war": 0.15,
-   "pa": 80
+   "pa": 82
   },
   {
    "name": "Christian Scott",
@@ -393,7 +393,7 @@
    "salaryPrevYear": 1150000,
    "mlbamId": 676724,
    "salarySource": "minimum",
-   "war": 0.91,
+   "war": 0.9,
    "pa": 378
   },
   {

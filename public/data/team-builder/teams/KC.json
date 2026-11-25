@@ -70,6 +70,23 @@
    "pa": 483
   },
   {
+   "name": "Alec Bohm",
+   "sheetName": "Bohm, Alec",
+   "pos": "3b-1b",
+   "age": 30,
+   "mls": 6.106,
+   "contract": "2 y/$20M (27-28)",
+   "status": "signed",
+   "salary": 10000000,
+   "taxValue": 10000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 664761,
+   "salarySource": "cots",
+   "war": 1.96,
+   "pa": 549
+  },
+  {
    "name": "Cole Ragans",
    "sheetName": "Ragans, Cole",
    "pos": "lhp-s",
@@ -292,7 +309,7 @@
    "salaryPrevYear": 784000,
    "mlbamId": 695506,
    "salarySource": "minimum",
-   "war": 3.23,
+   "war": 3.22,
    "pa": 596
   },
   {
@@ -673,8 +690,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 9350000,
-   "taxValue": 9350000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -694,10 +711,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 116117075,
- "sheetTaxPayroll": 141457176,
- "rowsPayroll": 116117075,
- "rowsTaxPayroll": 141457176,
+ "sheetPayroll": 125267075,
+ "sheetTaxPayroll": 150607176,
+ "rowsPayroll": 125267075,
+ "rowsTaxPayroll": 150607176,
  "minors": [
   {
    "mlbamId": 804114,

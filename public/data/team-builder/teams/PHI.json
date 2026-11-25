@@ -276,7 +276,7 @@
    "cotsEstimate": 1211000,
    "mlbamId": 689147,
    "salarySource": "mlbtr-arb",
-   "war": 0.35,
+   "war": 0.36,
    "ip": 52
   },
   {
@@ -653,6 +653,16 @@
  "rowsPayroll": 261378618,
  "rowsTaxPayroll": 281487221,
  "minors": [
+  {
+   "mlbamId": 691627,
+   "name": "Ricardo Olivar",
+   "pos": "c",
+   "age": 25,
+   "war": 1.91,
+   "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
   {
    "mlbamId": 805795,
    "name": "Aidan Miller",

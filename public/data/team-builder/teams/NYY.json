@@ -117,7 +117,7 @@
    "walkYear": true,
    "mlbamId": 641857,
    "salarySource": "cots",
-   "war": 0.98,
+   "war": 0.97,
    "pa": 307
   },
   {
@@ -205,8 +205,8 @@
    "cotsEstimate": 5000000,
    "mlbamId": 683011,
    "salarySource": "mlbtr-arb",
-   "war": 1.99,
-   "pa": 448
+   "war": 2,
+   "pa": 450
   },
   {
    "name": "Jose Caballero",

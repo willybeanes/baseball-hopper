@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 677594,
    "salarySource": "cots",
-   "war": 4.75,
+   "war": 4.74,
    "pa": 628
   },
   {
@@ -32,8 +32,8 @@
    "walkYear": false,
    "mlbamId": 647304,
    "salarySource": "cots",
-   "war": 2.17,
-   "pa": 590
+   "war": 2.15,
+   "pa": 583
   },
   {
    "name": "Logan Gilbert",
@@ -225,7 +225,7 @@
    "cotsEstimate": 2800000,
    "mlbamId": 686527,
    "salarySource": "mlbtr-arb",
-   "war": 1.78,
+   "war": 1.75,
    "pa": 491
   },
   {
@@ -349,7 +349,7 @@
    "salaryPrevYear": null,
    "mlbamId": 669911,
    "salarySource": "minimum",
-   "war": -0.04,
+   "war": -0.05,
    "pa": 58
   },
   {
@@ -783,7 +783,7 @@
    "name": "Stuart Fairchild",
    "pos": "cf-rf",
    "age": 31,
-   "war": 0.83,
+   "war": 0.82,
    "pa": 600,
    "salary": 780000,
    "debuted": true

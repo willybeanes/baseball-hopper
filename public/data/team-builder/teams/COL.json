@@ -334,7 +334,7 @@
    "mlbamId": 687859,
    "salarySource": "minimum",
    "war": -0.08,
-   "pa": 227
+   "pa": 228
   },
   {
    "name": "Kyle Karros",
@@ -445,7 +445,7 @@
    "salaryPrevYear": 281905,
    "mlbamId": 691182,
    "salarySource": "minimum",
-   "war": 0.4,
+   "war": 0.39,
    "pa": 302
   },
   {
@@ -557,7 +557,7 @@
    "salaryPrevYear": 231983,
    "mlbamId": 694514,
    "salarySource": "minimum",
-   "war": 0.11,
+   "war": 0.1,
    "pa": 70
   },
   {
