@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 670541,
    "salarySource": "cots",
-   "war": 5.31,
+   "war": 5.3,
    "pa": 604
   },
   {
@@ -139,7 +139,7 @@
    "cotsEstimate": 14975000,
    "mlbamId": 665161,
    "salarySource": "mlbtr-arb",
-   "war": 3.3,
+   "war": 3.29,
    "pa": 578
   },
   {
@@ -192,7 +192,7 @@
    "cotsEstimate": 6750000,
    "mlbamId": 673237,
    "salarySource": "mlbtr-arb",
-   "war": 2.2,
+   "war": 2.19,
    "pa": 420
   },
   {
@@ -219,15 +219,14 @@
    "pos": "ss-2b-3b",
    "age": 28,
    "mls": 3.164,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1800000,
-   "taxValue": 1800000,
+   "contract": "1 y/$1.95M (27)",
+   "status": "signed",
+   "salary": 1950000,
+   "taxValue": 1950000,
    "salaryPrevYear": 1400000,
-   "arbYear": 2,
-   "cotsEstimate": 2250000,
+   "walkYear": false,
    "mlbamId": 669397,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.25,
    "pa": 127
   },
@@ -250,6 +249,23 @@
    "ip": 149.7
   },
   {
+   "name": "Bennett Sousa",
+   "sheetName": "Sousa, Bennett",
+   "pos": "lhp",
+   "age": 32,
+   "mls": 3.156,
+   "contract": "1 y/$1.26M (27)",
+   "status": "signed",
+   "salary": 1260000,
+   "taxValue": 1260000,
+   "salaryPrevYear": 910000,
+   "walkYear": false,
+   "mlbamId": 656986,
+   "salarySource": "cots",
+   "war": 0.34,
+   "ip": 53
+  },
+  {
    "name": "Ronel Blanco",
    "sheetName": "Blanco, Ronel",
    "pos": "rhp-s",
@@ -266,24 +282,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.22,
    "ip": 58.1
-  },
-  {
-   "name": "Bennett Sousa",
-   "sheetName": "Sousa, Bennett",
-   "pos": "lhp",
-   "age": 32,
-   "mls": 3.156,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 1300000,
-   "taxValue": 1300000,
-   "salaryPrevYear": 910000,
-   "arbYear": 2,
-   "cotsEstimate": 1050000,
-   "mlbamId": 656986,
-   "salarySource": "mlbtr-arb",
-   "war": 0.34,
-   "ip": 53
   },
   {
    "name": "Bryan King",
@@ -443,7 +441,7 @@
    "mlbamId": 694728,
    "salarySource": "minimum",
    "war": 0.45,
-   "pa": 230
+   "pa": 231
   },
   {
    "name": "Roddery Muñoz",
@@ -570,7 +568,7 @@
    "salaryPrevYear": 126428,
    "mlbamId": 828599,
    "salarySource": "minimum",
-   "war": 1.15,
+   "war": 1.14,
    "pa": 343
   },
   {
@@ -607,18 +605,17 @@
   },
   {
    "name": "Jackson Nezuh",
-   "sheetName": "",
-   "pos": "rhp-s",
+   "sheetName": "Nezuh, Jackson",
+   "pos": "rhp",
    "age": 25,
    "mls": 0,
-   "contract": "Added to the 40-man",
+   "contract": "",
    "status": "prearb",
    "salary": 780000,
    "taxValue": 780000,
    "salaryPrevYear": null,
    "mlbamId": 694545,
    "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
    "war": 0.01,
    "ip": 21.2
   },
@@ -655,8 +652,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 7650000,
-   "taxValue": 7650000,
+   "salary": 8500000,
+   "taxValue": 8500000,
    "note": ""
   },
   {
@@ -676,11 +673,21 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 224818333,
- "sheetTaxPayroll": 220894995,
- "rowsPayroll": 224818333,
- "rowsTaxPayroll": 220894995,
+ "sheetPayroll": 224528333,
+ "sheetTaxPayroll": 220604995,
+ "rowsPayroll": 224528333,
+ "rowsTaxPayroll": 220604995,
  "minors": [
+  {
+   "mlbamId": 680933,
+   "name": "Joander Suarez",
+   "pos": "sp",
+   "age": 27,
+   "war": 1.27,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
   {
    "mlbamId": 814299,
    "name": "Pascanel Ferreras",
@@ -718,16 +725,6 @@
    "age": 24,
    "war": 0.92,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 686544,
-   "name": "Nestor Lorant",
-   "pos": "sp",
-   "age": 25,
-   "war": 0.8,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -818,6 +815,16 @@
    "age": 26,
    "war": 0.4,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 686544,
+   "name": "Nestor Lorant",
+   "pos": "sp",
+   "age": 25,
+   "war": 0.4,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },

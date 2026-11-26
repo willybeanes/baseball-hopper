@@ -66,8 +66,8 @@
    "walkYear": false,
    "mlbamId": 607043,
    "salarySource": "cots",
-   "war": 1.92,
-   "pa": 631
+   "war": 1.91,
+   "pa": 630
   },
   {
    "name": "MacKenzie Gore",
@@ -119,7 +119,7 @@
    "cotsEstimate": 6500000,
    "mlbamId": 669394,
    "salarySource": "mlbtr-arb",
-   "war": 1.28,
+   "war": 1.27,
    "pa": 546
   },
   {
@@ -155,26 +155,8 @@
    "cotsEstimate": 3875000,
    "mlbamId": 694671,
    "salarySource": "mlbtr-arb",
-   "war": 3.55,
+   "war": 3.53,
    "pa": 588
-  },
-  {
-   "name": "Logan O'Hoppe",
-   "sheetName": "O'Hoppe, Logan",
-   "pos": "c",
-   "age": 27,
-   "mls": 3.171,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 3100000,
-   "taxValue": 3100000,
-   "salaryPrevYear": 842246,
-   "arbYear": 2,
-   "cotsEstimate": 2950000,
-   "mlbamId": 681351,
-   "salarySource": "mlbtr-arb",
-   "war": 0.46,
-   "pa": 254
   },
   {
    "name": "Ezequiel Duran",
@@ -193,6 +175,23 @@
    "salarySource": "mlbtr-arb",
    "war": 1.9,
    "pa": 534
+  },
+  {
+   "name": "Logan O'Hoppe",
+   "sheetName": "O'Hoppe, Logan",
+   "pos": "c",
+   "age": 27,
+   "mls": 3.171,
+   "contract": "1 y/$3.1M (27)",
+   "status": "signed",
+   "salary": 3100000,
+   "taxValue": 3100000,
+   "salaryPrevYear": 842246,
+   "walkYear": false,
+   "mlbamId": 681351,
+   "salarySource": "cots",
+   "war": 0.46,
+   "pa": 254
   },
   {
    "name": "Jake Latz",
@@ -344,7 +343,7 @@
    "mlbamId": 679822,
    "salarySource": "minimum",
    "war": 0.55,
-   "pa": 282
+   "pa": 283
   },
   {
    "name": "Alejandro Osuna",
@@ -359,8 +358,8 @@
    "salaryPrevYear": 517339,
    "mlbamId": 696030,
    "salarySource": "minimum",
-   "war": 0.79,
-   "pa": 321
+   "war": 0.78,
+   "pa": 319
   },
   {
    "name": "Cody Freeman",
@@ -375,8 +374,8 @@
    "salaryPrevYear": 704082,
    "mlbamId": 683227,
    "salarySource": "minimum",
-   "war": 0.4,
-   "pa": 158
+   "war": 0.37,
+   "pa": 141
   },
   {
    "name": "Michel Otañez",
@@ -471,8 +470,8 @@
    "salaryPrevYear": 271338,
    "mlbamId": 695508,
    "salarySource": "minimum",
-   "war": 0.53,
-   "pa": 161
+   "war": 0.52,
+   "pa": 159
   },
   {
    "name": "Gavin Collyer",
@@ -624,8 +623,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 8500000,
-   "taxValue": 8500000,
+   "salary": 9350000,
+   "taxValue": 9350000,
    "note": ""
   },
   {
@@ -645,10 +644,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 172085000,
- "sheetTaxPayroll": 190001667,
- "rowsPayroll": 172085000,
- "rowsTaxPayroll": 190001667,
+ "sheetPayroll": 172285000,
+ "sheetTaxPayroll": 190201667,
+ "rowsPayroll": 172285000,
+ "rowsTaxPayroll": 190201667,
  "minors": [
   {
    "mlbamId": 702662,
@@ -665,7 +664,7 @@
    "name": "Sebastian Walcott",
    "pos": "ss",
    "age": 21,
-   "war": 1.86,
+   "war": 1.83,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -865,7 +864,7 @@
    "name": "Caden Scarborough",
    "pos": "sp",
    "age": 22,
-   "war": 0.2,
+   "war": 0.19,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -881,16 +880,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 686539,
-   "name": "Declan Cronin",
-   "pos": "rp",
-   "age": 29,
-   "war": 0.11,
-   "ip": 65,
-   "salary": 780000,
-   "debuted": true
-  },
-  {
    "mlbamId": 678620,
    "name": "Blake Townsend",
    "pos": "sp",
@@ -899,6 +888,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 686539,
+   "name": "Declan Cronin",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.1,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 665878,

@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 596115,
    "salarySource": "cots",
-   "war": 0.84,
+   "war": 0.83,
    "pa": 487
   },
   {
@@ -50,7 +50,7 @@
    "mlbamId": 807799,
    "salarySource": "cots",
    "war": 0.09,
-   "pa": 53
+   "pa": 54
   },
   {
    "name": "Willson Contreras",
@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 575929,
    "salarySource": "cots",
-   "war": 2.07,
+   "war": 2.06,
    "pa": 549
   },
   {
@@ -187,7 +187,7 @@
    "walkYear": true,
    "mlbamId": 676477,
    "salarySource": "cots",
-   "war": 0.83,
+   "war": 0.82,
    "ip": 64
   },
   {
@@ -240,7 +240,7 @@
    "walkYear": false,
    "mlbamId": 701350,
    "salarySource": "cots",
-   "war": 2.83,
+   "war": 2.82,
    "pa": 526
   },
   {
@@ -275,7 +275,7 @@
    "cotsEstimate": 3535000,
    "mlbamId": 663743,
    "salarySource": "mlbtr-arb",
-   "war": 0.62,
+   "war": 0.61,
    "pa": 174
   },
   {

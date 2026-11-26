@@ -298,7 +298,7 @@
    "mlbamId": 682622,
    "salarySource": "minimum",
    "war": 0.17,
-   "pa": 151
+   "pa": 152
   },
   {
    "name": "Rhett Lowder",
@@ -442,7 +442,7 @@
    "mlbamId": 677943,
    "salarySource": "minimum",
    "war": 0,
-   "pa": 22
+   "pa": 21
   },
   {
    "name": "Zach Maxwell",
@@ -474,7 +474,7 @@
    "mlbamId": 695490,
    "salarySource": "minimum",
    "war": 0.22,
-   "pa": 121
+   "pa": 120
   },
   {
    "name": "Chase Petty",
@@ -569,7 +569,7 @@
    "salaryPrevYear": 100107,
    "mlbamId": 699115,
    "salarySource": "minimum",
-   "war": 0.38,
+   "war": 0.37,
    "pa": 308
   },
   {

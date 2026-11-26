@@ -67,7 +67,7 @@
    "mlbamId": 663538,
    "salarySource": "cots",
    "war": 2.98,
-   "pa": 591
+   "pa": 593
   },
   {
    "name": "Teruaki Sato",
@@ -81,8 +81,10 @@
    "taxValue": 20000000,
    "salaryPrevYear": null,
    "walkYear": false,
+   "mlbamId": 831664,
    "salarySource": "cots",
-   "war": null
+   "war": 1.66,
+   "pa": 480
   },
   {
    "name": "Pete Crow-Armstrong",
@@ -258,8 +260,8 @@
    "cotsEstimate": 1808500,
    "mlbamId": 665804,
    "salarySource": "mlbtr-arb",
-   "war": 1.42,
-   "pa": 331
+   "war": 1.43,
+   "pa": 335
   },
   {
    "name": "Braxton Garrett",
@@ -393,7 +395,7 @@
    "salaryPrevYear": 804500,
    "mlbamId": 807713,
    "salarySource": "minimum",
-   "war": 1.4,
+   "war": 1.39,
    "pa": 392
   },
   {
@@ -541,6 +543,22 @@
    "pa": 177
   },
   {
+   "name": "Chayce McDermott",
+   "sheetName": "McDermott, Chayce",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.085,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694646,
+   "salarySource": "minimum",
+   "war": 0.03,
+   "ip": 8
+  },
+  {
    "name": "Jayden Murray",
    "sheetName": "Murray, Jayden",
    "pos": "rhp",
@@ -589,6 +607,22 @@
    "pa": 97
   },
   {
+   "name": "Braxton Roxby",
+   "sheetName": "Roxby, Braxton",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.019,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 694820,
+   "salarySource": "minimum",
+   "war": 0,
+   "ip": 6
+  },
+  {
    "name": "Jaxon Wiggins",
    "sheetName": "",
    "pos": "rhp-s",
@@ -621,43 +655,15 @@
    "corrected": "Added from RosterResource",
    "war": 0.06,
    "ip": 9.2
-  },
-  {
-   "name": "Chayce McDermott",
-   "sheetName": "",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.086,
-   "contract": "Added to the 40-man",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 694646,
-   "salarySource": "minimum",
-   "corrected": "Added from RosterResource",
-   "war": 0.03,
-   "ip": 8
-  },
-  {
-   "name": "Braxton Roxby",
-   "sheetName": "Roxby, Braxton",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.019,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 694820,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from WSH",
-   "war": 0,
-   "ip": 6
   }
  ],
  "deadMoney": [
+  {
+   "name": "Braxton Roxby",
+   "salary": 100000,
+   "taxValue": 100000,
+   "note": "to Washington, 11/20/26 trade"
+  },
   {
    "name": "Matt Boyd",
    "salary": 2000000,
@@ -690,8 +696,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 4250000,
-   "taxValue": 4250000,
+   "salary": 5950000,
+   "taxValue": 5950000,
    "note": ""
   },
   {
@@ -711,10 +717,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 190666863,
- "sheetTaxPayroll": 212338249,
- "rowsPayroll": 190666863,
- "rowsTaxPayroll": 212338249,
+ "sheetPayroll": 190391863,
+ "sheetTaxPayroll": 212063249,
+ "rowsPayroll": 190391863,
+ "rowsTaxPayroll": 212063249,
  "minors": [
   {
    "mlbamId": 823807,
@@ -871,7 +877,7 @@
    "name": "Ariel Armas",
    "pos": "c",
    "age": 24,
-   "war": 0.48,
+   "war": 0.47,
    "pa": 450,
    "salary": 780000,
    "debuted": false

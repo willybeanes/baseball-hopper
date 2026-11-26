@@ -70,6 +70,23 @@
    "ip": 60
   },
   {
+   "name": "Tyrone Taylor",
+   "sheetName": "Taylor, Tyrone",
+   "pos": "of",
+   "age": 33,
+   "mls": 6.093,
+   "contract": "2 y/$17M (27-28)",
+   "status": "signed",
+   "salary": 8500000,
+   "taxValue": 8500000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 621438,
+   "salarySource": "cots",
+   "war": 0.58,
+   "pa": 260
+  },
+  {
    "name": "Miguel Vargas",
    "sheetName": "Vargas, Miguel",
    "pos": "3b-1b",
@@ -119,7 +136,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 686668,
    "salarySource": "mlbtr-arb",
-   "war": 0.61,
+   "war": 0.6,
    "pa": 253
   },
   {
@@ -348,7 +365,7 @@
    "mlbamId": 688363,
    "salarySource": "minimum",
    "war": 0.16,
-   "pa": 110
+   "pa": 112
   },
   {
    "name": "Grant Taylor",
@@ -444,7 +461,7 @@
    "mlbamId": 695020,
    "salarySource": "minimum",
    "war": 0.08,
-   "pa": 50
+   "pa": 51
   },
   {
    "name": "Sam Antonacci",
@@ -491,7 +508,7 @@
    "salaryPrevYear": 462995,
    "mlbamId": 695731,
    "salarySource": "minimum",
-   "war": 1.44,
+   "war": 1.43,
    "pa": 454
   },
   {
@@ -621,7 +638,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.11,
-   "pa": 45
+   "pa": 46
   },
   {
    "name": "Jaden Woods",
@@ -662,8 +679,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 14450000,
-   "taxValue": 14450000,
+   "salary": 13600000,
+   "taxValue": 13600000,
    "note": ""
   },
   {
@@ -683,10 +700,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 92650000,
- "sheetTaxPayroll": 112983061,
- "rowsPayroll": 92650000,
- "rowsTaxPayroll": 112983061,
+ "sheetPayroll": 100300000,
+ "sheetTaxPayroll": 120633061,
+ "rowsPayroll": 100300000,
+ "rowsTaxPayroll": 120633061,
  "minors": [
   {
    "mlbamId": 815352,
@@ -739,16 +756,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 683569,
-   "name": "Jose Colmenares",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.77,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 681066,
    "name": "Ky Bush",
    "pos": "sp",
@@ -765,6 +772,16 @@
    "age": 28,
    "war": 0.76,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 683569,
+   "name": "Jose Colmenares",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.74,
+   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

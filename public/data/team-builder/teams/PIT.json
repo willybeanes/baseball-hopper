@@ -173,7 +173,7 @@
    "cotsEstimate": 2002000,
    "mlbamId": 687462,
    "salarySource": "mlbtr-arb",
-   "war": 0.9,
+   "war": 0.89,
    "pa": 409
   },
   {
@@ -280,7 +280,7 @@
    "cotsEstimate": 1200000,
    "mlbamId": 680779,
    "salarySource": "mlbtr-arb",
-   "war": 1.22,
+   "war": 1.21,
    "pa": 248
   },
   {
@@ -456,7 +456,7 @@
    "salaryPrevYear": 325348,
    "mlbamId": 694378,
    "salarySource": "minimum",
-   "war": 0.74,
+   "war": 0.73,
    "pa": 294
   },
   {
@@ -633,8 +633,8 @@
    "mlbamId": 800208,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0,
-   "pa": 6
+   "war": 0.01,
+   "pa": 7
   },
   {
    "name": "Mitch Jebb",
@@ -765,7 +765,7 @@
    "name": "Keiner Delgado",
    "pos": "2b",
    "age": 23,
-   "war": 0.73,
+   "war": 0.74,
    "pa": 600,
    "salary": 780000,
    "debuted": false

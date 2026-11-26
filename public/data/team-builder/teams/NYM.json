@@ -36,7 +36,7 @@
     "type": "opt-out",
     "buyout": 5000000
    },
-   "war": 3.2,
+   "war": 3.19,
    "pa": 616
   },
   {
@@ -105,7 +105,7 @@
    "mlbamId": 640455,
    "salarySource": "cots",
    "war": 1.1,
-   "ip": 116.3
+   "ip": 115.3
   },
   {
    "name": "Kodai Senga",
@@ -473,8 +473,8 @@
    "salaryPrevYear": 780416,
    "mlbamId": 663795,
    "salarySource": "minimum",
-   "war": 0,
-   "ip": 1
+   "war": 0.05,
+   "ip": 14
   },
   {
    "name": "Carson Benge",
@@ -573,22 +573,6 @@
    "ip": 22
   },
   {
-   "name": "Yunior Tur",
-   "sheetName": "Tur, Yunior",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.04,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 814305,
-   "salarySource": "minimum",
-   "war": 0,
-   "ip": 6
-  },
-  {
    "name": "Nick Morabito",
    "sheetName": "Morabito, Nick",
    "pos": "of",
@@ -618,23 +602,7 @@
    "mlbamId": 674073,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 1
-  },
-  {
-   "name": "Jack Anderson",
-   "sheetName": "Anderson, Jack",
-   "pos": "rhp",
-   "age": 27,
-   "mls": 0.02,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 681252,
-   "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 14
+   "ip": 6
   },
   {
    "name": "Jefferson Rojas",

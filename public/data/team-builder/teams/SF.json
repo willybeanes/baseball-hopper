@@ -66,7 +66,7 @@
    "walkYear": false,
    "mlbamId": 808982,
    "salarySource": "cots",
-   "war": 1.4,
+   "war": 1.39,
    "pa": 515
   },
   {
@@ -126,15 +126,14 @@
    "pos": "rhp",
    "age": 29,
    "mls": 5.071,
-   "contract": "A3",
-   "status": "arb",
-   "salary": 6600000,
-   "taxValue": 6600000,
+   "contract": "1 y/$6.3M (27)",
+   "status": "signed",
+   "salary": 6300000,
+   "taxValue": 6300000,
    "salaryPrevYear": 97861,
-   "arbYear": 3,
-   "cotsEstimate": 6750000,
+   "walkYear": true,
    "mlbamId": 666808,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.44,
    "ip": 62
   },
@@ -153,7 +152,7 @@
    "cotsEstimate": 2410000,
    "mlbamId": 669477,
    "salarySource": "mlbtr-arb",
-   "war": 1.25,
+   "war": 1.24,
    "pa": 484
   },
   {
@@ -173,21 +172,6 @@
    "salarySource": "mlbtr-arb",
    "war": 0.39,
    "ip": 58
-  },
-  {
-   "name": "Rowan Wick",
-   "sheetName": "Wick, Rowan",
-   "pos": "rhp",
-   "age": 34,
-   "mls": 4.114,
-   "contract": "1 y/$880,000 (26)+27 cl opt",
-   "status": "signed",
-   "salary": 800000,
-   "taxValue": 800000,
-   "salaryPrevYear": null,
-   "walkYear": false,
-   "salarySource": "cots",
-   "war": null
   },
   {
    "name": "Randy Rodríguez",
@@ -268,8 +252,8 @@
    "salaryPrevYear": 230441,
    "mlbamId": 691785,
    "salarySource": "minimum",
-   "war": 1.11,
-   "pa": 364
+   "war": 1.1,
+   "pa": 361
   },
   {
    "name": "Anthony Molina",
@@ -300,7 +284,7 @@
    "salaryPrevYear": 706681,
    "mlbamId": 687551,
    "salarySource": "minimum",
-   "war": 1.32,
+   "war": 1.31,
    "pa": 399
   },
   {
@@ -348,7 +332,7 @@
    "salaryPrevYear": 640343,
    "mlbamId": 805811,
    "salarySource": "minimum",
-   "war": 1.8,
+   "war": 1.79,
    "pa": 543
   },
   {
@@ -508,7 +492,7 @@
    "salaryPrevYear": 191872,
    "mlbamId": 806367,
    "salarySource": "minimum",
-   "war": 0.45,
+   "war": 0.44,
    "pa": 218
   },
   {
@@ -674,8 +658,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11900000,
-   "taxValue": 11900000,
+   "salary": 12750000,
+   "taxValue": 12750000,
    "note": ""
   },
   {
@@ -690,10 +674,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 171132144,
- "sheetTaxPayroll": 173030466,
- "rowsPayroll": 171132144,
- "rowsTaxPayroll": 173030466,
+ "sheetPayroll": 170732144,
+ "sheetTaxPayroll": 172630466,
+ "rowsPayroll": 170732144,
+ "rowsTaxPayroll": 172630466,
  "minors": [
   {
    "mlbamId": 701906,
@@ -710,7 +694,7 @@
    "name": "Ramon Marquez",
    "pos": "sp",
    "age": 21,
-   "war": 1.35,
+   "war": 1.36,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -794,6 +778,16 @@
    "pa": 600,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 682674,
+   "name": "Victor Bericoto",
+   "pos": "lf-rf",
+   "age": 25,
+   "war": 0.8,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 700800,

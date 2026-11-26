@@ -49,8 +49,8 @@
    "walkYear": true,
    "mlbamId": 641933,
    "salarySource": "cots",
-   "war": 0.8,
-   "pa": 351
+   "war": 0.7,
+   "pa": 336
   },
   {
    "name": "Gunnar Henderson",
@@ -92,6 +92,23 @@
    "ip": 62
   },
   {
+   "name": "Luis Robert Jr.",
+   "sheetName": "Robert Jr., Luis",
+   "pos": "cf",
+   "age": 29,
+   "mls": 7,
+   "contract": "1 y/$12M (27)",
+   "status": "signed",
+   "salary": 12000000,
+   "taxValue": 12000000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 673357,
+   "salarySource": "cots",
+   "war": 1.65,
+   "pa": 431
+  },
+  {
    "name": "Kyle Bradish",
    "sheetName": "Bradish, Kyle",
    "pos": "rhp-s",
@@ -105,7 +122,7 @@
    "walkYear": false,
    "mlbamId": 680694,
    "salarySource": "cots",
-   "war": 2.21,
+   "war": 2.22,
    "ip": 167.4
   },
   {
@@ -140,8 +157,8 @@
    "cotsEstimate": 3000000,
    "mlbamId": 681297,
    "salarySource": "mlbtr-arb",
-   "war": 1.59,
-   "pa": 397
+   "war": 1.26,
+   "pa": 359
   },
   {
    "name": "Yennier Cano",
@@ -191,7 +208,7 @@
    "walkYear": false,
    "mlbamId": 694212,
    "salarySource": "cots",
-   "war": 2.3,
+   "war": 2.29,
    "pa": 455
   },
   {
@@ -209,7 +226,7 @@
    "cotsEstimate": 1200000,
    "mlbamId": 676059,
    "salarySource": "mlbtr-arb",
-   "war": 1.97,
+   "war": 2.1,
    "pa": 453
   },
   {
@@ -241,8 +258,8 @@
    "salaryPrevYear": 446369,
    "mlbamId": 687952,
    "salarySource": "minimum",
-   "war": 1.17,
-   "pa": 437
+   "war": 0.93,
+   "pa": 369
   },
   {
    "name": "Jackson Holliday",
@@ -257,8 +274,8 @@
    "salaryPrevYear": 802200,
    "mlbamId": 702616,
    "salarySource": "minimum",
-   "war": 2.11,
-   "pa": 495
+   "war": 2.09,
+   "pa": 492
   },
   {
    "name": "Blaze Alexander",
@@ -273,8 +290,8 @@
    "salaryPrevYear": 792800,
    "mlbamId": 677942,
    "salarySource": "minimum",
-   "war": 0.93,
-   "pa": 380
+   "war": 1.03,
+   "pa": 377
   },
   {
    "name": "Carlos Narváez",
@@ -305,8 +322,8 @@
    "salaryPrevYear": 790800,
    "mlbamId": 691723,
    "salarySource": "minimum",
-   "war": 1.19,
-   "pa": 328
+   "war": 1.09,
+   "pa": 318
   },
   {
    "name": "Cade Povich",
@@ -369,8 +386,8 @@
    "salaryPrevYear": 696713,
    "mlbamId": 669236,
    "salarySource": "minimum",
-   "war": 0.13,
-   "pa": 83
+   "war": 0.14,
+   "pa": 65
   },
   {
    "name": "Dylan Beavers",
@@ -385,8 +402,8 @@
    "salaryPrevYear": 787400,
    "mlbamId": 687637,
    "salarySource": "minimum",
-   "war": 1.39,
-   "pa": 404
+   "war": 1.32,
+   "pa": 387
   },
   {
    "name": "Josh Walker",
@@ -481,8 +498,8 @@
    "salaryPrevYear": 18706,
    "mlbamId": 681047,
    "salarySource": "minimum",
-   "war": 0.38,
-   "pa": 229
+   "war": 0.17,
+   "pa": 107
   },
   {
    "name": "Trey Gibson",
@@ -545,8 +562,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 701655,
    "salarySource": "minimum",
-   "war": 0.07,
-   "pa": 41
+   "war": 0.05,
+   "pa": 30
   },
   {
    "name": "Aron Estrada",
@@ -562,8 +579,8 @@
    "mlbamId": 800406,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.2,
-   "pa": 62
+   "war": 0.16,
+   "pa": 49
   },
   {
    "name": "Enrique Bradfield",
@@ -579,8 +596,8 @@
    "mlbamId": 690961,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.15,
-   "pa": 90
+   "war": 0.1,
+   "pa": 61
   },
   {
    "name": "Michael Forret",
@@ -705,10 +722,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 152300000,
- "sheetTaxPayroll": 178391667,
- "rowsPayroll": 152300000,
- "rowsTaxPayroll": 178391667,
+ "sheetPayroll": 164300000,
+ "sheetTaxPayroll": 190391667,
+ "rowsPayroll": 164300000,
+ "rowsTaxPayroll": 190391667,
  "minors": [
   {
    "mlbamId": 809254,
@@ -1005,7 +1022,7 @@
    "name": "Kiefer Lord",
    "pos": "sp",
    "age": 25,
-   "war": 0.11,
+   "war": 0.12,
    "ip": 200,
    "salary": 780000,
    "debuted": false

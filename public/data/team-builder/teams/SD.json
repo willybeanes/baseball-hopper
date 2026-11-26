@@ -157,7 +157,7 @@
     "buyout": null
    },
    "war": 0.13,
-   "ip": 64
+   "ip": 62
   },
   {
    "name": "Gavin Sheets",
@@ -174,7 +174,7 @@
    "cotsEstimate": 5500000,
    "mlbamId": 657757,
    "salarySource": "mlbtr-arb",
-   "war": 0.53,
+   "war": 0.52,
    "pa": 427
   },
   {
@@ -195,8 +195,8 @@
     "type": "player",
     "buyout": null
    },
-   "war": 0.23,
-   "ip": 52
+   "war": 0.22,
+   "ip": 50
   },
   {
    "name": "Sung Mun Song",
@@ -247,8 +247,8 @@
    "walkYear": false,
    "mlbamId": 606996,
    "salarySource": "cots",
-   "war": 0.57,
-   "ip": 88.2
+   "war": 0.58,
+   "ip": 92.2
   },
   {
    "name": "Ryan Weiss",
@@ -300,8 +300,8 @@
    "cotsEstimate": 950000,
    "mlbamId": 669093,
    "salarySource": "mlbtr-arb",
-   "war": 0.47,
-   "ip": 54
+   "war": 0.49,
+   "ip": 56
   },
   {
    "name": "Bryan Hoeing",
@@ -319,7 +319,7 @@
    "mlbamId": 663773,
    "salarySource": "mlbtr-arb",
    "war": -0.02,
-   "ip": 38
+   "ip": 35
   },
   {
    "name": "Jhony Brito",
@@ -368,8 +368,8 @@
    "salaryPrevYear": 652920,
    "mlbamId": 688158,
    "salarySource": "minimum",
-   "war": 0.29,
-   "ip": 57
+   "war": 0.26,
+   "ip": 52
   },
   {
    "name": "Hunter Stratton",
@@ -384,8 +384,8 @@
    "salaryPrevYear": 62097,
    "mlbamId": 676702,
    "salarySource": "minimum",
-   "war": 0.04,
-   "ip": 44
+   "war": 0.03,
+   "ip": 38
   },
   {
    "name": "Will Wagner",
@@ -464,7 +464,7 @@
    "salaryPrevYear": 145989,
    "mlbamId": 687957,
    "salarySource": "minimum",
-   "war": 0.51,
+   "war": 0.5,
    "pa": 325
   },
   {
@@ -561,8 +561,8 @@
    "mlbamId": 701617,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.04,
-   "ip": 102.3
+   "war": 0.1,
+   "ip": 92.3
   },
   {
    "name": "Tucker Musgrove",
@@ -578,8 +578,8 @@
    "mlbamId": 814491,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.07,
-   "ip": 24
+   "war": 0.06,
+   "ip": 22
   }
  ],
  "deadMoney": [

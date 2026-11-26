@@ -87,8 +87,23 @@
    "walkYear": false,
    "mlbamId": 672960,
    "salarySource": "cots",
-   "war": 2.31,
+   "war": 2.3,
    "pa": 531
+  },
+  {
+   "name": "Kaima Taira",
+   "sheetName": "Taira, Kaima",
+   "pos": "rhp-s",
+   "age": 27,
+   "mls": 0,
+   "contract": "5 y/$80M (27-31)",
+   "status": "signed",
+   "salary": 16666666,
+   "taxValue": 16000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "salarySource": "cots",
+   "war": null
   },
   {
    "name": "Tyler Rogers",
@@ -442,7 +457,7 @@
    "mlbamId": 682818,
    "salarySource": "minimum",
    "war": 0.21,
-   "pa": 127
+   "pa": 128
   },
   {
    "name": "Charles McAdoo",
@@ -541,6 +556,22 @@
    "ip": 38
   },
   {
+   "name": "Christian Cairo",
+   "sheetName": "Cairo, Christian",
+   "pos": "ss",
+   "age": 26,
+   "mls": 0.013,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 686551,
+   "salarySource": "minimum",
+   "war": 0.06,
+   "pa": 51
+  },
+  {
    "name": "John Klein",
    "sheetName": "Klein, John",
    "pos": "rhp",
@@ -587,23 +618,6 @@
    "salarySource": "minimum",
    "war": 0.03,
    "pa": 30
-  },
-  {
-   "name": "Christian Cairo",
-   "sheetName": "Cairo, Christian",
-   "pos": "ss",
-   "age": 26,
-   "mls": 0.013,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 686551,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from LAD",
-   "war": 0.06,
-   "pa": 51
   },
   {
    "name": "RJ Schreck",
@@ -678,8 +692,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 8500000,
-   "taxValue": 8500000,
+   "salary": 7650000,
+   "taxValue": 7650000,
    "note": ""
   },
   {
@@ -694,10 +708,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 231995444,
- "sheetTaxPayroll": 230830916,
- "rowsPayroll": 231995444,
- "rowsTaxPayroll": 230830916,
+ "sheetPayroll": 247812110,
+ "sheetTaxPayroll": 245980916,
+ "rowsPayroll": 247812110,
+ "rowsTaxPayroll": 245980916,
  "minors": [
   {
    "mlbamId": 700795,

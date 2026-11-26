@@ -50,8 +50,8 @@
    "cotsEstimate": 9650000,
    "mlbamId": 687263,
    "salarySource": "mlbtr-arb",
-   "war": 3.55,
-   "pa": 653
+   "war": 3.57,
+   "pa": 658
   },
   {
    "name": "Reid Detmers",
@@ -68,7 +68,7 @@
    "cotsEstimate": 7000000,
    "mlbamId": 672282,
    "salarySource": "mlbtr-arb",
-   "war": 3.29,
+   "war": 3.3,
    "ip": 185.2
   },
   {
@@ -104,7 +104,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 694384,
    "salarySource": "mlbtr-arb",
-   "war": 2.11,
+   "war": 2.1,
    "pa": 507
   },
   {
@@ -139,8 +139,8 @@
    "mlbamId": 596112,
    "corrected": "Option declined 2026-10-30; Cot's still lists him",
    "salarySource": "none",
-   "war": 0.1,
-   "ip": 16
+   "war": 0.14,
+   "ip": 22
   },
   {
    "name": "Grayson Rodriguez",
@@ -175,8 +175,8 @@
    "cotsEstimate": 1500000,
    "mlbamId": 672724,
    "salarySource": "mlbtr-arb",
-   "war": 0.23,
-   "pa": 291
+   "war": 0.22,
+   "pa": 287
   },
   {
    "name": "Tayler Saucedo",
@@ -358,8 +358,8 @@
    "salaryPrevYear": 231618,
    "mlbamId": 694208,
    "salarySource": "minimum",
-   "war": 1.48,
-   "pa": 396
+   "war": 1.47,
+   "pa": 394
   },
   {
    "name": "Walbert Urena",
@@ -663,8 +663,8 @@
    "mlbamId": 703185,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.15,
-   "pa": 190
+   "war": 0.16,
+   "pa": 201
   },
   {
    "name": "Raudi Rodriguez",

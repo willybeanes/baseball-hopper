@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 595879,
    "salarySource": "cots",
-   "war": 0.14,
-   "pa": 191
+   "war": 0.13,
+   "pa": 187
   },
   {
    "name": "Emilio Pagán",
@@ -70,8 +70,8 @@
    "walkYear": true,
    "mlbamId": 623454,
    "salarySource": "cots",
-   "war": 1.12,
-   "ip": 97.3
+   "war": 0.87,
+   "ip": 76.7
   },
   {
    "name": "Riley Greene",
@@ -106,7 +106,7 @@
    "mlbamId": 640448,
    "salarySource": "cots",
    "war": 0.01,
-   "ip": 60
+   "ip": 58
   },
   {
    "name": "Spencer Torkelson",
@@ -145,6 +145,23 @@
    "pa": 217
   },
   {
+   "name": "Ha-Seong Kim",
+   "sheetName": "Kim, Ha-Seong",
+   "pos": "ss",
+   "age": 31,
+   "mls": 6,
+   "contract": "1 y/$5M (27)",
+   "status": "signed",
+   "salary": 5000000,
+   "taxValue": 5000000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 673490,
+   "salarySource": "cots",
+   "war": 1.08,
+   "pa": 364
+  },
+  {
    "name": "Will Vest",
    "sheetName": "Vest, Will",
    "pos": "rhp",
@@ -159,8 +176,8 @@
    "cotsEstimate": 4600000,
    "mlbamId": 676684,
    "salarySource": "mlbtr-arb",
-   "war": 0.53,
-   "ip": 55
+   "war": 0.52,
+   "ip": 54
   },
   {
    "name": "Colt Keith",
@@ -176,8 +193,8 @@
    "walkYear": false,
    "mlbamId": 690993,
    "salarySource": "cots",
-   "war": 1.54,
-   "pa": 426
+   "war": 1.52,
+   "pa": 422
   },
   {
    "name": "Kerry Carpenter",
@@ -211,7 +228,7 @@
    "walkYear": false,
    "mlbamId": 805808,
    "salarySource": "cots",
-   "war": 5.67,
+   "war": 5.66,
    "pa": 662
   },
   {
@@ -228,8 +245,8 @@
    "walkYear": false,
    "mlbamId": 661563,
    "salarySource": "cots",
-   "war": 0.19,
-   "ip": 75.8
+   "war": 0.13,
+   "ip": 59.9
   },
   {
    "name": "Tyler Holton",
@@ -264,8 +281,8 @@
    "cotsEstimate": 1350000,
    "mlbamId": 689225,
    "salarySource": "mlbtr-arb",
-   "war": 0.06,
-   "ip": 30
+   "war": 0.05,
+   "ip": 24
   },
   {
    "name": "Troy Melton",
@@ -299,7 +316,7 @@
    "mlbamId": 621097,
    "salarySource": "cots",
    "war": 0.05,
-   "ip": 50
+   "ip": 46
   },
   {
    "name": "Parker Meadows",
@@ -334,8 +351,8 @@
    "cotsEstimate": 1250000,
    "mlbamId": 681857,
    "salarySource": "mlbtr-arb",
-   "war": 0.75,
-   "ip": 55.2
+   "war": 0.38,
+   "ip": 30.1
   },
   {
    "name": "Wenceel Pérez",
@@ -384,8 +401,8 @@
    "salaryPrevYear": 793725,
    "mlbamId": 676428,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 33
+   "war": 0.08,
+   "ip": 31
   },
   {
    "name": "Keider Montero",
@@ -400,8 +417,8 @@
    "salaryPrevYear": 763694,
    "mlbamId": 672456,
    "salarySource": "minimum",
-   "war": 1.29,
-   "ip": 158.4
+   "war": 1.14,
+   "ip": 142.5
   },
   {
    "name": "Jackson Jobe",
@@ -416,8 +433,8 @@
    "salaryPrevYear": 784300,
    "mlbamId": 695549,
    "salarySource": "minimum",
-   "war": 1.39,
-   "ip": 134.3
+   "war": 1.33,
+   "ip": 131.4
   },
   {
    "name": "Brenan Hanifee",
@@ -432,8 +449,8 @@
    "salaryPrevYear": 382989,
    "mlbamId": 669724,
    "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 24
+   "war": 0.04,
+   "ip": 21
   },
   {
    "name": "Ty Madden",
@@ -448,8 +465,8 @@
    "salaryPrevYear": 566746,
    "mlbamId": 680744,
    "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 27
+   "war": 0.02,
+   "ip": 20
   },
   {
    "name": "River Ryan",
@@ -464,8 +481,8 @@
    "salaryPrevYear": 130455,
    "mlbamId": 689981,
    "salarySource": "minimum",
-   "war": 2.06,
-   "ip": 125.2
+   "war": 1.34,
+   "ip": 80.5
   },
   {
    "name": "Drew Sommers",
@@ -480,8 +497,8 @@
    "salaryPrevYear": 560040,
    "mlbamId": 805427,
    "salarySource": "minimum",
-   "war": 0.69,
-   "ip": 62
+   "war": 0.68,
+   "ip": 61
   },
   {
    "name": "Hao-Yu Lee",
@@ -512,8 +529,8 @@
    "salaryPrevYear": 1300000,
    "mlbamId": 646241,
    "salarySource": "minimum",
-   "war": 0.1,
-   "ip": 22
+   "war": 0.08,
+   "ip": 18
   },
   {
    "name": "Ben Malgeri",
@@ -528,7 +545,7 @@
    "salaryPrevYear": 404599,
    "mlbamId": 701162,
    "salarySource": "minimum",
-   "war": 0.43,
+   "war": 0.42,
    "pa": 202
   },
   {
@@ -544,8 +561,8 @@
    "salaryPrevYear": 347096,
    "mlbamId": 680664,
    "salarySource": "minimum",
-   "war": 1.31,
-   "pa": 272
+   "war": 1.33,
+   "pa": 276
   },
   {
    "name": "Max Clark",
@@ -608,8 +625,8 @@
    "salaryPrevYear": 122229,
    "mlbamId": 808825,
    "salarySource": "minimum",
-   "war": 0.27,
-   "ip": 43
+   "war": 0.12,
+   "ip": 19
   },
   {
    "name": "John Peck",
@@ -657,8 +674,8 @@
    "mlbamId": 800522,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.22,
-   "pa": 43
+   "war": 0.33,
+   "pa": 63
   },
   {
    "name": "Max Anderson",
@@ -691,8 +708,8 @@
    "mlbamId": 689931,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.11,
-   "pa": 56
+   "war": 0.1,
+   "pa": 54
   }
  ],
  "deadMoney": [
@@ -716,8 +733,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5100000,
-   "taxValue": 5100000,
+   "salary": 4250000,
+   "taxValue": 4250000,
    "note": ""
   },
   {
@@ -737,10 +754,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 155718345,
- "sheetTaxPayroll": 190338571,
- "rowsPayroll": 155718345,
- "rowsTaxPayroll": 190338571,
+ "sheetPayroll": 159868345,
+ "sheetTaxPayroll": 194488571,
+ "rowsPayroll": 159868345,
+ "rowsTaxPayroll": 194488571,
  "minors": [
   {
    "mlbamId": 827640,
@@ -759,6 +776,16 @@
    "age": 25,
    "war": 1.45,
    "pa": 450,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 805725,
+   "name": "Jake Miller",
+   "pos": "sp",
+   "age": 26,
+   "war": 1.44,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -1003,11 +1030,31 @@
    "debuted": false
   },
   {
+   "mlbamId": 690162,
+   "name": "Kenny Serwa",
+   "pos": "sp",
+   "age": 29,
+   "war": 0.17,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 690544,
    "name": "Bailey Horn",
    "pos": "rp",
    "age": 29,
    "war": 0.16,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
+  },
+  {
+   "mlbamId": 680232,
+   "name": "Jackson Wolf",
+   "pos": "rp",
+   "age": 28,
+   "war": 0.15,
    "ip": 65,
    "salary": 780000,
    "debuted": true
@@ -1019,16 +1066,6 @@
    "age": 22,
    "war": 0.1,
    "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 696275,
-   "name": "RJ Petit",
-   "pos": "rp",
-   "age": 27,
-   "war": 0.09,
-   "ip": 65,
    "salary": 780000,
    "debuted": false
   },
@@ -1061,6 +1098,16 @@
    "ip": 65,
    "salary": 780000,
    "debuted": true
+  },
+  {
+   "mlbamId": 696275,
+   "name": "RJ Petit",
+   "pos": "rp",
+   "age": 27,
+   "war": 0.02,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": false
   },
   {
    "mlbamId": 681289,

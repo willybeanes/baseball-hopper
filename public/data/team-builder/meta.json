@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T19:50:35.065Z",
+  "updatedAt": "2026-11-26T19:27:55.982Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -78,10 +78,13 @@
     "label": "Steamer projection for 2027",
     "note": "Minor leaguers use Steamer's full-time version (600 PA, 200 IP as a starter or 65 in relief), because plain Steamer gives most of them almost no big-league time.",
     "url": "https://www.fangraphs.com/projections?type=steamer",
-    "fetchedAt": "2026-11-25",
+    "fetchedAt": "2026-11-26",
     "players": 9336
   },
   "staleTeams": {
+    "CIN": [
+      "CIN: payroll rows add up to $92.119M but the sheet says $94.119M"
+    ],
     "LAA": [
       "LAA: payroll rows add up to $108.699M but the sheet says $106.199M",
       "LAA: tax payroll rows add up to $127.291M but the sheet says $124.791M"

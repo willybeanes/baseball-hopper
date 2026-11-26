@@ -16,7 +16,7 @@
    "mlbamId": 592885,
    "salarySource": "cots",
    "war": 0.47,
-   "pa": 442
+   "pa": 444
   },
   {
    "name": "William Contreras",
@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 661388,
    "salarySource": "cots",
-   "war": 4.27,
-   "pa": 568
+   "war": 4.21,
+   "pa": 569
   },
   {
    "name": "Brice Turang",
@@ -50,7 +50,7 @@
    "cotsEstimate": 11750000,
    "mlbamId": 668930,
    "salarySource": "mlbtr-arb",
-   "war": 3.39,
+   "war": 3.38,
    "pa": 620
   },
   {
@@ -68,8 +68,8 @@
    "cotsEstimate": 9250000,
    "mlbamId": 683734,
    "salarySource": "mlbtr-arb",
-   "war": 0.83,
-   "pa": 450
+   "war": 0.91,
+   "pa": 482
   },
   {
    "name": "Jackson Chourio",
@@ -120,8 +120,8 @@
    "walkYear": false,
    "mlbamId": 676879,
    "salarySource": "cots",
-   "war": 1.07,
-   "ip": 82
+   "war": 1.05,
+   "ip": 81
   },
   {
    "name": "Cooper Pratt",
@@ -173,7 +173,7 @@
    "mlbamId": 800325,
    "salarySource": "cots",
    "war": 0.74,
-   "pa": 313
+   "pa": 315
   },
   {
    "name": "Joey Ortiz",
@@ -189,7 +189,7 @@
    "walkYear": false,
    "mlbamId": 687401,
    "salarySource": "cots",
-   "war": 1.39,
+   "war": 1.38,
    "pa": 329
   },
   {
@@ -242,8 +242,8 @@
    "walkYear": false,
    "mlbamId": 669084,
    "salarySource": "cots",
-   "war": 0.25,
-   "ip": 62
+   "war": 0.24,
+   "ip": 60
   },
   {
    "name": "Bo Naylor",
@@ -260,8 +260,8 @@
    "cotsEstimate": 1225000,
    "mlbamId": 666310,
    "salarySource": "mlbtr-arb",
-   "war": 0.29,
-   "pa": 87
+   "war": 0.35,
+   "pa": 122
   },
   {
    "name": "Angel Zerpa",
@@ -294,8 +294,8 @@
    "walkYear": false,
    "mlbamId": 681982,
    "salarySource": "cots",
-   "war": 0.09,
-   "ip": 42
+   "war": 0.08,
+   "ip": 40
   },
   {
    "name": "Quinn Priester",
@@ -312,8 +312,8 @@
    "cotsEstimate": 1000000,
    "mlbamId": 682990,
    "salarySource": "mlbtr-arb",
-   "war": 1.43,
-   "ip": 139.6
+   "war": 1.4,
+   "ip": 135.6
   },
   {
    "name": "Ryan Walker",
@@ -329,8 +329,8 @@
    "walkYear": false,
    "mlbamId": 676254,
    "salarySource": "cots",
-   "war": 0.08,
-   "ip": 40
+   "war": 0.07,
+   "ip": 34
   },
   {
    "name": "Abner Uribe",
@@ -361,8 +361,8 @@
    "salaryPrevYear": 786100,
    "mlbamId": 690986,
    "salarySource": "minimum",
-   "war": 1.9,
-   "ip": 131.1
+   "war": 1.87,
+   "ip": 129.1
   },
   {
    "name": "Robert Gasser",
@@ -394,7 +394,7 @@
    "mlbamId": 663604,
    "salarySource": "minimum",
    "war": -0.02,
-   "pa": 63
+   "pa": 76
   },
   {
    "name": "Chad Patrick",
@@ -409,8 +409,8 @@
    "salaryPrevYear": 796400,
    "mlbamId": 694477,
    "salarySource": "minimum",
-   "war": 0.42,
-   "ip": 60
+   "war": 0.39,
+   "ip": 56
   },
   {
    "name": "Jacob Misiorowski",
@@ -473,8 +473,8 @@
    "salaryPrevYear": 600611,
    "mlbamId": 687075,
    "salarySource": "minimum",
-   "war": 0.88,
-   "ip": 83.4
+   "war": 0.82,
+   "ip": 77.4
   },
   {
    "name": "Colton Gordon",
@@ -489,8 +489,8 @@
    "salaryPrevYear": 96860,
    "mlbamId": 676467,
    "salarySource": "minimum",
-   "war": 0.32,
-   "ip": 50
+   "war": 0.27,
+   "ip": 40
   },
   {
    "name": "Brian Fitzpatrick",
@@ -505,8 +505,8 @@
    "salaryPrevYear": 557391,
    "mlbamId": 702153,
    "salarySource": "minimum",
-   "war": 0.03,
-   "ip": 8
+   "war": 0,
+   "ip": 1
   },
   {
    "name": "Coleman Crow",
@@ -521,8 +521,8 @@
    "salaryPrevYear": 251320,
    "mlbamId": 689441,
    "salarySource": "minimum",
-   "war": 0.3,
-   "ip": 36
+   "war": 0.26,
+   "ip": 30
   },
   {
    "name": "Garrett Stallings",
@@ -538,7 +538,7 @@
    "mlbamId": 668831,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 15
+   "ip": 10
   },
   {
    "name": "Jeferson Quero",
@@ -570,8 +570,8 @@
    "mlbamId": 687783,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.18,
-   "pa": 53
+   "war": 0.15,
+   "pa": 42
   },
   {
    "name": "Luke Adams",
@@ -588,7 +588,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.18,
-   "pa": 54
+   "pa": 52
   },
   {
    "name": "Dylan O'Rae",
@@ -639,7 +639,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0.12,
-   "ip": 28.5
+   "ip": 24.5
   },
   {
    "name": "Cameron Wagoner",
@@ -655,8 +655,8 @@
    "mlbamId": 687726,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.1,
-   "ip": 24
+   "war": 0.06,
+   "ip": 16
   }
  ],
  "deadMoney": [
@@ -832,16 +832,6 @@
    "debuted": false
   },
   {
-   "mlbamId": 702652,
-   "name": "Andrew Fischer",
-   "pos": "3b",
-   "age": 23,
-   "war": 0.55,
-   "pa": 600,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 800223,
    "name": "Yorman Galindez",
    "pos": "sp",
@@ -852,11 +842,21 @@
    "debuted": false
   },
   {
+   "mlbamId": 702652,
+   "name": "Andrew Fischer",
+   "pos": "3b",
+   "age": 23,
+   "war": 0.53,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 669699,
    "name": "Braden Shewmake",
    "pos": "ss-3b-2b",
    "age": 29,
-   "war": 0.43,
+   "war": 0.42,
    "pa": 600,
    "salary": 780000,
    "debuted": true
@@ -886,7 +886,7 @@
    "name": "Blake Burke",
    "pos": "1b",
    "age": 24,
-   "war": 0.12,
+   "war": 0.07,
    "pa": 600,
    "salary": 780000,
    "debuted": false

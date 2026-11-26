@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 608070,
    "salarySource": "cots",
-   "war": 3.71,
+   "war": 3.7,
    "pa": 586
   },
   {
@@ -32,8 +32,25 @@
    "walkYear": true,
    "mlbamId": 663460,
    "salarySource": "cots",
-   "war": 2.16,
-   "ip": 148.6
+   "war": 1.8,
+   "ip": 127.6
+  },
+  {
+   "name": "Foster Griffin",
+   "sheetName": "Griffin, Foster",
+   "pos": "lhp-s",
+   "age": 31,
+   "mls": 2.034,
+   "contract": "3 y/$48M (27-29)",
+   "status": "signed",
+   "salary": 16000000,
+   "taxValue": 16000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 656492,
+   "salarySource": "cots",
+   "war": 2.55,
+   "ip": 167.8
   },
   {
    "name": "Steven Kwan",
@@ -105,8 +122,8 @@
    "walkYear": false,
    "mlbamId": 676440,
    "salarySource": "cots",
-   "war": 1.43,
-   "ip": 169.2
+   "war": 1.34,
+   "ip": 157.5
   },
   {
    "name": "Cade Smith",
@@ -159,7 +176,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 677587,
    "salarySource": "mlbtr-arb",
-   "war": 2.46,
+   "war": 2.45,
    "pa": 494
   },
   {
@@ -204,15 +221,14 @@
    "pos": "rhp",
    "age": 31,
    "mls": 4.108,
-   "contract": "A2",
-   "status": "arb",
-   "salary": 2300000,
-   "taxValue": 2300000,
+   "contract": "1 y/$2.175M (27)",
+   "status": "signed",
+   "salary": 2175000,
+   "taxValue": 2175000,
    "salaryPrevYear": 1500000,
-   "arbYear": 2,
-   "cotsEstimate": 2500000,
+   "walkYear": false,
    "mlbamId": 670059,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.16,
    "ip": 50
   },
@@ -232,7 +248,7 @@
    "mlbamId": 682120,
    "salarySource": "mlbtr-arb",
    "war": 0.06,
-   "ip": 58
+   "ip": 57
   },
   {
    "name": "Slade Cecconi",
@@ -249,8 +265,8 @@
    "cotsEstimate": 1795000,
    "mlbamId": 677944,
    "salarySource": "mlbtr-arb",
-   "war": 0.29,
-   "ip": 57.8
+   "war": 0.23,
+   "ip": 41.9
   },
   {
    "name": "Matt Festa",
@@ -258,17 +274,16 @@
    "pos": "rhp",
    "age": 34,
    "mls": 3.153,
-   "contract": "A2",
-   "status": "arb",
+   "contract": "1 y/$1.5M (27)",
+   "status": "signed",
    "salary": 1500000,
    "taxValue": 1500000,
    "salaryPrevYear": 1000000,
-   "arbYear": 2,
-   "cotsEstimate": 1250000,
+   "walkYear": false,
    "mlbamId": 670036,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.17,
-   "ip": 53
+   "ip": 52
   },
   {
    "name": "Blake Perkins",
@@ -276,15 +291,14 @@
    "pos": "cf-rf",
    "age": 30,
    "mls": 3.075,
-   "contract": "A1",
-   "status": "arb",
-   "salary": 900000,
-   "taxValue": 900000,
+   "contract": "1 y/$950,000 (27)",
+   "status": "signed",
+   "salary": 950000,
+   "taxValue": 950000,
    "salaryPrevYear": 120657,
-   "arbYear": 1,
-   "cotsEstimate": 900000,
+   "walkYear": false,
    "mlbamId": 663368,
-   "salarySource": "mlbtr-arb",
+   "salarySource": "cots",
    "war": 0.14,
    "pa": 71
   },
@@ -333,8 +347,8 @@
    "salaryPrevYear": 441400,
    "mlbamId": 671106,
    "salarySource": "minimum",
-   "war": 0.3,
-   "ip": 58.2
+   "war": 0.09,
+   "ip": 16.8
   },
   {
    "name": "Daniel Schneemann",
@@ -413,8 +427,8 @@
    "salaryPrevYear": 796600,
    "mlbamId": 676282,
    "salarySource": "minimum",
-   "war": 1.69,
-   "ip": 145.5
+   "war": 1.39,
+   "ip": 122.7
   },
   {
    "name": "Parker Messick",
@@ -461,8 +475,8 @@
    "salaryPrevYear": 234742,
    "mlbamId": 684974,
    "salarySource": "minimum",
-   "war": 0.09,
-   "ip": 32
+   "war": 0.08,
+   "ip": 29
   },
   {
    "name": "Chase DeLauter",
@@ -541,8 +555,8 @@
    "salaryPrevYear": 354570,
    "mlbamId": 680916,
    "salarySource": "minimum",
-   "war": 0.19,
-   "ip": 26
+   "war": 0.17,
+   "ip": 23
   },
   {
    "name": "Angel Genao",
@@ -573,8 +587,8 @@
    "salaryPrevYear": 383617,
    "mlbamId": 682982,
    "salarySource": "minimum",
-   "war": 0.58,
-   "ip": 54.7
+   "war": 0.45,
+   "ip": 46
   },
   {
    "name": "Kahlil Watson",
@@ -621,8 +635,8 @@
    "salaryPrevYear": 82224,
    "mlbamId": 804926,
    "salarySource": "minimum",
-   "war": 0.18,
-   "ip": 45.7
+   "war": 0.08,
+   "ip": 22.2
   },
   {
    "name": "Yorman Gómez",
@@ -637,8 +651,8 @@
    "salaryPrevYear": 63600,
    "mlbamId": 691414,
    "salarySource": "minimum",
-   "war": -0.04,
-   "ip": 22
+   "war": -0.03,
+   "ip": 16
   },
   {
    "name": "Milán Tolentino",
@@ -704,8 +718,8 @@
    "mlbamId": 683235,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.07,
-   "ip": 16
+   "war": 0.04,
+   "ip": 10
   }
  ],
  "deadMoney": [
@@ -741,8 +755,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 8500000,
-   "taxValue": 8500000,
+   "salary": 7650000,
+   "taxValue": 7650000,
    "note": ""
   },
   {
@@ -762,10 +776,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 108508140,
- "sheetTaxPayroll": 123911551,
- "rowsPayroll": 108508140,
- "rowsTaxPayroll": 123911551,
+ "sheetPayroll": 122058140,
+ "sheetTaxPayroll": 137461551,
+ "rowsPayroll": 122058140,
+ "rowsTaxPayroll": 137461551,
  "minors": [
   {
    "mlbamId": 701750,
@@ -832,7 +846,7 @@
    "name": "Trenton Denholm",
    "pos": "sp",
    "age": 27,
-   "war": 1.34,
+   "war": 1.33,
    "ip": 200,
    "salary": 780000,
    "debuted": false

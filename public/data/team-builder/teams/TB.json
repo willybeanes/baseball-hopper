@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 650490,
    "salarySource": "cots",
-   "war": 2.49,
-   "pa": 654
+   "war": 2.48,
+   "pa": 651
   },
   {
    "name": "Steven Matz",
@@ -103,7 +103,7 @@
    "cotsEstimate": 3900000,
    "mlbamId": 666018,
    "salarySource": "mlbtr-arb",
-   "war": 2.11,
+   "war": 2.1,
    "pa": 613
   },
   {
@@ -210,7 +210,7 @@
    "cotsEstimate": 2075000,
    "mlbamId": 680700,
    "salarySource": "mlbtr-arb",
-   "war": 1.11,
+   "war": 1.1,
    "pa": 353
   },
   {
@@ -382,6 +382,22 @@
    "pa": 418
   },
   {
+   "name": "Christian Koss",
+   "sheetName": "Koss, Christian",
+   "pos": "ss-2b-3b",
+   "age": 29,
+   "mls": 1.141,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 683766,
+   "salarySource": "minimum",
+   "war": 0.05,
+   "pa": 58
+  },
+  {
    "name": "Chandler Simpson",
    "sheetName": "Simpson, Chandler",
    "pos": "of",
@@ -394,7 +410,7 @@
    "salaryPrevYear": 785100,
    "mlbamId": 802415,
    "salarySource": "minimum",
-   "war": 1.52,
+   "war": 1.51,
    "pa": 492
   },
   {
@@ -619,24 +635,7 @@
    "mlbamId": 800060,
    "salarySource": "minimum",
    "war": 0.03,
-   "pa": 17
-  },
-  {
-   "name": "Christian Koss",
-   "sheetName": "Koss, Christian",
-   "pos": "ss-2b-3b",
-   "age": 29,
-   "mls": 1.141,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 683766,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from SF",
-   "war": 0.05,
-   "pa": 58
+   "pa": 20
   }
  ],
  "deadMoney": [

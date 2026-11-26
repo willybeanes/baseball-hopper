@@ -15,7 +15,7 @@
    "walkYear": false,
    "mlbamId": 519242,
    "salarySource": "cots",
-   "war": 5.15,
+   "war": 5.14,
    "ip": 179.7
   },
   {
@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 621566,
    "salarySource": "cots",
-   "war": 2.71,
+   "war": 2.7,
    "pa": 622
   },
   {
@@ -49,7 +49,7 @@
    "walkYear": false,
    "mlbamId": 663586,
    "salarySource": "cots",
-   "war": 1.45,
+   "war": 1.44,
    "pa": 549
   },
   {
@@ -168,7 +168,7 @@
    "walkYear": false,
    "mlbamId": 573262,
    "salarySource": "cots",
-   "war": 0.5,
+   "war": 0.49,
    "pa": 365
   },
   {
@@ -362,7 +362,7 @@
    "mlbamId": 686948,
    "salarySource": "minimum",
    "war": 2.98,
-   "pa": 601
+   "pa": 602
   },
   {
    "name": "Danny Young",
@@ -441,8 +441,8 @@
    "salaryPrevYear": null,
    "mlbamId": 689172,
    "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 151
+   "war": 0.17,
+   "pa": 152
   },
   {
    "name": "Victor Mederos",
@@ -704,16 +704,6 @@
    "pos": "sp",
    "age": 20,
    "war": 1.32,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 678789,
-   "name": "Julio Robaina",
-   "pos": "sp",
-   "age": 26,
-   "war": 1.31,
    "ip": 200,
    "salary": 780000,
    "debuted": false

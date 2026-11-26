@@ -2,13 +2,6 @@
  "source": "https://www.fangraphs.com/roster-resource/depth-charts",
  "applied": [
   {
-   "team": "ATH",
-   "name": "Cole Conn",
-   "mlbamId": 813833,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
    "team": "ARI",
    "name": "Demetrio Crisantes",
    "mlbamId": 702679,
@@ -110,6 +103,20 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
+   "team": "CHC",
+   "name": "Jaxon Wiggins",
+   "mlbamId": 694393,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "CHC",
+   "name": "Brody McCullough",
+   "mlbamId": 805664,
+   "change": "added to the roster at the minimum",
+   "move": "2026-11-17: Contract selected from minors"
+  },
+  {
    "team": "CWS",
    "name": "William Bergolla Jr.",
    "mlbamId": 703151,
@@ -133,8 +140,7 @@
    "team": "COL",
    "name": "Jack Mahoney",
    "mlbamId": 694968,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "COL",
@@ -149,34 +155,6 @@
    "mlbamId": 695445,
    "change": "moved from TOR with his contract",
    "move": "2026-11-20: Traded to Rockies for cash"
-  },
-  {
-   "team": "CHC",
-   "name": "Jaxon Wiggins",
-   "mlbamId": 694393,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "CHC",
-   "name": "Brody McCullough",
-   "mlbamId": 805664,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "CHC",
-   "name": "Chayce McDermott",
-   "mlbamId": 694646,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-19: Claimed off waivers from Mets"
-  },
-  {
-   "team": "CHC",
-   "name": "Braxton Roxby",
-   "mlbamId": 694820,
-   "change": "moved from WSH with his contract",
-   "move": "2026-11-20: Traded to Cubs for cash"
   },
   {
    "team": "CLE",
@@ -210,8 +188,7 @@
    "team": "LAD",
    "name": "Adam Serwinowski",
    "mlbamId": 703445,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "LAD",
@@ -230,8 +207,7 @@
    "team": "DET",
    "name": "Josue Briceno",
    "mlbamId": 800522,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
+   "change": "added to the roster at the minimum"
   },
   {
    "team": "DET",
@@ -245,13 +221,6 @@
    "name": "Peyton Graham",
    "mlbamId": 689931,
    "change": "added to the roster at the minimum"
-  },
-  {
-   "team": "HOU",
-   "name": "Jackson Nezuh",
-   "mlbamId": 694545,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
   },
   {
    "team": "HOU",
@@ -354,19 +323,6 @@
    "change": "added to the roster at the minimum"
   },
   {
-   "team": "PHI",
-   "name": "Johan Rojas",
-   "mlbamId": 679032,
-   "change": "added to the roster at the minimum"
-  },
-  {
-   "team": "PHI",
-   "name": "Jordan Leasure",
-   "mlbamId": 673929,
-   "change": "added to the roster at his arbitration estimate",
-   "move": "2026-11-20: Agreed to one-year contract (2027), avoiding arbitration"
-  },
-  {
    "team": "PIT",
    "name": "Axiel Plaz",
    "mlbamId": 800208,
@@ -379,6 +335,19 @@
    "mlbamId": 694991,
    "change": "added to the roster at the minimum",
    "move": "2026-11-17: Contract selected from minors"
+  },
+  {
+   "team": "PHI",
+   "name": "Johan Rojas",
+   "mlbamId": 679032,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "PHI",
+   "name": "Jordan Leasure",
+   "mlbamId": 673929,
+   "change": "added to the roster at his arbitration estimate",
+   "move": "2026-11-20: Agreed to one-year contract (2027), avoiding arbitration"
   },
   {
    "team": "SF",
@@ -403,13 +372,6 @@
   },
   {
    "team": "TOR",
-   "name": "Christian Cairo",
-   "mlbamId": 686551,
-   "change": "moved from LAD with his contract",
-   "move": "2026-11-19: Lost off waivers to Blue Jays"
-  },
-  {
-   "team": "TOR",
    "name": "RJ Schreck",
    "mlbamId": 702302,
    "change": "added to the roster at the minimum",
@@ -430,38 +392,6 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "TB",
-   "name": "Christian Koss",
-   "mlbamId": 683766,
-   "change": "moved from SF with his contract",
-   "move": "2026-11-20: Traded to Rays for RP Cole Stokes"
-  },
-  {
-   "team": "WSH",
-   "name": "Jarlin Susana",
-   "mlbamId": 703186,
-   "change": "added to the roster at the minimum"
-  },
-  {
-   "team": "WSH",
-   "name": "Travis Sykora",
-   "mlbamId": 805809,
-   "change": "added to the roster at the minimum",
-   "move": "2026-11-17: Contract selected from minors"
-  },
-  {
-   "team": "WSH",
-   "name": "Alejandro Rosario",
-   "mlbamId": 691730,
-   "change": "added to the roster at the minimum"
-  },
-  {
-   "team": "WSH",
-   "name": "Philip Abner",
-   "mlbamId": 691769,
-   "change": "moved from BAL with his contract"
-  },
-  {
    "team": "STL",
    "name": "Jesus Baez",
    "mlbamId": 800305,
@@ -476,17 +406,28 @@
    "move": "2026-11-17: Contract selected from minors"
   },
   {
-   "team": "ATH",
-   "name": "Hayden Juenger",
-   "mlbamId": 696522,
-   "change": "off the 40-man",
-   "move": "2026-11-20: Cleared waivers; outrighted to minors"
+   "team": "WSH",
+   "name": "Jarlin Susana",
+   "mlbamId": 703186,
+   "change": "added to the roster at the minimum"
   },
   {
-   "team": "CIN",
-   "name": "Ivan Johnson",
-   "mlbamId": 671155,
-   "change": "off the 40-man"
+   "team": "WSH",
+   "name": "Travis Sykora",
+   "mlbamId": 805809,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "WSH",
+   "name": "Alejandro Rosario",
+   "mlbamId": 691730,
+   "change": "added to the roster at the minimum"
+  },
+  {
+   "team": "WSH",
+   "name": "Philip Abner",
+   "mlbamId": 691769,
+   "change": "moved from BAL with his contract"
   },
   {
    "team": "COL",
@@ -496,44 +437,23 @@
    "move": "2026-11-20: Non-tendered"
   },
   {
-   "team": "CHC",
-   "name": "Gabriel Arias",
-   "mlbamId": 672356,
-   "change": "off the 40-man",
-   "move": "2026-11-20: Non-tendered"
-  },
-  {
-   "team": "CHC",
-   "name": "Ethan Roberts",
-   "mlbamId": 681799,
-   "change": "off the 40-man",
-   "move": "2026-11-20: Non-tendered"
-  },
-  {
-   "team": "CLE",
-   "name": "David Fry",
-   "mlbamId": 681807,
-   "change": "off the 40-man",
-   "move": "2026-11-20: Non-tendered"
-  },
-  {
-   "team": "HOU",
-   "name": "Taylor Trammell",
-   "mlbamId": 666211,
-   "change": "off the 40-man",
-   "move": "2026-11-20: Non-tendered"
-  },
-  {
-   "team": "HOU",
-   "name": "Joey Loperfido",
-   "mlbamId": 694388,
-   "change": "off the 40-man",
-   "move": "2026-11-17: Outrighted to minors"
-  },
-  {
    "team": "MIL",
    "name": "Tyler Black",
    "mlbamId": 672012,
+   "change": "off the 40-man",
+   "move": "2026-11-25: Designated for assignment (pending)"
+  },
+  {
+   "team": "NYM",
+   "name": "Yunior Tur",
+   "mlbamId": 814305,
+   "change": "off the 40-man",
+   "move": "2026-11-25: Designated for assignment (pending)"
+  },
+  {
+   "team": "NYM",
+   "name": "Jack Anderson",
+   "mlbamId": 681252,
    "change": "off the 40-man",
    "move": "2026-11-25: Designated for assignment (pending)"
   },
@@ -559,9 +479,9 @@
    "move": "2026-11-20: Non-tendered"
   },
   {
-   "team": "SF",
-   "name": "Victor Bericoto",
-   "mlbamId": 682674,
+   "team": "PHI",
+   "name": "Moises Chace",
+   "mlbamId": 691330,
    "change": "off the 40-man",
    "move": "2026-11-20: Non-tendered"
   },
@@ -569,13 +489,6 @@
    "team": "TB",
    "name": "Cole Sulser",
    "mlbamId": 642121,
-   "change": "off the 40-man",
-   "move": "2026-11-20: Non-tendered"
-  },
-  {
-   "team": "TEX",
-   "name": "José Buttó",
-   "mlbamId": 676130,
    "change": "off the 40-man",
    "move": "2026-11-20: Non-tendered"
   },
@@ -610,6 +523,20 @@
  ],
  "reported": [
   {
+   "team": "COL",
+   "name": "David Peterson",
+   "mlbamId": 656849,
+   "change": "signed as a free agent; contract unknown until Cot's adds it",
+   "move": "2026-11-25: Agreed to two-year contract (2027-28)"
+  },
+  {
+   "team": "COL",
+   "name": "Patrick Sandoval",
+   "mlbamId": 663776,
+   "change": "signed as a free agent; contract unknown until Cot's adds it",
+   "move": "2026-11-25: Agreed to three-year contract (2027-29)"
+  },
+  {
    "team": "CIN",
    "name": "Tyler Stephenson",
    "mlbamId": 663886,
@@ -617,25 +544,11 @@
    "move": "2026-11-24: Agreed to three-year contract (2027-29)"
   },
   {
-   "team": "CWS",
-   "name": "Tyrone Taylor",
-   "mlbamId": 621438,
-   "change": "signed as a free agent; contract unknown until Cot's adds it",
-   "move": "2026-11-24: Agreed to two-year contract (2027-28)"
-  },
-  {
-   "team": "CHC",
-   "name": "Teruaki Sato",
-   "mlbamId": 831664,
-   "change": "signed as a free agent; contract unknown until Cot's adds it",
-   "move": "2026-11-24: Agreed to six-year contract (2027-32)"
-  },
-  {
    "team": "DET",
-   "name": "Ha-Seong Kim",
-   "mlbamId": 673490,
+   "name": "Kevin Gausman",
+   "mlbamId": 592332,
    "change": "signed as a free agent; contract unknown until Cot's adds it",
-   "move": "2026-11-24: Agreed to one-year contract (2027)"
+   "move": "2026-11-25: Agreed to one-year contract (2027)"
   },
   {
    "team": "MIL",
@@ -665,11 +578,39 @@
    "change": "signed as a free agent; contract unknown until Cot's adds it"
   },
   {
+   "team": "MIN",
+   "name": "Kevin Ginkel",
+   "mlbamId": 656464,
+   "change": "signed as a free agent; contract unknown until Cot's adds it",
+   "move": "2026-11-25: Agreed to two-year contract (2027-28)"
+  },
+  {
+   "team": "MIA",
+   "name": "Gary Sanchez",
+   "mlbamId": 596142,
+   "change": "signed as a free agent; contract unknown until Cot's adds it",
+   "move": "2026-11-25: Agreed to one-year contract (2027)"
+  },
+  {
+   "team": "SD",
+   "name": "JoJo Romero",
+   "mlbamId": 668941,
+   "change": "signed as a free agent; contract unknown until Cot's adds it",
+   "move": "2026-11-25: Agreed to three-year contract (2027-29)"
+  },
+  {
    "team": "TOR",
    "name": "Kaima Taira",
    "mlbamId": 838343,
    "change": "signed as a free agent; contract unknown until Cot's adds it",
    "move": "2026-11-24: Agreed to five-year contract (2027-31)"
+  },
+  {
+   "team": "WSH",
+   "name": "A.J. Puk",
+   "mlbamId": 640462,
+   "change": "signed as a free agent; contract unknown until Cot's adds it",
+   "move": "2026-11-25: Agreed to one-year contract (2027)"
   },
   {
    "team": "CLE",

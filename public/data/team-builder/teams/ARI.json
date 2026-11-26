@@ -104,8 +104,8 @@
    "walkYear": false,
    "mlbamId": 606466,
    "salarySource": "cots",
-   "war": 3.83,
-   "pa": 616
+   "war": 3.87,
+   "pa": 623
   },
   {
    "name": "Geraldo Perdomo",
@@ -139,7 +139,7 @@
    "cotsEstimate": 7525000,
    "mlbamId": 672515,
    "salarySource": "mlbtr-arb",
-   "war": 4.76,
+   "war": 4.75,
    "pa": 542
   },
   {
@@ -157,8 +157,8 @@
    "cotsEstimate": 6400000,
    "mlbamId": 663457,
    "salarySource": "mlbtr-arb",
-   "war": 1.38,
-   "pa": 476
+   "war": 1.37,
+   "pa": 473
   },
   {
    "name": "Brandon Pfaadt",
@@ -436,7 +436,7 @@
    "mlbamId": 699912,
    "salarySource": "minimum",
    "war": 0.09,
-   "pa": 133
+   "pa": 130
   },
   {
    "name": "Kade Strowd",

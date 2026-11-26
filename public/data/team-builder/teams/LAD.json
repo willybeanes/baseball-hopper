@@ -152,7 +152,7 @@
    "walkYear": false,
    "mlbamId": 606192,
    "salarySource": "cots",
-   "war": 0.47,
+   "war": 0.46,
    "pa": 300
   },
   {
@@ -220,8 +220,8 @@
    "walkYear": false,
    "mlbamId": 571970,
    "salarySource": "cots",
-   "war": 2,
-   "pa": 402
+   "war": 2.01,
+   "pa": 404
   },
   {
    "name": "Andy Pages",
@@ -377,7 +377,7 @@
    "mlbamId": 676508,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 22
+   "ip": 1
   },
   {
    "name": "Jack Dreyer",
@@ -669,7 +669,7 @@
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
    "war": 0,
-   "ip": 8
+   "ip": 10
   }
  ],
  "deadMoney": [
@@ -936,7 +936,7 @@
    "name": "Frank Rodriguez",
    "pos": "c",
    "age": 25,
-   "war": 0.33,
+   "war": 0.32,
    "pa": 450,
    "salary": 780000,
    "debuted": false

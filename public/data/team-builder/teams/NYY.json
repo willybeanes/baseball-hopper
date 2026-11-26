@@ -161,10 +161,10 @@
    "pos": "rhp",
    "age": 32,
    "mls": 8.022,
-   "contract": "2 y/$18M (27-28)+29 cl opt",
+   "contract": "2 y/$19M (27-28)+29 cl opt",
    "status": "signed",
-   "salary": 9000000,
-   "taxValue": 9000000,
+   "salary": 9250000,
+   "taxValue": 9500000,
    "salaryPrevYear": null,
    "walkYear": false,
    "mlbamId": 642528,
@@ -223,7 +223,7 @@
    "cotsEstimate": 4250000,
    "mlbamId": 676609,
    "salarySource": "mlbtr-arb",
-   "war": 0.99,
+   "war": 0.98,
    "pa": 326
   },
   {
@@ -535,7 +535,7 @@
    "salaryPrevYear": 229412,
    "mlbamId": 806146,
    "salarySource": "minimum",
-   "war": 2.28,
+   "war": 2.27,
    "pa": 487
   },
   {
@@ -684,10 +684,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 276408333,
- "sheetTaxPayroll": 313396701,
- "rowsPayroll": 276408333,
- "rowsTaxPayroll": 313396701,
+ "sheetPayroll": 276658333,
+ "sheetTaxPayroll": 313896701,
+ "rowsPayroll": 276658333,
+ "rowsTaxPayroll": 313896701,
  "minors": [
   {
    "mlbamId": 701778,
