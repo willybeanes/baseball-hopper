@@ -104,6 +104,23 @@
    "ip": 168
   },
   {
+   "name": "Kevin Ginkel",
+   "sheetName": "Ginkel, Kevin",
+   "pos": "rhp",
+   "age": 31,
+   "mls": 6.033,
+   "contract": "2 y/$18M (27-28)",
+   "status": "signed",
+   "salary": 9000000,
+   "taxValue": 9000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 656464,
+   "salarySource": "cots",
+   "war": 0.51,
+   "ip": 62
+  },
+  {
    "name": "Dean Kremer",
    "sheetName": "Kremer, Dean",
    "pos": "rhp-s",
@@ -525,7 +542,7 @@
    "salaryPrevYear": 129305,
    "mlbamId": 805805,
    "salarySource": "minimum",
-   "war": 1.82,
+   "war": 1.83,
    "pa": 393
   },
   {
@@ -620,8 +637,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 11900000,
-   "taxValue": 11900000,
+   "salary": 11050000,
+   "taxValue": 11050000,
    "note": ""
   },
   {
@@ -641,10 +658,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 148451190,
- "sheetTaxPayroll": 173393359,
- "rowsPayroll": 148451190,
- "rowsTaxPayroll": 173393359,
+ "sheetPayroll": 156601190,
+ "sheetTaxPayroll": 181543359,
+ "rowsPayroll": 156601190,
+ "rowsTaxPayroll": 181543359,
  "minors": [
   {
    "mlbamId": 813715,
@@ -761,7 +778,7 @@
    "name": "Jay Thomason",
    "pos": "3b",
    "age": 25,
-   "war": 0.4,
+   "war": 0.41,
    "pa": 600,
    "salary": 780000,
    "debuted": false

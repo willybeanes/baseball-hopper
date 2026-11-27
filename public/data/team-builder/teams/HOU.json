@@ -679,16 +679,6 @@
  "rowsTaxPayroll": 220604995,
  "minors": [
   {
-   "mlbamId": 680933,
-   "name": "Joander Suarez",
-   "pos": "sp",
-   "age": 27,
-   "war": 1.27,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 814299,
    "name": "Pascanel Ferreras",
    "pos": "2b",
@@ -713,6 +703,16 @@
    "name": "James Hicks",
    "pos": "sp",
    "age": 26,
+   "war": 0.96,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 680933,
+   "name": "Joander Suarez",
+   "pos": "sp",
+   "age": 27,
    "war": 0.96,
    "ip": 200,
    "salary": 780000,

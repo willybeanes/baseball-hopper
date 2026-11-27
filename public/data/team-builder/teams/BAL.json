@@ -32,7 +32,7 @@
    "walkYear": false,
    "mlbamId": 642547,
    "salarySource": "cots",
-   "war": 1.77,
+   "war": 1.76,
    "ip": 176.3
   },
   {
@@ -106,7 +106,7 @@
    "mlbamId": 673357,
    "salarySource": "cots",
    "war": 1.65,
-   "pa": 431
+   "pa": 429
   },
   {
    "name": "Kyle Bradish",
@@ -157,8 +157,8 @@
    "cotsEstimate": 3000000,
    "mlbamId": 681297,
    "salarySource": "mlbtr-arb",
-   "war": 1.26,
-   "pa": 359
+   "war": 1.27,
+   "pa": 361
   },
   {
    "name": "Yennier Cano",
@@ -183,10 +183,10 @@
    "pos": "rhp-c",
    "age": 32,
    "mls": 5,
-   "contract": "1 y/$2.35M (27)",
+   "contract": "1 y/$2.3M (27)",
    "status": "signed",
-   "salary": 2350000,
-   "taxValue": 2350000,
+   "salary": 2300000,
+   "taxValue": 2300000,
    "salaryPrevYear": 2250000,
    "walkYear": true,
    "mlbamId": 642585,
@@ -226,8 +226,8 @@
    "cotsEstimate": 1200000,
    "mlbamId": 676059,
    "salarySource": "mlbtr-arb",
-   "war": 2.1,
-   "pa": 453
+   "war": 2.12,
+   "pa": 456
   },
   {
    "name": "Rico Garcia",
@@ -386,8 +386,8 @@
    "salaryPrevYear": 696713,
    "mlbamId": 669236,
    "salarySource": "minimum",
-   "war": 0.14,
-   "pa": 65
+   "war": 0.17,
+   "pa": 75
   },
   {
    "name": "Dylan Beavers",
@@ -722,10 +722,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 164300000,
- "sheetTaxPayroll": 190391667,
- "rowsPayroll": 164300000,
- "rowsTaxPayroll": 190391667,
+ "sheetPayroll": 164250000,
+ "sheetTaxPayroll": 190341667,
+ "rowsPayroll": 164250000,
+ "rowsTaxPayroll": 190341667,
  "minors": [
   {
    "mlbamId": 809254,

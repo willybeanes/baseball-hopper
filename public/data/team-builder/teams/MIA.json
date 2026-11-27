@@ -19,6 +19,23 @@
    "ip": 199
   },
   {
+   "name": "Gary Sánchez",
+   "sheetName": "Sánchez, Gary",
+   "pos": "c",
+   "age": 34,
+   "mls": 10.05,
+   "contract": "1 y/$6.5M (27)",
+   "status": "signed",
+   "salary": 6500000,
+   "taxValue": 6500000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 596142,
+   "salarySource": "cots",
+   "war": 0.54,
+   "pa": 208
+  },
+  {
    "name": "Otto Lopez",
    "sheetName": "Lopez, Otto",
    "pos": "2b-ss",
@@ -354,8 +371,8 @@
    "salaryPrevYear": 568273,
    "mlbamId": 682663,
    "salarySource": "minimum",
-   "war": 0.14,
-   "pa": 193
+   "war": 0.1,
+   "pa": 151
   },
   {
    "name": "Adam Mazur",
@@ -659,8 +676,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 12750000,
-   "taxValue": 12750000,
+   "salary": 11900000,
+   "taxValue": 11900000,
    "note": ""
   },
   {
@@ -680,10 +697,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 72539200,
- "sheetTaxPayroll": 85705867,
- "rowsPayroll": 72539200,
- "rowsTaxPayroll": 85705867,
+ "sheetPayroll": 78189200,
+ "sheetTaxPayroll": 91355867,
+ "rowsPayroll": 78189200,
+ "rowsTaxPayroll": 91355867,
  "minors": [
   {
    "mlbamId": 703448,
@@ -776,21 +793,21 @@
    "debuted": false
   },
   {
-   "mlbamId": 694395,
-   "name": "Dylan MacLean",
+   "mlbamId": 703596,
+   "name": "Karson Milbrandt",
    "pos": "sp",
-   "age": 24,
+   "age": 23,
    "war": 0.84,
    "ip": 200,
    "salary": 780000,
    "debuted": false
   },
   {
-   "mlbamId": 703596,
-   "name": "Karson Milbrandt",
+   "mlbamId": 694395,
+   "name": "Dylan MacLean",
    "pos": "sp",
-   "age": 23,
-   "war": 0.84,
+   "age": 24,
+   "war": 0.83,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -810,7 +827,7 @@
    "name": "Alex Williams",
    "pos": "sp",
    "age": 27,
-   "war": 0.79,
+   "war": 0.8,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -1010,7 +1027,7 @@
    "name": "Nate Payne",
    "pos": "sp",
    "age": 21,
-   "war": 0.26,
+   "war": 0.27,
    "ip": 200,
    "salary": 780000,
    "debuted": false

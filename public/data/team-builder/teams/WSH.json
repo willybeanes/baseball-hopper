@@ -54,6 +54,23 @@
    "ip": 178.3
   },
   {
+   "name": "A.J. Puk",
+   "sheetName": "Puk, A.J.",
+   "pos": "lhp-s",
+   "age": 32,
+   "mls": 6.124,
+   "contract": "1 y/$5M (27)",
+   "status": "signed",
+   "salary": 5000000,
+   "taxValue": 5000000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 640462,
+   "salarySource": "cots",
+   "war": 0.66,
+   "ip": 58
+  },
+  {
    "name": "Jake Irvin",
    "sheetName": "Irvin, Jake",
    "pos": "rhp-s",
@@ -135,8 +152,8 @@
    "salaryPrevYear": 153395,
    "mlbamId": 663362,
    "salarySource": "minimum",
-   "war": 0.24,
-   "ip": 38.8
+   "war": 0.18,
+   "ip": 31.9
   },
   {
    "name": "D.J. Herz",
@@ -151,8 +168,8 @@
    "salaryPrevYear": 784200,
    "mlbamId": 687792,
    "salarySource": "minimum",
-   "war": 1.04,
-   "ip": 94.2
+   "war": 0.98,
+   "ip": 91.3
   },
   {
    "name": "James Wood",
@@ -199,8 +216,8 @@
    "salaryPrevYear": 782700,
    "mlbamId": 686452,
    "salarySource": "minimum",
-   "war": 0.25,
-   "pa": 71
+   "war": 0.24,
+   "pa": 69
   },
   {
    "name": "Brad Lord",
@@ -215,8 +232,8 @@
    "salaryPrevYear": 785200,
    "mlbamId": 695418,
    "salarySource": "minimum",
-   "war": 0.49,
-   "ip": 65
+   "war": 0.66,
+   "ip": 82
   },
   {
    "name": "Dylan Crews",
@@ -296,7 +313,7 @@
    "mlbamId": 690925,
    "salarySource": "minimum",
    "war": 0.09,
-   "ip": 36
+   "ip": 38
   },
   {
    "name": "Jorbit Vivas",
@@ -311,7 +328,7 @@
    "salaryPrevYear": 790600,
    "mlbamId": 678391,
    "salarySource": "minimum",
-   "war": 0.33,
+   "war": 0.34,
    "pa": 169
   },
   {
@@ -407,8 +424,8 @@
    "salaryPrevYear": 324109,
    "mlbamId": 683000,
    "salarySource": "minimum",
-   "war": 0.59,
-   "ip": 72.4
+   "war": 0.6,
+   "ip": 74.4
   },
   {
    "name": "Abimelec Ortiz",
@@ -487,8 +504,8 @@
    "salaryPrevYear": 163075,
    "mlbamId": 672442,
    "salarySource": "minimum",
-   "war": 0.13,
-   "ip": 40
+   "war": 0.15,
+   "ip": 46
   },
   {
    "name": "Erik Tolman",
@@ -535,8 +552,8 @@
    "salaryPrevYear": 288392,
    "mlbamId": 691384,
    "salarySource": "minimum",
-   "war": 0.31,
-   "ip": 46
+   "war": 0.22,
+   "ip": 33
   },
   {
    "name": "Yohandy Morales",
@@ -568,7 +585,7 @@
    "mlbamId": 695378,
    "salarySource": "minimum",
    "war": 0,
-   "ip": 33
+   "ip": 35
   },
   {
    "name": "Jarlin Susana",
@@ -636,7 +653,7 @@
    "salarySource": "minimum",
    "corrected": "RosterResource: moved from BAL",
    "war": -0.03,
-   "ip": 20
+   "ip": 18
   }
  ],
  "deadMoney": [
@@ -675,10 +692,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 47575000,
- "sheetTaxPayroll": 78609167,
- "rowsPayroll": 47575000,
- "rowsTaxPayroll": 78609167,
+ "sheetPayroll": 50625000,
+ "sheetTaxPayroll": 81659167,
+ "rowsPayroll": 50625000,
+ "rowsTaxPayroll": 81659167,
  "minors": [
   {
    "mlbamId": 691776,

@@ -19,6 +19,23 @@
    "ip": 186.4
   },
   {
+   "name": "Kevin Gausman",
+   "sheetName": "Gausman, Kevin",
+   "pos": "rhp-s",
+   "age": 36,
+   "mls": 12.151,
+   "contract": "1 y/$25M (27)",
+   "status": "signed",
+   "salary": 25000000,
+   "taxValue": 25000000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 592332,
+   "salarySource": "cots",
+   "war": 2.77,
+   "ip": 181.1
+  },
+  {
    "name": "Javier Báez",
    "sheetName": "Báez, Javier",
    "pos": "ss-cf-3b-2b-lf",
@@ -733,8 +750,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 4250000,
-   "taxValue": 4250000,
+   "salary": 3400000,
+   "taxValue": 3400000,
    "note": ""
   },
   {
@@ -754,10 +771,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 159868345,
- "sheetTaxPayroll": 194488571,
- "rowsPayroll": 159868345,
- "rowsTaxPayroll": 194488571,
+ "sheetPayroll": 184018345,
+ "sheetTaxPayroll": 218638571,
+ "rowsPayroll": 184018345,
+ "rowsTaxPayroll": 218638571,
  "minors": [
   {
    "mlbamId": 827640,
@@ -784,7 +801,7 @@
    "name": "Jake Miller",
    "pos": "sp",
    "age": 26,
-   "war": 1.44,
+   "war": 1.41,
    "ip": 200,
    "salary": 780000,
    "debuted": false
@@ -940,22 +957,22 @@
    "debuted": false
   },
   {
-   "mlbamId": 835214,
-   "name": "Charlie Christensen",
-   "pos": "sp",
-   "age": 23,
-   "war": 0.41,
-   "ip": 200,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
    "mlbamId": 802991,
    "name": "E.J. Exposito",
    "pos": "2b",
    "age": 26,
    "war": 0.41,
    "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
+   "mlbamId": 835214,
+   "name": "Charlie Christensen",
+   "pos": "sp",
+   "age": 23,
+   "war": 0.4,
+   "ip": 200,
    "salary": 780000,
    "debuted": false
   },
@@ -1004,7 +1021,7 @@
    "name": "Chris Meyers",
    "pos": "of",
    "age": 28,
-   "war": 0.21,
+   "war": 0.22,
    "pa": 600,
    "salary": 780000,
    "debuted": false

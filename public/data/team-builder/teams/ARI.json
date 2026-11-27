@@ -139,7 +139,7 @@
    "cotsEstimate": 7525000,
    "mlbamId": 672515,
    "salarySource": "mlbtr-arb",
-   "war": 4.75,
+   "war": 4.76,
    "pa": 542
   },
   {
@@ -293,22 +293,6 @@
    "salarySource": "minimum",
    "war": 0.24,
    "pa": 223
-  },
-  {
-   "name": "Tim Tawa",
-   "sheetName": "Tawa, Tim",
-   "pos": "2b-1b-lf-cf-3b",
-   "age": 28,
-   "mls": 1.098,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 696830,
-   "mlbamId": 694374,
-   "salarySource": "minimum",
-   "war": 0.16,
-   "pa": 384
   },
   {
    "name": "Jordan Lawlar",
@@ -533,6 +517,25 @@
    "salarySource": "minimum",
    "war": 0,
    "ip": 8
+  },
+  {
+   "name": "Henry Davis",
+   "sheetName": "Davis, Henry",
+   "pos": "c",
+   "age": 27,
+   "mls": 3.039,
+   "contract": "A1",
+   "status": "arb",
+   "salary": 1400000,
+   "taxValue": 1400000,
+   "salaryPrevYear": 800400,
+   "arbYear": 1,
+   "cotsEstimate": 1200000,
+   "mlbamId": 680779,
+   "salarySource": "mlbtr-arb",
+   "corrected": "RosterResource: moved from PIT",
+   "war": 1.22,
+   "pa": 248
   },
   {
    "name": "Demetrio Crisantes",

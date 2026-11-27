@@ -32,8 +32,8 @@
    "walkYear": true,
    "mlbamId": 661388,
    "salarySource": "cots",
-   "war": 4.21,
-   "pa": 569
+   "war": 4.19,
+   "pa": 565
   },
   {
    "name": "Brice Turang",
@@ -122,6 +122,23 @@
    "salarySource": "cots",
    "war": 1.05,
    "ip": 81
+  },
+  {
+   "name": "Antonio Senzatela",
+   "sheetName": "Senzatela, Antonio",
+   "pos": "rhp-s",
+   "age": 32,
+   "mls": 9.106,
+   "contract": "1 y/$4.75M (27)",
+   "status": "signed",
+   "salary": 4750000,
+   "taxValue": 4750000,
+   "salaryPrevYear": null,
+   "walkYear": true,
+   "mlbamId": 622608,
+   "salarySource": "cots",
+   "war": 0.18,
+   "ip": 68
   },
   {
    "name": "Cooper Pratt",
@@ -587,8 +604,8 @@
    "mlbamId": 702726,
    "salarySource": "minimum",
    "corrected": "Added from RosterResource",
-   "war": 0.18,
-   "pa": 52
+   "war": 0.19,
+   "pa": 55
   },
   {
    "name": "Dylan O'Rae",
@@ -680,8 +697,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 5950000,
-   "taxValue": 5950000,
+   "salary": 5100000,
+   "taxValue": 5100000,
    "note": ""
   },
   {
@@ -696,10 +713,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 114413396,
- "sheetTaxPayroll": 138265988,
- "rowsPayroll": 114413396,
- "rowsTaxPayroll": 138265988,
+ "sheetPayroll": 118313396,
+ "sheetTaxPayroll": 142165988,
+ "rowsPayroll": 118313396,
+ "rowsTaxPayroll": 142165988,
  "minors": [
   {
    "mlbamId": 824620,
@@ -856,7 +873,7 @@
    "name": "Braden Shewmake",
    "pos": "ss-3b-2b",
    "age": 29,
-   "war": 0.42,
+   "war": 0.43,
    "pa": 600,
    "salary": 780000,
    "debuted": true

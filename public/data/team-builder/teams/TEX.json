@@ -177,23 +177,6 @@
    "pa": 534
   },
   {
-   "name": "Logan O'Hoppe",
-   "sheetName": "O'Hoppe, Logan",
-   "pos": "c",
-   "age": 27,
-   "mls": 3.171,
-   "contract": "1 y/$3.1M (27)",
-   "status": "signed",
-   "salary": 3100000,
-   "taxValue": 3100000,
-   "salaryPrevYear": 842246,
-   "walkYear": false,
-   "mlbamId": 681351,
-   "salarySource": "cots",
-   "war": 0.46,
-   "pa": 254
-  },
-  {
    "name": "Jake Latz",
    "sheetName": "Latz, Jake",
    "pos": "lhp",
@@ -210,6 +193,23 @@
    "salarySource": "mlbtr-arb",
    "war": 0.63,
    "ip": 70
+  },
+  {
+   "name": "Logan O'Hoppe",
+   "sheetName": "O'Hoppe, Logan",
+   "pos": "c",
+   "age": 27,
+   "mls": 3.171,
+   "contract": "1 y/$2.5M (27)",
+   "status": "signed",
+   "salary": 2500000,
+   "taxValue": 2500000,
+   "salaryPrevYear": 842246,
+   "walkYear": false,
+   "mlbamId": 681351,
+   "salarySource": "cots",
+   "war": 0.46,
+   "pa": 254
   },
   {
    "name": "Evan Carter",
@@ -644,10 +644,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 172285000,
- "sheetTaxPayroll": 190201667,
- "rowsPayroll": 172285000,
- "rowsTaxPayroll": 190201667,
+ "sheetPayroll": 171685000,
+ "sheetTaxPayroll": 189601667,
+ "rowsPayroll": 171685000,
+ "rowsTaxPayroll": 189601667,
  "minors": [
   {
    "mlbamId": 702662,

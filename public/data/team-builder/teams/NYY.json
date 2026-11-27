@@ -187,7 +187,7 @@
    "cotsEstimate": 5575000,
    "mlbamId": 657376,
    "salarySource": "mlbtr-arb",
-   "war": 0.69,
+   "war": 0.68,
    "ip": 91.7
   },
   {
@@ -535,8 +535,8 @@
    "salaryPrevYear": 229412,
    "mlbamId": 806146,
    "salarySource": "minimum",
-   "war": 2.27,
-   "pa": 487
+   "war": 2.3,
+   "pa": 491
   },
   {
    "name": "Bradley Hanner",
@@ -830,22 +830,22 @@
    "debuted": false
   },
   {
+   "mlbamId": 814392,
+   "name": "Xavier Rivas",
+   "pos": "sp",
+   "age": 24,
+   "war": 0.47,
+   "ip": 200,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 682625,
    "name": "Antonio Gomez",
    "pos": "rp",
    "age": 25,
    "war": 0.46,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 814392,
-   "name": "Xavier Rivas",
-   "pos": "sp",
-   "age": 24,
-   "war": 0.46,
-   "ip": 200,
    "salary": 780000,
    "debuted": false
   },

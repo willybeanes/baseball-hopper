@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T19:27:55.982Z",
+  "updatedAt": "2026-11-27T19:24:08.917Z",
   "sheetsCollected": "2026-10-03",
   "targetYear": 2027,
   "taxThreshold": {
@@ -78,7 +78,7 @@
     "label": "Steamer projection for 2027",
     "note": "Minor leaguers use Steamer's full-time version (600 PA, 200 IP as a starter or 65 in relief), because plain Steamer gives most of them almost no big-league time.",
     "url": "https://www.fangraphs.com/projections?type=steamer",
-    "fetchedAt": "2026-11-26",
+    "fetchedAt": "2026-11-27",
     "players": 9336
   },
   "staleTeams": {
@@ -93,8 +93,8 @@
       "NYM: tax payroll rows add up to $351.545M but the sheet says $353.545M"
     ],
     "SD": [
-      "SD: payroll rows add up to $204.106M but the sheet says $198.606M",
-      "SD: tax payroll rows add up to $212.912M but the sheet says $207.412M"
+      "SD: payroll rows add up to $210.256M but the sheet says $204.756M",
+      "SD: tax payroll rows add up to $219.062M but the sheet says $213.562M"
     ]
   },
   "sources": {

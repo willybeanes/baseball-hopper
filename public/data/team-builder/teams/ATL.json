@@ -442,7 +442,7 @@
    "mlbamId": 689172,
    "salarySource": "minimum",
    "war": 0.17,
-   "pa": 152
+   "pa": 154
   },
   {
    "name": "Victor Mederos",
@@ -887,6 +887,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 656786,
+   "name": "Parker Mushinski",
+   "pos": "rp",
+   "age": 31,
+   "war": 0.11,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 681256,

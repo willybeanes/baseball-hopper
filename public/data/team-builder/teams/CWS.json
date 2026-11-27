@@ -136,7 +136,7 @@
    "cotsEstimate": 3250000,
    "mlbamId": 686668,
    "salarySource": "mlbtr-arb",
-   "war": 0.6,
+   "war": 0.61,
    "pa": 253
   },
   {
@@ -396,8 +396,8 @@
    "salaryPrevYear": 798500,
    "mlbamId": 695657,
    "salarySource": "minimum",
-   "war": 2.08,
-   "pa": 494
+   "war": 2.06,
+   "pa": 490
   },
   {
    "name": "Drew Romo",
@@ -756,6 +756,16 @@
    "debuted": false
   },
   {
+   "mlbamId": 683569,
+   "name": "Jose Colmenares",
+   "pos": "2b",
+   "age": 25,
+   "war": 0.77,
+   "pa": 600,
+   "salary": 780000,
+   "debuted": false
+  },
+  {
    "mlbamId": 681066,
    "name": "Ky Bush",
    "pos": "sp",
@@ -772,16 +782,6 @@
    "age": 28,
    "war": 0.76,
    "pa": 450,
-   "salary": 780000,
-   "debuted": false
-  },
-  {
-   "mlbamId": 683569,
-   "name": "Jose Colmenares",
-   "pos": "2b",
-   "age": 25,
-   "war": 0.74,
-   "pa": 600,
    "salary": 780000,
    "debuted": false
   },

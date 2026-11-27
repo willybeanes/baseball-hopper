@@ -123,7 +123,7 @@
    "walkYear": false,
    "mlbamId": 802139,
    "salarySource": "cots",
-   "war": 4.64,
+   "war": 4.65,
    "pa": 663
   },
   {
@@ -239,8 +239,8 @@
    "salaryPrevYear": 606080,
    "mlbamId": 687363,
    "salarySource": "minimum",
-   "war": 0.17,
-   "pa": 185
+   "war": 0.18,
+   "pa": 186
   },
   {
    "name": "Ryan Fernandez",
@@ -863,7 +863,7 @@
    "name": "Tai Peete",
    "pos": "of",
    "age": 21,
-   "war": 0.85,
+   "war": 0.86,
    "pa": 600,
    "salary": 780000,
    "debuted": false

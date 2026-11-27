@@ -66,8 +66,8 @@
    "walkYear": true,
    "mlbamId": 521692,
    "salarySource": "cots",
-   "war": 0.56,
-   "pa": 452
+   "war": 0.58,
+   "pa": 469
   },
   {
    "name": "Alec Bohm",
@@ -341,8 +341,8 @@
    "salaryPrevYear": 747734,
    "mlbamId": 679845,
    "salarySource": "minimum",
-   "war": 0.91,
-   "pa": 323
+   "war": 0.9,
+   "pa": 322
   },
   {
    "name": "Steven Cruz",
@@ -423,22 +423,6 @@
    "salarySource": "minimum",
    "war": -0.18,
    "ip": 45
-  },
-  {
-   "name": "Mitch Spence",
-   "sheetName": "Spence, Mitch",
-   "pos": "rhp",
-   "age": 29,
-   "mls": 1.137,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": 316911,
-   "mlbamId": 687765,
-   "salarySource": "minimum",
-   "war": 0.05,
-   "ip": 10
   },
   {
    "name": "Tyler Tolbert",
@@ -661,8 +645,8 @@
    "salaryPrevYear": null,
    "mlbamId": 811287,
    "salarySource": "minimum",
-   "war": 0.65,
-   "pa": 325
+   "war": 0.66,
+   "pa": 331
   },
   {
    "name": "Steven Zobac",
@@ -761,7 +745,7 @@
    "name": "Jacob Berry",
    "pos": "1b",
    "age": 26,
-   "war": 1.12,
+   "war": 1.11,
    "pa": 600,
    "salary": 780000,
    "debuted": false
@@ -865,6 +849,16 @@
    "ip": 200,
    "salary": 780000,
    "debuted": false
+  },
+  {
+   "mlbamId": 687765,
+   "name": "Mitch Spence",
+   "pos": "rp",
+   "age": 29,
+   "war": 0.32,
+   "ip": 65,
+   "salary": 780000,
+   "debuted": true
   },
   {
    "mlbamId": 687547,

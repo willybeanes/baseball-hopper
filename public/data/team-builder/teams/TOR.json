@@ -673,6 +673,12 @@
  ],
  "deadMoney": [
   {
+   "name": "Chase Lee",
+   "salary": -100000,
+   "taxValue": -100000,
+   "note": "from Colorado, 11/20/26 trade"
+  },
+  {
    "name": "Jeff Hoffman",
    "salary": 3750000,
    "taxValue": 3750000,
@@ -708,10 +714,10 @@
  "threshold": null,
  "tiers": null,
  "sheetFirstYear": 2027,
- "sheetPayroll": 247812110,
- "sheetTaxPayroll": 245980916,
- "rowsPayroll": 247812110,
- "rowsTaxPayroll": 245980916,
+ "sheetPayroll": 247712110,
+ "sheetTaxPayroll": 245880916,
+ "rowsPayroll": 247712110,
+ "rowsTaxPayroll": 245880916,
  "minors": [
   {
    "mlbamId": 700795,

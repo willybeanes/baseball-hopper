@@ -36,6 +36,40 @@
    "ip": 145.3
   },
   {
+   "name": "David Peterson",
+   "sheetName": "Peterson, David",
+   "pos": "lhp-s",
+   "age": 31,
+   "mls": 6.089,
+   "contract": "2 y/$32M (27-28)",
+   "status": "signed",
+   "salary": 16000000,
+   "taxValue": 16000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 656849,
+   "salarySource": "cots",
+   "war": 2.06,
+   "ip": 159.8
+  },
+  {
+   "name": "Patrick Sandoval",
+   "sheetName": "Sandoval, Patrick",
+   "pos": "lhp-s",
+   "age": 30,
+   "mls": 6.149,
+   "contract": "3 y/$42M (27-29)",
+   "status": "signed",
+   "salary": 14000000,
+   "taxValue": 14000000,
+   "salaryPrevYear": null,
+   "walkYear": false,
+   "mlbamId": 663776,
+   "salarySource": "cots",
+   "war": 1.93,
+   "ip": 142.1
+  },
+  {
    "name": "Ezequiel Tovar",
    "sheetName": "Tovar, Ezequiel",
    "pos": "ss",
@@ -449,6 +483,22 @@
    "pa": 302
   },
   {
+   "name": "Chase Lee",
+   "sheetName": "Lee, Chase",
+   "pos": "rhp",
+   "age": 28,
+   "mls": 0.119,
+   "contract": "",
+   "status": "prearb",
+   "salary": 780000,
+   "taxValue": 780000,
+   "salaryPrevYear": null,
+   "mlbamId": 695445,
+   "salarySource": "minimum",
+   "war": -0.03,
+   "ip": 28
+  },
+  {
    "name": "Blas Castaño",
    "sheetName": "Castaño, Blas",
    "pos": "rhp",
@@ -642,26 +692,15 @@
    "corrected": "Added from RosterResource",
    "war": 0,
    "ip": 1
-  },
-  {
-   "name": "Chase Lee",
-   "sheetName": "Lee, Chase",
-   "pos": "rhp",
-   "age": 28,
-   "mls": 0.119,
-   "contract": "",
-   "status": "prearb",
-   "salary": 780000,
-   "taxValue": 780000,
-   "salaryPrevYear": null,
-   "mlbamId": 695445,
-   "salarySource": "minimum",
-   "corrected": "RosterResource: moved from TOR",
-   "war": -0.03,
-   "ip": 28
   }
  ],
  "deadMoney": [
+  {
+   "name": "Chase Lee",
+   "salary": 100000,
+   "taxValue": 100000,
+   "note": "to Toronto, 11/20/26 trade"
+  },
   {
    "name": "Michael Lorenzen",
    "salary": 250000,
@@ -676,8 +715,8 @@
   },
   {
    "name": "0- to 3-year players",
-   "salary": 12750000,
-   "taxValue": 12750000,
+   "salary": 11900000,
+   "taxValue": 11900000,
    "note": ""
   },
   {
@@ -697,10 +736,10 @@
   304000000
  ],
  "sheetFirstYear": 2027,
- "sheetPayroll": 106899286,
- "sheetTaxPayroll": 125846100,
- "rowsPayroll": 106899286,
- "rowsTaxPayroll": 125846100,
+ "sheetPayroll": 133899286,
+ "sheetTaxPayroll": 152846100,
+ "rowsPayroll": 133899286,
+ "rowsTaxPayroll": 152846100,
  "minors": [
   {
    "mlbamId": 815456,

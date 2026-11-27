@@ -282,8 +282,8 @@
    "cotsEstimate": 1500000,
    "mlbamId": 669134,
    "salarySource": "mlbtr-arb",
-   "war": 0.97,
-   "pa": 362
+   "war": 0.99,
+   "pa": 368
   },
   {
    "name": "Jeremiah Estrada",
@@ -464,7 +464,7 @@
    "salaryPrevYear": 145989,
    "mlbamId": 687957,
    "salarySource": "minimum",
-   "war": 0.5,
+   "war": 0.51,
    "pa": 325
   },
   {

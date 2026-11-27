@@ -153,8 +153,8 @@
    "cotsEstimate": 10250000,
    "mlbamId": 668939,
    "salarySource": "mlbtr-arb",
-   "war": 3.41,
-   "pa": 466
+   "war": 3.4,
+   "pa": 464
   },
   {
    "name": "Brayan Bello",
@@ -258,7 +258,7 @@
    "mlbamId": 678882,
    "salarySource": "cots",
    "war": 2.71,
-   "pa": 518
+   "pa": 517
   },
   {
    "name": "Nick Fortes",
@@ -469,7 +469,7 @@
    "mlbamId": 663330,
    "salarySource": "cots",
    "war": 0.15,
-   "pa": 102
+   "pa": 103
   },
   {
    "name": "Jovani Moran",
@@ -532,8 +532,8 @@
    "salaryPrevYear": 507409,
    "mlbamId": 681508,
    "salarySource": "minimum",
-   "war": 0.25,
-   "pa": 84
+   "war": 0.26,
+   "pa": 86
   },
   {
    "name": "Nick Sogard",
